@@ -6,7 +6,12 @@
     <title>Página no encontrada - Finca Termópilas</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/utilities.css">
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         .error-container {
             min-height: 100vh;
@@ -57,7 +62,10 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <header class="hero">
         <nav class="navbar">
             <div class="logo">
                 <i class="fas fa-map-marker-alt"></i>
@@ -67,48 +75,25 @@
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
                 <li><a href="index.html#alojamiento">Alojamiento</a></li>
                 <li><a href="rooms.html">Habitaciones</a></li>
-                <li><a href="tour-vino-cacao.html">Tour de Vino y Cacao</a></li>
                 <li><a href="index.html#productos">Vino y Cacao</a></li>
+                <li><a href="tour-vino-cacao.html">Tour de Vino y Cacao</a></li>
                 <li><a href="index.html#servicios">Ofrecemos</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="index.html#galeria">Galería</a></li>
                 <li><a href="index.html#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
     
-    <div class="error-container">
+    <div class="error-container" id="main-content">
         <div class="error-code">404</div>
         <div class="error-message">Página no encontrada</div>
         <p>Lo sentimos, la página que estás buscando no existe o ha sido movida.</p>
         <a href="/" class="home-button">Volver al inicio</a>
     </div>
     
-    <script>
-        // Redirect to homepage after 10 seconds
-        setTimeout(function() {
-            window.location.href = '/';
-        }, 10000);
-
-        // Mobile Navigation Toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            // Accessibility: Update aria-expanded attribute
-            const expanded = navMenu.classList.contains('active');
-            navToggle.setAttribute('aria-expanded', expanded);
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html> 
