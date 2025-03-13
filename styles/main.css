@@ -338,12 +338,12 @@ body {
 .service-card {
     text-align: center;
     padding: 2rem;
-    background: #000000;
+    background: #FFFFFF;
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
-    color: var(--light-text);
+    color: #000;
 }
 
 .service-card:hover {
@@ -358,7 +358,7 @@ body {
 }
 
 .service-card h3 {
-    color: var(--light-text);
+    color: #000;
     margin-bottom: 1rem;
     font-family: 'Playfair Display', Georgia, serif !important;
     font-weight: 600;
@@ -366,7 +366,7 @@ body {
 }
 
 .service-card p {
-    color: var(--light-text);
+    color: #000;
 }
 
 /* Testimonials */
@@ -766,7 +766,7 @@ footer a:hover {
         color: var(--text-color);
     }
     
-    .service-card, .testimonial {
+    .testimonial {
         background-color: #000000;
         color: var(--light-text);
     }
@@ -778,15 +778,15 @@ footer a:hover {
     
     .service-card {
         background: #FFFFFF;
-        color: var(--text-color);
+        color: #000;
     }
     
     .service-card h3 {
-        color: var(--light-text);
+        color: #000;
     }
     
     .service-card p {
-        color: var(--light-text);
+        color: #000;
     }
 }
 
