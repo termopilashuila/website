@@ -17,17 +17,21 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - **JavaScript Files**:
   - `js/main.js` - Main JavaScript functionality
 - **Images**:
-  - `assets/images/` - All image files
-  - `assets/images/tour-*.jpg` - Tour-specific images
+  - `assets/images/` - Base directory for all images
+  - `assets/images/home/` - Home page specific images
+  - `assets/images/rooms/` - Room-specific images
+  - `assets/images/tour/` - Tour-specific images
+  - `assets/images/error/` - Error page images
 - **Icons**:
   - `assets/icons/` - Favicon and other icons
 - **Documentation**:
-  - `README-TOUR-IMAGES.md` - Instructions for tour images
+  - `cursor-rules.md` - Project guidelines and standards
 
 ### Naming Conventions
 - Use kebab-case for file names (e.g., `hero-bg.jpg`, `main.css`)
 - Use descriptive names that indicate content or purpose
-- Prefix related files consistently (e.g., `room-` for room-related images, `tour-` for tour-related images)
+- Use section-based naming for images (e.g., `section0-hero.jpg`, `section1-accommodation1.jpg`)
+- Prefix related files consistently (e.g., `section4-img1.jpg` for testimonial images)
 
 ## HTML Structure
 
@@ -61,9 +65,14 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ```css
 :root {
   --primary-color: #000000;      /* Black - Primary background */
-  --accent-color: #D4AF37;       /* Gold - Accent color */
-  --text-light: #FFFFFF;         /* White - Text on dark backgrounds */
-  --text-dark: #000000;          /* Black - Text on light backgrounds */
+  --secondary-color: #333333;    /* Dark gray - Secondary background */
+  --accent-color: #ff8c00;       /* Vibrant orange - Accent color */
+  --text-color: #333333;         /* Dark gray - Main text color */
+  --light-text: #fff;            /* White - Text on dark backgrounds */
+  --background-light: #FFFFFF;   /* White - Light background */
+  --background-dark: #000000;    /* Black - Dark background */
+  --background-cream: #FFFFFF;   /* White - Cream background */
+  --background-warm: #F9F9F9;    /* Light gray - Warm background */
 }
 ```
 
@@ -85,31 +94,47 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Centered content with heading, subheading, and CTA button
 - Responsive text sizing
 
+#### Product Cards
+- Consistent sizing (300px width on desktop)
+- Black background with white text
+- Orange accents for prices and buttons
+- Hover effect with slight elevation and image scale
+- Expanded product images that fill the card width
+- Structured content with flex layout
+
 #### Room Cards
 - Consistent sizing (300px width on desktop)
 - Black background with white text
-- Gold accents for prices and badges
+- Orange accents for prices and badges
 - Hover effect with slight elevation
 - "De Lujo" badge for luxury rooms
 
 #### Tour Experience Timeline
-- Vertical timeline with gold accent line
-- Circular icons with gold background
+- Vertical timeline with orange accent line
+- Circular icons with orange background
 - Content cards with subtle shadow
 - Image containers for each experience step
 - Responsive layout that adjusts for mobile
 
+#### Testimonial Cards
+- Horizontal scrolling container on all devices
+- Touch-optimized scrolling for mobile
+- Consistent card styling with light background
+- Author images displayed as circular thumbnails on the left
+- Bold author names with 5-star ratings underneath
+- Proper spacing and alignment of all elements
+
 #### Pricing Cards
 - Black background with white text
-- Gold accent for prices and checkmarks
+- Orange accent for prices and checkmarks
 - Centered layout with clear hierarchy
 - Responsive design for different screen sizes
 
 #### Buttons
-- Gold background with black text
+- Orange background with black text
 - Hover effect: white background with black text
 - Uppercase text with letter spacing
-- No border radius (square corners)
+- Rounded corners (8px border-radius)
 
 #### Navigation
 - Mobile-friendly with hamburger menu
@@ -155,6 +180,8 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Simplify navigation with hamburger menu
 - Ensure touch targets are at least 44px × 44px
 - Adjust timeline layout for tour experience on mobile
+- Enable smooth horizontal scrolling for testimonials
+- Optimize product cards for mobile viewing
 
 ## Performance Optimization
 
@@ -171,7 +198,8 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Set up service worker for caching and offline functionality
 - Provide app icons in various sizes
 - Implement install prompt with clear user instructions
-- Cache all critical resources including tour page assets
+- Cache all critical resources including images
+- Use rounded corners for PWA prompt buttons
 
 ## Best Practices
 
@@ -188,6 +216,8 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ### Home Page (index.html)
 - Hero section with main call-to-action
 - Sections for: Alojamiento, Vino y Cacao, Ofrecemos, Testimonios, Galería
+- Product cards with images for Vino F27, Vino Rosé, and Nibs de cacao
+- Testimonials with user photos, names, and ratings
 - Footer with contact information and map
 - Link to Tour de Vino y Cacao page in navigation and services section
 
@@ -213,7 +243,39 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Link back to home page
 - Consistent styling with main site
 
-## Image Guidelines for Tour Page
+## Image Guidelines
+
+### Image Organization
+- All images should be organized in subdirectories by section:
+  - `assets/images/home/` - Home page images
+  - `assets/images/rooms/` - Room images
+  - `assets/images/tour/` - Tour page images
+  - `assets/images/error/` - Error page images
+
+### Image Naming Convention
+- Home page: `section[number]-[description].jpg`
+  - Example: `section0-hero.jpg`, `section1-accommodation1.jpg`
+- Testimonials: `section4-img[number].jpg`
+  - Example: `section4-img1.jpg`, `section4-img2.jpg`
+- Tour page: `tour-[description].jpg`
+  - Example: `tour-hero-bg.jpg`, `tour-vineyards.jpg`
+- Rooms: Simple descriptive names
+  - Example: `couples.jpg`, `groups.jpg`
+
+### Required Home Page Images
+- `section0-hero.jpg` - Hero background image
+- `section1-accommodation1.jpg` - Couples accommodation
+- `section1-accommodation2.jpg` - Group accommodation
+- `section2-product1.jpg` - Vino F27 product image
+- `section2-product2.jpg` - Vino Rosé product image
+- `section2-product3.jpg` - Nibs de cacao product image
+- `section4-img0.jpg` - Testimonials section background
+- `section4-img1.jpg` - Gilberto's testimonial photo
+- `section4-img2.jpg` - Camilo's testimonial photo
+- `section4-img3.jpg` - Héctor's testimonial photo
+- `section5-gallery1.jpg` - Gallery image 1
+- `section5-gallery2.jpg` - Gallery image 2
+- `section5-gallery3.jpg` - Gallery image 3
 
 ### Required Tour Images
 - `tour-hero-bg.jpg` - Hero background image
@@ -231,9 +293,17 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ### Image Optimization
 - Hero images: 1920px max width
 - Content images: 800px max width
+- Testimonial images: 50px × 50px, circular crop
 - Compress all images for web
 - Use JPG format for photos
 - Include descriptive alt text for all images
+
+## Service Worker
+
+- Update cache version when adding new resources
+- Cache all critical assets including images
+- Ensure all image paths are updated in the service worker
+- Current cache version: `termopilas-cache-v5`
 
 ## Future Development
 
