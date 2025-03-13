@@ -20,7 +20,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - JavaScript (Vanilla)
 - Service Workers para PWA
 - Font Awesome para iconos
-- Google Fonts (Playfair Display y Montserrat)
+- Google Fonts (Lora y Montserrat)
 
 ## Estructura del proyecto
 
@@ -92,7 +92,7 @@ El proyecto sigue una guía de estilo detallada que se encuentra en el archivo `
 
 ### Tipografía
 
-- **Títulos**: Playfair Display (serif)
+- **Títulos**: Lora (serif)
 - **Texto**: Montserrat (sans-serif)
 
 ## Configuración de GitHub Pages

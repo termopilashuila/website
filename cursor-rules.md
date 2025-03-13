@@ -77,7 +77,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ```
 
 ### Typography
-- **Heading Font**: Playfair Display (serif)
+- **Heading Font**: Lora (serif)
 - **Body Font**: Montserrat (sans-serif)
 - Font weights:
   - Headings: 600-700
