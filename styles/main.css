@@ -271,6 +271,9 @@ body {
 
 .product-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .product-card:hover {
@@ -312,8 +315,10 @@ body {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: auto;
+    align-self: center;
     border-radius: 8px;
+    width: auto;
 }
 
 .order-button:hover {
