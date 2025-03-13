@@ -4,12 +4,16 @@ const navMenu = document.querySelector('.nav-menu');
 
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    // Accessibility: Update aria-expanded attribute
+    const expanded = navMenu.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', expanded);
 });
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
     }
 });
 
@@ -25,6 +29,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
             // Close mobile menu after clicking a link
             navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
         }
     });
 });
@@ -82,6 +87,25 @@ testimonialsSlider.addEventListener('mousemove', (e) => {
     testimonialsSlider.scrollLeft = scrollLeft - walk;
 });
 
+// Touch support for testimonials slider
+testimonialsSlider.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - testimonialsSlider.offsetLeft;
+    scrollLeft = testimonialsSlider.scrollLeft;
+});
+
+testimonialsSlider.addEventListener('touchend', () => {
+    isDown = false;
+});
+
+testimonialsSlider.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - testimonialsSlider.offsetLeft;
+    const walk = (x - startX) * 2;
+    testimonialsSlider.scrollLeft = scrollLeft - walk;
+});
+
 // Product Order Buttons
 document.querySelectorAll('.order-button').forEach(button => {
     button.addEventListener('click', function() {
@@ -107,7 +131,21 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Initialize AOS (Animate on Scroll)
+// Lazy load images
+if ('loading' in HTMLImageElement.prototype) {
+    // Browser supports native lazy loading
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src;
+    });
+} else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
+
+// Initialize page animations
 document.addEventListener('DOMContentLoaded', () => {
     // Add fade-in animation to hero content
     const heroContent = document.querySelector('.hero-content');
@@ -116,4 +154,34 @@ document.addEventListener('DOMContentLoaded', () => {
         heroContent.style.transition = 'opacity 1s ease-out';
         heroContent.style.opacity = '1';
     }, 300);
-}); 
+    
+    // Add accessibility attributes to navigation
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-controls', 'nav-menu');
+    navMenu.setAttribute('id', 'nav-menu');
+    
+    // Add skip link for keyboard navigation
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-link';
+    skipLink.textContent = 'Saltar al contenido principal';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Mark main content for accessibility
+    const mainContent = document.querySelector('#alojamiento');
+    mainContent.setAttribute('id', 'main-content');
+    mainContent.setAttribute('tabindex', '-1');
+});
+
+// Service Worker Registration for PWA support
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+    });
+} 

@@ -1,126 +1,105 @@
-# Finca Termópilas Website
+# Finca Termópilas - Sitio Web Oficial
 
-A modern, responsive website for Finca Termópilas, showcasing their accommodations, products, and services.
+Este repositorio contiene el código fuente del sitio web oficial de Finca Termópilas, ubicada en Rivera, Huila, Colombia.
 
-## Features
+## Características del sitio
 
-- Responsive design that works on all devices
-- Modern and clean user interface
-- Smooth scrolling navigation
-- Interactive product cards with WhatsApp integration
-- Testimonials slider
-- Animated sections on scroll
-- Mobile-friendly navigation menu
+- Diseño responsive para dispositivos móviles y de escritorio
+- Optimizado para SEO
+- Soporte para PWA (Progressive Web App)
+- Galería de imágenes
+- Información sobre alojamiento, productos y servicios
+- Testimonios de clientes
+- Información de contacto y ubicación
 
-## File Structure
+## Tecnologías utilizadas
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Service Workers para PWA
+- Font Awesome para iconos
+
+## Estructura del proyecto
 
 ```
-website/
-├── index.html          # Main HTML file
-├── styles/
-│   └── main.css       # Main stylesheet
-├── js/
-│   └── main.js        # JavaScript functionality
+/
+├── index.html              # Página principal
+├── CNAME                   # Configuración de dominio personalizado
+├── manifest.json           # Manifiesto para PWA
+├── robots.txt              # Configuración para motores de búsqueda
+├── service-worker.js       # Service Worker para PWA
+├── sitemap.xml             # Mapa del sitio para SEO
 ├── assets/
-│   ├── css/
-│   │   └── fonts.css  # Typography styles
-│   └── images/        # Website images
-└── README.md          # This file
+│   ├── css/                # Estilos adicionales
+│   │   └── fonts.css       # Configuración de fuentes
+│   └── images/             # Imágenes del sitio
+│       ├── hero-bg.jpg     # Imagen de fondo principal
+│       ├── couples.jpg     # Imagen de alojamiento para parejas
+│       ├── groups.jpg      # Imagen de alojamiento para grupos
+│       ├── favicon.png     # Favicon
+│       └── ...             # Otras imágenes
+├── js/
+│   └── main.js             # JavaScript principal
+└── styles/
+    └── main.css            # Estilos principales
 ```
 
-## Setup Instructions
+## Configuración de GitHub Pages
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/termopilas-website.git
-cd termopilas-website
-```
+El sitio está configurado para ser alojado en GitHub Pages con un dominio personalizado (termopilas.co).
 
-2. Add your images to the `assets/images/` directory:
-   - hero-bg.jpg (Hero section background)
-   - couples.jpg (Couples accommodation)
-   - groups.jpg (Group accommodation)
-   - Any additional images needed
+### Pasos para la configuración:
 
-3. Test the website locally:
-   - Use a local development server (e.g., Live Server in VS Code)
-   - Or use Python's built-in server:
-     ```bash
-     python -m http.server 8000
-     ```
-   - Visit `http://localhost:8000` in your browser
+1. En la configuración del repositorio, habilitar GitHub Pages desde la rama principal (main/master)
+2. Agregar el dominio personalizado "termopilas.co" en la sección de GitHub Pages
+3. Asegurarse de que el archivo CNAME esté presente en la raíz del repositorio
+4. Configurar los registros DNS del dominio:
+   - Registro A: 185.199.108.153
+   - Registro A: 185.199.109.153
+   - Registro A: 185.199.110.153
+   - Registro A: 185.199.111.153
+   - Registro CNAME: www.termopilas.co → termopilashuila.github.io
 
-## Customization
+## Mantenimiento del sitio
 
-### Colors
-The color scheme can be modified in `styles/main.css`. Look for the `:root` section:
-```css
-:root {
-    --primary-color: #2C5530;
-    --secondary-color: #8B4513;
-    --accent-color: #DAA520;
-    ...
-}
-```
+### Actualización de contenido
 
-### Fonts
-Font families can be changed in `assets/css/fonts.css`. The website currently uses:
-- Playfair Display for headings
-- Montserrat for body text
+Para actualizar el contenido del sitio:
 
-### Content
-Edit the content in `index.html` to update:
-- Text and descriptions
-- Product information
-- Testimonials
-- Contact information
+1. Editar los archivos HTML, CSS o JavaScript según sea necesario
+2. Hacer commit de los cambios y push a la rama principal
+3. GitHub Pages automáticamente desplegará los cambios
 
-## Maintenance
+### Agregar nuevas imágenes
 
-### Adding New Products
-To add new products, copy and modify the existing product card structure in `index.html`:
-```html
-<div class="product-card">
-    <h3>Product Name</h3>
-    <p class="price">Price</p>
-    <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li>
-        ...
-    </ul>
-    <button class="order-button">Pedir</button>
-</div>
-```
+Para agregar nuevas imágenes:
 
-### Updating Testimonials
-Add new testimonials by copying the testimonial structure in `index.html`:
-```html
-<div class="testimonial">
-    <p>"Testimonial text"</p>
-    <div class="author">- Author Name</div>
-    <div class="stars">★★★★★</div>
-</div>
-```
+1. Optimizar las imágenes para web (recomendado: [TinyPNG](https://tinypng.com/))
+2. Agregar las imágenes al directorio `assets/images/`
+3. Actualizar el HTML para incluir las nuevas imágenes
 
-### Contact Information
-Update contact information in the footer section of `index.html`:
-- Phone number
-- Email address
-- Location details
+## Optimización para SEO
 
-## Browser Support
-The website is compatible with:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+El sitio incluye:
 
-## Performance Optimization
-- Images should be optimized for web use (compressed, correct dimensions)
-- Use WebP format for images where possible
-- Minimize custom font usage
-- Keep JavaScript files minimal and efficient
+- Meta tags para SEO
+- Open Graph para compartir en redes sociales
+- Datos estructurados (Schema.org)
+- Sitemap.xml
+- Robots.txt
 
-## License
-All rights reserved. This website is proprietary to Finca Termópilas.
+## Soporte PWA
+
+El sitio funciona como una Progressive Web App, lo que permite:
+
+- Instalación en dispositivos móviles
+- Funcionamiento offline
+- Carga rápida
+
+## Contacto
+
+Para más información o soporte, contactar a:
+
+- Email: termopilashuila@gmail.com
+- Teléfono: (+57) 314 3428579

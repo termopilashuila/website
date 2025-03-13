@@ -250,22 +250,40 @@ body {
 
 /* Testimonials */
 .testimonials-slider {
-    max-width: 800px;
-    margin: 0 auto;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 2rem;
-    padding: 1rem;
+    padding: 1rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-light);
+}
+
+.testimonials-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.testimonials-slider::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 4px;
+}
+
+.testimonials-slider::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
 }
 
 .testimonial {
-    min-width: 300px;
+    flex: 0 0 300px;
     scroll-snap-align: start;
     background: var(--background-light);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial p {
@@ -360,6 +378,37 @@ footer a:hover {
     .section {
         padding: 3rem 1rem;
     }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial {
+        flex: 0 0 85%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .products-grid, .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Animations */
@@ -376,4 +425,133 @@ footer a:hover {
 
 .section {
     animation: fadeIn 1s ease-out;
+}
+
+/* Gallery Section */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Map Container */
+.map-container {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Social Media */
+.social-media {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.social-media i {
+    font-size: 1.2rem;
+}
+
+/* Accessibility Improvements */
+:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--light-text);
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f0f0f0;
+        --background-light: #2a2a2a;
+        --background-dark: #1a1a1a;
+    }
+    
+    body {
+        background-color: var(--background-dark);
+    }
+    
+    .product-card, .service-card, .testimonial {
+        background-color: #333;
+        color: var(--light-text);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .cta-button, .order-button, .social-media {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+    }
 } 

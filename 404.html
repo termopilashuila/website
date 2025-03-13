@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada - Finca Termópilas</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('assets/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .home-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        
+        .home-button:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">Página no encontrada</div>
+        <p>Lo sentimos, la página que estás buscando no existe o ha sido movida.</p>
+        <a href="/" class="home-button">Volver al inicio</a>
+    </div>
+    
+    <script>
+        // Redirect to homepage after 10 seconds
+        setTimeout(function() {
+            window.location.href = '/';
+        }, 10000);
+    </script>
+</body>
+</html> 
