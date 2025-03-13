@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones - Finca Termópilas</title>
+    <meta name="description" content="Descubre nuestras habitaciones de lujo y estándar en Finca Termópilas, Huila. Alojamiento con vistas a las montañas, viñedos y árboles de cacao.">
+    <meta name="keywords" content="Finca Termópilas, habitaciones Huila, alojamiento de lujo, Rivera, habitaciones con vista">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fincatermopilas.com/rooms.html">
+    <meta property="og:title" content="Habitaciones - Finca Termópilas">
+    <meta property="og:description" content="Descubre nuestras habitaciones de lujo y estándar en Finca Termópilas, Huila.">
+    <meta property="og:image" content="assets/images/hero-bg.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fincatermopilas.com/rooms.html">
+    <meta property="twitter:title" content="Habitaciones - Finca Termópilas">
+    <meta property="twitter:description" content="Descubre nuestras habitaciones de lujo y estándar en Finca Termópilas, Huila.">
+    <meta property="twitter:image" content="assets/images/hero-bg.jpg">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Room-specific styles */
+        .rooms-header {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .rooms-header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .rooms-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .room-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-button {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-button:hover, .filter-button.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .room-card {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .room-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .room-content {
+            padding: 1.5rem;
+        }
+        
+        .room-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .room-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .room-features {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .room-features li {
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+        }
+        
+        .room-features li:before {
+            content: "✓";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .book-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .book-button:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--accent-color);
+        }
+        
+        .luxury-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 768px) {
+            .rooms-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 0 1rem;
+            }
+            
+            .rooms-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Finca Termópilas</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#alojamiento">Alojamiento</a></li>
+                <li><a href="rooms.html" class="active">Habitaciones</a></li>
+                <li><a href="index.html#vino-cacao">Vino y Cacao</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="rooms-header">
+            <h1>Nuestras Habitaciones</h1>
+            <p>Descubre nuestras 8 habitaciones, incluyendo 3 de lujo, en Finca Termópilas. Disfruta de comodidad y naturaleza en un entorno único.</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem; font-style: italic;">Nota: Las imágenes mostradas son representativas. Pronto tendremos fotos específicas de cada habitación.</p>
+        </section>
+
+        <div class="room-filters">
+            <button class="filter-button active" data-filter="all">Todas</button>
+            <button class="filter-button" data-filter="luxury">De Lujo</button>
+            <button class="filter-button" data-filter="standard">Estándar</button>
+            <button class="filter-button" data-filter="couples">Parejas</button>
+            <button class="filter-button" data-filter="groups">Grupos</button>
+        </div>
+
+        <div class="rooms-grid">
+            <!-- Luxury Room 1 -->
+            <div class="room-card" data-category="luxury couples">
+                <div class="luxury-badge">De Lujo</div>
+                <img src="assets/images/couples.jpg" alt="Habitación de Lujo 1" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Suite Presidencial</h3>
+                    <p class="room-price">$350.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Vista panorámica a las montañas</li>
+                        <li>Cama king size</li>
+                        <li>Baño privado con jacuzzi</li>
+                        <li>Terraza privada</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Luxury Room 2 -->
+            <div class="room-card" data-category="luxury couples">
+                <div class="luxury-badge">De Lujo</div>
+                <img src="assets/images/couples.jpg" alt="Habitación de Lujo 2" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Suite Viñedo</h3>
+                    <p class="room-price">$320.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Vista a los viñedos</li>
+                        <li>Cama queen size</li>
+                        <li>Baño privado con ducha de lluvia</li>
+                        <li>Área de estar</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Luxury Room 3 -->
+            <div class="room-card" data-category="luxury couples">
+                <div class="luxury-badge">De Lujo</div>
+                <img src="assets/images/couples.jpg" alt="Habitación de Lujo 3" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Suite Cacao</h3>
+                    <p class="room-price">$300.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Vista a los árboles de cacao</li>
+                        <li>Cama queen size</li>
+                        <li>Baño privado</li>
+                        <li>Balcón privado</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Standard Room 1 -->
+            <div class="room-card" data-category="standard couples">
+                <img src="assets/images/couples.jpg" alt="Habitación Estándar 1" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Habitación Río</h3>
+                    <p class="room-price">$250.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Vista al río</li>
+                        <li>Cama matrimonial</li>
+                        <li>Baño privado</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Standard Room 2 -->
+            <div class="room-card" data-category="standard couples">
+                <img src="assets/images/couples.jpg" alt="Habitación Estándar 2" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Habitación Jardín</h3>
+                    <p class="room-price">$230.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Vista al jardín</li>
+                        <li>Cama matrimonial</li>
+                        <li>Baño privado</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Group Room 1 -->
+            <div class="room-card" data-category="standard groups">
+                <img src="assets/images/groups.jpg" alt="Habitación Grupal 1" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Cabaña Familiar</h3>
+                    <p class="room-price">$450.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Capacidad para 6 personas</li>
+                        <li>3 habitaciones</li>
+                        <li>2 baños</li>
+                        <li>Sala de estar</li>
+                        <li>Cocina equipada</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Group Room 2 -->
+            <div class="room-card" data-category="standard groups">
+                <img src="assets/images/groups.jpg" alt="Habitación Grupal 2" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Habitación Grupal</h3>
+                    <p class="room-price">$350.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Capacidad para 4 personas</li>
+                        <li>2 camas dobles</li>
+                        <li>Baño privado</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <!-- Group Room 3 -->
+            <div class="room-card" data-category="standard groups">
+                <img src="assets/images/groups.jpg" alt="Habitación Grupal 3" class="room-image">
+                <div class="room-content">
+                    <h3 class="room-title">Habitación Compartida</h3>
+                    <p class="room-price">$200.000 / noche</p>
+                    <ul class="room-features">
+                        <li>Capacidad para 3 personas</li>
+                        <li>3 camas individuales</li>
+                        <li>Baño compartido</li>
+                        <li>Desayuno incluido</li>
+                    </ul>
+                    <a href="index.html#contacto" class="book-button">Reservar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="location">
+                <h3>¿Cómo llegar?</h3>
+                <p>Km 3.3</p>
+                <p>Vía las Juntas</p>
+                <p>Rivera</p>
+                <p>Huila</p>
+                <a href="https://waze.com/ul/hd26x8pf80" target="_blank" class="waze-link" rel="noopener">
+                    <i class="fas fa-map-marker-alt"></i> Abrir en Waze
+                </a>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5!2d-75.2513!3d2.7775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwNDYnMzkuMCJOIDc1wrAxNScwNC43Ilc!5e0!3m2!1ses!2sco!4v1613580000000!5m2!1ses!2sco" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="contact">
+                <h3>¿Tienes preguntas?</h3>
+                <p>Escríbenos para más información o reservas</p>
+                <a href="tel:+573143428579"><i class="fas fa-phone"></i> (+57) 314 3428579</a>
+                <a href="mailto:termopilashuila@gmail.com"><i class="fas fa-envelope"></i> termopilashuila@gmail.com</a>
+                <div class="social-media">
+                    <a href="https://www.instagram.com/termopilashuila/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/termopilashuila/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/573143428579" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Finca Termópilas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+        
+        // Room filtering
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const roomCards = document.querySelectorAll('.room-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get filter value
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter rooms
+                roomCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        if (card.getAttribute('data-category').includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

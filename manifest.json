@@ -1,50 +1,36 @@
 {
   "name": "Finca Termópilas",
   "short_name": "Termópilas",
-  "description": "Alojamiento, vino artesanal, cacao y experiencias en Rivera, Huila",
-  "start_url": "/",
+  "description": "Finca Termópilas - Alojamiento, vino y cacao en Rivera, Huila",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2C5530",
-  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/128/7414/7414201.png",
-      "type": "image/png",
-      "sizes": "128x128",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/7414/7414201.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "src": "assets/icons/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
     }
   ],
-  "screenshots": [
-    {
-      "src": "assets/images/hero-bg.jpg",
-      "type": "image/jpeg",
-      "sizes": "1280x720"
-    },
-    {
-      "src": "assets/images/couples.jpg",
-      "type": "image/jpeg",
-      "sizes": "1280x720"
-    }
-  ],
+  "screenshots": [],
   "related_applications": [],
   "prefer_related_applications": false,
   "shortcuts": [
     {
-      "name": "Alojamiento",
-      "url": "/#alojamiento",
-      "description": "Ver opciones de alojamiento"
+      "name": "Inicio",
+      "url": "/index.html",
+      "description": "Página principal de Finca Termópilas"
+    },
+    {
+      "name": "Habitaciones",
+      "url": "/rooms.html",
+      "description": "Explora nuestras habitaciones"
     },
     {
       "name": "Contacto",
-      "url": "/#contacto",
-      "description": "Contactar a Finca Termópilas"
+      "url": "/index.html#contacto",
+      "description": "Contáctanos para reservas e información"
     }
   ]
 } 
