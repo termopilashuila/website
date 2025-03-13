@@ -2,20 +2,33 @@
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    // Accessibility: Update aria-expanded attribute
-    const expanded = navMenu.classList.contains('active');
-    navToggle.setAttribute('aria-expanded', expanded);
-});
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from bubbling up
+        navMenu.classList.toggle('active');
+        // Accessibility: Update aria-expanded attribute
+        const expanded = navMenu.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', expanded);
+    });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-    }
-});
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && 
+            !navToggle.contains(e.target) && 
+            !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close mobile menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

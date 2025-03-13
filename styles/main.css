@@ -514,25 +514,96 @@ footer a:hover {
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
         padding: 2rem;
         text-align: center;
         z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-10px);
+        opacity: 0;
     }
 
     .nav-menu.active {
         display: flex;
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .nav-menu li {
+        margin: 1rem 0;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu a:hover {
+        color: var(--accent-color);
+    }
+    
+    .nav-menu a.active {
+        color: var(--accent-color);
     }
 
     .nav-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: none;
         border: none;
         color: var(--light-text);
-        font-size: 1.5rem;
         cursor: pointer;
         z-index: 1001;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+    
+    /* Hamburger Icon */
+    .hamburger {
+        position: relative;
+        display: block;
+        background-color: var(--light-text);
+        width: 24px;
+        height: 2px;
+        transition: background-color 0.3s;
+    }
+    
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        background-color: var(--light-text);
+        width: 24px;
+        height: 2px;
+        transition: transform 0.3s;
+    }
+    
+    .hamburger::before {
+        top: -8px;
+    }
+    
+    .hamburger::after {
+        top: 8px;
+    }
+    
+    /* Hamburger Animation */
+    .nav-toggle[aria-expanded="true"] .hamburger {
+        background-color: transparent;
+    }
+    
+    .nav-toggle[aria-expanded="true"] .hamburger::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .nav-toggle[aria-expanded="true"] .hamburger::after {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero-content {
@@ -719,7 +790,7 @@ footer a:hover {
 
 /* Typography Enhancements - Moving to top for priority */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif) !important;
+    font-family: var(--heading-font, 'Montserrat', 'Helvetica Neue', Georgia, serif) !important;
     line-height: 1.2;
     font-weight: 600;
 }
@@ -731,16 +802,16 @@ p {
 
 /* More specific selectors for titles */
 .section h2 {
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif) !important;
+    font-family: var(--heading-font, 'Montserrat', 'Helvetica Neue', Georgia, serif) !important;
     font-weight: 700;
 }
 
 .product-card h3, .service-card h3, .option h3 {
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif) !important;
+    font-family: var(--heading-font, 'Montserrat', 'Helvetica Neue', Georgia, serif) !important;
     font-weight: 600;
 }
 
 .location h3, .contact h3 {
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif) !important;
+    font-family: var(--heading-font, 'Montserrat', 'Helvetica Neue', Georgia, serif) !important;
     font-weight: 600;
 } 
