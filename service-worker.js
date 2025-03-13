@@ -9,8 +9,8 @@ const urlsToCache = [
   '/assets/images/hero-bg.jpg',
   '/assets/images/couples.jpg',
   '/assets/images/groups.jpg',
-  '/assets/images/favicon.png',
-  '/assets/images/apple-touch-icon.png',
+  'https://cdn-icons-png.flaticon.com/512/7414/7414201.png',
+  'https://cdn-icons-png.flaticon.com/128/7414/7414201.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2'

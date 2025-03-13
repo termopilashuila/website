@@ -1,25 +1,65 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* 
+Font Selection Rationale:
+- Playfair Display: An elegant serif font with a classic, timeless feel that conveys hospitality and warmth.
+  Perfect for headings and titles, it has a sophisticated character that reflects the premium nature of the lodging.
+
+- Montserrat: A clean, modern sans-serif that pairs well with Playfair Display.
+  It's highly readable for body text and has a warm, friendly character while maintaining professionalism.
+  
+This combination balances tradition (Playfair) with modernity (Montserrat), reflecting both the natural 
+setting and comfort of Finca Termópilas.
+*/
 
 /* Font Variables */
 :root {
-    --heading-font: 'Playfair Display', serif;
-    --body-font: 'Montserrat', sans-serif;
+    --heading-font: 'Playfair Display', Georgia, serif;
+    --body-font: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Typography Styles */
+/* Heading Styles */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
+    font-weight: 600;
 }
 
-body, p, a, li, button {
+/* Body Text Styles */
+body, p, a, li, button, input, textarea, select {
     font-family: var(--body-font);
 }
 
+/* Special Text Elements */
 .hero-content h1 {
     font-family: var(--heading-font);
     font-weight: 700;
-    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-family: var(--heading-font);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.price, .author {
+    font-family: var(--heading-font);
+}
+
+.testimonial p {
+    font-family: var(--body-font);
+    font-style: italic;
+}
+
+.nav-menu a {
+    font-family: var(--body-font);
+    font-weight: 500;
+}
+
+.cta-button, .order-button {
+    font-family: var(--body-font);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .section h2 {
@@ -33,28 +73,9 @@ body, p, a, li, button {
     font-weight: 400;
 }
 
-.nav-menu a {
-    font-family: var(--body-font);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.cta-button {
-    font-family: var(--body-font);
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
 .product-card h3 {
     font-family: var(--heading-font);
     font-weight: 700;
-}
-
-.testimonial p {
-    font-family: var(--body-font);
-    font-weight: 400;
-    font-style: italic;
 }
 
 .testimonial .author {

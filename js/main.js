@@ -134,15 +134,26 @@ window.addEventListener('scroll', () => {
 // Lazy load images
 if ('loading' in HTMLImageElement.prototype) {
     // Browser supports native lazy loading
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
     });
 } else {
     // Fallback for browsers that don't support lazy loading
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
     document.body.appendChild(script);
+    
+    // Add lazysizes class to images
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+        img.classList.add('lazyload');
+        if (img.dataset.src) {
+            img.setAttribute('data-src', img.dataset.src);
+        }
+    });
 }
 
 // Initialize page animations
