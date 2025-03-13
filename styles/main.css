@@ -409,43 +409,16 @@ body {
     color: var(--light-text);
 }
 
-.testimonial p {
-    font-style: italic;
-    margin-bottom: 1rem;
-    font-family: var(--body-font, 'Montserrat', 'Helvetica Neue', Arial, sans-serif);
-    position: relative;
-    padding: 0 0.5rem;
-    color: var(--light-text);
-}
-
-.testimonial p::before,
-.testimonial p::after {
-    content: '"';
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif);
-    font-size: 1.5rem;
-    color: var(--accent-color);
-}
-
-.testimonial p::before {
-    position: absolute;
-    left: -0.5rem;
-    top: -0.5rem;
-}
-
-.testimonial p::after {
-    position: relative;
-    line-height: 0;
-}
-
 .author {
+    font-family: var(--font-primary);
     font-weight: bold;
-    color: var(--accent-color);
-    font-family: var(--heading-font, 'Playfair Display', Georgia, serif);
+    font-size: 1.1rem;
+    color: #333;
 }
 
 .stars {
-    color: var(--accent-color);
-    margin-top: 0.5rem;
+    color: #ff8c00;
+    font-size: 1.2rem;
 }
 
 /* Footer */
