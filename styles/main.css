@@ -126,16 +126,16 @@ body {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
     background-color: var(--accent-color);
-    color: var(--background-dark);
+    color: black;
+    padding: 1rem 2rem;
     text-decoration: none;
-    border-radius: 0;
-    margin-top: 2rem;
-    transition: transform 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 8px;
 }
 
 .cta-button:hover {
@@ -281,16 +281,19 @@ body {
 }
 
 .order-button {
-    background: var(--accent-color);
-    color: var(--background-dark);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: black;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 8px;
 }
 
 .order-button:hover {
@@ -638,7 +641,9 @@ footer a:hover {
     }
     
     .cta-button {
-        padding: 0.8rem 1.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
     }
     
     .section h2 {
@@ -814,4 +819,31 @@ p {
 .location h3, .contact h3 {
     font-family: var(--heading-font, 'Montserrat', 'Helvetica Neue', Georgia, serif) !important;
     font-weight: 600;
+}
+
+.filter-button {
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem 0.5rem;
+    cursor: pointer;
+    font-family: var(--body-font, 'Montserrat', 'Helvetica Neue', Arial, sans-serif);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.service-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--accent-color);
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
 } 

@@ -49,6 +49,7 @@
     letter-spacing: 1px;
     transition: all 0.3s ease;
     border: none;
+    border-radius: 8px; /* Add rounded corners */
 }
 
 .cta-button:hover {

@@ -1,42 +1,87 @@
 /* PWA Install Prompt Styles */
 #pwa-install-prompt {
-    display: none;
     position: fixed;
     bottom: 20px;
     left: 20px;
     right: 20px;
-    background: #fff;
+    background-color: #000;
+    color: #fff;
     padding: 15px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 1000;
 }
 
 #pwa-install-prompt p {
     margin: 0 0 10px 0;
-    color: #333;
 }
 
 #pwa-install-prompt div {
     display: flex;
+    justify-content: flex-end;
     gap: 10px;
 }
 
-#pwa-install-yes {
-    flex: 1;
-    padding: 8px;
-    background: var(--primary-color);
-    color: #fff;
+#pwa-install-yes, #pwa-install-no {
+    padding: 8px 16px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+#pwa-install-yes {
+    background-color: var(--accent-color);
+    color: #000;
 }
 
 #pwa-install-no {
-    flex: 1;
-    padding: 8px;
-    background: #f0f0f0;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* For the tour page PWA prompt */
+.pwa-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.pwa-prompt-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pwa-install-button, .pwa-dismiss-button {
+    padding: 8px 16px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.pwa-install-button {
+    background-color: var(--accent-color);
+    color: #000;
+}
+
+.pwa-dismiss-button {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.hidden {
+    display: none;
 } 
