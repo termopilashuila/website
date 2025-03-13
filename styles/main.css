@@ -380,6 +380,9 @@ body {
     margin: 0 auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--background-light);
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scroll-behavior: smooth;
 }
 
 .testimonials-slider::-webkit-scrollbar {
@@ -630,6 +633,20 @@ footer a:hover {
     .footer-content {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .testimonials-slider {
+        padding-bottom: 1.5rem;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 1rem;
+    }
+    
+    .testimonial {
+        flex: 0 0 85%;
+        min-width: 250px;
+        scroll-snap-align: center;
     }
 }
 
