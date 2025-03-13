@@ -1,5 +1,5 @@
 // Service Worker for Finca Termópilas Website
-const CACHE_NAME = 'termopilas-cache-v4';
+const CACHE_NAME = 'termopilas-cache-v5';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -22,6 +22,9 @@ const urlsToCache = [
   '/assets/images/home/section2-product2.jpg',
   '/assets/images/home/section2-product3.jpg',
   '/assets/images/home/section4-img0.jpg',
+  '/assets/images/home/section4-img1.jpg',
+  '/assets/images/home/section4-img2.jpg',
+  '/assets/images/home/section4-img3.jpg',
   '/assets/images/home/section5-gallery1.jpg',
   '/assets/images/home/section5-gallery2.jpg',
   '/assets/images/home/section5-gallery3.jpg',
