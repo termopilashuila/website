@@ -1,0 +1,42 @@
+/* PWA Install Prompt Styles */
+#pwa-install-prompt {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+#pwa-install-prompt p {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+#pwa-install-prompt div {
+    display: flex;
+    gap: 10px;
+}
+
+#pwa-install-yes {
+    flex: 1;
+    padding: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#pwa-install-no {
+    flex: 1;
+    padding: 8px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 

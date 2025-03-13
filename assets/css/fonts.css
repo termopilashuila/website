@@ -19,15 +19,13 @@ setting and comfort of Finca Termópilas.
     --body-font: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Heading Styles */
+/* Typography Base Styles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font);
-    font-weight: 600;
+    font-family: 'Playfair Display', Georgia, serif !important;
 }
 
-/* Body Text Styles */
 body, p, a, li, button, input, textarea, select {
-    font-family: var(--body-font);
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Special Text Elements */
