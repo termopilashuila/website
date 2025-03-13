@@ -32,7 +32,7 @@
 }
 
 #pwa-install-yes {
-    background-color: var(--accent-color);
+    background-color: #ff8c00;
     color: #000;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .pwa-install-button {
-    background-color: var(--accent-color);
+    background-color: #ff8c00;
     color: #000;
 }
 

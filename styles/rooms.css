@@ -27,7 +27,7 @@
 }
 
 .filter-button.active {
-    background-color: var(--accent-color);
+    background-color: #ff8c00;
     color: #000;
 }
 
@@ -102,7 +102,7 @@
 
 .book-button {
     display: inline-block;
-    background-color: var(--accent-color);
+    background-color: #ff8c00;
     color: #000;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
@@ -123,7 +123,7 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background-color: #D4AF37;
+    background-color: #ff8c00;
     color: var(--primary-color);
     padding: 0.5rem 1rem;
     font-family: 'Montserrat', sans-serif;
