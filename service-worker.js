@@ -1,11 +1,17 @@
 // Service Worker for Finca Termópilas Website
-const CACHE_NAME = 'termopilas-cache-v1';
+const CACHE_NAME = 'termopilas-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
   '/404.html',
   '/rooms.html',
+  '/tour-vino-cacao.html',
   '/styles/main.css',
+  '/styles/hero.css',
+  '/styles/rooms.css',
+  '/styles/pwa-prompt.css',
+  '/styles/utilities.css',
+  '/styles/tour.css',
   '/js/main.js',
   '/assets/css/fonts.css',
   '/assets/icons/favicon.ico',
@@ -22,6 +28,17 @@ const urlsToCache = [
   '/assets/images/testimonial2.jpg',
   '/assets/images/testimonial3.jpg',
   '/assets/images/favicon.png',
+  '/assets/images/tour-hero-bg.jpg',
+  '/assets/images/tour-overview.jpg',
+  '/assets/images/tour-vineyards.jpg',
+  '/assets/images/tour-zen.jpg',
+  '/assets/images/tour-mountains.jpg',
+  '/assets/images/tour-cacao.jpg',
+  '/assets/images/tour-river.jpg',
+  '/assets/images/tour-chocolate.jpg',
+  '/assets/images/tour-orchids.jpg',
+  '/assets/images/tour-gorge.jpg',
+  '/assets/images/tour-wine.jpg',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2'

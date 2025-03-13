@@ -7,6 +7,18 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://termopilas.co/rooms.html</loc>
+    <lastmod>2024-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://termopilas.co/tour-vino-cacao.html</loc>
+    <lastmod>2024-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://termopilas.co/#alojamiento</loc>
     <lastmod>2024-03-13</lastmod>
     <changefreq>monthly</changefreq>

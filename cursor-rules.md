@@ -5,11 +5,12 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ## Project Structure
 
 ### File Organization
-- **HTML Files**: Root directory (`index.html`, `rooms.html`, `404.html`)
+- **HTML Files**: Root directory (`index.html`, `rooms.html`, `404.html`, `tour-vino-cacao.html`)
 - **CSS Files**:
   - `styles/main.css` - Main styling
   - `styles/hero.css` - Hero section styling
   - `styles/rooms.css` - Room-specific styling
+  - `styles/tour.css` - Tour page styling
   - `styles/pwa-prompt.css` - PWA install prompt styling
   - `styles/utilities.css` - Utility classes
   - `assets/css/fonts.css` - Typography and font definitions
@@ -17,13 +18,16 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
   - `js/main.js` - Main JavaScript functionality
 - **Images**:
   - `assets/images/` - All image files
+  - `assets/images/tour-*.jpg` - Tour-specific images
 - **Icons**:
   - `assets/icons/` - Favicon and other icons
+- **Documentation**:
+  - `README-TOUR-IMAGES.md` - Instructions for tour images
 
 ### Naming Conventions
 - Use kebab-case for file names (e.g., `hero-bg.jpg`, `main.css`)
 - Use descriptive names that indicate content or purpose
-- Prefix related files consistently (e.g., `room-` for room-related images)
+- Prefix related files consistently (e.g., `room-` for room-related images, `tour-` for tour-related images)
 
 ## HTML Structure
 
@@ -48,7 +52,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ## CSS Guidelines
 
 ### CSS Organization
-- Separate CSS by functionality (hero, rooms, utilities, etc.)
+- Separate CSS by functionality (hero, rooms, tour, utilities, etc.)
 - Import all CSS files in the HTML `<head>` section
 - Avoid inline styles - use external CSS files
 - Use utility classes for common styling patterns
@@ -87,6 +91,19 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Gold accents for prices and badges
 - Hover effect with slight elevation
 - "De Lujo" badge for luxury rooms
+
+#### Tour Experience Timeline
+- Vertical timeline with gold accent line
+- Circular icons with gold background
+- Content cards with subtle shadow
+- Image containers for each experience step
+- Responsive layout that adjusts for mobile
+
+#### Pricing Cards
+- Black background with white text
+- Gold accent for prices and checkmarks
+- Centered layout with clear hierarchy
+- Responsive design for different screen sizes
 
 #### Buttons
 - Gold background with black text
@@ -137,6 +154,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Adjust font sizes
 - Simplify navigation with hamburger menu
 - Ensure touch targets are at least 44px × 44px
+- Adjust timeline layout for tour experience on mobile
 
 ## Performance Optimization
 
@@ -145,6 +163,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Lazy load non-critical resources
 - Implement service worker for offline functionality
 - Use appropriate image formats and sizes
+- Update cache version when adding new pages or resources
 
 ## PWA Implementation
 
@@ -152,6 +171,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Set up service worker for caching and offline functionality
 - Provide app icons in various sizes
 - Implement install prompt with clear user instructions
+- Cache all critical resources including tour page assets
 
 ## Best Practices
 
@@ -169,6 +189,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Hero section with main call-to-action
 - Sections for: Alojamiento, Vino y Cacao, Ofrecemos, Testimonios, Galería
 - Footer with contact information and map
+- Link to Tour de Vino y Cacao page in navigation and services section
 
 ### Rooms Page (rooms.html)
 - Hero section with rooms-specific heading
@@ -176,10 +197,43 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Grid of room cards with details and booking buttons
 - Same footer as home page
 
+### Tour de Vino y Cacao Page (tour-vino-cacao.html)
+- Hero section with tour-specific heading and call-to-action
+- Tour overview with key details (duration, group size, location)
+- Pricing section with different options for small and large groups
+- What's included section with icon-based grid
+- Recommendations section with practical visitor tips
+- Experience timeline showing the 9 stops of the tour
+- Other services section linking to accommodation options
+- Feedback section with link to external form
+- Social media section with Instagram link
+
 ### 404 Page (404.html)
 - Simple, helpful error message
 - Link back to home page
 - Consistent styling with main site
+
+## Image Guidelines for Tour Page
+
+### Required Tour Images
+- `tour-hero-bg.jpg` - Hero background image
+- `tour-overview.jpg` - General view of the farm
+- `tour-vineyards.jpg` - Vineyard visit
+- `tour-zen.jpg` - Zen zone
+- `tour-mountains.jpg` - Mountain landscape
+- `tour-cacao.jpg` - Cacao trees
+- `tour-river.jpg` - Río Frío
+- `tour-chocolate.jpg` - Chocolate factory
+- `tour-orchids.jpg` - Orchid zone
+- `tour-gorge.jpg` - Thermopylae Gorge
+- `tour-wine.jpg` - Wine tasting
+
+### Image Optimization
+- Hero images: 1920px max width
+- Content images: 800px max width
+- Compress all images for web
+- Use JPG format for photos
+- Include descriptive alt text for all images
 
 ## Future Development
 
@@ -187,4 +241,5 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Implement a photo gallery lightbox
 - Add a blog section for updates
 - Enhance PWA functionality with push notifications
-- Implement analytics tracking 
+- Implement analytics tracking
+- Add online payment options for tour bookings 
