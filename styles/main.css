@@ -400,6 +400,16 @@ body {
     flex-direction: column;
     border: none;
     color: var(--light-text);
+    min-height: 300px;
+    justify-content: space-between;
+}
+
+.testimonial-content {
+    flex-grow: 1;
+}
+
+.testimonial-footer {
+    margin-top: auto;
 }
 
 .author {
