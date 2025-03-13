@@ -52,9 +52,12 @@ body {
     align-items: center;
     background: rgba(0, 0, 0, 0.9);
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     border-bottom: none;
+    transition: background 0.3s ease;
 }
 
 .logo {
@@ -515,6 +518,7 @@ footer a:hover {
         flex-direction: column;
         padding: 2rem;
         text-align: center;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -528,6 +532,11 @@ footer a:hover {
         color: var(--light-text);
         font-size: 1.5rem;
         cursor: pointer;
+        z-index: 1001;
+    }
+
+    .hero-content {
+        padding-top: 80px; /* Add padding to account for fixed navbar */
     }
 
     .hero-content h1 {

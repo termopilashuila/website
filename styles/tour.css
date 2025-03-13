@@ -5,6 +5,7 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/tour-hero-bg.jpg');
     background-position: center;
     background-size: cover;
+    padding-top: 70px; /* Add padding for the fixed navbar */
 }
 
 /* Container */
@@ -372,6 +373,10 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .tour-hero {
+        min-height: 100vh; /* Ensure full height on mobile */
+    }
+    
     .tour-overview {
         flex-direction: column;
     }

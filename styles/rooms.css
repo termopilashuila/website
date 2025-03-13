@@ -1,4 +1,9 @@
 /* Room-specific styles */
+/* Hero section for rooms page */
+.rooms-hero {
+    padding-top: 70px; /* Add padding for the fixed navbar */
+}
+
 .room-filters {
     text-align: center;
     margin: 2rem 0;
@@ -130,6 +135,10 @@
 }
 
 @media (max-width: 768px) {
+    .rooms-hero {
+        min-height: 100vh; /* Ensure full height on mobile */
+    }
+    
     .room-card {
         width: 100%;
     }
