@@ -147,12 +147,12 @@ body {
 }
 
 /* Only apply these background colors to sections without specific classes */
-.section:not(.alojamiento-section):not(.productos-section):not(.servicios-section):not(.testimonios-section):not(.galeria-section):nth-child(odd) {
+.section:not(.main-alojamiento-section):not(.main-productos-section):not(.main-servicios-section):not(.main-testimonios-section):not(.main-galeria-section):nth-child(odd) {
     background-color: var(--background-light);
     background-image: none;
 }
 
-.section:not(.alojamiento-section):not(.productos-section):not(.servicios-section):not(.testimonios-section):not(.galeria-section):nth-child(even) {
+.section:not(.main-alojamiento-section):not(.main-productos-section):not(.main-servicios-section):not(.main-testimonios-section):not(.main-galeria-section):nth-child(even) {
     background-color: var(--background-warm);
     background-image: none;
 }
@@ -232,7 +232,7 @@ body {
 }
 
 .product-card {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    background: #fdf6ea;
     padding: 0;
     border-radius: 0;
     text-align: center;
@@ -771,7 +771,7 @@ footer a:hover {
     }
     
     .product-card {
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+        background: #fdf6ea;
         color: var(--light-text);
     }
     

@@ -1,23 +1,23 @@
-/* Section-specific styles */
+/* Main Page Section-specific styles */
 
 /* Alojamiento Section */
-.alojamiento-section {
+.main-alojamiento-section {
     background-color: #f9f9f9;
     color: var(--text-color);
 }
 
 /* Vino y Cacao Section */
-.productos-section {
+.main-productos-section {
     background-color: #504128;
     color: white;
 }
 
-.productos-section h2 {
+.main-productos-section h2 {
     color: white;
 }
 
 /* Servicios Section */
-.servicios-section {
+.main-servicios-section {
     background-color: #fdf6ea;
 }
 
@@ -96,14 +96,14 @@
 }
 
 /* Testimonios Section */
-.testimonios-section {
+.main-testimonios-section {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../assets/images/home/section4-img0.jpg');
     background-size: cover;
     background-position: center;
     color: white;
 }
 
-.testimonios-section h2 {
+.main-testimonios-section h2 {
     color: white;
 }
 
@@ -137,7 +137,7 @@
 }
 
 /* Galería Section */
-.galeria-section {
+.main-galeria-section {
     background-color: #ffffff;
     padding-bottom: 7rem;
 }
