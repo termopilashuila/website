@@ -9,11 +9,11 @@
 /* Vino y Cacao Section */
 .main-productos-section {
     background-color: #504128;
-    color: white;
+    color: #fdf6ea;
 }
 
 .main-productos-section h2 {
-    color: white;
+    color: #fdf6ea;
 }
 
 /* Product Cards with Overlay Text */
@@ -60,13 +60,13 @@
 }
 
 .product-overlay h3 {
-    color: white;
+    color: #fdf6ea;
     margin: 0;
     font-size: 1.5rem;
 }
 
 .product-overlay .price {
-    color: white;
+    color: #fdf6ea;
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: 5px;
@@ -96,7 +96,7 @@
 .order-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: white;
+    color: #fdf6ea;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     font-weight: 600;
@@ -201,11 +201,11 @@
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../assets/images/home/section4-img0.jpg');
     background-size: cover;
     background-position: center;
-    color: white;
+    color: #fdf6ea;
 }
 
 .main-testimonios-section h2 {
-    color: white;
+    color: #fdf6ea;
 }
 
 /* Testimonial Cards */

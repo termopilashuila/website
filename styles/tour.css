@@ -87,7 +87,7 @@
 
 .pricing-card {
     background-color: #000;
-    color: #fff;
+    color: #fdf6ea;
     padding: 2rem;
     border-radius: 0;
     width: 300px;
@@ -328,7 +328,7 @@
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     background-color: #ff8c00;
-    color: white;
+    color: #fdf6ea;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -338,7 +338,7 @@
 }
 
 .service-link:hover {
-    background-color: #fff;
+    background-color: #fdf6ea;
     color: #000;
 }
 
