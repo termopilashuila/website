@@ -4,7 +4,7 @@
   "description": "Este repositorio contiene el código fuente del sitio web oficial de Finca Termópilas, ubicada en Rivera, Huila, Colombia.",
   "main": "dist/main.js",
   "scripts": {
-    "build": "webpack && cp service-worker.js dist/",
+    "build": "webpack",
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
