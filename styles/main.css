@@ -683,49 +683,6 @@ footer a:hover {
     top: 0;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-color: #333333;
-        --background-light: #FFFFFF;
-        --background-warm: #F9F9F9;
-        --background-cream: #FFFFFF;
-        --background-dark: #000000;
-    }
-    
-    body {
-        background-color: var(--background-cream);
-        color: var(--text-color);
-    }
-    
-    .testimonial {
-        background-color: #000000;
-        color: var(--light-text);
-    }
-    
-    .product-content {
-        background-color: #fdf6ea;
-    }
-    
-    .product-content ul,
-    .product-content li {
-        color: black;
-    }
-    
-    .service-card {
-        background: #FFFFFF;
-        color: #000;
-    }
-    
-    .service-card h3 {
-        color: #000;
-    }
-    
-    .service-card p {
-        color: #000;
-    }
-}
-
 /* Print Styles */
 @media print {
     .navbar, .cta-button, .order-button, .social-media {
