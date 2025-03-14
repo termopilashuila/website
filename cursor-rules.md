@@ -13,6 +13,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
   - `styles/tour.css` - Tour page styling
   - `styles/pwa-prompt.css` - PWA install prompt styling
   - `styles/utilities.css` - Utility classes
+  - `styles/sections.css` - Section-specific styling
   - `assets/css/fonts.css` - Typography and font definitions
 - **JavaScript Files**:
   - `js/main.js` - Main JavaScript functionality
@@ -56,9 +57,10 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 ## CSS Guidelines
 
 ### CSS Organization
-- Separate CSS by functionality (hero, rooms, tour, utilities, etc.)
+- Separate CSS by functionality (hero, rooms, tour, utilities, sections, etc.)
 - Import all CSS files in the HTML `<head>` section
-- Avoid inline styles - use external CSS files
+- **No inline styles** - all styles should be in external CSS files
+- Use class-based styling for consistent appearance
 - Use utility classes for common styling patterns
 
 ### Color Scheme
@@ -119,9 +121,11 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 #### Testimonial Cards
 - Horizontal scrolling container on all devices
 - Touch-optimized scrolling for mobile
-- Consistent card styling with light background
-- Author images displayed as circular thumbnails on the left
-- Bold author names with 5-star ratings underneath
+- Consistent card styling with light background (`testimonial-card` class)
+- Author images displayed as circular thumbnails using the `testimonial-author-img` class
+- Author information container using the `testimonial-author` class
+- Bold author names with the `testimonial-author-name` class
+- 5-star ratings underneath author names
 - Proper spacing and alignment of all elements
 
 #### Pricing Cards
@@ -140,6 +144,12 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Mobile-friendly with hamburger menu
 - Active page indicator
 - Consistent spacing and alignment
+
+#### Section Styling
+- Use consistent class names for sections (e.g., `productos-section`, `servicios-section`)
+- Apply background colors and text colors through CSS classes
+- Maintain consistent padding and spacing between sections
+- Use the `sections.css` file for section-specific styling
 
 ## JavaScript Functionality
 

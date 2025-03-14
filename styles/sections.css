@@ -1,0 +1,57 @@
+/* Section-specific styles */
+
+/* Vino y Cacao Section */
+.productos-section {
+    background-color: #504128;
+    color: white;
+}
+
+.productos-section h2 {
+    color: white;
+}
+
+/* Servicios Section */
+.servicios-section {
+    background-color: #fdf6ea;
+}
+
+/* Testimonios Section */
+.testimonios-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../assets/images/home/section4-img0.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.testimonios-section h2 {
+    color: white;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background-color: #fdf6ea;
+    color: #333;
+}
+
+.testimonial-card p {
+    color: #333;
+}
+
+/* Testimonial Author Layout */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.testimonial-author-name {
+    font-weight: bold;
+} 
