@@ -95,6 +95,15 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Full-height background image with overlay
 - Centered content with heading, subheading, and CTA button
 - Responsive text sizing
+- Gradient overlay with specific opacity values:
+  - Main homepage hero: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))`
+  - Hero section in hero.css: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
+  - Tour page hero: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
+- These opacity values are carefully balanced to:
+  - Allow visibility of the background images
+  - Maintain text readability with sufficient contrast
+  - Create a consistent look across the site
+- When modifying these values, ensure text remains readable while maximizing image visibility
 
 #### Product Cards
 - Consistent sizing (300px width on desktop)
@@ -307,6 +316,15 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Compress all images for web
 - Use JPG format for photos
 - Include descriptive alt text for all images
+
+### Hero Image Overlays
+- All hero images use gradient overlays to improve text readability
+- Opacity values are standardized across the site:
+  - Main homepage hero: `rgba(0, 0, 0, 0.1)` - Very light overlay
+  - Standard hero sections: `rgba(0, 0, 0, 0.4)` - Medium overlay
+- When adding new hero images, maintain these opacity standards
+- Test text readability against the background before deployment
+- Adjust image brightness/contrast during editing rather than changing overlay opacity when possible
 
 ## Service Worker
 

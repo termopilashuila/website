@@ -5,7 +5,7 @@
     left: 20px;
     right: 20px;
     background-color: #000;
-    color: #fff;
+    color: #fdf6ea;
     padding: 15px;
     display: none;
     z-index: 9999;
@@ -38,8 +38,8 @@
 
 #pwa-install-no {
     background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: #fdf6ea;
+    border: 1px solid #fdf6ea;
 }
 
 /* For the tour page PWA prompt */
@@ -49,7 +49,7 @@
     left: 20px;
     right: 20px;
     background-color: #000;
-    color: #fff;
+    color: #fdf6ea;
     padding: 15px;
     z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -78,8 +78,8 @@
 
 .pwa-dismiss-button {
     background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: #fdf6ea;
+    border: 1px solid #fdf6ea;
 }
 
 .hidden {

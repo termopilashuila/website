@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .tour-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/tour/tour-hero-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/tour/tour-hero-bg.jpg');
     background-position: center;
     background-size: cover;
     padding-top: 70px; /* Add padding for the fixed navbar */
@@ -87,7 +87,7 @@
 
 .pricing-card {
     background-color: #000;
-    color: #fff;
+    color: #fdf6ea;
     padding: 2rem;
     border-radius: 0;
     width: 300px;
@@ -298,16 +298,18 @@
 }
 
 .service-card {
-    background-color: #000;
-    color: #fff;
+    background-color: #FFFFFF;
+    color: #000;
     padding: 2rem;
     border-radius: 0;
     text-align: center;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .service-card i {
@@ -318,6 +320,7 @@
 
 .service-card h3 {
     margin-bottom: 1rem;
+    color: #000;
 }
 
 .service-link {
@@ -325,7 +328,7 @@
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     background-color: #ff8c00;
-    color: #000;
+    color: #fdf6ea;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -335,7 +338,7 @@
 }
 
 .service-link:hover {
-    background-color: #fff;
+    background-color: #fdf6ea;
     color: #000;
 }
 

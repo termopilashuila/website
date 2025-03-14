@@ -28,7 +28,7 @@
 
 .filter-button.active {
     background-color: #ff8c00;
-    color: #000;
+    color: #fdf6ea;
 }
 
 .rooms-grid {
@@ -42,7 +42,7 @@
 
 .room-card {
     background-color: var(--primary-color);
-    color: white;
+    color: #fdf6ea;
     overflow: hidden;
     transition: transform 0.3s ease;
     width: 300px;
@@ -68,7 +68,7 @@
     font-family: 'Montserrat', Georgia, serif;
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
-    color: white;
+    color: #fdf6ea;
 }
 
 .room-price {
@@ -90,7 +90,7 @@
     font-family: 'Montserrat', sans-serif;
     display: flex;
     align-items: center;
-    color: white;
+    color: #fdf6ea;
 }
 
 .room-features li:before {
@@ -103,7 +103,7 @@
 .book-button {
     display: inline-block;
     background-color: #ff8c00;
-    color: #000;
+    color: #fdf6ea;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     font-weight: 600;
@@ -115,7 +115,7 @@
 }
 
 .book-button:hover {
-    background-color: #fff;
+    background-color: #fdf6ea;
     color: #000;
 }
 
