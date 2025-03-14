@@ -1,0 +1,38 @@
+/* Responsive styles for Alojamiento section */
+@media (max-width: 768px) {
+    .alojamiento-container {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+    
+    .alojamiento-content {
+        width: 100%;
+    }
+    
+    .alojamiento-content h2 {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    
+    .alojamiento-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .alojamiento-content .section-description {
+        text-align: center;
+    }
+    
+    .alojamiento-content .cta-button {
+        align-self: center;
+    }
+    
+    .alojamiento-image {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .alojamiento-image img {
+        height: 350px;
+    }
+} 
