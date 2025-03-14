@@ -165,6 +165,21 @@ Para actualizar los estilos del sitio:
 3. Para estilos específicos de secciones, utilizar el archivo `styles/sections.css`
 4. Mantener la consistencia con las clases y variables existentes
 
+### Gradientes de superposición en imágenes hero
+
+Las imágenes hero utilizan gradientes de superposición para mejorar la legibilidad del texto:
+
+- **Página principal**: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))`
+- **Sección Hero**: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
+- **Página de Tour**: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
+
+Estos valores de opacidad están optimizados para:
+1. Mantener la visibilidad de las imágenes de fondo
+2. Garantizar suficiente contraste para la legibilidad del texto
+3. Crear una apariencia coherente en todo el sitio
+
+Al modificar estos valores, asegurarse de mantener un equilibrio entre la visibilidad de la imagen y la legibilidad del texto.
+
 ## Optimización para SEO
 
 El sitio incluye:
