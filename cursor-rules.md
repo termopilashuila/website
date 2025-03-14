@@ -105,10 +105,10 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
   --secondary-color: #333333;    /* Dark gray - Secondary background */
   --accent-color: #ff8c00;       /* Vibrant orange - Accent color */
   --text-color: #333333;         /* Dark gray - Main text color */
-  --light-text: #fff;            /* White - Text on dark backgrounds */
-  --background-light: #FFFFFF;   /* White - Light background */
+  --light-text: #fdf6ea;         /* #fdf6ea - Text on dark backgrounds */
+  --background-light: #fdf6ea;   /* #fdf6ea - Light background */
   --background-dark: #000000;    /* Black - Dark background */
-  --background-cream: #FFFFFF;   /* White - Cream background */
+  --background-cream: #fdf6ea;   /* #fdf6ea - Cream background */
   --background-warm: #F9F9F9;    /* Light gray - Warm background */
 }
 ```
@@ -142,7 +142,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 
 #### Product Cards
 - Consistent sizing (300px width on desktop)
-- Black background with white text
+- Black background with #fdf6ea text
 - Orange accents for prices and buttons
 - Hover effect with slight elevation and image scale
 - Expanded product images that fill the card width
@@ -150,7 +150,7 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 
 #### Room Cards
 - Consistent sizing (300px width on desktop)
-- Black background with white text
+- Black background with #fdf6ea text
 - Orange accents for prices and badges
 - Hover effect with slight elevation
 - "De Lujo" badge for luxury rooms
