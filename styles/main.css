@@ -759,7 +759,7 @@ p {
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     background-color: var(--accent-color);
-    color: white;
+    color: #fdf6ea;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
