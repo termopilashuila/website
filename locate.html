@@ -111,49 +111,59 @@
             margin: 2rem 0;
         }
         
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .video-card {
+            background-color: #f9f9f9;
             border-radius: 8px;
-        }
-        
-        .fallback-link {
-            text-align: center;
+            padding: 1.5rem;
             margin-bottom: 2rem;
-            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
-        .fallback-link a {
+        .video-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-info h3 {
             color: #2C5530;
-            text-decoration: none;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-info p {
+            margin-bottom: 0;
+            color: #666;
+        }
+        
+        .youtube-button {
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1rem;
-            background-color: #f8f9fa;
+            justify-content: center;
+            background-color: #FF0000;
+            color: white;
+            padding: 0.8rem 1.5rem;
             border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .fallback-link a i {
-            margin-left: 0.5rem;
-            color: #FF0000;
-        }
-        
-        .fallback-link a:hover {
-            background-color: #e9ecef;
+            font-weight: 600;
             text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 80%;
+            max-width: 300px;
+        }
+        
+        .youtube-button i {
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+        }
+        
+        .youtube-button:hover {
+            background-color: #CC0000;
+            transform: translateY(-2px);
+        }
+        
+        .youtube-button:active {
+            transform: translateY(0);
         }
         
         .transport-options {
@@ -222,6 +232,14 @@
             .reference-image {
                 width: 100%;
             }
+            
+            .video-card {
+                padding: 1rem;
+            }
+            
+            .youtube-button {
+                width: 100%;
+            }
         }
     </style>
     
@@ -285,29 +303,25 @@
                 <h2>Videos de ayuda</h2>
                 
                 <div class="video-container">
-                    <h3>Video desde el pueblo:</h3>
-                    <div class="video-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/mb_MWLq5mZo" 
-                            title="Cómo llegar a Finca Termópilas desde el pueblo" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h3>Video desde el pueblo:</h3>
+                            <p>Este video muestra el recorrido desde el centro de Rivera hasta la Finca Termópilas.</p>
+                        </div>
+                        <a href="https://youtu.be/mb_MWLq5mZo" target="_blank" class="youtube-button">
+                            <i class="fab fa-youtube"></i> Ver en YouTube
+                        </a>
                     </div>
-                    <p class="fallback-link">Si el video no se muestra correctamente, puedes <a href="https://youtu.be/mb_MWLq5mZo" target="_blank">verlo directamente en YouTube <i class="fab fa-youtube"></i></a></p>
                     
-                    <h3>Video desde el portón:</h3>
-                    <div class="video-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/yKxOk5vC6yk" 
-                            title="Cómo llegar a Finca Termópilas desde el portón" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h3>Video desde el portón:</h3>
+                            <p>Este video muestra el recorrido desde el portón de entrada hasta la Finca Termópilas.</p>
+                        </div>
+                        <a href="https://youtu.be/yKxOk5vC6yk" target="_blank" class="youtube-button">
+                            <i class="fab fa-youtube"></i> Ver en YouTube
+                        </a>
                     </div>
-                    <p class="fallback-link">Si el video no se muestra correctamente, puedes <a href="https://youtu.be/yKxOk5vC6yk" target="_blank">verlo directamente en YouTube <i class="fab fa-youtube"></i></a></p>
                 </div>
             </section>
             
