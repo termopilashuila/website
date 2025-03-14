@@ -16,12 +16,18 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- CSS for navigation -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/utilities.css">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 80px; /* Add padding for the fixed navbar */
         }
         h1 {
             color: #2C5530;
@@ -133,74 +139,98 @@
     </style>
 </head>
 <body>
-    <h1>Icon Generator for Finca Termópilas</h1>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     
-    <div class="note">
-        <p>Este archivo te ayudará a generar los iconos necesarios para el sitio web de Finca Termópilas.</p>
-    </div>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Finca Termópilas</span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="rooms.html">Habitaciones</a></li>
+                <li><a href="tour-vino-cacao.html">Tour de Vino y Cacao</a></li>
+                <li><a href="index.html#galeria">Galería</a></li>
+            </ul>
+        </nav>
+    </header>
     
-    <div class="step">
-        <h2>Paso 1: Favicon (32x32)</h2>
-        <p>Necesitas crear un archivo <code>favicon.png</code> de 32x32 píxeles.</p>
-        <ol>
-            <li>Ve a <a href="https://favicon.io/favicon-converter/" target="_blank">Favicon.io</a></li>
-            <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen que quieras usar como favicon</li>
-            <li>Descarga el paquete de favicon</li>
-            <li>Extrae el archivo <code>favicon.png</code> y colócalo en la carpeta <code>assets/images/</code></li>
-        </ol>
-    </div>
-    
-    <div class="step">
-        <h2>Paso 2: Apple Touch Icon (180x180)</h2>
-        <p>Necesitas crear un archivo <code>apple-touch-icon.png</code> de 180x180 píxeles.</p>
-        <ol>
-            <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
-            <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen</li>
-            <li>Redimensiona a 180x180 píxeles</li>
-            <li>Descarga la imagen y renómbrala como <code>apple-touch-icon.png</code></li>
-            <li>Coloca el archivo en la carpeta <code>assets/images/</code></li>
-        </ol>
-    </div>
-    
-    <div class="step">
-        <h2>Paso 3: Iconos PWA (192x192 y 512x512)</h2>
-        <p>Necesitas crear dos archivos: <code>icon-192x192.png</code> y <code>icon-512x512.png</code>.</p>
-        <ol>
-            <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
-            <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen</li>
-            <li>Redimensiona a 192x192 píxeles y descarga como <code>icon-192x192.png</code></li>
-            <li>Repite el proceso para crear una imagen de 512x512 píxeles y descarga como <code>icon-512x512.png</code></li>
-            <li>Coloca ambos archivos en la carpeta <code>assets/images/</code></li>
-        </ol>
-    </div>
-    
-    <div class="step">
-        <h2>Paso 4: Capturas de pantalla para PWA (1280x720)</h2>
-        <p>Necesitas crear dos archivos: <code>screenshot1.jpg</code> y <code>screenshot2.jpg</code>.</p>
-        <ol>
-            <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
-            <li>Sube la imagen <code>hero-bg.jpg</code> y redimensiona a 1280x720 píxeles</li>
-            <li>Descarga como <code>screenshot1.jpg</code></li>
-            <li>Repite el proceso con la imagen <code>couples.jpg</code> y descarga como <code>screenshot2.jpg</code></li>
-            <li>Coloca ambos archivos en la carpeta <code>assets/images/</code></li>
-        </ol>
-    </div>
-    
-    <div class="note">
-        <p><strong>Nota:</strong> También puedes usar cualquier editor de imágenes como Photoshop, GIMP, o incluso herramientas en línea como <a href="https://www.canva.com/" target="_blank">Canva</a> para crear estos iconos.</p>
-    </div>
-    
-    <div class="step">
-        <h2>Verificación</h2>
-        <p>Una vez que hayas creado todos los iconos, deberías tener los siguientes archivos en la carpeta <code>assets/images/</code>:</p>
-        <ul>
-            <li><code>favicon.png</code> (32x32)</li>
-            <li><code>apple-touch-icon.png</code> (180x180)</li>
-            <li><code>icon-192x192.png</code> (192x192)</li>
-            <li><code>icon-512x512.png</code> (512x512)</li>
-            <li><code>screenshot1.jpg</code> (1280x720)</li>
-            <li><code>screenshot2.jpg</code> (1280x720)</li>
-        </ul>
+    <div id="main-content">
+        <h1>Icon Generator for Finca Termópilas</h1>
+        
+        <div class="note">
+            <p>Este archivo te ayudará a generar los iconos necesarios para el sitio web de Finca Termópilas.</p>
+        </div>
+        
+        <div class="step">
+            <h2>Paso 1: Favicon (32x32)</h2>
+            <p>Necesitas crear un archivo <code>favicon.png</code> de 32x32 píxeles.</p>
+            <ol>
+                <li>Ve a <a href="https://favicon.io/favicon-converter/" target="_blank">Favicon.io</a></li>
+                <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen que quieras usar como favicon</li>
+                <li>Descarga el paquete de favicon</li>
+                <li>Extrae el archivo <code>favicon.png</code> y colócalo en la carpeta <code>assets/images/</code></li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <h2>Paso 2: Apple Touch Icon (180x180)</h2>
+            <p>Necesitas crear un archivo <code>apple-touch-icon.png</code> de 180x180 píxeles.</p>
+            <ol>
+                <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
+                <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen</li>
+                <li>Redimensiona a 180x180 píxeles</li>
+                <li>Descarga la imagen y renómbrala como <code>apple-touch-icon.png</code></li>
+                <li>Coloca el archivo en la carpeta <code>assets/images/</code></li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <h2>Paso 3: Iconos PWA (192x192 y 512x512)</h2>
+            <p>Necesitas crear dos archivos: <code>icon-192x192.png</code> y <code>icon-512x512.png</code>.</p>
+            <ol>
+                <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
+                <li>Sube la imagen <code>hero-bg.jpg</code> o cualquier otra imagen</li>
+                <li>Redimensiona a 192x192 píxeles y descarga como <code>icon-192x192.png</code></li>
+                <li>Repite el proceso para crear una imagen de 512x512 píxeles y descarga como <code>icon-512x512.png</code></li>
+                <li>Coloca ambos archivos en la carpeta <code>assets/images/</code></li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <h2>Paso 4: Capturas de pantalla para PWA (1280x720)</h2>
+            <p>Necesitas crear dos archivos: <code>screenshot1.jpg</code> y <code>screenshot2.jpg</code>.</p>
+            <ol>
+                <li>Ve a <a href="https://resizeimage.net/" target="_blank">Resize Image</a></li>
+                <li>Sube la imagen <code>hero-bg.jpg</code> y redimensiona a 1280x720 píxeles</li>
+                <li>Descarga como <code>screenshot1.jpg</code></li>
+                <li>Repite el proceso con la imagen <code>couples.jpg</code> y descarga como <code>screenshot2.jpg</code></li>
+                <li>Coloca ambos archivos en la carpeta <code>assets/images/</code></li>
+            </ol>
+        </div>
+        
+        <div class="note">
+            <p><strong>Nota:</strong> También puedes usar cualquier editor de imágenes como Photoshop, GIMP, o incluso herramientas en línea como <a href="https://www.canva.com/" target="_blank">Canva</a> para crear estos iconos.</p>
+        </div>
+        
+        <div class="step">
+            <h2>Verificación</h2>
+            <p>Una vez que hayas creado todos los iconos, deberías tener los siguientes archivos en la carpeta <code>assets/images/</code>:</p>
+            <ul>
+                <li><code>favicon.png</code> (32x32)</li>
+                <li><code>apple-touch-icon.png</code> (180x180)</li>
+                <li><code>icon-192x192.png</code> (192x192)</li>
+                <li><code>icon-512x512.png</code> (512x512)</li>
+                <li><code>screenshot1.jpg</code> (1280x720)</li>
+                <li><code>screenshot2.jpg</code> (1280x720)</li>
+            </ul>
+        </div>
     </div>
     
     <footer id="contacto">
@@ -237,5 +267,8 @@
             <p>&copy; 2024 Finca Termópilas. Todos los derechos reservados.</p>
         </div>
     </footer>
+    
+    <!-- JavaScript for navigation -->
+    <script src="dist/main.js" defer></script>
 </body>
 </html> 
