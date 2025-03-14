@@ -144,16 +144,15 @@ body {
 .section {
     padding: 5rem 2rem;
     position: relative;
+}
+
+/* Only apply these background colors to sections without specific classes */
+.section:not(.alojamiento-section):not(.productos-section):not(.servicios-section):not(.testimonios-section):not(.galeria-section):nth-child(odd) {
     background-color: var(--background-light);
     background-image: none;
 }
 
-.section:nth-child(odd) {
-    background-color: var(--background-light);
-    background-image: none;
-}
-
-.section:nth-child(even) {
+.section:not(.alojamiento-section):not(.productos-section):not(.servicios-section):not(.testimonios-section):not(.galeria-section):nth-child(even) {
     background-color: var(--background-warm);
     background-image: none;
 }
