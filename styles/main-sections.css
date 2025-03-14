@@ -33,6 +33,7 @@
 .alojamiento-content h2 {
     text-align: center;
     margin-bottom: 1.5rem;
+    font-size: 3.5rem;
 }
 
 .alojamiento-content h2::after {
@@ -84,6 +85,8 @@
 
 .main-productos-section h2 {
     color: #fdf6ea;
+    margin-bottom: 2rem;
+    font-size: 3.5rem;
 }
 
 /* Product Cards with Overlay Text */
@@ -138,7 +141,7 @@
 
 .product-overlay .price {
     color: #fdf6ea;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 600;
     margin-top: 5px;
 }
@@ -292,6 +295,8 @@
 
 .main-testimonios-section h2 {
     color: #fdf6ea;
+    margin-bottom: 2rem;
+    font-size: 3.5rem;
 }
 
 /* Testimonial Cards */

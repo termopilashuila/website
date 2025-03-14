@@ -123,6 +123,16 @@ This document serves as a comprehensive guide for the Finca Termópilas website 
 - Use the font variables defined in `fonts.css`:
   - `var(--heading-font)`
   - `var(--body-font)`
+- Font sizes:
+  - h1: 5.3rem (85px)
+  - h2: 3.5rem (56px)
+  - h3: 1.8rem (29px)
+  - h4: 1.25rem (20px)
+  - Body text: 1rem (16px)
+  - Small text: 0.875rem (14px)
+- Responsive adjustments:
+  - Reduce heading sizes by approximately 20% on mobile devices
+  - Maintain body text size across devices for readability
 
 ### Components
 

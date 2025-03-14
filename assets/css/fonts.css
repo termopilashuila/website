@@ -24,6 +24,22 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Lora', Georgia, serif !important;
 }
 
+h1 {
+    font-size: 5.3rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
 body, p, a, li, button, input, textarea, select {
     font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -32,6 +48,7 @@ body, p, a, li, button, input, textarea, select {
 .hero-content h1 {
     font-family: var(--heading-font);
     font-weight: 700;
+    font-size: 5.3rem;
 }
 
 .hero-content p {
@@ -64,6 +81,7 @@ body, p, a, li, button, input, textarea, select {
     font-family: var(--heading-font);
     font-weight: 700;
     letter-spacing: 1px;
+    font-size: 3.5rem;
 }
 
 .logo {
@@ -74,6 +92,7 @@ body, p, a, li, button, input, textarea, select {
 .product-card h3 {
     font-family: var(--heading-font);
     font-weight: 700;
+    font-size: 1.8rem;
 }
 
 .testimonial .author {
