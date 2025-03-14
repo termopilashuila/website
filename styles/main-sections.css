@@ -16,6 +16,107 @@
     color: white;
 }
 
+/* Product Cards with Overlay Text */
+.product-card {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    text-align: left;
+}
+
+.product-overlay h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.product-overlay .price {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.product-content {
+    padding: 20px;
+    background-color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-content ul {
+    list-style: disc;
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.product-content li {
+    margin-bottom: 5px;
+    color: black;
+}
+
+.order-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: black;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: center;
+    border-radius: 8px;
+}
+
+.order-button:hover {
+    background-color: #FFFFFF;
+    color: var(--background-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Servicios Section */
 .main-servicios-section {
     background-color: #fdf6ea;
