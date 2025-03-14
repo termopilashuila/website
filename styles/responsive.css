@@ -3,10 +3,12 @@
     .alojamiento-container {
         flex-direction: column-reverse;
         gap: 2rem;
+        padding: 0 1rem;
     }
     
     .alojamiento-content {
         width: 100%;
+        margin-left: 0;
     }
     
     .alojamiento-content h2 {
@@ -30,6 +32,7 @@
     .alojamiento-image {
         width: 100%;
         max-width: 100%;
+        flex: 1;
     }
     
     .alojamiento-image img {
