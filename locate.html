@@ -116,7 +116,7 @@
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .video-wrapper iframe {
@@ -126,6 +126,34 @@
             width: 100%;
             height: 100%;
             border-radius: 8px;
+        }
+        
+        .fallback-link {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .fallback-link a {
+            color: #2C5530;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .fallback-link a i {
+            margin-left: 0.5rem;
+            color: #FF0000;
+        }
+        
+        .fallback-link a:hover {
+            background-color: #e9ecef;
+            text-decoration: none;
         }
         
         .transport-options {
@@ -259,13 +287,27 @@
                 <div class="video-container">
                     <h3>Video desde el pueblo:</h3>
                     <div class="video-wrapper">
-                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mb_MWLq5mZo?rel=0" title="Cómo llegar a Finca Termópilas desde el pueblo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/mb_MWLq5mZo" 
+                            title="Cómo llegar a Finca Termópilas desde el pueblo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
+                    <p class="fallback-link">Si el video no se muestra correctamente, puedes <a href="https://youtu.be/mb_MWLq5mZo" target="_blank">verlo directamente en YouTube <i class="fab fa-youtube"></i></a></p>
                     
                     <h3>Video desde el portón:</h3>
                     <div class="video-wrapper">
-                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yKxOk5vC6yk?rel=0" title="Cómo llegar a Finca Termópilas desde el portón" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/yKxOk5vC6yk" 
+                            title="Cómo llegar a Finca Termópilas desde el portón" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
+                    <p class="fallback-link">Si el video no se muestra correctamente, puedes <a href="https://youtu.be/yKxOk5vC6yk" target="_blank">verlo directamente en YouTube <i class="fab fa-youtube"></i></a></p>
                 </div>
             </section>
             
