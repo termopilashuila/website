@@ -4,19 +4,22 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 
 ## Características del sitio
 
-- Diseño responsive para dispositivos móviles y de escritorio
-- Optimizado para SEO
-- Soporte para PWA (Progressive Web App)
+- Diseño responsive para móvil y escritorio
+- Optimización para SEO
+- Soporte para Progressive Web App (PWA)
 - Galería de imágenes
-- Información sobre alojamiento, productos y servicios
-- Testimonios de clientes con fotos y calificaciones
-- Información de contacto y ubicación
-- Sección de productos con imágenes y descripciones detalladas
+- Información de alojamiento
+- Detalles de productos
+- Testimonios de clientes
+- Información de contacto
+- Sección de tour de vino y cacao
+- Estilos externos organizados por funcionalidad
+- Scroll horizontal táctil para testimonios en móvil
 
 ## Tecnologías utilizadas
 
 - HTML5
-- CSS3 (Flexbox y Grid para layouts)
+- CSS3 (con Flexbox y Grid)
 - JavaScript (Vanilla)
 - Service Workers para PWA
 - Font Awesome para iconos
@@ -25,28 +28,36 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 ## Estructura del proyecto
 
 ```
-/
+finca-termopilas/
 ├── index.html              # Página principal
 ├── rooms.html              # Página de habitaciones
-├── tour-vino-cacao.html    # Página del tour de vino y cacao
-├── 404.html                # Página de error personalizada
-├── CNAME                   # Configuración de dominio personalizado
-├── manifest.json           # Manifiesto para PWA
-├── robots.txt              # Configuración para motores de búsqueda
+├── tour-vino-cacao.html    # Página del tour
+├── 404.html                # Página de error
+├── manifest.json           # Manifest para PWA
 ├── service-worker.js       # Service Worker para PWA
-├── sitemap.xml             # Mapa del sitio para SEO
-├── cursor-rules.md         # Guía de estilo y mejores prácticas
+├── sitemap.xml             # Sitemap para SEO
+├── robots.txt              # Robots.txt para SEO
+├── CNAME                   # Archivo CNAME para dominio personalizado
+├── cursor-rules.md         # Guía de estilo y convenciones
 ├── assets/
-│   ├── css/                # Estilos adicionales
-│   │   └── fonts.css       # Configuración de fuentes
+│   ├── css/
+│   │   └── fonts.css       # Definiciones de tipografía
 │   ├── icons/              # Iconos para PWA
-│   └── images/             # Imágenes organizadas por sección
+│   └── images/
 │       ├── home/           # Imágenes de la página principal
-│       │   ├── section0-hero.jpg           # Imagen de fondo principal
-│       │   ├── section1-accommodation1.jpg # Imagen de alojamiento para parejas
-│       │   ├── section2-product1.jpg       # Imagen de producto Vino F27
-│       │   ├── section4-img1.jpg           # Imagen de testimonio
-│       │   └── ...                         # Otras imágenes de la página principal
+│       │   ├── section0-hero.jpg      # Imagen de fondo del hero
+│       │   ├── section1-accommodation1.jpg  # Imagen de alojamiento para parejas
+│       │   ├── section1-accommodation2.jpg  # Imagen de alojamiento para grupos
+│       │   ├── section2-product1.jpg  # Imagen de Vino F27
+│       │   ├── section2-product2.jpg  # Imagen de Vino Rosé
+│       │   ├── section2-product3.jpg  # Imagen de Nibs de cacao
+│       │   ├── section4-img0.jpg      # Fondo de sección testimonios
+│       │   ├── section4-img1.jpg      # Foto de testimonio 1
+│       │   ├── section4-img2.jpg      # Foto de testimonio 2
+│       │   ├── section4-img3.jpg      # Foto de testimonio 3
+│       │   ├── section5-gallery1.jpg  # Imagen de galería 1
+│       │   ├── section5-gallery2.jpg  # Imagen de galería 2
+│       │   └── section5-gallery3.jpg  # Imagen de galería 3
 │       ├── rooms/          # Imágenes de habitaciones
 │       │   ├── couples.jpg # Imagen de alojamiento para parejas
 │       │   └── groups.jpg  # Imagen de alojamiento para grupos
@@ -63,6 +74,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
     ├── rooms.css           # Estilos específicos para habitaciones
     ├── tour.css            # Estilos para la página del tour
     ├── pwa-prompt.css      # Estilos para el prompt de instalación PWA
+    ├── sections.css        # Estilos específicos para secciones
     └── utilities.css       # Clases de utilidad
 ```
 
@@ -77,6 +89,8 @@ El proyecto sigue una guía de estilo detallada que se encuentra en el archivo `
 - Consideraciones de accesibilidad
 - Optimización de rendimiento
 - Organización de imágenes
+- Directrices para CSS externo (sin estilos en línea)
+- Estructura de secciones y componentes
 
 ### Paleta de colores
 
@@ -87,6 +101,10 @@ El proyecto sigue una guía de estilo detallada que se encuentra en el archivo `
   --accent-color: #ff8c00;       /* Naranja vibrante - Color de acento */
   --text-color: #333333;         /* Gris oscuro - Color de texto principal */
   --light-text: #fff;            /* Blanco - Texto sobre fondos oscuros */
+  --background-light: #FFFFFF;   /* Blanco - Fondo claro */
+  --background-dark: #000000;    /* Negro - Fondo oscuro */
+  --background-cream: #FFFFFF;   /* Blanco - Fondo crema */
+  --background-warm: #F9F9F9;    /* Gris claro - Fondo cálido */
 }
 ```
 
@@ -138,6 +156,15 @@ Para agregar nuevas imágenes:
 4. Actualizar el HTML para incluir las nuevas imágenes
 5. Actualizar el service worker (`service-worker.js`) para cachear las nuevas imágenes
 
+### Actualización de estilos
+
+Para actualizar los estilos del sitio:
+
+1. Modificar los archivos CSS correspondientes en la carpeta `styles/`
+2. Evitar el uso de estilos en línea - todos los estilos deben estar en archivos CSS externos
+3. Para estilos específicos de secciones, utilizar el archivo `styles/sections.css`
+4. Mantener la consistencia con las clases y variables existentes
+
 ## Optimización para SEO
 
 El sitio incluye:
@@ -185,6 +212,21 @@ Características responsive específicas:
 - Diseño de tarjetas de productos optimizado para móvil
 - Scroll horizontal táctil para testimonios en dispositivos móviles
 - Imágenes responsivas con tamaños apropiados
+
+## Componentes principales
+
+### Tarjetas de productos
+- Imágenes expandidas que ocupan el ancho completo de la tarjeta
+- Contenido estructurado con diseño flex
+- Botones de pedido con color de acento naranja
+- Efecto hover con elevación sutil y escala de imagen
+
+### Tarjetas de testimonios
+- Contenedor de desplazamiento horizontal en todos los dispositivos
+- Desplazamiento táctil optimizado para móvil
+- Estilo de tarjeta consistente con fondo claro
+- Imágenes de autor mostradas como miniaturas circulares
+- Calificaciones de 5 estrellas debajo de los nombres de autor
 
 ## Contacto
 
