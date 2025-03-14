@@ -70,6 +70,18 @@ body {
     font-weight: 600;
 }
 
+.logo a {
+    color: var(--light-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo a:hover {
+    color: var(--accent-color);
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
