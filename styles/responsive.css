@@ -1,22 +1,30 @@
 /* Responsive styles for Alojamiento section */
 @media (max-width: 768px) {
+    .main-alojamiento-section {
+        padding: 3rem 0;
+    }
+    
     .alojamiento-container {
         flex-direction: column-reverse;
         gap: 2rem;
         padding: 0 1rem;
         align-items: center;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow: visible;
+        width: 100%;
     }
     
     .alojamiento-content {
         width: 100%;
         margin-left: 0;
         max-width: 100%;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
     
     .alojamiento-content h2 {
         text-align: center;
         margin-top: 1.5rem;
+        width: 100%;
     }
     
     .alojamiento-content h2::after {
@@ -26,24 +34,31 @@
     
     .alojamiento-content .section-description {
         text-align: center;
+        width: 100%;
     }
     
     .alojamiento-content .cta-button {
         align-self: center;
+        margin-bottom: 1rem;
     }
     
     .alojamiento-image {
         width: 100%;
         max-width: 100%;
         flex: none;
-        display: flex;
-        justify-content: center;
+        display: block;
+        margin: 0 auto;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
     
     .alojamiento-image img {
-        height: 350px;
         width: 100%;
-        max-width: 350px;
+        height: auto;
+        max-height: 350px;
         object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
     }
 } 
