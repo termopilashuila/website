@@ -36,7 +36,7 @@ body, p, a, li, button, input, textarea, select {
 
 .hero-content p {
     font-family: var(--heading-font);
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
 }
 
