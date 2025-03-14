@@ -4,11 +4,14 @@
         flex-direction: column-reverse;
         gap: 2rem;
         padding: 0 1rem;
+        align-items: center;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
     
     .alojamiento-content {
         width: 100%;
         margin-left: 0;
+        max-width: 100%;
     }
     
     .alojamiento-content h2 {
@@ -32,10 +35,15 @@
     .alojamiento-image {
         width: 100%;
         max-width: 100%;
-        flex: 1;
+        flex: none;
+        display: flex;
+        justify-content: center;
     }
     
     .alojamiento-image img {
         height: 350px;
+        width: 100%;
+        max-width: 350px;
+        object-fit: cover;
     }
 } 
