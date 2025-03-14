@@ -28,14 +28,38 @@
         margin-bottom: 1rem;
     }
     
-    .alojamiento-image {
+    .alojamiento-gallery {
         width: 100%;
         max-width: 100%;
         padding: 0 1rem;
         box-sizing: border-box;
     }
     
-    .alojamiento-image img {
-        max-height: 350px;
+    .alojamiento-image.main-image {
+        min-height: 300px;
+    }
+    
+    .alojamiento-image-grid {
+        gap: 0.5rem;
+        min-height: 120px;
+    }
+}
+
+/* Responsive styles for very small screens */
+@media (max-width: 480px) {
+    .alojamiento-image.main-image {
+        min-height: 200px;
+    }
+    
+    .alojamiento-image-grid {
+        gap: 0.3rem;
+        min-height: 80px;
+    }
+}
+
+/* Responsive styles for alojamiento-features */
+@media (max-width: 768px) {
+    .alojamiento-features {
+        grid-template-columns: 1fr;
     }
 } 

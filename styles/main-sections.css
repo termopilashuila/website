@@ -8,8 +8,9 @@
 
 .alojamiento-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -17,64 +18,86 @@
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    min-height: 550px;
 }
 
 .alojamiento-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 50%;
 }
 
 .alojamiento-content h2 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 1.5rem;
     font-size: 3.5rem;
 }
 
 .alojamiento-content h2::after {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
 }
 
 .alojamiento-content .section-description {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
 }
 
 .alojamiento-content .cta-button {
     margin-top: 1.5rem;
+    align-self: flex-start;
+}
+
+.alojamiento-gallery {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
 }
 
 .alojamiento-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.alojamiento-image.main-image {
+    flex: 3;
+    margin-bottom: 1rem;
+    height: auto;
+    min-height: 350px;
+}
+
+.alojamiento-image-grid {
     flex: 1;
-    max-width: 600px;
-    display: block;
-    margin: 0 auto;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    height: auto;
+    min-height: 180px;
 }
 
 .alojamiento-image img {
     width: 100%;
-    height: auto;
-    max-height: 500px;
+    height: 100%;
     object-fit: cover;
-    aspect-ratio: 16/9;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    max-width: 100%;
     display: block;
     border-radius: 8px;
 }
 
 .alojamiento-image img:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 /* Vino y Cacao Section */
@@ -363,4 +386,108 @@
 
 .gallery-item:hover img {
     transform: scale(1.05);
+}
+
+/* Add styling for the alojamiento-features list */
+.alojamiento-features {
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    text-align: left;
+}
+
+.alojamiento-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.alojamiento-features i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .alojamiento-container {
+        min-height: 500px;
+    }
+    
+    .alojamiento-image.main-image {
+        min-height: 320px;
+    }
+    
+    .alojamiento-image-grid {
+        min-height: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .alojamiento-container {
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+    }
+    
+    .alojamiento-content, 
+    .alojamiento-gallery {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .alojamiento-content {
+        align-items: center;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .alojamiento-content .section-description {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .alojamiento-content h2 {
+        text-align: center;
+    }
+    
+    .alojamiento-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .alojamiento-content .cta-button {
+        align-self: center;
+    }
+    
+    .alojamiento-image.main-image {
+        min-height: 400px;
+    }
+    
+    .alojamiento-image-grid {
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .alojamiento-image-grid {
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alojamiento-image.main-image {
+        min-height: 200px;
+    }
+    
+    .alojamiento-image-grid {
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 80px;
+    }
 } 
