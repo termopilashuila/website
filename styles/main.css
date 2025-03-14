@@ -7,10 +7,10 @@
     --accent-color: #ff8c00;
     --text-color: #333333;
     --light-text: #fff;
-    --background-light: #FFFFFF;
+    --background-light: #fdf6ea;
     --background-dark: #000000;
-    --background-cream: #FFFFFF;
-    --background-warm: #F9F9F9;
+    --background-cream: #fdf6ea;
+    --background-warm: #fdf6ea;
     --spacing-unit: 1rem;
     /* Font variables defined here as fallback */
     --heading-font: 'Lora', Georgia, serif;
@@ -136,7 +136,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    background-color: #FFFFFF;
+    background-color: #fdf6ea;
     color: var(--background-dark);
 }
 
@@ -245,7 +245,7 @@ body {
 .service-card {
     text-align: center;
     padding: 2rem;
-    background: #FFFFFF;
+    background: #fdf6ea;
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -671,11 +671,12 @@ footer a:hover {
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     :root {
-        --text-color: #333333;
-        --background-light: #FFFFFF;
-        --background-warm: #F9F9F9;
-        --background-cream: #FFFFFF;
-        --background-dark: #000000;
+        --text-color: #f0f0f0;
+        --light-text: #ffffff;
+        --background-light: #fdf6ea;
+        --background-dark: #121212;
+        --background-cream: #fdf6ea;
+        --background-warm: #1e1e1e;
     }
     
     body {
@@ -698,8 +699,7 @@ footer a:hover {
     }
     
     .service-card {
-        background: #FFFFFF;
-        color: #000;
+        background: #fdf6ea;
     }
     
     .service-card h3 {
@@ -718,9 +718,9 @@ footer a:hover {
     }
     
     body {
-        font-size: 12pt;
+        background: #fdf6ea;
         color: #000;
-        background: #fff;
+        font-size: 12pt;
     }
     
     .section {
@@ -792,4 +792,10 @@ p {
     letter-spacing: 1px;
     transition: all 0.3s ease;
     border-radius: 6px;
+}
+
+.product-content {
+    background: #fdf6ea;
+    padding: 1.5rem;
+    border-radius: 0 0 8px 8px;
 } 

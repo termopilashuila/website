@@ -401,4 +401,18 @@
         margin-right: 0;
         margin-bottom: 1rem;
     }
+}
+
+.tour-section {
+    padding: 5rem 2rem;
+    background-color: #fdf6ea;
+}
+
+.process-step {
+    background-color: #fdf6ea;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
 } 

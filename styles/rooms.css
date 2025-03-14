@@ -41,12 +41,13 @@
 }
 
 .room-card {
-    background-color: var(--primary-color);
-    color: white;
+    margin-bottom: 2rem;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fdf6ea;
     transition: transform 0.3s ease;
     width: 300px;
-    margin-bottom: 2rem;
     position: relative;
 }
 
