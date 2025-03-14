@@ -352,15 +352,25 @@ body {
 
 /* Footer */
 footer {
-    background: var(--background-dark);
-    color: var(--light-text);
+    background: #504127;
+    color: #fdf6ea;
     padding: 4rem 2rem 2rem;
-    background-image: none;
+    background-image: url('../assets/images/home/footer1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
     position: relative;
 }
 
 footer::before {
-    content: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(80, 65, 39, 0.85);
+    z-index: 0;
 }
 
 .footer-content {
@@ -379,6 +389,7 @@ footer::before {
     padding: 2rem;
     border-radius: 0;
     border: none;
+    color: #fdf6ea;
 }
 
 .location h3, .contact h3 {
@@ -390,8 +401,12 @@ footer::before {
     letter-spacing: 0.5px;
 }
 
+.location p, .contact p {
+    color: #fdf6ea;
+}
+
 footer a {
-    color: var(--light-text);
+    color: #fdf6ea;
     text-decoration: none;
     display: block;
     margin: 0.5rem 0;
