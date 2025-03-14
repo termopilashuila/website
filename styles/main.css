@@ -123,6 +123,12 @@ body {
     margin-bottom: 1rem;
     text-transform: none;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-content h1 strong {
+    color: var(--accent-color);
 }
 
 .hero-content p {
@@ -569,10 +575,6 @@ footer a:hover {
         padding-top: 80px; /* Add padding to account for fixed navbar */
     }
 
-    .hero-content h1 {
-        font-size: 4.2rem;
-    }
-
     .section {
         padding: 3rem 1rem;
     }
@@ -607,10 +609,6 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 4.2rem;
-    }
-    
     .cta-button {
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
