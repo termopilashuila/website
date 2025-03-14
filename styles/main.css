@@ -123,7 +123,7 @@ body {
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: black;
+    color: white;
     padding: 1rem 2rem;
     text-decoration: none;
     font-weight: 600;
@@ -800,7 +800,7 @@ p {
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     background-color: var(--accent-color);
-    color: #000;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
