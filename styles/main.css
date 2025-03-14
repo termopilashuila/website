@@ -113,6 +113,10 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.hero-content h1 strong {
+    font-weight: 700;
+}
+
 .hero-content p {
     font-family: 'Lora', Georgia, serif !important;
     font-style: normal;

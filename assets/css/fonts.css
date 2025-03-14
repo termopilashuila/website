@@ -34,6 +34,10 @@ body, p, a, li, button, input, textarea, select {
     font-weight: 700;
 }
 
+.hero-content h1 strong {
+    font-weight: 900;
+}
+
 .hero-content p {
     font-family: var(--heading-font);
     font-style: normal;

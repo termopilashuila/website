@@ -30,6 +30,15 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.hero-content h1 strong {
+    font-weight: 700;
+}
+
+.extra-bold {
+    font-weight: 900 !important;
+    color: var(--accent-color);
+}
+
 .hero-content p {
     font-family: 'Montserrat', Georgia, serif;
     font-size: 1.8rem;
