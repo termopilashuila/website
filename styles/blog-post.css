@@ -1,15 +1,25 @@
 /* Blog Post Styles */
-.blog-post-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/home/section0-hero.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-}
-
 .blog-post-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem 2rem;
+}
+
+.blog-post-back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #ff8c00;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.blog-post-back-link:hover {
+    color: #e67e00;
+}
+
+.blog-post-back-link i {
+    margin-right: 0.5rem;
 }
 
 .blog-post-header {
@@ -326,10 +336,6 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .blog-post-hero {
-        height: 50vh;
-    }
-    
     .blog-post-title {
         font-size: 2rem;
     }
@@ -354,10 +360,6 @@
 }
 
 @media (max-width: 480px) {
-    .blog-post-hero {
-        height: 40vh;
-    }
-    
     .blog-post-meta {
         flex-direction: column;
         gap: 0.5rem;

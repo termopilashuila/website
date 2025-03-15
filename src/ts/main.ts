@@ -250,6 +250,13 @@ function initHeader(): void {
   const currentPath = window.location.pathname;
   const pageName = currentPath.split('/').pop() || 'index.html';
   
+  // Check if this is a blog post page (located in blog/posts/ directory)
+  if (currentPath.includes('/blog/posts/')) {
+    // Skip header generation for blog post pages
+    console.log('Blog post page detected, skipping header generation');
+    return;
+  }
+  
   // Create a copy of the default config
   const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
   
@@ -767,11 +774,18 @@ if ('serviceWorker' in navigator) {
 // Initialize the global header object
 window.termopilasHeader = {
   updateConfig: (config: Partial<HeaderConfig>) => {
+    // Check if this is a blog post page (located in blog/posts/ directory)
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/blog/posts/')) {
+      // Skip header generation for blog post pages
+      console.log('Blog post page detected, skipping header update');
+      return;
+    }
+    
     // Create a copy of the default config
     const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
     
     // Merge with the current page-specific config
-    const currentPath = window.location.pathname;
     const pageName = currentPath.split('/').pop() || 'index.html';
     
     // Ensure blog page is included in navigation
@@ -849,6 +863,14 @@ window.termopilasHeader = {
     generateHeader(headerConfig);
   },
   regenerateHeader: () => {
+    // Check if this is a blog post page (located in blog/posts/ directory)
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/blog/posts/')) {
+      // Skip header regeneration for blog post pages
+      console.log('Blog post page detected, skipping header regeneration');
+      return;
+    }
+    
     initHeader();
   }
 };
