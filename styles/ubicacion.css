@@ -1,0 +1,213 @@
+/* Ubicacion Page Styles */
+
+/* Container Styles */
+.directions-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.directions-section {
+    margin-bottom: 3rem;
+}
+
+.directions-section h2 {
+    color: #2C5530;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.directions-section h3 {
+    color: #2C5530;
+    margin-bottom: 1rem;
+}
+
+.directions-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Map and Image Styles */
+.map-images {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.map-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reference-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.reference-image {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+    margin: 2rem 0;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* Video Section Styles */
+.video-container {
+    margin: 2rem 0;
+}
+
+.video-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.video-info {
+    margin-bottom: 1.5rem;
+}
+
+.video-info h3 {
+    color: #2C5530;
+    margin-bottom: 0.5rem;
+}
+
+.video-info p {
+    margin-bottom: 0;
+    color: #666;
+}
+
+.youtube-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF0000;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 80%;
+    max-width: 300px;
+}
+
+.youtube-button i {
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+}
+
+.youtube-button:hover {
+    background-color: #CC0000;
+    transform: translateY(-2px);
+}
+
+.youtube-button:active {
+    transform: translateY(0);
+}
+
+/* Transport Options Styles */
+.transport-options {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.transport-options h3 {
+    color: #2C5530;
+    margin-bottom: 1rem;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-list i {
+    margin-right: 0.5rem;
+    color: #2C5530;
+}
+
+.contact-list a {
+    color: #2C5530;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+/* Warning Box Styles */
+.warning-box {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.warning-box p {
+    margin: 0;
+    color: #856404;
+}
+
+/* Hero Styles */
+.directions-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/home/section0-hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .reference-images {
+        flex-direction: column;
+    }
+    
+    .reference-image {
+        width: 100%;
+    }
+    
+    .video-card {
+        padding: 1rem;
+    }
+    
+    .youtube-button {
+        width: 100%;
+    }
+}

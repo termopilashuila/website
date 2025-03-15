@@ -65,7 +65,7 @@ const defaultHeaderConfig: HeaderConfig = {
   navItems: [
     { text: 'Habitaciones', href: 'rooms.html' },
     { text: 'Tour de Vino y Cacao', href: 'tour-vino-cacao.html' },
-    { text: 'Cómo Llegar', href: 'locate.html' },
+    { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'index.html#galeria' }
   ],
   heroContent: {
@@ -97,7 +97,7 @@ const defaultFooterConfig: FooterConfig = {
     socialMedia: [
       {
         platform: 'Instagram',
-        url: 'https://www.instagram.com/termopilashuila/',
+        url: 'https://www.instagram.com/alojamientotermopilas/',
         icon: 'fab fa-instagram'
       },
       {
@@ -152,11 +152,14 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   // Generate the hero content HTML if provided
   let heroContentHTML = '';
   if (config.heroContent) {
+    const ctaButtonHTML = config.heroContent.ctaText ? 
+      `<a href="${config.heroContent.ctaHref}" class="cta-button">${config.heroContent.ctaText}</a>` : '';
+    
     heroContentHTML = `
       <div class="hero-content">
         <h1>${config.heroContent.title}</h1>
         <p>${config.heroContent.subtitle}</p>
-        <a href="${config.heroContent.ctaHref}" class="cta-button">${config.heroContent.ctaText}</a>
+        ${ctaButtonHTML}
       </div>
     `;
   }
@@ -237,13 +240,13 @@ function initHeader(): void {
       ctaText: 'RESERVA AHORA',
       ctaHref: 'https://wa.link/vscfew'
     };
-  } else if (pageName === 'locate.html') {
+  } else if (pageName === 'ubicacion.html') {
     headerConfig.heroClass = 'hero directions-hero';
     headerConfig.heroContent = {
-      title: 'Cómo Llegar a Finca Termópilas',
+      title: 'Cómo Llegar',
       subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
-      ctaText: 'ABRIR EN GOOGLE MAPS',
-      ctaHref: 'https://maps.app.goo.gl/Sv7AgA1EJQRauGP46'
+      ctaText: '',
+      ctaHref: ''
     };
   } else if (pageName === '404.html') {
     headerConfig.heroClass = 'hero';
@@ -560,13 +563,13 @@ window.termopilasHeader = {
         ctaText: 'RESERVA AHORA',
         ctaHref: 'https://wa.link/vscfew'
       };
-    } else if (pageName === 'locate.html') {
+    } else if (pageName === 'ubicacion.html') {
       headerConfig.heroClass = 'hero directions-hero';
       headerConfig.heroContent = {
         title: 'Cómo Llegar a Finca Termópilas',
         subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
-        ctaText: 'ABRIR EN GOOGLE MAPS',
-        ctaHref: 'https://maps.app.goo.gl/Sv7AgA1EJQRauGP46'
+        ctaText: '',
+        ctaHref: ''
       };
     } else if (pageName === '404.html') {
       headerConfig.heroClass = 'hero';

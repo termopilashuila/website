@@ -34,7 +34,7 @@ finca-termopilas/
 ├── index.html              # Página principal
 ├── rooms.html              # Página de habitaciones
 ├── tour-vino-cacao.html    # Página del tour
-├── locate.html             # Página de cómo llegar
+├── ubicacion.html          # Página de cómo llegar
 ├── 404.html                # Página de error
 ├── manifest.json           # Manifest para PWA
 ├── service-worker.js       # Service Worker para PWA
@@ -79,6 +79,7 @@ finca-termopilas/
     ├── hero.css            # Estilos para secciones hero
     ├── rooms.css           # Estilos específicos para habitaciones
     ├── tour.css            # Estilos para la página del tour
+    ├── ubicacion.css       # Estilos para la página de cómo llegar
     ├── pwa-prompt.css      # Estilos para el prompt de instalación PWA
     ├── sections.css        # Estilos específicos para secciones
     └── utilities.css       # Clases de utilidad
