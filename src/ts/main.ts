@@ -21,14 +21,41 @@ interface HeaderConfig {
   heroClass?: string;
 }
 
+// Footer configuration interface
+interface FooterConfig {
+  location: {
+    title: string;
+    address: string[];
+    wazeLink: string;
+  };
+  contact: {
+    title: string;
+    description: string;
+    phone: string;
+    email: string;
+    socialMedia: Array<{
+      platform: string;
+      url: string;
+      icon: string;
+    }>;
+  };
+  copyright: string;
+}
+
 // Define the global interface for the window object
 interface TermopilasHeader {
   updateConfig: (config: Partial<HeaderConfig>) => void;
   regenerateHeader: () => void;
 }
 
+interface TermopilasFooter {
+  updateConfig: (config: Partial<FooterConfig>) => void;
+  regenerateFooter: () => void;
+}
+
 interface Window {
   termopilasHeader: TermopilasHeader;
+  termopilasFooter: TermopilasFooter;
 }
 
 // Default header configuration
@@ -48,6 +75,44 @@ const defaultHeaderConfig: HeaderConfig = {
     ctaHref: '#contacto'
   },
   heroClass: 'hero'
+};
+
+// Default footer configuration
+const defaultFooterConfig: FooterConfig = {
+  location: {
+    title: '¿Cómo llegar?',
+    address: [
+      'Km 3.3',
+      'Vía las Juntas',
+      'Rivera',
+      'Huila'
+    ],
+    wazeLink: 'https://waze.com/ul/hd26x8pf80'
+  },
+  contact: {
+    title: '¿Tienes preguntas?',
+    description: 'Escríbenos para más información',
+    phone: '+573143428579',
+    email: 'termopilashuila@gmail.com',
+    socialMedia: [
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/termopilashuila/',
+        icon: 'fab fa-instagram'
+      },
+      {
+        platform: 'Facebook',
+        url: 'https://www.facebook.com/termopilashuila/',
+        icon: 'fab fa-facebook'
+      },
+      {
+        platform: 'WhatsApp',
+        url: 'https://wa.me/573143428579',
+        icon: 'fab fa-whatsapp'
+      }
+    ]
+  },
+  copyright: '&copy; 2024 Finca Termópilas. Todos los derechos reservados.'
 };
 
 // Function to generate header HTML
@@ -190,9 +255,71 @@ function initHeader(): void {
   generateHeader(headerConfig);
 }
 
-// Call initHeader when DOM is loaded
+// Function to generate footer HTML
+function generateFooter(config: FooterConfig = defaultFooterConfig): void {
+  // Find the footer element
+  const footerElement = document.querySelector('footer');
+  if (!footerElement) {
+    console.error('Footer element not found');
+    return;
+  }
+  
+  // Generate the footer content HTML
+  const footerContentHTML = `
+    <div class="footer-content">
+      <div class="location">
+        <h3>${config.location.title}</h3>
+        ${config.location.address.map(line => `<p>${line}</p>`).join('')}
+        <a href="${config.location.wazeLink}" target="_blank" class="waze-link" rel="noopener">
+          <i class="fas fa-map-marker-alt"></i> Abrir en Waze
+        </a>
+      </div>
+      <div class="contact">
+        <h3>${config.contact.title}</h3>
+        <p>${config.contact.description}</p>
+        <a href="tel:${config.contact.phone}"><i class="fas fa-phone"></i> (${config.contact.phone.substring(0, 4)}) ${config.contact.phone.substring(4)}</a>
+        <a href="mailto:${config.contact.email}"><i class="fas fa-envelope"></i> ${config.contact.email}</a>
+        <div class="social-media">
+          ${config.contact.socialMedia.map(social => 
+            `<a href="${social.url}" target="_blank" rel="noopener" aria-label="${social.platform}">
+              <i class="${social.icon}"></i>
+            </a>`
+          ).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>${config.copyright}</p>
+    </div>
+  `;
+  
+  // Set the footer content
+  footerElement.innerHTML = footerContentHTML;
+}
+
+// Initialize footer based on current page
+function initFooter(): void {
+  const currentPath = window.location.pathname;
+  const pageName = currentPath.split('/').pop() || 'index.html';
+  
+  // Create a copy of the default config
+  const footerConfig: FooterConfig = JSON.parse(JSON.stringify(defaultFooterConfig));
+  
+  // Customize footer content based on page if needed
+  if (pageName === 'rooms.html') {
+    footerConfig.contact.description = 'Escríbenos para más información o reservas';
+  } else if (pageName === 'tour-vino-cacao.html') {
+    footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+  }
+  
+  // Generate the footer with the customized config
+  generateFooter(footerConfig);
+}
+
+// Call initHeader and initFooter when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
+  initFooter();
   
   // Add fade-in animation to hero content
   const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
@@ -455,5 +582,33 @@ window.termopilasHeader = {
   },
   regenerateHeader: () => {
     initHeader();
+  }
+};
+
+// Initialize the global footer object
+window.termopilasFooter = {
+  updateConfig: (config: Partial<FooterConfig>) => {
+    // Create a copy of the default config
+    const footerConfig: FooterConfig = JSON.parse(JSON.stringify(defaultFooterConfig));
+    
+    // Merge with the current page-specific config
+    const currentPath = window.location.pathname;
+    const pageName = currentPath.split('/').pop() || 'index.html';
+    
+    // Apply page-specific configurations
+    if (pageName === 'rooms.html') {
+      footerConfig.contact.description = 'Escríbenos para más información o reservas';
+    } else if (pageName === 'tour-vino-cacao.html') {
+      footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+    }
+    
+    // Override with the provided config
+    Object.assign(footerConfig, config);
+    
+    // Generate the footer with the merged config
+    generateFooter(footerConfig);
+  },
+  regenerateFooter: () => {
+    initFooter();
   }
 }; 
