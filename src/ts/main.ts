@@ -77,8 +77,9 @@ const defaultHeaderConfig: HeaderConfig = {
   logoText: 'Finca Termópilas',
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
+    { text: 'Inicio', href: 'index.html' },
     { text: 'Alojamiento', href: 'rooms.html' },
-    { text: 'Tour de Vino y Cacao', href: 'tour.html' },
+    { text: 'Tour', href: 'tour.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'index.html#galeria' }
   ],
