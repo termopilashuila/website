@@ -565,16 +565,14 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize gallery lightbox if on gallery page
   if (window.location.pathname.includes('galeria.html')) {
-    initGalleryLightbox();
+    // Gallery functionality will be implemented directly here when needed
+    console.log('On gallery page');
   }
   
   // Initialize blog category filtering if on blog page
   if (window.location.pathname.includes('blog.html')) {
     initBlogCategoryFiltering();
   }
-  
-  // Initialize PWA install prompt
-  initPWAInstallPrompt();
   
   // Add fade-in animation to hero content
   const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
@@ -960,16 +958,4 @@ function initBlogCategoryFiltering(): void {
       });
     });
   });
-}
-
-// Function to initialize gallery lightbox
-function initGalleryLightbox(): void {
-  console.log('Gallery lightbox initialized');
-  // Implementation will be added later
-}
-
-// Function to initialize PWA install prompt
-function initPWAInstallPrompt(): void {
-  console.log('PWA install prompt initialized');
-  // Implementation will be added later
 } 
