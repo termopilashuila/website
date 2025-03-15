@@ -63,7 +63,7 @@ const defaultHeaderConfig: HeaderConfig = {
   logoText: 'Finca Termópilas',
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
-    { text: 'Habitaciones', href: 'rooms.html' },
+    { text: 'Alojamiento', href: 'rooms.html' },
     { text: 'Tour de Vino y Cacao', href: 'tour-vino-cacao.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'index.html#galeria' }
@@ -227,7 +227,7 @@ function initHeader(): void {
   if (pageName === 'rooms.html') {
     headerConfig.heroClass = 'hero rooms-hero';
     headerConfig.heroContent = {
-      title: 'Nuestras Habitaciones',
+      title: 'Alojamiento',
       subtitle: 'Confort y naturaleza en un solo lugar',
       ctaText: 'RESERVA AHORA',
       ctaHref: 'index.html#contacto'
@@ -550,7 +550,7 @@ window.termopilasHeader = {
     if (pageName === 'rooms.html') {
       headerConfig.heroClass = 'hero rooms-hero';
       headerConfig.heroContent = {
-        title: 'Nuestras Habitaciones',
+        title: 'Nuestro Alojamiento',
         subtitle: 'Confort y naturaleza en un solo lugar',
         ctaText: 'RESERVA AHORA',
         ctaHref: 'index.html#contacto'
