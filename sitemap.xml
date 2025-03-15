@@ -20,9 +20,15 @@
   </url>
   <url>
     <loc>https://termopilas.co/blog.html</loc>
-    <lastmod>2025-03-15</lastmod>
+    <lastmod>2025-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://termopilas.co/blog/posts/maridaje-perfecto-vino-rose-platos-tipicos-huila.html</loc>
+    <lastmod>2025-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://termopilas.co/blog/posts/proceso-elaboracion-vino-artesanal.html</loc>
