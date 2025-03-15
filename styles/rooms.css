@@ -41,7 +41,7 @@
 }
 
 .room-card {
-    background-color: var(--primary-color);
+    background-color: #504127;
     color: #fdf6ea;
     overflow: hidden;
     transition: transform 0.3s ease;
