@@ -474,7 +474,6 @@ footer a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
         position: fixed;
         top: 70px;
         left: 0;
@@ -485,15 +484,17 @@ footer a:hover {
         text-align: center;
         z-index: 999;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease-in-out;
-        transform: translateY(-10px);
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-100%);
         opacity: 0;
+        visibility: hidden;
+        display: flex;
     }
 
     .nav-menu.active {
-        display: flex;
         transform: translateY(0);
         opacity: 1;
+        visibility: visible;
     }
     
     .nav-menu li {

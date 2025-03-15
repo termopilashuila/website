@@ -216,22 +216,28 @@ function initMobileNav(): void {
   const navMenu = document.querySelector('.nav-menu') as HTMLElement;
 
   if (navToggle && navMenu) {
-    navToggle.addEventListener('click', (e: MouseEvent) => {
+    // Remove existing event listeners by cloning and replacing the elements
+    const newNavToggle = navToggle.cloneNode(true) as HTMLButtonElement;
+    navToggle.parentNode?.replaceChild(newNavToggle, navToggle);
+    
+    // Add event listener to the new toggle button
+    newNavToggle.addEventListener('click', (e: MouseEvent) => {
       e.stopPropagation(); // Prevent event from bubbling up
       navMenu.classList.toggle('active');
       // Accessibility: Update aria-expanded attribute
       const expanded = navMenu.classList.contains('active');
-      navToggle.setAttribute('aria-expanded', expanded.toString());
+      newNavToggle.setAttribute('aria-expanded', expanded.toString());
+      console.log('Toggle clicked, menu active:', expanded);
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e: MouseEvent) => {
       const target = e.target as Node;
       if (navMenu.classList.contains('active') && 
-          !navToggle.contains(target) && 
+          !newNavToggle.contains(target) && 
           !navMenu.contains(target)) {
         navMenu.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
+        newNavToggle.setAttribute('aria-expanded', 'false');
       }
     });
 
@@ -239,7 +245,7 @@ function initMobileNav(): void {
     navMenu.querySelectorAll('a').forEach((link: HTMLAnchorElement) => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
+        newNavToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
