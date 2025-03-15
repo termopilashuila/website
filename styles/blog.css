@@ -1,0 +1,255 @@
+/* Blog Hero Section */
+.blog-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/home/section0-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+/* Blog Intro Section */
+.blog-intro {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: #fdf6ea;
+}
+
+.blog-intro h2 {
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.blog-intro .section-description {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Blog Categories Section */
+.blog-categories {
+    padding: 2rem 0;
+    background-color: #fdf6ea;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.category-button {
+    padding: 0.5rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-button:hover {
+    background-color: #000000;
+    color: #fdf6ea;
+}
+
+.category-button.active {
+    background-color: #000000;
+    color: #fdf6ea;
+}
+
+/* Blog Posts Section */
+.blog-posts {
+    padding: 4rem 0;
+    background-color: #F9F9F9;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.blog-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.blog-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.blog-category {
+    color: #ff8c00;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: #000000;
+    line-height: 1.4;
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    color: #ff8c00;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.read-more i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover {
+    color: #000000;
+}
+
+.read-more:hover i {
+    transform: translateX(5px);
+}
+
+/* Newsletter Section */
+.blog-newsletter {
+    padding: 5rem 0;
+    background-color: #000000;
+    color: #fdf6ea;
+}
+
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.newsletter-content {
+    margin-bottom: 2rem;
+}
+
+.newsletter-content h2 {
+    margin-bottom: 1rem;
+    color: #fdf6ea;
+}
+
+.newsletter-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.newsletter-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+.newsletter-form .cta-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #ff8c00;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form .cta-button:hover {
+    background-color: #e67e00;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-hero {
+        height: 50vh;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form .cta-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-hero {
+        height: 40vh;
+    }
+    
+    .category-button {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .blog-content h3 {
+        font-size: 1.2rem;
+    }
+} 

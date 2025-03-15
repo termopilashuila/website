@@ -82,7 +82,8 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: 'rooms.html' },
     { text: 'Tour', href: 'tour.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
-    { text: 'Galería', href: 'galeria.html' }
+    { text: 'Galería', href: 'galeria.html' },
+    { text: 'Blog', href: 'blog.html' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
@@ -159,6 +160,14 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
     (headerElement as HTMLElementWithStyle).style.backgroundPosition = 'center';
   }
   
+  // Ensure blog page is included in navigation
+  let navItems = [...config.navItems];
+  const hasBlogItem = navItems.some(item => item.href === 'blog.html');
+  if (!hasBlogItem) {
+    // Add blog item before the last item (usually "Contacto")
+    navItems.push({ text: 'Blog', href: 'blog.html' });
+  }
+  
   // Generate the navbar HTML
   const navbarHTML = `
     <nav class="navbar">
@@ -172,7 +181,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
         <span class="hamburger"></span>
       </button>
       <ul class="nav-menu" id="nav-menu">
-        ${config.navItems.map(item => 
+        ${navItems.map(item => 
           `<li><a href="${item.href}"${item.isActive ? ' class="active"' : ''}>${item.text}</a></li>`
         ).join('')}
       </ul>
@@ -244,6 +253,12 @@ function initHeader(): void {
   // Create a copy of the default config
   const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
   
+  // Ensure blog page is included in navigation
+  const hasBlogItem = headerConfig.navItems.some(item => item.href === 'blog.html');
+  if (!hasBlogItem) {
+    headerConfig.navItems.push({ text: 'Blog', href: 'blog.html' });
+  }
+  
   // Set the active nav item based on current page
   headerConfig.navItems = headerConfig.navItems.map(item => {
     const itemPage = item.href.split('#')[0];
@@ -289,6 +304,15 @@ function initHeader(): void {
       subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
       ctaText: '',
       ctaHref: ''
+    };
+  } else if (pageName === 'blog.html') {
+    headerConfig.heroClass = 'hero blog-hero';
+    headerConfig.heroImage = 'assets/images/home/section0-hero.jpg';
+    headerConfig.heroContent = {
+      title: 'Nuestro Blog',
+      subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
+      ctaText: 'EXPLORAR',
+      ctaHref: '#main-content'
     };
   } else if (pageName === '404.html') {
     headerConfig.heroClass = 'hero';
@@ -509,19 +533,33 @@ function initTourExperienceLazyLoading(): void {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize header
-  initHeader();
+  // Initialize Google Analytics
+  initAnalytics();
   
-  // Initialize footer
+  // Initialize header and footer
+  initHeader();
   initFooter();
   
-  // Initialize analytics
-  initAnalytics();
-
+  // Initialize mobile navigation
+  initMobileNav();
+  
   // Initialize tour experience lazy loading if on tour page
   if (window.location.pathname.includes('tour.html')) {
     initTourExperienceLazyLoading();
   }
+  
+  // Initialize gallery lightbox if on gallery page
+  if (window.location.pathname.includes('galeria.html')) {
+    initGalleryLightbox();
+  }
+  
+  // Initialize blog category filtering if on blog page
+  if (window.location.pathname.includes('blog.html')) {
+    initBlogCategoryFiltering();
+  }
+  
+  // Initialize PWA install prompt
+  initPWAInstallPrompt();
   
   // Add fade-in animation to hero content
   const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
@@ -736,6 +774,12 @@ window.termopilasHeader = {
     const currentPath = window.location.pathname;
     const pageName = currentPath.split('/').pop() || 'index.html';
     
+    // Ensure blog page is included in navigation
+    const hasBlogItem = headerConfig.navItems.some(item => item.href === 'blog.html');
+    if (!hasBlogItem) {
+      headerConfig.navItems.push({ text: 'Blog', href: 'blog.html' });
+    }
+    
     // Set the active nav item based on current page
     headerConfig.navItems = headerConfig.navItems.map(item => {
       const itemPage = item.href.split('#')[0];
@@ -781,6 +825,15 @@ window.termopilasHeader = {
         subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
         ctaText: 'Ver Alojamiento',
         ctaHref: 'rooms.html'
+      };
+    } else if (pageName === 'blog.html') {
+      headerConfig.heroClass = 'hero blog-hero';
+      headerConfig.heroImage = 'assets/images/home/section0-hero.jpg';
+      headerConfig.heroContent = {
+        title: 'Nuestro Blog',
+        subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
+        ctaText: 'EXPLORAR',
+        ctaHref: '#main-content'
       };
     } else if (pageName === '404.html') {
       headerConfig.heroClass = 'hero';
@@ -843,4 +896,50 @@ window.termopilasAnalytics = {
   initializeAnalytics: () => {
     initAnalytics();
   }
-}; 
+};
+
+// Function to initialize blog category filtering
+function initBlogCategoryFiltering(): void {
+  const categoryButtons = document.querySelectorAll('.category-button');
+  const blogCards = document.querySelectorAll('.blog-card');
+  
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Get selected category
+      const selectedCategory = button.getAttribute('data-category');
+      
+      // Filter blog cards
+      blogCards.forEach(card => {
+        const cardElement = card as HTMLElement;
+        if (selectedCategory === 'all') {
+          cardElement.style.display = 'block';
+        } else {
+          const cardCategories = card.getAttribute('data-categories');
+          if (cardCategories && cardCategories.includes(selectedCategory)) {
+            cardElement.style.display = 'block';
+          } else {
+            cardElement.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+}
+
+// Function to initialize gallery lightbox
+function initGalleryLightbox(): void {
+  console.log('Gallery lightbox initialized');
+  // Implementation will be added later
+}
+
+// Function to initialize PWA install prompt
+function initPWAInstallPrompt(): void {
+  console.log('PWA install prompt initialized');
+  // Implementation will be added later
+} 
