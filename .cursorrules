@@ -5,7 +5,7 @@
   },
   "structure": {
     "html": {
-      "files": ["index.html", "rooms.html", "404.html", "tour-vino-cacao.html", "ubicacion.html"],
+      "files": ["index.html", "rooms.html", "404.html", "tour.html", "ubicacion.html"],
       "location": "root directory"
     },
     "css": {

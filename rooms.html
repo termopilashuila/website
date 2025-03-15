@@ -8,7 +8,15 @@
     <meta name="keywords" content="Finca Termópilas, alojamiento Huila, alojamiento de lujo, Rivera, habitaciones con vista">
     <meta name="author" content="Finca Termópilas">
     
-    <!-- Google Analytics will be dynamically added by TypeScript -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
     
     <!-- Favicon -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
@@ -55,11 +63,6 @@
     </header>
 
     <main id="main-content">
-        <section class="section" tabindex="-1">
-            <h2>Alojamiento</h2>
-            <p class="section-description">Descubre nuestras 8 habitaciones, incluyendo 3 de lujo, en Finca Termópilas. Disfruta de comodidad y naturaleza en un entorno único.</p>
-            <p class="section-description note">Cada habitación cuenta con su propia imagen representativa. Disfruta explorando nuestras opciones de alojamiento.</p>
-        </section>
 
         <div class="room-filters">
             <button class="filter-button active" data-filter="all">Todas</button>
@@ -71,7 +74,7 @@
 
         <div class="rooms-grid">
             <!-- Cabaña 1 -->
-            <div class="room-card" data-category="luxury couples groups">
+            <div class="room-card" data-category="luxury couples">
                 <div class="luxury-badge">De Lujo</div>
                 <img src="assets/images/rooms/section1-room1.jpg" alt="Cabaña 1 con terraza y vista panorámica" class="room-image">
                 <div class="room-content">
@@ -93,7 +96,7 @@
             </div>
 
             <!-- Gemela 1 -->
-            <div class="room-card" data-category="luxury couples groups">
+            <div class="room-card" data-category="luxury couples">
                 <div class="luxury-badge">De Lujo</div>
                 <img src="assets/images/rooms/section1-room2.jpg" alt="Gemela 1 con terraza y proyector" class="room-image">
                 <div class="room-content">
@@ -115,7 +118,7 @@
             </div>
 
             <!-- Gemela 2 -->
-            <div class="room-card" data-category="luxury couples groups">
+            <div class="room-card" data-category="luxury couples">
                 <div class="luxury-badge">De Lujo</div>
                 <img src="assets/images/rooms/section1-room3.jpg" alt="Gemela 2 con terraza y proyector" class="room-image">
                 <div class="room-content">
@@ -137,7 +140,7 @@
             </div>
 
             <!-- Habitación A -->
-            <div class="room-card" data-category="standard groups">
+            <div class="room-card" data-category="standard">
                 <img src="assets/images/rooms/section1-room4.jpg" alt="Habitación A con camas dobles" class="room-image">
                 <div class="room-content">
                     <h3 class="room-title">Habitación A</h3>
@@ -154,7 +157,7 @@
             </div>
 
             <!-- Habitación B -->
-            <div class="room-card" data-category="standard groups">
+            <div class="room-card" data-category="standard">
                 <img src="assets/images/rooms/section1-room5.jpg" alt="Habitación B con camas dobles y escritorio" class="room-image">
                 <div class="room-content">
                     <h3 class="room-title">Habitación B</h3>
@@ -189,7 +192,7 @@
             </div>
 
             <!-- Habitación D -->
-            <div class="room-card" data-category="standard couples groups">
+            <div class="room-card" data-category="standard couples">
                 <img src="assets/images/rooms/section1-room7.jpg" alt="Habitación D con cama doble y sofá cama" class="room-image">
                 <div class="room-content">
                     <h3 class="room-title">Habitación D</h3>

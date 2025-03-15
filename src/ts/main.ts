@@ -78,7 +78,7 @@ const defaultHeaderConfig: HeaderConfig = {
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
     { text: 'Alojamiento', href: 'rooms.html' },
-    { text: 'Tour de Vino y Cacao', href: 'tour-vino-cacao.html' },
+    { text: 'Tour de Vino y Cacao', href: 'tour.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'index.html#galeria' }
   ],
@@ -248,17 +248,17 @@ function initHeader(): void {
     headerConfig.heroClass = 'hero rooms-hero';
     headerConfig.heroContent = {
       title: 'Alojamiento',
-      subtitle: 'Confort y naturaleza en un solo lugar',
+      subtitle: 'Habitaciones cómodas en un entorno natural',
       ctaText: 'RESERVA AHORA',
       ctaHref: 'index.html#contacto'
     };
-  } else if (pageName === 'tour-vino-cacao.html') {
+  } else if (pageName === 'tour.html') {
     headerConfig.heroClass = 'hero tour-hero';
     headerConfig.heroContent = {
       title: 'Tour de Vino 🍷 y Chocolate 🍫',
       subtitle: 'Una experiencia sensorial única en Finca Termópilas',
       ctaText: 'RESERVA AHORA',
-      ctaHref: 'https://wa.link/vscfew'
+      ctaHref: '#main-content'
     };
   } else if (pageName === 'ubicacion.html') {
     headerConfig.heroClass = 'hero directions-hero';
@@ -331,7 +331,7 @@ function initFooter(): void {
   // Customize footer content based on page if needed
   if (pageName === 'rooms.html') {
     footerConfig.contact.description = 'Escríbenos para más información o reservas';
-  } else if (pageName === 'tour-vino-cacao.html') {
+  } else if (pageName === 'tour.html') {
     footerConfig.contact.description = 'Escríbenos para reservar tu tour';
   }
   
@@ -360,11 +360,145 @@ function initAnalytics(config: AnalyticsConfig = defaultAnalyticsConfig): void {
   });
 }
 
-// Call initHeader and initFooter when DOM is loaded
+// Initialize lazy loading for tour experience section
+function initTourExperienceLazyLoading(): void {
+  const experienceTimeline = document.querySelector('.experience-timeline');
+  if (!experienceTimeline) return;
+
+  const experienceItems = Array.from(experienceTimeline.querySelectorAll('.experience-item'));
+  
+  // Show only the first 3 items initially
+  const initialItemsToShow = 3;
+  experienceItems.forEach((item, index) => {
+    if (index >= initialItemsToShow) {
+      // Add a special class instead of inline styles to avoid conflicts
+      item.classList.add('lazy-hidden');
+    }
+  });
+
+  // Function to reveal an item
+  const revealItem = (item: HTMLElement) => {
+    // Use class toggle instead of inline styles
+    item.classList.remove('lazy-hidden');
+    item.classList.add('lazy-visible');
+    console.log('Item revealed:', item.querySelector('h3')?.textContent);
+  };
+
+  // Create intersection observer with more generous margins for desktop
+  const observerOptions: IntersectionObserverInit = {
+    root: null, // viewport
+    rootMargin: '0px 0px 300px 0px', // Increased bottom margin to detect earlier
+    threshold: 0.01 // Trigger when just 1% of the item is visible
+  };
+
+  // Create the observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const item = entry.target as HTMLElement;
+        revealItem(item);
+        // Stop observing this item
+        observer.unobserve(item);
+      }
+    });
+  }, observerOptions);
+
+  // Start observing all items except the initial ones
+  experienceItems.forEach((item, index) => {
+    if (index >= initialItemsToShow) {
+      observer.observe(item);
+      console.log('Observing item:', item.querySelector('h3')?.textContent);
+      
+      // Fallback: If the item hasn't been revealed after 5 seconds of page load,
+      // reveal it anyway (this helps with browsers where IntersectionObserver might not work well)
+      setTimeout(() => {
+        if (item.classList.contains('lazy-hidden')) {
+          console.log('Fallback revealing item:', item.querySelector('h3')?.textContent);
+          revealItem(item as HTMLElement);
+          observer.unobserve(item);
+        }
+      }, 5000 + (index - initialItemsToShow) * 500); // Stagger the fallback reveals
+    }
+  });
+
+  // Also lazy load images with more generous margins
+  const imageObserverOptions: IntersectionObserverInit = {
+    root: null,
+    rootMargin: '0px 0px 500px 0px', // Load images even earlier
+    threshold: 0.01
+  };
+
+  // Function to load an image
+  const loadImage = (img: HTMLImageElement) => {
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+      
+      // Remove loading class when image is loaded
+      img.onload = () => {
+        const container = img.closest('.experience-image');
+        if (container) {
+          container.classList.remove('loading');
+        }
+      };
+    }
+  };
+
+  const experienceImages = document.querySelectorAll('.experience-image img');
+  experienceImages.forEach((img, index) => {
+    const imgElement = img as HTMLImageElement;
+    // Store the actual image URL in a data attribute
+    const actualSrc = imgElement.src;
+    // Set a placeholder or low-res image initially
+    imgElement.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+    imgElement.dataset.src = actualSrc;
+    
+    // Add loading class to parent container
+    const container = imgElement.closest('.experience-image');
+    if (container) {
+      container.classList.add('loading');
+    }
+    
+    // Create an observer for each image
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          loadImage(img);
+          // Stop observing this image
+          imageObserver.unobserve(img);
+        }
+      });
+    }, imageObserverOptions);
+    
+    // Start observing the image
+    imageObserver.observe(imgElement);
+    
+    // Fallback: Load the image after a timeout if it hasn't loaded yet
+    setTimeout(() => {
+      if (imgElement.src.includes('data:image')) {
+        console.log('Fallback loading image:', index);
+        loadImage(imgElement);
+        imageObserver.unobserve(imgElement);
+      }
+    }, 7000 + index * 300); // Stagger the fallback image loads
+  });
+}
+
+// Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize header
   initHeader();
+  
+  // Initialize footer
   initFooter();
+  
+  // Initialize analytics
   initAnalytics();
+
+  // Initialize tour experience lazy loading if on tour page
+  if (window.location.pathname.includes('tour.html')) {
+    initTourExperienceLazyLoading();
+  }
   
   // Add fade-in animation to hero content
   const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
@@ -421,7 +555,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor: HTMLAnchorElement) =>
 });
 
 // Intersection Observer for scroll animations
-const sections = document.querySelectorAll('.section');
+const sections = document.querySelectorAll('.section:not(.tour-experience)');
 const observerOptions: IntersectionObserverInit = {
     root: null,
     threshold: 0.1,
@@ -592,18 +726,18 @@ window.termopilasHeader = {
     if (pageName === 'rooms.html') {
       headerConfig.heroClass = 'hero rooms-hero';
       headerConfig.heroContent = {
-        title: 'Nuestro Alojamiento',
-        subtitle: 'Confort y naturaleza en un solo lugar',
+        title: 'Alojamiento en <strong>Finca Termópilas</strong>',
+        subtitle: 'Habitaciones cómodas en un entorno natural',
         ctaText: 'RESERVA AHORA',
         ctaHref: 'index.html#contacto'
       };
-    } else if (pageName === 'tour-vino-cacao.html') {
+    } else if (pageName === 'tour.html') {
       headerConfig.heroClass = 'hero tour-hero';
       headerConfig.heroContent = {
         title: 'Tour de Vino 🍷 y Chocolate 🍫',
         subtitle: 'Una experiencia sensorial única en Finca Termópilas',
         ctaText: 'RESERVA AHORA',
-        ctaHref: 'https://wa.link/vscfew'
+        ctaHref: '#main-content'
       };
     } else if (pageName === 'ubicacion.html') {
       headerConfig.heroClass = 'hero directions-hero';
@@ -643,7 +777,7 @@ window.termopilasFooter = {
     // Apply page-specific configurations
     if (pageName === 'rooms.html') {
       footerConfig.contact.description = 'Escríbenos para más información o reservas';
-    } else if (pageName === 'tour-vino-cacao.html') {
+    } else if (pageName === 'tour.html') {
       footerConfig.contact.description = 'Escríbenos para reservar tu tour';
     }
     
