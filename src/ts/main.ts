@@ -25,6 +25,7 @@ interface HeaderConfig {
     ctaHref: string;
   };
   heroClass?: string;
+  heroImage?: string; // Path to the hero background image
 }
 
 // Footer configuration interface
@@ -89,7 +90,8 @@ const defaultHeaderConfig: HeaderConfig = {
     ctaText: 'AGENDA AHORA',
     ctaHref: '#contacto'
   },
-  heroClass: 'hero'
+  heroClass: 'hero',
+  heroImage: 'assets/images/home/section0-hero.jpg'
 };
 
 // Default footer configuration
@@ -148,6 +150,13 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   // Set the hero class if provided
   if (config.heroClass) {
     headerElement.className = config.heroClass;
+  }
+  
+  // Set the hero background image if provided
+  if (config.heroImage) {
+    (headerElement as HTMLElementWithStyle).style.backgroundImage = `url('${config.heroImage}')`;
+    (headerElement as HTMLElementWithStyle).style.backgroundSize = 'cover';
+    (headerElement as HTMLElementWithStyle).style.backgroundPosition = 'center';
   }
   
   // Generate the navbar HTML
@@ -247,6 +256,7 @@ function initHeader(): void {
   // Customize hero content based on page
   if (pageName === 'rooms.html') {
     headerConfig.heroClass = 'hero rooms-hero';
+    headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
     headerConfig.heroContent = {
       title: 'Alojamiento',
       subtitle: 'Habitaciones cómodas en un entorno natural',
@@ -255,6 +265,7 @@ function initHeader(): void {
     };
   } else if (pageName === 'tour.html') {
     headerConfig.heroClass = 'hero tour-hero';
+    headerConfig.heroImage = 'assets/images/tour/section0.jpg';
     headerConfig.heroContent = {
       title: 'Tour de Vino 🍷 y Chocolate 🍫',
       subtitle: 'Una experiencia sensorial única en Finca Termópilas',
@@ -263,6 +274,7 @@ function initHeader(): void {
     };
   } else if (pageName === 'ubicacion.html') {
     headerConfig.heroClass = 'hero directions-hero';
+    headerConfig.heroImage = 'assets/images/directions/section0.jpg';
     headerConfig.heroContent = {
       title: 'Cómo Llegar',
       subtitle: 'Instrucciones para encontrarnos',
@@ -271,6 +283,7 @@ function initHeader(): void {
     };
   } else if (pageName === '404.html') {
     headerConfig.heroClass = 'hero';
+    headerConfig.heroImage = 'assets/images/error/section0.jpg';
     // For 404 page, we don't need hero content as it has its own error container
     headerConfig.heroContent = undefined;
   }
@@ -726,6 +739,7 @@ window.termopilasHeader = {
     // Apply page-specific configurations
     if (pageName === 'rooms.html') {
       headerConfig.heroClass = 'hero rooms-hero';
+      headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
       headerConfig.heroContent = {
         title: 'Alojamiento en <strong>Finca Termópilas</strong>',
         subtitle: 'Habitaciones cómodas en un entorno natural',
@@ -734,6 +748,7 @@ window.termopilasHeader = {
       };
     } else if (pageName === 'tour.html') {
       headerConfig.heroClass = 'hero tour-hero';
+      headerConfig.heroImage = 'assets/images/tour/section0.jpg';
       headerConfig.heroContent = {
         title: 'Tour de Vino 🍷 y Chocolate 🍫',
         subtitle: 'Una experiencia sensorial única en Finca Termópilas',
@@ -742,6 +757,7 @@ window.termopilasHeader = {
       };
     } else if (pageName === 'ubicacion.html') {
       headerConfig.heroClass = 'hero directions-hero';
+      headerConfig.heroImage = 'assets/images/directions/section0.jpg';
       headerConfig.heroContent = {
         title: 'Cómo Llegar a Finca Termópilas',
         subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
@@ -750,6 +766,7 @@ window.termopilasHeader = {
       };
     } else if (pageName === '404.html') {
       headerConfig.heroClass = 'hero';
+      headerConfig.heroImage = 'assets/images/error/section0.jpg';
       // For 404 page, we don't need hero content as it has its own error container
       headerConfig.heroContent = undefined;
     }
