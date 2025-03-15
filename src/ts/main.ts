@@ -3,38 +3,230 @@ interface HTMLElementWithStyle extends HTMLElement {
   style: CSSStyleDeclaration;
 }
 
-// Mobile Navigation Toggle
-const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-const navMenu = document.querySelector('.nav-menu') as HTMLElement;
+// Header configuration interface
+interface HeaderConfig {
+  logoText: string;
+  logoIcon: string;
+  navItems: Array<{
+    text: string;
+    href: string;
+    isActive?: boolean;
+  }>;
+  heroContent?: {
+    title: string;
+    subtitle: string;
+    ctaText: string;
+    ctaHref: string;
+  };
+  heroClass?: string;
+}
 
-if (navToggle && navMenu) {
+// Define the global interface for the window object
+interface TermopilasHeader {
+  updateConfig: (config: Partial<HeaderConfig>) => void;
+  regenerateHeader: () => void;
+}
+
+interface Window {
+  termopilasHeader: TermopilasHeader;
+}
+
+// Default header configuration
+const defaultHeaderConfig: HeaderConfig = {
+  logoText: 'Finca Termópilas',
+  logoIcon: 'fas fa-map-marker-alt',
+  navItems: [
+    { text: 'Habitaciones', href: 'rooms.html' },
+    { text: 'Tour de Vino y Cacao', href: 'tour-vino-cacao.html' },
+    { text: 'Cómo Llegar', href: 'locate.html' },
+    { text: 'Galería', href: 'index.html#galeria' }
+  ],
+  heroContent: {
+    title: 'Entorno que <strong>cautiva</strong>',
+    subtitle: 'Rivera - Huila 🇨🇴',
+    ctaText: 'AGENDA AHORA',
+    ctaHref: '#contacto'
+  },
+  heroClass: 'hero'
+};
+
+// Function to generate header HTML
+function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
+  // Find the header element
+  const headerElement = document.querySelector('header');
+  if (!headerElement) {
+    console.error('Header element not found');
+    return;
+  }
+  
+  // Set the hero class if provided
+  if (config.heroClass) {
+    headerElement.className = config.heroClass;
+  }
+  
+  // Generate the navbar HTML
+  const navbarHTML = `
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">
+          <i class="${config.logoIcon}"></i>
+          <span>${config.logoText}</span>
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        ${config.navItems.map(item => 
+          `<li><a href="${item.href}"${item.isActive ? ' class="active"' : ''}>${item.text}</a></li>`
+        ).join('')}
+      </ul>
+    </nav>
+  `;
+  
+  // Generate the hero content HTML if provided
+  let heroContentHTML = '';
+  if (config.heroContent) {
+    heroContentHTML = `
+      <div class="hero-content">
+        <h1>${config.heroContent.title}</h1>
+        <p>${config.heroContent.subtitle}</p>
+        <a href="${config.heroContent.ctaHref}" class="cta-button">${config.heroContent.ctaText}</a>
+      </div>
+    `;
+  }
+  
+  // Set the header content
+  headerElement.innerHTML = navbarHTML + heroContentHTML;
+  
+  // Reinitialize the mobile navigation toggle
+  initMobileNav();
+}
+
+// Function to initialize mobile navigation
+function initMobileNav(): void {
+  const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const navMenu = document.querySelector('.nav-menu') as HTMLElement;
+
+  if (navToggle && navMenu) {
     navToggle.addEventListener('click', (e: MouseEvent) => {
-        e.stopPropagation(); // Prevent event from bubbling up
-        navMenu.classList.toggle('active');
-        // Accessibility: Update aria-expanded attribute
-        const expanded = navMenu.classList.contains('active');
-        navToggle.setAttribute('aria-expanded', expanded.toString());
+      e.stopPropagation(); // Prevent event from bubbling up
+      navMenu.classList.toggle('active');
+      // Accessibility: Update aria-expanded attribute
+      const expanded = navMenu.classList.contains('active');
+      navToggle.setAttribute('aria-expanded', expanded.toString());
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e: MouseEvent) => {
-        const target = e.target as Node;
-        if (navMenu.classList.contains('active') && 
-            !navToggle.contains(target) && 
-            !navMenu.contains(target)) {
-            navMenu.classList.remove('active');
-            navToggle.setAttribute('aria-expanded', 'false');
-        }
+      const target = e.target as Node;
+      if (navMenu.classList.contains('active') && 
+          !navToggle.contains(target) && 
+          !navMenu.contains(target)) {
+        navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Close mobile menu when clicking a link
     navMenu.querySelectorAll('a').forEach((link: HTMLAnchorElement) => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.setAttribute('aria-expanded', 'false');
-        });
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
+  }
 }
+
+// Initialize header based on current page
+function initHeader(): void {
+  const currentPath = window.location.pathname;
+  const pageName = currentPath.split('/').pop() || 'index.html';
+  
+  // Create a copy of the default config
+  const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
+  
+  // Set the active nav item based on current page
+  headerConfig.navItems = headerConfig.navItems.map(item => {
+    const itemPage = item.href.split('#')[0];
+    if (itemPage === pageName) {
+      return { ...item, isActive: true };
+    }
+    return item;
+  });
+  
+  // Customize hero content based on page
+  if (pageName === 'rooms.html') {
+    headerConfig.heroClass = 'hero rooms-hero';
+    headerConfig.heroContent = {
+      title: 'Nuestras Habitaciones',
+      subtitle: 'Confort y naturaleza en un solo lugar',
+      ctaText: 'RESERVA AHORA',
+      ctaHref: 'index.html#contacto'
+    };
+  } else if (pageName === 'tour-vino-cacao.html') {
+    headerConfig.heroClass = 'hero tour-hero';
+    headerConfig.heroContent = {
+      title: 'Tour de Vino 🍷 y Chocolate 🍫',
+      subtitle: 'Una experiencia sensorial única en Finca Termópilas',
+      ctaText: 'RESERVA AHORA',
+      ctaHref: 'https://wa.link/vscfew'
+    };
+  } else if (pageName === 'locate.html') {
+    headerConfig.heroClass = 'hero directions-hero';
+    headerConfig.heroContent = {
+      title: 'Cómo Llegar a Finca Termópilas',
+      subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+      ctaText: 'ABRIR EN GOOGLE MAPS',
+      ctaHref: 'https://maps.app.goo.gl/Sv7AgA1EJQRauGP46'
+    };
+  } else if (pageName === '404.html') {
+    headerConfig.heroClass = 'hero';
+    // For 404 page, we don't need hero content as it has its own error container
+    headerConfig.heroContent = undefined;
+  }
+  
+  // Generate the header with the customized config
+  generateHeader(headerConfig);
+}
+
+// Call initHeader when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  initHeader();
+  
+  // Add fade-in animation to hero content
+  const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
+  if (heroContent) {
+    heroContent.style.opacity = '0';
+    setTimeout(() => {
+      heroContent.style.transition = 'opacity 1s ease-out';
+      heroContent.style.opacity = '1';
+    }, 300);
+  }
+  
+  // Add accessibility attributes to navigation
+  const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const navMenu = document.querySelector('.nav-menu') as HTMLElement;
+  if (navToggle && navMenu) {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-controls', 'nav-menu');
+    navMenu.setAttribute('id', 'nav-menu');
+  }
+  
+  // Add skip link for keyboard navigation
+  const skipLink = document.createElement('a');
+  skipLink.href = '#main-content';
+  skipLink.className = 'skip-link';
+  skipLink.textContent = 'Saltar al contenido principal';
+  document.body.insertBefore(skipLink, document.body.firstChild);
+  
+  // Mark main content for accessibility
+  const mainContent = document.querySelector('#alojamiento') as HTMLElement;
+  if (mainContent) {
+    mainContent.setAttribute('id', 'main-content');
+    mainContent.setAttribute('tabindex', '-1');
+  }
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor: HTMLAnchorElement) => {
@@ -49,11 +241,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor: HTMLAnchorElement) =>
                 behavior: 'smooth',
                 block: 'start'
             });
-            // Close mobile menu after clicking a link
-            if (navMenu && navToggle) {
-                navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-            }
+            
+            // Update URL hash without scrolling
+            history.pushState(null, '', href);
         }
     });
 });
@@ -194,40 +384,6 @@ if ('loading' in HTMLImageElement.prototype) {
     });
 }
 
-// Initialize page animations
-document.addEventListener('DOMContentLoaded', () => {
-    // Add fade-in animation to hero content
-    const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
-    if (heroContent) {
-        heroContent.style.opacity = '0';
-        setTimeout(() => {
-            heroContent.style.transition = 'opacity 1s ease-out';
-            heroContent.style.opacity = '1';
-        }, 300);
-    }
-    
-    // Add accessibility attributes to navigation
-    if (navToggle && navMenu) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-controls', 'nav-menu');
-        navMenu.setAttribute('id', 'nav-menu');
-    }
-    
-    // Add skip link for keyboard navigation
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.className = 'skip-link';
-    skipLink.textContent = 'Saltar al contenido principal';
-    document.body.insertBefore(skipLink, document.body.firstChild);
-    
-    // Mark main content for accessibility
-    const mainContent = document.querySelector('#alojamiento') as HTMLElement;
-    if (mainContent) {
-        mainContent.setAttribute('id', 'main-content');
-        mainContent.setAttribute('tabindex', '-1');
-    }
-});
-
 // Service Worker Registration for PWA support
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -239,4 +395,65 @@ if ('serviceWorker' in navigator) {
                 console.error('Service Worker registration failed:', error);
             });
     });
-} 
+}
+
+// Initialize the global header object
+window.termopilasHeader = {
+  updateConfig: (config: Partial<HeaderConfig>) => {
+    // Create a copy of the default config
+    const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
+    
+    // Merge with the current page-specific config
+    const currentPath = window.location.pathname;
+    const pageName = currentPath.split('/').pop() || 'index.html';
+    
+    // Set the active nav item based on current page
+    headerConfig.navItems = headerConfig.navItems.map(item => {
+      const itemPage = item.href.split('#')[0];
+      if (itemPage === pageName) {
+        return { ...item, isActive: true };
+      }
+      return item;
+    });
+    
+    // Apply page-specific configurations
+    if (pageName === 'rooms.html') {
+      headerConfig.heroClass = 'hero rooms-hero';
+      headerConfig.heroContent = {
+        title: 'Nuestras Habitaciones',
+        subtitle: 'Confort y naturaleza en un solo lugar',
+        ctaText: 'RESERVA AHORA',
+        ctaHref: 'index.html#contacto'
+      };
+    } else if (pageName === 'tour-vino-cacao.html') {
+      headerConfig.heroClass = 'hero tour-hero';
+      headerConfig.heroContent = {
+        title: 'Tour de Vino 🍷 y Chocolate 🍫',
+        subtitle: 'Una experiencia sensorial única en Finca Termópilas',
+        ctaText: 'RESERVA AHORA',
+        ctaHref: 'https://wa.link/vscfew'
+      };
+    } else if (pageName === 'locate.html') {
+      headerConfig.heroClass = 'hero directions-hero';
+      headerConfig.heroContent = {
+        title: 'Cómo Llegar a Finca Termópilas',
+        subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+        ctaText: 'ABRIR EN GOOGLE MAPS',
+        ctaHref: 'https://maps.app.goo.gl/Sv7AgA1EJQRauGP46'
+      };
+    } else if (pageName === '404.html') {
+      headerConfig.heroClass = 'hero';
+      // For 404 page, we don't need hero content as it has its own error container
+      headerConfig.heroContent = undefined;
+    }
+    
+    // Override with the provided config
+    Object.assign(headerConfig, config);
+    
+    // Generate the header with the merged config
+    generateHeader(headerConfig);
+  },
+  regenerateHeader: () => {
+    initHeader();
+  }
+}; 
