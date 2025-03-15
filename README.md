@@ -6,7 +6,6 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 
 - Diseño responsive para móvil y escritorio
 - Optimización para SEO
-- Soporte para Progressive Web App (PWA)
 - Galería de imágenes
 - Información de alojamiento
 - Detalles de productos
@@ -23,7 +22,6 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - CSS3 (con Flexbox y Grid)
 - TypeScript
 - Webpack para compilación
-- Service Workers para PWA
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
 
@@ -36,8 +34,6 @@ finca-termopilas/
 ├── tour-vino-cacao.html    # Página del tour
 ├── ubicacion.html          # Página de cómo llegar
 ├── 404.html                # Página de error
-├── manifest.json           # Manifest para PWA
-├── service-worker.js       # Service Worker para PWA
 ├── sitemap.xml             # Sitemap para SEO
 ├── robots.txt              # Robots.txt para SEO
 ├── CNAME                   # Archivo CNAME para dominio personalizado
@@ -193,7 +189,7 @@ finca-termopilas/
     location: {
       title: string;
       address: string[];
-      wazeLink: string;
+      directionsLink: string;
     };
     contact: {
       title: string;
@@ -405,19 +401,6 @@ El sitio incluye:
 - Sitemap.xml
 - Robots.txt
 - URLs semánticas y descriptivas
-
-## Soporte PWA
-
-El sitio funciona como una Progressive Web App, lo que permite:
-
-- Instalación en dispositivos móviles
-- Funcionamiento offline
-- Carga rápida
-- Experiencia de usuario mejorada
-
-### Versión de caché
-
-La versión actual del caché es `termopilas-cache-v5`. Al realizar cambios significativos en el sitio, se debe incrementar esta versión en el archivo `service-worker.js`.
 
 ## Características de accesibilidad
 

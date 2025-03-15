@@ -40,7 +40,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/hero.css">
     <link rel="stylesheet" href="styles/rooms.css">
-    <link rel="stylesheet" href="styles/pwa-prompt.css">
     <link rel="stylesheet" href="styles/utilities.css">
     
     <!-- Google Fonts -->
@@ -50,12 +49,6 @@
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- PWA Support -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- JavaScript -->
     <script src="dist/main.js" defer></script>
@@ -269,58 +262,6 @@
                     }
                 });
             });
-        });
-    </script>
-
-    <!-- PWA install prompt -->
-    <div id="pwa-install-prompt">
-        <p>¿Quieres instalar esta aplicación en tu dispositivo?</p>
-        <div>
-            <button id="pwa-install-yes">Sí, instalar</button>
-            <button id="pwa-install-no">No, gracias</button>
-        </div>
-    </div>
-
-    <script>
-        // PWA Install Prompt
-        let deferredPrompt;
-        const pwaInstallPrompt = document.getElementById('pwa-install-prompt');
-        const pwaInstallYes = document.getElementById('pwa-install-yes');
-        const pwaInstallNo = document.getElementById('pwa-install-no');
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            // Show the install prompt after 5 seconds
-            setTimeout(() => {
-                pwaInstallPrompt.style.display = 'block';
-            }, 5000);
-        });
-        
-        pwaInstallYes.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Show the install prompt
-                deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
-                const { outcome } = await deferredPrompt.userChoice;
-                // We no longer need the prompt
-                deferredPrompt = null;
-                // Hide the install prompt
-                pwaInstallPrompt.style.display = 'none';
-            }
-        });
-        
-        pwaInstallNo.addEventListener('click', () => {
-            // Hide the install prompt
-            pwaInstallPrompt.style.display = 'none';
-        });
-        
-        // Hide the install prompt when the app is installed
-        window.addEventListener('appinstalled', () => {
-            pwaInstallPrompt.style.display = 'none';
-            deferredPrompt = null;
         });
     </script>
 </body>

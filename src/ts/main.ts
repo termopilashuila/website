@@ -26,7 +26,7 @@ interface FooterConfig {
   location: {
     title: string;
     address: string[];
-    wazeLink: string;
+    directionsLink: string;
   };
   contact: {
     title: string;
@@ -87,7 +87,7 @@ const defaultFooterConfig: FooterConfig = {
       'Rivera',
       'Huila'
     ],
-    wazeLink: 'https://waze.com/ul/hd26x8pf80'
+    directionsLink: 'ubicacion.html'
   },
   contact: {
     title: '¿Tienes preguntas?',
@@ -244,7 +244,7 @@ function initHeader(): void {
     headerConfig.heroClass = 'hero directions-hero';
     headerConfig.heroContent = {
       title: 'Cómo Llegar',
-      subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+      subtitle: 'Instrucciones para encontrarnos',
       ctaText: '',
       ctaHref: ''
     };
@@ -273,8 +273,8 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
       <div class="location">
         <h3>${config.location.title}</h3>
         ${config.location.address.map(line => `<p>${line}</p>`).join('')}
-        <a href="${config.location.wazeLink}" target="_blank" class="waze-link" rel="noopener">
-          <i class="fas fa-map-marker-alt"></i> Abrir en Waze
+        <a href="${config.location.directionsLink}" class="directions-link" rel="noopener">
+          <i class="fas fa-map-marker-alt"></i> Ver instrucciones
         </a>
       </div>
       <div class="contact">

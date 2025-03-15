@@ -86,7 +86,7 @@
 }
 
 .pricing-card {
-    background-color: #000;
+    background-color: #504127;
     color: #fdf6ea;
     padding: 2rem;
     border-radius: 0;
@@ -346,33 +346,6 @@
 .feedback {
     padding: 4rem 0;
     text-align: center;
-}
-
-/* Social Media Section */
-.social-media {
-    background-color: #fdf6ea;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.instagram-link {
-    display: inline-flex;
-    align-items: center;
-    font-size: 1.2rem;
-    color: #000;
-    text-decoration: none;
-    margin: 1.5rem 0;
-}
-
-.instagram-link i {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-    color: #ff8c00;
-}
-
-.instagram-feed {
-    margin-top: 2rem;
-    min-height: 200px;
 }
 
 /* Responsive Styles */

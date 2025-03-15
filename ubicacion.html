@@ -24,19 +24,11 @@
     
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    
-    <!-- PWA Support -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2C5530">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/hero.css">
-    <link rel="stylesheet" href="styles/pwa-prompt.css">
     <link rel="stylesheet" href="styles/utilities.css">
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="styles/ubicacion.css">
@@ -95,29 +87,19 @@
             </section>
             
             <section class="directions-section">
-                <h2>Videos de ayuda</h2>
+                <h2>Ubicación en Google Maps</h2>
                 
-                <div class="video-container">
-                    <div class="video-card">
-                        <div class="video-info">
-                            <h3>Video desde el pueblo:</h3>
-                            <p>Este video muestra el recorrido desde el centro de Rivera hasta la Finca Termópilas.</p>
-                        </div>
-                        <a href="https://youtu.be/mb_MWLq5mZo" target="_blank" class="youtube-button">
-                            <i class="fab fa-youtube"></i> Ver en YouTube
-                        </a>
-                    </div>
-                    
-                    <div class="video-card">
-                        <div class="video-info">
-                            <h3>Video desde el portón:</h3>
-                            <p>Este video muestra el recorrido desde el portón de entrada hasta la Finca Termópilas.</p>
-                        </div>
-                        <a href="https://youtu.be/yKxOk5vC6yk" target="_blank" class="youtube-button">
-                            <i class="fab fa-youtube"></i> Ver en YouTube
-                        </a>
-                    </div>
+                <p>Puedes encontrarnos directamente en Google Maps:</p>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5731456235384!2d-75.25348492424863!3d2.7775000974205247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b747ebb4f0e7d%3A0x91fa8a9c124f2c9c!2sFinca%20Term%C3%B3pilas!5e0!3m2!1ses!2sco!4v1710467852099!5m2!1ses!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+                
+                <p class="text-center">
+                    <a href="https://maps.app.goo.gl/Sv7AgA1EJQRauGP46" class="cta-button" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Abrir en Google Maps
+                    </a>
+                </p>
             </section>
             
             <section class="directions-section transport-options">
@@ -146,19 +128,29 @@
             </section>
             
             <section class="directions-section">
-                <h2>Ubicación en Google Maps</h2>
+                <h2>Videos de ayuda</h2>
                 
-                <p>Puedes encontrarnos directamente en Google Maps:</p>
-                
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5731456235384!2d-75.25348492424863!3d2.7775000974205247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b747ebb4f0e7d%3A0x91fa8a9c124f2c9c!2sFinca%20Term%C3%B3pilas!5e0!3m2!1ses!2sco!4v1710467852099!5m2!1ses!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="video-container">
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h3>Video desde el pueblo:</h3>
+                            <p>Este video muestra el recorrido desde el centro de Rivera hasta la Finca Termópilas.</p>
+                        </div>
+                        <a href="https://youtu.be/mb_MWLq5mZo" target="_blank" class="youtube-button">
+                            <i class="fab fa-youtube"></i> Ver en YouTube
+                        </a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h3>Video desde el portón:</h3>
+                            <p>Este video muestra el recorrido desde el portón de entrada hasta la Finca Termópilas.</p>
+                        </div>
+                        <a href="https://youtu.be/yKxOk5vC6yk" target="_blank" class="youtube-button">
+                            <i class="fab fa-youtube"></i> Ver en YouTube
+                        </a>
+                    </div>
                 </div>
-                
-                <p class="text-center">
-                    <a href="https://maps.app.goo.gl/Sv7AgA1EJQRauGP46" class="cta-button" target="_blank">
-                        <i class="fas fa-map-marker-alt"></i> Abrir en Google Maps
-                    </a>
-                </p>
             </section>
         </div>
     </main>
@@ -167,57 +159,5 @@
     <footer id="contacto">
         <!-- Content will be injected by TypeScript -->
     </footer>
-    
-    <!-- PWA install prompt -->
-    <div id="pwa-install-prompt">
-        <p>¿Quieres instalar esta aplicación en tu dispositivo?</p>
-        <div>
-            <button id="pwa-install-yes">Sí, instalar</button>
-            <button id="pwa-install-no">No, gracias</button>
-        </div>
-    </div>
-    
-    <script>
-        // PWA Install Prompt
-        let deferredPrompt;
-        const pwaInstallPrompt = document.getElementById('pwa-install-prompt');
-        const pwaInstallYes = document.getElementById('pwa-install-yes');
-        const pwaInstallNo = document.getElementById('pwa-install-no');
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            // Show the install prompt after 5 seconds
-            setTimeout(() => {
-                pwaInstallPrompt.style.display = 'block';
-            }, 5000);
-        });
-        
-        pwaInstallYes.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Show the install prompt
-                deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
-                const { outcome } = await deferredPrompt.userChoice;
-                // We no longer need the prompt
-                deferredPrompt = null;
-                // Hide the install prompt
-                pwaInstallPrompt.style.display = 'none';
-            }
-        });
-        
-        pwaInstallNo.addEventListener('click', () => {
-            // Hide the install prompt
-            pwaInstallPrompt.style.display = 'none';
-        });
-        
-        // Hide the install prompt when the app is installed
-        window.addEventListener('appinstalled', () => {
-            pwaInstallPrompt.style.display = 'none';
-            deferredPrompt = null;
-        });
-    </script>
 </body>
 </html> 
