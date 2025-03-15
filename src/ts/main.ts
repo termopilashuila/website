@@ -82,7 +82,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: 'rooms.html' },
     { text: 'Tour', href: 'tour.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
-    { text: 'Galería', href: 'index.html#galeria' }
+    { text: 'Galería', href: 'galeria.html' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
@@ -278,6 +278,15 @@ function initHeader(): void {
     headerConfig.heroContent = {
       title: 'Cómo Llegar',
       subtitle: 'Instrucciones para encontrarnos',
+      ctaText: '',
+      ctaHref: ''
+    };
+  } else if (pageName === 'galeria.html') {
+    headerConfig.heroClass = 'hero gallery-hero';
+    headerConfig.heroImage = 'assets/images/gallery/section5-gallery1.jpg';
+    headerConfig.heroContent = {
+      title: 'Galería',
+      subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
       ctaText: '',
       ctaHref: ''
     };
@@ -763,6 +772,15 @@ window.termopilasHeader = {
         subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
         ctaText: '',
         ctaHref: ''
+      };
+    } else if (pageName === 'galeria.html') {
+      headerConfig.heroClass = 'hero gallery-hero';
+      headerConfig.heroImage = 'assets/images/gallery/section5-gallery1.jpg';
+      headerConfig.heroContent = {
+        title: 'Galería de Finca Termópilas',
+        subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
+        ctaText: 'Ver Alojamiento',
+        ctaHref: 'rooms.html'
       };
     } else if (pageName === '404.html') {
       headerConfig.heroClass = 'hero';
