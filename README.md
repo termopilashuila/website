@@ -309,6 +309,76 @@ finca-termopilas/
 - Acentos naranja para precios y distintivos
 - Efecto hover con elevación ligera
 - Distintivo "De Lujo" para habitaciones de lujo
+- Botón "Cotiza Ahora" que enlaza a WhatsApp para consultas directas
+- Categorías para filtrado: luxury, standard, couples, groups
+
+### Tipos de habitaciones
+La Finca Termópilas ofrece 8 opciones de alojamiento:
+
+#### Habitaciones de Lujo (3)
+1. **Cabaña 1** - $300.000/noche
+   - 4 personas máx
+   - Cama queen con nido
+   - Baño privado con agua caliente
+   - Aire acondicionado
+   - Escritorio
+   - Wifi Gratis
+   - 2 terrazas
+   - TV
+
+2. **Gemela 1** - $300.000/noche
+   - 4 personas máx
+   - Cama queen con nido
+   - Baño privado con agua caliente
+   - Aire acondicionado
+   - Escritorio
+   - Wifi Gratis
+   - 1 terraza
+   - Proyector con bafle
+
+3. **Gemela 2** - $300.000/noche
+   - 4 personas máx
+   - Cama queen con nido
+   - Baño privado con agua caliente
+   - Aire acondicionado
+   - Escritorio
+   - Wifi Gratis
+   - 1 terraza
+   - Proyector con bafle
+
+#### Habitaciones Estándar (5)
+1. **Habitación A** - $240.000/noche
+   - 4 personas máx
+   - Camas dobles
+   - Baño privado con agua caliente
+   - Wifi Gratis
+
+2. **Habitación B** - $240.000/noche
+   - 4 personas máx
+   - Camas dobles
+   - Baño privado con agua caliente
+   - Escritorio
+   - Wifi Gratis
+
+3. **Habitación C** - $160.000/noche
+   - 2 personas máx
+   - Cama doble
+   - Baño privado con agua caliente
+   - Wifi Gratis
+
+4. **Habitación D** - $200.000/noche
+   - 4 personas máx
+   - Cama doble
+   - Sofá cama
+   - Baño privado con agua caliente
+   - Wifi Gratis
+
+5. **Habitación E** - $360.000/noche
+   - 6 personas máx
+   - Camas dobles
+   - Baño privado con agua caliente
+   - Escritorio
+   - Wifi Gratis
 
 ### Línea de tiempo de experiencia del tour
 - Línea de tiempo vertical con línea de acento naranja
