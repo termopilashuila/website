@@ -395,6 +395,12 @@ function initFooter(): void {
 
 // Initialize Google Analytics
 function initAnalytics(config: AnalyticsConfig = defaultAnalyticsConfig): void {
+  // Check if Google Analytics is already initialized
+  if (window.dataLayer && window.gtag) {
+    console.log('Google Analytics already initialized');
+    return;
+  }
+  
   // Create the script element for Google Analytics
   const script = document.createElement('script');
   script.async = true;
@@ -412,6 +418,8 @@ function initAnalytics(config: AnalyticsConfig = defaultAnalyticsConfig): void {
   window.gtag('config', config.measurementId, {
     debug_mode: config.debugMode
   });
+  
+  console.log('Google Analytics initialized with ID:', config.measurementId);
 }
 
 // Initialize lazy loading for tour experience section
