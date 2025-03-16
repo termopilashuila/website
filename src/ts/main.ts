@@ -81,7 +81,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Inicio', href: 'index.html' },
     { text: 'Alojamiento', href: 'rooms.html' },
     { text: 'Tour', href: 'tour.html' },
-    { text: 'Coliving', href: 'coliving-nomadas-digitales.html' },
+    { text: 'Coliving', href: 'coliving.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'galeria.html' },
     { text: 'Blog', href: 'blog.html' }
@@ -301,7 +301,7 @@ function initHeader(): void {
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
     };
-  } else if (pageName === 'coliving-nomadas-digitales.html') {
+  } else if (pageName === 'coliving.html') {
     headerConfig.heroClass = 'hero coliving-hero';
     headerConfig.heroImage = 'assets/images/coliving/coliving-hero.jpg';
     headerConfig.heroContent = {
