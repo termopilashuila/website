@@ -30,7 +30,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 ```
 finca-termopilas/
 ├── index.html              # Página principal
-├── rooms.html              # Página de habitaciones
+├── alojamiento.html        # Página de habitaciones
 ├── tour.html               # Página del tour
 ├── ubicacion.html          # Página de cómo llegar
 ├── 404.html                # Página de error

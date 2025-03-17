@@ -79,7 +79,7 @@ const defaultHeaderConfig: HeaderConfig = {
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
     { text: 'Inicio', href: 'index.html' },
-    { text: 'Alojamiento', href: 'rooms.html' },
+    { text: 'Alojamiento', href: 'alojamiento.html' },
     { text: 'Tour', href: 'tour.html' },
     { text: 'Coliving', href: 'coliving.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
@@ -88,9 +88,9 @@ const defaultHeaderConfig: HeaderConfig = {
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
-    subtitle: 'Rivera - Huila 🇨🇴',
-    ctaText: 'AGENDA AHORA',
-    ctaHref: '#contacto'
+    subtitle: 'Rivera - Huila ��🇴',
+    ctaText: 'Ver Alojamiento',
+    ctaHref: 'alojamiento.html'
   },
   heroClass: 'hero',
   heroImage: 'assets/images/home/section0-hero.jpg'
@@ -283,7 +283,7 @@ function initHeader(): void {
   });
   
   // Customize hero content based on page
-  if (pageName === 'rooms.html') {
+  if (pageName === 'alojamiento.html') {
     headerConfig.heroClass = 'hero rooms-hero';
     headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
     headerConfig.heroContent = {
@@ -399,7 +399,7 @@ function initFooter(): void {
   const footerConfig: FooterConfig = JSON.parse(JSON.stringify(defaultFooterConfig));
   
   // Customize footer content based on page if needed
-  if (pageName === 'rooms.html') {
+  if (pageName === 'alojamiento.html') {
     footerConfig.contact.description = 'Escríbenos para más información o reservas';
   } else if (pageName === 'tour.html') {
     footerConfig.contact.description = 'Escríbenos para reservar tu tour';
@@ -826,7 +826,7 @@ window.termopilasHeader = {
     });
     
     // Apply page-specific configurations
-    if (pageName === 'rooms.html') {
+    if (pageName === 'alojamiento.html') {
       headerConfig.heroClass = 'hero rooms-hero';
       headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
       headerConfig.heroContent = {
@@ -860,7 +860,7 @@ window.termopilasHeader = {
         title: 'Galería de Finca Termópilas',
         subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
         ctaText: 'Ver Alojamiento',
-        ctaHref: 'rooms.html'
+        ctaHref: 'alojamiento.html'
       };
     } else if (pageName === 'blog.html') {
       headerConfig.heroClass = 'hero blog-hero';
@@ -908,7 +908,7 @@ window.termopilasFooter = {
     const pageName = currentPath.split('/').pop() || 'index.html';
     
     // Apply page-specific configurations
-    if (pageName === 'rooms.html') {
+    if (pageName === 'alojamiento.html') {
       footerConfig.contact.description = 'Escríbenos para más información o reservas';
     } else if (pageName === 'tour.html') {
       footerConfig.contact.description = 'Escríbenos para reservar tu tour';

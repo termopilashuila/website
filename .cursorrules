@@ -5,7 +5,7 @@
   },
   "structure": {
     "html": {
-      "files": ["index.html", "rooms.html", "404.html", "tour.html", "ubicacion.html", "galeria.html", "icon-generator.html"],
+      "files": ["index.html", "alojamiento.html", "404.html", "tour.html", "ubicacion.html", "galeria.html", "icon-generator.html"],
       "location": "root directory"
     },
     "css": {
