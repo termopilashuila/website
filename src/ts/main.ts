@@ -81,6 +81,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Inicio', href: 'index.html' },
     { text: 'Alojamiento', href: 'rooms.html' },
     { text: 'Tour', href: 'tour.html' },
+    { text: 'Coliving', href: 'coliving.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
     { text: 'Galería', href: 'galeria.html' },
     { text: 'Blog', href: 'blog.html' }
@@ -299,6 +300,15 @@ function initHeader(): void {
       subtitle: 'Una experiencia sensorial única en Finca Termópilas',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
+    };
+  } else if (pageName === 'coliving.html') {
+    headerConfig.heroClass = 'hero coliving-hero';
+    headerConfig.heroImage = 'assets/images/coliving/coliving-hero.jpg';
+    headerConfig.heroContent = {
+      title: 'Coliving para <strong>Nómadas Digitales</strong>',
+      subtitle: 'Trabajo remoto en un paraíso natural',
+      ctaText: 'RESERVA TU CUPO',
+      ctaHref: '#coliving-form'
     };
   } else if (pageName === 'ubicacion.html') {
     headerConfig.heroClass = 'hero directions-hero';
