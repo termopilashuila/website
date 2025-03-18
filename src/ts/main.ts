@@ -88,7 +88,7 @@ const defaultHeaderConfig: HeaderConfig = {
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
-    subtitle: 'Rivera - Huila ��🇴',
+    subtitle: 'Rivera - Huila 🇨🇴',
     ctaText: 'Ver Alojamiento',
     ctaHref: 'alojamiento.html'
   },
@@ -303,7 +303,7 @@ function initHeader(): void {
     };
   } else if (pageName === 'coliving.html') {
     headerConfig.heroClass = 'hero coliving-hero';
-    headerConfig.heroImage = 'assets/images/coliving/coliving-hero.jpg';
+    headerConfig.heroImage = 'assets/images/directions/section0.jpg';
     headerConfig.heroContent = {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
