@@ -303,7 +303,7 @@ function initHeader(): void {
     };
   } else if (pageName === 'coliving.html') {
     headerConfig.heroClass = 'hero coliving-hero';
-    headerConfig.heroImage = 'assets/images/directions/section0.jpg';
+    headerConfig.heroImage = 'assets/images/coliving/section0.jpg';
     headerConfig.heroContent = {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
