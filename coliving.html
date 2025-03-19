@@ -363,9 +363,28 @@
                             'event_label': 'lead_form'
                         });
                     }
-                    
-                    alert('¡Gracias por tu interés! Te contactaremos pronto con información sobre nuestra próxima semana de coliving.');
-                    form.reset();
+
+                    let data = {
+                        name: form.name.value,
+                        email: form.email.value,
+                        phone: form.phone.value,
+                        profession: form.profession.value,
+                        message: form.message.value
+                    }
+
+                    fetch('https://script.google.com/macros/s/AKfycbywANilnhja-qi5F5tlXlgZUTIDkuklsAvYY-6Yyfq7uTfvuYuCvBmazRGWoqWdjii5/exec', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data)
+                    })
+                    .then(() => {
+                        alert('¡Gracias por tu interés! Te contactaremos pronto con información sobre nuestra próxima semana de coliving.');
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
                 });
             }
         });
