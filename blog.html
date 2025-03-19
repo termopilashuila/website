@@ -212,8 +212,8 @@
                         <p>Recibe las últimas noticias, artículos y promociones directamente en tu correo electrónico.</p>
                     </div>
                     <form id="newsletter-form" class="newsletter-form">
-                        <input type="text" placeholder="Tu nombre" required>
-                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
                         <button type="submit" class="cta-button">Suscribirse</button>
                     </form>
                 </div>
@@ -223,10 +223,16 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() { 
                 // Form submission handler
-                const form = document.querySelector('.newsletter-form');
+                const form = document.getElementById('newsletter-form');
                 if (form) {
                     form.addEventListener('submit', function(e) {
                         e.preventDefault();
+                        
+                        // Get submit button to show loading state
+                        const submitButton = form.querySelector('button[type="submit"]');
+                        const originalButtonText = submitButton.innerHTML;
+                        submitButton.innerHTML = 'Enviando...';
+                        submitButton.disabled = true;
 
                         // Track form submission in Google Analytics
                         if (window.gtag) {
@@ -253,6 +259,12 @@
                         })
                         .catch(error => {
                             console.error('Error:', error);
+                            alert('Hubo un error al procesar tu solicitud. Por favor, intenta nuevamente más tarde.');
+                        })
+                        .finally(() => {
+                            // Reset button state
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
                         });
                     });
                 }
