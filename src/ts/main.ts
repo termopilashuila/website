@@ -3,12 +3,6 @@ interface HTMLElementWithStyle extends HTMLElement {
   style: CSSStyleDeclaration;
 }
 
-// Google Analytics configuration interface
-interface AnalyticsConfig {
-  measurementId: string;
-  debugMode?: boolean;
-}
-
 // Header configuration interface
 interface HeaderConfig {
   logoText: string;
@@ -60,15 +54,9 @@ interface TermopilasFooter {
   regenerateFooter: () => void;
 }
 
-interface TermopilasAnalytics {
-  updateConfig: (config: Partial<AnalyticsConfig>) => void;
-  initializeAnalytics: () => void;
-}
-
 interface Window {
   termopilasHeader: TermopilasHeader;
   termopilasFooter: TermopilasFooter;
-  termopilasAnalytics: TermopilasAnalytics;
   dataLayer: any[];
   gtag: (...args: any[]) => void;
 }
@@ -132,12 +120,6 @@ const defaultFooterConfig: FooterConfig = {
     ]
   },
   copyright: '© 2025 Finca Termópilas. Todos los derechos reservados.'
-};
-
-// Default analytics configuration
-const defaultAnalyticsConfig: AnalyticsConfig = {
-  measurementId: 'G-2406CNRCX9',
-  debugMode: false
 };
 
 // Function to generate header HTML
@@ -409,35 +391,6 @@ function initFooter(): void {
   generateFooter(footerConfig);
 }
 
-// Initialize Google Analytics
-function initAnalytics(config: AnalyticsConfig = defaultAnalyticsConfig): void {
-  // Check if Google Analytics is already initialized
-  if (window.dataLayer && window.gtag) {
-    console.log('Google Analytics already initialized');
-    return;
-  }
-  
-  // Create the script element for Google Analytics
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${config.measurementId}`;
-  document.head.appendChild(script);
-  
-  // Initialize the dataLayer and gtag function
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function() {
-    window.dataLayer.push(arguments);
-  };
-  
-  // Initialize Google Analytics
-  window.gtag('js', new Date());
-  window.gtag('config', config.measurementId, {
-    debug_mode: config.debugMode
-  });
-  
-  console.log('Google Analytics initialized with ID:', config.measurementId);
-}
-
 // Initialize lazy loading for tour experience section
 function initTourExperienceLazyLoading(): void {
   const experienceTimeline = document.querySelector('.experience-timeline');
@@ -685,9 +638,6 @@ function initGalleryLightbox(): void {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Google Analytics
-  initAnalytics();
-  
   // Initialize header and footer
   initHeader();
   initFooter();
@@ -1040,23 +990,6 @@ window.termopilasFooter = {
   },
   regenerateFooter: () => {
     initFooter();
-  }
-};
-
-// Initialize the global analytics object
-window.termopilasAnalytics = {
-  updateConfig: (config: Partial<AnalyticsConfig>) => {
-    // Create a copy of the default config
-    const analyticsConfig: AnalyticsConfig = JSON.parse(JSON.stringify(defaultAnalyticsConfig));
-    
-    // Override with the provided config
-    Object.assign(analyticsConfig, config);
-    
-    // Initialize Google Analytics with the merged config
-    initAnalytics(analyticsConfig);
-  },
-  initializeAnalytics: () => {
-    initAnalytics();
   }
 };
 

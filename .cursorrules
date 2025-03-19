@@ -155,6 +155,12 @@
     "build_tools": {
       "webpack": "Used for bundling TypeScript files",
       "ts-loader": "Used for loading TypeScript files in webpack"
+    },
+    "analytics": {
+      "implementation": "Implementado directamente en el HTML de cada página",
+      "tracking_id": "G-2406CNRCX9",
+      "placement": "En la sección <head> de cada documento HTML",
+      "notes": "No implementar mediante TypeScript para asegurar un seguimiento inmediato"
     }
   },
   "css": {

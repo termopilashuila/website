@@ -8,7 +8,15 @@
     <meta name="keywords" content="Coliving, Nómadas Digitales, Trabajo Remoto, Comunidad, Libertad, Naturaleza, Conectividad, Finca Termópilas, Rivera, Huila">
     <meta name="author" content="Finca Termópilas">
     
-    <!-- Google Analytics will be dynamically added by TypeScript -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
     
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -326,10 +334,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Google Analytics
-            if (window.termopilasAnalytics) {
-                window.termopilasAnalytics.initializeAnalytics();
-            }
+            // Google Analytics is now directly included in the HTML
             
             // Initialize header with custom configuration
             if (window.termopilasHeader) {

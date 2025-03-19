@@ -24,6 +24,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Webpack para compilación
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
+- Google Analytics para seguimiento de usuario
 
 ## Estructura del proyecto
 
@@ -500,3 +501,12 @@ Características responsive específicas:
 Para más información o soporte, contactar a:
 
 - Email: termopilashuila@gmail.com
+
+## Implementación de Google Analytics
+
+El sitio web utiliza Google Analytics (GA4) para el seguimiento de usuarios. Para garantizar un seguimiento consistente y confiable:
+
+- El tag de Google Analytics está implementado directamente en el HTML de cada página
+- El ID de seguimiento (G-2406CNRCX9) se configura en el `<head>` de cada documento HTML
+- Esta implementación asegura que el seguimiento de usuarios comience inmediatamente al cargar la página
+- La implementación está estandarizada en todos los archivos HTML, incluidas las entradas del blog
