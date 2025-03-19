@@ -364,19 +364,27 @@
                         });
                     }
 
-                    let data = {
+                    // Create FormData instead of JSON
+                    const formData = new FormData();
+                    formData.append('name', form.name.value);
+                    formData.append('email', form.email.value);
+                    formData.append('phone', form.phone.value);
+                    formData.append('profession', form.profession.value);
+                    formData.append('message', form.message.value);
+
+                    // Log the data being sent (for debugging)
+                    console.log('Sending form data:', {
                         name: form.name.value,
                         email: form.email.value,
                         phone: form.phone.value,
                         profession: form.profession.value,
                         message: form.message.value
-                    }
+                    });
 
-                    fetch('https://script.google.com/macros/s/AKfycbywANilnhja-qi5F5tlXlgZUTIDkuklsAvYY-6Yyfq7uTfvuYuCvBmazRGWoqWdjii5/exec', {
+                    fetch('https://script.google.com/macros/s/AKfycbwMvSTMkZEsf7ENLi3rqiyP8ufLDkBAyXPsfssIRD6L8VhKoFjWSDjh25sTClYdrfOI/exec', {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify(data)
+                        body: formData  // Send as FormData instead of JSON
                     })
                     .then(() => {
                         alert('¡Gracias por tu interés! Te contactaremos pronto con información sobre nuestra próxima semana de coliving.');
@@ -384,6 +392,7 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
                     });
                 });
             }
