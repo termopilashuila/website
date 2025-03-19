@@ -213,6 +213,15 @@ function initMobileNav(): void {
       console.log('Toggle clicked, menu active:', expanded);
     });
 
+    // Prevent touch events on the nav menu from propagating to document
+    navMenu.addEventListener('touchstart', (e: TouchEvent) => {
+      e.stopPropagation();
+    }, { passive: true });
+
+    navMenu.addEventListener('touchmove', (e: TouchEvent) => {
+      // Allow default scrolling behavior within the menu
+    }, { passive: true });
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e: MouseEvent) => {
       const target = e.target as Node;
