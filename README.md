@@ -510,3 +510,16 @@ El sitio web utiliza Google Analytics (GA4) para el seguimiento de usuarios. Par
 - El ID de seguimiento (G-2406CNRCX9) se configura en el `<head>` de cada documento HTML
 - Esta implementación asegura que el seguimiento de usuarios comience inmediatamente al cargar la página
 - La implementación está estandarizada en todos los archivos HTML, incluidas las entradas del blog
+
+# TODO:
+- Cambiar la foto del vino rosé porque la copa no cuadra y en el celular se ve la comida y no tanto el vino.
+- La foto del Jardín de Orquídeas están las personas de espaldas. Cambiar
+- Blog lugares para comer: Casa de las Flores, Termales Los Angeles, Azafrán, María Vidal, Café Rivera
+- Blog para lugares para tomar café: Café Lluvia, Café Rivera
+- Blog elaboración de vino: eliminar el encabezado de la página principal
+- Blog elaboración de vino: actualizar la foto de Carlos Cabrera
+- Blog elaboración de vino: en Artículos relacionados no carga nada.
+- Blog elaboración de vino: eliminar la sección de comentarios
+- Blog del arbol a la barra: actualizar la foto de Don Jairo (preguntarle)
+- Crear un blog de 5 lugares imperdibles para visitar en el Huila. Cambiar el que existe de Rivera por Huila.
+- Blog lugares por visitar en el Huila: Desierto del Tatacoa, Termales de Rivera, Ruta del Vino y Cacao, Mano del Gigante, Parque Arqueológico de San Agustín, Ruta del Café (Garzón), Embalse de Betania y Quimbo
