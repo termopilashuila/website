@@ -523,3 +523,7 @@ El sitio web utiliza Google Analytics (GA4) para el seguimiento de usuarios. Par
 - Blog del arbol a la barra: actualizar la foto de Don Jairo (preguntarle)
 - Crear un blog de 5 lugares imperdibles para visitar en el Huila. Cambiar el que existe de Rivera por Huila.
 - Blog lugares por visitar en el Huila: Desierto del Tatacoa, Termales de Rivera, Ruta del Vino y Cacao, Mano del Gigante, Parque Arqueológico de San Agustín, Ruta del Café (Garzón), Embalse de Betania y Quimbo
+- Ordenar los blogs de más reciente a más antiguo
+- Blog de maridaje: cambiar la imagen de los espaguettis
+- Blog de maridaje: cambiar la persona que escribió el artículo
+- Eliminar el blog de retiros
