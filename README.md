@@ -58,7 +58,7 @@ finca-termopilas/
 │       │   ├── section5-gallery1.jpg  # Imagen de galería 1
 │       │   ├── section5-gallery2.jpg  # Imagen de galería 2
 │       │   └── section5-gallery3.jpg  # Imagen de galería 3
-│       ├── rooms/          # Imágenes de habitaciones
+│       ├── alojamiento/          # Imágenes de habitaciones
 │       │   ├── couples.jpg # Imagen de alojamiento para parejas
 │       │   └── groups.jpg  # Imagen de alojamiento para grupos
 │       ├── tour/           # Imágenes del tour de vino y cacao
@@ -446,7 +446,7 @@ Para agregar nuevas imágenes:
    - Tour: `tour-[descripción].jpg`
 3. Colocar las imágenes en el directorio correspondiente:
    - `/assets/images/home/` - Imágenes de la página principal
-   - `/assets/images/rooms/` - Imágenes de habitaciones
+   - `/assets/images/alojamiento/` - Imágenes de habitaciones
    - `/assets/images/tour/` - Imágenes del tour
    - `/assets/images/error/` - Imágenes para páginas de error
 4. Actualizar el HTML para incluir las nuevas imágenes

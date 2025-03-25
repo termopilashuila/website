@@ -81,7 +81,7 @@ const defaultHeaderConfig: HeaderConfig = {
     ctaHref: 'alojamiento.html'
   },
   heroClass: 'hero',
-  heroImage: 'assets/images/home/section0-hero.jpg'
+  heroImage: 'assets/images/alojamiento/section0.jpg'
 };
 
 // Default footer configuration
@@ -276,7 +276,7 @@ function initHeader(): void {
   // Customize hero content based on page
   if (pageName === 'alojamiento.html') {
     headerConfig.heroClass = 'hero rooms-hero';
-    headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
+    headerConfig.heroImage = 'assets/images/alojamiento/section0.jpg';
     headerConfig.heroContent = {
       title: 'Alojamiento',
       subtitle: 'Habitaciones cómodas en un entorno natural',
@@ -905,7 +905,7 @@ window.termopilasHeader = {
     // Apply page-specific configurations
     if (pageName === 'alojamiento.html') {
       headerConfig.heroClass = 'hero rooms-hero';
-      headerConfig.heroImage = 'assets/images/rooms/section0.jpg';
+      headerConfig.heroImage = 'assets/images/alojamiento/section0.jpg';
       headerConfig.heroContent = {
         title: 'Alojamiento en <strong>Finca Termópilas</strong>',
         subtitle: 'Habitaciones cómodas en un entorno natural',
