@@ -526,5 +526,4 @@ El sitio web utiliza Google Analytics (GA4) para el seguimiento de usuarios. Par
 - Ordenar los blogs de más reciente a más antiguo
 - Blog de maridaje: cambiar la imagen de los espaguettis
 - Blog de maridaje: cambiar la persona que escribió el artículo
-- Eliminar el blog de retiros
 - Hacer la página para eventos (reciclar la de matrimonios.com.co)
