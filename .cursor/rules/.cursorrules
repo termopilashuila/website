@@ -5,7 +5,7 @@
   },
   "structure": {
     "html": {
-      "files": ["index.html", "alojamiento.html", "404.html", "tour.html", "ubicacion.html", "galeria.html", "icon-generator.html"],
+      "files": ["index.html", "alojamiento.html", "404.html", "tour.html", "ubicacion.html", "galeria.html", "icon-generator.html", "coliving.html", "blog.html"],
       "location": "root directory"
     },
     "css": {
@@ -20,7 +20,10 @@
         "styles/responsive.css",
         "styles/gallery.css",
         "styles/pwa-install.css",
-        "assets/css/fonts.css"
+        "assets/css/fonts.css",
+        "styles/coliving.css",
+        "styles/blog.css",
+        "styles/blog-post.css"
       ]
     },
     "typescript": {
@@ -35,7 +38,8 @@
         "assets/images/tour/",
         "assets/images/error/",
         "assets/images/directions/",
-        "assets/images/gallery/"
+        "assets/images/gallery/",
+        "assets/images/coliving/"
       ]
     },
     "icons": {
@@ -64,6 +68,10 @@
       "files": [
         "generate-icons.sh"
       ]
+    },
+    "blog": {
+      "directories": ["blog/", "blog/posts/"],
+      "files": ["blog/template.html", "blog/README.md"]
     }
   },
   "naming": {

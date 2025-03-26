@@ -7,11 +7,12 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Diseño responsive para móvil y escritorio
 - Optimización para SEO
 - Galería de imágenes
-- Información de alojamiento
+- Información de alojamiento y coliving
 - Detalles de productos
 - Testimonios de clientes
 - Información de contacto
 - Sección de tour de vino y cacao
+- Blog con artículos
 - Estilos externos organizados por funcionalidad
 - Scroll horizontal táctil para testimonios en móvil
 - Cabecera y pie de página parametrizados y generados dinámicamente con TypeScript
@@ -34,10 +35,14 @@ finca-termopilas/
 ├── alojamiento.html        # Página de habitaciones
 ├── tour.html               # Página del tour
 ├── ubicacion.html          # Página de cómo llegar
+├── galeria.html            # Galería de imágenes
+├── coliving.html           # Página de coliving
+├── blog.html               # Página principal del blog
 ├── 404.html                # Página de error
 ├── sitemap.xml             # Sitemap para SEO
 ├── robots.txt              # Robots.txt para SEO
 ├── CNAME                   # Archivo CNAME para dominio personalizado
+├── .nojekyll               # Archivo para GitHub Pages
 ├── README.md               # Documentación del proyecto
 ├── assets/
 │   ├── css/
@@ -64,21 +69,30 @@ finca-termopilas/
 │       ├── tour/           # Imágenes del tour de vino y cacao
 │       │   ├── tour-hero-bg.jpg  # Imagen de fondo del tour
 │       │   └── ...               # Otras imágenes del tour
+│       ├── gallery/        # Imágenes para la galería
+│       ├── directions/     # Imágenes para la página de ubicación
 │       ├── error/          # Imágenes para páginas de error
 │       └── favicon.png     # Favicon
+├── blog/                   # Archivos de entradas de blog
 ├── src/
 │   └── ts/
 │       └── main.ts         # Código TypeScript principal
 ├── dist/
 │   └── main.js             # JavaScript compilado
+├── .cursor/
+│   └── rules.mdc           # Reglas del proyecto para Cursor IDE
 └── styles/
     ├── main.css            # Estilos principales
     ├── hero.css            # Estilos para secciones hero
     ├── rooms.css           # Estilos específicos para habitaciones
     ├── tour.css            # Estilos para la página del tour
     ├── ubicacion.css       # Estilos para la página de cómo llegar
-    ├── pwa-prompt.css      # Estilos para el prompt de instalación PWA
-    ├── sections.css        # Estilos específicos para secciones
+    ├── gallery.css         # Estilos para la galería de imágenes
+    ├── coliving.css        # Estilos para la página de coliving
+    ├── blog.css            # Estilos para la página de blog
+    ├── blog-post.css       # Estilos para posts individuales de blog
+    ├── main-sections.css   # Estilos específicos para secciones
+    ├── responsive.css      # Estilos de diseño responsivo
     └── utilities.css       # Clases de utilidad
 ```
 
@@ -132,7 +146,7 @@ finca-termopilas/
       <!-- Content will be injected by TypeScript -->
   </header>
   ```
-- La clase de la cabecera puede variar según la página (ej. `hero rooms-hero`, `hero tour-hero`, `hero directions-hero`)
+- La clase de la cabecera puede variar según la página (ej. `hero rooms-hero`, `hero tour-hero`, `hero directions-hero`, `hero gallery-hero`)
 - No agregar manualmente navegación o contenido hero a la cabecera - será generado por TypeScript
 
 #### Estructura del pie de página
@@ -248,282 +262,79 @@ finca-termopilas/
 :root {
   --primary-color: #000000;      /* Negro - Fondo principal */
   --secondary-color: #333333;    /* Gris oscuro - Fondo secundario */
-  --accent-color: #ff8c00;       /* Naranja vibrante - Color de acento */
-  --text-color: #333333;         /* Gris oscuro - Color de texto principal */
-  --light-text: #fdf6ea;         /* #fdf6ea - Texto sobre fondos oscuros */
-  --background-light: #fdf6ea;   /* #fdf6ea - Fondo claro */
+  --accent-color: #ff8c00;       /* Naranja - Color de acento */
+  --text-color: #333333;         /* Gris oscuro - Texto principal */
+  --light-text: #fdf6ea;         /* Crema claro - Texto sobre fondos oscuros */
+  --background-light: #fdf6ea;   /* Crema claro - Fondo claro */
   --background-dark: #000000;    /* Negro - Fondo oscuro */
-  --background-cream: #fdf6ea;   /* #fdf6ea - Fondo crema */
-  --background-warm: #F9F9F9;    /* Gris claro - Fondo cálido */
+  --background-cream: #fdf6ea;   /* Crema - Fondo alternativo */
+  --background-warm: #F9F9F9;    /* Blanco cálido - Fondo alternativo */
 }
 ```
 
 ### Tipografía
 
-- **Títulos**: Lora (serif)
-- **Texto**: Montserrat (sans-serif)
-- Pesos de fuente:
-  - Títulos: 600-700
-  - Texto del cuerpo: 300-500
-  - Botones/CTAs: 600
-- Usar las variables de fuente definidas en `fonts.css`:
-  - `var(--heading-font)`
-  - `var(--body-font)`
-- Tamaños de fuente:
-  - h1: 5.3rem (85px)
-  - h2: 3.5rem (56px)
-  - h3: 1.8rem (29px)
-  - h4: 1.25rem (20px)
-  - Texto del cuerpo: 1rem (16px)
-  - Texto pequeño: 0.875rem (14px)
-- Ajustes responsivos:
-  - Reducir tamaños de títulos aproximadamente un 20% en dispositivos móviles
-  - Mantener el tamaño del texto del cuerpo en todos los dispositivos para legibilidad
+#### Fuentes
+- **Encabezados**: Lora (serif)
+- **Cuerpo**: Montserrat (sans-serif)
 
-## Componentes principales
+#### Pesos
+- **Encabezados**: 600-700
+- **Cuerpo**: 300-500
+- **Botones**: 600
 
-### Sección Hero
-- Imagen de fondo de altura completa con superposición
-- Contenido centrado con título, subtítulo y botón CTA
-- Tamaño de texto responsivo
-- Superposición de gradiente con valores de opacidad específicos:
-  - Hero de la página principal: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))`
-  - Sección Hero en hero.css: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
-  - Hero de la página de Tour: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
-- Estos valores de opacidad están cuidadosamente equilibrados para:
-  - Permitir la visibilidad de las imágenes de fondo
-  - Mantener la legibilidad del texto con suficiente contraste
-  - Crear una apariencia consistente en todo el sitio
-- Al modificar estos valores, asegurar que el texto siga siendo legible mientras se maximiza la visibilidad de la imagen
+#### Tamaños
+- **h1**: 5.3rem (85px)
+- **h2**: 3.5rem (56px)
+- **h3**: 1.8rem (29px)
+- **h4**: 1.25rem (20px)
+- **Cuerpo**: 1rem (16px)
+- **Pequeño**: 0.875rem (14px)
 
-### Tarjetas de productos
-- Tamaño consistente (300px de ancho en escritorio)
-- Fondo negro con texto #fdf6ea
-- Acentos naranja para precios y botones
-- Efecto hover con elevación ligera y escala de imagen
-- Imágenes de producto expandidas que llenan el ancho de la tarjeta
-- Contenido estructurado con diseño flex
+### Componentes comunes
 
-### Tarjetas de habitaciones
-- Tamaño consistente (300px de ancho en escritorio)
-- Fondo negro con texto #fdf6ea
-- Acentos naranja para precios y distintivos
-- Efecto hover con elevación ligera
-- Distintivo "De Lujo" para habitaciones de lujo
-- Botón "Cotiza Ahora" que enlaza a WhatsApp para consultas directas
-- Categorías para filtrado: luxury, standard, couples, groups
+#### Hero
+- Estructura: Imagen de fondo de altura completa con superposición
+- Contenido: Centrado con título, subtítulo y botón CTA
+- Superposición: Gradiente con valores específicos de opacidad
 
-### Tipos de habitaciones
-La Finca Termópilas ofrece 8 opciones de alojamiento:
+#### Tarjetas de producto
+- Tamaño: 300px de ancho en escritorio
+- Colores: Fondo negro con texto #fdf6ea, acentos naranjas
 
-#### Habitaciones de Lujo (3)
-1. **Cabaña 1** - $300.000/noche
-   - 4 personas máx
-   - Cama queen con nido
-   - Baño privado con agua caliente
-   - Aire acondicionado
-   - Escritorio
-   - Wifi Gratis
-   - 2 terrazas
-   - TV
+#### Tarjetas de habitación
+- Tamaño: 300px de ancho en escritorio
+- Colores: Fondo negro con texto #fdf6ea, acentos naranjas
+- Insignias: Insignia "De Lujo" para habitaciones lujosas
 
-2. **Gemela 1** - $300.000/noche
-   - 4 personas máx
-   - Cama queen con nido
-   - Baño privado con agua caliente
-   - Aire acondicionado
-   - Escritorio
-   - Wifi Gratis
-   - 1 terraza
-   - Proyector con bafle
+#### Línea de tiempo del tour
+- Estructura: Línea de tiempo vertical con línea de acento naranja
+- Iconos: Circulares con fondo naranja
 
-3. **Gemela 2** - $300.000/noche
-   - 4 personas máx
-   - Cama queen con nido
-   - Baño privado con agua caliente
-   - Aire acondicionado
-   - Escritorio
-   - Wifi Gratis
-   - 1 terraza
-   - Proyector con bafle
+#### Testimonios
+- Contenedor: Desplazamiento horizontal en todos los dispositivos
+- Tarjetas: Fondo claro con clase testimonial-card
+- Imágenes de autor: Miniaturas circulares con clase testimonial-author-img
 
-#### Habitaciones Estándar (5)
-1. **Habitación A** - $240.000/noche
-   - 4 personas máx
-   - Camas dobles
-   - Baño privado con agua caliente
-   - Wifi Gratis
+#### Galería
+- Estructura: Diseño basado en cuadrícula con diseño responsivo
+- Lightbox: Visor de imágenes basado en modal para imágenes de tamaño completo
 
-2. **Habitación B** - $240.000/noche
-   - 4 personas máx
-   - Camas dobles
-   - Baño privado con agua caliente
-   - Escritorio
-   - Wifi Gratis
+## Flujo de trabajo de compilación
 
-3. **Habitación C** - $160.000/noche
-   - 2 personas máx
-   - Cama doble
-   - Baño privado con agua caliente
-   - Wifi Gratis
+### TypeScript
+- **Comando de compilación**: `npm run build`
+- **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática
+- **Salida**: `dist/main.js`
 
-4. **Habitación D** - $200.000/noche
-   - 4 personas máx
-   - Cama doble
-   - Sofá cama
-   - Baño privado con agua caliente
-   - Wifi Gratis
+## Implementación
 
-5. **Habitación E** - $360.000/noche
-   - 6 personas máx
-   - Camas dobles
-   - Baño privado con agua caliente
-   - Escritorio
-   - Wifi Gratis
-
-### Línea de tiempo de experiencia del tour
-- Línea de tiempo vertical con línea de acento naranja
-- Iconos circulares con fondo naranja
-- Tarjetas de contenido con sombra sutil
-- Contenedores de imágenes para cada paso de la experiencia
-- Diseño responsivo que se ajusta para móvil
-
-### Tarjetas de testimonios
-- Contenedor de desplazamiento horizontal en todos los dispositivos
-- Desplazamiento táctil optimizado para móvil
-- Estilo de tarjeta consistente con fondo claro (clase `testimonial-card`)
-- Imágenes de autor mostradas como miniaturas circulares usando la clase `testimonial-author-img`
-- Contenedor de información del autor usando la clase `testimonial-author`
-- Nombres de autor en negrita con la clase `testimonial-author-name`
-
-## Proceso de compilación
-
-### Compilación de TypeScript
-- Los archivos TypeScript se compilan usando webpack
-- Ejecutar `npm run build` para compilar TypeScript a JavaScript
-- El JavaScript compilado se genera en `dist/main.js`
-- Todos los archivos HTML hacen referencia al archivo JavaScript compilado
-
-### Desarrollo
-- Usar `npm run dev` para desarrollo con recompilación automática
-- Hacer cambios en los archivos TypeScript en el directorio `src/ts`
-- Probar los cambios abriendo los archivos HTML en un navegador
-
-## Configuración de GitHub Pages
-
-El sitio está configurado para ser alojado en GitHub Pages con un dominio personalizado (termopilas.co).
-
-### Pasos para la configuración:
-
-1. En la configuración del repositorio, habilitar GitHub Pages desde la rama principal (main)
-2. Agregar el dominio personalizado "termopilas.co" en la sección de GitHub Pages
-3. Asegurarse de que el archivo CNAME esté presente en la raíz del repositorio
-4. Configurar los registros DNS del dominio:
-   - Registro A: 185.199.108.153
-   - Registro A: 185.199.109.153
-   - Registro A: 185.199.110.153
-   - Registro A: 185.199.111.153
-   - Registro CNAME: www.termopilas.co → termopilashuila.github.io
-
-## Mantenimiento del sitio
-
-### Actualización de contenido
-
-Para actualizar el contenido del sitio:
-
-1. Editar los archivos HTML, CSS o JavaScript según sea necesario
-2. Hacer commit de los cambios y push a la rama principal
-3. GitHub Pages automáticamente desplegará los cambios
-
-### Agregar nuevas imágenes
-
-Para agregar nuevas imágenes:
-
-1. Optimizar las imágenes para web (recomendado: [TinyPNG](https://tinypng.com/))
-2. Seguir la convención de nombres según la sección:
-   - Página principal: `section[número]-[descripción].jpg`
-   - Testimonios: `section4-img[número].jpg`
-   - Tour: `tour-[descripción].jpg`
-3. Colocar las imágenes en el directorio correspondiente:
-   - `/assets/images/home/` - Imágenes de la página principal
-   - `/assets/images/alojamiento/` - Imágenes de habitaciones
-   - `/assets/images/tour/` - Imágenes del tour
-   - `/assets/images/error/` - Imágenes para páginas de error
-4. Actualizar el HTML para incluir las nuevas imágenes
-5. Actualizar el service worker (`service-worker.js`) para cachear las nuevas imágenes
-
-### Actualización de estilos
-
-Para actualizar los estilos del sitio:
-
-1. Modificar los archivos CSS correspondientes en la carpeta `styles/`
-2. Evitar el uso de estilos en línea - todos los estilos deben estar en archivos CSS externos
-3. Para estilos específicos de secciones, utilizar el archivo `styles/sections.css`
-4. Mantener la consistencia con las clases y variables existentes
-
-## Optimización para SEO
-
-El sitio incluye:
-
-- Meta tags para SEO
-- Open Graph para compartir en redes sociales
-- Twitter Cards para compartir en Twitter
-- Datos estructurados (Schema.org)
-- Sitemap.xml
-- Robots.txt
-- URLs semánticas y descriptivas
-
-## Características de accesibilidad
-
-- Skip links para navegación por teclado
-- Elementos HTML semánticos
-- Textos alternativos para imágenes
-- Contraste de color suficiente
-- Elementos interactivos accesibles por teclado
-- Atributos ARIA donde corresponde
-
-## Responsive Design
-
-El sitio está optimizado para diferentes tamaños de pantalla:
-
-- Móvil: < 768px
-- Tablet: 768px - 1024px
-- Escritorio: > 1024px
-
-Características responsive específicas:
-- Navegación adaptable con menú hamburguesa en móvil
-- Diseño de tarjetas de productos optimizado para móvil
-- Scroll horizontal táctil para testimonios en dispositivos móviles
-- Imágenes responsivas con tamaños apropiados
-
-## Contacto
-
-Para más información o soporte, contactar a:
-
-- Email: termopilashuila@gmail.com
-
-## Implementación de Google Analytics
-
-El sitio web utiliza Google Analytics (GA4) para el seguimiento de usuarios. Para garantizar un seguimiento consistente y confiable:
-
-- El tag de Google Analytics está implementado directamente en el HTML de cada página
-- El ID de seguimiento (G-2406CNRCX9) se configura en el `<head>` de cada documento HTML
-- Esta implementación asegura que el seguimiento de usuarios comience inmediatamente al cargar la página
-- La implementación está estandarizada en todos los archivos HTML, incluidas las entradas del blog
-
-# TODO:
-- Cambiar la foto del vino rosé porque la copa no cuadra y en el celular se ve la comida y no tanto el vino.
-- La foto del Jardín de Orquídeas están las personas de espaldas. Cambiar
-- Blog lugares para comer: Casa de las Flores, Termales Los Angeles, Azafrán, María Vidal, Café Rivera
-- Blog para lugares para tomar café: Café Lluvia, Café Rivera
-- Blog elaboración de vino: eliminar el encabezado de la página principal
-- Blog elaboración de vino: actualizar la foto de Carlos Cabrera
-- Blog elaboración de vino: en Artículos relacionados no carga nada.
-- Blog elaboración de vino: eliminar la sección de comentarios
-- Blog del arbol a la barra: actualizar la foto de Don Jairo (preguntarle)
-- Crear un blog de 5 lugares imperdibles para visitar en el Huila. Cambiar el que existe de Rivera por Huila.
-- Blog lugares por visitar en el Huila: Desierto del Tatacoa, Termales de Rivera, Ruta del Vino y Cacao, Mano del Gigante, Parque Arqueológico de San Agustín, Ruta del Café (Garzón), Embalse de Betania y Quimbo
-- Ordenar los blogs de más reciente a más antiguo
-- Blog de maridaje: cambiar la imagen de los espaguettis
-- Blog de maridaje: cambiar la persona que escribió el artículo
-- Hacer la página para eventos (reciclar la de matrimonios.com.co)
+- **Plataforma**: GitHub Pages
+- **Rama**: main (implementada automáticamente)
+- **Dominio**: Dominio personalizado configurado a través del archivo CNAME
+- **SEO**:
+  - Sitemap (`sitemap.xml`) para indexación de motores de búsqueda
+  - Robots.txt (`robots.txt`) para instrucciones de rastreadores
+- **Lista de verificación**:
+  - Asegurarse de que todos los archivos estén correctamente confirmados y enviados
+  - Verificar que todos los enlaces y recursos funcionen correctamente
