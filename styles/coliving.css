@@ -416,6 +416,33 @@
     color: #333;
 }
 
+.coliving-testimonials .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.coliving-testimonials .testimonial-author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.coliving-testimonials .testimonial-author-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.coliving-testimonials .testimonial-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 0;
+    margin: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .experience-options {
