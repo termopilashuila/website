@@ -246,7 +246,8 @@ function initMobileNav(): void {
 // Initialize header based on current page
 function initHeader(): void {
   const currentPath = window.location.pathname;
-  const pageName = currentPath.split('/').pop() || 'index.html';
+  const pageName = currentPath.split('/').pop() || '';
+  const pageNameWithoutExt = pageName.replace('.html', '');
   
   // Check if this is a blog post page (located in blog/posts/ directory)
   if (currentPath.includes('/blog/posts/')) {
@@ -265,16 +266,13 @@ function initHeader(): void {
   }
   
   // Set the active nav item based on current page
-  headerConfig.navItems = headerConfig.navItems.map(item => {
-    const itemPage = item.href.split('#')[0];
-    if (itemPage === pageName) {
-      return { ...item, isActive: true };
-    }
-    return item;
-  });
+  headerConfig.navItems = headerConfig.navItems.map(item => ({
+    ...item,
+    isActive: item.href.includes(pageNameWithoutExt)
+  }));
   
   // Customize hero content based on page
-  if (pageName === 'alojamiento.html') {
+  if (pageName === 'alojamiento.html' || pageName === 'alojamiento') {
     headerConfig.heroClass = 'hero rooms-hero';
     headerConfig.heroImage = 'assets/images/alojamiento/section0.jpg';
     headerConfig.heroContent = {
@@ -283,7 +281,7 @@ function initHeader(): void {
       ctaText: 'RESERVA AHORA',
       ctaHref: 'index.html#contacto'
     };
-  } else if (pageName === 'tour.html') {
+  } else if (pageName === 'tour.html' || pageName === 'tour') {
     headerConfig.heroClass = 'hero tour-hero';
     headerConfig.heroImage = 'assets/images/tour/section0.jpg';
     headerConfig.heroContent = {
@@ -292,7 +290,7 @@ function initHeader(): void {
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
     };
-  } else if (pageName === 'coliving.html') {
+  } else if (pageName === 'coliving.html' || pageName === 'coliving') {
     headerConfig.heroClass = 'hero coliving-hero';
     headerConfig.heroImage = 'assets/images/coliving/section0.jpg';
     headerConfig.heroContent = {
@@ -301,7 +299,7 @@ function initHeader(): void {
       ctaText: 'RESERVA TU CUPO',
       ctaHref: '#coliving-form'
     };
-  } else if (pageName === 'ubicacion.html') {
+  } else if (pageName === 'ubicacion.html' || pageName === 'ubicacion') {
     headerConfig.heroClass = 'hero directions-hero';
     headerConfig.heroImage = 'assets/images/directions/section0.jpg';
     headerConfig.heroContent = {
@@ -310,7 +308,7 @@ function initHeader(): void {
       ctaText: '',
       ctaHref: ''
     };
-  } else if (pageName === 'galeria.html') {
+  } else if (pageName === 'galeria.html' || pageName === 'galeria') {
     headerConfig.heroClass = 'hero gallery-hero';
     headerConfig.heroImage = 'assets/images/gallery/section5-gallery1.jpg';
     headerConfig.heroContent = {
@@ -319,7 +317,7 @@ function initHeader(): void {
       ctaText: '',
       ctaHref: ''
     };
-  } else if (pageName === 'blog.html') {
+  } else if (pageName === 'blog.html' || pageName === 'blog') {
     headerConfig.heroClass = 'hero blog-hero';
     headerConfig.heroImage = 'assets/images/home/section0-hero.jpg';
     headerConfig.heroContent = {
@@ -328,7 +326,7 @@ function initHeader(): void {
       ctaText: 'EXPLORAR',
       ctaHref: '#main-content'
     };
-  } else if (pageName === '404.html') {
+  } else if (pageName === '404.html' || pageName === '404') {
     headerConfig.heroClass = 'hero';
     headerConfig.heroImage = 'assets/images/error/section0.jpg';
     // For 404 page, we don't need hero content as it has its own error container
@@ -1007,6 +1005,15 @@ window.termopilasHeader = {
         subtitle: 'Una experiencia sensorial única en Finca Termópilas',
         ctaText: 'RESERVA AHORA',
         ctaHref: '#main-content'
+      };
+    } else if (pageName === 'coliving.html' || pageName === 'coliving') {
+      headerConfig.heroClass = 'hero coliving-hero';
+      headerConfig.heroImage = 'assets/images/coliving/section0.jpg';
+      headerConfig.heroContent = {
+        title: 'Coliving para <strong>Nómadas Digitales</strong>',
+        subtitle: 'Trabajo remoto en un paraíso natural',
+        ctaText: 'RESERVA TU CUPO',
+        ctaHref: '#coliving-form'
       };
     } else if (pageName === 'ubicacion.html') {
       headerConfig.heroClass = 'hero directions-hero';
