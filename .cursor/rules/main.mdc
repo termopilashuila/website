@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Finca Termópilas Website
 
 ## Project Overview
@@ -47,6 +52,7 @@
 - assets/images/error/
 - assets/images/directions/
 - assets/images/gallery/
+- assets/images/coliving/
 
 ### Icons Directory
 - assets/icons/
@@ -54,6 +60,11 @@
 ### Documentation Files
 - README.md
 - alojamiento.md
+- rooms.md
+
+### Blog
+- Directories: blog/, blog/posts/
+- Files: blog/template.html, blog/README.md
 
 ### Config Files
 - tsconfig.json
