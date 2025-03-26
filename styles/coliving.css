@@ -2,10 +2,11 @@
 
 /* Hero Section */
 .hero.coliving-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/coliving/section0.jpg');
-    background-position: center;
-    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/images/coliving/section0.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
     padding-top: 70px; /* Add padding for the fixed navbar */
+    min-height: 100vh;
 }
 
 /* Container */
