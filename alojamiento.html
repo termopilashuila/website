@@ -63,6 +63,11 @@
     </header>
 
     <main id="main-content">
+        <div class="return-to-coliving" id="return-coliving-container" style="display: none;">
+            <a href="coliving.html" class="return-button">
+                <i class="fas fa-arrow-left"></i> Volver a Coliving para Nómadas Digitales
+            </a>
+        </div>
 
         <div class="room-filters">
             <button class="filter-button active" data-filter="all">Todas</button>
@@ -74,7 +79,7 @@
 
         <div class="rooms-grid">
             <!-- Cabaña 1 -->
-            <div class="room-card" data-category="luxury couples">
+            <div class="room-card" id="luxury" data-category="luxury couples">
                 <div class="luxury-badge">De Lujo</div>
                 <img src="assets/images/alojamiento/section1-room1.jpg" alt="Cabaña 1 con terraza y vista panorámica" class="room-image">
                 <div class="room-content">
@@ -140,7 +145,7 @@
             </div>
 
             <!-- Habitación A -->
-            <div class="room-card" data-category="standard">
+            <div class="room-card" id="standard" data-category="standard">
                 <img src="assets/images/alojamiento/section1-room4.jpg" alt="Habitación A con camas dobles" class="room-image">
                 <div class="room-content">
                     <h3 class="room-title">Habitación A</h3>
@@ -263,6 +268,37 @@
                     }
                 });
             });
+        });
+
+        // Show return to coliving button if coming from coliving page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user came from coliving page
+            const referrer = document.referrer;
+            if (referrer && referrer.includes('coliving.html')) {
+                document.getElementById('return-coliving-container').style.display = 'block';
+            }
+            
+            // Check for hash in URL to focus on specific room type
+            const hash = window.location.hash;
+            if (hash) {
+                // Scroll to the element with the ID
+                const element = document.querySelector(hash);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                    
+                    // Find the corresponding filter button and click it
+                    const category = element.getAttribute('data-category');
+                    if (category) {
+                        const filterType = category.split(' ')[0]; // Get first category
+                        const filterButton = document.querySelector(`.filter-button[data-filter="${filterType}"]`);
+                        if (filterButton) {
+                            filterButton.click();
+                        }
+                    }
+                }
+            }
         });
     </script>
 </body>

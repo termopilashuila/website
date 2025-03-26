@@ -236,6 +236,102 @@
             </div>
         </section>
 
+        <section class="coliving-experiences section">
+            <div class="container">
+                <h2>Tipos de Experiencia</h2>
+                <p class="experience-description">Elige la opción que mejor se adapte a tus necesidades. Ambas experiencias incluyen todas las actividades mencionadas anteriormente.</p>
+                
+                <div class="experience-options">
+                    <!-- Experiencia Estándar -->
+                    <div class="experience-option">
+                        <div class="experience-header">
+                            <h3>Experiencia Estándar</h3>
+                            <p class="experience-price">$1.990.000 COP</p>
+                            <p class="per-person">por persona</p>
+                        </div>
+                        <div class="experience-image">
+                            <img src="assets/images/alojamiento/section1-room4.jpg" alt="Habitación Estándar para Coliving">
+                        </div>
+                        <div class="experience-features">
+                            <ul>
+                                <li><i class="fas fa-bed"></i> Habitación estándar compartida</li>
+                                <li><i class="fas fa-bath"></i> Baño privado con agua caliente</li>
+                                <li><i class="fas fa-wifi"></i> Internet de alta velocidad</li>
+                                <li><i class="fas fa-utensils"></i> Alimentación completa</li>
+                                <li><i class="fas fa-calendar-alt"></i> Todas las actividades incluidas</li>
+                            </ul>
+                            <p class="experience-note">Ideal para quienes buscan una experiencia completa a un precio accesible.</p>
+                            <a href="#coliving-form" class="cta-button">Reserva Ahora</a>
+                        </div>
+                        <div class="experience-rooms">
+                            <h4>Habitaciones Disponibles:</h4>
+                            <div class="room-thumbnails">
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room4.jpg" alt="Habitación A">
+                                    <span>Habitación A</span>
+                                </div>
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room5.jpg" alt="Habitación B">
+                                    <span>Habitación B</span>
+                                </div>
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room6.jpg" alt="Habitación C">
+                                    <span>Habitación C</span>
+                                </div>
+                            </div>
+                            <a href="alojamiento.html#standard" class="view-rooms">Ver más detalles de habitaciones</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Experiencia De Lujo -->
+                    <div class="experience-option luxury">
+                        <div class="luxury-badge">De Lujo</div>
+                        <div class="experience-header">
+                            <h3>Experiencia De Lujo</h3>
+                            <p class="experience-price">$2.490.000 COP</p>
+                            <p class="per-person">por persona</p>
+                        </div>
+                        <div class="experience-image">
+                            <img src="assets/images/alojamiento/section1-room1.jpg" alt="Habitación De Lujo para Coliving">
+                        </div>
+                        <div class="experience-features">
+                            <ul>
+                                <li><i class="fas fa-bed"></i> Cabaña o habitación de lujo</li>
+                                <li><i class="fas fa-bath"></i> Baño privado con agua caliente</li>
+                                <li><i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                                <li><i class="fas fa-laptop-house"></i> Escritorio para trabajo</li>
+                                <li><i class="fas fa-wifi"></i> Internet de alta velocidad</li>
+                                <li><i class="fas fa-utensils"></i> Alimentación completa gourmet</li>
+                                <li><i class="fas fa-calendar-alt"></i> Todas las actividades incluidas</li>
+                                <li><i class="fas fa-glass-cheers"></i> Botella de vino de bienvenida</li>
+                            </ul>
+                            <p class="experience-note">Para quienes buscan máximo confort mientras trabajan en remoto.</p>
+                            <a href="#coliving-form" class="cta-button">Reserva Ahora</a>
+                        </div>
+                        <div class="experience-rooms">
+                            <h4>Habitaciones Disponibles:</h4>
+                            <div class="room-thumbnails">
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room1.jpg" alt="Cabaña 1">
+                                    <span>Cabaña 1</span>
+                                </div>
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room2.jpg" alt="Gemela 1">
+                                    <span>Gemela 1</span>
+                                </div>
+                                <div class="room-thumbnail">
+                                    <img src="assets/images/alojamiento/section1-room3.jpg" alt="Gemela 2">
+                                    <span>Gemela 2</span>
+                                </div>
+                            </div>
+                            <a href="alojamiento.html#luxury" class="view-rooms">Ver más detalles de habitaciones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <section class="coliving-registration section">
             <div class="container">
                 <h2>Reserva tu Próxima Experiencia</h2>
@@ -259,6 +355,19 @@
                         <input type="text" id="profession" name="profession" required>
                     </div>
                     <div class="form-group">
+                        <label>Tipo de Experiencia</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="standard" name="experience_type" value="Estándar" required>
+                                <label for="standard">Experiencia Estándar ($1.990.000)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="luxury" name="experience_type" value="De Lujo" required>
+                                <label for="luxury">Experiencia De Lujo ($2.490.000)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="message">¿Por qué te interesa esta experiencia?</label>
                         <textarea id="message" name="message" rows="4"></textarea>
                     </div>
@@ -266,19 +375,12 @@
                         <button type="submit" class="cta-button">Enviar Información</button>
                     </div>
                 </form>
-                
-                <div class="payment-info">
-                    <h3>Información de Pago</h3>
-                    <p><i class="fas fa-university"></i> Bancolombia Ahorros: 45400003968</p>
-                    <p><i class="fas fa-credit-card"></i> Otros métodos de pago: <a href="https://checkout.wompi.co/l/VPOS_TowTOn" target="_blank">Wompi</a></p>
-                    <p><i class="fab fa-whatsapp"></i> Más información: <a href="https://wa.link/zvrava" target="_blank">WhatsApp</a></p>
-                </div>
             </div>
         </section>
 
-        <section class="coliving-testimonials section">
+        <section class="coliving-testimonials section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/coliving/section0.jpg'); background-size: cover; background-position: center;">
             <div class="container">
-                <h2>Testimonios de Participantes</h2>
+                <h2>Testimonios de Nómadas Digitales</h2>
                 <div class="testimonials-slider">
                     <div class="testimonial testimonial-card">
                         <div class="testimonial-content">
@@ -286,10 +388,10 @@
                         </div>
                         <div class="testimonial-footer">
                             <div class="testimonial-author">
-                                <img src="assets/images/coliving/testimonial1.jpg" alt="Foto de María" class="testimonial-author-img">
+                                <img src="assets/images/coliving/testimonials/testimonial1.jpg" alt="Foto de María" class="testimonial-author-img">
                                 <div>
-                                    <h4>María González</h4>
-                                    <p>Diseñadora UX</p>
+                                    <div class="author testimonial-author-name">María González</div>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
                         </div>
@@ -300,10 +402,10 @@
                         </div>
                         <div class="testimonial-footer">
                             <div class="testimonial-author">
-                                <img src="assets/images/coliving/testimonial2.jpg" alt="Foto de Carlos" class="testimonial-author-img">
+                                <img src="assets/images/coliving/testimonials/testimonial2.jpg" alt="Foto de Carlos" class="testimonial-author-img">
                                 <div>
-                                    <h4>Carlos Ramírez</h4>
-                                    <p>Desarrollador de Software</p>
+                                    <div class="author testimonial-author-name">Carlos Ramírez</div>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
                         </div>
@@ -314,10 +416,10 @@
                         </div>
                         <div class="testimonial-footer">
                             <div class="testimonial-author">
-                                <img src="assets/images/coliving/testimonial3.jpg" alt="Foto de Laura" class="testimonial-author-img">
+                                <img src="assets/images/coliving/testimonials/testimonial3.jpg" alt="Foto de Laura" class="testimonial-author-img">
                                 <div>
-                                    <h4>Laura Martínez</h4>
-                                    <p>Marketing Digital</p>
+                                    <div class="author testimonial-author-name">Laura Martínez</div>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +448,7 @@
                         ctaHref: '#coliving-form'
                     },
                     heroClass: 'hero coliving-hero',
-                    heroImage: 'assets/images/coliving/coliving-hero.jpg'
+                    heroImage: 'assets/images/coliving/section0.jpg'
                 });
             }
 
@@ -369,6 +471,7 @@
                         email: form.email.value,
                         phone: form.phone.value,
                         profession: form.profession.value,
+                        experience_type: form.elements['experience_type'].value,
                         message: form.message.value
                     }
 
