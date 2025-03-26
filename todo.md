@@ -11,3 +11,5 @@
 - Blog de maridaje: cambiar la imagen de los espaguettis
 - Blog de maridaje: cambiar la persona que escribió el artículo
 - Hacer la página para eventos (reciclar la de matrimonios.com.co)
+- Hacer el formulario para registro de TRA y SIRE
+- Cambiar los mensajes automáticos en Octorate para que comience a referenciar a la página web
