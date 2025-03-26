@@ -645,59 +645,146 @@ function initGalleryLightbox(): void {
   };
 }
 
-// Initialize all functionality when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize header and footer
-  initHeader();
-  initFooter();
+// Function to parse Spanish dates like "5 de abril, 2024" into Date objects
+function parseSpanishDate(dateString: string): Date {
+  const monthMap: { [key: string]: number } = {
+    'enero': 0,
+    'febrero': 1,
+    'marzo': 2, 
+    'abril': 3,
+    'mayo': 4,
+    'junio': 5,
+    'julio': 6,
+    'agosto': 7,
+    'septiembre': 8,
+    'octubre': 9,
+    'noviembre': 10,
+    'diciembre': 11
+  };
+
+  // Format: "5 de abril, 2024"
+  const parts = dateString.split(' ');
+  if (parts.length === 4) {
+    const day = parseInt(parts[0], 10);
+    const month = monthMap[parts[2].replace(',', '')];
+    const year = parseInt(parts[3], 10);
+    
+    if (!isNaN(day) && month !== undefined && !isNaN(year)) {
+      return new Date(year, month, day);
+    }
+  }
   
-  // Initialize mobile navigation
-  initMobileNav();
+  // Return oldest possible date if parsing fails
+  return new Date(0);
+}
+
+// Function to sort blog entries by date (most recent first)
+function sortBlogEntriesByDate(): void {
+  const blogGrid = document.querySelector('.blog-grid');
+  if (!blogGrid) return;
   
-  // Initialize tour experience lazy loading if on tour page
-  if (window.location.pathname.includes('tour.html')) {
+  const blogCards = Array.from(document.querySelectorAll('.blog-card'));
+  if (blogCards.length <= 1) return; // No need to sort if there's only one or no entries
+  
+  // Sort blog cards by date (most recent first)
+  blogCards.sort((a, b) => {
+    const dateA = a.querySelector('.blog-date');
+    const dateB = b.querySelector('.blog-date');
+    
+    if (!dateA || !dateB) return 0;
+    
+    const dateAObj = parseSpanishDate(dateA.textContent || '');
+    const dateBObj = parseSpanishDate(dateB.textContent || '');
+    
+    // Sort in descending order (most recent first)
+    return dateBObj.getTime() - dateAObj.getTime();
+  });
+  
+  // Clear and reapply the sorted cards
+  blogCards.forEach(card => {
+    blogGrid.appendChild(card);
+  });
+}
+
+// Function to initialize blog category filtering
+function initBlogCategoryFiltering(): void {
+  const categoryButtons = document.querySelectorAll('.category-button');
+  const blogCards = document.querySelectorAll('.blog-card');
+  
+  // First, sort the blog entries by date
+  sortBlogEntriesByDate();
+  
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Get selected category
+      const selectedCategory = button.getAttribute('data-category');
+      
+      // Filter blog cards
+      blogCards.forEach(card => {
+        const cardElement = card as HTMLElement;
+        if (selectedCategory === 'all') {
+          cardElement.style.display = 'block';
+        } else {
+          const cardCategories = card.getAttribute('data-categories');
+          if (cardCategories && cardCategories.includes(selectedCategory)) {
+            cardElement.style.display = 'block';
+          } else {
+            cardElement.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+}
+
+// Function to initialize the page
+function initPage(): void {
+  // Check if this is a blog post page (located in blog/posts/ directory)
+  const currentPath = window.location.pathname;
+  if (currentPath.includes('/blog/posts/')) {
+    // Skip header generation for blog post pages
+    console.log('Blog post page detected, skipping header generation');
+  } else {
+    // Initialize header and footer for non-blog post pages
+    initHeader();
+    initFooter();
+  }
+  
+  // Initialize other components based on their presence in the page
+  // Tour experience lazy loading
+  if (document.querySelector('.tour-experience-timeline')) {
     initTourExperienceLazyLoading();
   }
   
-  // Initialize gallery lightbox if on gallery page
-  initGalleryLightbox();
+  // Gallery lightbox
+  if (document.querySelector('.gallery-grid')) {
+    initGalleryLightbox();
+  }
   
-  // Initialize blog category filtering if on blog page
-  if (window.location.pathname.includes('blog.html')) {
+  // Blog category filtering
+  if (document.querySelector('.blog-grid')) {
     initBlogCategoryFiltering();
   }
+}
+
+// Initialize all functionality when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize the page using our new function
+  initPage();
   
-  // Add fade-in animation to hero content
-  const heroContent = document.querySelector('.hero-content') as HTMLElementWithStyle;
-  if (heroContent) {
-    heroContent.style.opacity = '0';
-    setTimeout(() => {
-      heroContent.style.transition = 'opacity 1s ease-out';
-      heroContent.style.opacity = '1';
-    }, 300);
-  }
-  
-  // Add accessibility attributes to navigation
-  const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-  const navMenu = document.querySelector('.nav-menu') as HTMLElement;
-  if (navToggle && navMenu) {
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-controls', 'nav-menu');
-    navMenu.setAttribute('id', 'nav-menu');
-  }
-  
-  // Add skip link for keyboard navigation
-  const skipLink = document.createElement('a');
-  skipLink.href = '#main-content';
-  skipLink.className = 'skip-link';
-  skipLink.textContent = 'Saltar al contenido principal';
-  document.body.insertBefore(skipLink, document.body.firstChild);
-  
-  // Mark main content for accessibility
-  const mainContent = document.querySelector('#alojamiento') as HTMLElement;
-  if (mainContent) {
-    mainContent.setAttribute('id', 'main-content');
-    mainContent.setAttribute('tabindex', '-1');
+  // Initialize horizontal scrolling for testimonials
+  const testimonialContainer = document.querySelector('.testimonials-container') as HTMLElement;
+  if (testimonialContainer) {
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouch) {
+      initTouchScroll(testimonialContainer);
+    }
   }
 });
 
@@ -1002,36 +1089,31 @@ window.termopilasFooter = {
   }
 };
 
-// Function to initialize blog category filtering
-function initBlogCategoryFiltering(): void {
-  const categoryButtons = document.querySelectorAll('.category-button');
-  const blogCards = document.querySelectorAll('.blog-card');
-  
-  categoryButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      categoryButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // Add active class to clicked button
-      button.classList.add('active');
-      
-      // Get selected category
-      const selectedCategory = button.getAttribute('data-category');
-      
-      // Filter blog cards
-      blogCards.forEach(card => {
-        const cardElement = card as HTMLElement;
-        if (selectedCategory === 'all') {
-          cardElement.style.display = 'block';
-        } else {
-          const cardCategories = card.getAttribute('data-categories');
-          if (cardCategories && cardCategories.includes(selectedCategory)) {
-            cardElement.style.display = 'block';
-          } else {
-            cardElement.style.display = 'none';
-          }
-        }
-      });
-    });
-  });
+// Function to initialize touch scrolling for horizontal containers
+function initTouchScroll(container: HTMLElement): void {
+  let isDown = false;
+  let startX: number;
+  let scrollLeft: number;
+
+  container.addEventListener('touchstart', (e: TouchEvent) => {
+    isDown = true;
+    startX = e.touches[0].pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  }, { passive: true });
+
+  container.addEventListener('touchend', () => {
+    isDown = false;
+  }, { passive: true });
+
+  container.addEventListener('touchcancel', () => {
+    isDown = false;
+  }, { passive: true });
+
+  container.addEventListener('touchmove', (e: TouchEvent) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - container.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    container.scrollLeft = scrollLeft - walk;
+  }, { passive: false });
 } 
