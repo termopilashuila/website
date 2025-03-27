@@ -26,8 +26,8 @@ async function resizeImage(imagePath, options = {}) {
       const ext = path.extname(imagePath).toLowerCase();
       let processedImage;
       
-      // Get original file size
-      const originalSize = fs.statSync(imagePath).size;
+      // Create a temp file path
+      const tempPath = `${imagePath}.temp`;
       
       // Process based on image type
       if (ext === '.jpg' || ext === '.jpeg') {
@@ -45,14 +45,12 @@ async function resizeImage(imagePath, options = {}) {
         return;
       }
       
-      // Compare sizes
+      // Get original file size
+      const originalSize = fs.statSync(imagePath).size;
       const processedSize = processedImage.length;
       
       // Only save if the processed image is smaller than the original
       if (processedSize < originalSize) {
-        // Create a temp file path
-        const tempPath = `${imagePath}.temp`;
-        
         // Write to temp file
         fs.writeFileSync(tempPath, processedImage);
         
@@ -112,7 +110,7 @@ function main() {
 Usage: node resize-images.js [path] [options]
 
 Arguments:
-  path            Path to an image or directory (default: "./")
+  path            Path to an image or directory (default: "./resize")
 
 Options:
   --width=N       Maximum width in pixels (default: ${DEFAULT_MAX_WIDTH})
@@ -120,14 +118,14 @@ Options:
 
 Examples:
   node resize-images.js
-  node resize-images.js ../assets/images/home/my-image.jpg
-  node resize-images.js ../ --width=800 --quality=90
+  node resize-images.js ./resize/my-image.jpg
+  node resize-images.js ./resize --width=800 --quality=90
     `);
     return;
   }
   
   // Parse arguments
-  const imagePath = args[0].match(/^--/) ? '../' : args[0];
+  const imagePath = args[0].match(/^--/) ? './resize' : args[0];
   const options = {};
   
   for (const arg of args) {

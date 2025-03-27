@@ -1,33 +1,37 @@
 # Image Resizer
 
-This directory is used for resizing images for the Finca Termópilas website.
+This directory contains scripts for resizing images for the Finca Termópilas website.
 
 ## Usage
 
-1. Place the images you want to resize in this directory
+1. Place the images you want to resize in this directory or specify a different path
 2. Run the resize script using one of the following methods:
 
 ### Method 1: Using the shell script
 
 ```bash
-# Resize all images in the resize directory with default settings
+# From the project root:
+./resize/resize-images.sh
+
+# Resize a specific image (from project root):
+./resize/resize-images.sh assets/images/home/my-image.jpg
+
+# Resize all images in a specific directory:
+./resize/resize-images.sh assets/images/gallery --width=800 --quality=90
+
+# Run the script from inside the resize directory:
+cd resize
 ./resize-images.sh
-
-# Resize a specific image
-./resize-images.sh resize/my-image.jpg
-
-# Resize with custom width and quality
-./resize-images.sh resize --width=800 --quality=90
 ```
 
 ### Method 2: Using npm
 
 ```bash
-# Resize all images in the resize directory with default settings
+# From the project root:
 npm run resize-images
 
-# Resize with custom parameters
-npm run resize-images -- resize/my-image.jpg --width=800 --quality=90
+# Resize with custom parameters:
+npm run resize-images -- assets/images/tour --width=800 --quality=90
 ```
 
 ## Default Settings
