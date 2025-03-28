@@ -132,6 +132,36 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
     return;
   }
   
+  // Check if this is a static hero section
+  if (headerElement.getAttribute('data-static-hero') === 'true') {
+    // Only generate the navbar for static hero sections
+    const navbarHTML = `
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <i class="${config.logoIcon}"></i>
+            <span>${config.logoText}</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          ${config.navItems.map(item => 
+            `<li><a href="${item.href}"${item.isActive ? ' class="active"' : ''}>${item.text}</a></li>`
+          ).join('')}
+        </ul>
+      </nav>
+    `;
+    
+    // Insert the navbar at the beginning of the header
+    headerElement.insertAdjacentHTML('afterbegin', navbarHTML);
+    
+    // Initialize mobile navigation
+    initMobileNav();
+    return;
+  }
+  
   // Set the hero class if provided
   if (config.heroClass) {
     headerElement.className = config.heroClass;
