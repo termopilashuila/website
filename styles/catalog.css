@@ -1,0 +1,115 @@
+/* Catalog Hero Section */
+.catalog-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/home/section0-hero.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 60vh;
+}
+
+/* Catalog Sections */
+.catalog-section {
+    padding: 4rem 2rem;
+    background-color: var(--background_cream);
+}
+
+.catalog-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary);
+    font-family: var(--heading_font);
+    font-size: 2.5rem;
+}
+
+/* Catalog Grid */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Catalog Cards */
+.catalog-card {
+    background: var(--background_dark);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.catalog-card:hover {
+    transform: translateY(-5px);
+}
+
+.catalog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.catalog-card-content {
+    padding: 1.5rem;
+    color: var(--light_text);
+}
+
+.catalog-card h3 {
+    font-family: var(--heading_font);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.catalog-card p {
+    font-family: var(--body_font);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.catalog-card .btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    background-color: var(--accent);
+    color: var(--light_text);
+    border: none;
+    border-radius: 4px;
+    font-family: var(--body_font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.catalog-card .btn-primary:hover {
+    background-color: #e67e00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .catalog-section {
+        padding: 3rem 1rem;
+    }
+
+    .catalog-section h2 {
+        font-size: 2rem;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-section {
+        padding: 2rem 1rem;
+    }
+
+    .catalog-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .catalog-card-content {
+        padding: 1rem;
+    }
+} 

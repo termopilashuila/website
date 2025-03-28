@@ -68,6 +68,7 @@ const defaultHeaderConfig: HeaderConfig = {
   navItems: [
     { text: 'Inicio', href: 'index.html' },
     { text: 'Alojamiento', href: 'alojamiento.html' },
+    { text: 'Catálogo', href: 'catalogo.html' },
     { text: 'Tour', href: 'tour.html' },
     { text: 'Coliving', href: 'coliving.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
@@ -280,6 +281,15 @@ function initHeader(): void {
       subtitle: 'Habitaciones cómodas en un entorno natural',
       ctaText: 'RESERVA AHORA',
       ctaHref: 'index.html#contacto'
+    };
+  } else if (pageName === 'catalogo.html' || pageName === 'catalogo') {
+    headerConfig.heroClass = 'hero catalog-hero';
+    headerConfig.heroImage = 'assets/images/home/section0-hero.jpg';
+    headerConfig.heroContent = {
+      title: 'Nuestro Catálogo',
+      subtitle: 'Explora nuestra selección de alojamiento, vinos y chocolates',
+      ctaText: '',
+      ctaHref: ''
     };
   } else if (pageName === 'tour.html' || pageName === 'tour') {
     headerConfig.heroClass = 'hero tour-hero';

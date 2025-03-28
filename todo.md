@@ -17,3 +17,6 @@
 - Actualizar el correo solicitando el feedback de la estadía
 - Actualizar el correo de bienvenida. Crear una página de bienvenida
 - Página con un catálogo: habitaciones, vino, cacao, chocolates.
+
+
+- Add a brief description to each card
