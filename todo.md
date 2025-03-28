@@ -13,3 +13,6 @@
 - Hacer la página para eventos (reciclar la de matrimonios.com.co)
 - Hacer el formulario para registro de TRA y SIRE
 - Cambiar los mensajes automáticos en Octorate para que comience a referenciar a la página web
+- Actualizar todos los links de Whatsapp para que el mensaje contenga de donde provienen
+- Actualizar el correo solicitando el feedback de la estadía
+- Actualizar el correo de bienvenida
