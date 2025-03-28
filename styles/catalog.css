@@ -74,7 +74,7 @@
     text-align: center;
     padding: 0.8rem;
     background-color: #e67e00;
-    color: var(--light_text);
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     font-family: var(--body_font);
@@ -92,7 +92,7 @@
     text-align: center;
     padding: 0.6rem;
     background-color: #e67e00;
-    color: var(--light_text);
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     font-family: var(--body_font);
