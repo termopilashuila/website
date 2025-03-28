@@ -314,10 +314,10 @@ function initHeader(): void {
     };
   } else if (pageName === 'catalogo.html' || pageName === 'catalogo') {
     headerConfig.heroClass = 'hero catalog-hero';
-    headerConfig.heroImage = 'assets/images/home/section0-hero.jpg';
+    headerConfig.heroImage = 'assets/images/catalog/catalog-hero.jpg';
     headerConfig.heroContent = {
       title: 'Nuestro Catálogo',
-      subtitle: 'Explora nuestra selección de alojamiento, vinos y chocolates',
+      subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
       ctaText: '',
       ctaHref: ''
     };
@@ -1081,6 +1081,15 @@ window.termopilasHeader = {
         subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
         ctaText: 'EXPLORAR',
         ctaHref: '#main-content'
+      };
+    } else if (pageName === 'catalogo.html' || pageName === 'catalogo') {
+      headerConfig.heroClass = 'hero catalog-hero';
+      headerConfig.heroImage = 'assets/images/catalog/catalog-hero.jpg';
+      headerConfig.heroContent = {
+        title: 'Productos Artesanales',
+        subtitle: 'Bienvenido a nuestra colección exclusiva de vinos y chocolates artesanales, elaborados con pasión en el corazón del Huila. Cada producto refleja la dedicación y el arte de nuestra finca, donde la tradición se encuentra con la innovación.',
+        ctaText: '',
+        ctaHref: ''
       };
     } else if (pageName === '404.html') {
       headerConfig.heroClass = 'hero';
