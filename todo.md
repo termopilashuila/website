@@ -20,3 +20,5 @@
 
 
 - Add a brief description to each card
+
+- Center the buttons in the cards
