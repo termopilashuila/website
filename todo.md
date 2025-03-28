@@ -16,4 +16,3 @@
 - Actualizar todos los links de Whatsapp para que el mensaje contenga de donde provienen
 - Actualizar el correo solicitando el feedback de la estadía
 - Actualizar el correo de bienvenida. Crear una página de bienvenida
-- Página con un catálogo: habitaciones, vino, cacao, chocolates.
