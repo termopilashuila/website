@@ -427,11 +427,46 @@ function initFooter(): void {
   // Create a copy of the default config
   const footerConfig: FooterConfig = JSON.parse(JSON.stringify(defaultFooterConfig));
   
-  // Customize footer content based on page if needed
-  if (pageName === 'alojamiento.html') {
-    footerConfig.contact.description = 'Escríbenos para más información o reservas';
-  } else if (pageName === 'tour.html') {
-    footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+  // Get the page name in Spanish for the WhatsApp message
+  let pageNameInSpanish = 'Inicio';
+  switch(pageName) {
+    case 'alojamiento.html':
+      pageNameInSpanish = 'Alojamiento';
+      footerConfig.contact.description = 'Escríbenos para más información o reservas';
+      break;
+    case 'catalogo.html':
+      pageNameInSpanish = 'Catálogo';
+      footerConfig.contact.description = 'Escríbenos para más información sobre nuestros productos';
+      break;
+    case 'tour.html':
+      pageNameInSpanish = 'Tour de Vino y Chocolate';
+      footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+      break;
+    case 'coliving.html':
+      pageNameInSpanish = 'Coliving';
+      break;
+    case 'ubicacion.html':
+      pageNameInSpanish = 'Ubicación';
+      break;
+    case 'galeria.html':
+      pageNameInSpanish = 'Galería';
+      break;
+    case 'blog.html':
+      pageNameInSpanish = 'Blog';
+      break;
+    default:
+      pageNameInSpanish = 'Inicio';
+  }
+  
+  // Update WhatsApp URL with dynamic message
+  const whatsappMessage = `Hola. Estaba en la página de ${pageNameInSpanish} y me gustaría saber más sobre`;
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+  const whatsappUrl = `https://wa.me/573143428579?text=${encodedMessage}`;
+  
+  // Update the WhatsApp social media link
+  const whatsappIndex = footerConfig.contact.socialMedia.findIndex(social => social.platform === 'WhatsApp');
+  if (whatsappIndex !== -1) {
+    footerConfig.contact.socialMedia[whatsappIndex].url = whatsappUrl;
   }
   
   // Generate the footer with the customized config
