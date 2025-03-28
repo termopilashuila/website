@@ -25,16 +25,88 @@
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/fonts.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/hero.css">
-    <link rel="stylesheet" href="styles/utilities.css">
-    <link rel="stylesheet" href="styles/main-sections.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+    <!-- Critical CSS -->
+    <style>
+        /* Critical styles for above-the-fold content */
+        :root {
+            --text-color: #333333;
+            --accent-color: #ff8c00;
+            --background-dark: #000000;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fdf6ea;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .main-alojamiento-section {
+            background-color: #fdf6ea;
+            color: var(--text-color);
+            padding: 4rem 0;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fdf6ea;
+            padding: 0.85rem 1.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+    </style>
     
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="assets/css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/main.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/hero.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/utilities.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/main-sections.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/responsive.css" media="print" onload="this.media='all'">
+    
+    <!-- Font Awesome loaded asynchronously -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/fonts.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/hero.css">
+        <link rel="stylesheet" href="styles/utilities.css">
+        <link rel="stylesheet" href="styles/main-sections.css">
+        <link rel="stylesheet" href="styles/responsive.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
