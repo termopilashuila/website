@@ -23,7 +23,7 @@
 /* Catalog Grid */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -36,6 +36,9 @@
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .catalog-card:hover {
@@ -70,7 +73,7 @@
     width: 100%;
     text-align: center;
     padding: 0.8rem;
-    background-color: var(--accent);
+    background-color: #e67e00;
     color: var(--light_text);
     border: none;
     border-radius: 4px;
@@ -81,14 +84,14 @@
 }
 
 .catalog-card .btn-primary:hover {
-    background-color: #e67e00;
+    background-color: #ff8c00;
 }
 
 .catalog-card .cta-button {
     width: 100%;
     text-align: center;
     padding: 0.6rem;
-    background-color: var(--accent);
+    background-color: #e67e00;
     color: var(--light_text);
     border: none;
     border-radius: 4px;
@@ -100,7 +103,7 @@
 }
 
 .catalog-card .cta-button:hover {
-    background-color: #e67e00;
+    background-color: #ff8c00;
 }
 
 /* Responsive Design */
@@ -114,8 +117,12 @@
     }
 
     .catalog-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
+    }
+
+    .catalog-card {
+        max-width: 350px;
     }
 }
 
