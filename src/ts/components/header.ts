@@ -1,6 +1,85 @@
 // Import interfaces
 import { HTMLElementWithStyle, HeaderConfig } from '../types/interfaces';
 
+// Page-specific configurations
+const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
+  alojamiento: {
+    heroClass: 'hero rooms-hero',
+    heroImage: 'assets/images/home/header.jpg',
+    heroContent: {
+      title: 'Alojamiento en <strong>Finca Termópilas</strong>',
+      subtitle: 'Habitaciones cómodas en un entorno natural',
+      ctaText: 'RESERVA AHORA',
+      ctaHref: 'index.html#contacto'
+    }
+  },
+  catalogo: {
+    heroClass: 'hero catalog-hero',
+    heroImage: 'assets/images/catalog/catalog-hero.jpg',
+    heroContent: {
+      title: 'Nuestro Catálogo',
+      subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
+      ctaText: '',
+      ctaHref: ''
+    }
+  },
+  tour: {
+    heroClass: 'hero tour-hero',
+    heroImage: 'assets/images/tour/section0.jpg',
+    heroContent: {
+      title: 'Tour de Vino 🍷 y Chocolate 🍫',
+      subtitle: 'Una experiencia sensorial única en Finca Termópilas',
+      ctaText: 'RESERVA AHORA',
+      ctaHref: '#main-content'
+    }
+  },
+  coliving: {
+    heroClass: 'hero coliving-hero',
+    heroImage: 'assets/images/coliving/section0.jpg',
+    heroContent: {
+      title: 'Coliving para <strong>Nómadas Digitales</strong>',
+      subtitle: 'Trabajo remoto en un paraíso natural',
+      ctaText: 'RESERVA TU CUPO',
+      ctaHref: '#coliving-form'
+    }
+  },
+  ubicacion: {
+    heroClass: 'hero directions-hero',
+    heroImage: 'assets/images/directions/section0.jpg',
+    heroContent: {
+      title: 'Cómo Llegar',
+      subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+      ctaText: '',
+      ctaHref: ''
+    }
+  },
+  galeria: {
+    heroClass: 'hero gallery-hero',
+    heroImage: 'assets/images/gallery/section5-gallery1.jpg',
+    heroContent: {
+      title: 'Galería de fotos',
+      subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
+      ctaText: 'Ver Alojamiento',
+      ctaHref: 'alojamiento.html'
+    }
+  },
+  blog: {
+    heroClass: 'hero blog-hero',
+    heroImage: 'assets/images/home/header.jpg',
+    heroContent: {
+      title: 'Nuestro Blog',
+      subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
+      ctaText: 'EXPLORAR',
+      ctaHref: '#main-content'
+    }
+  },
+  '404': {
+    heroClass: 'hero',
+    heroImage: 'assets/images/error/section0.jpg',
+    heroContent: undefined
+  }
+};
+
 // Default header configuration
 const defaultHeaderConfig: HeaderConfig = {
   logoText: 'Finca Termópilas',
@@ -204,75 +283,9 @@ export function initHeader(): void {
     isActive: item.href.includes(pageNameWithoutExt)
   }));
   
-  // Customize hero content based on page
-  if (pageName === 'alojamiento.html' || pageName === 'alojamiento') {
-    headerConfig.heroClass = 'hero rooms-hero';
-    headerConfig.heroImage = 'assets/images/home/header.jpg';
-    headerConfig.heroContent = {
-      title: 'Alojamiento',
-      subtitle: 'Habitaciones cómodas en un entorno natural',
-      ctaText: 'RESERVA AHORA',
-      ctaHref: 'index.html#contacto'
-    };
-  } else if (pageName === 'catalogo.html' || pageName === 'catalogo') {
-    headerConfig.heroClass = 'hero catalog-hero';
-    headerConfig.heroImage = 'assets/images/catalog/catalog-hero.jpg';
-    headerConfig.heroContent = {
-      title: 'Nuestro Catálogo',
-      subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
-      ctaText: '',
-      ctaHref: ''
-    };
-  } else if (pageName === 'tour.html' || pageName === 'tour') {
-    headerConfig.heroClass = 'hero tour-hero';
-    headerConfig.heroImage = 'assets/images/tour/section0.jpg';
-    headerConfig.heroContent = {
-      title: 'Tour de Vino 🍷 y Chocolate 🍫',
-      subtitle: 'Una experiencia sensorial única en Finca Termópilas',
-      ctaText: 'RESERVA AHORA',
-      ctaHref: '#main-content'
-    };
-  } else if (pageName === 'coliving.html' || pageName === 'coliving') {
-    headerConfig.heroClass = 'hero coliving-hero';
-    headerConfig.heroImage = 'assets/images/coliving/section0.jpg';
-    headerConfig.heroContent = {
-      title: 'Coliving para <strong>Nómadas Digitales</strong>',
-      subtitle: 'Trabajo remoto en un paraíso natural',
-      ctaText: 'RESERVA TU CUPO',
-      ctaHref: '#coliving-form'
-    };
-  } else if (pageName === 'ubicacion.html' || pageName === 'ubicacion') {
-    headerConfig.heroClass = 'hero directions-hero';
-    headerConfig.heroImage = 'assets/images/directions/section0.jpg';
-    headerConfig.heroContent = {
-      title: 'Cómo Llegar',
-      subtitle: 'Instrucciones para encontrarnos',
-      ctaText: '',
-      ctaHref: ''
-    };
-  } else if (pageName === 'galeria.html' || pageName === 'galeria') {
-    headerConfig.heroClass = 'hero gallery-hero';
-    headerConfig.heroImage = 'assets/images/gallery/section5-gallery1.jpg';
-    headerConfig.heroContent = {
-      title: 'Galería',
-      subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
-      ctaText: '',
-      ctaHref: ''
-    };
-  } else if (pageName === 'blog.html' || pageName === 'blog') {
-    headerConfig.heroClass = 'hero blog-hero';
-    headerConfig.heroImage = 'assets/images/home/header.jpg';
-    headerConfig.heroContent = {
-      title: 'Nuestro Blog',
-      subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
-      ctaText: 'EXPLORAR',
-      ctaHref: '#main-content'
-    };
-  } else if (pageName === '404.html' || pageName === '404') {
-    headerConfig.heroClass = 'hero';
-    headerConfig.heroImage = 'assets/images/error/section0.jpg';
-    // For 404 page, we don't need hero content as it has its own error container
-    headerConfig.heroContent = undefined;
+  // Apply page-specific configurations if they exist
+  if (pageNameWithoutExt in pageConfigs) {
+    Object.assign(headerConfig, pageConfigs[pageNameWithoutExt]);
   }
   
   // Generate the header with the customized config
@@ -294,8 +307,9 @@ export function initGlobalHeader(): void {
       // Create a copy of the default config
       const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
       
-      // Merge with the current page-specific config
+      // Get the current page name
       const pageName = currentPath.split('/').pop() || 'index.html';
+      const pageNameWithoutExt = pageName.replace('.html', '');
       
       // Ensure blog page is included in navigation
       const hasBlogItem = headerConfig.navItems.some(item => item.href === 'blog.html');
@@ -312,75 +326,9 @@ export function initGlobalHeader(): void {
         return item;
       });
       
-      // Apply page-specific configurations
-      if (pageName === 'alojamiento.html') {
-        headerConfig.heroClass = 'hero rooms-hero';
-        headerConfig.heroImage = 'assets/images/home/header.jpg';
-        headerConfig.heroContent = {
-          title: 'Alojamiento en <strong>Finca Termópilas</strong>',
-          subtitle: 'Habitaciones cómodas en un entorno natural',
-          ctaText: 'RESERVA AHORA',
-          ctaHref: 'index.html#contacto'
-        };
-      } else if (pageName === 'tour.html') {
-        headerConfig.heroClass = 'hero tour-hero';
-        headerConfig.heroImage = 'assets/images/tour/section0.jpg';
-        headerConfig.heroContent = {
-          title: 'Tour de Vino 🍷 y Chocolate 🍫',
-          subtitle: 'Una experiencia sensorial única en Finca Termópilas',
-          ctaText: 'RESERVA AHORA',
-          ctaHref: '#main-content'
-        };
-      } else if (pageName === 'coliving.html' || pageName === 'coliving') {
-        headerConfig.heroClass = 'hero coliving-hero';
-        headerConfig.heroImage = 'assets/images/coliving/section0.jpg';
-        headerConfig.heroContent = {
-          title: 'Coliving para <strong>Nómadas Digitales</strong>',
-          subtitle: 'Trabajo remoto en un paraíso natural',
-          ctaText: 'RESERVA TU CUPO',
-          ctaHref: '#coliving-form'
-        };
-      } else if (pageName === 'ubicacion.html') {
-        headerConfig.heroClass = 'hero directions-hero';
-        headerConfig.heroImage = 'assets/images/directions/section0.jpg';
-        headerConfig.heroContent = {
-          title: 'Cómo Llegar a Finca Termópilas',
-          subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
-          ctaText: '',
-          ctaHref: ''
-        };
-      } else if (pageName === 'galeria.html') {
-        headerConfig.heroClass = 'hero gallery-hero';
-        headerConfig.heroImage = 'assets/images/gallery/section5-gallery1.jpg';
-        headerConfig.heroContent = {
-          title: 'Galería de Finca Termópilas',
-          subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
-          ctaText: 'Ver Alojamiento',
-          ctaHref: 'alojamiento.html'
-        };
-      } else if (pageName === 'blog.html') {
-        headerConfig.heroClass = 'hero blog-hero';
-        headerConfig.heroImage = 'assets/images/home/header.jpg';
-        headerConfig.heroContent = {
-          title: 'Nuestro Blog',
-          subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
-          ctaText: 'EXPLORAR',
-          ctaHref: '#main-content'
-        };
-      } else if (pageName === 'catalogo.html' || pageName === 'catalogo') {
-        headerConfig.heroClass = 'hero catalog-hero';
-        headerConfig.heroImage = 'assets/images/catalog/catalog-hero.jpg';
-        headerConfig.heroContent = {
-          title: 'Productos Artesanales',
-          subtitle: 'Bienvenido a nuestra colección exclusiva de vinos y chocolates artesanales, elaborados con pasión en el corazón del Huila. Cada producto refleja la dedicación y el arte de nuestra finca, donde la tradición se encuentra con la innovación.',
-          ctaText: '',
-          ctaHref: ''
-        };
-      } else if (pageName === '404.html') {
-        headerConfig.heroClass = 'hero';
-        headerConfig.heroImage = 'assets/images/error/section0.jpg';
-        // For 404 page, we don't need hero content as it has its own error container
-        headerConfig.heroContent = undefined;
+      // Apply page-specific configurations if they exist
+      if (pageNameWithoutExt in pageConfigs) {
+        Object.assign(headerConfig, pageConfigs[pageNameWithoutExt]);
       }
       
       // Override with the provided config
