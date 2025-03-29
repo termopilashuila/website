@@ -38,7 +38,7 @@ body {
 .hero {
     min-height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-                url('../assets/images/home/section0-hero.jpg');
+                url('../assets/images/home/header.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
