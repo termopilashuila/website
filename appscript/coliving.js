@@ -37,7 +37,7 @@ function sendEmailNotification(data) {
         <!-- Logo and Header -->
         <div style="text-align: center; margin-bottom: 20px;">
           <img src="${logoUrl}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
-          <h2 style="color: #ff8c00; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 10px;">Nueva Solicitud de Coliving</h2>
+          <h2 style="color: #B48E63; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 10px;">Nueva Solicitud de Coliving</h2>
         </div>
         
         <div style="margin: 20px 0;">
@@ -46,7 +46,7 @@ function sendEmailNotification(data) {
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Teléfono:</strong> ${data.phone}</p>
           <p><strong>Profesión:</strong> ${data.profession}</p>
-          <p><strong>Tipo de Experiencia:</strong> <span style="color: ${data.experience_type === 'De Lujo' ? '#ff8c00' : '#333'}; font-weight: ${data.experience_type === 'De Lujo' ? 'bold' : 'normal'};">${data.experience_type}</span></p>
+          <p><strong>Tipo de Experiencia:</strong> <span style="color: ${data.experience_type === 'De Lujo' ? '#B48E63' : '#333'}; font-weight: ${data.experience_type === 'De Lujo' ? 'bold' : 'normal'};">${data.experience_type}</span></p>
           <p><strong>Mensaje:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>
         </div>
         
@@ -54,14 +54,14 @@ function sendEmailNotification(data) {
           <p style="margin-bottom: 15px;"><strong>Acciones:</strong></p>
           <!-- Responsive buttons for mobile -->
           <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <a href="https://docs.google.com/spreadsheets/d/1YH-y_LxzcnO-46KLsWa1z_oNWvjO6CaULvKxh2L1ShE" style="display: inline-block; background-color: #ff8c00; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las solicitudes</a>
+            <a href="https://docs.google.com/spreadsheets/d/1YH-y_LxzcnO-46KLsWa1z_oNWvjO6CaULvKxh2L1ShE" style="display: inline-block; background-color: #B48E63; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las solicitudes</a>
             <a href="mailto:${data.email}" style="display: inline-block; background-color: #333; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Email al cliente</a>
-            <a href="${whatsappLink}" style="display: inline-block; background-color: #25D366; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Contactar por WhatsApp</a>
+            <a href="${whatsappLink}" style="display: inline-block; background-color: #118C7E; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Contactar por WhatsApp</a>
           </div>
         </div>
         
         <div style="margin-top: 30px; font-size: 12px; color: #777; border-top: 1px solid #eee; padding-top: 10px;">
-          <p>Este es un correo automático generado desde el formulario de coliving de <a href="https://termopilas.co/coliving.html" style="color: #ff8c00; text-decoration: none;">Finca Termópilas</a>.</p>
+          <p>Este es un correo automático generado desde el formulario de coliving de <a href="https://termopilas.co/coliving.html" style="color: #B48E63; text-decoration: none;">Finca Termópilas</a>.</p>
           <p>Para la fecha programada: 6 abril - 12 abril de 2025</p>
         </div>
       </div>`;

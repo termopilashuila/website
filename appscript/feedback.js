@@ -22,7 +22,7 @@ function sendFeedbackEmail(clientName, startDate) {
       </p>
 
       <div style="margin: 30px 0;">
-        <div style="color: #ff8c00; font-size: 2rem; text-align: center; margin-bottom: 20px;">★★★★★</div>
+        <div style="color: #B48E63; font-size: 2rem; text-align: center; margin-bottom: 20px;">★★★★★</div>
         <table style="width: 100%; border-collapse: collapse; color: #666;">
           <tr>
             <td style="padding: 10px 0; line-height: 1.6;">
@@ -66,7 +66,7 @@ function sendFeedbackEmail(clientName, startDate) {
           </a>
         </div>
         Si no quieres seguir recibiendo estos correos, 
-        <a href="https://wa.me/573143428579?text=${encodeURIComponent(`Hola, soy ${clientName}. Por favor, quisiera dejar de recibir correos de feedback de Termópilas.`)}" style="color: #ff8c00;">desuscríbete</a>
+        <a href="https://wa.me/573143428579?text=${encodeURIComponent(`Hola, soy ${clientName}. Por favor, quisiera dejar de recibir correos de feedback de Termópilas.`)}" style="color: #B48E63;">desuscríbete</a>
       </div>
     </div>
   `;
