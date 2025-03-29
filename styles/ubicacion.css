@@ -1,5 +1,12 @@
 /* Ubicacion Page Styles */
 
+/* Hero Styles */
+.directions-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-position: center;
+}
+
 /* Container Styles */
 .directions-container {
     max-width: 1000px;
@@ -179,13 +186,6 @@
 .warning-box p {
     margin: 0;
     color: #856404;
-}
-
-/* Hero Styles */
-.directions-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    background-size: cover;
-    background-position: center;
 }
 
 /* Utility Classes */
