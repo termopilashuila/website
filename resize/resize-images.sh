@@ -9,4 +9,4 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Forward all arguments to the Node.js script
-node "$SCRIPT_DIR/resize-images.js" "$@" 
+node "$SCRIPT_DIR/resize/resize-images.js" "$@" 
