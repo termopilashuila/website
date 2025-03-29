@@ -202,7 +202,7 @@ alwaysApply: true
 ### Colors
 - primary: #000000
 - secondary: #333333
-- accent: #ff8c00
+- accent: #F29F05
 - text: #333333
 - light_text: #fdf6ea
 - background_light: #fdf6ea

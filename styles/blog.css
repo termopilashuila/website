@@ -117,7 +117,7 @@
 }
 
 .blog-category {
-    color: #ff8c00;
+    color: #F29F05;
     font-weight: 600;
 }
 
@@ -137,7 +137,7 @@
 .read-more {
     display: inline-flex;
     align-items: center;
-    color: #ff8c00;
+    color: #F29F05;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -205,7 +205,7 @@
 
 .newsletter-form .cta-button {
     padding: 0.8rem 1.5rem;
-    background-color: #ff8c00;
+    background-color: #F29F05;
     border: none;
     border-radius: 4px;
     color: #ffffff;

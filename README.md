@@ -262,7 +262,7 @@ finca-termopilas/
 :root {
   --primary-color: #000000;      /* Negro - Fondo principal */
   --secondary-color: #333333;    /* Gris oscuro - Fondo secundario */
-  --accent-color: #ff8c00;       /* Naranja - Color de acento */
+  --accent-color: #F29F05;       /* Naranja - Color de acento */
   --text-color: #333333;         /* Gris oscuro - Texto principal */
   --light-text: #fdf6ea;         /* Crema claro - Texto sobre fondos oscuros */
   --background-light: #fdf6ea;   /* Crema claro - Fondo claro */

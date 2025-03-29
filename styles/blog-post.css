@@ -8,7 +8,7 @@
 .blog-post-back-link {
     display: inline-block;
     margin-bottom: 1.5rem;
-    color: #ff8c00;
+    color: #F29F05;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -38,7 +38,7 @@
 }
 
 .blog-post-category {
-    color: #ff8c00;
+    color: #F29F05;
     font-weight: 600;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .blog-post-content blockquote {
-    border-left: 4px solid #ff8c00;
+    border-left: 4px solid #F29F05;
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
@@ -133,14 +133,14 @@
 }
 
 .blog-post-content a {
-    color: #ff8c00;
+    color: #F29F05;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease;
 }
 
 .blog-post-content a:hover {
-    border-color: #ff8c00;
+    border-color: #F29F05;
 }
 
 .blog-post-tags {
@@ -192,7 +192,7 @@
 }
 
 .blog-post-share-button:hover {
-    background-color: #ff8c00;
+    background-color: #F29F05;
     color: #ffffff;
 }
 
@@ -320,7 +320,7 @@
 }
 
 .blog-post-comment-form button {
-    background-color: #ff8c00;
+    background-color: #F29F05;
     color: #ffffff;
     border: none;
     padding: 0.8rem 1.5rem;
