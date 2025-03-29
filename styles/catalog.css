@@ -1,6 +1,6 @@
 /* Catalog Hero Section */
 .catalog-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../assets/images/catalog/catalog-hero.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
     background-position: center;
     background-size: cover;
     min-height: 70vh;
