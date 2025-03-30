@@ -1,7 +1,5 @@
 # TODO:
-- Cambiar la foto del vino rosé porque la copa no cuadra y en el celular se ve la comida y no tanto el vino.
-- La foto del Jardín de Orquídeas están las personas de espaldas. Cambiar
-- Blog lugares para comer: Casa de las Flores, Termales Los Angeles, Azafrán, María Vidal, Café Rivera
+- Blog lugares para comer:Casa de las Flores, Termales Los Angeles, Azafrán, María Vidal, Café Rivera
 - Blog para lugares para tomar café: Café Lluvia, Café Rivera
 - Blog elaboración de vino: eliminar el encabezado de la página principal
 - Blog elaboración de vino: actualizar la foto de Carlos Cabrera
