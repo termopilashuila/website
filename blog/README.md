@@ -12,7 +12,7 @@ Este directorio contiene el sistema de blog para el sitio web de Finca Termópil
 
 ### 1. Crear un nuevo archivo HTML
 
-1. Copia el archivo `template.html` y renómbralo con un nombre descriptivo usando kebab-case (por ejemplo, `proceso-elaboracion-vino-artesanal.html`).
+1. Copia el archivo `template.html` y renómbralo con un nombre descriptivo usando kebab-case y preferiblemente un prefijo numérico (por ejemplo, `6-lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
 2. Coloca el nuevo archivo en el directorio `posts/`.
 
 ### 2. Reemplazar las variables de la plantilla
@@ -24,8 +24,8 @@ Busca y reemplaza las siguientes variables en el nuevo archivo:
 | `{{BLOG_TITLE}}` | Título del artículo | El proceso de elaboración de nuestro vino artesanal |
 | `{{BLOG_DESCRIPTION}}` | Descripción para SEO (150-160 caracteres) | Descubre el fascinante proceso de elaboración de nuestro vino artesanal F27, desde la cosecha de la uva Isabella hasta el embotellado final. |
 | `{{BLOG_KEYWORDS}}` | Palabras clave separadas por comas | vino artesanal, F27, uva Isabella, elaboración vino |
-| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | proceso-elaboracion-vino-artesanal |
-| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/home/section2-product1.jpg |
+| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | 6-lugares-para-comer-rivera |
+| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/6-lugares-para-comer-rivera/casa-flores.png |
 | `{{BLOG_PUBLISHED_DATE}}` | Fecha de publicación en formato ISO | 2024-03-15T10:00:00-05:00 |
 | `{{BLOG_MODIFIED_DATE}}` | Fecha de última modificación en formato ISO | 2024-03-15T10:00:00-05:00 |
 | `{{BLOG_AUTHOR}}` | Nombre del autor | Carlos Ramírez |
@@ -95,7 +95,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
 ```html
 <article class="blog-card" data-categories="categoria1 categoria2">
     <div class="blog-image">
-        <img src="assets/images/path-to-image.jpg" alt="Título del artículo">
+        <img src="assets/images/blog/6-lugares-para-comer-rivera/casa-flores.png" alt="Título del artículo">
     </div>
     <div class="blog-content">
         <div class="blog-meta">
@@ -104,7 +104,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
         </div>
         <h3>Título del artículo</h3>
         <p>Breve descripción del artículo...</p>
-        <a href="blog/posts/nombre-del-articulo.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="blog/posts/6-lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
@@ -115,7 +115,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-  <loc>https://termopilas.co/blog/posts/nombre-del-articulo.html</loc>
+  <loc>https://termopilas.co/blog/posts/6-lugares-para-comer-rivera.html</loc>
   <lastmod>YYYY-MM-DD</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
