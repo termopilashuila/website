@@ -53,6 +53,7 @@ alwaysApply: true
 - assets/images/directions/
 - assets/images/gallery/
 - assets/images/coliving/
+- assets/images/blog/ (with subdirectories following blog post slugs e.g., assets/images/blog/6-lugares-para-comer-rivera/)
 
 ### Icons Directory
 - assets/icons/
@@ -65,6 +66,8 @@ alwaysApply: true
 ### Blog
 - Directories: blog/, blog/posts/
 - Files: blog/template.html, blog/README.md
+- Blog posts: Convention is to name with a numbered prefix (e.g., `6-lugares-para-comer-rivera.html`)
+- Blog images: store in assets/images/blog/{post-slug}/
 
 ### Config Files
 - tsconfig.json
