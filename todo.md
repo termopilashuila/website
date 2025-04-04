@@ -14,3 +14,5 @@
 - Actualizar todos los links de Whatsapp para que el mensaje contenga de donde provienen
 - Actualizar el correo solicitando el feedback de la estadía
 - Actualizar el correo de bienvenida. Crear una página de bienvenida
+- Crear un blog de yoga en Rivera, mencionar a Gina como profesora y disponer del espacio
+- Crear un blog de preparaciones con nibs de cacao. Mencionar los bowl de chía con fruta y yogurt griego. MEncionar que también se llama parfait
