@@ -15,7 +15,7 @@ function doPost(e) {
 function handleRequest(e) {
   try {
     // ID de la hoja de cálculo (reemplazar con el ID real)
-    const spreadsheetId = "SPREADSHEET_ID_PLACEHOLDER";
+    const spreadsheetId = "1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak";
     const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
     
     // Procesar los datos recibidos
