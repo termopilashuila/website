@@ -176,7 +176,7 @@ function sendEmailNotification(data) {
       <p style="margin-bottom: 15px;"><strong>Acciones:</strong></p>
       <!-- Botones responsivos para móvil -->
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <a href="https://docs.google.com/spreadsheets/d/${spreadsheetId}" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las reservas</a>
+        <a href="https://docs.google.com/spreadsheets/d/1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las reservas</a>
         <a href="mailto:${data.email}" style="display: inline-block; background-color: #333; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Email al huésped</a>
         <a href="${whatsappLink}" style="display: inline-block; background-color: #118C7E; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Contactar por WhatsApp</a>
       </div>
@@ -201,7 +201,7 @@ Nacionalidad: ${data.nacionalidad}
 Tipo de huésped: ${data.tipoHuesped}
 Motivo de viaje: ${data.motivoViaje}
 
-Accede a tu Google Sheet para ver todos los detalles: https://docs.google.com/spreadsheets/d/${spreadsheetId}
+Accede a tu Google Sheet para ver todos los detalles: https://docs.google.com/spreadsheets/d/1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak
 Contactar por WhatsApp: ${whatsappLink}`;
   
   // Enviar el correo
@@ -260,6 +260,30 @@ function testEmailNotification() {
     municipioResidencia: "Bogotá",
     tipoHuesped: "Huésped principal"
   };
-  
+  const spreadsheetId = "1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak";
+  const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
+  const timestamp = new Date();
+
+  // Agregar los datos a la hoja en el orden especificado
+  sheet.appendRow([
+    timestamp,                      // Timestamp
+    testData.nombres,                   // Nombres
+    testData.apellidos,                 // Apellidos
+    testData.numeroIdentificacion,      // Numero de identificación
+    testData.email,                     // Email
+    testData.celular,                   // Celular
+    formatDate(testData.fechaNacimiento), // Fecha de nacimiento
+    formatDate(testData.fechaInicio),   // Fecha de inicio del alojamiento
+    testData.direccion,                 // Dirección del huésped
+    testData.tipoIdentificacion,        // Tipo de identificación
+    testData.genero,                    // Género
+    testData.nacionalidad,              // Nacionalidad
+    testData.motivoViaje,               // Motivo de viaje
+    testData.ocupacion,                 // Ocupación, profesión u oficio
+    testData.municipioResidencia,       // Municipio de residencia
+    testData.tipoHuesped                // Huésped principal / Huésped acompañante
+  ]);
+
+  // Enviar notificación por correo electrónico
   sendEmailNotification(testData);
 } 
