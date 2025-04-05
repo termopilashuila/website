@@ -24,12 +24,12 @@ Busca y reemplaza las siguientes variables en el nuevo archivo:
 | `{{BLOG_TITLE}}` | Título del artículo | 7 lugares para comer en Rivera, Huila |
 | `{{BLOG_DESCRIPTION}}` | Descripción para SEO (150-160 caracteres) | Descubre el fascinante proceso de elaboración de nuestro vino artesanal F27, desde la cosecha de la uva Isabella hasta el embotellado final. |
 | `{{BLOG_KEYWORDS}}` | Palabras clave separadas por comas | vino artesanal, F27, uva Isabella, elaboración vino |
-| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | 7-lugares-para-comer-rivera |
-| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/7-lugares-para-comer-rivera/casa-flores.png |
+| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | lugares-para-comer-rivera |
+| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/lugares-para-comer-rivera/casa-flores.png |
 | `{{BLOG_PUBLISHED_DATE}}` | Fecha de publicación en formato ISO | 2024-03-15T10:00:00-05:00 |
 | `{{BLOG_MODIFIED_DATE}}` | Fecha de última modificación en formato ISO | 2024-03-15T10:00:00-05:00 |
 | `{{BLOG_AUTHOR}}` | Nombre del autor | Julio Manchola |
-| `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/7-lugares-para-comer-rivera/author.png |
+| `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/lugares-para-comer-rivera/author.png |
 | `{{BLOG_AUTHOR_BIO}}` | Biografía del autor | Experto en gastronomía colombiana y periodista especializado en turismo. |
 | `{{BLOG_DATE}}` | Fecha en formato legible | 15 de marzo, 2024 |
 | `{{BLOG_CATEGORY}}` | Categoría principal del artículo | Vino |
@@ -95,7 +95,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
 ```html
 <article class="blog-card" data-categories="gastronomia turismo">
     <div class="blog-image">
-        <img src="assets/images/blog/7-lugares-para-comer-rivera/casa-flores.png" alt="Título del artículo">
+        <img src="assets/images/blog/lugares-para-comer-rivera/casa-flores.png" alt="Título del artículo">
     </div>
     <div class="blog-content">
         <div class="blog-meta">
@@ -104,7 +104,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
         </div>
         <h3>7 lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
-        <a href="blog/posts/7-lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
@@ -115,7 +115,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/posts/7-lugares-para-comer-rivera.html</loc>
+    <loc>https://termopilas.co/blog/posts/lugares-para-comer-rivera.html</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -127,11 +127,11 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 ### Archivos de blog
 - Los archivos de blog se guardan en la carpeta `blog/posts/`.
 - Convención de nomenclatura: kebab-case.
-- Preferentemente con un prefijo numérico (por ejemplo, `7-lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
+- Preferentemente con un prefijo numérico (por ejemplo, `lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
 
 ### Imágenes de blog
 - Las imágenes se guardan en la carpeta `assets/images/blog/{nombre-del-post}/`.
-- Ejemplo: Para un post con nombre `7-lugares-para-comer-rivera.html`, las imágenes estarían en `assets/images/blog/7-lugares-para-comer-rivera/`.
+- Ejemplo: Para un post con nombre `lugares-para-comer-rivera.html`, las imágenes estarían en `assets/images/blog/lugares-para-comer-rivera/`.
 
 ## Variables de plantilla
 
@@ -139,10 +139,10 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 |----------|-------------|---------|
 | `{{BLOG_TITLE}}` | Título del artículo | 7 lugares para comer en Rivera, Huila |
 | `{{BLOG_SUBTITLE}}` | Subtítulo o descripción | Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera. |
-| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | 7-lugares-para-comer-rivera |
-| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/7-lugares-para-comer-rivera/casa-flores.png |
+| `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | lugares-para-comer-rivera |
+| `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/lugares-para-comer-rivera/casa-flores.png |
 | `{{BLOG_AUTHOR}}` | Nombre del autor | Julio Manchola |
-| `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/7-lugares-para-comer-rivera/author.png |
+| `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/lugares-para-comer-rivera/author.png |
 | `{{BLOG_AUTHOR_BIO}}` | Biografía del autor | Experto en gastronomía colombiana y periodista especializado en turismo. |
 
 ## Ejemplos
@@ -152,7 +152,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 ```html
 <article class="blog-card" data-categories="gastronomia turismo">
     <div class="blog-image">
-        <img src="assets/images/blog/7-lugares-para-comer-rivera/casa-flores.png" alt="Título del artículo">
+        <img src="assets/images/blog/lugares-para-comer-rivera/casa-flores.png" alt="Título del artículo">
     </div>
     <div class="blog-content">
         <div class="blog-meta">
@@ -161,7 +161,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
         </div>
         <h3>7 lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
-        <a href="blog/posts/7-lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
@@ -170,7 +170,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/posts/7-lugares-para-comer-rivera.html</loc>
+    <loc>https://termopilas.co/blog/posts/lugares-para-comer-rivera.html</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
