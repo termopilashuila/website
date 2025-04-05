@@ -1,12 +1,5 @@
 # TODO:
-- Blog lugares para comer:Casa de las Flores, Termales Los Angeles, Azafrán, María Vidal, Café Rivera
 - Blog para lugares para tomar café: Café Lluvia, Café Rivera
-- Blog elaboración de vino: eliminar el encabezado de la página principal
-- Blog elaboración de vino: actualizar la foto de Carlos Cabrera
-- Blog elaboración de vino: en Artículos relacionados no carga nada.
-- Blog elaboración de vino: eliminar la sección de comentarios
-- Blog del arbol a la barra: actualizar la foto de Don Jairo (preguntarle)
-- Blog de maridaje: cambiar la imagen de los espaguettis
 - Blog de maridaje: cambiar la persona que escribió el artículo
 - Hacer la página para eventos (reciclar la de matrimonios.com.co)
 - Hacer el formulario para registro de TRA y SIRE
