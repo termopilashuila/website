@@ -47,6 +47,7 @@
             font-family: 'Lora', serif;
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .form-container {
@@ -184,7 +185,7 @@
             <h2>Registro de Huéspedes</h2>
             
             <div class="form-intro">
-                <p>Estás recibiendo este formulario porque vas a alojarte en Alojamiento Termópilas Rivera Huila. Como prestadores de servicio de alojamiento, compartimos este formulario que funciona como Tarjeta de Registro de Alojamiento (TRA) dando cumplimiento a la Ley 2068 de 2020 en el que El Ministerio de Comercio, Industria y Turismo nos obliga llevar al momento de realizar el check in a nuestros huéspedes.</p>
+                <p>Estás recibiendo este formulario porque vas a alojarte en Finca Termópilas Rivera Huila. Como prestadores de servicio de alojamiento, compartimos este formulario que funciona como Tarjeta de Registro de Alojamiento (TRA) dando cumplimiento a la Ley 2068 de 2020 en el que El Ministerio de Comercio, Industria y Turismo nos obliga llevar al momento de realizar el check in a nuestros huéspedes.</p>
             </div>
             
             <form id="guestRegistrationForm">
@@ -252,12 +253,6 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="direccion">Dirección del huésped *</label>
-                    <input type="text" id="direccion" name="direccion" required>
-                    <div class="error-message" id="direccion-error">Por favor ingresa tu dirección</div>
-                </div>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="genero">Género *</label>
@@ -302,20 +297,26 @@
                 
                 <div class="form-row">
                     <div class="form-group">
+                        <label for="direccion">Dirección del huésped *</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                        <div class="error-message" id="direccion-error">Por favor ingresa tu dirección</div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="municipioResidencia">Municipio de residencia *</label>
                         <input type="text" id="municipioResidencia" name="municipioResidencia" required>
                         <div class="error-message" id="municipioResidencia-error">Por favor ingresa tu municipio de residencia</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="tipoHuesped">Huésped principal / Huésped acompañante *</label>
-                        <select id="tipoHuesped" name="tipoHuesped" required>
-                            <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="Huésped principal">Huésped principal</option>
-                            <option value="Huésped acompañante">Huésped acompañante</option>
-                        </select>
-                        <div class="error-message" id="tipoHuesped-error">Por favor selecciona el tipo de huésped</div>
-                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipoHuesped">Huésped principal / Huésped acompañante *</label>
+                    <select id="tipoHuesped" name="tipoHuesped" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Huésped principal">Huésped principal</option>
+                        <option value="Huésped acompañante">Huésped acompañante</option>
+                    </select>
+                    <div class="error-message" id="tipoHuesped-error">Por favor selecciona el tipo de huésped</div>
                 </div>
                 
                 <button type="submit" class="submit-btn">Enviar Registro</button>
