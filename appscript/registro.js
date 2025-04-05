@@ -3,24 +3,56 @@
  * Este script recibe los datos del formulario de registro y los guarda en una hoja de cálculo
  */
 
-// Función que se ejecuta cuando se recibe una solicitud POST
+// Función que se ejecuta cuando se recibe una solicitud GET o POST
+function doGet(e) {
+  return handleRequest(e);
+}
+
 function doPost(e) {
+  return handleRequest(e);
+}
+
+function handleRequest(e) {
   try {
     // ID de la hoja de cálculo (reemplazar con el ID real)
     const spreadsheetId = "SPREADSHEET_ID_PLACEHOLDER";
     const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
     
     // Procesar los datos recibidos
-    const data = JSON.parse(e.postData.contents);
+    let data;
+    
+    // Check if data is coming from URL parameters or from the payload
+    if (e.parameter && e.parameter.data) {
+      data = JSON.parse(e.parameter.data);
+    } else if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else {
+      // Return an HTML page with error message
+      return HtmlService.createHtmlOutput(
+        `<html>
+          <head>
+            <title>Error en el registro</title>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+              .error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }
+              h1 { color: #333; }
+              .button { display: inline-block; background-color: #F29F05; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+            </style>
+          </head>
+          <body>
+            <div class="error-icon">⚠️</div>
+            <h1>Error en el registro</h1>
+            <p>No se recibieron datos. Por favor intenta nuevamente completando el formulario.</p>
+            <a href="https://termopilas.co/registro.html" class="button">Volver al formulario</a>
+          </body>
+        </html>`
+      );
+    }
     
     // Crear una marca de tiempo para el registro
     const timestamp = new Date();
     
-    // Agregar los datos a la hoja en el orden especificado:
-    // Timestamp, Nombres, Apellidos, Numero de identificación, Email, Celular, 
-    // Fecha de nacimiento, Fecha de inicio del alojamiento, Dirección del huésped,
-    // Tipo de identificación, Género, Nacionalidad, Motivo de viaje,
-    // Ocupación profesión u oficio, Municipio de residencia, Huésped principal/acompañante
+    // Agregar los datos a la hoja en el orden especificado
     sheet.appendRow([
       timestamp,                      // Timestamp
       data.nombres,                   // Nombres
@@ -43,18 +75,54 @@ function doPost(e) {
     // Enviar notificación por correo electrónico
     sendEmailNotification(data);
     
-    // Devolver una respuesta exitosa
-    return ContentService.createTextOutput(JSON.stringify({
-      result: "success",
-      message: "Registro guardado correctamente"
-    })).setMimeType(ContentService.MimeType.JSON);
-    
+    // Retornar una página HTML de éxito
+    return HtmlService.createHtmlOutput(
+      `<html>
+        <head>
+          <title>Registro Exitoso - Finca Termópilas</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+            .success-icon { font-size: 48px; color: #27ae60; margin-bottom: 20px; }
+            h1 { color: #333; }
+            p { color: #666; }
+            .button { display: inline-block; background-color: #F29F05; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+          </style>
+        </head>
+        <body>
+          <div class="success-icon">✅</div>
+          <h1>¡Registro Completado con Éxito!</h1>
+          <p>Gracias ${data.nombres} por completar tu registro. Hemos recibido tus datos correctamente.</p>
+          <p>¡Esperamos que disfrutes tu estancia en Finca Termópilas!</p>
+          <a href="https://termopilas.co" class="button">Volver a la página principal</a>
+        </body>
+      </html>`
+    );
   } catch (error) {
-    // En caso de error, devolver una respuesta de error
-    return ContentService.createTextOutput(JSON.stringify({
-      result: "error",
-      message: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    // Retornar una página HTML con el error
+    return HtmlService.createHtmlOutput(
+      `<html>
+        <head>
+          <title>Error en el registro - Finca Termópilas</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+            .error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }
+            h1 { color: #333; }
+            .error-details { background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin: 20px 0; text-align: left; }
+            .button { display: inline-block; background-color: #F29F05; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+          </style>
+        </head>
+        <body>
+          <div class="error-icon">⚠️</div>
+          <h1>Ha ocurrido un error</h1>
+          <p>Lo sentimos, no pudimos procesar tu registro.</p>
+          <div class="error-details">
+            <p><strong>Detalles del error:</strong> ${error.toString()}</p>
+          </div>
+          <p>Por favor intenta nuevamente o contáctanos directamente.</p>
+          <a href="https://termopilas.co/registro.html" class="button">Intentar nuevamente</a>
+        </body>
+      </html>`
+    );
   }
 }
 

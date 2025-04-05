@@ -59,7 +59,7 @@
         }
 
         .form-intro {
-            background-color: var(--background-dark);
+            background-color: #504127;
             color: var(--background-cream);
             padding: 1.5rem;
             border-radius: 8px;
@@ -171,8 +171,8 @@
     <meta property="twitter:description" content="Formulario de registro de huéspedes para Finca Termópilas. Tarjeta de Registro de Alojamiento (TRA) en cumplimiento con la Ley 2068 de 2020.">
     <meta property="twitter:image" content="https://termopilas.co/assets/images/home/header.jpg">
     
-    <!-- JavaScript -->
-    <script src="dist/main.js" defer></script>
+    <!-- JavaScript - Removed main.js reference to prevent errors with missing header and footer -->
+    <!-- <script src="dist/main.js" defer></script> -->
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -184,7 +184,7 @@
             <h2>Registro de Huéspedes</h2>
             
             <div class="form-intro">
-                <p>Estás recibiendo este formulario porque vas a alojarte en Alojamiento Termópilas Rivera Huila. Como prestadores de servicio de alojamiento, compartimos este formulario que funciona como un TRA (Tarjeta de Registro de Alojamiento) dando cumplimiento a la Ley 2068 de 2020 en el que El Ministerio de Comercio, Industria y Turismo nos obliga llevar al momento de realizar el check in a nuestros huéspedes.</p>
+                <p>Estás recibiendo este formulario porque vas a alojarte en Alojamiento Termópilas Rivera Huila. Como prestadores de servicio de alojamiento, compartimos este formulario que funciona como Tarjeta de Registro de Alojamiento (TRA) dando cumplimiento a la Ley 2068 de 2020 en el que El Ministerio de Comercio, Industria y Turismo nos obliga llevar al momento de realizar el check in a nuestros huéspedes.</p>
             </div>
             
             <form id="guestRegistrationForm">
@@ -374,28 +374,34 @@
                     tipoHuesped: document.getElementById('tipoHuesped').value,
                 };
                 
-                // Send data to Google Apps Script
-                fetch('https://script.google.com/macros/s/AKfycbwYzxegy5dZBalhYMpj3495Rkbh1qksiv848UUZaHk0GuhxuRYDt1Slf708lUHZ5OdoGA/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Show success message
-                        form.style.display = 'none';
-                        successMessage.style.display = 'block';
-                    } else {
-                        // Show error message
-                        errorMessage.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    errorMessage.style.display = 'block';
-                });
+                // Instead of fetch API, use formData to redirect user with URL parameters
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbwYzxegy5dZBalhYMpj3495Rkbh1qksiv848UUZaHk0GuhxuRYDt1Slf708lUHZ5OdoGA/exec';
+                const jsonString = JSON.stringify(formData);
+                
+                // Show processing message
+                form.style.display = 'none';
+                successMessage.innerHTML = `
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Procesando registro...</h3>
+                    <p>Por favor espera mientras procesamos tu información.</p>
+                `;
+                successMessage.style.display = 'block';
+                
+                // Create a hidden form to submit data
+                const hiddenForm = document.createElement('form');
+                hiddenForm.method = 'POST';
+                hiddenForm.action = scriptURL;
+                hiddenForm.target = '_self';
+                
+                // Add the data as a hidden field
+                const dataInput = document.createElement('input');
+                dataInput.type = 'hidden';
+                dataInput.name = 'data';
+                dataInput.value = jsonString;
+                hiddenForm.appendChild(dataInput);
+                
+                document.body.appendChild(hiddenForm);
+                hiddenForm.submit();
             });
             
             function validateForm() {
