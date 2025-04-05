@@ -1,12 +1,9 @@
 # TODO:
-- https://wa.link/bdt5g3
+- Crear un blog de preparaciones con nibs de cacao. Mencionar los bowl de chía con fruta y yogurt griego. MEncionar que también se llama parfait
 - Blog para lugares para tomar café: Café Lluvia, Café Rivera
 - Convertir este blog en la página de Termópilas: https://blog.redbus.co/naturaleza/cascada-motilona-paicol-huila/
 - Adicionar esta entrada de flog a los sitios por visitar en el Huila: https://blog.redbus.co/naturaleza/cascada-motilona-paicol-huila/
 - Hacer la página para eventos (reciclar la de matrimonios.com.co)
-- Hacer el formulario para registro de TRA y SIRE
-- Cambiar los mensajes automáticos en Octorate para que comience a referenciar a la página web
 - Actualizar el correo solicitando el feedback de la estadía
 - Actualizar el correo de bienvenida. Crear una página de bienvenida
 - Crear un blog de yoga en Rivera, mencionar a Gina como profesora y disponer del espacio
-- Crear un blog de preparaciones con nibs de cacao. Mencionar los bowl de chía con fruta y yogurt griego. MEncionar que también se llama parfait
