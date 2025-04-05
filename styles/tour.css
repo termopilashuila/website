@@ -10,7 +10,7 @@
 
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -25,7 +25,7 @@
     line-height: 1.6;
     margin-bottom: 2rem;
     text-align: center;
-    max-width: 800px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -40,6 +40,8 @@
 .tour-image {
     flex: 1;
     min-width: 300px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .tour-image img {
@@ -47,6 +49,8 @@
     height: auto;
     border-radius: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
 }
 
 .tour-details {
@@ -128,7 +132,7 @@
 
 .payment-info {
     text-align: center;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 2rem;
     background-color: #fdf6ea;
@@ -225,7 +229,7 @@
 
 .experience-timeline {
     position: relative;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 3rem auto 0;
     min-height: 500px; /* Ensure there's enough height for the timeline line */
     overflow: visible; /* Ensure overflow is visible for animations */
@@ -286,6 +290,7 @@
     border-radius: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
+    max-width: calc(100% - 100px);
 }
 
 .experience-content h3 {
@@ -295,17 +300,18 @@
 
 /* Lazy loading placeholder for images */
 .experience-image {
-    position: relative;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    min-height: 200px;
+    margin-top: 1.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .experience-image img {
     width: 100%;
     height: auto;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: block;
-    transition: opacity 0.3s ease;
 }
 
 .experience-image::before {
