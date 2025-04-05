@@ -41,6 +41,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://termopilas.co/registro.html</loc>
+    <lastmod>2023-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://termopilas.co/assets/images/home/header.jpg</image:loc>
+      <image:title>Registro de Huéspedes - Finca Termópilas</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://termopilas.co/ubicacion.html</loc>
     <lastmod>2025-03-15</lastmod>
     <changefreq>monthly</changefreq>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Huéspedes - Finca Termópilas</title>
+    <meta name="description" content="Formulario de registro de huéspedes para Finca Termópilas, Rivera, Huila. Tarjeta de Registro de Alojamiento (TRA) en cumplimiento con la Ley 2068 de 2020.">
+    <meta name="keywords" content="Registro huéspedes, Finca Termópilas, TRA, Tarjeta Registro Alojamiento, Rivera Huila">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- Critical CSS -->
+    <style>
+        /* Critical styles for above-the-fold content */
+        :root {
+            --text-color: #333333;
+            --accent-color: #F29F05;
+            --background-dark: #000000;
+            --background-cream: #fdf6ea;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-cream);
+        }
+        
+        .hero {
+            min-height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fdf6ea;
+            text-align: center;
+            background-color: #000;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-intro {
+            background-color: var(--background-dark);
+            color: var(--background-cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1 1 calc(50% - 1.5rem);
+            min-width: 250px;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+        }
+
+        .submit-btn:hover {
+            background-color: #d28a04;
+        }
+
+        .required-note {
+            color: #777;
+            font-style: italic;
+            margin-top: 2rem;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+    </style>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="assets/css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/main.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/hero.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/utilities.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles/responsive.css" media="print" onload="this.media='all'">
+    
+    <!-- Font Awesome loaded asynchronously -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/fonts.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/hero.css">
+        <link rel="stylesheet" href="styles/utilities.css">
+        <link rel="stylesheet" href="styles/responsive.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/registro.html">
+    <meta property="og:title" content="Registro de Huéspedes - Finca Termópilas">
+    <meta property="og:description" content="Formulario de registro de huéspedes para Finca Termópilas. Tarjeta de Registro de Alojamiento (TRA) en cumplimiento con la Ley 2068 de 2020.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/home/header.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/registro.html">
+    <meta property="twitter:title" content="Registro de Huéspedes - Finca Termópilas">
+    <meta property="twitter:description" content="Formulario de registro de huéspedes para Finca Termópilas. Tarjeta de Registro de Alojamiento (TRA) en cumplimiento con la Ley 2068 de 2020.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/home/header.jpg">
+    
+    <!-- JavaScript -->
+    <script src="dist/main.js" defer></script>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header will be dynamically generated by TypeScript -->
+    <header class="hero">
+        <!-- Content will be injected by TypeScript -->
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <div class="form-container">
+            <h2>Registro de Huéspedes</h2>
+            
+            <div class="form-intro">
+                <p>Estás recibiendo este formulario porque vas a alojarte en Alojamiento Termópilas Rivera Huila. Como prestadores de servicio de alojamiento, compartimos este formulario que funciona como un TRA (Tarjeta de Registro de Alojamiento) dando cumplimiento a la Ley 2068 de 2020 en el que El Ministerio de Comercio, Industria y Turismo nos obliga llevar al momento de realizar el check in a nuestros huéspedes.</p>
+            </div>
+            
+            <form id="guestRegistrationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombres">Nombres *</label>
+                        <input type="text" id="nombres" name="nombres" required>
+                        <div class="error-message" id="nombres-error">Por favor ingresa tus nombres</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos *</label>
+                        <input type="text" id="apellidos" name="apellidos" required>
+                        <div class="error-message" id="apellidos-error">Por favor ingresa tus apellidos</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipoIdentificacion">Tipo de identificación *</label>
+                        <select id="tipoIdentificacion" name="tipoIdentificacion" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                            <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            <option value="Registro Civil">Registro Civil</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <div class="error-message" id="tipoIdentificacion-error">Por favor selecciona un tipo de identificación</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numeroIdentificacion">Número de identificación *</label>
+                        <input type="text" id="numeroIdentificacion" name="numeroIdentificacion" required>
+                        <div class="error-message" id="numeroIdentificacion-error">Por favor ingresa tu número de identificación</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="email-error">Por favor ingresa un email válido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="celular">Celular *</label>
+                        <input type="tel" id="celular" name="celular" required>
+                        <div class="error-message" id="celular-error">Por favor ingresa un número de celular válido</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fechaNacimiento">Fecha de nacimiento *</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                        <div class="error-message" id="fechaNacimiento-error">Por favor selecciona tu fecha de nacimiento</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fechaInicio">Fecha de inicio del alojamiento *</label>
+                        <input type="date" id="fechaInicio" name="fechaInicio" required>
+                        <div class="error-message" id="fechaInicio-error">Por favor selecciona la fecha de inicio del alojamiento</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección del huésped *</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                    <div class="error-message" id="direccion-error">Por favor ingresa tu dirección</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="genero">Género *</label>
+                        <select id="genero" name="genero" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="No binario">No binario</option>
+                            <option value="Prefiero no decir">Prefiero no decir</option>
+                        </select>
+                        <div class="error-message" id="genero-error">Por favor selecciona una opción</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nacionalidad">Nacionalidad *</label>
+                        <input type="text" id="nacionalidad" name="nacionalidad" required value="Colombia">
+                        <div class="error-message" id="nacionalidad-error">Por favor ingresa tu nacionalidad</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="motivoViaje">Motivo de viaje *</label>
+                        <select id="motivoViaje" name="motivoViaje" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Turismo">Turismo</option>
+                            <option value="Negocios">Negocios</option>
+                            <option value="Visita familiar">Visita familiar</option>
+                            <option value="Estudios">Estudios</option>
+                            <option value="Evento o convención">Evento o convención</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <div class="error-message" id="motivoViaje-error">Por favor selecciona un motivo de viaje</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ocupacion">Ocupación, profesión u oficio *</label>
+                        <input type="text" id="ocupacion" name="ocupacion" required>
+                        <div class="error-message" id="ocupacion-error">Por favor ingresa tu ocupación</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="municipioResidencia">Municipio de residencia *</label>
+                        <input type="text" id="municipioResidencia" name="municipioResidencia" required>
+                        <div class="error-message" id="municipioResidencia-error">Por favor ingresa tu municipio de residencia</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipoHuesped">Huésped principal / Huésped acompañante *</label>
+                        <select id="tipoHuesped" name="tipoHuesped" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Huésped principal">Huésped principal</option>
+                            <option value="Huésped acompañante">Huésped acompañante</option>
+                        </select>
+                        <div class="error-message" id="tipoHuesped-error">Por favor selecciona el tipo de huésped</div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Registro</button>
+                
+                <p class="required-note">* Campos obligatorios</p>
+            </form>
+            
+            <div id="successMessage" style="display: none; text-align: center; margin-top: 2rem; padding: 1.5rem; background-color: #d4edda; color: #155724; border-radius: 8px;">
+                <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <h3>¡Registro completado con éxito!</h3>
+                <p>Gracias por completar tu registro. ¡Esperamos que disfrutes tu estancia en Finca Termópilas!</p>
+            </div>
+            
+            <div id="errorMessage" style="display: none; text-align: center; margin-top: 2rem; padding: 1.5rem; background-color: #f8d7da; color: #721c24; border-radius: 8px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <h3>Ha ocurrido un error</h3>
+                <p>Lo sentimos, no pudimos procesar tu registro. Por favor intenta nuevamente o contáctanos directamente.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('guestRegistrationForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Set minimum date for date inputs
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fechaInicio').min = today;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Prepare form data
+                const formData = {
+                    nombres: document.getElementById('nombres').value,
+                    apellidos: document.getElementById('apellidos').value,
+                    tipoIdentificacion: document.getElementById('tipoIdentificacion').value,
+                    numeroIdentificacion: document.getElementById('numeroIdentificacion').value,
+                    email: document.getElementById('email').value,
+                    celular: document.getElementById('celular').value,
+                    fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                    fechaInicio: document.getElementById('fechaInicio').value,
+                    direccion: document.getElementById('direccion').value,
+                    genero: document.getElementById('genero').value,
+                    nacionalidad: document.getElementById('nacionalidad').value,
+                    motivoViaje: document.getElementById('motivoViaje').value,
+                    ocupacion: document.getElementById('ocupacion').value,
+                    municipioResidencia: document.getElementById('municipioResidencia').value,
+                    tipoHuesped: document.getElementById('tipoHuesped').value,
+                };
+                
+                // Send data to Google Apps Script
+                fetch('https://script.google.com/macros/s/SCRIPT_ID_PLACEHOLDER/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    } else {
+                        // Show error message
+                        errorMessage.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    errorMessage.style.display = 'block';
+                });
+            });
+            
+            function validateForm() {
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                // Reset all error messages
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.style.display = 'none';
+                });
+                
+                // Check each required field
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        const errorElement = document.getElementById(`${field.id}-error`);
+                        if (errorElement) {
+                            errorElement.style.display = 'block';
+                        }
+                        isValid = false;
+                    }
+                    
+                    // Special validation for email
+                    if (field.type === 'email' && field.value.trim()) {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(field.value.trim())) {
+                            const errorElement = document.getElementById(`${field.id}-error`);
+                            if (errorElement) {
+                                errorElement.style.display = 'block';
+                            }
+                            isValid = false;
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+        });
+    </script>
+</body>
+</html> 
