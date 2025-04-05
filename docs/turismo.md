@@ -13,7 +13,7 @@ Este documento contiene un resumen de los principales destinos turísticos en el
   - Piscinas naturales como El Cardón para refrescarse
 - **Mejor época para visitar:** Temporada seca (diciembre a febrero y junio a agosto)
 - **Recomendaciones:** Llevar agua, protección solar, sombrero y calzado cómodo; visitar al amanecer o atardecer
-- Reservas: https://wa.link/foh5vz
+- **Reservas**: https://wa.link/foh5vz
 
 ## 2. Termales de Rivera
 
@@ -27,7 +27,7 @@ Este documento contiene un resumen de los principales destinos turísticos en el
   - Termales San Francisco: Parte del cluster de termalismo
   - Termales Confamiliar: Complejo grande con múltiples piscinas y toboganes
   - Termales Municipales: Conocido por sus aguas medicinales
-- Reservas: https://wa.link/bdt5g3
+- **Reservas**: https://wa.link/bdt5g3
 
 ## 3. Ruta del Vino y Cacao
 
@@ -39,6 +39,7 @@ Este documento contiene un resumen de los principales destinos turísticos en el
   - Aprendizaje sobre procesos de vinificación y elaboración de chocolate
   - Compra directa de productos locales
 - **Recomendación:** Tour completo en Finca Termópilas con guías especializados
+- **Reservas**: https://wa.me/573143428579?text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustar%C3%ADa%20programarlo
 
 ## 4. Embalses de Betania y El Quimbo
 

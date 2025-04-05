@@ -334,6 +334,38 @@
     background-color: #e67e00;
 }
 
+/* Destination Reservation Button Styles */
+.destination-reservation {
+    margin: 1.5rem 0 2.5rem;
+    text-align: center;
+}
+
+.reservation-button {
+    display: inline-block;
+    background-color: #F29F05;
+    color: #ffffff !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #F29F05;
+}
+
+.reservation-button i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.reservation-button:hover {
+    background-color: #ffffff;
+    color: #F29F05 !important;
+}
+
+.reservation-button:hover i {
+    transform: translateX(3px);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .blog-post-title {
