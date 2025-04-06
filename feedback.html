@@ -147,6 +147,33 @@
             color: #F29F05;
         }
         
+        /* Mobile responsiveness for stars */
+        @media (max-width: 768px) {
+            .stars-wrapper {
+                gap: 10px;
+                max-width: 100%;
+            }
+            
+            .star {
+                font-size: 1.5rem;
+            }
+            
+            .rating-container label span {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .stars-wrapper {
+                gap: 5px;
+            }
+            
+            .star {
+                font-size: 1.2rem;
+            }
+        }
+        
         .form-submit-container {
             display: flex;
             justify-content: center;
