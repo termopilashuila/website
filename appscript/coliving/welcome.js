@@ -154,6 +154,9 @@ function sendWelcomeEmails() {
       
       // Increment email counter
       emailsSent++;
+      
+      // Wait 10 seconds before sending next email
+      Utilities.sleep(10000);
     }
   }
   

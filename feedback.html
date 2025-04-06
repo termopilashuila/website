@@ -323,6 +323,36 @@
         .skip-link:focus {
             top: 0;
         }
+        
+        /* Loading button styles */
+        .btn-submit.loading {
+            position: relative;
+            color: transparent;
+        }
+        
+        .btn-submit.loading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: button-loading-spinner 0.8s linear infinite;
+        }
+        
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
     </style>
 </head>
 <body>
@@ -401,7 +431,7 @@
                         </div>
                         
                         <div class="form-submit-container">
-                            <button type="submit" class="btn-submit">Enviar feedback</button>
+                            <button type="submit" id="submitButton" class="btn-submit">Enviar feedback</button>
                         </div>
                     </form>
                 </div>
@@ -511,6 +541,11 @@
                 successNotification.style.display = 'none';
                 errorNotification.style.display = 'none';
                 
+                // Add loading state to button
+                const submitButton = document.getElementById('submitButton');
+                submitButton.classList.add('loading');
+                submitButton.disabled = true;
+                
                 // Get form data
                 const formData = new FormData(form);
                 const rating = parseInt(formData.get('rating'));
@@ -525,6 +560,10 @@
                 })
                 .then(response => {
                     console.log('Form submission successful', response);
+                    // Remove loading state
+                    submitButton.classList.remove('loading');
+                    submitButton.disabled = false;
+                    
                     // Show success notification briefly
                     successNotification.style.display = 'block';
                     
