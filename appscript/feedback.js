@@ -8,7 +8,7 @@
  */
 
 // Configuración del script
-const SHEET_ID = '1SvTOyISYRmcdpBGswqhplOSEBeaLYEejuyhmu72YDEo'; // Add your Google Sheet ID here
+const SHEET_ID = '1oNLsypt6W4TvBHBMt3wvK5zUPDiAQkXqD3jTWD4bNZM'; // Add your Google Sheet ID here
 const SHEET_NAME = 'Feedback';
 const EMAIL_FROM = 'termopilashuila@gmail.com'; // Add your notification email here
 const EMAIL_ADMIN = 'cecabrera55@gmail.com'; // Add admin's email here
