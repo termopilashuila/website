@@ -1,6 +1,7 @@
 /**
  * Google Apps Script para manejar el registro de huéspedes de Finca Termópilas
  * Este script recibe los datos del formulario de registro y los guarda en una hoja de cálculo
+ * URL: https://script.google.com/u/0/home/projects/1IXCzfFrgtUmNaf0luSSvHGox4jqdaWAU18HduWaxLDzmvjZ5Ezu5Qzhm/edit
  */
 
 // Función que se ejecuta cuando se recibe una solicitud GET o POST
@@ -144,7 +145,7 @@ function sendEmailNotification(data) {
   
   // Mensaje para WhatsApp
   const whatsappMessage = encodeURIComponent(
-    `¡Hola ${data.nombres}! Hemos recibido tu registro para hospedarte en Finca Termópilas. Estamos listos para recibirte el ${formatDateSpanish(new Date(data.fechaInicio))}.`
+    `¡Hola ${data.nombres}! Gracias por registrarte en Finca Termópilas. Estamos listos para recibirte el ${formatDateSpanish(new Date(data.fechaInicio))}. Te recordamos cómo llegar: https://termopilas.co/ubicacion.html`
   );
   const whatsappLink = `https://wa.me/${formattedPhone}?text=${whatsappMessage}`;
   
@@ -177,7 +178,6 @@ function sendEmailNotification(data) {
       <!-- Botones responsivos para móvil -->
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <a href="https://docs.google.com/spreadsheets/d/1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las reservas</a>
-        <a href="mailto:${data.email}" style="display: inline-block; background-color: #333; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Email al huésped</a>
         <a href="${whatsappLink}" style="display: inline-block; background-color: #118C7E; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Contactar por WhatsApp</a>
       </div>
     </div>
