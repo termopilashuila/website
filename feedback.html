@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Finca Termópilas</title>
+    <meta name="description" content="Comparte tu experiencia sobre Finca Termópilas, Rivera, Huila.">
+    <meta name="keywords" content="Feedback, Finca Termópilas, Rivera, Huila">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/hero.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/coliving.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/feedback.html">
+    <meta property="og:title" content="Feedback Finca Termópilas">
+    <meta property="og:description" content="Comparte tu experiencia sobre Finca Termópilas, Rivera, Huila.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/coliving/section0.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/feedback.html">
+    <meta property="twitter:title" content="Feedback Finca Termópilas">
+    <meta property="twitter:description" content="Comparte tu experiencia sobre Finca Termópilas, Rivera, Huila.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/coliving/section0.jpg">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #F9F9F9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #000;
+            text-align: center;
+        }
+        
+        .coliving-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        
+        .feedback-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fdf6ea;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        .stars-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 500px;
+            justify-content: space-between;
+        }
+        
+        .rating-container input[type="radio"] {
+            display: none;
+        }
+        
+        .rating-container label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .star {
+            font-size: 2rem;
+            color: #ccc;
+            transition: color 0.2s;
+        }
+        
+        .rating-container input[type="radio"]:checked ~ label .star {
+            color: #F29F05;
+        }
+        
+        .form-submit-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-submit {
+            background-color: #F29F05;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background-color: #e09000;
+        }
+        
+        .notification {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+        
+        .notification.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .notification.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .thank-you-container {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .review-cta {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #504127;
+            border-radius: 8px;
+            color: #fdf6ea;
+            text-align: center;
+        }
+        
+        .review-cta h3 {
+            color: #F29F05;
+            margin-bottom: 1rem;
+        }
+        
+        .review-cta a {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #F29F05;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .review-cta a:hover {
+            background-color: #e09000;
+        }
+        
+        .btn-copy {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-right: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            border: none;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-copy:hover {
+            background-color: #555;
+        }
+        
+        .copy-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .copy-tooltip .tooltip-text {
+            visibility: hidden;
+            width: 140px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .copy-tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        
+        .copy-tooltip.show .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #F29F05;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <main id="main-content">
+        <section class="section">
+            <div class="container">
+                <h2>Tu Opinión es Importante</h2>
+                <p class="coliving-description">
+                    Gracias por visitar Finca Termópilas. Nos encantaría conocer tu experiencia para seguir mejorando nuestro servicio.
+                </p>
+                
+                <div id="feedbackForm" class="feedback-form">
+                    <form id="nomadFeedbackForm">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>¿Cómo calificarías tu experiencia?</label>
+                            <div class="rating-container">
+                                <div class="stars-wrapper">
+                                    <input type="radio" name="rating" id="star1" value="1" required>
+                                    <label for="star1">
+                                        <i class="fas fa-star star"></i>
+                                        <span>Mala</span>
+                                    </label>
+                                    
+                                    <input type="radio" name="rating" id="star2" value="2" required>
+                                    <label for="star2">
+                                        <i class="fas fa-star star"></i>
+                                        <span>Regular</span>
+                                    </label>
+                                    
+                                    <input type="radio" name="rating" id="star3" value="3" required>
+                                    <label for="star3">
+                                        <i class="fas fa-star star"></i>
+                                        <span>Buena</span>
+                                    </label>
+                                    
+                                    <input type="radio" name="rating" id="star4" value="4" required>
+                                    <label for="star4">
+                                        <i class="fas fa-star star"></i>
+                                        <span>Muy buena</span>
+                                    </label>
+                                    
+                                    <input type="radio" name="rating" id="star5" value="5" required>
+                                    <label for="star5">
+                                        <i class="fas fa-star star"></i>
+                                        <span>Excelente</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje:</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <div id="notificationArea">
+                            <div id="successNotification" class="notification success">
+                                Tu feedback ha sido enviado correctamente.
+                            </div>
+                            <div id="errorNotification" class="notification error">
+                                Ha ocurrido un error al enviar el formulario. Por favor, intenta de nuevo.
+                            </div>
+                        </div>
+                        
+                        <div class="form-submit-container">
+                            <button type="submit" class="btn-submit">Enviar feedback</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="thankYouContainer" class="thank-you-container">
+                    <h3>¡Gracias por tu feedback!</h3>
+                    <p>Valoramos mucho tu opinión y nos ayudará a mejorar nuestra experiencia de coliving.</p>
+                    
+                    <div id="reviewCTA" class="review-cta" style="display: none;">
+                        <h3>¡Te tenemos un regalo!</h3>
+                        <p>¿Podrías por favor dejarnos tu calificación en Google Maps? Te obsequiamos una bolsa de Nibs de Cacao como cortesía.</p>
+                        <div class="copy-tooltip">
+                            <button id="copyMessageBtn" class="btn-copy">
+                                <i class="fas fa-copy"></i> Copiar mi mensaje
+                            </button>
+                            <span class="tooltip-text" id="copyTooltip">¡Mensaje copiado!</span>
+                        </div>
+                        <a href="https://g.page/r/CbtXCnhdw1R5EAE/review" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-google"></i> Dejar reseña en Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('nomadFeedbackForm');
+            const feedbackContainer = document.getElementById('feedbackForm');
+            const thankYouContainer = document.getElementById('thankYouContainer');
+            const reviewCTA = document.getElementById('reviewCTA');
+            const successNotification = document.getElementById('successNotification');
+            const errorNotification = document.getElementById('errorNotification');
+            
+            const starLabels = document.querySelectorAll('.rating-container label');
+            const stars = document.querySelectorAll('.rating-container input[type="radio"]');
+            
+            // Handle hover effect manually since CSS can't easily handle this direction
+            starLabels.forEach(label => {
+                label.addEventListener('mouseenter', function() {
+                    const hoveredStarId = this.getAttribute('for');
+                    const hoveredValue = parseInt(hoveredStarId.replace('star', ''));
+                    
+                    // Apply hover effect to this star and all lower stars
+                    starLabels.forEach(s => {
+                        const starId = s.getAttribute('for');
+                        const starValue = parseInt(starId.replace('star', ''));
+                        const starIcon = s.querySelector('.star');
+                        
+                        if (starValue <= hoveredValue) {
+                            starIcon.style.color = '#F29F05';
+                        } else {
+                            starIcon.style.color = '#ccc';
+                        }
+                    });
+                });
+            });
+            
+            // Reset hover effect when leaving the star container
+            const ratingContainer = document.querySelector('.stars-wrapper');
+            ratingContainer.addEventListener('mouseleave', function() {
+                // Get the currently selected rating (if any)
+                let selectedRating = 0;
+                stars.forEach(s => {
+                    if (s.checked) {
+                        selectedRating = parseInt(s.value);
+                    }
+                });
+                
+                // Reset stars based on current selection
+                starLabels.forEach(s => {
+                    const starId = s.getAttribute('for');
+                    const starValue = parseInt(starId.replace('star', ''));
+                    const starIcon = s.querySelector('.star');
+                    
+                    if (starValue <= selectedRating) {
+                        starIcon.style.color = '#F29F05';
+                    } else {
+                        starIcon.style.color = '#ccc';
+                    }
+                });
+            });
+            
+            stars.forEach(star => {
+                star.addEventListener('change', function() {
+                    const rating = parseInt(this.value);
+                    console.log('Selected rating:', rating);
+                    starLabels.forEach(s => {
+                        const starId = s.getAttribute('for');
+                        const starValue = parseInt(starId.replace('star', ''));
+                        const starIcon = s.querySelector('.star');
+                        
+                        if (starValue <= rating) {
+                            starIcon.style.color = '#F29F05';
+                        } else {
+                            starIcon.style.color = '#ccc';
+                        }
+                    });
+                });
+            });
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset notifications
+                successNotification.style.display = 'none';
+                errorNotification.style.display = 'none';
+                
+                // Get form data
+                const formData = new FormData(form);
+                const rating = parseInt(formData.get('rating'));
+                const message = formData.get('message');
+                
+                console.log('Submitting form with rating: ' + rating);
+                
+                // Submit form data
+                fetch('https://script.google.com/macros/s/AKfycbyMZmePYxzLqYMpuBcVH9fiAt_c-tOYI2RkaS4tyyKAGWjIRTMJC9DAEi8rIZUbo0Sp/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    console.log('Form submission successful', response);
+                    // Show success notification briefly
+                    successNotification.style.display = 'block';
+                    
+                    // Hide form and show thank you message after a short delay
+                    setTimeout(() => {
+                        feedbackContainer.style.display = 'none';
+                        thankYouContainer.style.display = 'block';
+                        
+                        // If rating is 5, show review CTA
+                        if (rating === 5) {
+                            reviewCTA.style.display = 'block';
+                            
+                            // Add copy functionality
+                            const copyBtn = document.getElementById('copyMessageBtn');
+                            const copyTooltip = document.getElementById('copyTooltip');
+                            
+                            copyBtn.addEventListener('click', function() {
+                                // Copy text to clipboard
+                                navigator.clipboard.writeText(message).then(function() {
+                                    // Show tooltip
+                                    copyTooltip.parentElement.classList.add('show');
+                                    
+                                    // Hide tooltip after 2 seconds
+                                    setTimeout(function() {
+                                        copyTooltip.parentElement.classList.remove('show');
+                                    }, 2000);
+                                }).catch(function(err) {
+                                    console.error('Could not copy text: ', err);
+                                    alert('No se pudo copiar el texto. Por favor, inténtalo de nuevo.');
+                                });
+                            });
+                        }
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error('Form submission error:', error);
+                    // Show error notification
+                    errorNotification.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
