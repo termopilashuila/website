@@ -7,10 +7,10 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
     heroClass: 'hero rooms-hero',
     heroImage: 'assets/images/home/header.jpg',
     heroContent: {
-      title: 'Alojamiento en <strong>Finca Termópilas</strong>',
+      title: 'Alojamiento',
       subtitle: 'Habitaciones cómodas en un entorno natural',
       ctaText: 'RESERVA AHORA',
-      ctaHref: 'index.html#contacto'
+      ctaHref: '#main-content'
     }
   },
   catalogo: {

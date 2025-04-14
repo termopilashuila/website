@@ -327,6 +327,82 @@ finca-termopilas/
 - **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática
 - **Salida**: `dist/main.js`
 
+## Desarrollo local
+
+### Requisitos previos
+- Node.js instalado en tu sistema (versión recomendada: 16.x o superior)
+- npm o npx
+
+### Instalación y compilación
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/termopilashuila/website.git
+   cd website
+   ```
+
+2. Instala las dependencias usando npx:
+   ```bash
+   npx npm install
+   ```
+   
+   O usando npm directamente:
+   ```bash
+   npm install
+   ```
+
+3. Compila el código TypeScript:
+   ```bash
+   npx webpack
+   ```
+   
+   O usando npm:
+   ```bash
+   npm run build
+   ```
+
+4. Para desarrollo con recompilación automática:
+   ```bash
+   npx webpack --watch
+   ```
+   
+   O usando npm:
+   ```bash
+   npm run watch
+   ```
+
+### Pruebas
+Para ejecutar los tests del proyecto:
+
+```bash
+npx jest
+```
+
+O usando npm:
+```bash
+npm test
+```
+
+### Optimización de imágenes
+Para redimensionar y optimizar las imágenes del proyecto:
+
+```bash
+npx node resize/resize-images.js
+```
+
+O usando npm:
+```bash
+npm run resize-images
+```
+
+### Visualización local
+Para ver el sitio web localmente, puedes usar cualquier servidor web estático. Una opción sencilla es usar el módulo `http-server` de Node.js:
+
+```bash
+npx http-server
+```
+
+Esto iniciará un servidor local en http://localhost:8080 donde podrás visualizar el sitio web.
+
 ## Implementación
 
 - **Plataforma**: GitHub Pages
