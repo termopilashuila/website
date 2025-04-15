@@ -312,6 +312,7 @@
     border-radius: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: block;
+    margin: 0 auto;
 }
 
 .experience-image::before {
@@ -337,6 +338,28 @@
     100% {
         transform: translateX(100%);
     }
+}
+
+.experience-blog-recommendation {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #fdf6ea;
+    border-left: 3px solid #F29F05;
+}
+
+.experience-blog-recommendation p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.experience-blog-recommendation a {
+    color: #F29F05;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.experience-blog-recommendation a:hover {
+    color: #d8810a;
 }
 
 /* Other Services */

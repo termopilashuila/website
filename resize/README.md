@@ -14,7 +14,7 @@ This directory contains scripts for resizing images for the Finca Termópilas we
 ./resize/resize-images.sh
 
 # Resize a specific image (from project root):
-./resize/resize-images.sh assets/images/home/my-image.jpg
+./resize/resize-images.sh assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
 
 # Resize all images in a specific directory:
 ./resize/resize-images.sh assets/images/gallery --width=800 --quality=90
