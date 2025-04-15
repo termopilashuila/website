@@ -13,3 +13,16 @@
     2. (Opcional): Ida al desierto de la tatacoa viernes en la noche
     3. (Opcional): Ida a la represa de Betania el sábado
     4. Actualizar en la descripción que si se va a las termales, no incluye la cena por fuera
+
+- Entrada de blog:
+Title: Bienvenidos al Huila
+1. Uno de los departamentos más diversos de Colombia
+2. Tiene todos los pisos térmicos, desde picos nevados hasta el Desierto de la tatacoa 🗻
+3. Cuenta con grande cantidad de páramos, por lo que es potencia en agua.
+4. Tiene el parque arqueológico que es la necrópolis más grande del Mundo.
+5. El departamento con más producción de Café de Colombia
+6. Tiene el mejor café ☕️
+7. El departamento con grandes atractivos turísticos como, La Mano del gigante, el Desierto de la tatacoa, La Laguna de Guaitipán…
+8. Cuenta con una variedad de gastronomía única, como lo son las Achiras, asado Huilense, lechona, tamal…
+9. Es Considerado uno de los departamentos más turísticos de Colombia 🇨🇴
+10. Tiene más de 5 parques Naturales Nacionales 🌎 🇨🇴
