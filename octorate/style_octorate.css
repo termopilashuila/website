@@ -1,28 +1,66 @@
 /** Customization of Octorate of style.css **/
 /** DO NOT CHANGE style.css, since it can be replaced by avangard_new in future **/
+
+/* Font imports to match website */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 :root {
-    --color: #b41f33;
-    --invert: #FFF;
+    /* Updated to match website colors */
+    --color: #F29F05; /* Changed from #b41f33 to match website accent color */
+    --invert: #fdf6ea; /* Changed to match website light text */
     --max-width: 1480px;
-    --max-width-home: 1000px;
+    --max-width-home: 1200px; /* Increased to match website container width */
     --box-shadow: 0 0 clamp(15px, 2vw, 25px) 0 rgba(0, 0, 0, 0.15);
+    
+    /* Additional variables from the website */
+    --primary-color: #000000;
+    --secondary-color: #333333;
+    --text-color: #333333;
+    --background-light: #FFFFFF;
+    --background-dark: #000000;
+    --background-cream: #FFFFFF;
+    --background-warm: #F9F9F9;
+}    
+
+body, body * {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, .HotelName, .ui-dialog-title, .ui-panel-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
 }
 
 .SiteContent {
     padding: 0px;
+    background-color: var(--background-cream);
 }
 
 .SiteMain{
     box-shadow: none;
 }
 
+/* Styling buttons to match website */
+.button, .customButton span.ui-button-text, .SearchBar .ui-button-text.ui-c {
+    background-color: var(--color) !important;
+    color: var(--invert) !important;
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+}
+
+.button:hover, .customButton.ui-state-hover .ui-button-text, .customButton.ui-state-hover {
+    background-color: var(--primary-color) !important;
+    color: var(--invert) !important;
+}
 
 .RoomPhoto {
     min-height: 306px;
 }
 
 .OtherSolution {
-    background-color: white;
+    background-color: var(--background-light);
     border-top: none;
     padding-top: 0px
 }
@@ -46,6 +84,26 @@
     display: block;
 }
 
+/* Room styling to match website aesthetics */
+.RoomInfo, .RoomHeader, .RoomPrice {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.RoomHeader h3 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    color: var(--primary-color);
+}
+
+/* Calendar styling */
+.ui-datepicker-calendar .ui-state-default {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.ui-datepicker-calendar td.ui-datepicker-today a {
+    background-color: var(--color) !important;
+    color: var(--invert) !important;
+}
+
 @media (min-width: 801px) {
     .SiteMain {
         max-width: 1480px;
@@ -60,4 +118,12 @@
 
 .MaxWidthHome {
     max-width: var(--max-width-home);
+}
+
+.ui-widget, .ui-widget-content, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+.ui-datepicker, .ui-dialog, .ui-selectmenu-menu, .ui-tooltip {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif !important;
 }
