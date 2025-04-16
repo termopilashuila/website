@@ -1,0 +1,63 @@
+/** Customization of Octorate of style.css **/
+/** DO NOT CHANGE style.css, since it can be replaced by avangard_new in future **/
+:root {
+    --color: #b41f33;
+    --invert: #FFF;
+    --max-width: 1480px;
+    --max-width-home: 1000px;
+    --box-shadow: 0 0 clamp(15px, 2vw, 25px) 0 rgba(0, 0, 0, 0.15);
+}
+
+.SiteContent {
+    padding: 0px;
+}
+
+.SiteMain{
+    box-shadow: none;
+}
+
+
+.RoomPhoto {
+    min-height: 306px;
+}
+
+.OtherSolution {
+    background-color: white;
+    border-top: none;
+    padding-top: 0px
+}
+
+.noresults img.notfoundimg {
+    margin:auto;
+    width: 500px;
+}
+
+.validLabel {
+    display: block;
+}
+.Theme2Style {
+    display: block;
+}
+.Theme1Style {
+    display: none;
+}
+
+.backgraound{
+    display: block;
+}
+
+@media (min-width: 801px) {
+    .SiteMain {
+        max-width: 1480px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .RoomTop {
+        min-height: 306px
+    }
+}
+
+.MaxWidthHome {
+    max-width: var(--max-width-home);
+}

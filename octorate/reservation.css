@@ -1,0 +1,2605 @@
+/*
+reservation.css 26-mag-2016
+Octorate srl. All rights reserved. 2016 
+*/
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: #003d50;
+    min-width: 320px;
+    font-size: 1.6em;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none
+}
+
+/* --------------------------------------------------- theme fixs ----------- */
+
+.ui-spinner-horizontal .ui-spinner-input {
+    padding-left: 20px;
+    font-size: 1em;
+    padding-right: 50px !important;
+    text-align: right;
+    vertical-align: middle;
+}
+
+body .ui-spinner.ui-spinner-horizontal .ui-spinner-button.ui-button.ui-spinner-down {
+    border-radius: 4px 0 0 4px;
+}
+
+.ui-spinner-horizontal .ui-spinner-down {
+    right: unset;
+}
+
+.ui-spinner-horizontal .ui-spinner-button, .ui-spinner-horizontal-after .ui-spinner-button {
+    height: 100%;
+    top: 0;
+}
+
+body .ui-spinner.ui-spinner-horizontal .ui-spinner-button.ui-button.ui-spinner-up, body .ui-spinner.ui-spinner-horizontal-after .ui-spinner-button.ui-button.ui-spinner-up {
+    border-radius: 0 4px 4px 0;
+}
+
+.ui-spinner-horizontal .ui-spinner-button, .ui-spinner-horizontal-after .ui-spinner-button {
+    height: 100%;
+    top: 0;
+}
+
+.ui-spinner.ui-spinner-horizontal .ui-spinner-button .ui-button-text {
+    height: 27px;
+}
+
+/* --------------------------------------------------- atlas theme overwrites */
+.ui-widget-content a {
+    color: #1f5be7;
+}
+
+.ui-link {
+    text-decoration: none
+}
+
+.ui-calendar input {
+    width: 75px;
+    text-align: center
+}
+
+.ui-galleria {
+    border: none
+}
+
+.ui-galleria-panel img {
+    width: 100%
+}
+
+.GreenButton .ui-button-text {
+    background-color: #47A447
+}
+
+
+.GoldButton .ui-button-text {
+    background-color: #cc9005;
+}
+.GoldButton.ui-button.ui-state-hover .ui-button-text {
+    background-color: #f8b903;
+}
+
+
+
+.GrayButton .ui-button-text {
+    background-color: #c5c5c5;
+    border: 1px solid #ccc;
+    color: #000
+}
+
+.LightButton .ui-button-text {
+    background-color: white;
+    border: 1px solid #80cbc4
+}
+
+.LightButton .ui-button-icon-left {
+    color: #80cbc4
+}
+
+.LightButton:hover .ui-button-icon-left {
+    color: white
+}
+
+.TransparentButton {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.TransparentButton .ui-button-text {
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.TransparentButton:hover .ui-button-text {
+    background-color: rgba(0, 0, 0, 0.70)
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+    padding: 4px 0
+}
+
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-content.ui-widget-content,
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header.ui-widget-header,
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer.ui-widget-header,
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header > tr.ui-widget-header,
+.ui-panelgrid.ui-panelgrid-blank tbody > tr.ui-widget-content,
+.ui-panelgrid.ui-panelgrid-blank tbody > tr.ui-widget-content > td.ui-panelgrid-cell,
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer > tr.ui-widget-footer,
+.ui-selectmanymenu tbody tr td {
+    border: 0 none !important
+}
+
+.PadLeftRightZero.ui-panelgrid .ui-panelgrid-cell {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.ui-commandlink {
+    text-decoration: none
+}
+
+.ui-growl {
+    bottom: 10px;
+    left: 10px !important;
+    top: auto !important;
+    right: auto !important
+}
+
+/*.ui-outputlabel{font-size:1.6rem}*/
+.ui-outputlabel, .CardSmallTopic, .ui-selectmanycheckbox.ui-grid label, .ui-selectoneradio.ui-grid label {
+    font-size: inherit
+}
+
+.ui-notificationbar {
+    background-color: rgba(25, 211, 190, 0.85);
+    height: auto !important;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #666
+}
+
+.ui-datepicker-calendar td.closed, .square.closed {
+    background-color: #a2a2a2 !important;
+    border: solid 1px #8d8d8d
+}
+
+.ui-datepicker-calendar td.cta, .square.cta {
+    border-radius: 0 !important;
+    background-image: linear-gradient(to bottom right, white, white 48%, #c5c5c5 50%, #c5c5c5);
+}
+.ui-datepicker-calendar td.ctd, .square.ctd {
+    border-radius: 0 !important;
+    background-image: linear-gradient(to top left, white, white 48%, #c5c5c5 50%, #c5c5c5);
+}
+
+.ui-datepicker-calendar td.closed a,
+.ui-datepicker-calendar tbody tr .ui-datepicker-today.closed a {
+    color: #fff !important
+}
+
+.ui-messages-info-summary, .ui-messages-warn-summary, .ui-messages-error-summary,
+.ui-messages-fatal-summary, .ui-message-info-summary, .ui-message-warn-summary,
+.ui-message-error-summary, .ui-message-fatal-summary {
+    margin-left: 0
+}
+
+.ui-panel .ui-panel-content {
+    border-top: 1px dashed rgb(198, 214, 223)
+}
+
+.ui-panel .ui-panel-titlebar {
+    border-bottom: none;
+    padding-left: 5px !important
+}
+
+.ui-buttonset .ui-button-text {
+    background-color: #fff;
+    color: #567A84
+}
+
+.ui-buttonset .ui-button.ui-state-hover .ui-button-text {
+    background-color: #BECBD4;
+    color: #567A84
+}
+
+.ui-buttonset .ui-button.ui-state-active .ui-button-text {
+    background-color: #3e5e66;
+    color: #fff
+}
+
+.ui-button.MarRight5 {
+    margin-right: 5px !important
+}
+
+.ui-menu {
+    width: 250px
+}
+
+.ui-tree.OvAuto ul {
+    overflow: visible !important
+}
+
+.ui-tree .ui-icon {
+    margin-right: 0 !important
+}
+
+.ui-selectmanymenu.Hei400px .ui-selectlistbox-listcontainer {
+    height: auto !important
+}
+
+.day-button .ui-button.ui-state-active .ui-button-text {
+    background-color: #47A447;
+    color: #fff
+}
+
+.day-button .ui-button {
+    width: 65px;
+    text-align: center
+}
+
+/* ---------------------------------------------------------- generic classes */
+
+.DarkGrayButton .ui-button-text {
+    background-color: #aaa
+}
+
+.DarkGrayBack {
+    background: #aaa !important;
+}
+
+.MelonBack {
+    background-color: #FFAC54
+}
+
+.GrayBack {
+    background: #E5E3E2
+}
+
+.BlueLightBack {
+    background-color: #64B5F6;
+}
+
+.Mar10 {
+    margin: 10px
+}
+
+.MarLeft5 {
+    margin-left: 5px
+}
+
+.MarLeft10 {
+    margin-left: 10px
+}
+
+.MarRight5 {
+    margin-right: 5px
+}
+
+.MarRight10 {
+    margin-right: 10px !important
+}
+
+.MarBot5 {
+    margin-bottom: 5px
+}
+
+.Gray {
+    color: #aaa
+}
+
+.DarkGray {
+    color: #666
+}
+
+.TextUp {
+    text-transform: uppercase
+}
+
+.Strike {
+    text-decoration: line-through
+}
+
+.NoWrap {
+    white-space: nowrap
+}
+
+.lspace2 {
+    letter-spacing: 2px
+}
+
+.Lh24 {
+    line-height: 24px
+}
+
+.MarZero {
+    margin: 0
+}
+
+.VAlignBottom {
+    vertical-align: bottom
+}
+
+.VAlignMiddle {
+    vertical-align: middle
+}
+
+.VAlignBase {
+    vertical-align: baseline !important;
+}
+
+.Pad510 {
+    padding: 5px 10px
+}
+
+.PadR20 {
+    padding-right: 20px
+}
+
+.PadR10 {
+    padding-right: 10px
+}
+
+.PadL10 {
+    padding-left: 10px
+}
+
+.PadLeft10 {
+    padding-left: 10px
+}
+
+.Pad10px {
+    padding: 10px
+}
+
+.PadZero {
+    padding: 0
+}
+
+.PadZero .ui-dialog-content {
+    padding: 0 !important;
+}
+
+.Wid10px {
+    width: 10px
+}
+
+.Wid13px {
+    width: 13px
+}
+
+.Wid20px {
+    width: 20px
+}
+
+.Wid30px {
+    width: 30px
+}
+
+.Wid40px {
+    width: 40px
+}
+
+.Wid50px {
+    width: 50px
+}
+
+.MinWid50px {
+    min-width: 50px;
+}
+
+.Wid60px {
+    width: 60px
+}
+
+.Wid65px {
+    width: 65px
+}
+
+.Wid80px {
+    width: 80px
+}
+
+.Wid800px {
+    width: 800px
+}
+
+.WidMax1050px {
+    max-width: 1050px
+}
+
+.Wid100px {
+    width: 100px
+}
+
+.Wid110px {
+    width: 110px
+}
+
+.Wid200px {
+    width: 200px
+}
+
+.Wid500px {
+    width: 500px
+}
+
+.Wid400px {
+    width: 400px
+}
+
+.Hei55px {
+    height: 55px
+}
+
+.Hei100px {
+    height: 100px
+}
+
+.Hei80px {
+    height: 80px
+}
+
+.Hei200px {
+    height: 200px
+}
+
+.Hei300px {
+    height: 300px
+}
+
+.Hei400px {
+    height: 400px
+}
+
+.Hei500px {
+    height: 500px
+}
+
+.HeiResp50 {
+    height: 50vh
+}
+
+.HeiResp45 {
+    height: 45vh
+}
+
+.HeiResp80 {
+    height: 80vh
+}
+
+.HeiResp90 {
+    height: 90vh
+}
+
+.WidClear {
+    width: auto !important
+}
+
+.WidResp50 {
+    width: 50vw
+}
+
+.WidFitContent {
+    width: fit-content;
+    width: -moz-fit-content
+}
+
+.Pictures {
+    min-width: 90vw;
+    min-height: 90vmin
+}
+
+.MinWid100 {
+    min-width: 100%
+}
+
+.MinHei280px {
+    min-height: 280px
+}
+
+#picturePreview > div {
+    min-width: 30vw;
+    min-height: 80vh;
+}
+
+.SelectMax100px select {
+    width: 100px
+}
+
+/* -------------------------------------------------------------- site layout */
+
+.ajaxStatus {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.0);
+}
+
+.ajaxStatusIcon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px
+}
+
+.SiteMain {
+    margin: 0 auto 50px auto;
+    text-align: left;
+    overflow: hidden
+}
+
+.SiteContent {
+    clear: both;
+    padding: 10px;
+}
+
+.SiteTopBar {
+    padding: 10px;
+    box-sizing: border-box
+}
+
+.SiteHeader .HotelHeader {
+    background: #fff;
+    box-shadow: 1px 1px 2px #ccc;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.SiteFooter {
+    padding: 5px;
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    line-height: 20px
+}
+
+.SiteFooter .fa {
+    color: #028017;
+    vertical-align: middle
+}
+
+.SiteFooter img {
+    height: 20px;
+    vertical-align: middle
+}
+
+.BackTransparent {
+    background: rgba(255, 255, 255, 0.8)
+}
+
+.BackInputWhite > input {
+    background-color: #fff;
+    text-align: center
+}
+
+.BackRed {
+    background-color: #e53327
+}
+
+.BorderUpRadius {
+    border-radius: 10px 10px 0 0
+}
+
+.RoomPhoto.BackTransparent > div {
+    background-color: rgba(255, 255, 255, 0)
+}
+
+.RoomPhoto.BackTransparent {
+    background-color: rgba(255, 255, 255, 0)
+}
+
+.Lang {
+    width: 16px;
+    height: 11px;
+    display: inline-block;
+    background-image: url(../../images/langs.jpg);
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0 10px 0 0;
+}
+
+.LangIT {
+    background-position: 0 0
+}
+
+.LangEN {
+    background-position: -16px 0
+}
+
+.LangFR {
+    background-position: -32px 0
+}
+
+.LangES {
+    background-position: -48px 0
+}
+
+.LangDE {
+    background-position: -64px 0
+}
+
+.LangRU {
+    background-position: -80px 0
+}
+
+.LangPT {
+    background-position: -96px 0
+}
+
+.LangNL {
+    background-position: -112px 0
+}
+
+.LangJA {
+    background-position: -128px 0
+}
+
+.LangEL {
+    background-position: -144px 0
+}
+
+.LangTR {
+    background-position: -160px 0
+}
+
+.LangZH {
+    background-position: -176px 0
+}
+
+.LangCA {
+    background-position: -192px 0
+}
+
+.LangRO {
+    background-position: -208px 0
+}
+
+.LangActive {
+    opacity: 0.4
+}
+
+.HotelHeader {
+    clear: both;
+    padding: 20px 10px
+}
+
+.HotelHeader > div {
+    display: table
+}
+
+.HotelHeader > div > div {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 20px
+}
+
+.HotelHeader > div > div .fa {
+    display: inline-block;
+    width: 20px
+}
+
+.HotelSlogan > div > div {
+    padding-left: 25px
+}
+
+.HotelSlogan > div > div:nth-of-type(1) .fa {
+    display: inline-block;
+    width: auto
+}
+
+.HotelSlogan > div > div:nth-of-type(2) .fa {
+    display: inline-block;
+    width: 20px
+}
+
+.HotelLogo {
+    width: 130px
+}
+
+.HotelName {
+    line-height: 28px;
+    margin-bottom: 5px
+}
+
+.HotelLogo img {
+    max-height: 80px;
+    max-width: 120px
+}
+
+.MaxHei80 {
+    max-height: 80%;
+    max-height: 80vh
+}
+
+.MaxHei200px {
+    max-height: 200px
+}
+
+.MaxHei400px {
+    max-height: 400px
+}
+
+.MaxHei800px {
+    max-height: 800px
+}
+
+.MaxWid80 {
+    max-width: 80%
+}
+
+.MaxWid200 {
+    max-width: 200px
+}
+
+.MaxWid300 {
+    max-width: 300px
+}
+
+.Wid100 {
+    width: 100%
+}
+
+.SiteButtons {
+    text-align: center;
+    white-space: nowrap
+}
+
+.HotelMap {
+    height: 400px;
+    height: 45vh;
+    margin-top: 10px
+}
+
+.HotelMap .gm-style-iw {
+    left: 25px !important
+}
+
+.HotelMap .RoomPhoto {
+    min-height: 125px;
+    width: 215px;
+    margin: auto
+}
+
+.OtaResult.RoomPhoto {
+    min-height: 180px;
+    max-height: 200px;
+    vertical-align: middle;
+    width: 200px;
+    margin: auto;
+    border-radius: 5px
+}
+
+.AutheticatedBar {
+    padding: 5px;
+    overflow: auto
+}
+
+.AutheticatedBar > div {
+    padding: 5px !important;
+    float: left
+}
+
+.NearCategoryIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    vertical-align: baseline
+}
+
+.BoxSection {
+    /*overflow: hidden;*/
+    background: #FFF;
+    /*border-radius: 5px;*/
+    box-shadow: 1px 1px 3px #777;
+}
+
+.Radius15px {
+    border-radius: 15px;
+}
+
+.BoxHover:hover {
+    box-shadow: 1px 1px 10px #333;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+.RoomTop {
+    overflow: auto;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.RoomTop > div, .RoomInfo, .RoomPrice {
+    display: table-cell
+}
+
+.RoomHeader {
+    display: table;
+    width: 100%
+}
+
+.RoomPhoto {
+    position: relative;
+    overflow: hidden;
+    padding: 1px 0;
+    box-sizing: border-box;
+    width: 240px;
+    min-height: 180px;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../../../atlas-layout/images/image-gray.svg);
+}
+
+.CoverPhoto {
+    overflow: hidden;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center center;
+}
+
+.CoverPhoto > div {
+    background-size: cover;
+    background-position: center center;
+    background-color: rgb(255, 255, 255);
+}
+
+.RoomPhoto.Fit, .RoomPhoto.Fit > div {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: space;
+    background-repeat-x: no-repeat;
+}
+
+.RoomPhoto.ZoomHover > div:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    transition-duration: 1.5s;
+}
+
+/*.RoomPhoto.Small {
+    width: 160px;
+    min-height: 100px;
+}*/
+
+.RoomPhoto.Auto {
+    width: inherit !important;
+}
+
+.RoomPhoto .fa, .PhotoScroller .fa {
+    position: absolute;
+    z-index: 499;
+    font-size: 20px;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-shadow: 0 0 5px #000;
+}
+
+.RoomPhoto .fa:hover, .PhotoScroller .fa:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s cubic-bezier(.25, .8, .25, 1)
+}
+
+.RoomPhoto .fa-chevron-left, .PhotoScroller .fa-chevron-left {
+    left: 0;
+    text-align: left;
+    border-radius: 0 3px 3px 0
+}
+
+.RoomPhoto .fa-chevron-right, .PhotoScroller .fa-chevron-right {
+    right: 0;
+    text-align: right;
+    border-radius: 3px 0 0 3px
+}
+
+.RoomPhoto > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+    background-color: rgb(255, 255, 255);
+}
+
+.RoomInfo {
+    vertical-align: top
+}
+
+.RoomPrice {
+    vertical-align: top;
+    text-align: right;
+    padding: 20px 20px 20px 0;
+    box-sizing: border-box;
+    width: 215px
+}
+
+.RoomSummary {
+    display: table;
+    white-space: nowrap
+}
+
+.RoomSummary > div {
+    display: table-cell;
+    vertical-align: top;
+    line-height: 24px;
+    text-align: center
+}
+
+.RoomSummary > div:first-child {
+    padding-right: 5px
+}
+
+.RoomSummary > div:last-child {
+    padding-left: 5px
+}
+
+.RoomSummary > div + div {
+    border-left: 1px solid #ccc;
+    padding: 0 5px
+}
+
+.HideDetails {
+    display: none
+}
+
+.RoomBottom {
+    display: none;
+    line-height: 18px;
+}
+
+/*.PriceSection {display:none}*/
+.PriceSection > ul {
+    margin: 10px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    display: block;
+    overflow: auto
+}
+
+.PriceSection > ul > li {
+    display: block;
+    float: left;
+    width: 25%;
+    line-height: 20px;
+    white-space: nowrap
+}
+
+.PriceDetail:hover {
+    color: #F15732
+}
+
+.GroupSection > div {
+    display: table;
+    width: 100%
+}
+
+.GroupSection > div > div {
+    display: table-row
+}
+
+.GroupSection > div > div > div {
+    display: table-cell;
+    border-top: 1px solid #ccc;
+    padding: 5px 0;
+    vertical-align: middle;
+    max-width: 260px
+}
+
+.OtaMain .Container30 .GroupSection > div > div > div {
+    display: table-cell;
+    border-top: 1px solid #ccc;
+    padding: 5px 0;
+    vertical-align: middle;
+    max-width: 150px
+}
+
+
+.CancellationLink {
+    cursor: pointer;
+    margin: 0 0 10px 0;
+    color: #3e5e66
+}
+
+.CancellationBox {
+    max-height: 140px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background: #E5E3E2
+}
+
+.CancellationBox p {
+    padding: 0;
+    margin: 0 0 10px 0
+}
+
+.CancellationBox .TextBlock {
+    margin-bottom: 10px;
+    display: block
+}
+
+.CalendarPad {
+    padding: 10px 0 0 3px;
+    overflow: auto;
+}
+
+.CalendarPad .CalendarDayValue {
+    border-radius: 3px
+}
+
+.CalendarPad .CalendarDay {
+    width: 7.14%;
+}
+
+/*.CalendarDay {*/
+/*    width: 14.28%;*/
+/*    display: block;*/
+/*    box-sizing: border-box;*/
+/*    overflow: hidden;*/
+/*    float: left;*/
+/*    border-right: 3px solid #fff;*/
+/*    border-bottom: 3px solid #fff;*/
+/*    padding: 0 2px 2px 2px;*/
+/*    margin: 0;*/
+/*    color: #003d50 !important;*/
+/*}*/
+
+.CalendarDay div {
+    padding: 5px;
+    white-space: nowrap
+}
+
+.CalendarDay i {
+    font-style: normal;
+    display: inline-block;
+    width: 30px;
+    color: #666
+}
+
+.CalendarDayTitle {
+    color: #fff;
+    text-align: center
+}
+
+.CalendarDayValue {
+    background: rgba(255, 255, 255, 0.5);
+    overflow: hidden
+}
+
+.CalendarDay.DarkGrayBack .CalendarDayValue,
+.CalendarDay.DarkGrayBack i {
+    color: #aaa !important
+}
+
+.CalendarRoom {
+    display: block;
+    width: 25%;
+    box-sizing: border-box;
+    height: 150px;
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../../../atlas-layout/images/image-navy.svg);
+    cursor: pointer;
+    background-color: #AAA;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    opacity: 0.9;
+    margin: 0;
+    padding: 0;
+}
+
+.CalendarRoom div {
+    background: rgba(50, 50, 50, 0.7);
+    color: #fff;
+    text-align: center;
+    line-height: 24px;
+    height: 24px;
+    overflow: hidden
+}
+
+.CalendarRoom:hover {
+    opacity: 1
+}
+
+.CalendarRoom:hover div {
+    background: rgba(50, 50, 50, 1)
+}
+
+.OtherSolution {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.OtherSolutionHead {
+    overflow: auto;
+    cursor: pointer
+}
+
+.OtherSolutionHead > div:first-child {
+    float: left
+}
+
+.OtherSolutionHead > div:last-child {
+    text-align: center;
+    padding-top: 20px;
+    width: 20%;
+    float: right
+}
+
+.OtherSolutionHead > div:last-child .Orange {
+    margin-top: 10px
+}
+
+.OtherSolutionBody {
+    border-top: 2px dashed rgba(232, 237, 242, 0.94);
+}
+
+.OtherSolutionBody,
+.OtherSolution .fa-angle-double-up,
+.OtherSolutionOpen .fa-angle-double-down {
+    display: none
+}
+
+.OtherSolutionOpen .OtherSolutionBody {
+    display: block
+}
+
+.OtherSolutionOpen .fa-angle-double-up {
+    display: block
+}
+
+.OtherSolutionOpen {
+    box-shadow: 0 0 7px #666;
+    border-radius: 3px;
+    background: #fff
+}
+
+.OtherSolutionHead:hover .fa-angle-double-up,
+.OtherSolutionHead:hover .fa-angle-double-down {
+    color: #F15732 !important
+}
+
+.OtherSolutionHead:hover {
+    box-shadow: 0 0 7px #666;
+    border-radius: 3px;
+    background: #fff
+}
+
+.ExtraPhoto {
+    max-width: 200px;
+    max-height: 200px;
+    float: left;
+    margin: 0 10px 10px 0
+}
+
+#toTop {
+    font-size: 24px !important;
+    line-height: 46px !important;
+    width: 50px;
+    height: 50px;
+    background: #ff5722;
+    border-radius: 50%;
+    -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .4);
+    -moz-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .4);
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .4);
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    display: none;
+    z-index: 999;
+}
+
+#pictureDialog .RoomSection .RoomPhoto {
+    min-height: 90vmin;
+    max-height: 110vmin;
+    position: inherit;
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+.RoomPhotoGrid > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+    background-color: rgb(255, 255, 255);
+}
+
+#pictureDialog .RoomSection .RoomPhotoGrid {
+    width: 28% !important;
+    height: auto !important;
+    display: block;
+}
+
+.PhotoZoom {
+    z-index: 9999;
+    color: rgba(240, 240, 240, 0.45) !important;
+    right: 50%;
+    transform: translate(50%, -50%) !important;
+    text-shadow: 0 0 0px !important;
+}
+
+.WidPictures {
+    width: 80vw
+}
+
+.PhotoZoom:hover {
+    color: white !important;
+    text-shadow: 0 0 5px #000;
+}
+
+.NoOverflow {
+    overflow: hidden;
+}
+
+.LightGrayBack {
+    background-color: #e2e2e2;
+}
+
+.MaxLine4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.DesktopOn {
+    display: block
+}
+
+.DesktopOff {
+    display: none !important;
+}
+
+.NetworkBar {
+    display: table;
+    padding: 5px 10px 0 10px;
+    width: 100%;
+    box-sizing: border-box
+}
+
+.NetworkBar > div {
+    display: table-row
+}
+
+.NetworkBar > div > div {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 5px
+}
+
+.NetworkBar .fa {
+    margin-right: 5px
+}
+
+.CartSummaryItems {
+    display: table;
+    width: 100%;
+    margin-top: 10px
+}
+
+.CartSummaryItems > div {
+    display: table-row
+}
+
+.CartSummaryItems > div > div {
+    display: table-cell;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle
+}
+
+.CartSummaryItems > div:last-child > div {
+    border-bottom: none;
+    padding-bottom: 0
+}
+
+.CartSummaryItemsExternalRow {
+    margin-top: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.CartSummaryRoom {
+    background-size: cover;
+    border-radius: 3px;
+    border: 1px solid #999;
+    width: 16px;
+    height: 16px;
+    display: inline-block
+}
+
+.ui-scrollpanel.NoBorder {
+    border: none
+}
+
+/**--------------------- Effects --------- */
+
+.Zoom {
+    -webkit-transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    -o-transform: scale(1.07);
+    transform: scale(1.07) translateX(2px);
+    transition-duration: 1.5s;
+}
+
+.ShadowPulse1 {
+    box-shadow: -1px -1px 5px rgba(50, 50, 50, 0.75);
+    transition: all 0.8s ease;
+}
+
+.ShadowPulse2 {
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.75);
+}
+
+/* Pulse */
+@-webkit-keyframes Pulse {
+    25% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+
+@keyframes Pulse {
+    25% {
+        -webkit-transform: scale(1.20);
+        transform: scale(1.20);
+    }
+}
+
+.Pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.Pulse:hover, .Pulse:focus, .Pulse:active {
+    -webkit-animation-name: Pulse;
+    animation-name: Pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.AnimBar:before {
+    content: "";
+    width: 40px;
+    background: rgba(255, 255, 255, 0.20);
+    transform: skewX(192deg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    opacity: 0;
+    animation: AnimBar 20s 5s infinite;
+    z-index: 20;
+}
+
+
+@-webkit-keyframes AnimBar {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        left: 120%;
+        opacity: 1;
+    }
+    25.1%, 25.2% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes DownUp {
+    from {
+        transform: translate(-50%, 0);
+    }
+    to {
+        transform: translate(-50%, 10px);
+    }
+}
+
+.SiteContent, .SiteFooter {
+    animation: fadein 1200ms;
+    -moz-animation: fadein 1200ms; /* Firefox */
+    -webkit-animation: fadein 1200ms; /* Safari and Chrome */
+    -o-animation: fadein 1200ms; /* Opera */
+}
+
+.CartSummary {
+    animation: fadeinslow 4000ms;
+    -moz-animation: fadeinslow 4000ms; /* Firefox */
+    -webkit-animation: fadeinslow 4000ms; /* Safari and Chrome */
+    -o-animation: fadeinslow 4000ms; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeinslow { /* Safari and Chrome */
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ------------------------------------------------------------ media queries */
+
+.CartSummary {
+    display: none
+}
+
+.SearchBar {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    height: 53px;
+    box-sizing: border-box
+}
+
+.SearchBar .ui-button-text.ui-c {
+    border-radius: 3px !important;
+}
+
+.SearchBar .ui-button {
+    background-color: transparent;
+}
+
+.SearchBar > div {
+    display: table;
+    float: left
+}
+
+.SearchBar > div > div {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 5px;
+    box-sizing: border-box
+}
+
+.SearchBar > div:last-child > div:first-child {
+    display: none
+}
+
+.SearchBar > div:last-child > div:last-child {
+    padding-right: 0
+}
+
+.NetworkBar > div > div:first-child,
+.SearchBar > div:first-child > div:first-child {
+    width: 23px
+}
+
+.SearchCal {
+    width: 100px
+}
+
+.SearchCal.Ota {
+    width: 150px
+}
+
+.SiteTopBar {
+    background-color: white
+}
+
+.OtaMain .SearchBar input {
+    line-height: 25px;
+    height: 30px;
+    padding: 10px;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger, .ui-selectcheckboxmenu .ui-selectcheckboxmenu-trigger{
+    background-color: #c5c5c5f2;
+}
+.SiteTopBar .ui-button-text {
+    background-color: #c5c5c5f2;
+}
+
+@media (min-width: 801px) {
+    .SiteMain {
+        max-width: 800px;
+        box-shadow: 0 0 5px rgba(50, 50, 50, 0.35)
+    }
+}
+
+@media (max-width: 815px) {
+    .RoomPhoto {
+        width: 100%;
+        border-radius: 3px
+    }
+
+    .PhotoZoom {
+        left: 45%
+    }
+
+    .RoomTitle {
+        font-size: 1.4em !important;
+    }
+
+    .RoomTop, .RoomTop > div {
+        display: block
+    }
+
+    .CalendarDay {
+        width: 16%
+    }
+
+    .SiteButtons {
+        display: none !important
+    }
+
+    .GroupSection > div {
+        display: block
+    }
+
+    .GroupSection > div > div {
+        display: block;
+        border-top: 1px solid #ccc;
+        padding: 10px 0;
+        overflow: auto;
+        clear: both
+    }
+
+    .GroupSection > div > div > div {
+        display: inline-block;
+        border-top: none;
+        padding: 10px 0 0 0;
+        width: 49%;
+        box-sizing: border-box
+    }
+
+    .GroupSection > div > div > div:nth-child(4) {
+        text-align: left !important
+    }
+
+    .GroupSection > div > div > div:first-child {
+        display: block;
+        font-size: 1.1em;
+    }
+
+    .PriceSection .Strike {
+        display: block
+    }
+
+    .CalendarPad .CalendarDay {
+        width: 14%
+    }
+
+    .DesktopOn {
+        display: none !important
+    }
+
+    .DesktopOff {
+        display: block !important
+    }
+
+    .OtaMain .DesktopOff {
+        display: inline-block !important;
+    }
+
+    .WidPictures {
+        width: 70vw
+    }
+
+    .OtaLogo {
+        max-width: 50px;
+    }
+
+    .MobileFEm135 {
+        font-size: 1.35em
+    }
+
+    .WidOta {
+        width: 100%
+    }
+
+    .OtaMain .SearchBar {
+        display: inline-flex;
+    }
+
+    .OtaMain .SearchBar input {
+        font-size: 16px;
+        line-height: 16px;
+        height: auto;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+    }
+}
+
+@media (min-width: 720px) {
+    .TabletOff {
+        display: none !important
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 700px) {
+    .HotelSlogan > div > div {
+        max-width: 50%
+    }
+
+    .HotelSlogan > div > .RoomPhoto {
+        min-width: 240px;
+        width: auto
+    }
+}
+
+@media (max-width: 1300px) and (min-width: 700px) {
+    .MediumOff {
+        display: none !important
+    }
+
+    .SearchCal.Ota {
+        width: 88px
+    }
+}
+
+@media (max-width: 719px) {
+    .MobileOff {
+        display: none !important
+    }
+}
+
+@media (max-width: 719px) {
+    .MobileOn {
+        display: block;
+    }
+}
+
+@media (min-width: 1400px) {
+    .LargeScreenOn {
+        display: block !important
+    }
+
+    .WidOta {
+        width: 95% !important;
+    }
+}
+
+@media (min-width: 1700px) {
+    .WidOta {
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .CalendarDay {
+        width: 18%
+    }
+
+    .RoomHeader, .RoomInfo, .RoomPrice {
+        display: block;
+        width: 100%
+    }
+
+    .RoomPrice {
+        text-align: left;
+        padding: 0 20px 20px 20px
+    }
+
+    .OtherSolutionHead > div {
+        display: block;
+        float: none;
+        width: 100% !important;
+        box-sizing: border-box
+    }
+
+    .OtherSolutionHead > div:last-child {
+        text-align: left;
+        padding: 0 10px 10px 10px
+    }
+
+    .OtherSolutionHead > div:last-child > div {
+        display: inline-block;
+        line-height: 22px
+    }
+
+    .OtherSolutionHead > div:last-child > .Orange {
+        margin: 0 0 0 20px
+    }
+
+    .OtherSolutionHead > div:last-child > i {
+        float: right
+    }
+
+    .GroupSection > div > div > div {
+        display: block;
+        width: auto;
+        text-align: left !important
+    }
+
+    #ccsFrame {
+        height: 410px
+    }
+}
+
+@media (max-width: 479px) {
+    .CalendarRoom {
+        width: 100%
+    }
+
+    .CalendarDay {
+        width: 25%
+    }
+
+    .CalendarPad .CalendarDay {
+        font-size: 10px
+    }
+
+    .HotelHeader > div {
+        display: block
+    }
+
+    .HotelHeader > div > div {
+        display: block
+    }
+
+    .OtherSolutionHead > div:last-child > .Orange {
+        margin: 0 0 0 5px
+    }
+
+    .SearchCal, .SearchCal.Ota {
+        width: 88px
+    }
+
+    .SearchCal .ui-inputfield {
+        padding-left: 2px !important;
+        padding-right: 2px !important
+    }
+
+    .SearchLabel {
+        display: none !important
+    }
+}
+
+
+@media (min-width: 1220px) {
+    .LayoutDynamic .SiteMain {
+        max-width: 1200px;
+        box-shadow: none
+    }
+
+    .LayoutDynamic .SiteTopBar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 0 5px #000;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.5)
+    }
+
+    .LayoutDynamic .SiteContent,
+    .LayoutDynamic .SiteFooter {
+        max-width: 840px;
+        box-sizing: border-box;
+        margin-left: 360px
+    }
+
+    .LayoutDynamic .SiteContentChannel,
+    .LayoutDynamic .SiteContentChannel {
+        margin-left: auto !important;
+        margin-right: auto
+    }
+
+    .LayoutDynamic .SiteContent {
+        margin-top: 63px
+    }
+
+    .LayoutDynamic .SiteHeader {
+        position: fixed;
+        width: 350px;
+        right: 50%;
+        top: 63px;
+        transform: translateX(-250px);
+        /*overflow: hidden;*/
+    }
+
+    .LayoutDynamic .SiteHeader .BackTransparent {
+        border-radius: 6px;
+    }
+
+    .LayoutDynamic .SiteHeader .ui-inputfield {
+        font-size: 19px;
+        padding: 6px 9px;
+        background-color: #edf3f691;
+        color: #003d50db;
+    }
+
+    .LayoutDynamic .MainProperty {
+        margin-bottom: 10px
+    }
+
+    .LayoutDynamic .SearchBar {
+        display: table;
+        height: auto
+    }
+
+    .LayoutDynamic .SearchBar .ui-selectonemenu-trigger {
+        height: 37px !important;
+    }
+
+    .LayoutDynamic .SearchBar .ui-button-text {
+        font-size: 20px
+    }
+
+    .LayoutDynamic .SearchBar > div {
+        display: table-row;
+        float: none
+    }
+
+    .LayoutDynamic .SearchBar > div > div {
+        padding: 9px 0 0 0
+    }
+
+    .LayoutDynamic .SearchBar > div:first-child > div {
+        padding-top: 0
+    }
+
+    .LayoutDynamic .SearchBar > div:last-child > div:first-child {
+        display: table-cell
+    }
+
+    .LayoutDynamic .SearchCal {
+        width: auto
+    }
+
+    .LayoutDynamic .NetworkBar > div > div:first-child,
+    .LayoutDynamic .SearchBar > div:first-child > div:first-child,
+    .LayoutDynamic .SearchLabel {
+        width: 40px
+    }
+
+    .LayoutDynamic .SearchLabel .fa {
+        display: block;
+        border-radius: 3px;
+        height: 33px;
+        line-height: 33px;
+        margin-right: 5px;
+        text-align: center;
+    }
+
+    .LayoutDynamic .CartSummary {
+        display: block
+    }
+}
+
+
+@media (min-width: 1800px) {
+    .LayoutDynamic .SiteMain {
+        max-width: 1500px !important;
+        box-shadow: none
+    }
+
+    .LayoutDynamic .SiteHeader.OTA {
+        width: 450px !important
+    }
+
+    .LayoutDynamic .SiteHeader {
+        transform: translateX(-385px) !important;
+    }
+
+    .LayoutDynamic .SiteContent, .LayoutDynamic .SiteFooter {
+        margin-left: 375px !important;
+        max-width: unset
+    }
+
+    .LayoutDynamic .RoomPhoto {
+        width: 400px;
+        min-height: 280px
+    }
+
+    .RoomTop {
+        min-height: 280px
+    }
+}
+
+/* --------------------------------------------------- ota ------------------ */
+
+.OtaMain {
+    text-align: left;
+    overflow: hidden
+}
+
+.OtaMain .HotelMap {
+    min-height: 600px;
+    height: 100% !important
+}
+
+.OtaMap.OtaMapFull {
+    height: calc(100vh - 106px);
+    position: fixed !important;
+    width: 50%
+}
+
+@media (max-width: 1200px) {
+    .OtaMap.OtaMapFull {
+        width: 100%;
+        max-height: 400px;
+        position: relative !important;
+    }
+
+    .LeafJsMobile {
+        display: block;
+
+    }
+
+}
+
+@media ( max-width: 480px) {
+    #seachDivMobile {
+        display: none;
+    }
+}
+
+.WidOta {
+    width: 90%
+}
+
+.OtaMain .SiteTopBar {
+    margin-top: 0;
+    display: block;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    height: 75px;
+    /*background-color: #d6d5ce;*/
+    background-color: #e0e0e0;
+}
+
+.OtaMain .SiteHeader {
+    border-bottom: 1px solid #E5E3E2;
+    margin-top: 70px;
+    display: block;
+    position: fixed;
+    width: 100%;
+    /*background-color: #d6d5ce;*/
+    background-color: #e0e0e0;
+    z-index: 998;
+    box-shadow: 0 10px 20px 0 rgb(0 0 0 / 4%)
+}
+
+.OtaProperty {
+    cursor: pointer;
+    height: 350px;
+}
+
+.OtaProperty .Photo {
+    height: 250px;
+    background-size: cover;
+    background-position: center
+}
+
+.OtaProperty .Name {
+    margin-bottom: 5px
+}
+
+.OtaProperty .Name,
+.OtaProperty .Addr {
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.OtaProperty .ui-panel .ui-panel-titlebar {
+    background-color: #e2e2e2
+}
+
+.OtaProperty ul {
+    padding: 0;
+    margin: 0
+}
+
+.OtaProperty li {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    background: #f1f1f150;
+    padding: 2px 10px;
+    border-radius: 10px
+}
+
+.bxPhoto {
+    background-position: center !important;
+    background-size: cover !important;
+    height: 400px
+}
+
+/*.bxPhotoOta{background-position:center !important;background-size:cover !important;height: calc(90vh - 64px)}*/
+.bxPhotoOta {
+    height: calc(100vh - 175px);
+    position: static !important;
+    width: auto !important;
+    margin: auto;
+    background-repeat: no-repeat !important;
+}
+
+.MarAuto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.bx-wrapper .bx-controls-direction a {
+    z-index: 499 !important
+}
+
+.ButtonLarge .ui-button-text {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.FilterSection {
+    background-color: #ffffff;
+    position: absolute;
+    top: 50px;
+    min-width: 30vw;
+    min-height: 30vh;
+    border-bottom: 2px solid #EBEBEB;
+    border-left: 2px solid #EBEBEB;
+    border-right: 2px solid #EBEBEB;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 15px 46px -10px rgba(26, 26, 29, 0.3);
+    transition: background-color 300ms linear;
+}
+
+.FilterSection:hover {
+    box-shadow: 0 20px 50px -10px rgba(26, 26, 29, 0.3);
+}
+
+.WhiteSelect select {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+#linegraph {
+    border-collapse: collapse;
+}
+
+#linegraph td {
+    vertical-align: bottom;
+    border-width: 0 !important;
+    border: none !important;
+    margin: 0 !important
+}
+
+#linegraph .BlueBar {
+    background-color: #78A7F3;
+}
+
+#linegraph .GrayBar {
+    background-color: #ccc;
+}
+
+#linegraph .BlueBar:hover {
+    background-color: #ccc;
+}
+
+.bx-viewport {
+    max-height: 400px;
+    max-height: calc(100vh - 175px) !important;
+}
+
+.SearchBar > span:first-child {
+    display: none;
+}
+
+.SearchBar > div {
+    margin-left: 8px;
+}
+
+.SearchBar .ui-button-text.ui-c {
+    border-radius: 5px !important;
+}
+
+.OtaLogo {
+    max-height: 46px;
+}
+
+.InfoSection {
+    float: left;
+    width: 100%;
+    color: #a3a3a3;
+}
+
+.InfoSection > div {
+    float: left;
+    width: 20%;
+    text-align: center;
+    height: 100px;
+}
+
+.InfoSection > div > i:first-child {
+    font-size: 40px;
+    color: #7b7b7b;
+    display: block;
+    margin: auto;
+}
+
+.InfoSection > div > i {
+    display: block;
+}
+
+.CardBigTopic.Ota:after {
+    color: #fa2964;
+    display: block;
+    height: 3px;
+    font-weight: bold;
+    background-color: #fa2964;
+    content: " ";
+    width: 20px;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.BorderNone {
+    border: none;
+}
+
+.ui-datascroller {
+    border: none
+}
+
+.ui-datascroller .ui-datascroller-content {
+    padding: 0
+}
+
+.ui-datascroller .ui-datascroller-item {
+    border: none !important
+}
+
+.BackGreen {
+    background-color: #80e27e
+}
+
+.PreFormatted {
+    white-space: pre-wrap;
+}
+
+.Z2 {
+    z-index: 2;
+}
+
+@media (max-width: 1200px) {
+    .OtaMain {
+        height: auto
+    }
+
+    .bxPhotoOta {
+        height: calc(70vh - 165px);
+        background-position: center !important;
+        background-size: cover !important;
+    }
+
+    .bx-viewport {
+        height: calc(70vh - 165px)
+    }
+
+    .SearchBar > div {
+        margin-left: 1px;
+    }
+
+    .coupon-wrapper {
+        width: 17% !important;
+    }
+}
+
+@media (max-height: 800px) {
+    .MobileHei100vh {
+        height: 100%;
+        height: calc(100vh - 100px)
+    }
+}
+
+
+/************** CUSTOM ICONS ************/
+@font-face {
+    font-family: 'customfonts';
+    src: url('../../fonts/customfonts.eot?q8cd6b');
+    src: url('../../fonts/customfonts.eot?q8cd6b#iefix') format('embedded-opentype'),
+    url('../../fonts/customfonts.ttf?q8cd6b') format('truetype'),
+    url('../../fonts/customfonts.woff?q8cd6b') format('woff'),
+    url('../../fonts/customfonts.svg?q8cd6b#customfonts') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="octoicon"], [class*=" octoicon"] {
+    vertical-align: text-bottom;
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'customfonts' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.octoicon.baby:before {
+    content: "\e900";
+}
+
+.BorderDashed {
+    border-style: dashed;
+}
+
+@media (min-width: 1200px) {
+    .PadL10Desktop {
+        padding-left: 10%;
+    }
+}
+
+
+.ScrollXAuto::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+    height: 0px;
+}
+
+.ScrollYAuto {
+    overflow-y: auto;
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+.ScrollYAuto::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+    height: 0px;
+}
+
+.CitySearch > button {
+    display: none;
+}
+
+.CitySearch tr {
+    background-color: white;
+}
+
+.CitySearch td {
+    padding: 10px 10px 10px 10px !important;
+    border-style: none !important;
+    border-width: 0px !important;
+}
+
+.CityResult:hover {
+    background-color: #d2d2d2;
+}
+
+.TextCut {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.DispFlex {
+    display: flex
+}
+
+.ExtraSection {
+    overflow: hidden;
+}
+
+.ui-selectonemenu {
+    min-width: 20px !important
+}
+
+.ui-selectbooleancheckbox .ui-chkbox-box {;
+    padding: 0 !important;
+    background-color: #fbfcfd;
+}
+
+.SearchBar.Ota input, .SearchBar.Ota select, .SearchBar.Ota .ui-selectonemenu, .SearchBar.Ota .ui-selectonemenu-label {
+    background-color: white;
+    border-radius: 1000px !important;
+    font-family: Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    border: none;
+    -webkit-padding-start: 48px;
+    padding-inline-start: 48px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #073937;
+}
+
+.FontTopBar {
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 640px) and (max-width: 1400px) {
+    /* responsive support */
+    .Responsive100.SmallScreen100 {
+        width: 100%;
+        float: left;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+}
+
+
+.photoThumb {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.Scroll300 {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.contractForm {
+    width: 100%;
+    text-align: right;
+
+}
+
+.ui-button.ui-fileupload-upload,
+.ui-button.ui-fileupload-cancel,
+.ui-button.ui-fileupload-choose {
+    background-color: #3e5e66;
+}
+
+.ui-state-disabled.ui-fileupload-upload,
+.ui-state-disabled.ui-fileupload-cancel {
+    background-color: #3e5e66 !important;
+    opacity: .70 !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+    font-size: 15px;
+}
+
+.ClusterText {
+    color: rgba(38, 38, 38, 0.9) !important;
+    font-size: 20px !important;
+    border: 2px dotted;
+    min-width: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-color: rgba(38, 38, 38, 0.3) !important;
+    border-radius: 48px;
+}
+
+.LineHei30px {
+    line-height: 30px;
+}
+
+.coupon {
+    width: 100% !important;
+    font-size: medium !important;
+    text-align: left;
+}
+
+#coupon {
+    width: 100%;
+    text-align: left;
+}
+
+.coupon-wrapper {
+    width: 12%;
+}
+
+@media (max-width: 814px) {
+
+    .coupon-wrapper {
+        display: none !important;
+    }
+}
+
+.like-share-wrapper {
+    position: relative;
+    top: -293px;
+    float: right;
+    display: grid;
+}
+
+.btn-like {
+    background-color: transparent;
+}
+
+.btn-like:hover {
+    background-color: transparent;
+}
+
+.btn-like .ui-button-text {
+    background-color: transparent;
+}
+
+.btn-like .ui-button-text:hover {
+    background-color: transparent !important;
+}
+
+.btn-like .ui-button-text:hover {
+    background-color: transparent !important;
+}
+
+.btn-share {
+    background-color: transparent;
+}
+
+.btn-share:hover {
+    background-color: transparent;
+}
+
+.btn-share .ui-button-text {
+    background-color: transparent;
+}
+
+.btn-share .ui-button-text:hover {
+    background-color: transparent !important;
+}
+
+.btn-share2 {
+    border-radius: 10px;
+    background-color: transparent;
+    border: solid 1px lightgray;
+}
+
+.btn-share2 .ui-button-text {
+    background-color: transparent;
+    padding: 15px 0px 18px 40px !important;
+    font-size: 18px;
+    border-radius: 7px !important;
+    color: black;
+}
+
+
+.btn-share {
+    cursor: pointer !important;
+    position: relative !important;
+    touch-action: manipulation !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
+    border-radius: 0px !important;
+    outline: none !important;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+    -webkit-tap-highlight-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important;
+    display: block !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    text-align: inherit !important;
+    text-decoration: none !important;
+    height: 78% !important;
+    width: 100% !important;
+}
+
+.btn-share .ui-button.ui-state-hover .ui-button-text {
+    background-color: transparent !important;
+}
+
+.share-dialog .ui-dialog-titlebar {
+    background-color: transparent !important;
+    border-bottom: 0px !important;
+}
+
+.share-dialog .ui-dialog-title {
+    color: transparent !important;
+}
+
+.title-wrapper {
+    padding: 24px !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    outline: none !important;
+}
+
+.share-title {
+    /* border-bottom: solid 1px #e8edf2 !important; */
+    background-color: #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: black;
+}
+
+.share-success {
+    background-color: lightblue;
+    padding: 5px;
+    border-radius: 10px;;
+}
+
+.btn-share .ui-state-hover {
+    background-color: red;
+}
+
+.Right {
+    float: right;
+}
+
+.Red {
+    color: red;
+}
+
+
+/*.square {*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    display: inline-block;*/
+/*    vertical-align: center;*/
+/*}*/
+
