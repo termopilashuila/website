@@ -81,6 +81,34 @@ function initHideElements() {
       }
     });
   }
+  
+  // Hide the reservation manager link
+  const reservationLinks = document.querySelectorAll('a.ui-link');
+  reservationLinks.forEach(link => {
+    if (link.href && link.href.includes('manage.xhtml')) {
+      console.log("Found reservation manager link, hiding it");
+      link.style.display = 'none';
+      
+      // Also hide parent div if it exists
+      if (link.parentElement) {
+        console.log("Hiding parent of reservation link");
+        link.parentElement.style.display = 'none';
+      }
+    }
+  });
+  
+  // Also try to find by title attribute
+  const reservationLinksByTitle = document.querySelectorAll('a[title="Mi reserva"]');
+  reservationLinksByTitle.forEach(link => {
+    console.log("Found reservation link by title, hiding it");
+    link.style.display = 'none';
+    
+    // Hide parent container as well
+    if (link.parentElement) {
+      console.log("Hiding parent of reservation link by title");
+      link.parentElement.style.display = 'none';
+    }
+  });
 }
 
 // Create a MutationObserver to handle dynamically loaded elements
