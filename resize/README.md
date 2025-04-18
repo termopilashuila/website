@@ -2,29 +2,47 @@
 
 This directory contains scripts for resizing images for the Finca Termópilas website.
 
+## Setup
+
+### Creating a Virtual Environment
+
+```bash
+# From the resize directory:
+python -m venv venv
+
+# Activate the virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS and Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
 ## Usage
 
 1. Place the images you want to resize in this directory or specify a different path
 2. Run the resize script using one of the following methods:
 
-### Method 1: Using the shell script
+### Using Python
 
 ```bash
 # From the project root:
-./resize/resize-images.sh
+python resize/main.py
 
 # Resize a specific image (from project root):
-./resize/resize-images.sh assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
+python resize/main.py assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
 
 # Resize all images in a specific directory:
-./resize/resize-images.sh assets/images/gallery --width=800 --quality=90
+python resize/main.py assets/images/gallery --width=800 --quality=90
 
 # Run the script from inside the resize directory:
 cd resize
-./resize-images.sh
+python main.py
 ```
 
-### Method 2: Using npm
+### Using npm (Legacy method)
 
 ```bash
 # From the project root:
@@ -46,3 +64,4 @@ npm run resize-images -- assets/images/tour --width=800 --quality=90
 - Original images will be replaced with the resized versions
 - The aspect ratio is preserved
 - Smaller images remain unchanged 
+- Original images are only replaced if the new version is smaller in file size 
