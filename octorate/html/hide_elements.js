@@ -109,6 +109,49 @@ function initHideElements() {
       link.parentElement.style.display = 'none';
     }
   });
+  
+  // Remove the word "Importe" from text elements
+  removeTextFromElements("Importe", "");
+  removeTextFromElements("Sitio Oficial", "");
+}
+
+// Function to remove specific text from elements
+function removeTextFromElements(textToRemove, replacementText) {
+  console.log(`Removing text: "${textToRemove}" from elements`);
+  
+  // Create a TreeWalker to find all text nodes in the document
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+  
+  // Array to store nodes that need text replacement
+  const nodesToModify = [];
+  
+  // Find all text nodes containing the target text
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeValue && node.nodeValue.includes(textToRemove)) {
+      nodesToModify.push(node);
+    }
+  }
+  
+  // Replace text in all found nodes
+  nodesToModify.forEach(textNode => {
+    console.log(`Found text node containing "${textToRemove}", replacing it`);
+    textNode.nodeValue = textNode.nodeValue.replace(new RegExp(textToRemove, 'g'), replacementText);
+  });
+  
+  // Additionally, check specific elements that might have this text in attributes or as content
+  const elementsWithText = document.querySelectorAll('th, td, label, span, div');
+  elementsWithText.forEach(el => {
+    if (el.textContent && el.textContent.includes(textToRemove)) {
+      console.log(`Found element with text "${textToRemove}", replacing its text content`);
+      el.textContent = el.textContent.replace(new RegExp(textToRemove, 'g'), replacementText);
+    }
+  });
 }
 
 // Create a MutationObserver to handle dynamically loaded elements
