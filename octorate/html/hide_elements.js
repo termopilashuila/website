@@ -18,65 +18,69 @@ function hideOctorateElements() {
 
 // Main function to hide the elements
 function initHideElements() {
-  // Hide "Información sobre la propiedad" elements
-  hideElementsByText("Información sobre la propiedad");
+  console.log("Hiding specific elements...");
   
-  // Hide property info button and section
-  hideElementsBySelector('[data-show="info"]');
-  hideElementsBySelector('.information a[onclick*="openSlider"]');
-  hideElementsBySelector('#info.info');
-  hideElementsBySelector('div[data-show="info"]');
+  // Only hide these specific elements - don't use the generic text search
   
-  // Hide any parent div that contains the info text
-  const infoElements = document.querySelectorAll('p');
-  infoElements.forEach(el => {
-    if (el.textContent.includes('Información sobre la propiedad')) {
-      // Hide the parent elements up to 3 levels
-      let parent = el.parentElement;
-      for (let i = 0; i < 3 && parent; i++) {
-        parent.style.display = 'none';
-        parent = parent.parentElement;
-      }
-    }
-  });
+  // Property info selectors - specifically target just these elements
+  const infoButton = document.querySelector('div[data-show="info"].information');
+  if (infoButton) {
+    console.log("Found property info button, hiding it");
+    infoButton.style.display = 'none';
+  }
   
-  // Hide "Iniciar sesión ahora" elements
-  hideElementsByText("Iniciar sesión ahora");
+  // Hide the info panel/section
+  const infoPanel = document.querySelector('#info.info');
+  if (infoPanel) {
+    console.log("Found info panel, hiding it");
+    infoPanel.style.display = 'none';
+  }
   
-  // Hide login link and icon
-  hideElementsBySelector('a[href*="manage.xhtml"]');
-  hideElementsBySelector('.headerIconTheme2');
+  // Login button/icon selectors - try multiple approaches to target the login element
+  // First try the element itself
+  const loginElement = document.querySelector('.headerIconTheme2');
+  if (loginElement) {
+    console.log("Found login element, hiding it");
+    loginElement.style.display = 'none';
+  }
   
-  // Hide any parent div that contains the login text
-  const loginElements = document.querySelectorAll('p');
-  loginElements.forEach(el => {
-    if (el.textContent.includes('Iniciar sesión ahora')) {
-      // Hide the parent elements up to 3 levels
-      let parent = el.parentElement;
-      for (let i = 0; i < 3 && parent; i++) {
-        parent.style.display = 'none';
-        parent = parent.parentElement;
-      }
-    }
-  });
-}
-
-// Helper function to hide elements by text content
-function hideElementsByText(text) {
-  const elements = document.querySelectorAll('*');
-  elements.forEach(el => {
-    if (el.textContent && el.textContent.includes(text)) {
+  // Also try to find the paragraph containing the text
+  const loginTextElements = document.querySelectorAll('p');
+  loginTextElements.forEach(el => {
+    if (el.textContent && el.textContent.trim() === 'Iniciar sesión ahora') {
+      console.log("Found login text element, hiding it");
+      // Hide this specific paragraph
       el.style.display = 'none';
+      
+      // Also try to find its parent div with the headerIconTheme2 class
+      let parent = el.parentElement;
+      if (parent && parent.classList.contains('headerIconTheme2')) {
+        console.log("Found login parent element, hiding it");
+        parent.style.display = 'none';
+      }
     }
   });
-}
-
-// Helper function to hide elements by CSS selector
-function hideElementsBySelector(selector) {
-  const elements = document.querySelectorAll(selector);
-  elements.forEach(el => {
-    el.style.display = 'none';
-  });
+  
+  // Also try to hide the specific div containing both classes
+  const loginDiv = document.querySelector('div.information.headerIconTheme2');
+  if (loginDiv) {
+    console.log("Found login div with both classes, hiding it");
+    loginDiv.style.display = 'none';
+  }
+  
+  // Try another approach - hide any div in the specific section that might contain the login
+  const iconDiv = document.querySelector('#iconDiv');
+  if (iconDiv) {
+    const loginElementsInIconDiv = iconDiv.querySelectorAll('.headerIconTheme2, .information');
+    loginElementsInIconDiv.forEach(el => {
+      console.log("Found element in iconDiv, checking if it's the login element");
+      // Check if it has the login text
+      if (el.textContent && el.textContent.includes('Iniciar sesión ahora')) {
+        console.log("Found login element in iconDiv, hiding it");
+        el.style.display = 'none';
+      }
+    });
+  }
 }
 
 // Create a MutationObserver to handle dynamically loaded elements
