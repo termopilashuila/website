@@ -45,3 +45,6 @@ coverage/
 
 # Local Netlify folder
 .netlify 
+
+octorate/html/engine_files/**
+octorate/html/engine.html
