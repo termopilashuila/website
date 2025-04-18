@@ -30,8 +30,19 @@ self.addEventListener('install', event => {
   );
 });
 
+// Helper function to check if a URL is valid for caching
+function isValidUrl(url) {
+  // Only cache HTTP/HTTPS requests, ignore chrome-extension and other protocols
+  return url.startsWith('http:') || url.startsWith('https:');
+}
+
 // Serve cached content when offline
 self.addEventListener('fetch', event => {
+  // Skip non-HTTP(S) requests to avoid cache errors with chrome-extension:// and others
+  if (!isValidUrl(event.request.url)) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -53,7 +64,10 @@ self.addEventListener('fetch', event => {
 
             caches.open(CACHE_NAME)
               .then(cache => {
-                cache.put(event.request, responseToCache);
+                // Double-check URL is valid before putting in cache
+                if (isValidUrl(event.request.url)) {
+                  cache.put(event.request, responseToCache);
+                }
               });
 
             return response;
