@@ -24,7 +24,12 @@ Examples:
 import os
 import sys
 import argparse
-from src.image_processor import resize_image, process_directory, DEFAULT_MAX_WIDTH, DEFAULT_QUALITY
+
+# Add parent directory to sys.path when running from resize directory
+if os.path.basename(os.getcwd()) == 'resize':
+    from src.image_processor import resize_image, process_directory, DEFAULT_MAX_WIDTH, DEFAULT_QUALITY
+else:
+    from resize.src.image_processor import resize_image, process_directory, DEFAULT_MAX_WIDTH, DEFAULT_QUALITY
 
 
 def parse_arguments():

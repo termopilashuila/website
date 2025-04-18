@@ -7,7 +7,7 @@ from PIL import Image
 
 
 # Default resize options
-DEFAULT_MAX_WIDTH = 1200
+DEFAULT_MAX_WIDTH = 600
 DEFAULT_QUALITY = 80
 
 
