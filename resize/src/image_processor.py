@@ -10,6 +10,9 @@ from PIL import Image
 DEFAULT_MAX_WIDTH = 600
 DEFAULT_QUALITY = 80
 
+# Supported file extensions
+SUPPORTED_EXTENSIONS = ['.jpg', '.jpeg', '.png']
+
 
 def resize_image(image_path: str, options: Dict = None) -> None:
     """
@@ -21,6 +24,12 @@ def resize_image(image_path: str, options: Dict = None) -> None:
     """
     if options is None:
         options = {}
+    
+    # Check if file extension is supported
+    file_extension = os.path.splitext(image_path)[1].lower()
+    if file_extension not in SUPPORTED_EXTENSIONS:
+        print(f"Skipped: {image_path} (unsupported file type: {file_extension})")
+        return
     
     max_width = options.get('max_width', DEFAULT_MAX_WIDTH)
     quality = options.get('quality', DEFAULT_QUALITY)
@@ -45,15 +54,10 @@ def resize_image(image_path: str, options: Dict = None) -> None:
                 resized_img = img.resize((max_width, new_height), Image.LANCZOS)
                 
                 # Save with appropriate format and quality
-                file_extension = os.path.splitext(image_path)[1].lower()
-                
                 if file_extension in ['.jpg', '.jpeg']:
                     resized_img.save(temp_path, 'JPEG', quality=quality, optimize=True)
                 elif file_extension == '.png':
                     resized_img.save(temp_path, 'PNG', quality=quality, optimize=True)
-                else:
-                    print(f"Unsupported file type: {file_extension} for file: {image_path}")
-                    return
                 
                 # Compare file sizes
                 processed_size = os.path.getsize(temp_path)
@@ -94,10 +98,19 @@ def process_directory(dir_path: str, options: Dict = None) -> None:
     # Get all files in the directory
     for file in os.listdir(dir_path):
         file_path = os.path.join(dir_path, file)
-        file_extension = os.path.splitext(file)[1].lower()
         
-        # Process only image files
-        if file_extension in ['.jpg', '.jpeg', '.png'] and os.path.isfile(file_path):
-            resize_image(file_path, options)
+        # Process subdirectories recursively
+        if os.path.isdir(file_path):
+            print(f"Processing subdirectory: {file_path}")
+            process_directory(file_path, options)
+            continue
+            
+        # Skip files that are not images with supported extensions
+        file_extension = os.path.splitext(file)[1].lower()
+        if file_extension not in SUPPORTED_EXTENSIONS:
+            print(f"Skipped: {file_path} (unsupported file type: {file_extension})")
+            continue
+        
+        resize_image(file_path, options)
     
-    print("All images processed!") 
+    print(f"Completed processing directory: {dir_path}") 

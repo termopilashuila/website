@@ -7,13 +7,12 @@ This directory contains scripts for resizing images for the Finca Termópilas we
 ### Creating a Virtual Environment
 
 ```bash
+cd resize
+
 # From the resize directory:
 python -m venv venv
 
 # Activate the virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS and Linux:
 source venv/bin/activate
 
 # Install dependencies
@@ -29,13 +28,13 @@ pip install -r requirements.txt
 
 ```bash
 # From the project root:
-python resize/main.py
+python main.py
 
 # Resize a specific image (from project root):
-python resize/main.py assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
+python main.py assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
 
 # Resize all images in a specific directory:
-python resize/main.py assets/images/gallery --width=800 --quality=90
+python main.py ../assets/images/alojamiento --width=600 --quality=80
 
 # Run the script from inside the resize directory:
 cd resize
