@@ -48,6 +48,8 @@
     width: 300px;
     margin-bottom: 2rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .room-card:hover {
@@ -58,10 +60,14 @@
     height: 220px;
     width: 100%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .room-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .room-title {
@@ -83,6 +89,7 @@
     list-style-type: none;
     padding: 0;
     margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .room-features li {
@@ -101,7 +108,7 @@
 }
 
 .book-button {
-    display: inline-block;
+    display: block;
     background-color: #F29F05;
     color: #fdf6ea;
     padding: 0.75rem 1.5rem;
@@ -110,7 +117,9 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin-top: auto;
+    text-align: center;
+    align-self: center;
     border-radius: 8px; /* Add rounded corners */
 }
 
