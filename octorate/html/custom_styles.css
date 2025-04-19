@@ -4,8 +4,11 @@
 /** Customization of Octorate of style.css **/
 /** DO NOT CHANGE style.css, since it can be replaced by avangard_new in future **/
 
-/* Font family to match website */
-:root {
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Helvetica Neue' !important;
+}
+
+p {
   font-family: 'Montserrat', 'Helvetica Neue' !important;
 }
 
@@ -62,4 +65,9 @@ div.contacts {
 /* Hide the "Loggin with Google" button */
 #googleSignIn {
   display: none !important;
+}
+
+section.payments div.details p {
+  color: black !important;
+  font-size: 16px !important;
 }

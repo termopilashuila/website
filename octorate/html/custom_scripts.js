@@ -113,6 +113,10 @@ function initHideElements() {
   // Remove the word "Importe" from text elements
   removeTextFromElements("Importe", "");
   removeTextFromElements("Sitio Oficial", "");
+  removeTextFromElements("COP", "COP ");
+  removeTextFromElements("Routing / ABA:", "Número de cuenta:");
+  removeTextFromElements("IBAN:", "Tipo de cuenta:");
+  removeTextFromElements("los estandar de seguridad más avanzados", "estándares de seguridad");  
 }
 
 // Function to remove specific text from elements
