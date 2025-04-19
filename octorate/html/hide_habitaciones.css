@@ -1,0 +1,13 @@
+/**
+ * CSS to hide the "Habitaciones" section in the Octorate booking engine
+ * This targets specifically the third div within the SiteHeader:paxSelection span
+ */
+
+/* Target the specific div containing "Habitaciones" text inside SiteHeader:paxSelection */
+#SiteHeader\:paxSelection .CursPointer:nth-child(3) {
+  display: none !important;
+}
+
+#guestPolicies > div.box.policies.animated.slow.fadeInRightShort.flex-auto.flexDirectionColumn.go {
+  display: none !important;
+}
