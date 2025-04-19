@@ -1,0 +1,65 @@
+/* Font imports to match website */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/** Customization of Octorate of style.css **/
+/** DO NOT CHANGE style.css, since it can be replaced by avangard_new in future **/
+
+/* Font family to match website */
+:root {
+  font-family: 'Montserrat', 'Helvetica Neue' !important;
+}
+
+/* Target the specific div containing "Habitaciones" text inside SiteHeader:paxSelection */
+#SiteHeader\:paxSelection .CursPointer:nth-child(3) {
+  display: none !important;
+}
+
+/* Hide the guest policies section */
+#guestPolicies > div.box.policies.animated.slow.fadeInRightShort.flex-auto.flexDirectionColumn.go {
+  display: none !important;
+}
+
+/* Hide past dates in the calendar */
+#panelCalendar\:panelDays > section > div > ul > li.pass {
+  display: none !important;
+}
+
+/* Hide the "sup" element in the calendar */
+div.datetheme2 > span > big > sup {
+  display: none !important;
+}
+
+/* Modify the price color */
+div.price {
+  color: #f29f06 !important;
+}
+
+/* Hide the "sup" element in the price */
+div.price > sup {
+  display: none !important;
+}
+
+/* Hide the deposit panel */
+#depositpanel > div {
+  display: none !important;
+}
+
+/* Hide the shopping cart */
+#stickyPanel {
+  display: none !important;
+}
+
+/* Modify the continue and modify buttons */
+span.ClickStop {
+  color: #f29f06 !important;
+}
+
+/* Hide the "Contacto" section */
+div.contacts {
+  display: none !important;
+}
+
+/* Hide the "Loggin with Google" button */
+#googleSignIn {
+  display: none !important;
+}
