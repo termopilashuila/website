@@ -5,7 +5,7 @@ import { HTMLElementWithStyle, HeaderConfig } from '../types/interfaces';
 const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   alojamiento: {
     heroClass: 'hero rooms-hero',
-    heroImage: 'assets/images/home/header.jpg',
+    heroImage: 'assets/images/header.png',
     heroContent: {
       title: 'Alojamiento',
       subtitle: 'Habitaciones cómodas en un entorno natural',
@@ -15,7 +15,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   catalogo: {
     heroClass: 'hero catalog-hero',
-    heroImage: 'assets/images/catalog/header.png',
+    heroImage: 'assets/images/catalog/header.jpg',
     heroContent: {
       title: 'Nuestro Catálogo',
       subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
@@ -35,7 +35,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   coliving: {
     heroClass: 'hero coliving-hero',
-    heroImage: 'assets/images/coliving/section0.jpg',
+    heroImage: 'assets/images/header.png',
     heroContent: {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
@@ -55,7 +55,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   galeria: {
     heroClass: 'hero gallery-hero',
-    heroImage: 'assets/images/gallery/section5-gallery1.jpg',
+    heroImage: 'assets/images/header.png',
     heroContent: {
       title: 'Galería de fotos',
       subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
@@ -65,7 +65,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   blog: {
     heroClass: 'hero blog-hero',
-    heroImage: 'assets/images/home/header.jpg',
+    heroImage: 'assets/images/header.png',
     heroContent: {
       title: 'Nuestro Blog',
       subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
@@ -75,7 +75,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   '404': {
     heroClass: 'hero',
-    heroImage: 'assets/images/error/section0.jpg',
+    heroImage: 'assets/images/header.png',
     heroContent: undefined
   }
 };
