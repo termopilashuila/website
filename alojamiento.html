@@ -267,6 +267,23 @@
             });
         });
 
+        // Add Google Analytics event tracking for room booking buttons
+        const bookButtons = document.querySelectorAll('.book-button');
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the room title from the parent card
+                const roomCard = this.closest('.room-card');
+                const roomTitle = roomCard.querySelector('.room-title').textContent;
+                
+                // Send Google Analytics event
+                gtag('event', 'room_booking_click', {
+                    'event_category': 'Reservations',
+                    'event_label': roomTitle,
+                    'value': 1
+                });
+            });
+        });
+
         // Show return to coliving button if coming from coliving page
         document.addEventListener('DOMContentLoaded', function() {
             // Check if user came from coliving page
