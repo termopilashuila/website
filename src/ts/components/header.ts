@@ -100,7 +100,7 @@ const defaultHeaderConfig: HeaderConfig = {
     ctaHref: 'alojamiento.html'
   },
   heroClass: 'hero',
-  heroImage: 'assets/images/home/header.jpg'
+  heroImage: 'assets/images/header.png'
 };
 
 // Function to initialize mobile navigation
