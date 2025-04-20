@@ -71,3 +71,43 @@ section.payments div.details p {
   color: black !important;
   font-size: 16px !important;
 }
+
+/* ============================================ */
+/* Elements previously hidden via JavaScript    */
+/* ============================================ */
+
+/* Hide property info button */
+div[data-show="info"].information {
+  display: none !important;
+}
+
+/* Hide info panel/section */
+#info.info {
+  display: none !important;
+}
+
+/* Hide login button/icon */
+.headerIconTheme2 {
+  display: none !important;
+}
+
+/* Hide login text elements - can't use :contains in CSS */
+/* We'll need to keep this part in JavaScript */
+
+/* Hide login div with both classes */
+div.information.headerIconTheme2 {
+  display: none !important;
+}
+
+/* Hide reservation manager links */
+a.ui-link[href*="manage.xhtml"] {
+  display: none !important;
+}
+
+/* Hide reservation links by title */
+a[title="Mi reserva"] {
+  display: none !important;
+}
+
+/* Can't select parent elements in standard CSS */
+/* We'll need to keep this part in JavaScript */
