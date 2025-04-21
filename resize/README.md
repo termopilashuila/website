@@ -34,7 +34,7 @@ python main.py
 python main.py assets/images/blog/nibs-cacao-parfait-bowl/featured-image.jpg --width=400 --quality=50
 
 # Resize all images in a specific directory:
-python main.py ../assets/images/alojamiento --width=600 --quality=80
+python main.py ../assets/images/coliving --width=600 --quality=80
 
 # Run the script from inside the resize directory:
 cd resize
