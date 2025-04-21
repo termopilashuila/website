@@ -53,14 +53,14 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: ''
     }
   },
-  galeria: {
-    heroClass: 'hero gallery-hero',
+  trabajo: {
+    heroClass: 'hero',
     heroImage: 'assets/images/header.png',
     heroContent: {
-      title: 'Galería de fotos',
-      subtitle: 'Explora nuestra colección de imágenes y descubre la belleza de nuestro alojamiento',
-      ctaText: 'Ver Alojamiento',
-      ctaHref: 'alojamiento.html'
+      title: 'Trabaja con Nosotros',
+      subtitle: 'Únete a nuestro equipo en un entorno natural único',
+      ctaText: 'Ver Oportunidades',
+      ctaHref: '#main-content'
     }
   },
   blog: {
@@ -90,7 +90,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Tour', href: 'tour.html' },
     { text: 'Coliving', href: 'coliving.html' },
     { text: 'Cómo Llegar', href: 'ubicacion.html' },
-    { text: 'Galería', href: 'galeria.html' },
+    { text: 'Trabaja con Nosotros', href: 'trabajo.html' },
     { text: 'Blog', href: 'blog.html' }
   ],
   heroContent: {
