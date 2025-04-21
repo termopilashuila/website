@@ -54,11 +54,11 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
     }
   },
   trabajo: {
-    heroClass: 'hero',
+    heroClass: 'hero trabajo-hero',
     heroImage: 'assets/images/header.png',
     heroContent: {
       title: 'Trabaja con Nosotros',
-      subtitle: 'Únete a nuestro equipo en un entorno natural único',
+      subtitle: 'Descubre oportunidades laborales en un entorno natural único',
       ctaText: 'Ver Oportunidades',
       ctaHref: '#main-content'
     }
@@ -254,11 +254,12 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   initMobileNav();
 }
 
-// Initialize header based on current page
+// Function to initialize header based on current page
 export function initHeader(): void {
   const currentPath = window.location.pathname;
   const pageName = currentPath.split('/').pop() || '';
   const pageNameWithoutExt = pageName.replace('.html', '');
+  const pathSegments = currentPath.split('/').filter(segment => segment.length > 0);
   
   // Check if this is a blog post page (located in blog/posts/ directory)
   if (currentPath.includes('/blog/posts/')) {
@@ -277,14 +278,55 @@ export function initHeader(): void {
   }
   
   // Set the active nav item based on current page
-  headerConfig.navItems = headerConfig.navItems.map(item => ({
-    ...item,
-    isActive: item.href.includes(pageNameWithoutExt)
-  }));
+  headerConfig.navItems = headerConfig.navItems.map(item => {
+    // Check if this is a subpage of a main section (e.g., trabajo/cocinero.html)
+    if (pathSegments.length > 1 && pathSegments[0] === 'trabajo') {
+      return {
+        ...item,
+        isActive: item.href === 'trabajo.html'
+      };
+    }
+    
+    return {
+      ...item,
+      isActive: item.href.includes(pageNameWithoutExt)
+    };
+  });
   
   // Apply page-specific configurations if they exist
   if (pageNameWithoutExt in pageConfigs) {
     Object.assign(headerConfig, pageConfigs[pageNameWithoutExt]);
+  } else if (pathSegments.length > 1) {
+    // Handle subpages
+    if (pathSegments[0] === 'trabajo') {
+      // Job opportunity pages
+      switch (pageNameWithoutExt) {
+        case 'cocinero':
+          Object.assign(headerConfig, {
+            heroClass: 'hero trabajo-hero',
+            heroImage: 'assets/images/header.png',
+            heroContent: {
+              title: 'Oportunidad: Cocinero(a)',
+              subtitle: 'Únete a nuestro equipo de cocina y trabaja en un entorno natural único',
+              ctaText: 'Ver Detalles',
+              ctaHref: '#main-content'
+            }
+          });
+          break;
+        case 'practicante':
+          Object.assign(headerConfig, {
+            heroClass: 'hero trabajo-hero',
+            heroImage: 'assets/images/header.png',
+            heroContent: {
+              title: 'Oportunidad: Practicante Analista',
+              subtitle: 'Comienza tu carrera profesional en un entorno único',
+              ctaText: 'Ver Detalles',
+              ctaHref: '#main-content'
+            }
+          });
+          break;
+      }
+    }
   }
   
   // Generate the header with the customized config

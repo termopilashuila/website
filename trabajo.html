@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/hero.css">
     <link rel="stylesheet" href="styles/utilities.css">
-    <link rel="stylesheet" href="styles/coliving.css">
+    <link rel="stylesheet" href="styles/trabajo.css">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -51,118 +51,6 @@
     
     <!-- JavaScript -->
     <script src="dist/main.js" defer></script>
-    
-    <style>
-        .job-section {
-            padding: 4rem 0;
-            background-color: #fdf6ea;
-        }
-        
-        .job-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .job-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-        }
-        
-        .job-title {
-            color: #000;
-            font-family: 'Lora', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid #F29F05;
-            display: flex;
-            align-items: center;
-        }
-        
-        .job-title i {
-            margin-right: 12px;
-            color: #F29F05;
-        }
-        
-        .job-info {
-            margin-bottom: 1.5rem;
-        }
-        
-        .job-detail {
-            display: flex;
-            margin-bottom: 0.7rem;
-            align-items: center;
-        }
-        
-        .job-detail i {
-            color: #F29F05;
-            width: 24px;
-            margin-right: 12px;
-            text-align: center;
-        }
-        
-        .job-description {
-            margin-bottom: 1.5rem;
-        }
-        
-        .responsibilities-list, .requirements-list {
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .responsibilities-list li, .requirements-list li {
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-        
-        .responsibilities-list li::before, .requirements-list li::before {
-            content: "•";
-            color: #F29F05;
-            font-weight: bold;
-            display: inline-block;
-            width: 1rem;
-            margin-left: -1rem;
-        }
-        
-        .apply-button {
-            background-color: #F29F05;
-            color: #fff;
-            border: none;
-            padding: 0.85rem 1.8rem;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .apply-button:hover {
-            background-color: #d68c04;
-        }
-        
-        .info-section {
-            padding: 3rem 0;
-            background-color: #fff;
-            text-align: center;
-        }
-        
-        .section-heading {
-            font-family: 'Lora', serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .info-description {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
-        }
-    </style>
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -189,105 +77,54 @@
             <div class="container">
                 <h2 class="section-heading">Oportunidades Laborales Actuales</h2>
                 
-                <!-- Cocinero(a) -->
-                <div class="job-card">
-                    <h3 class="job-title"><i class="fas fa-utensils"></i>Cocinero(a)</h3>
-                    
-                    <div class="job-info">
-                        <div class="job-detail">
-                            <i class="fas fa-clock"></i>
-                            <span>Medio tiempo (7:00 AM - 11:00 AM)</span>
+                <div class="job-grid">
+                    <!-- Cocinero(a) -->
+                    <div class="job-card job-summary">
+                        <h3 class="job-title"><i class="fas fa-utensils"></i>Cocinero(a)</h3>
+                        
+                        <div class="job-info">
+                            <div class="job-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>Medio tiempo (7:00 AM - 11:00 AM)</span>
+                            </div>
+                            <div class="job-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Presencial - Finca Termópilas, Rivera, Huila</span>
+                            </div>
                         </div>
-                        <div class="job-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Presencial - Finca Termópilas, Rivera, Huila</span>
+                        
+                        <div class="job-description">
+                            <p>Buscamos un/a cocinero/a con experiencia en preparación de desayunos y almuerzos tradicionales de la región, capaz de mantener altos estándares de higiene y presentación.</p>
                         </div>
-                        <div class="job-detail">
-                            <i class="fas fa-file-contract"></i>
-                            <span>Contrato por prestación de servicios</span>
-                        </div>
-                    </div>
-                    
-                    <div class="job-description">
-                        <p>Buscamos un/a cocinero/a con experiencia en preparación de desayunos y almuerzos tradicionales de la región. La persona seleccionada será responsable de preparar alimentos frescos y de calidad para nuestros huéspedes, manteniendo altos estándares de higiene y presentación.</p>
-                    </div>
-                    
-                    <div class="job-responsibilities">
-                        <h4>Responsabilidades:</h4>
-                        <ul class="responsibilities-list">
-                            <li>Preparar desayunos para huéspedes, siguiendo los estándares de calidad establecidos</li>
-                            <li>Planificar y preparar ingredientes para las comidas</li>
-                            <li>Mantener el área de cocina limpia y organizada</li>
-                            <li>Garantizar el cumplimiento de las normas de higiene y seguridad alimentaria</li>
-                            <li>Gestionar el inventario de alimentos y realizar solicitudes de compra cuando sea necesario</li>
-                            <li>Atender solicitudes especiales de los huéspedes (alergias, preferencias dietéticas, etc.)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="job-requirements">
-                        <h4>Requisitos:</h4>
-                        <ul class="requirements-list">
-                            <li>Experiencia mínima de 2 años en preparación de alimentos</li>
-                            <li>Conocimiento de gastronomía local y tradicional del Huila</li>
-                            <li>Certificado de manipulación de alimentos vigente</li>
-                            <li>Capacidad para trabajar de forma independiente y en equipo</li>
-                            <li>Excelentes habilidades de organización y gestión del tiempo</li>
-                            <li>Residir en Rivera o zonas cercanas</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="mailto:termopilashuila@gmail.com?subject=Aplicación%20para%20puesto%20de%20Cocinero(a)" class="apply-button">Aplicar a este puesto</a>
-                </div>
-                
-                <!-- Practicante Analista -->
-                <div class="job-card">
-                    <h3 class="job-title"><i class="fas fa-chart-line"></i>Practicante Analista</h3>
-                    
-                    <div class="job-info">
-                        <div class="job-detail">
-                            <i class="fas fa-clock"></i>
-                            <span>Tiempo completo (8:00 AM - 5:00 PM)</span>
-                        </div>
-                        <div class="job-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Presencial - Finca Termópilas, Rivera, Huila</span>
-                        </div>
-                        <div class="job-detail">
-                            <i class="fas fa-file-contract"></i>
-                            <span>Contrato de aprendizaje/práctica</span>
+                        
+                        <div class="job-summary-footer">
+                            <a href="trabajo/cocinero.html" class="apply-button">Ver detalles y aplicar</a>
                         </div>
                     </div>
                     
-                    <div class="job-description">
-                        <p>Estamos buscando un practicante analista para apoyar las operaciones diarias de nuestra finca y alojamiento. Esta posición es ideal para estudiantes de últimos semestres o recién egresados de administración, turismo, hotelería o carreras afines que deseen adquirir experiencia práctica en gestión de alojamientos turísticos.</p>
+                    <!-- Practicante Analista -->
+                    <div class="job-card job-summary">
+                        <h3 class="job-title"><i class="fas fa-chart-line"></i>Practicante Analista</h3>
+                        
+                        <div class="job-info">
+                            <div class="job-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>Tiempo completo (8:00 AM - 5:00 PM)</span>
+                            </div>
+                            <div class="job-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Presencial - Finca Termópilas, Rivera, Huila</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <p>Buscamos un practicante analista para apoyar operaciones diarias, ideal para estudiantes de últimos semestres o recién egresados de administración, turismo, hotelería o carreras afines.</p>
+                        </div>
+                        
+                        <div class="job-summary-footer">
+                            <a href="trabajo/practicante.html" class="apply-button">Ver detalles y aplicar</a>
+                        </div>
                     </div>
-                    
-                    <div class="job-responsibilities">
-                        <h4>Responsabilidades:</h4>
-                        <ul class="responsibilities-list">
-                            <li>Apoyar en la gestión de reservas y atención al cliente</li>
-                            <li>Analizar datos operativos y financieros para identificar oportunidades de mejora</li>
-                            <li>Colaborar en la creación e implementación de estrategias de marketing digital</li>
-                            <li>Gestionar redes sociales y responder comentarios de clientes</li>
-                            <li>Asistir en la organización de eventos y actividades para huéspedes</li>
-                            <li>Participar en proyectos de mejora continua de la experiencia del cliente</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="job-requirements">
-                        <h4>Requisitos:</h4>
-                        <ul class="requirements-list">
-                            <li>Estudiante de últimos semestres o recién egresado de carreras relacionadas con administración, turismo, hotelería o afines</li>
-                            <li>Excelentes habilidades de comunicación verbal y escrita</li>
-                            <li>Conocimiento básico de herramientas de análisis de datos (Excel, Google Analytics)</li>
-                            <li>Familiaridad con redes sociales y marketing digital</li>
-                            <li>Capacidad para trabajar de forma independiente y en equipo</li>
-                            <li>Actitud proactiva y orientada a la resolución de problemas</li>
-                            <li>Nivel intermedio de inglés (deseable)</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="mailto:termopilashuila@gmail.com?subject=Aplicación%20para%20puesto%20de%20Practicante%20Analista" class="apply-button">Aplicar a este puesto</a>
                 </div>
             </div>
         </section>
@@ -301,9 +138,9 @@
                     actitud positiva y la pasión por el servicio a los demás.
                 </p>
                 <p class="info-description">
-                    Para aplicar a cualquiera de nuestras vacantes, envía tu CV actualizado y una carta de presentación 
-                    explicando por qué estás interesado en el puesto a <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a> 
-                    con el asunto "Aplicación para [nombre del puesto]".
+                    Para aplicar a cualquiera de nuestras vacantes, visita la página de la oportunidad que te interesa
+                    y completa el formulario de aplicación. También puedes enviarnos tu CV y una carta de presentación 
+                    directamente a <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a>.
                 </p>
                 <a href="mailto:termopilashuila@gmail.com" class="cta-button">Contactar</a>
             </div>
@@ -316,7 +153,7 @@
     </footer>
     
     <!-- WhatsApp Contact Button -->
-    <a href="https://wa.me/573143428579?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20Finca%20Termópilas." class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+    <a href="https://wa.me/573143428579?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20oportunidades%20laborales%20en%20Finca%20Termópilas." class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 </body>
