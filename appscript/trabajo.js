@@ -1,7 +1,8 @@
 /**
  * Google Apps Script para manejar las aplicaciones de trabajo de Finca Termópilas
  * Este script recibe los datos del formulario de trabajo y los guarda en una hoja de cálculo
- * URL: [Reemplazar con la URL real del script una vez creado]
+ * Appscript: https://script.google.com/u/0/home/projects/1kzQ7nIwTgWNEB6Ox8CyePrtonu_XepxebEym5L0O5-lqbMPxWxk3gLnJ/edit
+ * GSheet: https://docs.google.com/spreadsheets/d/1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8/edit?gid=0#gid=0
  */
 
 // Función que se ejecuta cuando se recibe una solicitud GET o POST
@@ -16,7 +17,7 @@ function doPost(e) {
 function handleRequest(e) {
   try {
     // ID de la hoja de cálculo (reemplazar con el ID real)
-    const spreadsheetId = "[REEMPLAZAR_CON_ID_REAL]";
+    const spreadsheetId = "1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8";
     const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
     
     // Procesar los datos recibidos
@@ -170,7 +171,7 @@ function sendEmailNotification(data) {
     <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 20px;">
       <p style="margin-bottom: 15px;"><strong>Acciones:</strong></p>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <a href="https://docs.google.com/spreadsheets/d/[REEMPLAZAR_CON_ID_REAL]" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las aplicaciones</a>
+        <a href="https://docs.google.com/spreadsheets/d/1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las aplicaciones</a>
         <a href="mailto:${data.email}?subject=Re: Aplicación para ${data.puesto} - Finca Termópilas" style="display: inline-block; background-color: #4285f4; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Responder por email</a>
       </div>
     </div>
