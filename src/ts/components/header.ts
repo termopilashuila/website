@@ -15,12 +15,12 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   catalogo: {
     heroClass: 'hero catalog-hero',
-    heroImage: 'assets/images/catalog/header.jpg',
+    heroImage: 'assets/images/catalog/header.png',
     heroContent: {
       title: 'Nuestro Catálogo',
       subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
-      ctaText: '',
-      ctaHref: ''
+      ctaText: 'Ver Catálogo',
+      ctaHref: '#main'
     }
   },
   tour: {
