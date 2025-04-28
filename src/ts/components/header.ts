@@ -55,7 +55,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   trabajo: {
     heroClass: 'hero trabajo-hero',
-    heroImage: 'assets/images/header.png',
+    heroImage: '/assets/images/header.png',
     heroContent: {
       title: 'Trabaja con Nosotros',
       subtitle: 'Descubre oportunidades laborales en un entorno natural único',
@@ -303,7 +303,7 @@ export function initHeader(): void {
         case 'cocinero':
           Object.assign(headerConfig, {
             heroClass: 'hero trabajo-hero',
-            heroImage: 'assets/images/header.png',
+            heroImage: '/assets/images/header.png',
             heroContent: {
               title: 'Oportunidad: Cocinero(a)',
               subtitle: 'Únete a nuestro equipo de cocina y trabaja en un entorno natural único',
@@ -315,7 +315,7 @@ export function initHeader(): void {
         case 'practicante':
           Object.assign(headerConfig, {
             heroClass: 'hero trabajo-hero',
-            heroImage: 'assets/images/header.png',
+            heroImage: '/assets/images/header.png',
             heroContent: {
               title: 'Oportunidad: Practicante Analista',
               subtitle: 'Comienza tu carrera profesional en un entorno único',
@@ -323,6 +323,10 @@ export function initHeader(): void {
               ctaHref: '#main-content'
             }
           });
+          break;
+        default:
+          // For any other trabajo subpage, use the generic trabajo hero config
+          Object.assign(headerConfig, pageConfigs['trabajo']);
           break;
       }
     }
