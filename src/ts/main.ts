@@ -1,7 +1,6 @@
 // Import components and utilities
 import { initHeader, initGlobalHeader } from './components/header';
 import { initFooter, initGlobalFooter } from './components/footer';
-import { initGalleryLightbox } from './components/gallery';
 import { initBlogCategoryFiltering } from './components/blog';
 import { initTourExperienceLazyLoading } from './components/tour';
 import {
@@ -29,9 +28,6 @@ function initPage(): void {
 
   // Initialize page-specific components
   switch (pageName) {
-    case 'galeria.html':
-      initGalleryLightbox();
-      break;
     case 'blog.html':
       initBlogCategoryFiltering();
       break;
