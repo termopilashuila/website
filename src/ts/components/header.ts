@@ -89,8 +89,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: 'alojamiento.html' },
     { text: 'Tour', href: 'tour.html' },
     { text: 'Coliving', href: 'coliving.html' },
-    { text: 'Cómo Llegar', href: 'ubicacion.html' },
-    { text: 'Trabaja con Nosotros', href: 'trabajo.html' },
+    { text: 'Trabajo', href: 'trabajo.html' },
     { text: 'Blog', href: 'blog.html' }
   ],
   heroContent: {
