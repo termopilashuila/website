@@ -5,7 +5,7 @@ import { HTMLElementWithStyle, HeaderConfig } from '../types/interfaces';
 const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   alojamiento: {
     heroClass: 'hero rooms-hero',
-    heroImage: 'assets/images/header.png',
+    heroImage: '/assets/images/header.png',
     heroContent: {
       title: 'Alojamiento',
       subtitle: 'Habitaciones cómodas en un entorno natural',
@@ -15,7 +15,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   catalogo: {
     heroClass: 'hero catalog-hero',
-    heroImage: 'assets/images/catalog/header.png',
+    heroImage: '/assets/images/catalog/header.png',
     heroContent: {
       title: 'Nuestro Catálogo',
       subtitle: 'Descubre nuestra selección de alojamiento, tours, vinos artesanales y chocolates. Una experiencia completa que combina hospedaje de calidad con productos elaborados con pasión en el corazón del Huila.',
@@ -25,7 +25,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   tour: {
     heroClass: 'hero tour-hero',
-    heroImage: 'assets/images/tour/section0.jpg',
+    heroImage: '/assets/images/tour/section0.jpg',
     heroContent: {
       title: 'Tour de Vino 🍷 y Chocolate 🍫',
       subtitle: 'Una experiencia sensorial única en Finca Termópilas',
@@ -35,7 +35,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   coliving: {
     heroClass: 'hero coliving-hero',
-    heroImage: 'assets/images/header.png',
+    heroImage: '/assets/images/header.png',
     heroContent: {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
@@ -45,7 +45,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   ubicacion: {
     heroClass: 'hero directions-hero',
-    heroImage: 'assets/images/directions/section0.jpg',
+    heroImage: '/assets/images/directions/section0.jpg',
     heroContent: {
       title: 'Cómo Llegar',
       subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
@@ -65,7 +65,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   blog: {
     heroClass: 'hero blog-hero',
-    heroImage: 'assets/images/header.png',
+    heroImage: '/assets/images/header.png',
     heroContent: {
       title: 'Nuestro Blog',
       subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
@@ -75,7 +75,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   '404': {
     heroClass: 'hero',
-    heroImage: 'assets/images/header.png',
+    heroImage: '/assets/images/header.png',
     heroContent: undefined
   }
 };
@@ -85,21 +85,21 @@ const defaultHeaderConfig: HeaderConfig = {
   logoText: 'Finca Termópilas',
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
-    { text: 'Inicio', href: 'index.html' },
-    { text: 'Alojamiento', href: 'alojamiento.html' },
-    { text: 'Tour', href: 'tour.html' },
-    { text: 'Coliving', href: 'coliving.html' },
-    { text: 'Trabajo', href: 'trabajo.html' },
-    { text: 'Blog', href: 'blog.html' }
+    { text: 'Inicio', href: '/index.html' },
+    { text: 'Alojamiento', href: '/alojamiento.html' },
+    { text: 'Tour', href: '/tour.html' },
+    { text: 'Coliving', href: '/coliving.html' },
+    { text: 'Trabajo', href: '/trabajo.html' },
+    { text: 'Blog', href: '/blog.html' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
     subtitle: 'Rivera - Huila 🇨🇴',
     ctaText: 'Ver Alojamiento',
-    ctaHref: 'alojamiento.html'
+    ctaHref: '/alojamiento.html'
   },
   heroClass: 'hero',
-  heroImage: 'assets/images/header.png'
+  heroImage: '/assets/images/header.png'
 };
 
 // Function to initialize mobile navigation
@@ -167,7 +167,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
     const navbarHTML = `
       <nav class="navbar">
         <div class="logo">
-          <a href="index.html">
+          <a href="/index.html">
             <i class="${config.logoIcon}"></i>
             <span>${config.logoText}</span>
           </a>
@@ -205,17 +205,17 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   
   // Ensure blog page is included in navigation
   let navItems = [...config.navItems];
-  const hasBlogItem = navItems.some(item => item.href === 'blog.html');
+  const hasBlogItem = navItems.some(item => item.href === '/blog.html');
   if (!hasBlogItem) {
     // Add blog item before the last item (usually "Contacto")
-    navItems.push({ text: 'Blog', href: 'blog.html' });
+    navItems.push({ text: 'Blog', href: '/blog.html' });
   }
   
   // Generate the navbar HTML
   const navbarHTML = `
     <nav class="navbar">
       <div class="logo">
-        <a href="index.html">
+        <a href="/index.html">
           <i class="${config.logoIcon}"></i>
           <span>${config.logoText}</span>
         </a>
@@ -270,25 +270,21 @@ export function initHeader(): void {
   // Create a copy of the default config
   const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
   
-  // Ensure blog page is included in navigation
-  const hasBlogItem = headerConfig.navItems.some(item => item.href === 'blog.html');
-  if (!hasBlogItem) {
-    headerConfig.navItems.push({ text: 'Blog', href: 'blog.html' });
-  }
-  
   // Set the active nav item based on current page
   headerConfig.navItems = headerConfig.navItems.map(item => {
     // Check if this is a subpage of a main section (e.g., trabajo/cocinero.html)
     if (pathSegments.length > 1 && pathSegments[0] === 'trabajo') {
       return {
         ...item,
-        isActive: item.href === 'trabajo.html'
+        isActive: item.href === '/trabajo.html'
       };
     }
     
+    // Remove leading slash for comparison
+    const itemPath = item.href.replace(/^\//, '');
     return {
       ...item,
-      isActive: item.href.includes(pageNameWithoutExt)
+      isActive: itemPath.includes(pageNameWithoutExt)
     };
   });
   
@@ -355,15 +351,11 @@ export function initGlobalHeader(): void {
       const pageName = currentPath.split('/').pop() || 'index.html';
       const pageNameWithoutExt = pageName.replace('.html', '');
       
-      // Ensure blog page is included in navigation
-      const hasBlogItem = headerConfig.navItems.some(item => item.href === 'blog.html');
-      if (!hasBlogItem) {
-        headerConfig.navItems.push({ text: 'Blog', href: 'blog.html' });
-      }
-      
       // Set the active nav item based on current page
       headerConfig.navItems = headerConfig.navItems.map(item => {
-        const itemPage = item.href.split('#')[0];
+        // Remove leading slash for comparison
+        const itemPath = item.href.replace(/^\//, '');
+        const itemPage = itemPath.split('#')[0];
         if (itemPage === pageName) {
           return { ...item, isActive: true };
         }
