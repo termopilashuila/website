@@ -222,31 +222,100 @@
     </a>
 
     <script>
-    document.getElementById('job-application-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => data[key] = value);
+    console.log('Form script loaded');
+    
+    // Verify form is found
+    const form = document.getElementById('job-application-form');
+    if (!form) {
+        console.error('Form not found!');
+    } else {
+        console.log('Form found and ready');
+    }
 
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        console.log('Form submission event triggered');
+        
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        
+        // Log form data for debugging
+        const formData = new FormData(form);
+        const formDataObj = Object.fromEntries(formData.entries());
+        console.log('Form data:', formDataObj);
+        
+        // Disable form and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+        console.log('Form disabled, showing loading state');
+        
         try {
+            // First try regular fetch with JSON
             const response = await fetch(form.action, {
                 method: 'POST',
-                body: JSON.stringify(data),
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: formDataObj }),
             });
-            if (response.ok) {
-                alert('¡Aplicación enviada con éxito! Te contactaremos pronto.');
+            
+            console.log('Response received:', response);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('Response data:', result);
+            
+            if (result.success) {
+                alert('¡Gracias por tu aplicación! Te contactaremos pronto.');
                 form.reset();
             } else {
-                alert('Error al enviar la aplicación. Por favor intenta nuevamente.');
+                throw new Error(result.error || 'Error al enviar el formulario');
             }
-        } catch (err) {
-            alert('Error al enviar la aplicación. Por favor intenta nuevamente.');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            
+            // Try JSONP approach as fallback
+            try {
+                console.log('Attempting JSONP fallback...');
+                const script = document.createElement('script');
+                const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
+                
+                window[callback] = function(response) {
+                    console.log('JSONP response:', response);
+                    if (response.success) {
+                        alert('¡Gracias por tu aplicación! Te contactaremos pronto.');
+                        form.reset();
+                    } else {
+                        alert('Error al enviar el formulario. Por favor, intenta de nuevo más tarde.');
+                    }
+                    delete window[callback];
+                    document.body.removeChild(script);
+                };
+                
+                const url = new URL(form.action);
+                url.searchParams.append('callback', callback);
+                url.searchParams.append('data', JSON.stringify(formDataObj));
+                
+                script.src = url.toString();
+                document.body.appendChild(script);
+            } catch (jsonpError) {
+                console.error('JSONP fallback failed:', jsonpError);
+                alert('Error al enviar el formulario. Por favor, intenta de nuevo más tarde.');
+            }
+        } finally {
+            // Re-enable form
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+            console.log('Form re-enabled');
         }
     });
     </script>
+
+    <!-- Add test button -->
+    <button onclick="return testFormSubmission();" style="display: none;">Test Form</button>
 </body>
 </html> 

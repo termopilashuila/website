@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template de Prueba - Finca Termópilas</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/trabajo.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <main id="main-content">
+        <div class="container">
+            <h1>Formulario de Prueba</h1>
+            <p>Este formulario contiene datos de prueba pre-llenados para testing.</p>
+            
+            <div class="application-form">
+                <form id="job-application-form" action="https://script.google.com/macros/s/AKfycbxIF2xB8StgYZCCVbkkiEgdTyUh2_rlFfAhrlVX9HSI8wRK1mqo3JGh8U2myUN0mPk/exec" method="POST">
+                    <input type="hidden" name="puesto" value="Prueba">
+                    <div class="form-group">
+                        <label for="nombres" class="form-label required-field">Nombres</label>
+                        <input type="text" id="nombres" name="nombres" class="form-input" value="Juan Pablo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos" class="form-label required-field">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" class="form-input" value="Pérez González" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoIdentificacion" class="form-label required-field">Tipo de Identificación</label>
+                        <select id="tipoIdentificacion" name="tipoIdentificacion" class="form-select" required>
+                            <option value="Cédula de Ciudadanía" selected>Cédula de Ciudadanía</option>
+                            <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroIdentificacion" class="form-label required-field">Número de Identificación</label>
+                        <input type="text" id="numeroIdentificacion" name="numeroIdentificacion" class="form-input" value="1234567890" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label required-field">Correo electrónico</label>
+                        <input type="email" id="email" name="email" class="form-input" value="test@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="celular" class="form-label required-field">Celular</label>
+                        <input type="tel" id="celular" name="celular" class="form-input" value="3001234567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaNacimiento" class="form-label required-field">Fecha de Nacimiento</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-input" value="1990-01-01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion" class="form-label required-field">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" class="form-input" value="Calle 123 #45-67" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ciudad" class="form-label required-field">Ciudad</label>
+                        <input type="text" id="ciudad" name="ciudad" class="form-input" value="Rivera" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departamento" class="form-label required-field">Departamento</label>
+                        <input type="text" id="departamento" name="departamento" class="form-input" value="Huila" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experiencia" class="form-label required-field">Años de Experiencia</label>
+                        <input type="number" id="experiencia" name="experiencia" class="form-input" value="3" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="educacion" class="form-label required-field">Nivel de Educación</label>
+                        <select id="educacion" name="educacion" class="form-select" required>
+                            <option value="Profesional" selected>Profesional</option>
+                            <option value="Tecnólogo">Tecnólogo</option>
+                            <option value="Técnico">Técnico</option>
+                            <option value="Bachiller">Bachiller</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="disponibilidad" class="form-label required-field">Disponibilidad</label>
+                        <select id="disponibilidad" name="disponibilidad" class="form-select" required>
+                            <option value="Inmediata" selected>Inmediata</option>
+                            <option value="15 días">15 días</option>
+                            <option value="30 días">30 días</option>
+                            <option value="Más de 30 días">Más de 30 días</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expectativaSalarial" class="form-label required-field">Expectativa Salarial</label>
+                        <input type="text" id="expectativaSalarial" name="expectativaSalarial" class="form-input" value="2000000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvUrl" class="form-label">URL del CV (Google Drive, Dropbox, etc.)</label>
+                        <input type="url" id="cvUrl" name="cvUrl" class="form-input" value="https://drive.google.com/file/test-cv">
+                    </div>
+                    <div class="form-group">
+                        <label for="motivacion" class="form-label required-field">Carta de Motivación</label>
+                        <textarea id="motivacion" name="motivacion" class="form-textarea" required>Me interesa esta oportunidad porque tengo experiencia relevante y estoy entusiasmado por contribuir al crecimiento de Finca Termópilas.</textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Aplicación de Prueba</button>
+                </form>
+            </div>
+
+            <div id="response-display" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+                <h3>Respuesta del Servidor:</h3>
+                <pre id="response-content" style="white-space: pre-wrap;"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    console.log('Form script loaded');
+    
+    // Verify form is found
+    const form = document.getElementById('job-application-form');
+    if (!form) {
+        console.error('Form not found!');
+    } else {
+        console.log('Form found and ready');
+    }
+
+    // Function to display response in the UI
+    function displayResponse(response, isError = false) {
+        const responseDisplay = document.getElementById('response-content');
+        responseDisplay.style.color = isError ? 'red' : 'green';
+        responseDisplay.textContent = typeof response === 'object' ? 
+            JSON.stringify(response, null, 2) : response.toString();
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        console.log('Form submission event triggered');
+        
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        
+        // Log form data for debugging
+        const formData = new FormData(form);
+        const formDataObj = Object.fromEntries(formData.entries());
+        console.log('Form data:', formDataObj);
+        displayResponse('Enviando datos...');
+        
+        // Disable form and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+        console.log('Form disabled, showing loading state');
+        
+        try {
+            // First try regular fetch with JSON
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: formDataObj }),
+            });
+            
+            console.log('Response received:', response);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('Response data:', result);
+            displayResponse(result);
+            
+            if (result.success) {
+                alert('¡Gracias por tu aplicación! Te contactaremos pronto.');
+                form.reset();
+            } else {
+                throw new Error(result.error || 'Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            displayResponse(error, true);
+            
+            // Try JSONP approach as fallback
+            try {
+                console.log('Attempting JSONP fallback...');
+                displayResponse('Intentando JSONP como alternativa...');
+                const script = document.createElement('script');
+                const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
+                
+                window[callback] = function(response) {
+                    console.log('JSONP response:', response);
+                    displayResponse(response);
+                    if (response.success) {
+                        alert('¡Gracias por tu aplicación! Te contactaremos pronto.');
+                        form.reset();
+                    } else {
+                        alert('Error al enviar el formulario. Por favor, intenta de nuevo más tarde.');
+                    }
+                    delete window[callback];
+                    document.body.removeChild(script);
+                };
+                
+                const url = new URL(form.action);
+                url.searchParams.append('callback', callback);
+                url.searchParams.append('data', JSON.stringify(formDataObj));
+                
+                script.src = url.toString();
+                document.body.appendChild(script);
+            } catch (jsonpError) {
+                console.error('JSONP fallback failed:', jsonpError);
+                displayResponse(jsonpError, true);
+                alert('Error al enviar el formulario. Por favor, intenta de nuevo más tarde.');
+            }
+        } finally {
+            // Re-enable form
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+            console.log('Form re-enabled');
+        }
+    });
+    </script>
+</body>
+</html> 
