@@ -1,7 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/ts/main.ts',
+  entry: {
+    main: './src/ts/main.ts',
+    jobApplicationForm: {
+      import: './src/ts/components/JobApplicationForm.ts',
+      filename: 'components/[name].js'
+    }
+  },
   module: {
     rules: [
       {
@@ -21,8 +27,14 @@ module.exports = {
     }
   },
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    library: {
+      type: 'module'
+    }
+  },
+  experiments: {
+    outputModule: true
   },
   mode: 'production'
 }; 
