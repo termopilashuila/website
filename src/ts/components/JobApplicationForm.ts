@@ -26,7 +26,6 @@ export class JobApplicationForm {
         }
 
         this.originalButtonText = this.submitButton.textContent || 'Enviar';
-
         this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
@@ -66,12 +65,6 @@ export class JobApplicationForm {
                 this.responseContent.textContent = '';
                 break;
         }
-    }
-
-    private displayResponse(response: unknown, isError: boolean = false): void {
-        this.responseContent.style.color = isError ? 'red' : 'green';
-        this.responseContent.textContent = typeof response === 'object' ? 
-            JSON.stringify(response, null, 2) : response.toString();
     }
 
     private formatSubmittedData(data: any): string {
@@ -124,127 +117,26 @@ export class JobApplicationForm {
         const formDataObj = Object.fromEntries(formData.entries());
         
         this.setFormState('loading', 'Enviando formulario...');
+        console.log('Starting form submission...');
         
         try {
-            return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
-                let timeoutId: number;
-                
-                window[callback] = (response: any) => {
-                    clearTimeout(timeoutId);
-                    console.log('Raw server response:', response);
-                    console.log('Response type:', typeof response);
-                    console.log('Response keys:', Object.keys(response));
-                    
-                    // Always treat as success since data is being saved
-                    const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(formDataObj)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
-                    this.setFormState('success', successMessage);
-                    this.form.reset();
-                    
-                    delete window[callback];
-                    document.body.removeChild(script);
-                    resolve(response);
-                };
-                
-                script.onerror = () => {
-                    clearTimeout(timeoutId);
-                    // Check if the form was actually submitted despite the script error
-                    if (window[callback]) {
-                        // If the callback still exists, the form might not have been submitted
-                        const errorMessage = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
-                        this.setFormState('error', errorMessage);
-                    } else {
-                        // If the callback was deleted, the form was likely submitted successfully
-                        const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(formDataObj)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
-                        this.setFormState('success', successMessage);
-                        this.form.reset();
-                    }
-                    delete window[callback];
-                    document.body.removeChild(script);
-                    reject(new Error('Script load error'));
-                };
-                
-                // Set a timeout to handle cases where the script takes too long to load
-                timeoutId = window.setTimeout(() => {
-                    if (window[callback]) {
-                        // If the callback still exists after timeout, show a more specific error
-                        const timeoutMessage = 'La conexión está tardando demasiado. Por favor, intenta de nuevo.';
-                        this.setFormState('error', timeoutMessage);
-                        delete window[callback];
-                        document.body.removeChild(script);
-                        reject(new Error('Script load timeout'));
-                    }
-                }, 30000); // 30 second timeout
-                
-                const url = new URL(this.form.action);
-                url.searchParams.append('callback', callback);
-                url.searchParams.append('data', JSON.stringify(formDataObj));
-                
-                script.src = url.toString();
-                document.body.appendChild(script);
+            await fetch(this.FORM_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formDataObj)
             });
+            
+            console.log('Form submission completed successfully');
+            const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(formDataObj)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
+            this.setFormState('success', successMessage);
+            this.form.reset();
         } catch (error) {
             console.error('Form submission error:', error);
-            this.setFormState('error', 'Error inesperado al enviar el formulario. Por favor, intenta de nuevo más tarde.');
+            const errorMessage = 'Error al enviar el formulario. Por favor, intenta de nuevo más tarde.';
+            this.setFormState('error', errorMessage);
         }
-    }
-
-    private async submitFormData(data: JobApplicationData): Promise<JobApplicationResponse> {
-        const response = await fetch(this.FORM_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ data }),
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        console.log('Response data:', result);
-        
-        if (!result.success) {
-            throw new Error(result.error || 'Error al enviar el formulario');
-        }
-        
-        return result;
-    }
-
-    private submitFormDataJSONP(data: JobApplicationData): Promise<void> {
-        return new Promise((resolve, reject) => {
-            console.log('Attempting JSONP fallback...');
-            this.displayResponse('Intentando JSONP como alternativa...');
-            
-            const script = document.createElement('script');
-            const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
-            
-            window[callback] = (response: JobApplicationResponse) => {
-                console.log('JSONP response:', response);
-                
-                if (response.success) {
-                    const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(data)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
-                    this.displayResponse(successMessage);
-                    this.form.reset();
-                    resolve();
-                } else {
-                    const errorMessage = `❌ Error al enviar el formulario:\n${response.error || 'Error desconocido'}\n\nPor favor, intenta de nuevo más tarde.`;
-                    this.displayResponse(errorMessage, true);
-                    reject(new Error(response.error || 'Error al enviar el formulario'));
-                }
-                
-                delete window[callback];
-                document.body.removeChild(script);
-            };
-            
-            const url = new URL(this.FORM_ENDPOINT);
-            url.searchParams.append('callback', callback);
-            url.searchParams.append('data', JSON.stringify(data));
-            
-            script.src = url.toString();
-            document.body.appendChild(script);
-        });
     }
 } 
