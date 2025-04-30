@@ -129,8 +129,10 @@ export class JobApplicationForm {
             return new Promise((resolve, reject) => {
                 const script = document.createElement('script');
                 const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
+                let timeoutId: number;
                 
                 window[callback] = (response: any) => {
+                    clearTimeout(timeoutId);
                     console.log('Raw server response:', response);
                     console.log('Response type:', typeof response);
                     console.log('Response keys:', Object.keys(response));
@@ -146,12 +148,34 @@ export class JobApplicationForm {
                 };
                 
                 script.onerror = () => {
-                    const errorMessage = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
-                    this.setFormState('error', errorMessage);
+                    clearTimeout(timeoutId);
+                    // Check if the form was actually submitted despite the script error
+                    if (window[callback]) {
+                        // If the callback still exists, the form might not have been submitted
+                        const errorMessage = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
+                        this.setFormState('error', errorMessage);
+                    } else {
+                        // If the callback was deleted, the form was likely submitted successfully
+                        const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(formDataObj)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
+                        this.setFormState('success', successMessage);
+                        this.form.reset();
+                    }
                     delete window[callback];
                     document.body.removeChild(script);
                     reject(new Error('Script load error'));
                 };
+                
+                // Set a timeout to handle cases where the script takes too long to load
+                timeoutId = window.setTimeout(() => {
+                    if (window[callback]) {
+                        // If the callback still exists after timeout, show a more specific error
+                        const timeoutMessage = 'La conexión está tardando demasiado. Por favor, intenta de nuevo.';
+                        this.setFormState('error', timeoutMessage);
+                        delete window[callback];
+                        document.body.removeChild(script);
+                        reject(new Error('Script load timeout'));
+                    }
+                }, 30000); // 30 second timeout
                 
                 const url = new URL(this.form.action);
                 url.searchParams.append('callback', callback);
