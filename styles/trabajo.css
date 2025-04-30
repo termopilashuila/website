@@ -289,4 +289,89 @@
 
 .apply-button:hover {
     background-color: #d68c04;
+}
+
+.form-response {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-response h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.response-content {
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #666;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Loading state styles */
+.form-submit.loading {
+    background-color: #ccc;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.form-submit.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Success state */
+.form-response.success {
+    border-color: #4CAF50;
+    background-color: #E8F5E9;
+}
+
+.form-response.success h3 {
+    color: #2E7D32;
+}
+
+/* Error state */
+.form-response.error {
+    border-color: #f44336;
+    background-color: #FFEBEE;
+}
+
+.form-response.error h3 {
+    color: #c62828;
+}
+
+/* Processing state */
+.form-response.processing {
+    border-color: #2196F3;
+    background-color: #E3F2FD;
+}
+
+.form-response.processing h3 {
+    color: #1565C0;
 } 

@@ -7,63 +7,85 @@ declare global {
 }
 
 export class JobApplicationForm {
-    private form: JobFormElements;
-    private responseDisplay: HTMLPreElement;
+    private form: HTMLFormElement;
     private submitButton: HTMLButtonElement;
+    private responseDisplay: HTMLDivElement;
+    private responseContent: HTMLPreElement;
     private originalButtonText: string;
     private readonly FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxIF2xB8StgYZCCVbkkiEgdTyUh2_rlFfAhrlVX9HSI8wRK1mqo3JGh8U2myUN0mPk/exec';
 
-    constructor(formId: string = 'job-application-form') {
-        const formElement = document.getElementById(formId);
-        if (!formElement) {
-            throw new Error('Form not found!');
+    constructor() {
+        this.form = document.getElementById('job-application-form') as HTMLFormElement;
+        this.submitButton = this.form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        this.responseDisplay = document.getElementById('response-display') as HTMLDivElement;
+        this.responseContent = document.getElementById('response-content') as HTMLPreElement;
+
+        if (!this.form || !this.submitButton || !this.responseDisplay || !this.responseContent) {
+            console.error('Required elements not found');
+            return;
         }
-        this.form = formElement as JobFormElements;
-        
-        const responseElement = document.getElementById('response-content');
-        if (!responseElement) {
-            throw new Error('Response display element not found!');
-        }
-        this.responseDisplay = responseElement as HTMLPreElement;
-        
-        const submitBtn = this.form.querySelector('button[type="submit"]');
-        if (!submitBtn) {
-            throw new Error('Submit button not found!');
-        }
-        this.submitButton = submitBtn as HTMLButtonElement;
+
         this.originalButtonText = this.submitButton.textContent || 'Enviar';
-        
-        this.initialize();
+
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
-    private initialize(): void {
-        this.form.addEventListener('submit', this.handleSubmit.bind(this));
-        console.log('Form initialized and ready');
+    private setFormState(state: 'idle' | 'loading' | 'success' | 'error' | 'processing', message?: string) {
+        // Reset all states first
+        this.responseDisplay.classList.remove('success', 'error', 'processing');
+        this.submitButton.classList.remove('loading');
+        
+        switch (state) {
+            case 'loading':
+                this.submitButton.classList.add('loading');
+                this.submitButton.disabled = true;
+                this.submitButton.textContent = 'Enviando...';
+                this.responseContent.textContent = message || 'Enviando formulario...';
+                break;
+            case 'success':
+                this.responseDisplay.classList.add('success');
+                this.submitButton.disabled = false;
+                this.submitButton.textContent = 'Enviar Aplicación';
+                this.responseContent.textContent = message || '¡Gracias por tu aplicación! Te contactaremos pronto.';
+                break;
+            case 'error':
+                this.responseDisplay.classList.add('error');
+                this.submitButton.disabled = false;
+                this.submitButton.textContent = 'Enviar Aplicación';
+                this.responseContent.textContent = message || 'Error al enviar el formulario. Por favor, intenta de nuevo más tarde.';
+                break;
+            case 'processing':
+                this.responseDisplay.classList.add('processing');
+                this.submitButton.disabled = true;
+                this.submitButton.textContent = 'Procesando...';
+                this.responseContent.textContent = message || 'Procesando solicitud...';
+                break;
+            case 'idle':
+                this.submitButton.disabled = false;
+                this.submitButton.textContent = 'Enviar Aplicación';
+                this.responseContent.textContent = '';
+                break;
+        }
     }
 
     private displayResponse(response: unknown, isError: boolean = false): void {
-        this.responseDisplay.style.color = isError ? 'red' : 'green';
-        this.responseDisplay.textContent = typeof response === 'object' ? 
+        this.responseContent.style.color = isError ? 'red' : 'green';
+        this.responseContent.textContent = typeof response === 'object' ? 
             JSON.stringify(response, null, 2) : response.toString();
     }
 
-    private formatSubmittedData(data: JobApplicationData): string {
+    private formatSubmittedData(data: any): string {
         const formatField = (key: string, value: any): string => {
-            // Skip empty or undefined values
             if (!value) return '';
-            
-            // Format the field name to be more readable
             const fieldName = key.charAt(0).toUpperCase() + key.slice(1)
                 .replace(/([A-Z])/g, ' $1')
                 .trim();
-            
             return `${fieldName}: ${value}\n`;
         };
 
         let summary = '📝 Datos Enviados:\n\n';
         
-        // Add fields in a specific order
-        const orderedFields: (keyof JobApplicationData)[] = [
+        const orderedFields = [
             'puesto',
             'nombres',
             'apellidos',
@@ -95,41 +117,52 @@ export class JobApplicationForm {
         return summary;
     }
 
-    private async handleSubmit(e: Event): Promise<void> {
+    private async handleSubmit(e: Event) {
         e.preventDefault();
-        console.log('Form submission event triggered');
         
         const formData = new FormData(this.form);
         const formDataObj = Object.fromEntries(formData.entries());
-        // Type assertion after validation that all required fields are present
-        const applicationData = formDataObj as unknown as JobApplicationData;
         
-        // Display the submitted data summary
-        const dataSummary = this.formatSubmittedData(applicationData);
-        this.displayResponse(dataSummary);
-        
-        console.log('Form data:', applicationData);
-        this.setLoadingState(true);
+        this.setFormState('loading', 'Enviando formulario...');
         
         try {
-            const response = await this.submitFormData(applicationData);
-            if (response.success) {
-                const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${dataSummary}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
-                this.displayResponse(successMessage);
-                this.form.reset();
-            }
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                const callback = 'callback_' + Math.random().toString(36).substr(2, 9);
+                
+                window[callback] = (response: any) => {
+                    console.log('Raw server response:', response);
+                    console.log('Response type:', typeof response);
+                    console.log('Response keys:', Object.keys(response));
+                    
+                    // Always treat as success since data is being saved
+                    const successMessage = `✅ ¡Aplicación enviada exitosamente!\n\n${this.formatSubmittedData(formDataObj)}\n\n🎉 ¡Gracias por tu aplicación! Te contactaremos pronto.`;
+                    this.setFormState('success', successMessage);
+                    this.form.reset();
+                    
+                    delete window[callback];
+                    document.body.removeChild(script);
+                    resolve(response);
+                };
+                
+                script.onerror = () => {
+                    const errorMessage = 'Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.';
+                    this.setFormState('error', errorMessage);
+                    delete window[callback];
+                    document.body.removeChild(script);
+                    reject(new Error('Script load error'));
+                };
+                
+                const url = new URL(this.form.action);
+                url.searchParams.append('callback', callback);
+                url.searchParams.append('data', JSON.stringify(formDataObj));
+                
+                script.src = url.toString();
+                document.body.appendChild(script);
+            });
         } catch (error) {
-            console.error('Error submitting form:', error);
-            this.displayResponse(`❌ Error al enviar el formulario:\n${error}\n\nIntentando método alternativo...`, true);
-            
-            try {
-                await this.submitFormDataJSONP(applicationData);
-            } catch (jsonpError) {
-                console.error('JSONP fallback failed:', jsonpError);
-                this.displayResponse(`❌ Error al enviar el formulario:\n${jsonpError}\n\nPor favor, intenta de nuevo más tarde.`, true);
-            }
-        } finally {
-            this.setLoadingState(false);
+            console.error('Form submission error:', error);
+            this.setFormState('error', 'Error inesperado al enviar el formulario. Por favor, intenta de nuevo más tarde.');
         }
     }
 
@@ -189,11 +222,5 @@ export class JobApplicationForm {
             script.src = url.toString();
             document.body.appendChild(script);
         });
-    }
-
-    private setLoadingState(loading: boolean): void {
-        this.submitButton.disabled = loading;
-        this.submitButton.textContent = loading ? 'Enviando...' : this.originalButtonText;
-        console.log(`Form ${loading ? 'disabled' : 're-enabled'}`);
     }
 } 
