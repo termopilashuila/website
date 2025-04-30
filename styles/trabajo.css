@@ -1,0 +1,377 @@
+/* --- Add/Improve Container Class --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- Section Styling --- */
+.job-section {
+    padding: 4rem 0 2rem 0;
+    background-color: var(--background-cream, #fdf6ea);
+    text-align: left;
+}
+
+.job-section .section-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* --- Breadcrumb Styling --- */
+.breadcrumb {
+    background: #fff8e1;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    font-size: 1rem;
+}
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.breadcrumb li {
+    color: var(--secondary-color, #333);
+}
+.breadcrumb li:not(:last-child)::after {
+    content: '›';
+    color: #F29F05;
+    margin: 0 0.5rem;
+}
+.breadcrumb a {
+    color: var(--accent-color, #F29F05);
+    text-decoration: none;
+    font-weight: 500;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* --- Job Card --- */
+.job-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid #f3e2b8;
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.job-title {
+    color: var(--primary-color, #000);
+    font-family: var(--heading-font, 'Lora', serif);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--accent-color, #F29F05);
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.job-title i {
+    margin-right: 16px;
+    color: var(--accent-color, #F29F05);
+    font-size: 2rem;
+}
+
+.job-info {
+    margin-bottom: 1.5rem;
+}
+.job-detail {
+    display: flex;
+    margin-bottom: 0.7rem;
+    align-items: center;
+    color: var(--secondary-color, #333);
+    font-size: 1.1rem;
+}
+.job-detail i {
+    color: var(--accent-color, #F29F05);
+    width: 24px;
+    margin-right: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.job-description {
+    margin-bottom: 1.5rem;
+    color: var(--text-color, #333);
+    font-size: 1.1rem;
+}
+
+.job-responsibilities, .job-requirements {
+    margin-bottom: 2rem;
+}
+.job-responsibilities h3, .job-requirements h3 {
+    font-family: var(--heading-font, 'Lora', serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #000);
+    text-align: left;
+}
+.responsibilities-list, .requirements-list {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color, #333);
+    font-size: 1.05rem;
+}
+.responsibilities-list li, .requirements-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    line-height: 1.7;
+}
+.responsibilities-list li::before, .requirements-list li::before {
+    content: "•";
+    color: var(--accent-color, #F29F05);
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+}
+
+/* --- Application Form --- */
+.application-form {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin-top: 2.5rem;
+    border: 1px solid #f3e2b8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-heading {
+    font-family: var(--heading-font, 'Lora', serif);
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--accent-color, #F29F05);
+    font-weight: 700;
+    color: var(--primary-color, #000);
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color, #333);
+}
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--body-font, 'Montserrat', sans-serif);
+    font-size: 1rem;
+}
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+.form-submit {
+    background-color: var(--accent-color, #F29F05);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+.form-submit:hover {
+    background-color: #d68c04;
+}
+.required-field::after {
+    content: " *";
+    color: var(--accent-color, #F29F05);
+}
+.form-file-input {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #f5f5f5;
+    border: 1px dashed #ddd;
+    border-radius: 4px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .container, .job-card, .application-form {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+@media (max-width: 600px) {
+    .job-card, .application-form {
+        padding: 1.2rem 0.5rem;
+    }
+    .job-title {
+        font-size: 1.3rem;
+    }
+    .form-heading {
+        font-size: 1.1rem;
+    }
+}
+
+.info-section {
+    padding: 3rem 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.section-heading {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-description {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.job-summary {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.job-summary-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.apply-button {
+    background-color: #F29F05;
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.apply-button:hover {
+    background-color: #d68c04;
+}
+
+.form-response {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-response h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.response-content {
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #666;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Loading state styles */
+.form-submit.loading {
+    background-color: #ccc;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.form-submit.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Success state */
+.form-response.success {
+    border-color: #4CAF50;
+    background-color: #E8F5E9;
+}
+
+.form-response.success h3 {
+    color: #2E7D32;
+}
+
+/* Error state */
+.form-response.error {
+    border-color: #f44336;
+    background-color: #FFEBEE;
+}
+
+.form-response.error h3 {
+    color: #c62828;
+}
+
+/* Processing state */
+.form-response.processing {
+    border-color: #2196F3;
+    background-color: #E3F2FD;
+}
+
+.form-response.processing h3 {
+    color: #1565C0;
+} 
