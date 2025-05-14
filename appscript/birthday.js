@@ -184,6 +184,7 @@ function sendBatchBirthdayInvitationsAndNotify() {
     if (success) {
       sentCount++;
       sentRows.push({ name, email, fechaNacimiento, thirtyDaysBefore });
+      Utilities.sleep(10000); // Sleep 10 seconds after each successful send
     } else {
       failedCount++;
       failedRows.push({ name, email, fechaNacimiento, thirtyDaysBefore });
