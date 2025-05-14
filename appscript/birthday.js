@@ -169,6 +169,23 @@ function formatDateSpanish(date) {
   return date.toLocaleDateString('es-CO', options);
 }
 
+// Appends a new row to the 'Enviados' sheet with Timestamp, Email, and Birthday
+function logSentBirthdayEmail(email, birthdayDate) {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadsheet.getSheetByName('Enviados');
+  if (!sheet) {
+    // If the sheet doesn't exist, create it and add headers
+    sheet = spreadsheet.insertSheet('Enviados');
+    sheet.appendRow(['Timestamp', 'Email', 'Birthday']);
+  }
+  const timestamp = new Date();
+  sheet.appendRow([
+    timestamp,
+    email,
+    birthdayDate instanceof Date ? birthdayDate.toISOString().split('T')[0] : birthdayDate
+  ]);
+}
+
 // Function to send birthday emails in batch and notify admin
 function sendBatchBirthdayInvitationsAndNotify() {
   const staged = getStagedBirthdays();
@@ -184,6 +201,7 @@ function sendBatchBirthdayInvitationsAndNotify() {
     if (success) {
       sentCount++;
       sentRows.push({ name, email, fechaNacimiento, thirtyDaysBefore });
+      logSentBirthdayEmail(email, fechaNacimiento); // Log the sent email
       Utilities.sleep(10000); // Sleep 10 seconds after each successful send
     } else {
       failedCount++;
@@ -265,8 +283,6 @@ function testStagedBirthdays() {
     htmlBody: summary
   });
 }
-
-
 
 // Test function for batch summary without sending emails to people
 function testBatchBirthdaySummaryOnly() {
