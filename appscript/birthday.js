@@ -110,7 +110,7 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
       </div>
 
       <div style="text-align: center; margin: 30px 0;">
-        <a href="https://termopilas.co/alojamiento?utm_source=birthday-email&utm_medium=email&utm_campaign=cumpleanos" 
+        <a href="https://termopilas.co/alojamiento#main-content?utm_source=birthday-email&utm_medium=email&utm_campaign=cumpleanos" 
            style="background-color: #118C7E; color: white; padding: 15px 30px; 
                   text-decoration: none; border-radius: 5px; font-weight: bold;">
           Ver disponibilidad 🎂

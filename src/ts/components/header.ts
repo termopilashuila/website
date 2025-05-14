@@ -86,8 +86,8 @@ const defaultHeaderConfig: HeaderConfig = {
   logoIcon: 'fas fa-map-marker-alt',
   navItems: [
     { text: 'Inicio', href: '/index.html' },
-    { text: 'Alojamiento', href: '/alojamiento.html' },
-    { text: 'Tour', href: '/tour.html' },
+    { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
+    { text: 'Tour', href: '/tour.html#main-content' },
     { text: 'Coliving', href: '/coliving.html' },
     { text: 'Trabajo', href: '/trabajo.html' },
     { text: 'Blog', href: '/blog.html' }
@@ -96,7 +96,7 @@ const defaultHeaderConfig: HeaderConfig = {
     title: 'Entorno que <strong>cautiva</strong>',
     subtitle: 'Rivera - Huila 🇨🇴',
     ctaText: 'Ver Alojamiento',
-    ctaHref: '/alojamiento.html'
+    ctaHref: '/alojamiento.html#main-content'
   },
   heroClass: 'hero',
   heroImage: '/assets/images/header.png'
