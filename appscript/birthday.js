@@ -57,7 +57,7 @@ function getStagedBirthdays() {
     if (age < 18 || age > 65) return;
     // This year's birthday
     const thisYearBirthday = new Date(thisYear, birthday.getMonth(), birthday.getDate());
-    // 30 days before birthday
+    // n days before birthday
     const thirtyDaysBefore = new Date(thisYearBirthday);
     thirtyDaysBefore.setDate(thisYearBirthday.getDate() - 30);
     // Only send if the ISO week of the birthday is this week
@@ -71,7 +71,7 @@ function getStagedBirthdays() {
 
 function sendBirthdayInvitation(name, email, birthdayDate) {
   // Prepare WhatsApp message and encode it
-  const whatsappMessage = `Hola, soy ${name}. Me interesa celebrar mi cumpleaños en Termópilas. ¿Podemos coordinar los detalles?`;
+  const whatsappMessage = `Hola, soy ${name}. Me interesa celebrar mi cumpleaños en Termópilas. ¿Podemos hablar los detalles?`;
   const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
   
   // Format the birthday date in Spanish
@@ -101,7 +101,7 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
           <strong>¿Por qué celebrar en Termópilas?</strong>
         </p>
         <ul style="color: #fff; text-align: left; margin: 0; padding-left: 20px; list-style: none;">
-          <li>🏰 Ambiente exclusivo y privado</li>
+          <li>🏰 Ambiente exclusivo</li>
           <li>📸 Hermosos espacios para fotos memorables</li>
           <li>🛏️ Alojamiento para tus invitados</li>
           <li>🌄 Vistas panorámicas increíbles</li>
@@ -110,7 +110,7 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
       </div>
 
       <div style="text-align: center; margin: 30px 0;">
-        <a href="https://wa.me/573143428579?text=${encodedWhatsappMessage}" 
+        <a href="https://termopilas.co/alojamiento?utm_source=birthday-email&utm_medium=email&utm_campaign=cumpleanos" 
            style="background-color: #118C7E; color: white; padding: 15px 30px; 
                   text-decoration: none; border-radius: 5px; font-weight: bold;">
           Ver disponibilidad 🎂
@@ -133,8 +133,8 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
             💬
           </a>
         </div>
-        Si no quieres seguir recibiendo estos correos, 
-        <a href="https://wa.me/573143428579?text=${encodeURIComponent(`Hola, soy ${name}. Por favor, quisiera dejar de recibir correos de cumpleaños de Termópilas.`)}" style="color: #B48E63;">desuscríbete</a>
+        Si no quieres seguir recibiendo este email de cumpleaños, desuscríbete 
+        <a href="https://wa.me/573143428579?text=${encodeURIComponent(`Hola, soy ${name}. Por favor, quisiera dejar de recibir correos de cumpleaños de Termópilas.`)}" style="color: #B48E63;">aquí</a>
       </div>
     </div>
   `;
@@ -167,14 +167,6 @@ function formatDateSpanish(date) {
     day: 'numeric' 
   };
   return date.toLocaleDateString('es-CO', options);
-}
-
-// Test function
-function testBirthdayEmail() {
-  const testName = "Ana García";
-  const testEmail = "test@example.com";
-  const testBirthday = new Date(); // Today's date for testing
-  sendBirthdayInvitation(testName, testEmail, testBirthday);
 }
 
 // Function to send birthday emails in batch and notify admin
@@ -231,6 +223,14 @@ function sendBatchBirthdayInvitationsAndNotify() {
     subject: `Resumen de correos de cumpleaños enviados (${sentCount} enviados, ${failedCount} fallidos)`,
     htmlBody: summary
   });
+}
+
+// Test function
+function testBirthdayEmail() {
+  const testName = "Ana García";
+  const testEmail = "test@example.com";
+  const testBirthday = new Date(); // Today's date for testing
+  sendBirthdayInvitation(testName, testEmail, testBirthday);
 }
 
 // Function to test staged birthdays and send the list to termopilashuila@gmail.com
