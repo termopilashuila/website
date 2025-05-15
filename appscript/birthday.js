@@ -50,7 +50,7 @@ function getStagedBirthdays() {
     const email = row[4];
     const fechaNacimiento = row[6];
     if (!nombres || !apellidos || !email || !fechaNacimiento) return;
-    const name = `${nombres} ${apellidos}`;
+    const name = `${nombres}`;
     const birthday = new Date(fechaNacimiento);
     if (isNaN(birthday.getTime())) return;
     const age = getAge(birthday, today);
@@ -71,7 +71,7 @@ function getStagedBirthdays() {
 
 function sendBirthdayInvitation(name, email, birthdayDate) {
   // Prepare WhatsApp message and encode it
-  const whatsappMessage = `Hola, soy ${name}. Me interesa celebrar mi cumpleaños en Termópilas. ¿Podemos hablar los detalles?`;
+  const whatsappMessage = `Hola, mi nombre es ${name}. Me interesa celebrar mi cumpleaños en Termópilas. ¿Me compartes por favor disponibilidad?`;
   const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
   
   // Format the birthday date in Spanish
