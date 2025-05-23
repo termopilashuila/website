@@ -89,8 +89,8 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
     { text: 'Tour', href: '/tour.html#main-content' },
     { text: 'Coliving', href: '/coliving.html' },
-    { text: 'Trabajo', href: '/trabajo.html' },
-    { text: 'Blog', href: '/blog.html' }
+    { text: 'Trabajo', href: '/trabajo.html#main-content' },
+    { text: 'Blog', href: '/blog.html#main-content' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
@@ -301,20 +301,44 @@ export function initHeader(): void {
             heroClass: 'hero trabajo-hero',
             heroImage: '/assets/images/header.png',
             heroContent: {
-              title: 'Oportunidad: Cocinero(a)',
-              subtitle: 'Únete a nuestro equipo de cocina y trabaja en un entorno natural único',
+              title: 'Cocinero(a)',
+              subtitle: 'Trabaja en un entorno natural único',
               ctaText: 'Ver Detalles',
               ctaHref: '#main-content'
             }
           });
           break;
-        case 'practicante':
+        case 'conserje':
           Object.assign(headerConfig, {
             heroClass: 'hero trabajo-hero',
             heroImage: '/assets/images/header.png',
             heroContent: {
-              title: 'Oportunidad: Practicante Analista',
-              subtitle: 'Comienza tu carrera profesional en un entorno único',
+              title: 'Conserje',
+              subtitle: 'Trabaja en un entorno natural único',
+              ctaText: 'Ver Detalles',
+              ctaHref: '#main-content'
+            }
+          });
+          break;
+        case 'recepcionista':
+          Object.assign(headerConfig, {
+            heroClass: 'hero trabajo-hero',
+            heroImage: '/assets/images/header.png',
+            heroContent: {
+              title: 'Recepcionista',
+              subtitle: 'Trabaja en un entorno natural único',
+              ctaText: 'Ver Detalles',
+              ctaHref: '#main-content'
+            }
+          });
+          break;
+        case 'web-developer':
+          Object.assign(headerConfig, {
+            heroClass: 'hero trabajo-hero',
+            heroImage: '/assets/images/header.png',
+            heroContent: {
+              title: 'Web Developer',
+              subtitle: 'Trabaja en un entorno natural único',
               ctaText: 'Ver Detalles',
               ctaHref: '#main-content'
             }
