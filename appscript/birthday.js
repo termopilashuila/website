@@ -33,6 +33,19 @@ function getStagedBirthdays() {
   // Get all data from the sheet
   const data = sheet.getDataRange().getValues();
 
+  // Remove duplicate emails, keep only the latest record (by Timestamp)
+  // Column 0: Timestamp, 4: Email
+  const emailToLatestRow = {};
+  data.slice(1).forEach((row) => {
+    const email = row[4];
+    const timestamp = new Date(row[0]);
+    if (!email || isNaN(timestamp.getTime())) return;
+    if (!emailToLatestRow[email] || timestamp > new Date(emailToLatestRow[email][0])) {
+      emailToLatestRow[email] = row;
+    }
+  });
+  const uniqueRows = Object.values(emailToLatestRow);
+
   // Get today's date
   const today = new Date();
   const thisISOWeek = getISOWeek(today);
@@ -43,8 +56,8 @@ function getStagedBirthdays() {
 
   const toSend = [];
 
-  // Process each row (skipping header)
-  data.slice(1).forEach((row) => {
+  // Process each unique row
+  uniqueRows.forEach((row) => {
     const nombres = row[1];
     const apellidos = row[2];
     const email = row[4];
