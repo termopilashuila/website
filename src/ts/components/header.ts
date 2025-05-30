@@ -203,13 +203,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
     (headerElement as HTMLElementWithStyle).style.backgroundPosition = 'center';
   }
   
-  // Ensure blog page is included in navigation
   let navItems = [...config.navItems];
-  const hasBlogItem = navItems.some(item => item.href === '/blog.html');
-  if (!hasBlogItem) {
-    // Add blog item before the last item (usually "Contacto")
-    navItems.push({ text: 'Blog', href: '/blog.html' });
-  }
   
   // Generate the navbar HTML
   const navbarHTML = `

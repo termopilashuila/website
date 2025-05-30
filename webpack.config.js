@@ -31,13 +31,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-    library: {
-      type: 'module'
-    }
-  },
-  experiments: {
-    outputModule: true
+    filename: '[name].js'
   },
   mode: 'production'
 }; 
