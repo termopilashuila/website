@@ -22,6 +22,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - HTML5
 - CSS3 (con Flexbox y Grid)
 - TypeScript
+- JavaScript ES6+ (módulos newsletter y blog)
 - Webpack para compilación
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
@@ -74,11 +75,20 @@ finca-termopilas/
 │       ├── error/          # Imágenes para páginas de error
 │       └── favicon.png     # Favicon
 ├── blog/                   # Archivos de entradas de blog
+├── docs/                   # Documentación del proyecto
+│   └── newsletter-refactoring.md  # Documentación de módulos JavaScript
 ├── src/
+│   ├── newsletter.js       # Módulo de suscripción a newsletter
+│   ├── blog.js            # Módulo de funcionalidad del blog
+│   ├── discount-popup.js  # Módulo de popup de descuento
 │   └── ts/
 │       └── main.ts         # Código TypeScript principal
-├── dist/
-│   └── main.js             # JavaScript compilado
+├── dist/                   # Archivos compilados por webpack
+│   ├── main.js            # JavaScript principal compilado
+│   ├── newsletter.js      # Módulo newsletter minificado
+│   ├── blog.js           # Módulo blog minificado
+│   ├── discount-popup.js # Módulo popup de descuento minificado
+│   └── components/       # Componentes compilados
 ├── .cursor/
 │   └── rules.mdc           # Reglas del proyecto para Cursor IDE
 └── styles/
@@ -324,8 +334,31 @@ finca-termopilas/
 
 ### TypeScript
 - **Comando de compilación**: `npm run build`
-- **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática
+- **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática durante el desarrollo
 - **Salida**: `dist/main.js`
+
+### Módulos JavaScript
+- **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
+- **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
+- **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
+- **Características**:
+  - Validación de formularios
+  - Integración con Google Analytics
+  - Animaciones suaves
+  - Manejo de errores
+  - Soporte para notificaciones toast
+  - Configuración flexible
+  - API pública para control externo
+
+### Herramientas de compilación
+- **webpack**: Usado para empaquetar archivos TypeScript
+- **ts-loader**: Usado para cargar archivos TypeScript en webpack
+
+### Analytics
+- **Implementación**: Implementado directamente en el HTML de cada página
+- **Tracking ID**: G-2406CNRCX9
+- **Ubicación**: En la sección `<head>` de cada documento HTML
+- **Notas**: No implementar mediante TypeScript para asegurar un seguimiento inmediato
 
 ## Desarrollo local
 

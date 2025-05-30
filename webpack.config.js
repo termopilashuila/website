@@ -3,6 +3,9 @@ const path = require('path');
 module.exports = {
   entry: {
     main: './src/ts/main.ts',
+    newsletter: './src/newsletter.js',
+    blog: './src/blog.js',
+    'discount-popup': './src/discount-popup.js',
     jobApplicationForm: {
       import: './src/ts/components/JobApplicationForm.ts',
       filename: 'components/[name].js'
