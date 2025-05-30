@@ -1,0 +1,108 @@
+/* Newsletter Section Styles */
+.blog-newsletter {
+    padding: 5rem 0;
+    background-color: #000000;
+    color: #fdf6ea;
+}
+
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.newsletter-content {
+    margin-bottom: 2rem;
+}
+
+.newsletter-content h2 {
+    margin-bottom: 1rem;
+    color: #000000;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+}
+
+.newsletter-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.newsletter-form input::placeholder {
+    color: #999999;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #F29F05;
+}
+
+.newsletter-form .cta-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #F29F05;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.newsletter-form .cta-button:hover {
+    background-color: #e67e00;
+}
+
+/* Responsive Styles for Newsletter */
+@media (max-width: 768px) {
+    .blog-newsletter {
+        padding: 3rem 0;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form .cta-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-newsletter {
+        padding: 2rem 0;
+    }
+    
+    .newsletter-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .newsletter-content p {
+        font-size: 1rem;
+    }
+} 
