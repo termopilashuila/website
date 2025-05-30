@@ -88,7 +88,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Inicio', href: '/index.html' },
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
     { text: 'Tour', href: '/tour.html#main-content' },
-    { text: 'Coliving', href: '/coliving.html' },
+    { text: 'Coliving', href: '/coliving.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
     { text: 'Blog', href: '/blog.html#main-content' }
   ],
@@ -270,7 +270,7 @@ export function initHeader(): void {
     if (pathSegments.length > 1 && pathSegments[0] === 'trabajo') {
       return {
         ...item,
-        isActive: item.href === '/trabajo.html'
+        isActive: item.href === '/trabajo.html#main-content'
       };
     }
     
