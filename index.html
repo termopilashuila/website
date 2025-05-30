@@ -437,5 +437,22 @@
     
     <!-- Scripts -->
     <script src="share-modal.js" defer></script>
+    <script src="dist/discount-popup.js" defer></script>
+
+    <!-- Discount Coupon Popup (hidden by default) -->
+    <div id="discount-popup" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+      <div style="background:#fff; max-width:350px; width:90%; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:2rem 1.5rem; text-align:center; position:relative;">
+        <button id="discount-popup-close" aria-label="Cerrar" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5rem; color:#888; cursor:pointer;">&times;</button>
+        <img src="assets/images/logo.png" alt="Finca Termópilas Logo" style="max-width:120px; margin-bottom:1rem;">
+        <h2 style="color:#B48E63; margin-bottom:0.5rem;">¡Obtén $15.000 de descuento!</h2>
+        <p style="color:#333; margin-bottom:1rem;">Ingresa tu correo y recibe un cupón exclusivo para tu próxima reserva.<br><span style="color:#F29F05; font-weight:bold;">¡Solo tienes <span id='discount-timer'>40</span> segundos!</span></p>
+        <form id="discount-popup-form" autocomplete="off" style="display:flex; flex-direction:column; gap:0.75rem;">
+          <input type="email" id="discount-popup-email" name="email" placeholder="Tu correo electrónico" required style="padding:0.7rem; border-radius:5px; border:1px solid #ccc; font-size:1rem;">
+          <div id="discount-popup-error" style="color:#e74c3c; font-size:0.95rem; display:none;"></div>
+          <button type="submit" style="background:#118C7E; color:#fff; border:none; border-radius:5px; padding:0.7rem; font-size:1.1rem; font-weight:600; cursor:pointer;">Recibir cupón</button>
+        </form>
+        <div id="discount-popup-success" style="display:none; color:#27ae60; margin-top:1rem; font-weight:600;">¡Cupón enviado! Revisa tu correo.</div>
+      </div>
+    </div>
 </body>
 </html> 
