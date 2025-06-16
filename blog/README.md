@@ -21,7 +21,7 @@ Busca y reemplaza las siguientes variables en el nuevo archivo:
 
 | Variable | Descripción | Ejemplo |
 |----------|-------------|---------|
-| `{{BLOG_TITLE}}` | Título del artículo | 7 lugares para comer en Rivera, Huila |
+| `{{BLOG_TITLE}}` | Título del artículo | Lugares para comer en Rivera, Huila |
 | `{{BLOG_DESCRIPTION}}` | Descripción para SEO (150-160 caracteres) | Descubre el fascinante proceso de elaboración de nuestro vino artesanal F27, desde la cosecha de la uva Isabella hasta el embotellado final. |
 | `{{BLOG_KEYWORDS}}` | Palabras clave separadas por comas | vino artesanal, F27, uva Isabella, elaboración vino |
 | `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | lugares-para-comer-rivera |
@@ -102,7 +102,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
             <span class="blog-date">5 de abril, 2025</span>
             <span class="blog-category">Gastronomía</span>
         </div>
-        <h3>7 lugares para comer en Rivera, Huila</h3>
+        <h3>Lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
         <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
@@ -137,7 +137,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 | Variable | Descripción | Ejemplo |
 |----------|-------------|---------|
-| `{{BLOG_TITLE}}` | Título del artículo | 7 lugares para comer en Rivera, Huila |
+| `{{BLOG_TITLE}}` | Título del artículo | Lugares para comer en Rivera, Huila |
 | `{{BLOG_SUBTITLE}}` | Subtítulo o descripción | Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera. |
 | `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | lugares-para-comer-rivera |
 | `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/lugares-para-comer-rivera/casa-flores.png |
@@ -159,7 +159,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
             <span class="blog-date">5 de abril, 2025</span>
             <span class="blog-category">Gastronomía</span>
         </div>
-        <h3>7 lugares para comer en Rivera, Huila</h3>
+        <h3>Lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
         <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
