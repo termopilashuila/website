@@ -261,6 +261,13 @@ export function initHeader(): void {
     return;
   }
   
+  // Check if this is the 404 page
+  if (pageNameWithoutExt === '404') {
+    // Skip header generation for 404 page
+    console.log('404 page detected, skipping header generation');
+    return;
+  }
+  
   // Create a copy of the default config
   const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
   
@@ -362,6 +369,15 @@ export function initGlobalHeader(): void {
         return;
       }
       
+      // Check if this is the 404 page
+      const currentPageName = currentPath.split('/').pop() || '';
+      const currentPageNameWithoutExt = currentPageName.replace('.html', '');
+      if (currentPageNameWithoutExt === '404') {
+        // Skip header generation for 404 page
+        console.log('404 page detected, skipping header update');
+        return;
+      }
+      
       // Create a copy of the default config
       const headerConfig: HeaderConfig = JSON.parse(JSON.stringify(defaultHeaderConfig));
       
@@ -397,6 +413,15 @@ export function initGlobalHeader(): void {
       if (currentPath.includes('/blog/posts/')) {
         // Skip header regeneration for blog post pages
         console.log('Blog post page detected, skipping header regeneration');
+        return;
+      }
+      
+      // Check if this is the 404 page
+      const currentPageName = currentPath.split('/').pop() || '';
+      const currentPageNameWithoutExt = currentPageName.replace('.html', '');
+      if (currentPageNameWithoutExt === '404') {
+        // Skip header generation for 404 page
+        console.log('404 page detected, skipping header regeneration');
         return;
       }
       
