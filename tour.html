@@ -338,13 +338,75 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Track WhatsApp button clicks
+            // Track WhatsApp "Reserva Ahora" buttons
+            const reservaButtons = document.querySelectorAll('a[href*="wa.me"][href*="Tour"]');
+            reservaButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    const buttonLocation = index === 0 ? 'intro_section' : 'experience_section';
+                    
+                    gtag('event', `tour_reserva_whatsapp_${buttonLocation}`, {
+                        'event_category': 'Reservations',
+                        'event_label': `Tour Reservation WhatsApp - ${buttonLocation}`,
+                        'page': 'tour',
+                        'button_location': buttonLocation,
+                        'reservation_type': 'tour',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track blog recommendation link
+            const blogRecommendation = document.querySelector('a[href*="nibs-cacao-parfait-bowl"]');
+            if (blogRecommendation) {
+                blogRecommendation.addEventListener('click', function() {
+                    gtag('event', 'tour_blog_recommendation_nibs_cacao', {
+                        'event_category': 'Content',
+                        'event_label': 'Blog Recommendation - Nibs Cacao Bowl',
+                        'page': 'tour',
+                        'blog_post': 'nibs-cacao-parfait-bowl',
+                        'recommendation_context': 'chocolate_workshop',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track feedback form button
+            const feedbackButton = document.querySelector('a[href*="forms.gle"]');
+            if (feedbackButton) {
+                feedbackButton.addEventListener('click', function() {
+                    gtag('event', 'tour_feedback_form', {
+                        'event_category': 'Engagement',
+                        'event_label': 'Tour Feedback Form',
+                        'page': 'tour',
+                        'form_type': 'google_forms',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track WhatsApp floating button
             const whatsappButton = document.getElementById('whatsapp-button');
             if (whatsappButton) {
                 whatsappButton.addEventListener('click', function() {
-                    gtag('event', 'whatsapp_click', {
+                    gtag('event', 'tour_whatsapp_contact', {
                         'event_category': 'Contact',
-                        'event_label': 'WhatsApp Button - Tour',
+                        'event_label': 'WhatsApp Floating Button - Tour',
+                        'page': 'tour',
+                        'button_type': 'floating',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track payment info WhatsApp link
+            const paymentWhatsApp = document.querySelector('a[href*="wa.link/vscfew"]');
+            if (paymentWhatsApp) {
+                paymentWhatsApp.addEventListener('click', function() {
+                    gtag('event', 'tour_payment_whatsapp_contact', {
+                        'event_category': 'Contact',
+                        'event_label': 'Payment WhatsApp Contact',
+                        'page': 'tour',
+                        'contact_type': 'payment_inquiry',
                         'value': 1
                     });
                 });

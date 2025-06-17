@@ -52,6 +52,84 @@
     
     <!-- JavaScript -->
     <script src="dist/main.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track "Abrir en Google Maps" button
+            const googleMapsButton = document.querySelector('a[href*="maps.app.goo.gl"]');
+            if (googleMapsButton) {
+                googleMapsButton.addEventListener('click', function() {
+                    gtag('event', 'ubicacion_google_maps_open', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Open in Google Maps',
+                        'page': 'ubicacion',
+                        'map_service': 'google_maps',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track WhatsApp transportation contact links
+            const transportWhatsAppLinks = document.querySelectorAll('a[href*="wa.me"][href*="transporte"]');
+            transportWhatsAppLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const contactInfo = this.closest('li');
+                    const contactName = contactInfo.querySelector('span').textContent.replace(':', '');
+                    const phoneNumber = this.textContent.trim().split(' ')[0];
+                    const contactSlug = contactName.toLowerCase().replace(/\s+/g, '_');
+                    
+                    gtag('event', `ubicacion_transport_contact_${contactSlug}`, {
+                        'event_category': 'Contact',
+                        'event_label': `Transportation Contact - ${contactName}`,
+                        'contact_name': contactName,
+                        'contact_phone': phoneNumber,
+                        'page': 'ubicacion',
+                        'service_type': 'transportation',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track YouTube video links
+            const youtubeLinks = document.querySelectorAll('a[href*="youtu"]');
+            youtubeLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const videoCard = this.closest('.video-card');
+                    const videoTitle = videoCard.querySelector('h3').textContent.replace(':', '');
+                    const videoUrl = this.getAttribute('href');
+                    const videoId = videoUrl.includes('youtu.be') ? 
+                        videoUrl.split('/').pop() : 
+                        videoUrl.split('v=')[1]?.split('&')[0];
+                    const videoType = videoTitle.includes('pueblo') ? 'from_town' : 'from_gate';
+                    
+                    gtag('event', `ubicacion_youtube_video_${videoType}`, {
+                        'event_category': 'Video',
+                        'event_label': `YouTube Video - ${videoTitle}`,
+                        'video_title': videoTitle,
+                        'video_id': videoId,
+                        'video_type': videoType,
+                        'page': 'ubicacion',
+                        'platform': 'youtube',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track map iframe interactions (if supported)
+            const mapIframe = document.querySelector('iframe[src*="google.com/maps"]');
+            if (mapIframe) {
+                mapIframe.addEventListener('load', function() {
+                    gtag('event', 'ubicacion_map_iframe_load', {
+                        'event_category': 'Map Interaction',
+                        'event_label': 'Google Maps Iframe Loaded',
+                        'page': 'ubicacion',
+                        'map_service': 'google_maps_embed',
+                        'value': 1
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Skip link for accessibility -->

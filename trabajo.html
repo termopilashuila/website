@@ -217,6 +217,41 @@
 
     <!-- JavaScript for form handling -->
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track "Aplicar ahora" buttons for each job position
+            const applyButtons = document.querySelectorAll('.apply-button');
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const jobCard = this.closest('.job-card');
+                    const jobTitle = jobCard.querySelector('.job-title').textContent.trim();
+                    const jobSlug = jobTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+                    
+                    gtag('event', `trabajo_apply_${jobSlug}`, {
+                        'event_category': 'Job Application',
+                        'event_label': `Apply Now - ${jobTitle}`,
+                        'job_title': jobTitle,
+                        'page': 'trabajo',
+                        'action_type': 'application_start',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track WhatsApp contact button
+            const whatsappButton = document.querySelector('.whatsapp-button');
+            if (whatsappButton) {
+                whatsappButton.addEventListener('click', function() {
+                    gtag('event', 'trabajo_whatsapp_contact', {
+                        'event_category': 'Contact',
+                        'event_label': 'WhatsApp Contact - Job Inquiries',
+                        'page': 'trabajo',
+                        'contact_type': 'job_inquiry',
+                        'value': 1
+                    });
+                });
+            }
+        });
+
         function toggleForm(formId) {
             const form = document.getElementById(formId);
             const allForms = document.querySelectorAll('.application-form');
@@ -242,6 +277,20 @@
                 const data = {};
                 formData.forEach((value, key) => data[key] = value);
                 
+                // Track job application form submission
+                const formId = form.id;
+                const jobType = formId ? formId.replace('Form', '').replace('-', '_') : 'unknown';
+                
+                gtag('event', `trabajo_application_submit_${jobType}`, {
+                    'event_category': 'Job Application',
+                    'event_label': `Job Application Submission - ${jobType}`,
+                    'job_type': jobType,
+                    'page': 'trabajo',
+                    'form_type': 'job_application',
+                    'email_domain': data.email ? data.email.split('@')[1] : 'unknown',
+                    'value': 1
+                });
+                
                 try {
                     const response = await fetch(form.action, {
                         method: 'POST',
@@ -252,6 +301,15 @@
                     });
                     
                     if (response.ok) {
+                        // Track successful submission
+                        gtag('event', `trabajo_application_success_${jobType}`, {
+                            'event_category': 'Job Application',
+                            'event_label': `Job Application Success - ${jobType}`,
+                            'job_type': jobType,
+                            'page': 'trabajo',
+                            'value': 1
+                        });
+                        
                         alert('¡Aplicación enviada con éxito! Te contactaremos pronto.');
                         form.reset();
                         form.style.display = 'none';
@@ -259,6 +317,16 @@
                         throw new Error('Error al enviar la aplicación');
                     }
                 } catch (error) {
+                    // Track submission error
+                    gtag('event', `trabajo_application_error_${jobType}`, {
+                        'event_category': 'Job Application',
+                        'event_label': `Job Application Error - ${jobType}`,
+                        'job_type': jobType,
+                        'page': 'trabajo',
+                        'error_type': 'submission_failed',
+                        'value': 1
+                    });
+                    
                     alert('Error al enviar la aplicación. Por favor intenta nuevamente o contáctanos directamente.');
                     console.error('Error:', error);
                 }

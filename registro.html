@@ -353,6 +353,14 @@
                 
                 // Validate form
                 if (!validateForm()) {
+                    // Track form validation errors
+                    gtag('event', 'registro_form_validation_error', {
+                        'event_category': 'Form Interaction',
+                        'event_label': 'Guest Registration Form Validation Error',
+                        'page': 'registro',
+                        'form_type': 'guest_registration',
+                        'value': 1
+                    });
                     return;
                 }
                 
@@ -374,6 +382,20 @@
                     municipioResidencia: document.getElementById('municipioResidencia').value,
                     tipoHuesped: document.getElementById('tipoHuesped').value,
                 };
+
+                // Track form submission with analytics
+                gtag('event', 'registro_form_submission', {
+                    'event_category': 'Form Completion',
+                    'event_label': 'Guest Registration Form Submission',
+                    'page': 'registro',
+                    'form_type': 'guest_registration',
+                    'guest_type': formData.tipoHuesped,
+                    'travel_motive': formData.motivoViaje,
+                    'nationality': formData.nacionalidad,
+                    'gender': formData.genero,
+                    'email_domain': formData.email.split('@')[1],
+                    'value': 1
+                });
                 
                 // Instead of fetch API, use formData to redirect user with URL parameters
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbwYzxegy5dZBalhYMpj3495Rkbh1qksiv848UUZaHk0GuhxuRYDt1Slf708lUHZ5OdoGA/exec';

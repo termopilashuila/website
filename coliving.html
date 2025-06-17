@@ -437,8 +437,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Google Analytics is now directly included in the HTML
-            
             // Initialize header with custom configuration
             if (window.termopilasHeader) {
                 window.termopilasHeader.updateConfig({
@@ -453,19 +451,85 @@
                 });
             }
 
-            // Form submission handler
+            // Track "Reserva tu cupo" buttons for each experience type
+            const reservaCupoButtons = document.querySelectorAll('a[href="#coliving-form"]');
+            reservaCupoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const experienceOption = this.closest('.experience-option');
+                    const experienceType = experienceOption.classList.contains('luxury') ? 'luxury' : 'standard';
+                    const experienceTitle = experienceOption.querySelector('.experience-header h3').textContent;
+                    const experiencePrice = experienceOption.querySelector('.experience-price').textContent;
+                    
+                    gtag('event', `coliving_reserva_cupo_${experienceType}`, {
+                        'event_category': 'Reservations',
+                        'event_label': `Reserva Cupo - ${experienceTitle}`,
+                        'experience_type': experienceType,
+                        'experience_title': experienceTitle,
+                        'experience_price': experiencePrice,
+                        'page': 'coliving',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track "Ver más detalles de habitaciones" links
+            const roomDetailsLinks = document.querySelectorAll('.view-rooms');
+            roomDetailsLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const href = this.getAttribute('href');
+                    const roomType = href.includes('luxury') ? 'luxury' : 'standard';
+                    
+                    gtag('event', `coliving_room_details_${roomType}`, {
+                        'event_category': 'Navigation',
+                        'event_label': `View Room Details - ${roomType}`,
+                        'room_type': roomType,
+                        'page': 'coliving',
+                        'destination': 'alojamiento',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track room thumbnail interactions
+            const roomThumbnails = document.querySelectorAll('.room-thumbnail');
+            roomThumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const roomName = this.querySelector('span').textContent;
+                    const experienceSection = this.closest('.experience-option');
+                    const experienceType = experienceSection.classList.contains('luxury') ? 'luxury' : 'standard';
+                    const roomSlug = roomName.toLowerCase().replace(/\s+/g, '_');
+                    
+                    gtag('event', `coliving_room_thumbnail_${roomSlug}`, {
+                        'event_category': 'Engagement',
+                        'event_label': `Room Thumbnail - ${roomName}`,
+                        'room_name': roomName,
+                        'experience_type': experienceType,
+                        'page': 'coliving',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Form submission handler with enhanced tracking
             const form = document.getElementById('coliving-form');
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    const experienceType = form.elements['experience_type'].value;
+                    const profession = form.profession.value;
+                    const email = form.email.value;
+                    
                     // Track form submission in Google Analytics
-                    if (window.gtag) {
-                        window.gtag('event', 'form_submission', {
-                            'event_category': 'coliving',
-                            'event_label': 'lead_form'
-                        });
-                    }
+                    gtag('event', `coliving_form_submission_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
+                        'event_category': 'Lead Generation',
+                        'event_label': `Coliving Form Submission - ${experienceType}`,
+                        'experience_type': experienceType,
+                        'profession': profession,
+                        'email_domain': email.split('@')[1],
+                        'page': 'coliving',
+                        'value': 1
+                    });
 
                     let data = {
                         name: form.name.value,
@@ -491,6 +555,24 @@
                     });
                 });
             }
+
+            // Track radio button selection for experience type
+            const experienceRadios = document.querySelectorAll('input[name="experience_type"]');
+            experienceRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.checked) {
+                        const experienceType = this.value;
+                        
+                        gtag('event', `coliving_experience_selection_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
+                            'event_category': 'Form Interaction',
+                            'event_label': `Experience Type Selection - ${experienceType}`,
+                            'experience_type': experienceType,
+                            'page': 'coliving',
+                            'value': 1
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

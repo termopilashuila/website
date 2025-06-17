@@ -75,6 +75,67 @@
     <script src="dist/main.js" defer></script>
     <script src="dist/newsletter.js" defer></script>
     <script src="dist/blog.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track category filter buttons
+            const categoryButtons = document.querySelectorAll('.category-button');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    const categoryText = this.textContent;
+                    
+                    gtag('event', `blog_filter_${category}`, {
+                        'event_category': 'Navigation',
+                        'event_label': `Blog Filter: ${categoryText}`,
+                        'filter_type': category,
+                        'page': 'blog',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track blog post read more links
+            const blogReadMoreLinks = document.querySelectorAll('.blog-card .read-more');
+            blogReadMoreLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const blogCard = this.closest('.blog-card');
+                    const blogTitle = blogCard.querySelector('h3').textContent;
+                    const blogCategory = blogCard.querySelector('.blog-category').textContent;
+                    const blogCategories = blogCard.getAttribute('data-categories');
+                    const blogSlug = blogTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+                    
+                    gtag('event', `blog_read_${blogSlug}`, {
+                        'event_category': 'Content',
+                        'event_label': `Blog: ${blogTitle}`,
+                        'blog_title': blogTitle,
+                        'blog_category': blogCategory,
+                        'blog_categories': blogCategories,
+                        'page': 'blog',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track newsletter form submission
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    const email = this.email.value;
+                    const name = this.name.value;
+                    
+                    gtag('event', 'blog_newsletter_subscription', {
+                        'event_category': 'Lead Generation',
+                        'event_label': 'Newsletter Subscription',
+                        'page': 'blog',
+                        'email_domain': email.split('@')[1],
+                        'has_name': name ? 'yes' : 'no',
+                        'value': 1
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Skip link for accessibility -->

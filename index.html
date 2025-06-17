@@ -439,6 +439,134 @@
     <script src="share-modal.js" defer></script>
     <script src="dist/discount-popup.js" defer></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track CTA button - Ver nuestro alojamiento
+            const alojamientoButton = document.querySelector('a[href="alojamiento.html#main-content"]');
+            if (alojamientoButton) {
+                alojamientoButton.addEventListener('click', function() {
+                    gtag('event', 'home_accommodation_view', {
+                        'event_category': 'Navigation',
+                        'event_label': 'View Accommodation CTA',
+                        'page': 'home',
+                        'cta_location': 'accommodation_section',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track product order buttons
+            const orderButtons = document.querySelectorAll('.order-button');
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-overlay h3').textContent;
+                    const productPrice = productCard.querySelector('.price').textContent;
+                    const productSlug = productTitle.toLowerCase().replace(/\s+/g, '_');
+                    
+                    gtag('event', `home_product_order_${productSlug}`, {
+                        'event_category': 'Product',
+                        'event_label': `Order ${productTitle}`,
+                        'product_name': productTitle,
+                        'product_price': productPrice,
+                        'page': 'home',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track service links
+            const tourLink = document.querySelector('a[href="tour.html"]');
+            if (tourLink) {
+                tourLink.addEventListener('click', function() {
+                    gtag('event', 'home_tour_service_navigation', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Tour Service - Ver más',
+                        'page': 'home',
+                        'service_type': 'tour',
+                        'value': 1
+                    });
+                });
+            }
+
+            const colivingLink = document.querySelector('a[href="coliving.html"]');
+            if (colivingLink) {
+                colivingLink.addEventListener('click', function() {
+                    gtag('event', 'home_coliving_service_navigation', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Coliving Service - Ver más',
+                        'page': 'home',
+                        'service_type': 'coliving',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track blog post read more links
+            const blogReadMoreLinks = document.querySelectorAll('.blog-card .read-more');
+            blogReadMoreLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const blogCard = this.closest('.blog-card');
+                    const blogTitle = blogCard.querySelector('h3').textContent;
+                    const blogCategory = blogCard.querySelector('.blog-category').textContent;
+                    const blogSlug = blogTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+                    
+                    gtag('event', `home_blog_read_${blogSlug}`, {
+                        'event_category': 'Content',
+                        'event_label': `Blog: ${blogTitle}`,
+                        'blog_title': blogTitle,
+                        'blog_category': blogCategory,
+                        'page': 'home',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track "Ver todos los artículos" button
+            const allArticlesButton = document.querySelector('a[href="blog.html#main-content"]');
+            if (allArticlesButton) {
+                allArticlesButton.addEventListener('click', function() {
+                    gtag('event', 'home_blog_view_all', {
+                        'event_category': 'Navigation',
+                        'event_label': 'View All Blog Articles',
+                        'page': 'home',
+                        'destination': 'blog',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track discount popup interactions
+            const discountPopupForm = document.getElementById('discount-popup-form');
+            if (discountPopupForm) {
+                discountPopupForm.addEventListener('submit', function() {
+                    const email = document.getElementById('discount-popup-email').value;
+                    
+                    gtag('event', 'home_discount_popup_submit', {
+                        'event_category': 'Lead Generation',
+                        'event_label': 'Discount Popup Email Submission',
+                        'page': 'home',
+                        'email_domain': email.split('@')[1],
+                        'value': 1
+                    });
+                });
+            }
+
+            const discountPopupClose = document.getElementById('discount-popup-close');
+            if (discountPopupClose) {
+                discountPopupClose.addEventListener('click', function() {
+                    gtag('event', 'home_discount_popup_close', {
+                        'event_category': 'Engagement',
+                        'event_label': 'Discount Popup Closed',
+                        'page': 'home',
+                        'interaction_type': 'close_button',
+                        'value': 1
+                    });
+                });
+            }
+        });
+    </script>
+
     <!-- Discount Coupon Popup (hidden by default) -->
     <div id="discount-popup" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
       <div style="background:#fff; max-width:350px; width:90%; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:2rem 1.5rem; text-align:center; position:relative;">

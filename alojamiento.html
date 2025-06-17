@@ -414,31 +414,66 @@
             });
         });
 
-        // Add Google Analytics event tracking for room booking buttons
-        const bookButtons = document.querySelectorAll('.book-button');
-        bookButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Get the room title from the parent card
-                const roomCard = this.closest('.room-card');
-                const roomTitle = roomCard.querySelector('.room-title').textContent;
-                
-                // Send Google Analytics event
-                gtag('event', 'room_booking_click', {
-                    'event_category': 'Reservations',
-                    'event_label': roomTitle,
-                    'value': 1
+        // Add Google Analytics event tracking for all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track room booking buttons
+            const bookButtons = document.querySelectorAll('.book-button');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the room title from the parent card
+                    const roomCard = this.closest('.room-card');
+                    const roomTitle = roomCard.querySelector('.room-title').textContent;
+                    
+                    // Send Google Analytics event
+                    gtag('event', `alojamiento_room_booking_${roomTitle.toLowerCase().replace(/\s+/g, '_')}`, {
+                        'event_category': 'Reservations',
+                        'event_label': `${roomTitle} - Booking Button`,
+                        'room_name': roomTitle,
+                        'page': 'alojamiento',
+                        'value': 1
+                    });
                 });
             });
-        });
 
-        // Track WhatsApp button clicks
-        document.addEventListener('DOMContentLoaded', function() {
+            // Track filter buttons
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterValue = this.getAttribute('data-filter');
+                    const filterText = this.textContent;
+                    
+                    gtag('event', `alojamiento_filter_${filterValue}`, {
+                        'event_category': 'Navigation',
+                        'event_label': `Filter: ${filterText}`,
+                        'filter_type': filterValue,
+                        'page': 'alojamiento',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track WhatsApp button
             const whatsappButton = document.getElementById('whatsapp-button');
             if (whatsappButton) {
                 whatsappButton.addEventListener('click', function() {
-                    gtag('event', 'whatsapp_click', {
+                    gtag('event', 'alojamiento_whatsapp_contact', {
                         'event_category': 'Contact',
                         'event_label': 'WhatsApp Button - Alojamiento',
+                        'page': 'alojamiento',
+                        'value': 1
+                    });
+                });
+            }
+
+            // Track return to coliving button
+            const returnButton = document.querySelector('.return-button');
+            if (returnButton) {
+                returnButton.addEventListener('click', function() {
+                    gtag('event', 'alojamiento_return_coliving', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Return to Coliving',
+                        'page': 'alojamiento',
+                        'destination': 'coliving',
                         'value': 1
                     });
                 });
@@ -482,6 +517,11 @@
                 const nextButton = carousel.querySelector('.carousel-button.next');
                 let currentIndex = 0;
 
+                // Get room name for analytics
+                const roomCard = carousel.closest('.room-card');
+                const roomTitle = roomCard.querySelector('.room-title').textContent;
+                const roomSlug = roomTitle.toLowerCase().replace(/\s+/g, '_');
+
                 function showImage(index) {
                     images.forEach(img => img.classList.remove('active'));
                     dots.forEach(dot => dot.classList.remove('active'));
@@ -491,28 +531,91 @@
                     currentIndex = index;
                 }
 
-                function nextImage() {
+                function nextImage(source = 'auto') {
                     const newIndex = (currentIndex + 1) % images.length;
                     showImage(newIndex);
+                    
+                    // Track carousel navigation
+                    if (source !== 'auto') {
+                        gtag('event', `alojamiento_carousel_next_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Next`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'next',
+                            'image_index': newIndex,
+                            'value': 1
+                        });
+                    }
                 }
 
                 function prevImage() {
                     const newIndex = (currentIndex - 1 + images.length) % images.length;
                     showImage(newIndex);
+                    
+                    // Track carousel navigation
+                    gtag('event', `alojamiento_carousel_prev_${roomSlug}`, {
+                        'event_category': 'Engagement',
+                        'event_label': `${roomTitle} - Carousel Previous`,
+                        'room_name': roomTitle,
+                        'page': 'alojamiento',
+                        'carousel_action': 'previous',
+                        'image_index': newIndex,
+                        'value': 1
+                    });
                 }
 
                 // Event listeners
-                nextButton.addEventListener('click', nextImage);
+                nextButton.addEventListener('click', () => nextImage('manual'));
                 prevButton.addEventListener('click', prevImage);
 
                 dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => showImage(index));
+                    dot.addEventListener('click', () => {
+                        showImage(index);
+                        
+                        // Track dot navigation
+                        gtag('event', `alojamiento_carousel_dot_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Dot Navigation`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'dot_navigation',
+                            'image_index': index,
+                            'value': 1
+                        });
+                    });
                 });
 
                 // Keyboard navigation
                 carousel.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') prevImage();
-                    if (e.key === 'ArrowRight') nextImage();
+                    if (e.key === 'ArrowLeft') {
+                        prevImage();
+                        
+                        // Track keyboard navigation
+                        gtag('event', `alojamiento_carousel_keyboard_prev_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Keyboard Previous`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'keyboard_previous',
+                            'interaction_type': 'keyboard',
+                            'value': 1
+                        });
+                    }
+                    if (e.key === 'ArrowRight') {
+                        nextImage('keyboard');
+                        
+                        // Track keyboard navigation
+                        gtag('event', `alojamiento_carousel_keyboard_next_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Keyboard Next`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'keyboard_next',
+                            'interaction_type': 'keyboard',
+                            'value': 1
+                        });
+                    }
                 });
 
                 // Touch events
@@ -525,12 +628,38 @@
 
                 carousel.addEventListener('touchend', (e) => {
                     touchEndX = e.changedTouches[0].clientX;
-                    if (touchStartX - touchEndX > 50) nextImage(); // Swipe left
-                    if (touchEndX - touchStartX > 50) prevImage(); // Swipe right
+                    if (touchStartX - touchEndX > 50) {
+                        nextImage('swipe'); // Swipe left
+                        
+                        // Track swipe navigation
+                        gtag('event', `alojamiento_carousel_swipe_next_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Swipe Next`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'swipe_next',
+                            'interaction_type': 'touch',
+                            'value': 1
+                        });
+                    }
+                    if (touchEndX - touchStartX > 50) {
+                        prevImage(); // Swipe right
+                        
+                        // Track swipe navigation
+                        gtag('event', `alojamiento_carousel_swipe_prev_${roomSlug}`, {
+                            'event_category': 'Engagement',
+                            'event_label': `${roomTitle} - Carousel Swipe Previous`,
+                            'room_name': roomTitle,
+                            'page': 'alojamiento',
+                            'carousel_action': 'swipe_previous',
+                            'interaction_type': 'touch',
+                            'value': 1
+                        });
+                    }
                 });
 
-                // Auto advance every 50 seconds
-                setInterval(nextImage, 50000);
+                // Auto advance every 50 seconds (no tracking for auto advance)
+                setInterval(() => nextImage('auto'), 50000);
             });
         });
     </script>
