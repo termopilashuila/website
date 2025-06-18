@@ -3,6 +3,7 @@ import { initHeader, initGlobalHeader } from './components/header';
 import { initFooter, initGlobalFooter } from './components/footer';
 import { initBlogCategoryFiltering } from './components/blog';
 import { initTourExperienceLazyLoading } from './components/tour';
+import { initEventForms } from './components/EventForm';
 import {
   initScrollAnimations,
   initNavbarScroll,
@@ -33,6 +34,10 @@ function initPage(): void {
       break;
     case 'tour.html':
       initTourExperienceLazyLoading();
+      break;
+    case 'bodas.html':
+    case 'quinces.html':
+      initEventForms();
       break;
   }
 
