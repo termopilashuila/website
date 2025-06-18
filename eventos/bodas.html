@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón de Eventos para Bodas - Finca Termópilas</title>
+    <meta name="description" content="Celebra la boda de tus sueños en Finca Termópilas. Salón de eventos con capacidad para 300 personas, piscina, kiosko y servicios completos en Rivera, Huila.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/trabajo.css">
+    <link rel="stylesheet" href="../styles/hero.css">
+    <link rel="stylesheet" href="../styles/main-sections.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+      
+      // Events tracking for wedding page
+      function trackWeddingEvent(action, details = {}) {
+        gtag('event', action, {
+          'event_category': 'bodas',
+          'event_label': 'salón_de_eventos',
+          ...details
+        });
+      }
+    </script>
+    
+    <style>
+        /* Wedding-specific styles */
+        .wedding-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('../assets/images/eventos/bodas/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .wedding-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .wedding-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .wedding-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .service-item {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-item i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .map-embed {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        /* Form response styles */
+        #response-display {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        
+        #response-display.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        
+        #response-display.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        
+        #response-display.processing {
+            background-color: #e2e3e5;
+            border: 1px solid #d6d8db;
+            color: #383d41;
+            display: block;
+        }
+        
+        #response-content {
+            white-space: pre-wrap;
+            margin: 10px 0 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+        }
+        
+        .form-submit.loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+        }
+        
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fdf6ea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header will be dynamically generated by TypeScript -->
+    <header class="hero wedding-hero">
+        <!-- Content will be injected by TypeScript -->
+    </header>
+
+    <main id="main-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav class="breadcrumb" aria-label="breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#servicios">Servicios</a></li>
+                    <li>Salón de Eventos para Bodas</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- Wedding Venue Section -->
+        <section class="job-section">
+            <div class="container">
+                <div class="job-card">
+                    <div class="job-title">
+                        <i class="fas fa-heart"></i>
+                        Salón de Eventos para Bodas
+                    </div>
+                    
+                    <div class="job-info">
+                        <div class="job-detail">
+                            <i class="fas fa-users"></i>
+                            <span>Capacidad para 300 personas</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rivera, Huila - Colombia</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Piscina y áreas recreativas</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-parking"></i>
+                            <span>Parqueadero disponible</span>
+                        </div>
+                    </div>
+                    
+                    <div class="job-description">
+                        <p>Vive la boda que siempre has soñado en nuestro hermoso salón de eventos diseñado especialmente para celebrar el amor. Disfruta de este espacio único con pintorescos paisajes a las afueras de Rivera, Huila, donde cada detalle está pensado para hacer de tu día especial una experiencia inolvidable.</p>
+                    </div>
+                    
+                    <div class="job-responsibilities">
+                        <h3>El espacio perfecto incluye:</h3>
+                        <ul class="responsibilities-list">
+                            <li>Salón principal con capacidad para 300 invitados</li>
+                            <li>Kiosko adicional para ceremonias o actividades complementarias</li>
+                            <li>Piscina con área de baños para el disfrute de los invitados</li>
+                            <li>Amplio parqueadero para la comodidad de todos</li>
+                            <li>Espacios verdes y jardines para sesiones fotográficas</li>
+                            <li>Ubicación privilegiada con vistas panorámicas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-requirements">
+                        <h3>Servicios disponibles:</h3>
+                        <ul class="requirements-list">
+                            <li>Planeación profesional de bodas con expertos en el área</li>
+                            <li>Servicio de banquetes especializado en eventos</li>
+                            <li>Sistema de sonido profesional con iluminación temática</li>
+                            <li>Alquiler de mobiliario (sillas, mesas y decoración)</li>
+                            <li>Coordinación integral del evento</li>
+                            <li>Apoyo logístico durante toda la celebración</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Planeación</h3>
+                        <p>Contamos con profesionales en la planeación y ejecución de bodas para hacer realidad tu sueño.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Banquetes</h3>
+                        <p>Tenemos a disposición un experto en banquetes listo para satisfacer el apetito de tus invitados.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-music"></i>
+                        <h3>Sonido</h3>
+                        <p>El servicio de sonido cuenta además con iluminación para la temática que escojas del evento.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-chair"></i>
+                        <h3>Mobiliario</h3>
+                        <p>¿Necesitas sillas y mesas? Te las cotizamos junto con todos los elementos decorativos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section">
+            <div class="container">
+                <h2>Conoce Nuestro Espacio</h2>
+                <div class="wedding-gallery">
+                    <div>
+                        <img src="../assets/images/eventos/bodas/interior-salon.jpg" alt="Vista interior del salón de eventos" />
+                        <h4>Interior del Salón</h4>
+                        <p>Vista desde la tarima principal</p>
+                    </div>
+                    <div>
+                        <img src="../assets/images/eventos/bodas/vista-exterior.jpg" alt="Vista exterior nocturna del salón" />
+                        <h4>Vista Exterior</h4>
+                        <p>Vista nocturna y exterior del salón</p>
+                    </div>
+                    <div>
+                        <img src="../assets/images/eventos/bodas/evento-kiosko.jpg" alt="Vista del evento desde el kiosko" />
+                        <h4>Área del Kiosko</h4>
+                        <p>Vista desde el kiosko</p>
+                    </div>
+                    <div>
+                        <img src="../assets/images/eventos/bodas/evento-piscina.jpg" alt="Vista del evento desde la piscina" />
+                        <h4>Área de Piscina</h4>
+                        <p>Vista desde la piscina</p>
+                    </div>
+                    <div>
+                        <img src="../assets/images/eventos/bodas/momento-comida.jpg" alt="Momento de la comida durante el evento" />
+                        <h4>Servicio de Comida</h4>
+                        <p>Momento de la comida</p>
+                    </div>
+                    <div>
+                        <img src="../assets/images/eventos/bodas/experiencia-evento.jpg" alt="Experiencia completa del evento" />
+                        <h4>Experiencia Completa</h4>
+                        <p>Experiencia en el evento</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="section">
+            <div class="container">
+                <h2>Ubícanos</h2>
+                <div class="section-description">
+                    <p>Nuestro salón de eventos se encuentra en un lugar privilegiado a las afueras de Rivera, Huila, rodeado de hermosos paisajes naturales que proporcionan el ambiente perfecto para tu celebración especial.</p>
+                </div>
+                <iframe 
+                    class="map-embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.8066947122376!2d-75.25068062593833!3d2.7435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b2a0b8b0b0b0b%3A0x1b0b0b0b0b0b0b0b!2sRivera%2C%20Huila!5e0!3m2!1ses!2sco!4v1632506400000!5m2!1ses!2sco"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación de Finca Termópilas en Rivera, Huila">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Quote Form Section -->
+        <section class="job-section">
+            <div class="container">
+                <div class="application-form">
+                    <h2 class="form-heading">Solicita tu Cotización</h2>
+                    <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
+                        Deja tus datos de contacto y te enviaremos al correo electrónico una cotización personalizada para el alquiler del salón
+                    </p>
+                    
+                    <form id="wedding-quote-form" action="https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_ID_HERE/exec" method="POST">
+                        <input type="hidden" name="tipo_evento" value="Boda">
+                        
+                        <div class="form-group">
+                            <label for="nombres_novios" class="form-label required-field">Nombres de los Novios</label>
+                            <input type="text" id="nombres_novios" name="nombres_novios" class="form-input" required placeholder="Ej: María Pérez y Juan García">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label required-field">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="tu@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono" class="form-label required-field">Teléfono/Celular</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-input" required placeholder="300 123 4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fecha_evento" class="form-label required-field">Fecha del Evento</label>
+                            <input type="date" id="fecha_evento" name="fecha_evento" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hora_evento" class="form-label required-field">Hora del Evento</label>
+                            <select id="hora_evento" name="hora_evento" class="form-select" required>
+                                <option value="">Selecciona la hora</option>
+                                <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                                <option value="Tarde (12:00 PM - 6:00 PM)">Tarde (12:00 PM - 6:00 PM)</option>
+                                <option value="Noche (6:00 PM - 12:00 AM)">Noche (6:00 PM - 12:00 AM)</option>
+                                <option value="Todo el día">Todo el día</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="numero_invitados" class="form-label required-field">Número de Invitados</label>
+                            <input type="number" id="numero_invitados" name="numero_invitados" class="form-input" required min="1" max="300" placeholder="Ej: 150">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="servicios_adicionales" class="form-label">Servicios Adicionales</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" name="servicios_adicionales" value="Planeación de boda">
+                                    Planeación de boda
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" name="servicios_adicionales" value="Servicio de banquetes">
+                                    Servicio de banquetes
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" name="servicios_adicionales" value="Sonido e iluminación">
+                                    Sonido e iluminación
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" name="servicios_adicionales" value="Mobiliario adicional">
+                                    Mobiliario adicional
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="presupuesto" class="form-label">Presupuesto Estimado</label>
+                            <select id="presupuesto" name="presupuesto" class="form-select">
+                                <option value="">Selecciona un rango</option>
+                                <option value="Menos de $2,000,000">Menos de $2,000,000</option>
+                                <option value="$2,000,000 - $5,000,000">$2,000,000 - $5,000,000</option>
+                                <option value="$5,000,000 - $10,000,000">$5,000,000 - $10,000,000</option>
+                                <option value="$10,000,000 - $20,000,000">$10,000,000 - $20,000,000</option>
+                                <option value="Más de $20,000,000">Más de $20,000,000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comentarios" class="form-label">Comentarios o Solicitudes Especiales</label>
+                            <textarea id="comentarios" name="comentarios" class="form-textarea" rows="4" placeholder="Cuéntanos más detalles sobre tu boda soñada, temas específicos, requerimientos especiales, etc."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit" onclick="trackWeddingEvent('form_submit', {'form_type': 'cotizacion'})">
+                            Solicitar Cotización
+                        </button>
+                    </form>
+
+                    <div id="response-display">
+                        <h3>Estado de la Solicitud</h3>
+                        <pre id="response-content"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../dist/main.js"></script>
+    <script>
+        // Wedding page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track page view
+            trackWeddingEvent('page_view', {'page_title': 'Salón de Eventos para Bodas'});
+            
+            // Track gallery image views
+            const galleryImages = document.querySelectorAll('.wedding-gallery img');
+            galleryImages.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    trackWeddingEvent('gallery_image_click', {'image_index': index + 1});
+                });
+            });
+            
+            // Track service item interactions
+            const serviceItems = document.querySelectorAll('.service-item');
+            serviceItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const serviceName = item.querySelector('h3').textContent;
+                    trackWeddingEvent('service_click', {'service_name': serviceName});
+                });
+            });
+            
+            // Form handling
+            const form = document.getElementById('wedding-quote-form');
+            const responseDisplay = document.getElementById('response-display');
+            const responseContent = document.getElementById('response-content');
+            const submitButton = form.querySelector('.form-submit');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Track form start
+                trackWeddingEvent('form_start', {'form_type': 'cotizacion'});
+                
+                // Show processing state
+                submitButton.classList.add('loading');
+                submitButton.textContent = 'Enviando...';
+                responseDisplay.className = 'processing';
+                responseContent.textContent = 'Procesando tu solicitud...';
+                
+                try {
+                    const formData = new FormData(form);
+                    
+                    // Handle multiple checkbox values
+                    const serviciosAdicionales = [];
+                    const checkboxes = form.querySelectorAll('input[name="servicios_adicionales"]:checked');
+                    checkboxes.forEach(checkbox => {
+                        serviciosAdicionales.push(checkbox.value);
+                    });
+                    formData.delete('servicios_adicionales');
+                    formData.append('servicios_adicionales', serviciosAdicionales.join(', '));
+                    
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.ok) {
+                        responseDisplay.className = 'success';
+                        responseContent.textContent = '¡Solicitud enviada exitosamente! Te contactaremos pronto con tu cotización personalizada.';
+                        form.reset();
+                        
+                        // Track successful submission
+                        trackWeddingEvent('form_success', {'form_type': 'cotizacion'});
+                    } else {
+                        throw new Error('Error en el servidor');
+                    }
+                } catch (error) {
+                    responseDisplay.className = 'error';
+                    responseContent.textContent = 'Ha ocurrido un error al enviar tu solicitud. Por favor intenta nuevamente o contáctanos directamente.';
+                    
+                    // Track form error
+                    trackWeddingEvent('form_error', {'form_type': 'cotizacion', 'error': error.message});
+                } finally {
+                    submitButton.classList.remove('loading');
+                    submitButton.textContent = 'Solicitar Cotización';
+                }
+            });
+            
+            // Set minimum date to today
+            const dateInput = document.getElementById('fecha_evento');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        });
+        
+        // Initialize header and footer
+        if (window.termopilasHeader) {
+            window.termopilasHeader.updateConfig({
+                logoText: "Finca Termópilas",
+                logoIcon: "🏡",
+                navItems: [
+                    { text: "Inicio", href: "../index.html" },
+                    { text: "Alojamiento", href: "../alojamiento.html" },
+                    { text: "Tour", href: "../tour.html" },
+                    { text: "Galería", href: "../galeria.html" },
+                    { text: "Ubicación", href: "../ubicacion.html" },
+                    { text: "Blog", href: "../blog.html" },
+                    { text: "Contacto", href: "../index.html#contacto" }
+                ],
+                heroContent: {
+                    title: "Vive la boda que siempre has soñado",
+                    subtitle: "Celebra tu amor en un espacio único rodeado de naturaleza en Rivera, Huila",
+                    ctaText: "Solicitar Cotización",
+                    ctaHref: "#wedding-quote-form"
+                },
+                heroClass: "wedding-hero"
+            });
+        }
+        
+        if (window.termopilasFooter) {
+            window.termopilasFooter.regenerateFooter();
+        }
+    </script>
+</body>
+</html>
