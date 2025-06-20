@@ -81,6 +81,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://termopilas.co/privacidad.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <image:image>
+      <image:loc>https://termopilas.co/assets/images/header.png</image:loc>
+      <image:title>Política de Privacidad - Finca Termópilas</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://termopilas.co/blog/posts/lugares-para-comer-rivera.html</loc>
     <lastmod>2025-04-05T08:00:00-05:00</lastmod>
     <changefreq>monthly</changefreq>

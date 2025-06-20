@@ -78,6 +78,9 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
     </div>
     <div class="footer-bottom">
       <p>${config.copyright}</p>
+      <div class="footer-links">
+        <a href="privacidad.html" class="privacy-link">Política de Privacidad</a>
+      </div>
     </div>
   `;
   
