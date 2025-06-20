@@ -73,6 +73,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  privacidad: {
+    heroClass: 'hero privacy-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Política de Privacidad',
+      subtitle: 'Protección y tratamiento responsable de tus datos personales',
+      ctaText: 'LEER POLÍTICA',
+      ctaHref: '#main-content'
+    }
+  },
   '404': {
     heroClass: 'hero',
     heroImage: '/assets/images/header.png',
