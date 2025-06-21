@@ -73,6 +73,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  eventos: {
+    heroClass: 'hero events-hero',
+    heroImage: '/assets/images/eventos/hero-big.jpg',
+    heroContent: {
+      title: 'Salón de Eventos',
+      subtitle: 'El espacio perfecto para celebrar los momentos más importantes de tu vida',
+      ctaText: 'Ver Eventos',
+      ctaHref: '#main-content'
+    }
+  },
   '404': {
     heroClass: 'hero',
     heroImage: '/assets/images/header.png',
@@ -89,6 +99,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
     { text: 'Tour', href: '/tour.html#main-content' },
     { text: 'Coliving', href: '/coliving.html#main-content' },
+    { text: 'Eventos', href: '/eventos.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
     { text: 'Blog', href: '/blog.html#main-content' }
   ],
