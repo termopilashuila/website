@@ -73,6 +73,8 @@ function handleRequest(e) {
         'Requiere Planeador',
         'Requiere Decoración',
         'Requiere Sonido',
+        'Requiere Fotografía',
+        'Requiere Audiovisuales',
         'Comentarios',
         'Detalles Específicos'
       ]);
@@ -82,39 +84,14 @@ function handleRequest(e) {
     const tipoEvento = data.tipo_evento || 'No especificado';
     let nombres, infoAdicional, detallesEspecificos;
     
-    switch (tipoEvento.toLowerCase()) {
-      case 'boda':
-        nombres = data.nombres_novios || '';
-        infoAdicional = '';
-        detallesEspecificos = '';
-        break;
-      case 'quinceañera':
-        nombres = data.nombre_quinceañera || '';
-        infoAdicional = data.nombres_padres || '';
-        detallesEspecificos = data.tematica_preferida ? `Temática: ${data.tematica_preferida}` : '';
-        break;
-      case 'retiro':
-        nombres = data.nombre_organizacion || '';
-        infoAdicional = data.tipo_retiro || '';
-        detallesEspecificos = '';
-        break;
-      case 'evento corporativo':
-        nombres = data.nombre_empresa || '';
-        infoAdicional = data.tipo_evento_corporativo || '';
-        detallesEspecificos = '';
-        break;
-      default:
-        nombres = data.nombre_contacto || data.organizacion || '';
-        infoAdicional = '';
-        detallesEspecificos = '';
-    }
+    // Debug: Log the received data to see what's coming through
+    console.log('Received form data:', JSON.stringify(data));
     
     // Agregar los datos a la hoja
-    sheet.appendRow([
+    const rowData = [
       timestamp,                          // Timestamp
       tipoEvento,                        // Tipo de evento
-      nombres,                           // Nombres/Organización
-      infoAdicional,                     // Información adicional
+      data.nombres_organizacion || '',   // Nombres/Organización
       data.email || '',                  // Email
       data.telefono || '',               // Teléfono
       data.fecha_evento || '',           // Fecha del evento
@@ -128,9 +105,17 @@ function handleRequest(e) {
       data.requiere_planeador || 'No',   // Requiere planeador
       data.requiere_decoracion || 'No',  // Requiere decoración
       data.requiere_sonido || 'No',      // Requiere sonido
+      data.requiere_fotografia || 'No',  // Requiere fotografía
+      data.requiere_audiovisuales || 'No', // Requiere audiovisuales
       data.comentarios || '',            // Comentarios
       detallesEspecificos                // Detalles específicos del tipo de evento
-    ]);
+    ];
+    
+    // Debug: Log the row data being saved
+    console.log('Row data being saved:', rowData);
+    console.log('Position 2 (Nombres/Organización):', rowData[2]);
+    
+    sheet.appendRow(rowData);
     
     // Enviar notificación por correo electrónico
     sendEventNotification(data, tipoEvento);
@@ -219,22 +204,31 @@ function generateSuccessPage(data, tipoEvento) {
   const icon = eventIcons[tipoEvento.toLowerCase()] || '🎉';
   const color = eventColors[tipoEvento.toLowerCase()] || '#F29F05';
   
+  // Priorizar el campo general nombres_organizacion
+  const nombresGeneral = data.nombres_organizacion || '';
+  
   let personalizacionTexto = '';
   switch (tipoEvento.toLowerCase()) {
     case 'boda':
-      personalizacionTexto = `Gracias <strong>${data.nombres_novios || 'queridos novios'}</strong> por contactarnos para su día especial.`;
+      const nombresBoda = nombresGeneral || data.nombres_novios || 'queridos novios';
+      personalizacionTexto = `Gracias <strong>${nombresBoda}</strong> por contactarnos para su día especial.`;
       break;
+    case 'quince años':
     case 'quinceañera':
-      personalizacionTexto = `Gracias por contactarnos para la fiesta de 15 años de <strong>${data.nombre_quinceañera || 'tu princesa'}</strong>.`;
+      const nombresQuince = nombresGeneral || data.nombre_quinceañera || 'tu princesa';
+      personalizacionTexto = `Gracias por contactarnos para la fiesta de 15 años de <strong>${nombresQuince}</strong>.`;
       break;
     case 'retiro':
-      personalizacionTexto = `Gracias <strong>${data.nombre_organizacion || 'estimado organizador'}</strong> por contactarnos para su retiro.`;
+      const nombresRetiro = nombresGeneral || data.nombre_organizacion || 'estimado organizador';
+      personalizacionTexto = `Gracias <strong>${nombresRetiro}</strong> por contactarnos para su retiro.`;
       break;
     case 'evento corporativo':
-      personalizacionTexto = `Gracias <strong>${data.nombre_empresa || 'estimado cliente'}</strong> por contactarnos para su evento corporativo.`;
+      const nombresCorporativo = nombresGeneral || data.nombre_empresa || 'estimado cliente';
+      personalizacionTexto = `Gracias <strong>${nombresCorporativo}</strong> por contactarnos para su evento corporativo.`;
       break;
     default:
-      personalizacionTexto = `Gracias por contactarnos para su evento especial.`;
+      const nombresDefault = nombresGeneral || 'estimado cliente';
+      personalizacionTexto = `Gracias <strong>${nombresDefault}</strong> por contactarnos para su evento especial.`;
   }
   
   const replacements = {
@@ -255,26 +249,34 @@ function sendEventNotification(data, tipoEvento) {
     const emailAddresses = ["termopilashuila@gmail.com"];
     
     // Configuración específica por tipo de evento
+    // Priorizar el campo general nombres_organizacion
+    const nombresGeneral = data.nombres_organizacion || '';
+    
     const eventConfig = {
       'boda': {
         emoji: '💍',
         color: '#F29F05',
-        nombre: data.nombres_novios || 'No especificado'
+        nombre: nombresGeneral || data.nombres_novios || 'No especificado'
+      },
+      'quince años': {
+        emoji: '👑',
+        color: '#e91e63',
+        nombre: nombresGeneral || data.nombre_quinceañera || 'No especificado'
       },
       'quinceañera': {
         emoji: '👑',
         color: '#e91e63',
-        nombre: data.nombre_quinceañera || 'No especificado'
+        nombre: nombresGeneral || data.nombre_quinceañera || 'No especificado'
       },
       'retiro': {
         emoji: '🧘‍♀️',
         color: '#4caf50',
-        nombre: data.nombre_organizacion || 'No especificado'
+        nombre: nombresGeneral || data.nombre_organizacion || 'No especificado'
       },
       'evento corporativo': {
         emoji: '🏢',
         color: '#2196f3',
-        nombre: data.nombre_empresa || 'No especificado'
+        nombre: nombresGeneral || data.nombre_empresa || 'No especificado'
       }
     };
     
@@ -325,25 +327,47 @@ function generateEmailHTML(data, tipoEvento, config, logoUrl, diasHastaEvento) {
   const template = loadTemplate('email');
   
   // Información específica por tipo de evento
+  // Priorizar el campo general nombres_organizacion
+  const nombresGeneral = data.nombres_organizacion || '';
+  
   let camposEspecificos = '';
+  
+  // Siempre mostrar el campo principal de nombres/organización
+  const nombrePrincipal = nombresGeneral || 'No especificado';
+  camposEspecificos += `
+    <tr style="border-bottom: 1px solid #f0f0f0;">
+      <td style="padding: 10px 0; font-weight: bold; color: #555;">👤 Nombres/Organización:</td>
+      <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">${nombrePrincipal}</td>
+    </tr>`;
+  
   switch (tipoEvento.toLowerCase()) {
     case 'boda':
-      camposEspecificos = `
+      // Mostrar nombres de novios si es diferente del campo general
+      if (data.nombres_novios && data.nombres_novios !== nombresGeneral) {
+        camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
           <td style="padding: 10px 0; font-weight: bold; color: #555;">💑 Novios:</td>
-          <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">${data.nombres_novios || 'No especificado'}</td>
+          <td style="padding: 10px 0; color: #333; font-size: 15px; font-weight: 600;">${data.nombres_novios}</td>
         </tr>`;
+      }
       break;
+    case 'quince años':
     case 'quinceañera':
-      camposEspecificos = `
+      // Mostrar nombre de quinceañera si es diferente del campo general
+      if (data.nombre_quinceañera && data.nombre_quinceañera !== nombresGeneral) {
+        camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
           <td style="padding: 10px 0; font-weight: bold; color: #555;">👑 Quinceañera:</td>
-          <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">${data.nombre_quinceañera || 'No especificado'}</td>
-        </tr>
+          <td style="padding: 10px 0; color: #333; font-size: 15px; font-weight: 600;">${data.nombre_quinceañera}</td>
+        </tr>`;
+      }
+      if (data.nombres_padres) {
+        camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
           <td style="padding: 10px 0; font-weight: bold; color: #555;">👨‍👩‍👧 Padres:</td>
-          <td style="padding: 10px 0; color: #333; font-size: 15px; font-weight: 600;">${data.nombres_padres || 'No especificado'}</td>
+          <td style="padding: 10px 0; color: #333; font-size: 15px; font-weight: 600;">${data.nombres_padres}</td>
         </tr>`;
+      }
       if (data.tematica_preferida) {
         camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
@@ -353,11 +377,6 @@ function generateEmailHTML(data, tipoEvento, config, logoUrl, diasHastaEvento) {
       }
       break;
     case 'retiro':
-      camposEspecificos = `
-        <tr style="border-bottom: 1px solid #f0f0f0;">
-          <td style="padding: 10px 0; font-weight: bold; color: #555;">🏢 Organización:</td>
-          <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">${data.nombre_organizacion || 'No especificado'}</td>
-        </tr>`;
       if (data.tipo_retiro) {
         camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
@@ -367,11 +386,14 @@ function generateEmailHTML(data, tipoEvento, config, logoUrl, diasHastaEvento) {
       }
       break;
     case 'evento corporativo':
-      camposEspecificos = `
+      // Mostrar nombre de empresa si es diferente del campo general
+      if (data.nombre_empresa && data.nombre_empresa !== nombresGeneral) {
+        camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
           <td style="padding: 10px 0; font-weight: bold; color: #555;">🏢 Empresa:</td>
-          <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">${data.nombre_empresa || 'No especificado'}</td>
+          <td style="padding: 10px 0; color: #333; font-size: 15px; font-weight: 600;">${data.nombre_empresa}</td>
         </tr>`;
+      }
       if (data.tipo_evento_corporativo) {
         camposEspecificos += `
         <tr style="border-bottom: 1px solid #f0f0f0;">
@@ -425,6 +447,8 @@ function generateEmailHTML(data, tipoEvento, config, logoUrl, diasHastaEvento) {
     PLANEADOR_ICON: (data.requiere_planeador === 'Sí') ? '✅' : '❌',
     DECORACION_ICON: (data.requiere_decoracion === 'Sí') ? '✅' : '❌',
     SONIDO_ICON: (data.requiere_sonido === 'Sí') ? '✅' : '❌',
+    FOTOGRAFIA_ICON: (data.requiere_fotografia === 'Sí') ? '✅' : '❌',
+    AUDIOVISUALES_ICON: (data.requiere_audiovisuales === 'Sí') ? '✅' : '❌',
     SERVICIOS_ADICIONALES_SECTION: serviciosAdicionalesSection,
     COMENTARIOS_SECTION: comentariosSection,
     WHATSAPP_URL: whatsappUrl
@@ -437,26 +461,40 @@ function generateEmailHTML(data, tipoEvento, config, logoUrl, diasHastaEvento) {
  * Función para generar el contenido de texto plano del correo
  */
 function generateEmailPlain(data, tipoEvento, emoji, diasHastaEvento) {
-  let camposEspecificos = '';
+  // Priorizar el campo general nombres_organizacion
+  const nombresGeneral = data.nombres_organizacion || '';
+  
+  // Siempre mostrar el campo principal
+  const nombrePrincipal = nombresGeneral || 'No especificado';
+  let camposEspecificos = `👤 Nombres/Organización: ${nombrePrincipal}`;
+  
   switch (tipoEvento.toLowerCase()) {
     case 'boda':
-      camposEspecificos = `💑 Novios: ${data.nombres_novios || 'No especificado'}`;
+      if (data.nombres_novios && data.nombres_novios !== nombresGeneral) {
+        camposEspecificos += `\n💑 Novios: ${data.nombres_novios}`;
+      }
       break;
+    case 'quince años':
     case 'quinceañera':
-      camposEspecificos = `👑 Quinceañera: ${data.nombre_quinceañera || 'No especificado'}
-👨‍👩‍👧 Padres: ${data.nombres_padres || 'No especificado'}`;
+      if (data.nombre_quinceañera && data.nombre_quinceañera !== nombresGeneral) {
+        camposEspecificos += `\n👑 Quinceañera: ${data.nombre_quinceañera}`;
+      }
+      if (data.nombres_padres) {
+        camposEspecificos += `\n👨‍👩‍👧 Padres: ${data.nombres_padres}`;
+      }
       if (data.tematica_preferida) {
         camposEspecificos += `\n🎨 Temática: ${data.tematica_preferida}`;
       }
       break;
     case 'retiro':
-      camposEspecificos = `🏢 Organización: ${data.nombre_organizacion || 'No especificado'}`;
       if (data.tipo_retiro) {
         camposEspecificos += `\n🧘‍♀️ Tipo de Retiro: ${data.tipo_retiro}`;
       }
       break;
     case 'evento corporativo':
-      camposEspecificos = `🏢 Empresa: ${data.nombre_empresa || 'No especificado'}`;
+      if (data.nombre_empresa && data.nombre_empresa !== nombresGeneral) {
+        camposEspecificos += `\n🏢 Empresa: ${data.nombre_empresa}`;
+      }
       if (data.tipo_evento_corporativo) {
         camposEspecificos += `\n🎯 Tipo de Evento: ${data.tipo_evento_corporativo}`;
       }
@@ -484,6 +522,8 @@ ${(data.requiere_mobiliario === 'Sí') ? '✅' : '❌'} Mobiliario (sillas, mesa
 ${(data.requiere_planeador === 'Sí') ? '✅' : '❌'} Planeador del evento
 ${(data.requiere_decoracion === 'Sí') ? '✅' : '❌'} Decoración
 ${(data.requiere_sonido === 'Sí') ? '✅' : '❌'} Sonido
+${(data.requiere_fotografia === 'Sí') ? '✅' : '❌'} Fotografía profesional
+${(data.requiere_audiovisuales === 'Sí') ? '✅' : '❌'} Equipos audiovisuales
 
 ${data.servicios_adicionales ? `🎉 SERVICIOS ADICIONALES:
 ${data.servicios_adicionales}
@@ -521,103 +561,3 @@ function formatDateSpanish(date) {
   };
   return date.toLocaleDateString('es-CO', options);
 }
-
-/**
- * Función de prueba para el envío de correos
- */
-function testEventNotifications() {
-  const testDataBoda = {
-    tipo_evento: "Boda",
-    nombres_novios: "María Pérez y Juan García",
-    email: "test@example.com",
-    telefono: "300 123 4567",
-    fecha_evento: "2024-06-15",
-    hora_evento: "Tarde (12:00 PM - 6:00 PM)",
-    numero_invitados: "150",
-    servicios_adicionales: "Planeación de boda, Servicio de banquetes, Sonido e iluminación",
-    presupuesto: "$10,000,000 - $20,000,000",
-    comentarios: "Queremos una boda al aire libre con temática rústica."
-  };
-  
-  const testDataQuince = {
-    tipo_evento: "Quinceañera",
-    nombre_quinceañera: "María José González",
-    nombres_padres: "Carlos González y Ana María Pérez",
-    email: "test@example.com",
-    telefono: "300 123 4567",
-    fecha_evento: "2024-07-20",
-    hora_evento: "Noche (6:00 PM - 12:00 AM)",
-    numero_invitados: "120",
-    servicios_adicionales: "Planeación de quinceañera, DJ y sonido, Decoración temática",
-    tematica_preferida: "Princesa - colores rosa y dorado",
-    presupuesto: "$8,000,000 - $15,000,000",
-    comentarios: "Queremos una fiesta muy especial para nuestra princesa."
-  };
-  
-  sendEventNotification(testDataBoda, "Boda");
-  sendEventNotification(testDataQuince, "Quinceañera");
-  
-  console.log('Test event notifications sent successfully!');
-}
-
-/**
- * Función para crear la hoja de cálculo unificada
- */
-function createEventSpreadsheet() {
-  const ss = SpreadsheetApp.create('Cotizaciones de Eventos - Finca Termópilas');
-  const sheet = ss.getActiveSheet();
-  
-  // Configurar encabezados
-  const headers = [
-    'Timestamp',
-    'Tipo de Evento',
-    'Nombres/Organización',
-    'Información Adicional',
-    'Email',
-    'Teléfono',
-    'Fecha del Evento',
-    'Hora del Evento',
-    'Número de Invitados',
-    'Servicios Adicionales',
-    'Presupuesto',
-    'Requiere Alojamiento',
-    'Requiere Alimentación',
-    'Requiere Mobiliario',
-    'Requiere Planeador',
-    'Requiere Decoración',
-    'Requiere Sonido',
-    'Comentarios',
-    'Detalles Específicos',
-    'Estado', // Para seguimiento interno
-    'Cotización Enviada', // Para control
-    'Notas Internas' // Para comentarios del equipo
-  ];
-  
-  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
-  
-  // Formatear encabezados
-  const headerRange = sheet.getRange(1, 1, 1, headers.length);
-  headerRange.setBackground('#F29F05');
-  headerRange.setFontColor('white');
-  headerRange.setFontWeight('bold');
-  
-  // Ajustar anchos de columna
-  sheet.setColumnWidth(1, 150); // Timestamp
-  sheet.setColumnWidth(2, 150); // Tipo de evento
-  sheet.setColumnWidth(3, 200); // Nombres/Organización
-  sheet.setColumnWidth(4, 150); // Información adicional
-  sheet.setColumnWidth(5, 200); // Email
-  sheet.setColumnWidth(12, 120); // Requiere Alojamiento
-  sheet.setColumnWidth(13, 120); // Requiere Alimentación
-  sheet.setColumnWidth(14, 120); // Requiere Mobiliario
-  sheet.setColumnWidth(15, 120); // Requiere Planeador
-  sheet.setColumnWidth(16, 120); // Requiere Decoración
-  sheet.setColumnWidth(17, 120); // Requiere Sonido
-  sheet.setColumnWidth(18, 300); // Comentarios
-  sheet.setColumnWidth(19, 200); // Detalles específicos
-  
-  console.log('Events spreadsheet created with ID:', ss.getId());
-  console.log('Update the spreadsheetId variable in the script with this ID.');
-  
-  return ss.getId();
-} 

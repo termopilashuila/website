@@ -793,6 +793,11 @@
                         
                         <!-- Common Fields -->
                         <div class="form-group">
+                            <label for="nombres_organizacion" class="form-label required-field">Nombres/Organización</label>
+                            <input type="text" id="nombres_organizacion" name="nombres_organizacion" class="form-input" required placeholder="Tu nombre completo o nombre de la organización">
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="email" class="form-label required-field">Correo electrónico</label>
                             <input type="email" id="email" name="email" class="form-input" required placeholder="tu@email.com">
                         </div>
@@ -842,32 +847,42 @@
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_alojamiento" value="Sí">
                                     <i class="fas fa-bed" style="color: #666;"></i>
-                                    ¿Requieres alojamiento?
+                                    Alojamiento
                                 </label>
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_alimentacion" value="Sí">
                                     <i class="fas fa-utensils" style="color: #666;"></i>
-                                    ¿Requieres alimentación?
+                                    Alimentación/Banquetes
                                 </label>
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_mobiliario" value="Sí">
                                     <i class="fas fa-chair" style="color: #666;"></i>
-                                    ¿Requieres sillas y mesas?
+                                    Mobiliario (sillas y mesas)
                                 </label>
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_sonido" value="Sí">
                                     <i class="fas fa-volume-up" style="color: #666;"></i>
-                                    ¿Requieres sistema de sonido?
+                                    Sistema de sonido
                                 </label>
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_planeador" value="Sí">
                                     <i class="fas fa-calendar-check" style="color: #666;"></i>
-                                    ¿Requieres planeador del evento?
+                                    Planeación del evento
                                 </label>
                                 <label class="service-checkbox-label">
                                     <input type="checkbox" name="requiere_decoracion" value="Sí">
                                     <i class="fas fa-palette" style="color: #666;"></i>
-                                    ¿Requieres decoración?
+                                    Decoración
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_fotografia" value="Sí">
+                                    <i class="fas fa-camera" style="color: #666;"></i>
+                                    Fotografía profesional
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_audiovisuales" value="Sí">
+                                    <i class="fas fa-projector" style="color: #666;"></i>
+                                    Equipos audiovisuales
                                 </label>
                             </div>
                         </div>
@@ -877,9 +892,11 @@
                             <textarea id="comentarios" name="comentarios" class="form-textarea" rows="4" placeholder="Cuéntanos más detalles sobre tu evento, temática, requerimientos especiales, etc."></textarea>
                         </div>
                         
-                        <button type="submit" class="form-submit">
-                            Solicitar Cotización
-                        </button>
+                        <div style="text-align: center;">
+                            <button type="submit" class="form-submit">
+                                Solicitar Cotización
+                            </button>
+                        </div>
                     </form>
 
                     <div id="response-display">
@@ -906,33 +923,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Dynamic form field templates
+            // Dynamic form field templates (removed servicios_adicionales sections)
             const fieldTemplates = {
                 bodas: `
                     <div class="form-group">
                         <label for="nombres_novios" class="form-label required-field">Nombres de los Novios</label>
                         <input type="text" id="nombres_novios" name="nombres_novios" class="form-input" required placeholder="Ej: María Pérez y Juan García">
-                    </div>
-                    <div class="form-group">
-                        <label for="servicios_adicionales" class="form-label">Servicios Adicionales</label>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Planeación de boda">
-                                Planeación de boda
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Servicio de banquetes">
-                                Servicio de banquetes
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Sonido e iluminación">
-                                Sonido e iluminación
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Mobiliario adicional">
-                                Mobiliario adicional
-                            </label>
-                        </div>
                     </div>
                 `,
                 quinces: `
@@ -947,35 +943,6 @@
                     <div class="form-group">
                         <label for="tematica_preferida" class="form-label">Temática Preferida</label>
                         <input type="text" id="tematica_preferida" name="tematica_preferida" class="form-input" placeholder="Ej: Princesa, Vintage, Mariposas, etc.">
-                    </div>
-                    <div class="form-group">
-                        <label for="servicios_adicionales" class="form-label">Servicios Adicionales</label>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Planeación de fiesta de quince años">
-                                Planeación de fiesta de quince años
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Servicio de banquetes">
-                                Servicio de banquetes
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="DJ y sonido">
-                                DJ y sonido
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Decoración temática">
-                                Decoración temática
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Fotografía profesional">
-                                Fotografía profesional
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Mobiliario adicional">
-                                Mobiliario adicional
-                            </label>
-                        </div>
                     </div>
                 `,
                 retiros: `
@@ -995,67 +962,8 @@
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="servicios_adicionales" class="form-label">Servicios Requeridos</label>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Alojamiento completo">
-                                Alojamiento completo
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Alimentación saludable">
-                                Alimentación saludable
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Espacios para actividades">
-                                Espacios para actividades
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Equipos audiovisuales">
-                                Equipos audiovisuales
-                            </label>
-                        </div>
-                    </div>
                 `,
-                'Evento Corporativo': `
-                    <div class="form-group">
-                        <label for="nombre_empresa" class="form-label required-field">Nombre de la Empresa</label>
-                        <input type="text" id="nombre_empresa" name="nombre_empresa" class="form-input" required placeholder="Ej: Empresa ABC S.A.S.">
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo_evento_corporativo" class="form-label">Tipo de Evento</label>
-                        <select id="tipo_evento_corporativo" name="tipo_evento_corporativo" class="form-select">
-                            <option value="">Selecciona el tipo</option>
-                            <option value="Conferencia">Conferencia</option>
-                            <option value="Lanzamiento de producto">Lanzamiento de producto</option>
-                            <option value="Team building">Team building</option>
-                            <option value="Reunión anual">Reunión anual</option>
-                            <option value="Capacitación">Capacitación</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="servicios_adicionales" class="form-label">Servicios Requeridos</label>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Equipos audiovisuales">
-                                Equipos audiovisuales
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Coffee break">
-                                Coffee break
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Alojamiento">
-                                Alojamiento
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" name="servicios_adicionales" value="Actividades al aire libre">
-                                Actividades al aire libre
-                            </label>
-                        </div>
-                    </div>
-                `
+                'Evento Corporativo': ``
             };
             
             // Handle event type selection
@@ -1118,6 +1026,9 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                console.log('=== FORM SUBMISSION STARTED ===');
+                console.log('Form element:', form);
+                
                 // Show processing state
                 submitButton.classList.add('loading');
                 responseDisplay.className = 'processing';
@@ -1126,9 +1037,18 @@
                 // Collect form data
                 const formData = new FormData(form);
                 
+                // Debug: Log all form data entries
+                console.log('=== INITIAL FORM DATA ===');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                
                 // Handle checkboxes for servicios_adicionales
                 const checkboxes = form.querySelectorAll('input[name="servicios_adicionales"]:checked');
                 const serviciosSeleccionados = Array.from(checkboxes).map(cb => cb.value).join(', ');
+                console.log('=== SERVICIOS ADICIONALES PROCESSING ===');
+                console.log('Checked servicios_adicionales:', Array.from(checkboxes).map(cb => cb.value));
+                console.log('Combined servicios_adicionales:', serviciosSeleccionados);
                 formData.set('servicios_adicionales', serviciosSeleccionados);
                 
                 // Handle boolean service requirements checkboxes
@@ -1138,12 +1058,38 @@
                     'requiere_mobiliario',
                     'requiere_planeador',
                     'requiere_decoracion',
-                    'requiere_sonido'
+                    'requiere_sonido',
+                    'requiere_fotografia',
+                    'requiere_audiovisuales'
                 ];
                 
+                console.log('=== BOOLEAN FIELDS PROCESSING ===');
                 booleanFields.forEach(fieldName => {
                     const checkbox = form.querySelector(`input[name="${fieldName}"]`);
-                    formData.set(fieldName, checkbox && checkbox.checked ? 'Sí' : 'No');
+                    const value = checkbox && checkbox.checked ? 'Sí' : 'No';
+                    console.log(`${fieldName}: ${checkbox ? 'found' : 'NOT FOUND'} - checked: ${checkbox?.checked} - value: ${value}`);
+                    formData.set(fieldName, value);
+                });
+                
+                // Debug: Log all form fields in the form
+                console.log('=== ALL FORM FIELDS ===');
+                const allFormFields = form.querySelectorAll('input, select, textarea');
+                allFormFields.forEach(field => {
+                    console.log(`Field: ${field.name} (${field.type}) = "${field.value}"`);
+                });
+                
+                // Debug: Log final form data
+                console.log('=== FINAL FORM DATA BEING SENT ===');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                
+                // Debug: Check for missing required fields
+                console.log('=== REQUIRED FIELDS CHECK ===');
+                const requiredFields = form.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    const isEmpty = !field.value || field.value.trim() === '';
+                    console.log(`Required field ${field.name}: ${isEmpty ? 'EMPTY' : 'filled'} (value: "${field.value}")`);
                 });
                 
                 // Track form submission start
@@ -1157,6 +1103,13 @@
                     'value': 1
                 });
                 
+                // Debug: Log the request details
+                console.log('=== REQUEST DETAILS ===');
+                console.log('URL:', form.action);
+                console.log('Method: POST');
+                console.log('Mode: no-cors');
+                console.log('FormData size:', [...formData.entries()].length, 'entries');
+                
                 // Submit to Google Apps Script
                 fetch(form.action, {
                     method: 'POST',
@@ -1165,6 +1118,9 @@
                 })
                 .then(() => {
                     // Success
+                    console.log('=== FORM SUBMISSION SUCCESS ===');
+                    console.log('Request completed successfully');
+                    
                     submitButton.classList.remove('loading');
                     responseDisplay.className = 'success';
                     responseContent.textContent = `¡Solicitud enviada exitosamente!\n\nGracias por contactarnos. Te responderemos dentro de las próximas 24-48 horas con una cotización personalizada para tu ${formData.get('tipo_evento').toLowerCase()}.\n\nSi tienes alguna pregunta urgente, puedes contactarnos directamente por WhatsApp.`;
@@ -1189,6 +1145,14 @@
                 })
                 .catch(error => {
                     // Error
+                    console.log('=== FORM SUBMISSION ERROR ===');
+                    console.error('Request failed with error:', error);
+                    console.error('Error details:', {
+                        message: error.message,
+                        stack: error.stack,
+                        name: error.name
+                    });
+                    
                     submitButton.classList.remove('loading');
                     responseDisplay.className = 'error';
                     responseContent.textContent = `Error al enviar la solicitud.\n\nPor favor intenta nuevamente o contáctanos directamente:\n📧 termopilashuila@gmail.com\n📱 WhatsApp: +57 314 342 8579`;
@@ -1202,8 +1166,6 @@
                         'error_message': error.message || 'Unknown error',
                         'value': 0
                     });
-                    
-                    console.error('Error:', error);
                 });
             });
 
