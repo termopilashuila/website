@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón de Eventos - Finca Termópilas</title>
+    <meta name="description" content="Salón de eventos en Finca Termópilas para bodas, Quince años y celebraciones especiales en Rivera, Huila. Capacidad para 300 personas.">
+    <meta name="keywords" content="Salón de eventos, Bodas, Quince años, Celebraciones, Finca Termópilas, Rivera, Huila, Eventos sociales">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/utilities.css">
+    <link rel="stylesheet" href="styles/trabajo.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/eventos.html">
+    <meta property="og:title" content="Salón de Eventos - Finca Termópilas">
+    <meta property="og:description" content="Salón de eventos en Finca Termópilas para bodas, Quince años y celebraciones especiales en Rivera, Huila.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/header.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/eventos.html">
+    <meta property="twitter:title" content="Salón de Eventos - Finca Termópilas">
+    <meta property="twitter:description" content="Salón de eventos en Finca Termópilas para bodas, Quince años y celebraciones especiales en Rivera, Huila.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/header.png">
+    
+    <!-- JavaScript -->
+    <script src="dist/main.js" defer></script>
+    
+    <style>
+        /* Events page specific styles */
+        .events-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .event-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.16);
+        }
+        
+        .event-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover .event-card-image {
+            transform: scale(1.05);
+        }
+        
+        .event-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-card h3 {
+            color: var(--primary-color);
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .event-card-features {
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+        
+        .event-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+        
+        .event-feature i {
+            color: var(--accent-color);
+            margin-right: 0.8rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .event-card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            padding-top: 1rem;
+        }
+        
+        .quote-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .quote-button:hover {
+            background-color: #d68c04;
+            transform: translateY(-2px);
+        }
+        
+        .services-highlight {
+            background: linear-gradient(135deg, #fdf6ea 0%, #fff8e1 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .services-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .service-highlight {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-highlight:hover {
+            transform: translateY(-4px);
+        }
+        
+        .service-highlight i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-highlight h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* Form response styles */
+        #response-display {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        
+        #response-display.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        
+        #response-display.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        
+        #response-display.processing {
+            background-color: #e2e3e5;
+            border: 1px solid #d6d8db;
+            color: #383d41;
+            display: block;
+        }
+        
+        #response-content {
+            white-space: pre-wrap;
+            margin: 10px 0 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+        }
+        
+        .form-submit.loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+        }
+        
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fdf6ea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
+        /* Dynamic fields styling */
+        #dynamic-fields .form-group {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Boolean service checkboxes styling */
+        .service-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .service-checkbox-label:hover {
+            border-color: var(--accent-color);
+            background: #fff8e1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .service-checkbox-label input[type="checkbox"]:checked + i {
+            color: var(--accent-color) !important;
+        }
+        
+        .service-checkbox-label:has(input[type="checkbox"]:checked) {
+            border-color: var(--accent-color);
+            background: #fff3cd;
+        }
+        
+        /* Gallery Section Styles */
+        .gallery-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .events-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: var(--heading-font);
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        /* Mobile optimizations for gallery */
+        @media (max-width: 768px) {
+            .events-gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 16/9;
+            }
+            
+            .gallery-overlay {
+                /* Show overlay by default on mobile for better UX */
+                transform: translateY(0);
+                background: linear-gradient(transparent, rgba(0,0,0,0.7));
+                padding: 1.5rem 1rem 1rem;
+            }
+            
+            .gallery-overlay h4 {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-section {
+                padding: 3rem 0;
+            }
+            
+            .events-gallery {
+                gap: 0.8rem;
+            }
+            
+            .gallery-item {
+                border-radius: 8px;
+            }
+        }
+        
+        /* Tablet and small desktop optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .events-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Large desktop optimizations */
+        @media (min-width: 1200px) {
+            .events-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header will be dynamically generated by TypeScript -->
+    <header class="hero events-hero">
+        <!-- Content will be injected by TypeScript -->
+    </header>
+
+    <main id="main-content">
+
+        <!-- Salón de Eventos y Tipos de Eventos -->
+        <section class="info-section">
+
+            <div class="container">
+                
+                <div class="job-card" style="max-width: none; margin-bottom: 0;">
+                    <div class="job-title">
+                        <i class="fas fa-building"></i>
+                        Salón de Eventos
+                    </div>
+                    
+                    <div class="job-info">
+                        <div class="job-detail">
+                            <i class="fas fa-users"></i>
+                            <span>Capacidad máxima para 300 personas</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rivera, Huila - Colombia</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Piscina con área de baños</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-home"></i>
+                            <span>Kiosko para ceremonias</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-parking"></i>
+                            <span>Amplio parqueadero</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-tree"></i>
+                            <span>Jardines y espacios verdes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="job-description">
+                        <p>Nuestro salón de eventos está ubicado en un entorno natural privilegiado a las afueras de Rivera, Huila. 
+                        Con una combinación perfecta de elegancia y naturaleza, ofrecemos el espacio ideal para celebraciones 
+                        memorables con vista a hermosos paisajes montañosos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                
+                <h2 class="section-heading" style="margin-top: 3rem; margin-bottom: 2rem;">Tipos de Eventos</h3>
+                
+                <div class="job-grid">
+                    <!-- Bodas -->
+                    <div class="event-card">
+                        <img src="assets/images/eventos/experiencia-evento.jpg" alt="Salón de eventos para bodas" class="event-card-image">
+                        
+                        <div class="event-card-content">
+                            <h3><i class="fas fa-heart"></i>Bodas</h3>
+                            
+                            <p>Celebra el día más importante de tu vida en un entorno mágico. Nuestro salón de eventos está diseñado especialmente para crear la boda de tus sueños.</p>
+                            
+                            <div class="event-card-features">
+                                <div class="event-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>Capacidad para 300 invitados</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-church"></i>
+                                    <span>Ceremonia en el kiosko</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>Área de piscina y recreación</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Espacios fotográficos únicos</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-parking"></i>
+                                    <span>Parqueadero amplio</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card-footer">
+                                <a class="quote-button" href="#event-quote-form" data-event-type="bodas" onclick="gtag('event', 'eventos_quote_bodas', {'event_category': 'Events', 'event_label': 'Quote Request - Bodas', 'event_type': 'bodas'})">Solicitar Cotización</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quince años -->
+                    <div class="event-card">
+                        <img src="assets/images/eventos/interior-salon.jpg" alt="Salón de eventos para Quince años" class="event-card-image">
+                        
+                        <div class="event-card-content">
+                            <h3><i class="fas fa-crown"></i>Quince años</h3>
+                            
+                            <p>Haz realidad la fiesta de 15 años soñada en un ambiente elegante y lleno de magia. Creamos experiencias únicas para este momento tan especial.</p>
+                            
+                            <div class="event-card-features">
+                                <div class="event-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>Perfecto para fiestas de 15</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-music"></i>
+                                    <span>Pista de baile espaciosa</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <span>Área especial para ceremonia</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Decoración temática personalizada</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Servicio de banquetes juvenil</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card-footer">
+                                <a class="quote-button" href="#event-quote-form" data-event-type="quinces" onclick="gtag('event', 'eventos_quote_quinces', {'event_category': 'Events', 'event_label': 'Quote Request - Quince años', 'event_type': 'quinces'})">Solicitar Cotización</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Eventos Corporativos (próximamente) -->
+                    <div class="event-card">
+                        <img src="assets/images/venue/image2.png" alt="Salón de eventos corporativos" class="event-card-image">
+                        
+                        <div class="event-card-content">
+                            <h3><i class="fas fa-briefcase"></i>Eventos Corporativos</h3>
+                            
+                            <p>Espacio ideal para conferencias, lanzamientos de productos, team building y eventos empresariales en un entorno natural inspirador.</p>
+                            
+                            <div class="event-card-features">
+                                <div class="event-feature">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>WiFi de alta velocidad</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-projector"></i>
+                                    <span>Equipos audiovisuales</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-coffee"></i>
+                                    <span>Servicio de coffee break</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-tree"></i>
+                                    <span>Actividades al aire libre</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Alojamiento disponible</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card-footer">
+                                <a class="quote-button" href="#event-quote-form" data-event-type="corporativo" onclick="gtag('event', 'eventos_quote_corporativo', {'event_category': 'Events', 'event_label': 'Quote Request - Eventos Corporativos', 'event_type': 'corporativo'})">Solicitar Cotización</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Retiros -->
+                    <div class="event-card">
+                        <img src="assets/images/home/section3-img4.jpg" alt="Retiros en Finca Termópilas" class="event-card-image">
+                        
+                        <div class="event-card-content">
+                            <h3><i class="fas fa-leaf"></i>Retiros</h3>
+                            
+                            <p>Organizar un retiro requiere logística, estructura, mobiliario, convocatoria y comodidad. Nosotros te ayudamos a crear la experiencia perfecta para tu grupo.</p>
+                            
+                            <div class="event-card-features">
+                                <div class="event-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>Grupos de 20 a 100 personas</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-om"></i>
+                                    <span>Espacios para meditación y yoga</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Alimentación saludable</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Alojamiento incluido</span>
+                                </div>
+                                <div class="event-feature">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Conexión con la naturaleza</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card-footer">
+                                <a class="quote-button" href="#event-quote-form" data-event-type="retiros" onclick="gtag('event', 'eventos_quote_retiros', {'event_category': 'Events', 'event_label': 'Quote Request - Retiros', 'event_type': 'retiros'})">Solicitar Cotización</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Incluidos -->
+        <section class="info-section">
+            <div class="container">
+                <div class="services-highlight">
+                    <h2 class="section-heading">Servicios</h2>
+                    <p class="info-description">
+                        Ofrecemos servicios integrales para que tu evento sea perfecto en cada detalle
+                    </p>
+                    
+                    <div class="services-grid-compact">
+                        <div class="service-highlight">
+                            <i class="fas fa-bed"></i>
+                            <h4>Alojamiento</h4>
+                            <p>Habitaciones cómodas para tus invitados</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-utensils"></i>
+                            <h4>Alimentación</h4>
+                            <p>Gastronomía especializada y deliciosa</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-chair"></i>
+                            <h4>Mobiliario</h4>
+                            <p>Sillas, mesas y decoración completa</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-volume-up"></i>
+                            <h4>Sistema de Sonido</h4>
+                            <p>Audio profesional e iluminación</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-calendar-check"></i>
+                            <h4>Planeación del Evento</h4>
+                            <p>Coordinación completa y profesional</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-palette"></i>
+                            <h4>Decoración</h4>
+                            <p>Ambientación personalizada y elegante</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-camera"></i>
+                            <h4>Fotografía Profesional</h4>
+                            <p>Capturamos los mejores momentos</p>
+                        </div>
+                        <div class="service-highlight">
+                            <i class="fas fa-tv"></i>
+                            <h4>Equipos Audiovisuales</h4>
+                            <p>Proyectores y tecnología moderna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Imágenes -->
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="section-heading" style="margin-top: 3rem; margin-bottom: 2rem;">Galería</h2>
+                
+                <div class="events-gallery">
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/hero-big.jpg" alt="Vista panorámica del salón de eventos" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Salón Principal</h4>
+                            <p>Capacidad para 300 personas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/interior-salon.jpg" alt="Interior del salón de eventos" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Interior del Salón</h4>
+                            <p>Espacio elegante y acogedor</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/evento-kiosko.jpg" alt="Kiosko para ceremonias" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Kiosko para Ceremonias</h4>
+                            <p>Ideal para bodas y eventos al aire libre</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/evento-piscina.jpg" alt="Área de piscina para eventos" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Área de Piscina</h4>
+                            <p>Espacio de recreación y relajación</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/experiencia-evento.jpg" alt="Experiencia de evento en la finca" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Experiencia Completa</h4>
+                            <p>Eventos memorables en la naturaleza</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/momento-comida.jpg" alt="Servicio de banquetes" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Servicio de Banquetes</h4>
+                            <p>Gastronomía de primera calidad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="assets/images/eventos/vista-exterior.jpg" alt="Vista exterior de las instalaciones" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h4>Paisajes Naturales</h4>
+                            <p>Entorno único para fotografías</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Quote Form Section -->
+        <section id="event-quote-form" class="job-section">
+            <div class="container">
+                <div class="application-form">
+                    <h2 class="form-heading">Solicita tu Cotización</h2>
+                    <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
+                        Completa el formulario y te enviaremos una cotización personalizada para tu evento especial
+                    </p>
+                    
+                    <form id="unified-event-form" action="https://script.google.com/macros/s/AKfycbyMv3r9pIZjbxeroz_ijQ7UU0OQb1n_9nJoX3m02pKfifJSXg3gs848u9oKDUTH4ell/exec" method="POST">
+                        <!-- Event Type Selection -->
+                        <div class="form-group">
+                            <label for="tipo_evento" class="form-label required-field">Tipo de Evento</label>
+                            <select id="tipo_evento" name="tipo_evento" class="form-select" required>
+                                <option value="">Selecciona el tipo de evento</option>
+                                <option value="Boda">Boda</option>
+                                <option value="Quince años">Quince años</option>
+                                <option value="Retiro">Retiro</option>
+                                <option value="Evento Corporativo">Evento Corporativo</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Dynamic Fields Container -->
+                        <div id="dynamic-fields">
+                            <!-- Fields will be populated based on event type selection -->
+                        </div>
+                        
+                        <!-- Common Fields -->
+                        <div class="form-group">
+                            <label for="nombres_organizacion" class="form-label required-field">Nombres/Organización</label>
+                            <input type="text" id="nombres_organizacion" name="nombres_organizacion" class="form-input" required placeholder="Tu nombre completo o nombre de la organización">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label required-field">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="tu@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono" class="form-label required-field">Teléfono/Celular</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-input" required placeholder="300 123 4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fecha_evento" class="form-label required-field">Fecha del Evento</label>
+                            <input type="date" id="fecha_evento" name="fecha_evento" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hora_evento" class="form-label required-field">Hora del Evento</label>
+                            <select id="hora_evento" name="hora_evento" class="form-select" required>
+                                <option value="">Selecciona la hora</option>
+                                <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                                <option value="Tarde (12:00 PM - 6:00 PM)">Tarde (12:00 PM - 6:00 PM)</option>
+                                <option value="Noche (6:00 PM - 12:00 AM)">Noche (6:00 PM - 12:00 AM)</option>
+                                <option value="Todo el día">Todo el día</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="numero_invitados" class="form-label required-field">Número de Invitados</label>
+                            <input type="number" id="numero_invitados" name="numero_invitados" class="form-input" required min="1" max="300" placeholder="Ej: 150">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="presupuesto" class="form-label">Presupuesto Estimado</label>
+                            <select id="presupuesto" name="presupuesto" class="form-select">
+                                <option value="">Selecciona un rango</option>
+                                <option value="Menos de $2,000,000">Menos de $2,000,000</option>
+                                <option value="$2,000,000 - $5,000,000">$2,000,000 - $5,000,000</option>
+                                <option value="$5,000,000 - $10,000,000">$5,000,000 - $10,000,000</option>
+                                <option value="$10,000,000 - $20,000,000">$10,000,000 - $20,000,000</option>
+                                <option value="Más de $20,000,000">Más de $20,000,000</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Servicios Requeridos -->
+                        <div class="form-group">
+                            <label class="form-label">Servicios Requeridos</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_alojamiento" value="Sí">
+                                    <i class="fas fa-bed" style="color: #666;"></i>
+                                    Alojamiento
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_alimentacion" value="Sí">
+                                    <i class="fas fa-utensils" style="color: #666;"></i>
+                                    Alimentación/Banquetes
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_mobiliario" value="Sí">
+                                    <i class="fas fa-chair" style="color: #666;"></i>
+                                    Mobiliario (sillas y mesas)
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_sonido" value="Sí">
+                                    <i class="fas fa-volume-up" style="color: #666;"></i>
+                                    Sistema de sonido
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_planeador" value="Sí">
+                                    <i class="fas fa-calendar-check" style="color: #666;"></i>
+                                    Planeación del evento
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_decoracion" value="Sí">
+                                    <i class="fas fa-palette" style="color: #666;"></i>
+                                    Decoración
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_fotografia" value="Sí">
+                                    <i class="fas fa-camera" style="color: #666;"></i>
+                                    Fotografía profesional
+                                </label>
+                                <label class="service-checkbox-label">
+                                    <input type="checkbox" name="requiere_audiovisuales" value="Sí">
+                                    <i class="fas fa-tv" style="color: #666;"></i>
+                                    Equipos audiovisuales
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comentarios" class="form-label">Comentarios o Solicitudes Especiales</label>
+                            <textarea id="comentarios" name="comentarios" class="form-textarea" rows="4" placeholder="Cuéntanos más detalles sobre tu evento, temática, requerimientos especiales, etc."></textarea>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="submit" class="form-submit">
+                                Solicitar Cotización
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="response-display">
+                        <h3>Estado de la Solicitud</h3>
+                        <pre id="response-content"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+    
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/573143428579?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20salón%20de%20eventos%20en%20Finca%20Termópilas." class="whatsapp-button" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript for event tracking and dynamic form -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Dynamic form field templates - Using single event_category field
+            const fieldTemplates = {
+                'Boda': `
+                    <div class="form-group">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Boda Clásica">Boda Clásica</option>
+                            <option value="Boda Rústica">Boda Rústica</option>
+                            <option value="Boda al Aire Libre">Boda al Aire Libre</option>
+                            <option value="Boda Íntima">Boda Íntima</option>
+                            <option value="Otra">Otra</option>
+                        </select>
+                    </div>
+                `,
+                'Quince años': `
+                    <div class="form-group">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Princesa">Princesa</option>
+                            <option value="Vintage">Vintage</option>
+                            <option value="Mariposas">Mariposas</option>
+                            <option value="Hollywood">Hollywood</option>
+                            <option value="París">París</option>
+                            <option value="Flores">Flores</option>
+                            <option value="Otra">Otra</option>
+                        </select>
+                    </div>
+                `,
+                'Retiro': `
+                    <div class="form-group">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Empresarial">Empresarial</option>
+                            <option value="Espiritual/Meditación">Espiritual/Meditación</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Educativo">Educativo</option>
+                            <option value="Deportivo">Deportivo</option>
+                            <option value="Bienestar">Bienestar</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                `,
+                'Evento Corporativo': `
+                    <div class="form-group">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Conferencia">Conferencia</option>
+                            <option value="Seminario">Seminario</option>
+                            <option value="Team Building">Team Building</option>
+                            <option value="Lanzamiento de Producto">Lanzamiento de Producto</option>
+                            <option value="Reunión Anual">Reunión Anual</option>
+                            <option value="Capacitación">Capacitación</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                `
+            };
+            
+            // Handle event type selection
+            const tipoEventoSelect = document.getElementById('tipo_evento');
+            const dynamicFields = document.getElementById('dynamic-fields');
+            
+            tipoEventoSelect.addEventListener('change', function() {
+                const selectedType = this.value;
+                dynamicFields.innerHTML = '';
+                
+                if (fieldTemplates[selectedType]) {
+                    dynamicFields.innerHTML = fieldTemplates[selectedType];
+                }
+                
+                // Track event type selection
+                if (selectedType) {
+                    gtag('event', 'eventos_form_type_selection', {
+                        'event_category': 'Events',
+                        'event_label': `Event Type Selected - ${selectedType}`,
+                        'event_type': selectedType.toLowerCase(),
+                        'page': 'eventos',
+                        'form_interaction': 'type_selection',
+                        'value': 1
+                    });
+                }
+            });
+            
+            // Handle quote button clicks with event type pre-selection
+            const quoteButtons = document.querySelectorAll('.quote-button[data-event-type]');
+            quoteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const eventType = this.getAttribute('data-event-type');
+                    
+                    // Set the select value based on data attribute
+                    if (eventType === 'bodas') {
+                        tipoEventoSelect.value = 'Boda';
+                    } else if (eventType === 'quinces') {
+                        tipoEventoSelect.value = 'Quince años';
+                    } else if (eventType === 'retiros') {
+                        tipoEventoSelect.value = 'Retiro';
+                    } else if (eventType === 'corporativo') {
+                        tipoEventoSelect.value = 'Evento Corporativo';
+                    }
+                    
+                    // Trigger the change event to load dynamic fields
+                    tipoEventoSelect.dispatchEvent(new Event('change'));
+                    
+                    // Scroll to form
+                    document.getElementById('event-quote-form').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Handle form submission
+            const form = document.getElementById('unified-event-form');
+            const responseDisplay = document.getElementById('response-display');
+            const responseContent = document.getElementById('response-content');
+            const submitButton = document.querySelector('.form-submit');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                console.log('=== FORM SUBMISSION STARTED ===');
+                console.log('Form element:', form);
+                
+                // Show processing state
+                submitButton.classList.add('loading');
+                responseDisplay.className = 'processing';
+                responseContent.textContent = 'Enviando tu solicitud...';
+                
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Debug: Log all form data entries
+                console.log('=== INITIAL FORM DATA ===');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                
+                // Note: servicios_adicionales field has been removed from the form
+                console.log('=== SERVICIOS ADICIONALES ===');
+                console.log('Field servicios_adicionales has been removed from the form');
+                
+                // Handle boolean service requirements checkboxes - IMPROVED
+                const booleanFields = [
+                    'requiere_alojamiento',
+                    'requiere_alimentacion', 
+                    'requiere_mobiliario',
+                    'requiere_planeador',
+                    'requiere_decoracion',
+                    'requiere_sonido',
+                    'requiere_fotografia',
+                    'requiere_audiovisuales'
+                ];
+                
+                console.log('=== BOOLEAN FIELDS PROCESSING ===');
+                booleanFields.forEach(fieldName => {
+                    const checkbox = form.querySelector(`input[name="${fieldName}"]`);
+                    const value = checkbox && checkbox.checked ? 'Sí' : 'No';
+                    console.log(`${fieldName}: ${checkbox ? 'found' : 'NOT FOUND'} - checked: ${checkbox?.checked} - value: ${value}`);
+                    formData.set(fieldName, value);
+                    
+                    // Double-check the formData was set correctly
+                    console.log(`FormData.get(${fieldName}): ${formData.get(fieldName)}`);
+                });
+                
+                // Debug: Log all form fields in the form
+                console.log('=== ALL FORM FIELDS ===');
+                const allFormFields = form.querySelectorAll('input, select, textarea');
+                allFormFields.forEach(field => {
+                    console.log(`Field: ${field.name} (${field.type}) = "${field.value}"`);
+                });
+                
+                // Debug: Log final form data
+                console.log('=== FINAL FORM DATA BEING SENT ===');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                
+                // Debug: Check for missing required fields
+                console.log('=== REQUIRED FIELDS CHECK ===');
+                const requiredFields = form.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    const isEmpty = !field.value || field.value.trim() === '';
+                    console.log(`Required field ${field.name}: ${isEmpty ? 'EMPTY' : 'filled'} (value: "${field.value}")`);
+                });
+                
+                // Track form submission start
+                gtag('event', 'eventos_form_submit_start', {
+                    'event_category': 'Events',
+                    'event_label': `Form Submit Start - ${formData.get('tipo_evento')}`,
+                    'event_type': formData.get('tipo_evento').toLowerCase(),
+                    'page': 'eventos',
+                    'numero_invitados': formData.get('numero_invitados'),
+                    'fecha_evento': formData.get('fecha_evento'),
+                    'value': 1
+                });
+                
+                // Debug: Log the request details
+                console.log('=== REQUEST DETAILS ===');
+                console.log('URL:', form.action);
+                console.log('Method: POST');
+                console.log('Mode: no-cors');
+                console.log('FormData size:', [...formData.entries()].length, 'entries');
+                
+                // Submit to Google Apps Script
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    // Success
+                    console.log('=== FORM SUBMISSION SUCCESS ===');
+                    console.log('Request completed successfully');
+                    
+                    submitButton.classList.remove('loading');
+                    responseDisplay.className = 'success';
+                    responseContent.textContent = `¡Solicitud enviada exitosamente!\n\nGracias por contactarnos. Te responderemos dentro de las próximas 24-48 horas con una cotización personalizada para tu ${formData.get('tipo_evento').toLowerCase()}.\n\nSi tienes alguna pregunta urgente, puedes contactarnos directamente por WhatsApp.`;
+                    
+                    // Track successful form submission
+                    gtag('event', 'eventos_form_submit_success', {
+                        'event_category': 'Events',
+                        'event_label': `Form Submit Success - ${formData.get('tipo_evento')}`,
+                        'event_type': formData.get('tipo_evento').toLowerCase(),
+                        'page': 'eventos',
+                        'numero_invitados': formData.get('numero_invitados'),
+                        'fecha_evento': formData.get('fecha_evento'),
+                        'presupuesto': formData.get('presupuesto'),
+                        'requiere_alojamiento': formData.get('requiere_alojamiento'),
+                        'requiere_alimentacion': formData.get('requiere_alimentacion'),
+                        'value': 1
+                    });
+                    
+                    // Reset form
+                    form.reset();
+                    dynamicFields.innerHTML = '';
+                })
+                .catch(error => {
+                    // Error
+                    console.log('=== FORM SUBMISSION ERROR ===');
+                    console.error('Request failed with error:', error);
+                    console.error('Error details:', {
+                        message: error.message,
+                        stack: error.stack,
+                        name: error.name
+                    });
+                    
+                    submitButton.classList.remove('loading');
+                    responseDisplay.className = 'error';
+                    responseContent.textContent = `Error al enviar la solicitud.\n\nPor favor intenta nuevamente o contáctanos directamente:\n📧 termopilashuila@gmail.com\n📱 WhatsApp: +57 314 342 8579`;
+                    
+                    // Track form submission error
+                    gtag('event', 'eventos_form_submit_error', {
+                        'event_category': 'Events',
+                        'event_label': `Form Submit Error - ${formData.get('tipo_evento')}`,
+                        'event_type': formData.get('tipo_evento').toLowerCase(),
+                        'page': 'eventos',
+                        'error_message': error.message || 'Unknown error',
+                        'value': 0
+                    });
+                });
+                        });
+            
+            // Track budget selection
+            const presupuestoSelect = document.getElementById('presupuesto');
+            if (presupuestoSelect) {
+                presupuestoSelect.addEventListener('change', function() {
+                    if (this.value) {
+                        gtag('event', 'eventos_budget_selection', {
+                            'event_category': 'Events',
+                            'event_label': `Budget Selected - ${this.value}`,
+                            'budget_range': this.value,
+                            'page': 'eventos',
+                            'form_interaction': 'budget_selection',
+                            'value': 1
+                        });
+                    }
+                });
+            }
+            
+            // Track date selection
+            const fechaEventoInput = document.getElementById('fecha_evento');
+            if (fechaEventoInput) {
+                fechaEventoInput.addEventListener('change', function() {
+                    if (this.value) {
+                        const selectedDate = new Date(this.value);
+                        const today = new Date();
+                        const daysUntilEvent = Math.ceil((selectedDate - today) / (1000 * 60 * 60 * 24));
+                        
+                        gtag('event', 'eventos_date_selection', {
+                            'event_category': 'Events',
+                            'event_label': `Event Date Selected`,
+                            'page': 'eventos',
+                            'form_interaction': 'date_selection',
+                            'days_until_event': daysUntilEvent,
+                            'value': 1
+                        });
+                    }
+                });
+            }
+
+            // Track WhatsApp contact button
+            const whatsappButton = document.querySelector('.whatsapp-button');
+            if (whatsappButton) {
+                whatsappButton.addEventListener('click', function() {
+                    gtag('event', 'eventos_whatsapp_contact', {
+                        'event_category': 'Contact',
+                        'event_label': 'WhatsApp Contact - Events Inquiry',
+                        'page': 'eventos',
+                        'contact_type': 'events_inquiry',
+                        'contact_method': 'whatsapp',
+                        'contact_source': 'floating_button',
+                        'value': 1
+                    });
+                });
+            }
+            
+            // Track service highlight interactions
+            const serviceHighlights = document.querySelectorAll('.service-highlight');
+            serviceHighlights.forEach(service => {
+                service.addEventListener('click', function() {
+                    const serviceName = this.querySelector('h4').textContent;
+                    gtag('event', 'eventos_service_interest', {
+                        'event_category': 'Events',
+                        'event_label': `Service Interest - ${serviceName}`,
+                        'service_name': serviceName,
+                        'page': 'eventos',
+                        'value': 1
+                    });
+                });
+            });
+        });
+        
+        // Header and footer will be automatically initialized by the TypeScript system
+        
+        if (window.termopilasFooter) {
+            window.termopilasFooter.regenerateFooter();
+        }
+    </script>
+</body>
+</html>

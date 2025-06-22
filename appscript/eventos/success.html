@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Cotización Enviada - Finca Termópilas</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      line-height: 1.6; 
+      max-width: 600px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      text-align: center; 
+      background: linear-gradient(135deg, #fdf6ea 0%, #fff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .success-icon { font-size: 48px; margin-bottom: 20px; }
+    h1 { color: #333; margin-bottom: 15px; }
+    p { color: #666; margin-bottom: 15px; }
+    .highlight { font-weight: bold; }
+    .button { 
+      display: inline-block; 
+      color: white; 
+      padding: 12px 24px; 
+      text-decoration: none; 
+      border-radius: 8px; 
+      margin: 10px; 
+      transition: background-color 0.3s ease;
+    }
+    .button:hover { filter: brightness(0.9); }
+    .info-box {
+      background: rgba(242, 159, 5, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-icon" style="color: {{COLOR}};">{{ICON}}</div>
+  <h1>¡Cotización Recibida con Éxito!</h1>
+  <p>{{PERSONALIZATION_TEXT}}</p>
+  
+  <div class="info-box" style="border: 1px solid {{COLOR}};">
+    <p><strong>¿Qué sigue ahora?</strong></p>
+    <p>📋 Revisaremos todos los detalles de su solicitud</p>
+    <p>💰 Prepararemos una cotización personalizada</p>
+    <p>📞 Nos comunicaremos con ustedes dentro de las próximas 24-48 horas</p>
+    <p>🏡 Los invitaremos a conocer nuestras instalaciones</p>
+  </div>
+  
+  <p>Mientras tanto, pueden explorar más sobre nuestros servicios:</p>
+  
+  <div>
+    <a href="https://termopilas.co" class="button" style="background-color: {{COLOR}};">Página Principal</a>
+    <a href="https://termopilas.co/alojamiento.html" class="button" style="background-color: {{COLOR}};">Alojamiento</a>
+    <a href="https://termopilas.co/tour.html" class="button" style="background-color: {{COLOR}};">Tour de Experiencias</a>
+  </div>
+  
+  <p style="margin-top: 30px; font-size: 0.9em; color: #777;">
+    Si tienes alguna pregunta urgente, contáctanos directamente:<br>
+    📧 termopilashuila@gmail.com<br>
+    📱 WhatsApp: <a href="https://wa.me/573143428579" style="color: {{COLOR}};">+57 314 342 8579</a>
+  </p>
+</body>
+</html> 
