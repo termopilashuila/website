@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Form - Eventos Finca Termópilas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .test-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: #F29F05;
+            outline: none;
+        }
+        
+        .service-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .service-checkbox-label:hover {
+            border-color: #F29F05;
+            background: #fff8e1;
+        }
+        
+        .service-checkbox-label input[type="checkbox"]:checked + i {
+            color: #F29F05 !important;
+        }
+        
+        .service-checkbox-label:has(input[type="checkbox"]:checked) {
+            border-color: #F29F05;
+            background: #fff3cd;
+        }
+        
+        .form-submit {
+            background-color: #F29F05;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .form-submit:hover {
+            background-color: #d68c04;
+        }
+        
+        .form-submit.loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+        }
+        
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fdf6ea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        #response-display {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        #response-display.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        
+        #response-display.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        
+        #response-display.processing {
+            background-color: #e2e3e5;
+            border: 1px solid #d6d8db;
+            color: #383d41;
+            display: block;
+        }
+        
+        .debug-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .debug-section h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .debug-section pre {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        
+        .test-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .test-btn {
+            padding: 10px 15px;
+            border: 2px solid #007bff;
+            background: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+        
+        #dynamic-fields .form-group {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Form - Eventos Finca Termópilas</h1>
+        
+        <div class="test-info">
+            <h3>💡 Test Information</h3>
+            <p>This is a test form to debug the eventos form submission to Google Sheets. Use the quick fill buttons below to populate test data for different event types.</p>
+            <p><strong>Google Apps Script URL:</strong> https://script.google.com/macros/s/AKfycby7pA_eVXj3S_O2sbHLMp64OuqHCpwnJ8gOygBiMP9APyqR8PdD07COG1W_SD3sg4bM/exec</p>
+        </div>
+        
+        <div class="test-buttons">
+            <button type="button" class="test-btn" onclick="fillTestData('boda')">🤵👰 Fill Wedding Data</button>
+            <button type="button" class="test-btn" onclick="fillTestData('quince')">👑 Fill Quinceañera Data</button>
+            <button type="button" class="test-btn" onclick="fillTestData('retiro')">🧘‍♀️ Fill Retreat Data</button>
+            <button type="button" class="test-btn" onclick="fillTestData('corporativo')">🏢 Fill Corporate Data</button>
+            <button type="button" class="test-btn" onclick="clearForm()">🗑️ Clear Form</button>
+        </div>
+        
+        <form id="unified-event-form" action="https://script.google.com/macros/s/AKfycby7pA_eVXj3S_O2sbHLMp64OuqHCpwnJ8gOygBiMP9APyqR8PdD07COG1W_SD3sg4bM/exec" method="POST">
+            <!-- Event Type Selection -->
+            <div class="form-group">
+                <label for="tipo_evento" class="form-label required-field">Tipo de Evento</label>
+                <select id="tipo_evento" name="tipo_evento" class="form-select" required>
+                    <option value="">Selecciona el tipo de evento</option>
+                    <option value="Boda">Boda</option>
+                    <option value="Quince años">Quince años</option>
+                    <option value="Retiro">Retiro</option>
+                    <option value="Evento Corporativo">Evento Corporativo</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <!-- Dynamic Fields Container -->
+            <div id="dynamic-fields">
+                <!-- Fields will be populated based on event type selection -->
+            </div>
+            
+            <!-- Common Fields -->
+            <div class="form-group">
+                <label for="nombres_organizacion" class="form-label required-field">Nombres/Organización</label>
+                <input type="text" id="nombres_organizacion" name="nombres_organizacion" class="form-input" required placeholder="Tu nombre completo o nombre de la organización">
+            </div>
+            
+            <div class="form-group">
+                <label for="email" class="form-label required-field">Correo electrónico</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="tu@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono" class="form-label required-field">Teléfono/Celular</label>
+                <input type="tel" id="telefono" name="telefono" class="form-input" required placeholder="300 123 4567">
+            </div>
+            
+            <div class="form-group">
+                <label for="fecha_evento" class="form-label required-field">Fecha del Evento</label>
+                <input type="date" id="fecha_evento" name="fecha_evento" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora_evento" class="form-label required-field">Hora del Evento</label>
+                <select id="hora_evento" name="hora_evento" class="form-select" required>
+                    <option value="">Selecciona la hora</option>
+                    <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                    <option value="Tarde (12:00 PM - 6:00 PM)">Tarde (12:00 PM - 6:00 PM)</option>
+                    <option value="Noche (6:00 PM - 12:00 AM)">Noche (6:00 PM - 12:00 AM)</option>
+                    <option value="Todo el día">Todo el día</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="numero_invitados" class="form-label required-field">Número de Invitados</label>
+                <input type="number" id="numero_invitados" name="numero_invitados" class="form-input" required min="1" max="300" placeholder="Ej: 150">
+            </div>
+            
+            <div class="form-group">
+                <label for="presupuesto" class="form-label">Presupuesto Estimado</label>
+                <select id="presupuesto" name="presupuesto" class="form-select">
+                    <option value="">Selecciona un rango</option>
+                    <option value="Menos de $2,000,000">Menos de $2,000,000</option>
+                    <option value="$2,000,000 - $5,000,000">$2,000,000 - $5,000,000</option>
+                    <option value="$5,000,000 - $10,000,000">$5,000,000 - $10,000,000</option>
+                    <option value="$10,000,000 - $20,000,000">$10,000,000 - $20,000,000</option>
+                    <option value="Más de $20,000,000">Más de $20,000,000</option>
+                </select>
+            </div>
+            
+            <!-- Servicios Requeridos -->
+            <div class="form-group">
+                <label class="form-label">Servicios Requeridos</label>
+                <div style="margin-top: 0.5rem;">
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_alojamiento" value="Sí">
+                        <i class="fas fa-bed" style="color: #666;">🛏️</i>
+                        Alojamiento
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_alimentacion" value="Sí">
+                        <i class="fas fa-utensils" style="color: #666;">🍽️</i>
+                        Alimentación/Banquetes
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_mobiliario" value="Sí">
+                        <i class="fas fa-chair" style="color: #666;">🪑</i>
+                        Mobiliario (sillas y mesas)
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_sonido" value="Sí">
+                        <i class="fas fa-volume-up" style="color: #666;">🔊</i>
+                        Sistema de sonido
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_planeador" value="Sí">
+                        <i class="fas fa-calendar-check" style="color: #666;">📅</i>
+                        Planeación del evento
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_decoracion" value="Sí">
+                        <i class="fas fa-palette" style="color: #666;">🎨</i>
+                        Decoración
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_fotografia" value="Sí">
+                        <i class="fas fa-camera" style="color: #666;">📸</i>
+                        Fotografía profesional
+                    </label>
+                    <label class="service-checkbox-label">
+                        <input type="checkbox" name="requiere_audiovisuales" value="Sí">
+                        <i class="fas fa-projector" style="color: #666;">📽️</i>
+                        Equipos audiovisuales
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comentarios" class="form-label">Comentarios o Solicitudes Especiales</label>
+                <textarea id="comentarios" name="comentarios" class="form-textarea" rows="4" placeholder="Cuéntanos más detalles sobre tu evento, temática, requerimientos especiales, etc."></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">
+                🚀 Enviar Test Form
+            </button>
+        </form>
+
+        <div id="response-display">
+            <h3>Estado de la Solicitud</h3>
+            <pre id="response-content"></pre>
+        </div>
+        
+        <div class="debug-section">
+            <h3>🔍 Debug Information</h3>
+            <div id="debug-info">
+                <p>Debug information will appear here when you submit the form.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic form field templates
+        const fieldTemplates = {
+            'Boda': `
+                <div class="form-group">
+                    <label for="nombres_novios" class="form-label required-field">Nombres de los Novios</label>
+                    <input type="text" id="nombres_novios" name="nombres_novios" class="form-input" required placeholder="Ej: María Pérez y Juan García">
+                </div>
+            `,
+            'Quince años': `
+                <div class="form-group">
+                    <label for="nombre_quinceañera" class="form-label required-field">Nombre de la cumpleañera</label>
+                    <input type="text" id="nombre_quinceañera" name="nombre_quinceañera" class="form-input" required placeholder="Ej: María José González">
+                </div>
+                <div class="form-group">
+                    <label for="nombres_padres" class="form-label required-field">Nombres de los Padres</label>
+                    <input type="text" id="nombres_padres" name="nombres_padres" class="form-input" required placeholder="Ej: Carlos González y Ana María Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="tematica_preferida" class="form-label">Temática Preferida</label>
+                    <input type="text" id="tematica_preferida" name="tematica_preferida" class="form-input" placeholder="Ej: Princesa, Vintage, Mariposas, etc.">
+                </div>
+            `,
+            'Retiro': `
+                <div class="form-group">
+                    <label for="nombre_organizacion_retiro" class="form-label required-field">Organización/Grupo</label>
+                    <input type="text" id="nombre_organizacion_retiro" name="nombre_organizacion_retiro" class="form-input" required placeholder="Ej: Empresa ABC, Grupo de Yoga, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="tipo_retiro" class="form-label">Tipo de Retiro</label>
+                    <select id="tipo_retiro" name="tipo_retiro" class="form-select">
+                        <option value="">Selecciona el tipo</option>
+                        <option value="Empresarial">Empresarial</option>
+                        <option value="Espiritual/Meditación">Espiritual/Meditación</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Educativo">Educativo</option>
+                        <option value="Deportivo">Deportivo</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            `,
+            'Evento Corporativo': `
+                <div class="form-group">
+                    <label for="nombre_empresa" class="form-label required-field">Nombre de la Empresa</label>
+                    <input type="text" id="nombre_empresa" name="nombre_empresa" class="form-input" required placeholder="Ej: ABC Corporation">
+                </div>
+                <div class="form-group">
+                    <label for="tipo_evento_corporativo" class="form-label">Tipo de Evento Corporativo</label>
+                    <select id="tipo_evento_corporativo" name="tipo_evento_corporativo" class="form-select">
+                        <option value="">Selecciona el tipo</option>
+                        <option value="Conferencia">Conferencia</option>
+                        <option value="Capacitación">Capacitación</option>
+                        <option value="Team Building">Team Building</option>
+                        <option value="Lanzamiento de producto">Lanzamiento de producto</option>
+                        <option value="Reunión anual">Reunión anual</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            `
+        };
+        
+        // Test data sets
+        const testData = {
+            boda: {
+                tipo_evento: 'Boda',
+                nombres_organizacion: 'María Pérez y Juan García',
+                nombres_novios: 'María Pérez y Juan García',
+                email: 'mariajuan@test.com',
+                telefono: '300 123 4567',
+                fecha_evento: '2024-06-15',
+                hora_evento: 'Tarde (12:00 PM - 6:00 PM)',
+                numero_invitados: '150',
+                presupuesto: '$5,000,000 - $10,000,000',
+                comentarios: 'Queremos una boda romántica con vista al jardín. Temática rústica-chic.',
+                services: ['requiere_alimentacion', 'requiere_decoracion', 'requiere_fotografia', 'requiere_sonido']
+            },
+            quince: {
+                tipo_evento: 'Quince años',
+                nombres_organizacion: 'Familia González',
+                nombre_quinceañera: 'María José González',
+                nombres_padres: 'Carlos González y Ana María Pérez',
+                tematica_preferida: 'Princesa Disney',
+                email: 'familia.gonzalez@test.com',
+                telefono: '315 987 6543',
+                fecha_evento: '2024-08-20',
+                hora_evento: 'Noche (6:00 PM - 12:00 AM)',
+                numero_invitados: '100',
+                presupuesto: '$2,000,000 - $5,000,000',
+                comentarios: 'Queremos una fiesta mágica para nuestra princesa. Color rosa y dorado.',
+                services: ['requiere_alimentacion', 'requiere_decoracion', 'requiere_fotografia', 'requiere_sonido', 'requiere_mobiliario']
+            },
+            retiro: {
+                tipo_evento: 'Retiro',
+                nombres_organizacion: 'Centro de Meditación Paz Interior',
+                nombre_organizacion_retiro: 'Centro de Meditación Paz Interior',
+                tipo_retiro: 'Espiritual/Meditación',
+                email: 'retiros@pazinterior.com',
+                telefono: '320 456 7890',
+                fecha_evento: '2024-05-10',
+                hora_evento: 'Todo el día',
+                numero_invitados: '25',
+                presupuesto: 'Menos de $2,000,000',
+                comentarios: 'Retiro de fin de semana. Necesitamos espacios silenciosos y contacto con la naturaleza.',
+                services: ['requiere_alojamiento', 'requiere_alimentacion']
+            },
+            corporativo: {
+                tipo_evento: 'Evento Corporativo',
+                nombres_organizacion: 'TechCorp Solutions',
+                nombre_empresa: 'TechCorp Solutions',
+                tipo_evento_corporativo: 'Team Building',
+                email: 'eventos@techcorp.com',
+                telefono: '301 234 5678',
+                fecha_evento: '2024-07-12',
+                hora_evento: 'Mañana (8:00 AM - 12:00 PM)',
+                numero_invitados: '50',
+                presupuesto: '$10,000,000 - $20,000,000',
+                comentarios: 'Team building para fortalecer relaciones del equipo. Actividades al aire libre.',
+                services: ['requiere_alimentacion', 'requiere_audiovisuales', 'requiere_mobiliario']
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle event type selection
+            const tipoEventoSelect = document.getElementById('tipo_evento');
+            const dynamicFields = document.getElementById('dynamic-fields');
+            
+            tipoEventoSelect.addEventListener('change', function() {
+                const selectedType = this.value;
+                dynamicFields.innerHTML = '';
+                
+                if (fieldTemplates[selectedType]) {
+                    dynamicFields.innerHTML = fieldTemplates[selectedType];
+                }
+                
+                console.log('Event type changed to:', selectedType);
+            });
+            
+            // Handle form submission
+            const form = document.getElementById('unified-event-form');
+            const responseDisplay = document.getElementById('response-display');
+            const responseContent = document.getElementById('response-content');
+            const submitButton = document.querySelector('.form-submit');
+            const debugInfo = document.getElementById('debug-info');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                console.log('=== FORM SUBMISSION STARTED ===');
+                
+                // Show processing state
+                submitButton.classList.add('loading');
+                responseDisplay.className = 'processing';
+                responseContent.textContent = 'Enviando tu solicitud...';
+                
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Debug: Log all form data entries
+                console.log('=== INITIAL FORM DATA ===');
+                const initialData = {};
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                    initialData[key] = value;
+                }
+                
+                // Handle boolean service requirements checkboxes
+                const booleanFields = [
+                    'requiere_alojamiento',
+                    'requiere_alimentacion', 
+                    'requiere_mobiliario',
+                    'requiere_planeador',
+                    'requiere_decoracion',
+                    'requiere_sonido',
+                    'requiere_fotografia',
+                    'requiere_audiovisuales'
+                ];
+                
+                console.log('=== BOOLEAN FIELDS PROCESSING ===');
+                const booleanData = {};
+                booleanFields.forEach(fieldName => {
+                    const checkbox = form.querySelector(`input[name="${fieldName}"]`);
+                    const value = checkbox && checkbox.checked ? 'Sí' : 'No';
+                    console.log(`${fieldName}: ${checkbox ? 'found' : 'NOT FOUND'} - checked: ${checkbox?.checked} - value: ${value}`);
+                    formData.set(fieldName, value);
+                    booleanData[fieldName] = value;
+                });
+                
+                // Debug: Log final form data
+                console.log('=== FINAL FORM DATA BEING SENT ===');
+                const finalData = {};
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                    finalData[key] = value;
+                }
+                
+                // Update debug info
+                debugInfo.innerHTML = `
+                    <h4>🔍 Form Data Analysis</h4>
+                    <p><strong>Form Action:</strong> ${form.action}</p>
+                    <p><strong>Form Method:</strong> POST</p>
+                    <p><strong>Total Fields:</strong> ${[...formData.entries()].length}</p>
+                    
+                    <h4>📝 Initial Form Data:</h4>
+                    <pre>${JSON.stringify(initialData, null, 2)}</pre>
+                    
+                    <h4>✅ Boolean Service Fields:</h4>
+                    <pre>${JSON.stringify(booleanData, null, 2)}</pre>
+                    
+                    <h4>📤 Final Form Data Being Sent:</h4>
+                    <pre>${JSON.stringify(finalData, null, 2)}</pre>
+                    
+                    <h4>🔗 Request Details:</h4>
+                    <ul>
+                        <li><strong>URL:</strong> ${form.action}</li>
+                        <li><strong>Method:</strong> POST</li>
+                        <li><strong>Mode:</strong> no-cors</li>
+                        <li><strong>Timestamp:</strong> ${new Date().toISOString()}</li>
+                    </ul>
+                `;
+                
+                // Submit to Google Apps Script
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    // Success
+                    console.log('=== FORM SUBMISSION SUCCESS ===');
+                    
+                    submitButton.classList.remove('loading');
+                    responseDisplay.className = 'success';
+                    responseContent.textContent = `✅ ¡Formulario enviado exitosamente!\n\nDatos enviados:\n${JSON.stringify(finalData, null, 2)}\n\nRevisa la hoja de Google Sheets para verificar que los datos se guardaron correctamente.`;
+                    
+                    // Update debug info with success message
+                    debugInfo.innerHTML += `
+                        <h4>✅ Submission Result:</h4>
+                        <p style="color: green; font-weight: bold;">SUCCESS - Form submitted successfully!</p>
+                        <p>Check the Google Sheets document to verify the data was saved correctly.</p>
+                    `;
+                })
+                .catch(error => {
+                    // Error
+                    console.log('=== FORM SUBMISSION ERROR ===');
+                    console.error('Request failed with error:', error);
+                    
+                    submitButton.classList.remove('loading');
+                    responseDisplay.className = 'error';
+                    responseContent.textContent = `❌ Error al enviar la solicitud.\n\nError: ${error.message}\n\nPor favor revisa la consola del navegador para más detalles.`;
+                    
+                    // Update debug info with error message
+                    debugInfo.innerHTML += `
+                        <h4>❌ Submission Result:</h4>
+                        <p style="color: red; font-weight: bold;">ERROR - Form submission failed!</p>
+                        <p><strong>Error Message:</strong> ${error.message}</p>
+                        <p><strong>Error Stack:</strong></p>
+                        <pre>${error.stack || 'No stack trace available'}</pre>
+                    `;
+                });
+            });
+        });
+        
+        // Test data functions
+        function fillTestData(type) {
+            const data = testData[type];
+            if (!data) return;
+            
+            // Fill basic fields
+            Object.keys(data).forEach(key => {
+                if (key === 'services') return; // Handle services separately
+                
+                const field = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                if (field) {
+                    field.value = data[key];
+                    
+                    // Trigger change event for select fields
+                    if (field.tagName === 'SELECT') {
+                        field.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+            
+            // Handle service checkboxes
+            if (data.services) {
+                // First uncheck all services
+                const allServiceCheckboxes = document.querySelectorAll('input[name^="requiere_"]');
+                allServiceCheckboxes.forEach(cb => cb.checked = false);
+                
+                // Then check the specified services
+                data.services.forEach(serviceName => {
+                    const checkbox = document.querySelector(`input[name="${serviceName}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+            
+            // Set tomorrow's date if not specified
+            if (!data.fecha_evento) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                document.getElementById('fecha_evento').value = tomorrow.toISOString().split('T')[0];
+            }
+            
+            console.log(`Test data filled for: ${type}`, data);
+        }
+        
+        function clearForm() {
+            document.getElementById('unified-event-form').reset();
+            document.getElementById('dynamic-fields').innerHTML = '';
+            document.getElementById('response-display').style.display = 'none';
+            document.getElementById('debug-info').innerHTML = '<p>Debug information will appear here when you submit the form.</p>';
+            console.log('Form cleared');
+        }
+    </script>
+</body>
+</html> 
