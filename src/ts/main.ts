@@ -35,8 +35,7 @@ function initPage(): void {
     case 'tour.html':
       initTourExperienceLazyLoading();
       break;
-    case 'bodas.html':
-    case 'quinces.html':
+    case 'eventos.html':
       initEventForms();
       break;
   }
