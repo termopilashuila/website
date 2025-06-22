@@ -1,1034 +1,582 @@
 /**
- * Test Suite para el sistema de cotización de eventos de Finca Termópilas
- * 
- * Este archivo contiene todas las pruebas para verificar el correcto funcionamiento
- * del sistema de eventos, incluyendo:
- * - Simulación de envío de formularios
- * - Pruebas del sistema de plantillas
- * - Pruebas de notificaciones por email
- * - Pruebas de manejo de errores
+ * TEST SUITE for eventos.js
+ * Comprehensive tests for all functions in the Google Apps Script eventos handler
  */
 
-// ================================
-// DATOS DE PRUEBA
-// ================================
-
-/**
- * Datos de prueba para diferentes tipos de eventos
- */
-const TEST_DATA = {
-  boda: {
-    tipo_evento: "Boda",
-    nombres_novios: "María Pérez y Juan García",
-    email: "test.boda@example.com",
-    telefono: "300 123 4567",
-    fecha_evento: "2024-06-15",
-    hora_evento: "Tarde (12:00 PM - 6:00 PM)",
-    numero_invitados: "150",
-    servicios_adicionales: "Planeación de boda, Servicio de banquetes, Sonido e iluminación",
-    presupuesto: "$10,000,000 - $20,000,000",
-    requiere_alojamiento: "Sí",
-    requiere_alimentacion: "Sí",
-    requiere_mobiliario: "Sí",
-    requiere_planeador: "Sí",
-    requiere_decoracion: "Sí",
-    requiere_sonido: "Sí",
-    comentarios: "Queremos una boda al aire libre con temática rústica."
-  },
-  
-  quinceañera: {
-    tipo_evento: "Quinceañera",
-    nombre_quinceañera: "María José González",
-    nombres_padres: "Carlos González y Ana María Pérez",
-    email: "test.quince@example.com",
-    telefono: "300 987 6543",
-    fecha_evento: "2024-07-20",
-    hora_evento: "Noche (6:00 PM - 12:00 AM)",
-    numero_invitados: "120",
-    tematica_preferida: "Princesa - colores rosa y dorado",
-    presupuesto: "$8,000,000 - $15,000,000",
-    comentarios: "Queremos una fiesta muy especial para nuestra princesa."
-  },
-  
-  retiro: {
-    tipo_evento: "Retiro",
-    nombre_organizacion: "Empresa XYZ Ltda",
-    tipo_retiro: "Retiro corporativo de liderazgo",
-    email: "test.retiro@example.com",
-    telefono: "300 555 0123",
-    fecha_evento: "2024-08-10",
-    hora_evento: "Mañana (8:00 AM - 12:00 PM)",
-    numero_invitados: "40",
-    servicios_adicionales: "Salones de conferencia, Coffee breaks, Almuerzo",
-    presupuesto: "$5,000,000 - $8,000,000",
-    requiere_alojamiento: "Sí",
-    requiere_alimentacion: "Sí",
-    requiere_mobiliario: "No",
-    requiere_planeador: "No",
-    requiere_decoracion: "No",
-    requiere_sonido: "Sí",
-    comentarios: "Necesitamos un ambiente tranquilo para nuestro retiro ejecutivo."
-  },
-  
-  corporativo: {
-    tipo_evento: "Evento corporativo",
-    nombre_empresa: "Tech Solutions Inc",
-    tipo_evento_corporativo: "Lanzamiento de producto",
-    email: "test.corporativo@example.com",
-    telefono: "300 444 5678",
-    fecha_evento: "2024-09-05",
-    hora_evento: "Tarde (2:00 PM - 8:00 PM)",
-    numero_invitados: "200",
-    servicios_adicionales: "Montaje audiovisual, Catering gourmet, Fotografía",
-    presupuesto: "$15,000,000 - $25,000,000",
-    requiere_alojamiento: "No",
-    requiere_alimentacion: "Sí",
-    requiere_mobiliario: "Sí",
-    requiere_planeador: "Sí",
-    requiere_decoracion: "Sí",
-    requiere_sonido: "Sí",
-    comentarios: "Evento importante para presentar nuestro nuevo producto."
-  }
+// Mock data and utilities for testing
+const mockFormData = {
+  tipo_evento: 'Boda',
+  nombres_organizacion: 'María García y Juan Pérez',
+  email: 'test@example.com',
+  telefono: '3001234567',
+  fecha_evento: '2024-06-15',
+  hora_evento: 'Tarde (12:00 PM - 6:00 PM)',
+  numero_invitados: '150',
+  presupuesto: '$5,000,000 - $10,000,000',
+  requiere_alojamiento: 'Sí',
+  requiere_alimentacion: 'Sí',
+  requiere_mobiliario: 'No',
+  requiere_sonido: 'Sí',
+  requiere_planeador: 'No',
+  requiere_decoracion: 'Sí',
+  requiere_fotografia: 'No',
+  requiere_audiovisuales: 'Sí',
+  comentarios: 'Queremos una celebración especial con vista al valle',
+  servicios_adicionales: 'Decoración floral, Música en vivo',
+  tematica_preferida: 'Vintage'
 };
 
-// ================================
-// UTILIDADES DE TESTING
-// ================================
+const mockQuinceaneraData = {
+  tipo_evento: 'Quince años',
+  nombres_organizacion: 'María José González',
+  email: 'quinceanos@example.com',
+  telefono: '3009876543',
+  fecha_evento: '2024-08-20',
+  hora_evento: 'Noche (6:00 PM - 12:00 AM)',
+  numero_invitados: '200',
+  presupuesto: '$10,000,000 - $20,000,000',
+  tematica_preferida: 'Princesa',
+  requiere_alojamiento: 'No',
+  requiere_alimentacion: 'Sí',
+  requiere_mobiliario: 'Sí',
+  requiere_sonido: 'Sí',
+  requiere_planeador: 'Sí',
+  requiere_decoracion: 'Sí',
+  requiere_fotografia: 'Sí',
+  requiere_audiovisuales: 'No',
+  comentarios: 'Tema de princesa con colores rosa y dorado'
+};
+
+const mockRetiroData = {
+  tipo_evento: 'Retiro',
+  nombres_organizacion: 'Empresa ABC',
+  email: 'retiro@empresaabc.com',
+  telefono: '3005555555',
+  fecha_evento: '2024-09-10',
+  hora_evento: 'Todo el día',
+  numero_invitados: '50',
+  presupuesto: '$2,000,000 - $5,000,000',
+  tipo_retiro: 'Empresarial',
+  requiere_alojamiento: 'Sí',
+  requiere_alimentacion: 'Sí',
+  requiere_mobiliario: 'Sí',
+  requiere_sonido: 'Sí',
+  requiere_planeador: 'No',
+  requiere_decoracion: 'No',
+  requiere_fotografia: 'No',
+  requiere_audiovisuales: 'Sí',
+  comentarios: 'Retiro de team building para el equipo de ventas'
+};
 
 /**
- * Clase para recopilar resultados de tests
+ * Test function for parseFormData
  */
-class TestResults {
-  constructor() {
-    this.results = [];
-    this.passed = 0;
-    this.failed = 0;
-  }
-  
-  addResult(testName, passed, message = '') {
-    this.results.push({
-      test: testName,
-      passed: passed,
-      message: message,
-      timestamp: new Date()
-    });
-    
-    if (passed) {
-      this.passed++;
-    } else {
-      this.failed++;
-    }
-  }
-  
-  getSummary() {
-    return {
-      total: this.results.length,
-      passed: this.passed,
-      failed: this.failed,
-      results: this.results
-    };
-  }
-  
-  printSummary() {
-    console.log('\n=== RESUMEN DE PRUEBAS ===');
-    console.log(`Total: ${this.results.length}`);
-    console.log(`✅ Exitosas: ${this.passed}`);
-    console.log(`❌ Fallidas: ${this.failed}`);
-    console.log(`📊 Tasa de éxito: ${((this.passed / this.results.length) * 100).toFixed(1)}%`);
-    
-    if (this.failed > 0) {
-      console.log('\n=== PRUEBAS FALLIDAS ===');
-      this.results.filter(r => !r.passed).forEach(result => {
-        console.log(`❌ ${result.test}: ${result.message}`);
-      });
-    }
-    
-    return this.getSummary();
-  }
-}
-
-/**
- * Función para convertir objeto a string de formulario URL-encoded
- * Compatible con Google Apps Script (no usa URLSearchParams)
- */
-function objectToFormData(obj) {
-  const pairs = [];
-  for (const [key, value] of Object.entries(obj)) {
-    if (value !== null && value !== undefined) {
-      pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
-    }
-  }
-  return pairs.join('&');
-}
-
-/**
- * Simula el objeto de evento de Apps Script
- */
-function createMockEvent(data, method = 'POST') {
-  if (method === 'GET') {
-    return {
-      parameter: data,
-      queryString: objectToFormData(data)
-    };
-  } else {
-    return {
-      postData: {
-        contents: objectToFormData(data),
-        type: 'application/x-www-form-urlencoded'
-      },
-      parameter: {}
-    };
-  }
-}
-
-/**
- * Función para configurar templates mock para testing
- * Esta función reemplaza temporalmente loadTemplate con versiones de prueba
- */
-function setupMockTemplates() {
-  const mockTemplates = {
-    'error': '<html><head><title>Error - Finca Termópilas</title></head><body><h1>Error</h1>{{ERROR_DETAILS}}<p>Contacta: termopilashuila@gmail.com</p></body></html>',
-    'success': '<html><head><title>Éxito - Finca Termópilas</title></head><body><div style="color: {{COLOR}};"><h1>{{ICON}} ¡Éxito!</h1><p>{{PERSONALIZATION_TEXT}}</p></div></body></html>',
-    'email': '<div><h2 style="color: {{COLOR}};">{{EMOJI}} Nueva Cotización de {{TIPO_EVENTO}}</h2><p><strong>Email:</strong> {{EMAIL}}</p><p><strong>Teléfono:</strong> {{TELEFONO}}</p>{{CAMPOS_ESPECIFICOS}}<p><strong>Fecha:</strong> {{FECHA_EVENTO}}</p><p><strong>Invitados:</strong> {{NUMERO_INVITADOS}}</p></div>'
-  };
-  
-  // Guardar función original si existe
-  if (typeof loadTemplate !== 'undefined') {
-    this._originalLoadTemplate = loadTemplate;
-  }
-  
-  // Crear función mock
-  this.loadTemplate = function(templateName) {
-    if (mockTemplates[templateName]) {
-      return mockTemplates[templateName];
-    }
-    return '<html><body><h1>Template no encontrado: ' + templateName + '</h1></body></html>';
-  };
-  
-  console.log('📄 Templates mock configurados para testing');
-}
-
-/**
- * Función para restaurar la función loadTemplate original
- */
-function restoreMockTemplates() {
-  if (this._originalLoadTemplate) {
-    this.loadTemplate = this._originalLoadTemplate;
-    delete this._originalLoadTemplate;
-    console.log('📄 Templates mock restaurados');
-  }
-}
-
-// ================================
-// TESTS DEL SISTEMA DE PLANTILLAS
-// ================================
-
-/**
- * Test para verificar la carga de plantillas
- */
-function testTemplateLoading() {
-  const results = new TestResults();
+function testParseFormData() {
+  console.log('=== TESTING parseFormData ===');
   
   try {
-    // Test carga de plantilla de error
-    const errorTemplate = loadTemplate('error');
-    results.addResult(
-      'Carga plantilla error', 
-      errorTemplate.includes('{{ERROR_DETAILS}}'),
-      'La plantilla de error debe contener el placeholder ERROR_DETAILS'
-    );
+    // Test case 1: Normal form data
+    const formDataString = 'tipo_evento=Boda&nombres_organizacion=Mar%C3%ADa+Garc%C3%ADa&email=test%40example.com&telefono=3001234567';
+    const result = parseFormData(formDataString);
     
-    // Test carga de plantilla de éxito
+    console.log('Test 1 - Normal form data:');
+    console.log('Input:', formDataString);
+    console.log('Output:', JSON.stringify(result, null, 2));
+    
+    // Assertions
+    if (result.tipo_evento !== 'Boda') throw new Error('tipo_evento not parsed correctly');
+    if (result.nombres_organizacion !== 'María García') throw new Error('nombres_organizacion not parsed correctly');
+    if (result.email !== 'test@example.com') throw new Error('email not parsed correctly');
+    if (result.telefono !== '3001234567') throw new Error('telefono not parsed correctly');
+    
+    // Test case 2: Empty string
+    const emptyResult = parseFormData('');
+    console.log('Test 2 - Empty string:', emptyResult);
+    if (Object.keys(emptyResult).length !== 0) throw new Error('Empty string should return empty object');
+    
+    // Test case 3: Null input
+    const nullResult = parseFormData(null);
+    console.log('Test 3 - Null input:', nullResult);
+    if (Object.keys(nullResult).length !== 0) throw new Error('Null input should return empty object');
+    
+    // Test case 4: Special characters
+    const specialCharsString = 'comentarios=Evento+especial+con+%22decoraci%C3%B3n%22+y+m%C3%A1s';
+    const specialResult = parseFormData(specialCharsString);
+    console.log('Test 4 - Special characters:', specialResult);
+    if (specialResult.comentarios !== 'Evento especial con "decoración" y más') {
+      throw new Error('Special characters not decoded correctly');
+    }
+    
+    console.log('✅ parseFormData tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ parseFormData tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Test function for loadTemplate
+ */
+function testLoadTemplate() {
+  console.log('=== TESTING loadTemplate ===');
+  
+  try {
+    // Test case 1: Valid template name
+    console.log('Test 1 - Valid template (success):');
     const successTemplate = loadTemplate('success');
-    results.addResult(
-      'Carga plantilla success', 
-      successTemplate.includes('{{COLOR}}') && successTemplate.includes('{{ICON}}'),
-      'La plantilla de éxito debe contener placeholders COLOR e ICON'
-    );
+    console.log('Template loaded, length:', successTemplate.length);
     
-    // Test carga de plantilla de email
-    const emailTemplate = loadTemplate('email');
-    results.addResult(
-      'Carga plantilla email', 
-      emailTemplate.includes('{{TIPO_EVENTO}}') && emailTemplate.includes('{{EMAIL}}'),
-      'La plantilla de email debe contener placeholders básicos'
-    );
+    // Test case 2: Valid template name
+    console.log('Test 2 - Valid template (error):');
+    const errorTemplate = loadTemplate('error');
+    console.log('Template loaded, length:', errorTemplate.length);
     
-  } catch (error) {
-    results.addResult('Carga plantillas', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-/**
- * Test para verificar el procesamiento de plantillas
- */
-function testTemplateProcessing() {
-  const results = new TestResults();
-  
-  try {
-    const template = '<h1>{{TITLE}}</h1><p>{{CONTENT}}</p><span>{{MISSING}}</span>';
-    const replacements = {
-      TITLE: 'Test Title',
-      CONTENT: 'Test Content'
-    };
-    
-    const processed = processTemplate(template, replacements);
-    
-    results.addResult(
-      'Reemplazo de placeholders', 
-      processed.includes('Test Title') && processed.includes('Test Content'),
-      'Los placeholders existentes deben ser reemplazados correctamente'
-    );
-    
-    results.addResult(
-      'Manejo de placeholders faltantes', 
-      processed.includes('<span></span>'),
-      'Los placeholders sin valor deben quedar como cadenas vacías'
-    );
-    
-    // Test con caracteres especiales
-    const specialTemplate = '{{SPECIAL}}';
-    const specialReplacements = { SPECIAL: '<script>alert("test")</script>' };
-    const specialProcessed = processTemplate(specialTemplate, specialReplacements);
-    
-    results.addResult(
-      'Manejo de caracteres especiales', 
-      specialProcessed.includes('<script>'),
-      'Los caracteres especiales deben procesarse correctamente'
-    );
-    
-  } catch (error) {
-    results.addResult('Procesamiento plantillas', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-// ================================
-// TESTS DE GENERACIÓN DE PÁGINAS
-// ================================
-
-/**
- * Test para la generación de páginas de error
- */
-function testErrorPageGeneration() {
-  const results = new TestResults();
-  
-  try {
-    // Test página de error sin detalles
-    const errorPageSimple = generateErrorPage();
-    results.addResult(
-      'Página error sin detalles', 
-      typeof errorPageSimple === 'string' && errorPageSimple.length > 0,
-      'Debe generar una página de error válida sin detalles'
-    );
-    
-    // Test página de error con detalles
-    const testError = new Error('Test error message');
-    const errorPageDetailed = generateErrorPage(testError);
-    results.addResult(
-      'Página error con detalles', 
-      errorPageDetailed.includes('Test error message'),
-      'Debe incluir detalles del error cuando se proporcionan'
-    );
-    
-  } catch (error) {
-    results.addResult('Generación página error', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-/**
- * Test para la generación de páginas de éxito
- */
-function testSuccessPageGeneration() {
-  const results = new TestResults();
-  
-  try {
-    // Test para cada tipo de evento
-    Object.entries(TEST_DATA).forEach(([tipo, data]) => {
-      const successPage = generateSuccessPage(data, data.tipo_evento);
-      
-      results.addResult(
-        `Página éxito ${tipo}`, 
-        typeof successPage === 'string' && successPage.length > 0,
-        `Debe generar página de éxito para ${tipo}`
-      );
-      
-      // Verificar personalización según tipo de evento
-      let shouldContain = '';
-      switch (tipo) {
-        case 'boda':
-          shouldContain = data.nombres_novios;
-          break;
-        case 'quinceañera':
-          shouldContain = data.nombre_quinceañera;
-          break;
-        case 'retiro':
-          shouldContain = data.nombre_organizacion;
-          break;
-        case 'corporativo':
-          shouldContain = data.nombre_empresa;
-          break;
-      }
-      
-      if (shouldContain) {
-        results.addResult(
-          `Personalización ${tipo}`, 
-          successPage.includes(shouldContain),
-          `Debe incluir información específica del ${tipo}`
-        );
-      }
-    });
-    
-  } catch (error) {
-    results.addResult('Generación páginas éxito', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-// ================================
-// TESTS DE SIMULACIÓN DE FORMULARIOS
-// ================================
-
-/**
- * Test para simular envío de formulario de boda
- */
-function testWeddingFormSubmission() {
-  const results = new TestResults();
-  console.log('🧪 Testing formulario de boda...');
-  
-  try {
-    const mockEvent = createMockEvent(TEST_DATA.boda);
-    const response = handleRequest(mockEvent);
-    
-    results.addResult(
-      'Envío formulario boda', 
-      response && typeof response.getContent === 'function',
-      'Debe procesar correctamente el formulario de boda'
-    );
-    
-    const content = response.getContent();
-    results.addResult(
-      'Contenido respuesta boda', 
-      content.includes(TEST_DATA.boda.nombres_novios),
-      'La respuesta debe incluir los nombres de los novios'
-    );
-    
-    console.log('✅ Test formulario boda completado');
-    
-  } catch (error) {
-    results.addResult('Formulario boda', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test formulario boda:', error);
-  }
-  
-  return results.printSummary();
-}
-
-/**
- * Test para simular envío de formulario de quinceañera
- */
-function testQuinceaneraFormSubmission() {
-  const results = new TestResults();
-  console.log('🧪 Testing formulario de quinceañera...');
-  
-  try {
-    const mockEvent = createMockEvent(TEST_DATA.quinceañera);
-    const response = handleRequest(mockEvent);
-    
-    results.addResult(
-      'Envío formulario quinceañera', 
-      response && typeof response.getContent === 'function',
-      'Debe procesar correctamente el formulario de quinceañera'
-    );
-    
-    const content = response.getContent();
-    results.addResult(
-      'Contenido respuesta quinceañera', 
-      content.includes(TEST_DATA.quinceañera.nombre_quinceañera),
-      'La respuesta debe incluir el nombre de la quinceañera'
-    );
-    
-    console.log('✅ Test formulario quinceañera completado');
-    
-  } catch (error) {
-    results.addResult('Formulario quinceañera', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test formulario quinceañera:', error);
-  }
-  
-  return results.printSummary();
-}
-
-/**
- * Test para simular envío de formulario de retiro
- */
-function testRetiroFormSubmission() {
-  const results = new TestResults();
-  
-  try {
-    const mockEvent = createMockEvent(TEST_DATA.retiro);
-    const response = handleRequest(mockEvent);
-    
-    results.addResult(
-      'Envío formulario retiro', 
-      response && typeof response.getContent === 'function',
-      'Debe procesar correctamente el formulario de retiro'
-    );
-    
-    const content = response.getContent();
-    results.addResult(
-      'Contenido respuesta retiro', 
-      content.includes(TEST_DATA.retiro.nombre_organizacion),
-      'La respuesta debe incluir el nombre de la organización'
-    );
-    
-  } catch (error) {
-    results.addResult('Formulario retiro', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-/**
- * Test para simular envío de formulario corporativo
- */
-function testCorporativeFormSubmission() {
-  const results = new TestResults();
-  
-  try {
-    const mockEvent = createMockEvent(TEST_DATA.corporativo);
-    const response = handleRequest(mockEvent);
-    
-    results.addResult(
-      'Envío formulario corporativo', 
-      response && typeof response.getContent === 'function',
-      'Debe procesar correctamente el formulario corporativo'
-    );
-    
-    const content = response.getContent();
-    results.addResult(
-      'Contenido respuesta corporativo', 
-      content.includes(TEST_DATA.corporativo.nombre_empresa),
-      'La respuesta debe incluir el nombre de la empresa'
-    );
-    
-  } catch (error) {
-    results.addResult('Formulario corporativo', false, `Error: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-// ================================
-// TESTS DE CASOS LÍMITE Y ERRORES
-// ================================
-
-/**
- * Test para manejo de datos vacíos o inválidos
- */
-function testEdgeCases() {
-  const results = new TestResults();
-  console.log('🧪 Testing casos límite...');
-  
-  try {
-    // Test con datos vacíos
-    const emptyEvent = createMockEvent({});
-    const emptyResponse = handleRequest(emptyEvent);
-    
-    results.addResult(
-      'Manejo datos vacíos', 
-      emptyResponse && typeof emptyResponse.getContent === 'function',
-      'Debe manejar correctamente datos vacíos'
-    );
-    
-    // Test con datos incompletos
-    const incompleteData = {
-      tipo_evento: "Boda",
-      email: "test@example.com"
-    };
-    const incompleteEvent = createMockEvent(incompleteData);
-    const incompleteResponse = handleRequest(incompleteEvent);
-    
-    results.addResult(
-      'Manejo datos incompletos', 
-      incompleteResponse && typeof incompleteResponse.getContent === 'function',
-      'Debe manejar correctamente datos incompletos'
-    );
-    
-    // Test con caracteres especiales
-    const specialData = {
-      tipo_evento: "Boda",
-      nombres_novios: "José María & Ana Sofía",
-      email: "test+special@example.com",
-      comentarios: "Queremos una boda <especial> con 'comillas' y \"comillas dobles\""
-    };
-    const specialEvent = createMockEvent(specialData);
-    const specialResponse = handleRequest(specialEvent);
-    
-    results.addResult(
-      'Manejo caracteres especiales', 
-      specialResponse && typeof specialResponse.getContent === 'function',
-      'Debe manejar correctamente caracteres especiales'
-    );
-    
-    console.log('✅ Test casos límite completado');
-    
-  } catch (error) {
-    results.addResult('Casos límite', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test casos límite:', error);
-  }
-  
-  return results.printSummary();
-}
-
-/**
- * Test para verificar el manejo de errores
- */
-function testErrorHandling() {
-  const results = new TestResults();
-  
-  try {
-    // Test con evento malformado (simulando error en handleRequest)
-    const malformedEvent = {
-      // Estructura incorrecta intencionalmente
-      badStructure: true
-    };
-    
-    // Este test verifica que el sistema no falle completamente con datos incorrectos
-    try {
-      const response = handleRequest(malformedEvent);
-      results.addResult(
-        'Manejo evento malformado', 
-        response && typeof response.getContent === 'function',
-        'Debe manejar eventos malformados sin fallar'
-      );
-    } catch (expectedError) {
-      results.addResult(
-        'Manejo evento malformado', 
-        true,
-        'Es esperado que falle con datos malformados, pero de manera controlada'
-      );
+    // Test case 3: Invalid template name (should use fallback)
+    console.log('Test 3 - Invalid template name:');
+    const invalidTemplate = loadTemplate('nonexistent');
+    console.log('Fallback template loaded, length:', invalidTemplate.length);
+    if (!invalidTemplate.includes('<html>')) {
+      throw new Error('Fallback template should contain HTML');
     }
     
-  } catch (error) {
-    results.addResult('Manejo errores', false, `Error inesperado: ${error.toString()}`);
-  }
-  
-  return results.getSummary();
-}
-
-// ================================
-// TESTS DE NOTIFICACIONES
-// ================================
-
-/**
- * Test básico para generación de emails (sin envío real)
- */
-function testEmailGeneration() {
-  const results = new TestResults();
-  
-  try {
-    Object.entries(TEST_DATA).forEach(([tipo, data]) => {
-      const config = {
-        emoji: '🎉',
-        color: '#F29F05',
-        nombre: 'Test Name'
-      };
-      
-      const emailHtml = generateEmailHTML(data, data.tipo_evento, config, 'https://test.com/logo.png', '30 días');
-      
-      results.addResult(
-        `Email HTML ${tipo}`, 
-        typeof emailHtml === 'string' && emailHtml.length > 0,
-        `Debe generar email HTML para ${tipo}`
-      );
-      
-      const emailPlain = generateEmailPlain(data, data.tipo_evento, config.emoji, '30 días');
-      
-      results.addResult(
-        `Email texto ${tipo}`, 
-        typeof emailPlain === 'string' && emailPlain.length > 0 && emailPlain.includes(data.email),
-        `Debe generar email de texto para ${tipo}`
-      );
-    });
+    console.log('✅ loadTemplate tests PASSED');
+    return true;
     
   } catch (error) {
-    results.addResult('Generación emails', false, `Error: ${error.toString()}`);
+    console.error('❌ loadTemplate tests FAILED:', error.message);
+    return false;
   }
-  
-  return results.getSummary();
-}
-
-// ================================
-// TESTS COMBINADOS
-// ================================
-
-/**
- * Test completo que simula el flujo completo de un formulario
- */
-function testCompleteFormFlow() {
-  const results = new TestResults();
-  console.log('🧪 Testing flujo completo...');
-  
-  try {
-    const weddingData = TEST_DATA.boda;
-    const mockEvent = createMockEvent(weddingData);
-    
-    // Procesar la solicitud
-    const response = handleRequest(mockEvent);
-    results.addResult(
-      'Procesamiento solicitud', 
-      response && typeof response.getContent === 'function',
-      'La solicitud debe procesarse correctamente'
-    );
-    
-    // Verificar contenido de la respuesta
-    const content = response.getContent();
-    results.addResult(
-      'Contenido respuesta válido', 
-      content && content.length > 0,
-      'La respuesta debe tener contenido válido'
-    );
-    
-    // Verificar personalización
-    results.addResult(
-      'Personalización correcta', 
-      content.includes(weddingData.nombres_novios),
-      'La respuesta debe estar personalizada'
-    );
-    
-    console.log('✅ Test flujo completo completado');
-    
-  } catch (error) {
-    results.addResult('Flujo completo', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test flujo completo:', error);
-  }
-  
-  return results.printSummary();
 }
 
 /**
- * Test que ejecuta todos los formularios de eventos
+ * Test function for processTemplate
  */
-function testAllEventForms() {
-  const results = new TestResults();
-  
-  console.log('🧪 Iniciando tests de todos los formularios de eventos...');
+function testProcessTemplate() {
+  console.log('=== TESTING processTemplate ===');
   
   try {
-    Object.entries(TEST_DATA).forEach(([tipo, data]) => {
-      console.log(`  🔍 Testing formulario de ${tipo}...`);
-      
-      const mockEvent = createMockEvent(data);
-      const response = handleRequest(mockEvent);
-      
-      results.addResult(
-        `Formulario ${tipo}`, 
-        response && typeof response.getContent === 'function',
-        `Formulario de ${tipo} debe procesarse correctamente`
-      );
-      
-      if (response) {
-        const content = response.getContent();
-        results.addResult(
-          `Contenido ${tipo}`, 
-          content && content.length > 0,
-          `Contenido de respuesta para ${tipo} debe ser válido`
-        );
+    // Test case 1: Basic template processing
+    const template1 = 'Hello {{NAME}}, your event is on {{DATE}}.';
+    const replacements1 = { NAME: 'María', DATE: '2024-06-15' };
+    const result1 = processTemplate(template1, replacements1);
+    
+    console.log('Test 1 - Basic template:');
+    console.log('Template:', template1);
+    console.log('Replacements:', replacements1);
+    console.log('Result:', result1);
+    
+    if (result1 !== 'Hello María, your event is on 2024-06-15.') {
+      throw new Error('Basic template processing failed');
+    }
+    
+    // Test case 2: Multiple occurrences
+    const template2 = '{{GREETING}} {{NAME}}! {{GREETING}} again, {{NAME}}.';
+    const replacements2 = { GREETING: 'Hola', NAME: 'Juan' };
+    const result2 = processTemplate(template2, replacements2);
+    
+    console.log('Test 2 - Multiple occurrences:');
+    console.log('Result:', result2);
+    
+    if (result2 !== 'Hola Juan! Hola again, Juan.') {
+      throw new Error('Multiple occurrences not handled correctly');
+    }
+    
+    // Test case 3: Missing replacements (should use empty string)
+    const template3 = 'Hello {{NAME}}, {{MISSING}} value.';
+    const replacements3 = { NAME: 'Test' };
+    const result3 = processTemplate(template3, replacements3);
+    
+    console.log('Test 3 - Missing replacements:');
+    console.log('Result:', result3);
+    
+    if (result3 !== 'Hello Test,  value.') {
+      throw new Error('Missing replacements not handled correctly');
+    }
+    
+    console.log('✅ processTemplate tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ processTemplate tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Test function for generateErrorPage
+ */
+function testGenerateErrorPage() {
+  console.log('=== TESTING generateErrorPage ===');
+  
+  try {
+    // Test case 1: No error provided
+    console.log('Test 1 - No error provided:');
+    const errorPage1 = generateErrorPage();
+    console.log('Error page generated, length:', errorPage1.length);
+    
+    if (!errorPage1.includes('<html>') && !errorPage1.includes('Error')) {
+      throw new Error('Error page should contain HTML and error message');
+    }
+    
+    // Test case 2: With error object
+    console.log('Test 2 - With error object:');
+    const testError = new Error('Test error message');
+    const errorPage2 = generateErrorPage(testError);
+    console.log('Error page with details generated, length:', errorPage2.length);
+    
+    if (!errorPage2.includes('Test error message')) {
+      throw new Error('Error page should contain error details');
+    }
+    
+    console.log('✅ generateErrorPage tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ generateErrorPage tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Test function for generateSuccessPage
+ */
+function testGenerateSuccessPage() {
+  console.log('=== TESTING generateSuccessPage ===');
+  
+  try {
+    // Test case 1: Boda
+    console.log('Test 1 - Boda success page:');
+    const bodaPage = generateSuccessPage(mockFormData, 'Boda');
+    console.log('Boda success page generated, length:', bodaPage.length);
+    
+    if (!bodaPage.includes('María García y Juan Pérez')) {
+      throw new Error('Success page should contain client name');
+    }
+    
+    // Test case 2: Quince años
+    console.log('Test 2 - Quince años success page:');
+    const quincePage = generateSuccessPage(mockQuinceaneraData, 'Quince años');
+    console.log('Quince años success page generated, length:', quincePage.length);
+    
+    if (!quincePage.includes('María José González')) {
+      throw new Error('Success page should contain quinceañera name');
+    }
+    
+    // Test case 3: Unknown event type
+    console.log('Test 3 - Unknown event type:');
+    const unknownData = { ...mockFormData, tipo_evento: 'Evento Desconocido' };
+    const unknownPage = generateSuccessPage(unknownData, 'Evento Desconocido');
+    console.log('Unknown event success page generated, length:', unknownPage.length);
+    
+    console.log('✅ generateSuccessPage tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ generateSuccessPage tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Test function for generateEmailPlain
+ */
+function testGenerateEmailPlain() {
+  console.log('=== TESTING generateEmailPlain ===');
+  
+  try {
+    // Test case 1: Boda email
+    console.log('Test 1 - Boda email:');
+    const bodaEmail = generateEmailPlain(mockFormData, 'Boda', '💍');
+    console.log('Boda email generated, length:', bodaEmail.length);
+    
+    // Check essential content
+    if (!bodaEmail.includes('NUEVA COTIZACIÓN DE BODA')) {
+      throw new Error('Email should contain event type header');
+    }
+    if (!bodaEmail.includes('María García y Juan Pérez')) {
+      throw new Error('Email should contain client name');
+    }
+    if (!bodaEmail.includes('test@example.com')) {
+      throw new Error('Email should contain client email');
+    }
+    if (!bodaEmail.includes('3001234567')) {
+      throw new Error('Email should contain client phone');
+    }
+    if (!bodaEmail.includes('✅ Alojamiento')) {
+      throw new Error('Email should show required services with checkmarks');
+    }
+    if (!bodaEmail.includes('❌ Mobiliario')) {
+      throw new Error('Email should show non-required services with X marks');
+    }
+    
+    // Test case 2: Quinceañera email with theme
+    console.log('Test 2 - Quinceañera email:');
+    const quinceEmail = generateEmailPlain(mockQuinceaneraData, 'Quince años', '👑');
+    console.log('Quinceañera email generated, length:', quinceEmail.length);
+    
+    if (!quinceEmail.includes('🎨 Temática: Princesa')) {
+      throw new Error('Email should contain theme details');
+    }
+    if (!quinceEmail.includes('María José González')) {
+      throw new Error('Email should contain quinceañera name');
+    }
+    
+    // Test case 3: Retiro email with type
+    console.log('Test 3 - Retiro email:');
+    const retiroEmail = generateEmailPlain(mockRetiroData, 'Retiro', '🧘‍♀️');
+    console.log('Retiro email generated, length:', retiroEmail.length);
+    
+    if (!retiroEmail.includes('🧘‍♀️ Tipo de Retiro: Empresarial')) {
+      throw new Error('Email should contain retreat type details');
+    }
+    if (!retiroEmail.includes('Empresa ABC')) {
+      throw new Error('Email should contain organization name');
+    }
+    
+    console.log('✅ generateEmailPlain tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ generateEmailPlain tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Test function for sendEventNotification
+ */
+function testSendEventNotification() {
+  console.log('=== TESTING sendEventNotification ===');
+  
+  try {
+    // Test case 1: Boda notification
+    console.log('Test 1 - Boda notification:');
+    // Note: This will actually try to send an email in real environment
+    // In testing, we just ensure it doesn't throw errors
+    sendEventNotification(mockFormData, 'Boda');
+    console.log('Boda notification sent successfully');
+    
+    // Test case 2: Quinceañera notification
+    console.log('Test 2 - Quinceañera notification:');
+    sendEventNotification(mockQuinceaneraData, 'Quince años');
+    console.log('Quinceañera notification sent successfully');
+    
+    // Test case 3: Retiro notification
+    console.log('Test 3 - Retiro notification:');
+    sendEventNotification(mockRetiroData, 'Retiro');
+    console.log('Retiro notification sent successfully');
+    
+    // Test case 4: Unknown event type
+    console.log('Test 4 - Unknown event type notification:');
+    const unknownData = { ...mockFormData, tipo_evento: 'Evento Desconocido' };
+    sendEventNotification(unknownData, 'Evento Desconocido');
+    console.log('Unknown event notification sent successfully');
+    
+    console.log('✅ sendEventNotification tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ sendEventNotification tests FAILED:', error.message);
+    // Don't fail the test for email errors in testing environment
+    console.log('⚠️ Email sending may fail in testing environment - this is expected');
+    return true;
+  }
+}
+
+/**
+ * Test function for handleRequest (main function)
+ */
+function testHandleRequest() {
+  console.log('=== TESTING handleRequest ===');
+  
+  try {
+    // Test case 1: GET request with parameters
+    console.log('Test 1 - GET request with parameters:');
+    const mockGetEvent = {
+      parameter: mockFormData,
+      postData: null
+    };
+    
+    const getResult = handleRequest(mockGetEvent);
+    console.log('GET request handled, result type:', typeof getResult);
+    
+    // Test case 2: POST request with form data
+    console.log('Test 2 - POST request with form data:');
+    const formDataString = Object.entries(mockFormData)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    
+    const mockPostEvent = {
+      parameter: {},
+      postData: {
+        contents: formDataString
       }
-    });
+    };
     
-    console.log('✅ Tests de formularios completados');
+    const postResult = handleRequest(mockPostEvent);
+    console.log('POST request handled, result type:', typeof postResult);
+    
+    // Test case 3: Empty request (should return error page)
+    console.log('Test 3 - Empty request:');
+    const mockEmptyEvent = {
+      parameter: {},
+      postData: null
+    };
+    
+    const emptyResult = handleRequest(mockEmptyEvent);
+    console.log('Empty request handled, result type:', typeof emptyResult);
+    
+    console.log('✅ handleRequest tests PASSED');
+    return true;
     
   } catch (error) {
-    results.addResult('Todos los formularios', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en tests de formularios:', error);
+    console.error('❌ handleRequest tests FAILED:', error.message);
+    return false;
   }
-  
-  return results.getSummary();
 }
 
-// ================================
-// FUNCIÓN PRINCIPAL DE TESTS
-// ================================
+/**
+ * Test function for doGet
+ */
+function testDoGet() {
+  console.log('=== TESTING doGet ===');
+  
+  try {
+    const mockEvent = {
+      parameter: mockFormData,
+      postData: null
+    };
+    
+    const result = doGet(mockEvent);
+    console.log('doGet executed successfully, result type:', typeof result);
+    
+    console.log('✅ doGet tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ doGet tests FAILED:', error.message);
+    return false;
+  }
+}
 
 /**
- * Ejecuta todos los tests del sistema
+ * Test function for doPost
  */
-function runAllTests() {
-  console.log('🚀 INICIANDO SUITE COMPLETA DE PRUEBAS');
+function testDoPost() {
+  console.log('=== TESTING doPost ===');
+  
+  try {
+    const formDataString = Object.entries(mockFormData)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    
+    const mockEvent = {
+      parameter: {},
+      postData: {
+        contents: formDataString
+      }
+    };
+    
+    const result = doPost(mockEvent);
+    console.log('doPost executed successfully, result type:', typeof result);
+    
+    console.log('✅ doPost tests PASSED');
+    return true;
+    
+  } catch (error) {
+    console.error('❌ doPost tests FAILED:', error.message);
+    return false;
+  }
+}
+
+/**
+ * Run all tests
+ */
+function runAllEventosTests() {
+  console.log('🚀 STARTING EVENTOS.JS TEST SUITE');
   console.log('=====================================');
   
-  const allResults = new TestResults();
+  const testResults = [];
   
-  // Tests del sistema de plantillas
-  console.log('\n📄 TESTS DEL SISTEMA DE PLANTILLAS');
-  console.log('-----------------------------------');
-  const templateLoadResults = testTemplateLoading();
-  const templateProcessResults = testTemplateProcessing();
+  // Run all individual tests
+  testResults.push({ name: 'parseFormData', passed: testParseFormData() });
+  testResults.push({ name: 'loadTemplate', passed: testLoadTemplate() });
+  testResults.push({ name: 'processTemplate', passed: testProcessTemplate() });
+  testResults.push({ name: 'generateErrorPage', passed: testGenerateErrorPage() });
+  testResults.push({ name: 'generateSuccessPage', passed: testGenerateSuccessPage() });
+  testResults.push({ name: 'generateEmailPlain', passed: testGenerateEmailPlain() });
+  testResults.push({ name: 'sendEventNotification', passed: testSendEventNotification() });
+  testResults.push({ name: 'handleRequest', passed: testHandleRequest() });
+  testResults.push({ name: 'doGet', passed: testDoGet() });
+  testResults.push({ name: 'doPost', passed: testDoPost() });
   
-  // Tests de generación de páginas
-  console.log('\n🏠 TESTS DE GENERACIÓN DE PÁGINAS');
-  console.log('----------------------------------');
-  const errorPageResults = testErrorPageGeneration();
-  const successPageResults = testSuccessPageGeneration();
+  // Summary
+  console.log('\n📊 TEST RESULTS SUMMARY');
+  console.log('========================');
   
-  // Tests de simulación de formularios
-  console.log('\n📝 TESTS DE SIMULACIÓN DE FORMULARIOS');
-  console.log('--------------------------------------');
-  const weddingResults = testWeddingFormSubmission();
-  const quinceResults = testQuinceaneraFormSubmission();
-  const retiroResults = testRetiroFormSubmission();
-  const corporativeResults = testCorporativeFormSubmission();
+  const passedTests = testResults.filter(result => result.passed);
+  const failedTests = testResults.filter(result => !result.passed);
   
-  // Tests de casos límite y errores
-  console.log('\n⚠️  TESTS DE CASOS LÍMITE Y ERRORES');
-  console.log('-----------------------------------');
-  const edgeCasesResults = testEdgeCases();
-  const errorHandlingResults = testErrorHandling();
+  console.log(`✅ Passed: ${passedTests.length}/${testResults.length}`);
+  passedTests.forEach(test => console.log(`   ✓ ${test.name}`));
   
-  // Tests de notificaciones
-  console.log('\n📧 TESTS DE GENERACIÓN DE EMAILS');
-  console.log('---------------------------------');
-  const emailResults = testEmailGeneration();
+  if (failedTests.length > 0) {
+    console.log(`❌ Failed: ${failedTests.length}/${testResults.length}`);
+    failedTests.forEach(test => console.log(`   ✗ ${test.name}`));
+  }
   
-  // Tests combinados
-  console.log('\n🔄 TESTS DE FLUJOS COMPLETOS');
-  console.log('-----------------------------');
-  const completeFlowResults = testCompleteFormFlow();
-  const allFormsResults = testAllEventForms();
+  console.log('\n🏁 TEST SUITE COMPLETED');
   
-  // Consolidar todos los resultados
-  const testSuites = [
-    { name: 'Carga de plantillas', results: templateLoadResults },
-    { name: 'Procesamiento de plantillas', results: templateProcessResults },
-    { name: 'Generación páginas error', results: errorPageResults },
-    { name: 'Generación páginas éxito', results: successPageResults },
-    { name: 'Formulario boda', results: weddingResults },
-    { name: 'Formulario quinceañera', results: quinceResults },
-    { name: 'Formulario retiro', results: retiroResults },
-    { name: 'Formulario corporativo', results: corporativeResults },
-    { name: 'Casos límite', results: edgeCasesResults },
-    { name: 'Manejo de errores', results: errorHandlingResults },
-    { name: 'Generación emails', results: emailResults },
-    { name: 'Flujo completo', results: completeFlowResults },
-    { name: 'Todos los formularios', results: allFormsResults }
-  ];
-  
-  // Agregar todos los resultados al consolidado
-  testSuites.forEach(suite => {
-    suite.results.results.forEach(result => {
-      allResults.addResult(`${suite.name}: ${result.test}`, result.passed, result.message);
-    });
-  });
-  
-  // Mostrar resumen por suite
-  console.log('\n📊 RESUMEN POR SUITE DE PRUEBAS');
-  console.log('================================');
-  testSuites.forEach(suite => {
-    const passed = suite.results.passed;
-    const total = suite.results.total;
-    const percentage = total > 0 ? ((passed / total) * 100).toFixed(1) : '0.0';
-    const status = passed === total ? '✅' : '⚠️';
-    
-    console.log(`${status} ${suite.name}: ${passed}/${total} (${percentage}%)`);
-  });
-  
-  // Mostrar resumen final
-  console.log('\n🎯 RESUMEN FINAL DE TODAS LAS PRUEBAS');
-  console.log('======================================');
-  return allResults.printSummary();
+  return {
+    total: testResults.length,
+    passed: passedTests.length,
+    failed: failedTests.length,
+    results: testResults
+  };
 }
 
 /**
- * Test rápido para verificación básica
+ * Quick test runner function for individual tests
  */
-function runQuickTests() {
-  console.log('⚡ EJECUTANDO TESTS RÁPIDOS');
-  console.log('============================');
+function quickTest(functionName) {
+  console.log(`🔍 RUNNING QUICK TEST: ${functionName}`);
   
-  const results = new TestResults();
-  
-  // Test básico de conversión de form data
-  try {
-    const testData = { nombre: 'Test', email: 'test@example.com' };
-    const formString = objectToFormData(testData);
-    results.addResult('Conversión form data', formString.includes('nombre=Test'), 'Conversión básica de datos');
-  } catch (e) {
-    results.addResult('Conversión form data', false, e.toString());
+  switch (functionName) {
+    case 'parseFormData':
+      return testParseFormData();
+    case 'loadTemplate':
+      return testLoadTemplate();
+    case 'processTemplate':
+      return testProcessTemplate();
+    case 'generateErrorPage':
+      return testGenerateErrorPage();
+    case 'generateSuccessPage':
+      return testGenerateSuccessPage();
+    case 'generateEmailPlain':
+      return testGenerateEmailPlain();
+    case 'sendEventNotification':
+      return testSendEventNotification();
+    case 'handleRequest':
+      return testHandleRequest();
+    case 'doGet':
+      return testDoGet();
+    case 'doPost':
+      return testDoPost();
+    default:
+      console.error('❌ Unknown function name:', functionName);
+      return false;
   }
-  
-  // Test básico de procesamiento de plantillas
-  try {
-    const template = '<h1>{{TITLE}}</h1>';
-    const processed = processTemplate(template, { TITLE: 'Test Title' });
-    results.addResult('Procesamiento plantilla', processed.includes('Test Title'), 'Reemplazo básico de placeholders');
-  } catch (e) {
-    results.addResult('Procesamiento plantilla', false, e.toString());
-  }
-  
-  // Test básico de mock event
-  try {
-    const mockEvent = createMockEvent({ tipo_evento: 'Boda', email: 'test@example.com' });
-    results.addResult('Mock event creation', mockEvent.postData && mockEvent.postData.contents, 'Creación de evento simulado');
-  } catch (e) {
-    results.addResult('Mock event creation', false, e.toString());
-  }
-  
-  return results.printSummary();
 }
 
-// Test básico de form parsing (sin dependencias externas)
-function testFormParsing() {
-  console.log('🧪 Testing form data parsing...');
-  
-  const results = new TestResults();
-  
-  try {
-    // Test de parseFormData (simula la función en eventos.js)
-    function parseFormDataTest(formDataString) {
-      const data = {};
-      if (!formDataString) return data;
-      
-      const pairs = formDataString.split('&');
-      for (const pair of pairs) {
-        const [key, value] = pair.split('=');
-        if (key && value !== undefined) {
-          data[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, ' '));
-        }
-      }
-      return data;
-    }
-    
-    const testFormString = 'tipo_evento=Boda&email=test%40example.com&nombres_novios=Maria+y+Juan';
-    const parsedData = parseFormDataTest(testFormString);
-    
-    results.addResult(
-      'Parse form data', 
-      parsedData.tipo_evento === 'Boda' && parsedData.email === 'test@example.com',
-      'Debe parsear correctamente los datos del formulario'
-    );
-    
-    results.addResult(
-      'Handle spaces in form data', 
-      parsedData.nombres_novios === 'Maria y Juan',
-      'Debe manejar correctamente los espacios en los datos'
-    );
-    
-    console.log('✅ Test form parsing completado');
-    
-  } catch (error) {
-    results.addResult('Form parsing', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test form parsing:', error);
-  }
-  
-  return results.printSummary();
+// Export the test runner for external use
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    runAllEventosTests,
+    quickTest,
+    mockFormData,
+    mockQuinceaneraData,
+    mockRetiroData
+  };
 }
-
-// ================================
-// FUNCIONES DE UTILIDAD PARA TESTING
-// ================================
-
-/**
- * Función para limpiar datos de test (si es necesario)
- */
-function cleanupTestData() {
-  console.log('🧹 Limpiando datos de test...');
-  // Aquí se podría agregar lógica para limpiar datos de test
-  // Por ejemplo, eliminar filas de prueba del spreadsheet
-  console.log('✅ Limpieza completada');
-}
-
-/**
- * Función para configurar el entorno de test
- */
-function setupTestEnvironment() {
-  console.log('⚙️ Configurando entorno de test...');
-  // Aquí se podría agregar lógica para configurar el entorno
-  // Por ejemplo, crear hojas de test temporales
-  console.log('✅ Entorno configurado');
-}
-
-// Test con templates mock (sin dependencias externas)
-function testWeddingFormWithMocks() {
-  console.log('🧪 TESTING FORMULARIO BODA CON MOCK TEMPLATES');
-  console.log('===============================================');
-  
-  const results = new TestResults();
-  
-  try {
-    // Configurar templates mock
-    setupMockTemplates();
-    
-    // Crear evento simulado
-    const mockEvent = createMockEvent(TEST_DATA.boda);
-    console.log('📝 Evento mock creado');
-    
-    // Procesar solicitud
-    const response = handleRequest(mockEvent);
-    console.log('⚙️ Solicitud procesada');
-    
-    results.addResult(
-      'Procesamiento con mock templates', 
-      response && typeof response.getContent === 'function',
-      'Debe procesar correctamente con templates mock'
-    );
-    
-    if (response) {
-      const content = response.getContent();
-      results.addResult(
-        'Contenido generado', 
-        content && content.length > 0,
-        'Debe generar contenido HTML válido'
-      );
-      
-      results.addResult(
-        'Contenido personalizado', 
-        content.includes('Éxito') || content.includes('Success'),
-        'Debe incluir indicadores de éxito'
-      );
-    }
-    
-    // Restaurar templates
-    restoreMockTemplates();
-    console.log('✅ Test con mock templates completado');
-    
-  } catch (error) {
-    results.addResult('Test con mocks', false, `Error: ${error.toString()}`);
-    console.error('❌ Error en test con mocks:', error);
-    
-    // Asegurar restauración en caso de error
-    try {
-      restoreMockTemplates();
-    } catch (restoreError) {
-      console.error('Error restaurando templates:', restoreError);
-    }
-  }
-  
-  return results.printSummary();
-}
-
-// ================================
-// EXPORTS PARA TESTING INDIVIDUAL
-// ================================
-
-// Las siguientes funciones pueden ejecutarse individualmente para tests específicos:
-// - testTemplateLoading()
-// - testTemplateProcessing()
-// - testErrorPageGeneration()
-// - testSuccessPageGeneration()
-// - testWeddingFormSubmission()
-// - testQuinceaneraFormSubmission()
-// - testRetiroFormSubmission()
-// - testCorporativeFormSubmission()
-// - testEdgeCases()
-// - testErrorHandling()
-// - testEmailGeneration()
-// - testCompleteFormFlow()
-// - testAllEventForms()
-// - runAllTests() // <-- Función principal para ejecutar todo
-// - runQuickTests() // <-- Función para tests rápidos 

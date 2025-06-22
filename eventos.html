@@ -766,13 +766,25 @@
         <!-- Event Quote Form Section -->
         <section id="event-quote-form" class="job-section">
             <div class="container">
+                <!-- Temporary Test Buttons -->
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
+                    <h3 style="color: #856404; margin-bottom: 1rem;">🚧 Botones de Prueba (Temporal)</h3>
+                    <p style="color: #856404; margin-bottom: 1rem; font-size: 0.9rem;">Estos botones llenan el formulario con datos de prueba y lo envían automáticamente.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                        <button id="test-boda" style="background: #e91e63; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Test Boda</button>
+                        <button id="test-quince" style="background: #9c27b0; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Test Quince</button>
+                        <button id="test-retiro" style="background: #4caf50; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Test Retiro</button>
+                        <button id="test-corporativo" style="background: #2196f3; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Test Corporativo</button>
+                    </div>
+                </div>
+                
                 <div class="application-form">
                     <h2 class="form-heading">Solicita tu Cotización</h2>
                     <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
                         Completa el formulario y te enviaremos una cotización personalizada para tu evento especial
                     </p>
                     
-                    <form id="unified-event-form" action="https://script.google.com/macros/s/AKfycby7pA_eVXj3S_O2sbHLMp64OuqHCpwnJ8gOygBiMP9APyqR8PdD07COG1W_SD3sg4bM/exec" method="POST">
+                    <form id="unified-event-form" action="https://script.google.com/macros/s/AKfycbyMv3r9pIZjbxeroz_ijQ7UU0OQb1n_9nJoX3m02pKfifJSXg3gs848u9oKDUTH4ell/exec" method="POST">
                         <!-- Event Type Selection -->
                         <div class="form-group">
                             <label for="tipo_evento" class="form-label required-field">Tipo de Evento</label>
@@ -923,47 +935,137 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Dynamic form field templates (removed servicios_adicionales sections)
+            // Dynamic form field templates - Using single event_category field
             const fieldTemplates = {
-                bodas: `
+                'Boda': `
                     <div class="form-group">
-                        <label for="nombres_novios" class="form-label required-field">Nombres de los Novios</label>
-                        <input type="text" id="nombres_novios" name="nombres_novios" class="form-input" required placeholder="Ej: María Pérez y Juan García">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Boda Clásica">Boda Clásica</option>
+                            <option value="Boda Rústica">Boda Rústica</option>
+                            <option value="Boda al Aire Libre">Boda al Aire Libre</option>
+                            <option value="Boda Íntima">Boda Íntima</option>
+                            <option value="Otra">Otra</option>
+                        </select>
                     </div>
                 `,
-                quinces: `
+                'Quince años': `
                     <div class="form-group">
-                        <label for="nombre_quinceañera" class="form-label required-field">Nombre de la cumpleañera</label>
-                        <input type="text" id="nombre_quinceañera" name="nombre_quinceañera" class="form-input" required placeholder="Ej: María José González">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombres_padres" class="form-label required-field">Nombres de los Padres</label>
-                        <input type="text" id="nombres_padres" name="nombres_padres" class="form-input" required placeholder="Ej: Carlos González y Ana María Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="tematica_preferida" class="form-label">Temática Preferida</label>
-                        <input type="text" id="tematica_preferida" name="tematica_preferida" class="form-input" placeholder="Ej: Princesa, Vintage, Mariposas, etc.">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Princesa">Princesa</option>
+                            <option value="Vintage">Vintage</option>
+                            <option value="Mariposas">Mariposas</option>
+                            <option value="Hollywood">Hollywood</option>
+                            <option value="París">París</option>
+                            <option value="Flores">Flores</option>
+                            <option value="Otra">Otra</option>
+                        </select>
                     </div>
                 `,
-                retiros: `
+                'Retiro': `
                     <div class="form-group">
-                        <label for="nombre_organizacion" class="form-label required-field">Organización/Grupo</label>
-                        <input type="text" id="nombre_organizacion" name="nombre_organizacion" class="form-input" required placeholder="Ej: Empresa ABC, Grupo de Yoga, etc.">
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo_retiro" class="form-label">Tipo de Retiro</label>
-                        <select id="tipo_retiro" name="tipo_retiro" class="form-select">
-                            <option value="">Selecciona el tipo</option>
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
                             <option value="Empresarial">Empresarial</option>
                             <option value="Espiritual/Meditación">Espiritual/Meditación</option>
                             <option value="Yoga">Yoga</option>
                             <option value="Educativo">Educativo</option>
                             <option value="Deportivo">Deportivo</option>
+                            <option value="Bienestar">Bienestar</option>
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
                 `,
-                'Evento Corporativo': ``
+                'Evento Corporativo': `
+                    <div class="form-group">
+                        <label for="event_category" class="form-label">Categoría del Evento</label>
+                        <select id="event_category" name="event_category" class="form-select">
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Conferencia">Conferencia</option>
+                            <option value="Seminario">Seminario</option>
+                            <option value="Team Building">Team Building</option>
+                            <option value="Lanzamiento de Producto">Lanzamiento de Producto</option>
+                            <option value="Reunión Anual">Reunión Anual</option>
+                            <option value="Capacitación">Capacitación</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                `
+            };
+            
+            // Test data for different event types
+            const testData = {
+                boda: {
+                    tipo_evento: 'Boda',
+                    event_category: 'Boda Rústica',
+                    nombres_organizacion: 'María González & Carlos Rodríguez',
+                    email: 'maria.carlos@test.com',
+                    telefono: '314 123 4567',
+                    fecha_evento: '2024-08-15',
+                    hora_evento: 'Tarde (12:00 PM - 6:00 PM)',
+                    numero_invitados: '150',
+                    presupuesto: '$10,000,000 - $20,000,000',
+                    requiere_alojamiento: true,
+                    requiere_alimentacion: true,
+                    requiere_mobiliario: true,
+                    requiere_sonido: true,
+                    requiere_planeador: true,
+                    requiere_decoracion: true,
+                    requiere_fotografia: true,
+                    comentarios: 'Queremos una boda rústica con ceremonia en el kiosko y recepción en el salón principal.'
+                },
+                quince: {
+                    tipo_evento: 'Quince años',
+                    event_category: 'Princesa',
+                    nombres_organizacion: 'Familia Martínez - Quinceañera Sofía',
+                    email: 'familia.martinez@test.com',
+                    telefono: '318 456 7890',
+                    fecha_evento: '2024-07-20',
+                    hora_evento: 'Noche (6:00 PM - 12:00 AM)',
+                    numero_invitados: '120',
+                    presupuesto: '$5,000,000 - $10,000,000',
+                    requiere_alimentacion: true,
+                    requiere_mobiliario: true,
+                    requiere_sonido: true,
+                    requiere_decoracion: true,
+                    requiere_fotografia: true,
+                    comentarios: 'Fiesta de 15 años con temática de princesa, necesitamos decoración rosada y dorada.'
+                },
+                retiro: {
+                    tipo_evento: 'Retiro',
+                    event_category: 'Yoga',
+                    nombres_organizacion: 'Centro de Bienestar Armonía',
+                    email: 'info@armonia.com',
+                    telefono: '320 789 1234',
+                    fecha_evento: '2024-09-10',
+                    hora_evento: 'Todo el día',
+                    numero_invitados: '40',
+                    presupuesto: '$2,000,000 - $5,000,000',
+                    requiere_alojamiento: true,
+                    requiere_alimentacion: true,
+                    requiere_mobiliario: true,
+                    comentarios: 'Retiro de yoga de fin de semana, necesitamos espacios para meditación y alimentación vegetariana.'
+                },
+                corporativo: {
+                    tipo_evento: 'Evento Corporativo',
+                    event_category: 'Team Building',
+                    nombres_organizacion: 'TechCorp Solutions S.A.S.',
+                    email: 'eventos@techcorp.com',
+                    telefono: '317 234 5678',
+                    fecha_evento: '2024-06-25',
+                    hora_evento: 'Mañana (8:00 AM - 12:00 PM)',
+                    numero_invitados: '80',
+                    presupuesto: '$5,000,000 - $10,000,000',
+                    requiere_alimentacion: true,
+                    requiere_mobiliario: true,
+                    requiere_sonido: true,
+                    requiere_audiovisuales: true,
+                    comentarios: 'Evento de team building corporativo con actividades al aire libre y almuerzo.'
+                }
             };
             
             // Handle event type selection
@@ -1043,15 +1145,11 @@
                     console.log(`${key}: ${value}`);
                 }
                 
-                // Handle checkboxes for servicios_adicionales
-                const checkboxes = form.querySelectorAll('input[name="servicios_adicionales"]:checked');
-                const serviciosSeleccionados = Array.from(checkboxes).map(cb => cb.value).join(', ');
-                console.log('=== SERVICIOS ADICIONALES PROCESSING ===');
-                console.log('Checked servicios_adicionales:', Array.from(checkboxes).map(cb => cb.value));
-                console.log('Combined servicios_adicionales:', serviciosSeleccionados);
-                formData.set('servicios_adicionales', serviciosSeleccionados);
+                // Note: servicios_adicionales field has been removed from the form
+                console.log('=== SERVICIOS ADICIONALES ===');
+                console.log('Field servicios_adicionales has been removed from the form');
                 
-                // Handle boolean service requirements checkboxes
+                // Handle boolean service requirements checkboxes - IMPROVED
                 const booleanFields = [
                     'requiere_alojamiento',
                     'requiere_alimentacion', 
@@ -1069,6 +1167,9 @@
                     const value = checkbox && checkbox.checked ? 'Sí' : 'No';
                     console.log(`${fieldName}: ${checkbox ? 'found' : 'NOT FOUND'} - checked: ${checkbox?.checked} - value: ${value}`);
                     formData.set(fieldName, value);
+                    
+                    // Double-check the formData was set correctly
+                    console.log(`FormData.get(${fieldName}): ${formData.get(fieldName)}`);
                 });
                 
                 // Debug: Log all form fields in the form
@@ -1167,8 +1268,106 @@
                         'value': 0
                     });
                 });
+                        });
+            
+            // Helper function to populate form with test data
+            function populateFormWithTestData(eventType) {
+                const data = testData[eventType];
+                if (!data) return;
+                
+                console.log(`=== POPULATING FORM WITH ${eventType.toUpperCase()} TEST DATA ===`);
+                
+                // Set basic form fields (non-boolean)
+                Object.keys(data).forEach(key => {
+                    if (!key.startsWith('requiere_')) { // Skip boolean fields for now
+                        const element = document.getElementById(key) || document.getElementsByName(key)[0];
+                        if (element && element.type !== 'checkbox') {
+                            element.value = data[key];
+                            console.log(`Set ${key} = ${data[key]}`);
+                        }
+                    }
+                });
+                
+                // Handle boolean fields separately to ensure proper checkbox selection
+                const booleanFields = [
+                    'requiere_alojamiento',
+                    'requiere_alimentacion', 
+                    'requiere_mobiliario',
+                    'requiere_planeador',
+                    'requiere_decoracion',
+                    'requiere_sonido',
+                    'requiere_fotografia',
+                    'requiere_audiovisuales'
+                ];
+                
+                console.log('=== SETTING BOOLEAN CHECKBOXES ===');
+                booleanFields.forEach(fieldName => {
+                    const checkbox = document.querySelector(`input[name="${fieldName}"]`);
+                    if (checkbox) {
+                        checkbox.checked = data[fieldName] === true;
+                        console.log(`Set ${fieldName} checkbox = ${checkbox.checked} (data value: ${data[fieldName]})`);
+                    } else {
+                        console.log(`Checkbox ${fieldName} NOT FOUND`);
+                    }
+                });
+                
+                // Trigger event type change to load dynamic fields
+                const tipoEventoSelect = document.getElementById('tipo_evento');
+                if (tipoEventoSelect) {
+                    tipoEventoSelect.dispatchEvent(new Event('change'));
+                    
+                    // Wait for dynamic fields to load, then set event_category
+                    setTimeout(() => {
+                        const eventCategorySelect = document.getElementById('event_category');
+                        if (eventCategorySelect && data.event_category) {
+                            eventCategorySelect.value = data.event_category;
+                            console.log(`Set event_category = ${data.event_category}`);
+                        }
+                    }, 100);
+                }
+            }
+            
+            // Test button event listeners
+            document.getElementById('test-boda').addEventListener('click', function() {
+                console.log('=== TEST BODA BUTTON CLICKED ===');
+                populateFormWithTestData('boda');
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                    console.log('=== AUTO-SUBMITTING BODA FORM ===');
+                    document.getElementById('unified-event-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                }, 1000);
             });
-
+            
+            document.getElementById('test-quince').addEventListener('click', function() {
+                console.log('=== TEST QUINCE BUTTON CLICKED ===');
+                populateFormWithTestData('quince');
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                    console.log('=== AUTO-SUBMITTING QUINCE FORM ===');
+                    document.getElementById('unified-event-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                }, 1000);
+            });
+            
+            document.getElementById('test-retiro').addEventListener('click', function() {
+                console.log('=== TEST RETIRO BUTTON CLICKED ===');
+                populateFormWithTestData('retiro');
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                    console.log('=== AUTO-SUBMITTING RETIRO FORM ===');
+                    document.getElementById('unified-event-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                }, 1000);
+            });
+            
+            document.getElementById('test-corporativo').addEventListener('click', function() {
+                console.log('=== TEST CORPORATIVO BUTTON CLICKED ===');
+                populateFormWithTestData('corporativo');
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                    console.log('=== AUTO-SUBMITTING CORPORATIVO FORM ===');
+                    document.getElementById('unified-event-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                }, 1000);
+            });
+            
             // Track budget selection
             const presupuestoSelect = document.getElementById('presupuesto');
             if (presupuestoSelect) {
