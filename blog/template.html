@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{BLOG_TITLE}} - Finca Termópilas</title>
+    <meta name="description" content="{{BLOG_DESCRIPTION}}">
+    <meta name="keywords" content="{{BLOG_KEYWORDS}}">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google Analytics will be dynamically added by TypeScript -->
+    <!-- Fallback Google Analytics in case TypeScript fails to load it -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/hero.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/main-sections.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/blog-post.css">
+    <link rel="stylesheet" href="../styles/newsletter.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html">
+    <meta property="og:title" content="{{BLOG_TITLE}} - Finca Termópilas">
+    <meta property="og:description" content="{{BLOG_DESCRIPTION}}">
+    <meta property="og:image" content="https://termopilas.co/{{BLOG_FEATURED_IMAGE}}">
+    <meta property="article:published_time" content="{{BLOG_PUBLISHED_DATE}}">
+    <meta property="article:author" content="{{BLOG_AUTHOR}}">
+    <meta property="article:tag" content="{{BLOG_TAGS}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html">
+    <meta property="twitter:title" content="{{BLOG_TITLE}} - Finca Termópilas">
+    <meta property="twitter:description" content="{{BLOG_DESCRIPTION}}">
+    <meta property="twitter:image" content="https://termopilas.co/{{BLOG_FEATURED_IMAGE}}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{BLOG_TITLE}}",
+      "image": "https://termopilas.co/{{BLOG_FEATURED_IMAGE}}",
+      "datePublished": "{{BLOG_PUBLISHED_DATE}}",
+      "dateModified": "{{BLOG_MODIFIED_DATE}}",
+      "author": {
+        "@type": "Person",
+        "name": "{{BLOG_AUTHOR}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Finca Termópilas",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://termopilas.co/assets/images/favicon.png"
+        }
+      },
+      "description": "{{BLOG_DESCRIPTION}}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html"
+      },
+      "keywords": "{{BLOG_KEYWORDS}}"
+    }
+    </script>
+    
+    <!-- JavaScript -->
+    <script src="../dist/main.js" defer></script>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header has been removed to not display on blog entries -->
+    
+    <main id="main-content" tabindex="-1">
+        <article class="blog-post-container">
+            <a href="../blog.html" class="blog-post-back-link"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
+            <header class="blog-post-header">
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">{{BLOG_DATE}}</span>
+                    <span class="blog-post-category">{{BLOG_CATEGORY}}</span>
+                    <div class="blog-post-author">
+                        <img src="../{{BLOG_AUTHOR_IMAGE}}" alt="{{BLOG_AUTHOR}}" class="blog-post-author-img">
+                        <span>{{BLOG_AUTHOR}}</span>
+                    </div>
+                </div>
+                <h1 class="blog-post-title">{{BLOG_TITLE}}</h1>
+                <p class="blog-post-subtitle">{{BLOG_SUBTITLE}}</p>
+            </header>
+            
+            <img src="../{{BLOG_FEATURED_IMAGE}}" alt="{{BLOG_TITLE}}" class="blog-post-featured-image">
+            
+            <div class="blog-post-content">
+                {{BLOG_CONTENT}}
+            </div>
+            
+            <div class="blog-post-tags">
+                {{BLOG_TAGS_HTML}}
+            </div>
+            
+            <div class="blog-post-share">
+                <h3>Comparte este artículo</h3>
+                <div class="blog-post-share-buttons">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_facebook', {'event_category': 'blog_share', 'event_label': 'facebook_share'});">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html&text={{BLOG_TITLE}}" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_twitter', {'event_category': 'blog_share', 'event_label': 'twitter_share'});">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://wa.me/?text={{BLOG_TITLE}}%20https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:?subject={{BLOG_TITLE}}&body=Te recomiendo este artículo: https://termopilas.co/blog/posts/{{BLOG_SLUG}}.html" class="blog-post-share-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_email', {'event_category': 'blog_share', 'event_label': 'email_share'});">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="blog-post-author-bio">
+                <img src="../{{BLOG_AUTHOR_IMAGE}}" alt="{{BLOG_AUTHOR}}" class="blog-post-author-bio-img">
+                <div class="blog-post-author-bio-content">
+                    <h3>{{BLOG_AUTHOR}}</h3>
+                    <p>{{BLOG_AUTHOR_BIO}}</p>
+                </div>
+            </div>
+        </article>
+        
+        <section class="blog-newsletter section">
+            <div class="container">
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <h2>Suscríbete a nuestro boletín</h2>
+                        <p>Recibe las últimas noticias, artículos y promociones directamente en tu correo electrónico.</p>
+                    </div>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="cta-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_newsletter', {'event_category': 'blog_engagement', 'event_label': 'newsletter_subscribe'});">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <section class="blog-post-related">
+            <div class="blog-post-container">
+                <h2>Artículos relacionados</h2>
+                <div class="blog-post-related-grid">
+                    {{BLOG_RELATED_POSTS}}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+</body>
+</html> 
