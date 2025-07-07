@@ -276,7 +276,7 @@ export function initHeader(): void {
   const pathSegments = currentPath.split('/').filter(segment => segment.length > 0);
   
   // Check if this is a blog post page (located in blog/posts/ directory)
-  if (currentPath.includes('/blog/posts/')) {
+  if (currentPath.includes('/blog/')) {
     // Skip header generation for blog post pages
     console.log('Blog post page detected, skipping header generation');
     return;
