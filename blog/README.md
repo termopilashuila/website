@@ -12,8 +12,9 @@ Este directorio contiene el sistema de blog para el sitio web de Finca Termópil
 
 ### 1. Crear un nuevo archivo HTML
 
-1. Copia el archivo `template.html` y renómbralo con un nombre descriptivo usando kebab-case y preferiblemente un prefijo numérico (por ejemplo, `6-lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
-2. Coloca el nuevo archivo en el directorio `posts/`.
+1. Copia el archivo `template.html` y renómbralo con un nombre descriptivo usando kebab-case (por ejemplo, `lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
+2. Guarda el archivo en el directorio `blog/` (no en el directorio `blog/`).
+3. Actualiza las variables de la plantilla con la información del nuevo artículo.
 
 ### 2. Reemplazar las variables de la plantilla
 
@@ -58,6 +59,11 @@ El contenido del blog (`{{BLOG_CONTENT}}`) debe seguir esta estructura:
     <li>Punto 3</li>
 </ul>
 
+<!-- Botón de CTA para reservas o acciones específicas -->
+<div class="destination-reservation">
+    <a href="https://wa.link/ejemplo123" target="_blank" class="reservation-button" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_seccion1', {'event_category': 'blog_engagement', 'event_label': 'cta_seccion1'});">Reservar experiencia <i class="fas fa-arrow-right"></i></a>
+</div>
+
 <h2>Segunda sección principal</h2>
 
 <p>Contenido de la segunda sección...</p>
@@ -81,12 +87,49 @@ Para la sección de artículos relacionados (`{{BLOG_RELATED_POSTS}}`), utiliza 
     <div class="blog-post-related-content">
         <span class="blog-post-category">Categoría</span>
         <h3>Título del artículo relacionado</h3>
-        <a href="../posts/nombre-del-articulo.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="nombre-del-articulo.html" class="read-more" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_related_nombre', {'event_category': 'blog_navigation', 'event_label': 'related_article_nombre'});">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
 
-Repite este bloque para cada artículo relacionado.
+**Ejemplo completo con 3 artículos relacionados:**
+
+```html
+<article class="blog-post-related-card">
+    <div class="blog-post-related-image">
+        <img src="../../assets/images/home/section2-product1.jpg" alt="El proceso de elaboración de nuestro vino artesanal">
+    </div>
+    <div class="blog-post-related-content">
+        <span class="blog-post-category">Vino</span>
+        <h3>El proceso de elaboración de nuestro vino artesanal</h3>
+        <a href="proceso-elaboracion-vino-artesanal.html" class="read-more" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_related_vino', {'event_category': 'blog_navigation', 'event_label': 'related_article_vino'});">Leer más <i class="fas fa-arrow-right"></i></a>
+    </div>
+</article>
+
+<article class="blog-post-related-card">
+    <div class="blog-post-related-image">
+        <img src="../../assets/images/home/section2-product3.jpg" alt="Del árbol a la barra: Nuestro chocolate artesanal">
+    </div>
+    <div class="blog-post-related-content">
+        <span class="blog-post-category">Cacao</span>
+        <h3>Del árbol a la barra: Nuestro chocolate artesanal</h3>
+        <a href="del-arbol-a-la-barra-chocolate-artesanal.html" class="read-more" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_related_chocolate', {'event_category': 'blog_navigation', 'event_label': 'related_article_chocolate'});">Leer más <i class="fas fa-arrow-right"></i></a>
+    </div>
+</article>
+
+<article class="blog-post-related-card">
+    <div class="blog-post-related-image">
+        <img src="../../assets/images/home/section3-img2.jpg" alt="Un día en nuestro tour de vino y cacao">
+    </div>
+    <div class="blog-post-related-content">
+        <span class="blog-post-category">Experiencias</span>
+        <h3>Un día en nuestro tour de vino y cacao</h3>
+        <a href="un-dia-en-nuestro-tour-de-vino-y-cacao.html" class="read-more" onclick="gtag('event', 'blog_{{BLOG_SLUG}}_related_tour', {'event_category': 'blog_navigation', 'event_label': 'related_article_tour'});">Leer más <i class="fas fa-arrow-right"></i></a>
+    </div>
+</article>
+```
+
+**Nota importante:** Los artículos relacionados deben ser relevantes temáticamente y estratégicamente seleccionados para mantener al lector navegando por el blog. Incluye siempre el tracking de Google Analytics para medir el engagement.
 
 ### 5. Actualizar la página principal del blog
 
@@ -144,8 +187,42 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 | `{{BLOG_AUTHOR}}` | Nombre del autor | Julio Manchola |
 | `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/lugares-para-comer-rivera/author.png |
 | `{{BLOG_AUTHOR_BIO}}` | Biografía del autor | Experto en gastronomía colombiana y periodista especializado en turismo. |
+| `{{BLOG_CONTENT}}` | Contenido principal del artículo (incluye CTA buttons) | Todo el contenido HTML del artículo |
+| `{{BLOG_TAGS_HTML}}` | Etiquetas en formato HTML | `<span class="blog-post-tag">Vino artesanal</span>` |
+| `{{BLOG_RELATED_POSTS}}` | Artículos relacionados con tracking de Analytics | Código HTML completo de los artículos relacionados |
 
 ## Ejemplos
+
+### Ejemplo de artículo con CTA buttons
+
+```html
+<p>El departamento del Huila ofrece una gran variedad de termales con propiedades medicinales...</p>
+
+<ul>
+    <li><strong>Termales Los Ángeles:</strong> Un espacio íntimo rodeado de naturaleza.</li>
+    <li><strong>Termales San Francisco:</strong> Parte del cluster de termalismo de Rivera.</li>
+    <li><strong>Termales Confamiliar:</strong> El complejo más grande y completo.</li>
+</ul>
+
+<div class="destination-reservation">
+    <a href="https://wa.link/bdt5g3" target="_blank" class="reservation-button" onclick="gtag('event', 'blog_lugares_rivera_termales', {'event_category': 'blog_engagement', 'event_label': 'termales_reservation'});">Reservar visita a los Termales <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<h2>Siguiente sección</h2>
+<p>Continuación del contenido...</p>
+```
+
+### Ejemplo de tags HTML
+
+```html
+<span class="blog-post-tag">Huila</span>
+<span class="blog-post-tag">Tatacoa</span>
+<span class="blog-post-tag">Rivera</span>
+<span class="blog-post-tag">San Agustín</span>
+<span class="blog-post-tag">Turismo</span>
+<span class="blog-post-tag">Café</span>
+<span class="blog-post-tag">Mano del Gigante</span>
+```
 
 ### Ejemplo de tarjeta de blog en `blog.html`
 
@@ -177,6 +254,29 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 </url>
 ```
 
+## Tracking de Google Analytics
+
+Los artículos del blog incluyen tracking detallado de Google Analytics para medir el engagement del usuario:
+
+### Eventos principales:
+- **Compartir en redes sociales**: `blog_{{BLOG_SLUG}}_facebook`, `blog_{{BLOG_SLUG}}_twitter`, `blog_{{BLOG_SLUG}}_whatsapp`, `blog_{{BLOG_SLUG}}_email`
+- **Suscripción newsletter**: `blog_{{BLOG_SLUG}}_newsletter`
+- **Clicks en CTA**: `blog_{{BLOG_SLUG}}_nombre_seccion` (personalizable por sección)
+- **Navegación a artículos relacionados**: `blog_{{BLOG_SLUG}}_related_nombre`
+
+### Categorías de eventos:
+- `blog_share`: Para compartir contenido
+- `blog_engagement`: Para interacciones dentro del artículo
+- `blog_navigation`: Para navegación hacia otros artículos
+
+### Estructura del evento:
+```javascript
+gtag('event', 'nombre_evento', {
+    'event_category': 'categoria', 
+    'event_label': 'etiqueta_descriptiva'
+});
+```
+
 ## Buenas prácticas para los artículos de blog
 
 1. **Imágenes**: Optimiza las imágenes antes de subirlas (tamaño recomendado: 1200x800px).
@@ -185,4 +285,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 4. **Enlaces internos**: Incluye enlaces a otras páginas del sitio cuando sea relevante.
 5. **Llamada a la acción**: Termina con una invitación clara para que el lector realice alguna acción.
 6. **SEO**: Incluye la palabra clave principal en el título, la primera párrafo y al menos un encabezado.
-7. **Actualización**: Revisa y actualiza los artículos periódicamente para mantener la información vigente. 
+7. **Actualización**: Revisa y actualiza los artículos periódicamente para mantener la información vigente.
+8. **CTA estratégicos**: Incluye botones de reserva o acción en puntos clave del artículo.
+9. **Analytics tracking**: Asegúrate de que todos los enlaces y botones tengan el tracking correspondiente.
+10. **Artículos relacionados**: Selecciona artículos relevantes que mantengan al lector navegando en el blog. 
