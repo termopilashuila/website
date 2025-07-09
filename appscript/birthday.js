@@ -136,7 +136,7 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
 
       <div style="background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 20px;">
         <div style="margin-bottom: 15px;">
-          <a href="https://www.instagram.com/alojamientotermopilas/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
+          <a href="https://www.instagram.com/fincatermopilas/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
             📸
           </a>
           <a href="https://www.facebook.com/termopilashuila/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">

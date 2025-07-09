@@ -21,7 +21,7 @@ const defaultFooterConfig: FooterConfig = {
     socialMedia: [
       {
         platform: 'Instagram',
-        url: 'https://www.instagram.com/alojamientotermopilas/',
+        url: 'https://www.instagram.com/fincatermopilas/',
         icon: 'fab fa-instagram'
       },
       {

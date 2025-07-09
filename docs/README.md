@@ -144,5 +144,5 @@ ISC
 ## Contacto
 
 - Email: termopilashuila@gmail.com
-- Instagram: [@alojamientotermopilas](https://www.instagram.com/alojamientotermopilas/)
+- Instagram: [@fincatermopilas](https://www.instagram.com/fincatermopilas/)
 - Facebook: [termopilashuila](https://www.facebook.com/termopilashuila/)
