@@ -9,6 +9,10 @@ module.exports = {
     jobApplicationForm: {
       import: './src/ts/components/JobApplicationForm.ts',
       filename: 'components/[name].js'
+    },
+    'utils/markdown-to-blog': {
+      import: './src/ts/utils/markdown-to-blog.ts',
+      filename: 'utils/[name].js'
     }
   },
   module: {
@@ -31,7 +35,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    library: {
+      type: 'commonjs2'
+    }
   },
-  mode: 'production'
+  target: 'node',
+  mode: 'production',
+  externals: {
+    'fs': 'commonjs2 fs',
+    'path': 'commonjs2 path'
+  }
 }; 
