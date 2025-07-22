@@ -143,7 +143,7 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 - Keep names descriptive but concise
 - Be consistent across campaigns
 
-### Message Guidelines
+### Text Guidelines
 - Keep messages concise and relevant
 - Include context about where they came from
 - Use friendly, conversational tone
@@ -160,7 +160,7 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 1. **Click-through Rate** - Visitors who click WhatsApp links
 2. **Redirect Success Rate** - Successful WhatsApp redirects
 3. **Campaign Performance** - UTM source/medium effectiveness
-4. **Message Effectiveness** - Different message variations
+4. **Text Effectiveness** - Different message variations
 
 ### Google Analytics Reports
 - **Behavior > Events** - View WhatsApp events
@@ -168,7 +168,7 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 - **Real-time > Events** - Live WhatsApp activity
 
 ### A/B Testing Ideas
-- Different message variations
+- Different text variations
 - Various call-to-action button texts
 - Different redirect delays
 - Landing page designs
@@ -178,12 +178,12 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 ### Common Issues
 1. **WhatsApp doesn't open** - Check phone number format
 2. **UTM data missing** - Verify parameter spelling
-3. **Message garbled** - Ensure proper URL encoding
+3. **Text garbled** - Ensure proper URL encoding
 4. **Analytics not tracking** - Check Google Analytics setup
 
 ### Testing Checklist
 - [ ] WhatsApp opens correctly on mobile
 - [ ] WhatsApp opens correctly on desktop
 - [ ] UTM parameters appear in Analytics
-- [ ] Custom message displays properly
+- [ ] Custom text displays properly
 - [ ] Fallback link works when popup blocked 
