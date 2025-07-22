@@ -39,7 +39,7 @@ En este artículo, te presentamos una selección de los mejores lugares para com
 **Especialidad:** Trucha marinera y platos típicos de la región  
 **Horario:** Sábados y Domingos  
 **Teléfono:** +57 321 497 0162  
-**WhatsApp:** [Contactar](https://wa.me/573214970162?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573214970162&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=casa_flores&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://g.co/kgs/7qdq9o4)
 
 Casa de las Flores es uno de los restaurantes más reconocidos de Rivera. Su ambiente acogedor y atención cálida lo convierten en un destino imperdible para los visitantes. Entre sus especialidades destaca la trucha marinera, un plato delicioso preparado con mariscos frescos que definitivamente debes probar durante tu visita.
@@ -52,7 +52,7 @@ Su ambiente campestre es único, con una característica muy especial: los pajar
 
 **Especialidad:** Comida típica mientras disfrutas de aguas termales  
 **Teléfono:** +57 315 308 5614  
-**WhatsApp:** [Contactar](https://wa.me/573153085614?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573153085614&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=termales_angeles&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://g.co/kgs/Wz67MgW)
 
 Termales Los Angeles ofrece una experiencia única que combina la gastronomía con la relajación de sus aguas termales. Este lugar te permite disfrutar de deliciosos platos tradicionales mientras te sumerges en sus piscinas naturales de aguas termales, conocidas por sus propiedades terapéuticas.
@@ -66,7 +66,7 @@ El ambiente campestre está rodeado de naturaleza, con árboles de cacao cerca q
 **Especialidad:** Pizzas artesanales  
 **Horario:** Sábados y Domingos  
 **Teléfono:** +57 311 587 4769  
-**WhatsApp:** [Contactar](https://wa.me/573115874769?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573115874769&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=san_antonio&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://maps.app.goo.gl/L3oYXn16gaftBDpE7)  
 **Instagram:** [@sanantoniocomida](https://www.instagram.com/sanantoniocomida/)
 
@@ -81,7 +81,7 @@ Sus pizzas son reconocidas por ser realmente deliciosas, y el servicio es muy at
 **Especialidad:** Cocina gourmet con toques locales  
 **Horario:** Sábados y Domingos  
 **Teléfono:** +57 315 324 2447  
-**WhatsApp:** [Contactar](https://wa.me/573153242447?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573153242447&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=azafran&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://maps.app.goo.gl/8jHLrjEurZU1zQko8)
 
 Azafrán ofrece una propuesta gastronómica más elaborada, fusionando técnicas culinarias modernas con ingredientes tradicionales de la región. Este restaurante es ideal para quienes buscan una experiencia gastronómica más sofisticada durante su visita a Rivera.
@@ -94,7 +94,7 @@ El restaurante cuenta con un entorno campestre que invita a la relajación, y un
 
 **Especialidad:** Cocina tradicional colombiana  
 **Teléfono:** +57 316 860 9808  
-**WhatsApp:** [Contactar](https://wa.me/573168609808?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573168609808&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=maria_vidal&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://maps.app.goo.gl/Cy3HJxWAyu7GKdsH8)
 
 María Vidal es un restaurante que ofrece auténtica cocina colombiana con un enfoque en los sabores tradicionales del Huila. El establecimiento se caracteriza por su ambiente hogareño y su comida casera, preparada con recetas que han pasado de generación en generación.
@@ -108,7 +108,7 @@ La comida tradicional es su especialidad, servida en un ambiente cálido y acoge
 **Especialidad:** Madurados de cerdo y jamones artesanales  
 **Horario:** Domingos cada 15 días  
 **Teléfono:** +57 310 403 2958  
-**WhatsApp:** [Contactar](https://wa.me/573104032958?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20su%20restaurante)  
+**WhatsApp:** [Contactar](../whatsapp.html?phone=573104032958&utm_source=website&utm_medium=blog&utm_campaign=restaurant_referrals&utm_content=casa_opa_theo&text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustaría%20saber%20más%20sobre%20su%20restaurante)  
 **Ubicación:** [Ver en Google Maps](https://maps.app.goo.gl/MERirXSsZRGeyerF8)
 
 Casa Opa Theo es un auténtico tesoro gastronómico en Rivera, especializado in madurados de cerdo y jamones artesanales elaborados con técnicas alemanas tradicionales. Este establecimiento único ofrece una experiencia culinaria diferente a las típicas propuestas de la región.
@@ -120,7 +120,6 @@ Es importante destacar que Casa Opa Theo solo abre los domingos, por lo que debe
 ## 7. Café Rivera
 
 **Especialidad:** Café especial de la región y repostería artesanal  
-**WhatsApp:** [Contactar](https://wa.me/?text=Hola%2C%20te%20contacto%20desde%20el%20sitio%20web%20de%20Termopilas.co%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20Caf%C3%A9%20Rivera)  
 **Ubicación:** [Ver en Google Maps](https://maps.app.goo.gl/z6Tn8QR1wUza2iht6)
 
 Café Rivera es el lugar ideal para los amantes del buen café. Este acogedor establecimiento se especializa en la preparación de café especial cultivado en las montañas del Huila, una región reconocida mundialmente por la calidad de su café.

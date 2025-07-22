@@ -39,7 +39,7 @@ related_articles:
 
 **Contacto:**
 - Teléfono: [+57 316 420 6408](tel:+573164206408)
-- WhatsApp: [+57 316 420 6408](https://wa.me/573164206408?text=Hola, me gustaría hacer un pedido a domicilio)
+- WhatsApp: [+57 316 420 6408](../whatsapp.html?phone=573164206408&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=pizzas_parrilla&text=Hola%2C%20me%20gustaría%20hacer%20un%20pedido%20a%20domicilio)
 - Ubicación: [Ver en Mapa](https://maps.app.goo.gl/FZCXEgkVPiWw5tEq5)
 
 ## 🌮 CHAVELA RESTAURANTE
@@ -51,7 +51,7 @@ related_articles:
 
 **Contacto:**
 - Teléfono: [+57 305 353 8067](tel:+573053538067)
-- WhatsApp: [+57 305 353 8067](https://wa.me/573053538067?text=Hola, me gustaría hacer un pedido a domicilio)
+- WhatsApp: [+57 305 353 8067](../whatsapp.html?phone=573053538067&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chavela_restaurante&text=Hola%2C%20me%20gustaría%20hacer%20un%20pedido%20a%20domicilio)
 - Ubicación: [Ver en Mapa](https://maps.app.goo.gl/EjBr4SBhjT7SFnvJ7)
 - Sitio Web: [Chavela Restaurante](https://sites.google.com/view/chavela-restaurante/inicio)
 
@@ -64,7 +64,7 @@ related_articles:
 
 **Contacto:**
 - Teléfono: [+57 321 497 0162](tel:+573214970162)
-- WhatsApp: [+57 321 497 0162](https://wa.me/573214970162?text=Hola, me gustaría hacer un pedido a domicilio)
+- WhatsApp: [+57 321 497 0162](../whatsapp.html?phone=573214970162&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=casa_flores_delivery&text=Hola%2C%20me%20gustaría%20hacer%20un%20pedido%20a%20domicilio)
 - Ubicación: [Ver en Mapa](https://maps.app.goo.gl/J4tXo7tAKwQ5TJk68)
 
 ## 🍸 Chibchili
@@ -76,7 +76,7 @@ related_articles:
 
 **Contacto:**
 - Teléfono: [+57 317 681 6101](tel:+573176816101)
-- WhatsApp: [+57 317 681 6101](https://wa.me/573176816101?text=Hola, me gustaría hacer un pedido a domicilio)
+- WhatsApp: [+57 317 681 6101](../whatsapp.html?phone=573176816101&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chibchili&text=Hola%2C%20me%20gustaría%20hacer%20un%20pedido%20a%20domicilio)
 - Ubicación: [Ver en Mapa](https://maps.app.goo.gl/oLnu2p4tBJvdoFdV6)
 - Sitio Web: [Chibchili](http://www.chibchili.jimdo.com)
 
