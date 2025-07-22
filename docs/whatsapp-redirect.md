@@ -141,9 +141,12 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 ### Styling Architecture
 - **Main file**: `whatsapp.html`
 - **Styles**: `styles/whatsapp-redirect.css`
-- **Mobile-first**: Responsive breakpoints at 320px, 480px, 768px
-- **Accessibility**: Support for reduced motion, high contrast
+- **Mobile-first**: Responsive breakpoints at 320px, 480px, 640px, 768px
+- **Touch-friendly**: 44px minimum touch targets, comfortable spacing
+- **Typography**: Enhanced mobile readability with larger fonts and improved line heights
+- **Accessibility**: Support for reduced motion, high contrast, iOS text scaling prevention
 - **Performance**: External CSS for caching, optimized animations
+- **Modern support**: Dynamic viewport height for mobile browsers
 
 ### Blog Integration
 - **Markdown sources**: All WhatsApp links in `markdown/blog/*.md` use `../whatsapp.html`
