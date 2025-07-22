@@ -230,4 +230,14 @@
       <image:title>Contacto de Finca Termópilas</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://termopilas.co/whatsapp.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <image:image>
+      <image:loc>https://termopilas.co/assets/images/logo.png</image:loc>
+      <image:title>WhatsApp Redirect - Finca Termópilas</image:title>
+    </image:image>
+  </url>
 </urlset> 

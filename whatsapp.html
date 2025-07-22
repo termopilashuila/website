@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo a WhatsApp - Finca Termópilas</title>
+    <meta name="description" content="Conectando con Finca Termópilas a través de WhatsApp. Te estamos redirigiendo para iniciar una conversación.">
+    <meta name="keywords" content="WhatsApp, contacto, Finca Termópilas, Rivera, Huila, comunicación">
+    <meta name="author" content="Finca Termópilas">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- Critical CSS -->
+    <style>
+        /* Critical styles for above-the-fold content */
+        :root {
+            --text-color: #333333;
+            --accent-color: #F29F05;
+            --background-dark: #000000;
+            --whatsapp-color: #25D366;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-dark);
+            color: #fdf6ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .redirect-container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+        
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+        
+        .loading-animation {
+            display: inline-block;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+        
+        .whatsapp-icon {
+            font-size: 4rem;
+            color: var(--whatsapp-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .manual-link {
+            display: inline-block;
+            background-color: var(--whatsapp-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+        
+        .manual-link:hover {
+            background-color: #20c35a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .redirect-container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .whatsapp-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/whatsapp.html">
+    <meta property="og:title" content="Contáctanos por WhatsApp - Finca Termópilas">
+    <meta property="og:description" content="Conecta directamente con nosotros a través de WhatsApp para consultas, reservas y más información.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/header.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://termopilas.co/whatsapp.html">
+    <meta property="twitter:title" content="Contáctanos por WhatsApp - Finca Termópilas">
+    <meta property="twitter:description" content="Conecta directamente con nosotros a través de WhatsApp para consultas, reservas y más información.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/header.png">
+</head>
+<body>
+    <div class="redirect-container">
+        <img src="assets/images/logo.png" alt="Finca Termópilas Logo" class="logo">
+        
+        <h1>Conectando por WhatsApp</h1>
+        <p class="subtitle">Te estamos redirigiendo para iniciar una conversación con nosotros</p>
+        
+        <div class="loading-animation">
+            <div class="whatsapp-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <p class="loading-text">Preparando tu mensaje...</p>
+        </div>
+        
+        <noscript>
+            <p style="color: var(--accent-color); font-weight: 600;">JavaScript está deshabilitado. Haz clic en el enlace de abajo para continuar:</p>
+        </noscript>
+        
+        <a href="#" id="whatsapp-link" class="manual-link">
+            <i class="fab fa-whatsapp"></i> Abrir WhatsApp
+        </a>
+        
+        <br>
+        <a href="/" class="back-link">← Volver al inicio</a>
+    </div>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            defaultPhone: '573143428579',
+            defaultMessage: 'Hola, estoy interesado en conocer más sobre Finca Termópilas.',
+            redirectDelay: 2000 // 2 seconds
+        };
+        
+        // Function to parse URL parameters
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                // UTM parameters for tracking
+                utm_source: urlParams.get('utm_source') || '',
+                utm_medium: urlParams.get('utm_medium') || '',
+                utm_campaign: urlParams.get('utm_campaign') || '',
+                utm_content: urlParams.get('utm_content') || '',
+                utm_term: urlParams.get('utm_term') || '',
+                
+                // WhatsApp parameters
+                text: urlParams.get('text') || CONFIG.defaultMessage,
+                phone: urlParams.get('phone') || CONFIG.defaultPhone
+            };
+        }
+        
+        // Function to track the visit with UTM parameters
+        function trackVisit(params) {
+            if (typeof gtag !== 'undefined') {
+                // Track page view with UTM parameters
+                gtag('config', 'G-2406CNRCX9', {
+                    page_title: 'WhatsApp Redirect',
+                    page_location: window.location.href,
+                    custom_map: {
+                        'custom_parameter_1': 'utm_source',
+                        'custom_parameter_2': 'utm_medium', 
+                        'custom_parameter_3': 'utm_campaign'
+                    }
+                });
+                
+                // Track WhatsApp redirect event
+                gtag('event', 'whatsapp_redirect', {
+                    'event_category': 'engagement',
+                    'event_label': 'WhatsApp Redirect Page',
+                    'utm_source': params.utm_source,
+                    'utm_medium': params.utm_medium,
+                    'utm_campaign': params.utm_campaign,
+                    'utm_content': params.utm_content,
+                    'utm_term': params.utm_term,
+                    'phone_number': params.phone,
+                    'text_preview': params.text.substring(0, 50) + (params.text.length > 50 ? '...' : '')
+                });
+                
+                console.log('WhatsApp redirect tracked with UTM parameters:', params);
+            }
+        }
+        
+        // Function to generate WhatsApp URL
+        function generateWhatsAppUrl(phone, text) {
+            const encodedText = encodeURIComponent(text);
+            return `https://wa.me/${phone}?text=${encodedText}`;
+        }
+        
+        // Function to redirect to WhatsApp
+        function redirectToWhatsApp(whatsappUrl) {
+            // Try to open WhatsApp
+            const newWindow = window.open(whatsappUrl, '_blank');
+            
+            // Fallback: if popup was blocked, redirect the current window after a delay
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                setTimeout(() => {
+                    window.location.href = whatsappUrl;
+                }, 1000);
+            }
+            
+            // Track successful redirect attempt
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'whatsapp_redirect_attempt', {
+                    'event_category': 'engagement',
+                    'event_label': 'WhatsApp URL Opened'
+                });
+            }
+        }
+        
+        // Main function
+        function initializeRedirect() {
+            const params = getUrlParams();
+            const whatsappUrl = generateWhatsAppUrl(params.phone, params.text);
+            
+            // Update manual link
+            const manualLink = document.getElementById('whatsapp-link');
+            if (manualLink) {
+                manualLink.href = whatsappUrl;
+                
+                // Add click tracking to manual link
+                manualLink.addEventListener('click', function(e) {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'whatsapp_manual_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'Manual WhatsApp Link Click'
+                        });
+                    }
+                });
+            }
+            
+            // Track the visit
+            trackVisit(params);
+            
+            // Auto-redirect after delay
+            setTimeout(() => {
+                redirectToWhatsApp(whatsappUrl);
+            }, CONFIG.redirectDelay);
+            
+            console.log('WhatsApp redirect initialized:', {
+                phone: params.phone,
+                text: params.text,
+                url: whatsappUrl,
+                utmParams: {
+                    source: params.utm_source,
+                    medium: params.utm_medium,
+                    campaign: params.utm_campaign,
+                    content: params.utm_content,
+                    term: params.utm_term
+                }
+            });
+        }
+        
+        // Initialize when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeRedirect);
+        } else {
+            initializeRedirect();
+        }
+        
+        // Handle back button and page visibility changes
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Page was loaded from cache, reinitialize if needed
+                initializeRedirect();
+            }
+        });
+        
+        // Track when user returns to this page (potential failed redirect)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && typeof gtag !== 'undefined') {
+                gtag('event', 'whatsapp_redirect_return', {
+                    'event_category': 'engagement',
+                    'event_label': 'User returned to redirect page'
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
