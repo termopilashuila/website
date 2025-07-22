@@ -142,8 +142,10 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 - **Main file**: `whatsapp.html`
 - **Styles**: `styles/whatsapp-redirect.css`
 - **Mobile-first**: Responsive breakpoints at 320px, 480px, 640px, 768px
+- **Single-screen fit**: Optimized to display all content without scrolling on mobile
+- **Height-aware**: Specific optimizations for phones with different screen heights (650px, 800px)
 - **Touch-friendly**: 44px minimum touch targets, comfortable spacing
-- **Typography**: Enhanced mobile readability with larger fonts and improved line heights
+- **Typography**: Balanced readability with space efficiency for mobile
 - **Accessibility**: Support for reduced motion, high contrast, iOS text scaling prevention
 - **Performance**: External CSS for caching, optimized animations
 - **Modern support**: Dynamic viewport height for mobile browsers

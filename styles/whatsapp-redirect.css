@@ -19,8 +19,11 @@ body {
     justify-content: center;
     min-height: 100vh;
     min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    height: 100vh; /* Ensure consistent height calculation */
+    height: 100dvh;
     text-align: center;
     overflow-x: hidden;
+    /* overflow-y managed per breakpoint to ensure content fits */
     -webkit-text-size-adjust: 100%; /* Prevent automatic text scaling on iOS */
 }
 
@@ -192,99 +195,229 @@ h1 {
     }
 }
 
+/* ===============================
+   MOBILE OPTIMIZATION STRATEGY
+   ===============================
+   Goal: Fit all content in one screen without scrolling
+   - Reduced title font sizes for better space utilization
+   - Compressed margins and padding while maintaining usability
+   - Multiple breakpoints for different phone sizes and heights
+   - Touch-friendly button sizing maintained
+   =============================== */
+
 /* Mobile Specific Styles */
 @media (max-width: 480px) {
     .redirect-container {
-        padding: 1.5rem 1.25rem;
-        max-width: 90%;
+        padding: 1rem 1.25rem 0.5rem;
+        max-width: 92%;
     }
     
     .logo {
-        width: 70px;
-        margin-bottom: 1.5rem;
+        width: 60px;
+        margin-bottom: 0.75rem;
     }
     
     h1 {
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-        line-height: 1.3;
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
         padding: 0 0.5rem;
     }
     
     .subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.4;
         max-width: 100%;
         padding: 0 0.5rem;
     }
     
     .loading-animation {
-        margin: 2rem 0;
+        margin: 1.25rem 0;
     }
     
     .whatsapp-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        margin-bottom: 0.75rem;
     }
     
     .loading-text {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-        line-height: 1.5;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
         padding: 0 0.5rem;
     }
     
     .manual-link {
-        padding: 1rem 1.5rem;
-        font-size: 0.95rem;
-        margin-top: 2rem;
+        padding: 0.85rem 1.4rem;
+        font-size: 0.9rem;
+        margin-top: 1.25rem;
         max-width: 85%;
         display: block;
         text-align: center;
-        line-height: 1.4;
+        line-height: 1.3;
     }
     
     .back-link {
-        font-size: 0.85rem;
-        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        margin-top: 1rem;
     }
 }
 
 /* Very small screens */
 @media (max-width: 320px) {
     .redirect-container {
-        padding: 1.25rem 1rem;
+        padding: 0.75rem 1rem 0.25rem;
+    }
+    
+    .logo {
+        width: 50px;
+        margin-bottom: 0.5rem;
     }
     
     h1 {
-        font-size: 1.5rem;
-        line-height: 1.3;
+        font-size: 1.25rem;
+        line-height: 1.2;
         padding: 0 0.25rem;
+        margin-bottom: 0.5rem;
     }
     
     .subtitle {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-bottom: 1.75rem;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
         padding: 0 0.25rem;
+    }
+    
+    .loading-animation {
+        margin: 1rem 0;
     }
     
     .whatsapp-icon {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
     
     .loading-text {
-        font-size: 0.85rem;
-        line-height: 1.4;
+        font-size: 0.75rem;
+        line-height: 1.3;
         padding: 0 0.25rem;
+        margin-bottom: 0.5rem;
     }
     
     .manual-link {
-        padding: 0.9rem 1.25rem;
+        padding: 0.75rem 1.1rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
+        margin-top: 1rem;
+        line-height: 1.2;
+    }
+    
+    .back-link {
+        font-size: 0.7rem;
+        margin-top: 0.75rem;
+    }
+}
+
+/* Portrait phone optimization - fit in one screen */
+@media (max-width: 480px) and (orientation: portrait) and (max-height: 800px) {
+    .redirect-container {
+        padding: 0.5rem 1.25rem 0.25rem;
+    }
+    
+    .logo {
+        width: 55px;
+        margin-bottom: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+    }
+    
+    .subtitle {
         font-size: 0.85rem;
-        border-radius: 22px;
-        margin-top: 1.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+    
+    .loading-animation {
+        margin: 1rem 0;
+    }
+    
+    .whatsapp-icon {
+        font-size: 2.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .loading-text {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .manual-link {
+        padding: 0.8rem 1.3rem;
+        font-size: 0.85rem;
+        margin-top: 1rem;
+        line-height: 1.2;
+    }
+    
+    .back-link {
+        font-size: 0.75rem;
+        margin-top: 0.75rem;
+    }
+}
+
+/* Extra compact for very short screens */
+@media (max-width: 480px) and (orientation: portrait) and (max-height: 650px) {
+    .redirect-container {
+        padding: 0.25rem 1.25rem 0.1rem;
+    }
+    
+    .logo {
+        width: 50px;
+        margin-bottom: 0.25rem;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.1;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+    }
+    
+    .loading-animation {
+        margin: 0.75rem 0;
+    }
+    
+    .whatsapp-icon {
+        font-size: 1.9rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .loading-text {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+    }
+    
+    .manual-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+        margin-top: 0.75rem;
+        line-height: 1.1;
+    }
+    
+    .back-link {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
     }
 }
 
