@@ -42,9 +42,9 @@ body {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-h1 {
-    font-family: 'Lora', serif;
-    font-size: 1.8rem;
+.redirect-container h1 {
+    font-family: 'Lora', serif !important;
+    font-size: 1.8rem !important;
     margin-bottom: 0.8rem;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -155,8 +155,8 @@ h1 {
         max-width: 85%;
     }
     
-    h1 {
-        font-size: 1.9rem;
+    .redirect-container h1 {
+        font-size: 1.9rem !important;
         margin-bottom: 1rem;
         line-height: 1.3;
     }
@@ -221,11 +221,13 @@ h1 {
         margin-bottom: 0.75rem;
     }
     
-    h1 {
-        font-size: 1.4rem;
+    .redirect-container h1 {
+        font-size: 1rem !important;
         margin-bottom: 0.75rem;
-        line-height: 1.2;
+        line-height: 1;
         padding: 0 0.5rem;
+        hyphens: auto;
+        max-width: 100%;
     }
     
     .subtitle {
@@ -279,11 +281,14 @@ h1 {
         margin-bottom: 0.5rem;
     }
     
-    h1 {
-        font-size: 1.25rem;
-        line-height: 1.2;
+    .redirect-container h1 {
+        font-size: 1.1rem !important;
+        line-height: 1.1;
         padding: 0 0.25rem;
         margin-bottom: 0.5rem;
+        word-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
     }
     
     .subtitle {
@@ -334,10 +339,14 @@ h1 {
         margin-bottom: 0.5rem;
     }
     
-    h1 {
-        font-size: 1.3rem;
+    .redirect-container h1 {
+        font-size: 1.2rem !important;
         margin-bottom: 0.5rem;
         line-height: 1.1;
+        word-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        padding: 0 0.5rem;
     }
     
     .subtitle {
@@ -385,10 +394,14 @@ h1 {
         margin-bottom: 0.25rem;
     }
     
-    h1 {
-        font-size: 1.2rem;
+    .redirect-container h1 {
+        font-size: 1.0rem !important;
         margin-bottom: 0.25rem;
         line-height: 1.1;
+        word-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        padding: 0 0.25rem;
     }
     
     .subtitle {
@@ -437,8 +450,8 @@ h1 {
         padding: 1.25rem 1.5rem;
     }
     
-    h1 {
-        font-size: 1.6rem;
+    .redirect-container h1 {
+        font-size: 1.6rem !important;
         margin-bottom: 0.75rem;
         line-height: 1.3;
     }
