@@ -207,6 +207,10 @@ h1 {
 
 /* Mobile Specific Styles */
 @media (max-width: 480px) {
+    body {
+        overflow-y: auto; /* Allow scrolling if needed, but optimized to avoid it */
+    }
+    
     .redirect-container {
         padding: 1rem 1.25rem 0.5rem;
         max-width: 92%;
