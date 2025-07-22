@@ -1,0 +1,274 @@
+/* WhatsApp Redirect Page Styles */
+:root {
+    --text-color: #333333;
+    --accent-color: #F29F05;
+    --background-dark: #000000;
+    --whatsapp-color: #25D366;
+    --text-light: #fdf6ea;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.redirect-container {
+    max-width: 600px;
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    line-height: 1.3;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    line-height: 1.5;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-animation {
+    display: inline-block;
+    margin: 1.5rem 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.whatsapp-icon {
+    font-size: 2.5rem;
+    color: var(--whatsapp-color);
+    margin-bottom: 0.8rem;
+    animation: pulse 2s infinite;
+}
+
+.loading-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.manual-link {
+    display: inline-block;
+    background-color: var(--whatsapp-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+    max-width: 80%;
+    box-sizing: border-box;
+}
+
+.manual-link:hover {
+    background-color: #20c35a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.manual-link i {
+    margin-right: 0.5rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.2s forwards;
+    font-size: 0.85rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 480px) {
+    .redirect-container {
+        padding: 1rem;
+        max-width: 95%;
+    }
+    
+    .logo {
+        width: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.2;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+        max-width: 95%;
+    }
+    
+    .loading-animation {
+        margin: 1.2rem 0;
+    }
+    
+    .whatsapp-icon {
+        font-size: 2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .loading-text {
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
+    }
+    
+    .manual-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+        margin-top: 1.2rem;
+        max-width: 90%;
+        display: block;
+        text-align: center;
+    }
+    
+    .back-link {
+        font-size: 0.75rem;
+        margin-top: 0.8rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    .redirect-container {
+        padding: 0.8rem;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    .subtitle {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .whatsapp-icon {
+        font-size: 1.8rem;
+    }
+    
+    .loading-text {
+        font-size: 0.75rem;
+    }
+    
+    .manual-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.75rem;
+        border-radius: 20px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+    
+    .redirect-container {
+        max-width: 500px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* Already in dark theme, but ensure consistency */
+    body {
+        background-color: var(--background-dark);
+        color: var(--text-light);
+    }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+    .manual-link {
+        border: 2px solid white;
+    }
+    
+    .back-link {
+        text-decoration: underline;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+} 

@@ -128,12 +128,22 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 - Loading animation with WhatsApp icon
 - Branded design consistent with site
 - Fallback for users with JavaScript disabled
-- Responsive design
+- Fully responsive mobile-first design
+- Optimized for all screen sizes (320px+)
+- Supports landscape orientation
+- Accessibility features (high contrast, reduced motion)
 
 ### Error Handling
 - Popup blocker detection
 - JavaScript disabled fallback
 - Return visit tracking
+
+### Styling Architecture
+- **Main file**: `whatsapp.html`
+- **Styles**: `styles/whatsapp-redirect.css`
+- **Mobile-first**: Responsive breakpoints at 320px, 480px, 768px
+- **Accessibility**: Support for reduced motion, high contrast
+- **Performance**: External CSS for caching, optimized animations
 
 ## Best Practices
 
