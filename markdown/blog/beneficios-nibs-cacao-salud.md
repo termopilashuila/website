@@ -97,7 +97,7 @@ Los compuestos bioactivos de los nibs de cacao promueven la producción de óxid
 ¿Te interesa experimentar estos beneficios cardiovasculares de primera mano? En Finca Termópilas producimos nibs de cacao artesanales de la más alta calidad, perfectos para incorporar en tu rutina diaria de bienestar.
 
 <div class="destination-reservation">
-    <a href="https://wa.me/573143428579?text=Hola.%20Leí%20su%20artículo%20sobre%20los%20beneficios%20de%20los%20nibs%20de%20cacao%20para%20la%20salud.%20Me%20gustaría%20conocer%20más%20sobre%20sus%20productos%20de%20cacao%20artesanal." target="_blank" class="reservation-button" onclick="gtag('event', 'blog_nibs_cacao_cardiovascular', {'event_category': 'blog_engagement', 'event_label': 'cta_salud_cardiovascular'});">Conoce nuestros productos de cacao <i class="fas fa-arrow-right"></i></a>
+    <a href="../whatsapp.html?utm_source=website&utm_medium=blog&utm_campaign=product_orders&utm_content=nibs_blog_markdown&text=Hola.%20Leí%20su%20artículo%20sobre%20los%20beneficios%20de%20los%20nibs%20de%20cacao%20para%20la%20salud.%20Me%20gustaría%20conocer%20más%20sobre%20sus%20productos%20de%20cacao%20artesanal." target="_blank" class="reservation-button" onclick="gtag('event', 'blog_nibs_cacao_cardiovascular', {'event_category': 'blog_engagement', 'event_label': 'cta_salud_cardiovascular'});">Conoce nuestros productos de cacao <i class="fas fa-arrow-right"></i></a>
 </div>
 
 ## Efectos neuroprotectores y cognitivos

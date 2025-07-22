@@ -52,7 +52,7 @@ function initProductOrderButtons(): void {
       const message = encodeURIComponent(
         `¡Hola! Me interesa obtener más información sobre ${productName} en Termópilas Huila.`
       );
-      const whatsappUrl = `https://wa.me/573138957766?text=${message}`;
+      const whatsappUrl = `whatsapp.html?utm_source=website&utm_medium=homepage&utm_campaign=product_orders&utm_content=product_button&text=${message}`;
       window.open(whatsappUrl, '_blank');
     });
   });

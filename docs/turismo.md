@@ -39,7 +39,7 @@ Este documento contiene un resumen de los principales destinos turísticos en el
   - Aprendizaje sobre procesos de vinificación y elaboración de chocolate
   - Compra directa de productos locales
 - **Recomendación:** Tour completo en Finca Termópilas con guías especializados
-- **Reservas**: https://wa.me/573143428579?text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustar%C3%ADa%20programarlo
+- **Reservas**: whatsapp.html?utm_source=docs&utm_medium=documentation&utm_campaign=tour_reservations&utm_content=turismo_docs&text=Hola.%20Estaba%20en%20la%20página%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustaría%20programarlo
 
 ## 4. Embalses de Betania y El Quimbo
 

@@ -318,7 +318,7 @@ class MarkdownToBlogConverter {
                     <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/blog/${post.filename}.html&text=${post.title}" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_twitter', {'event_category': 'blog_share', 'event_label': 'twitter_share'});">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://wa.me/?text=${post.title}%20https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
+                    <a href="whatsapp.html?utm_source=website&utm_medium=blog&utm_campaign=blog_share&utm_content=${post.filename}&text=${post.title}%20https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                     <a href="mailto:?subject=${post.title}&body=Te recomiendo este artículo: https://termopilas.co/blog/${post.filename}.html" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_email', {'event_category': 'blog_share', 'event_label': 'email_share'});">

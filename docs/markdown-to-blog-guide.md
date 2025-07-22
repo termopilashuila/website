@@ -253,7 +253,7 @@ You can add custom call-to-action buttons within your markdown content using HTM
 
 ```html
 <div class="destination-reservation">
-    <a href="https://wa.me/573143428579?text=Custom%20message" target="_blank" class="reservation-button">
+                    <a href="../whatsapp.html?utm_source=website&utm_medium=blog&utm_campaign=custom_campaign&utm_content=custom_content&text=Custom%20message" target="_blank" class="reservation-button">
         Contact us for more info <i class="fas fa-arrow-right"></i>
     </a>
 </div>

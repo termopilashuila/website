@@ -127,16 +127,19 @@ export function initFooter(): void {
       pageNameInSpanish = 'Inicio';
   }
   
-  // Update WhatsApp URL with dynamic message
-  const whatsappMessage = `Hola. Estaba en la página de ${pageNameInSpanish} y me gustaría saber más sobre`;
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-  const whatsappUrl = `https://wa.me/573143428579?text=${encodedMessage}`;
-  
-  // Update the WhatsApp social media link
-  const whatsappIndex = footerConfig.contact.socialMedia.findIndex(social => social.platform === 'WhatsApp');
-  if (whatsappIndex !== -1) {
-    footerConfig.contact.socialMedia[whatsappIndex].url = whatsappUrl;
-  }
+      // Update WhatsApp URL with dynamic message and UTM tracking
+    const whatsappMessage = `Hola. Estaba en la página de ${pageNameInSpanish} y me gustaría saber más sobre`;
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Determine UTM campaign based on page
+    const utmCampaign = pageNameInSpanish.toLowerCase().replace(/\s+/g, '_');
+    const whatsappUrl = `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=${utmCampaign}&utm_content=social_link&text=${encodedMessage}`;
+
+    // Update the WhatsApp social media link
+    const whatsappIndex = footerConfig.contact.socialMedia.findIndex(social => social.platform === 'WhatsApp');
+    if (whatsappIndex !== -1) {
+        footerConfig.contact.socialMedia[whatsappIndex].url = whatsappUrl;
+    }
   
   // Generate the footer with the customized config
   generateFooter(footerConfig);
