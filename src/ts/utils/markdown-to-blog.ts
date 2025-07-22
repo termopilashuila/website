@@ -6,17 +6,28 @@ import * as matter from 'gray-matter';
 interface BlogPost {
   title: string;
   subtitle?: string;
+  slug?: string;
   date: string;
   author: string;
   category: string;
   featured_image: string;
   author_image?: string;
+  author_bio?: string;
   description: string;
   keywords: string[];
   tags: string[];
+  related_articles?: RelatedArticle[];
   content: string;
   filename: string;
-  slug: string;
+  url_slug: string;
+}
+
+interface RelatedArticle {
+  title: string;
+  category: string;
+  image: string;
+  link: string;
+  description?: string;
 }
 
 interface BlogCardData {
@@ -45,17 +56,15 @@ class MarkdownToBlogConverter {
    * Convert date from YYYY-MM-DD format to Spanish format
    */
   private formatDateToSpanish(dateString: string): string {
-    const date = new Date(dateString);
     const months = [
       'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
       'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
     ];
     
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
+    // Parse date components directly to avoid timezone issues
+    const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
     
-    return `${day} de ${month}, ${year}`;
+    return `${day} de ${months[month - 1]}, ${year}`;
   }
 
   /**
@@ -104,22 +113,25 @@ class MarkdownToBlogConverter {
       const { data, content } = matter(fileContent);
       
       const filename = path.basename(filePath, '.md');
-      const slug = this.createSlug(data.title || filename);
+      const urlSlug = data.slug || this.createSlug(data.title || filename);
       
       return {
         title: data.title || '',
         subtitle: data.subtitle,
+        slug: data.slug,
         date: data.date || '',
         author: data.author || '',
         category: data.category || '',
         featured_image: data.featured_image || '',
         author_image: data.author_image,
+        author_bio: data.author_bio,
         description: data.description || '',
         keywords: data.keywords || [],
         tags: data.tags || [],
+        related_articles: data.related_articles || [],
         content,
         filename,
-        slug
+        url_slug: urlSlug
       };
     } catch (error) {
       console.error(`Error parsing ${filePath}:`, error);
@@ -128,10 +140,43 @@ class MarkdownToBlogConverter {
   }
 
   /**
-   * Convert markdown content to HTML
+   * Convert markdown to properly formatted HTML
    */
   private async markdownToHtml(markdown: string): Promise<string> {
-    return await marked(markdown);
+    const html = await marked(markdown);
+    return this.formatHtml(html);
+  }
+
+  /**
+   * Format HTML with proper line breaks and indentation
+   */
+  private formatHtml(html: string): string {
+    let formatted = html
+      // Add line breaks before opening tags
+      .replace(/<(h[1-6]|p|div|ul|ol|li|blockquote)([^>]*)>/g, '\n                <$1$2>')
+      // Add line breaks after closing tags
+      .replace(/<\/(h[1-6]|p|div|ul|ol|li|blockquote)>/g, '</$1>\n')
+      // Add line breaks after self-closing or single tags
+      .replace(/<(br|hr)([^>]*)>/g, '<$1$2>\n')
+      // Add extra spacing after headings and sections
+      .replace(/<\/(h[1-6])>/g, '</$1>\n                ')
+      // Add extra spacing after paragraphs
+      .replace(/<\/p>/g, '</p>\n                ')
+      // Format list items with proper indentation
+      .replace(/<li>/g, '\n                    <li>')
+      .replace(/<\/li>/g, '</li>')
+      // Format lists with proper spacing
+      .replace(/<ul>/g, '\n                <ul>')
+      .replace(/<\/ul>/g, '\n                </ul>\n                ')
+      .replace(/<ol>/g, '\n                <ol>')
+      .replace(/<\/ol>/g, '\n                </ol>\n                ')
+      // Clean up excessive line breaks
+      .replace(/\n\s*\n\s*\n/g, '\n\n')
+      // Remove leading/trailing whitespace
+      .trim();
+
+    // Add proper indentation to the content
+    return formatted;
   }
 
   /**
@@ -236,6 +281,8 @@ class MarkdownToBlogConverter {
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     
+    <!-- Header has been removed to not display on blog entries -->
+    
     <main id="main-content" tabindex="-1">
         <article class="blog-post-container">
             <a href="../blog.html" class="blog-post-back-link"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
@@ -265,16 +312,16 @@ class MarkdownToBlogConverter {
             <div class="blog-post-share">
                 <h3>Comparte este artículo</h3>
                 <div class="blog-post-share-buttons">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_facebook', {'event_category': 'blog_share', 'event_label': 'facebook_share'});">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/blog/${post.filename}.html&text=${post.title}" target="_blank" rel="noopener" class="blog-post-share-button">
+                    <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/blog/${post.filename}.html&text=${post.title}" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_twitter', {'event_category': 'blog_share', 'event_label': 'twitter_share'});">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://wa.me/?text=${post.title}%20https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button">
+                    <a href="https://wa.me/?text=${post.title}%20https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="mailto:?subject=${post.title}&body=Te recomiendo este artículo: https://termopilas.co/blog/${post.filename}.html" class="blog-post-share-button">
+                    <a href="mailto:?subject=${post.title}&body=Te recomiendo este artículo: https://termopilas.co/blog/${post.filename}.html" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_email', {'event_category': 'blog_share', 'event_label': 'email_share'});">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -284,7 +331,7 @@ class MarkdownToBlogConverter {
                 <img src="${post.author_image}" alt="${post.author}" class="blog-post-author-bio-img">
                 <div class="blog-post-author-bio-content">
                     <h3>${post.author}</h3>
-                    <p>Apasionado de la cultura y la gastronomía colombiana.</p>
+                    <p>${post.author_bio || 'Apasionado de la cultura y la gastronomía colombiana, con especial énfasis en los superalimentos locales y elaboraciones artesanales. Experto en propiedades nutricionales del cacao y sus beneficios para la salud humana.'}</p>
                 </div>
             </div>` : ''}
         </article>
@@ -299,11 +346,32 @@ class MarkdownToBlogConverter {
                     <form id="newsletter-form" class="newsletter-form">
                         <input type="text" name="name" placeholder="Tu nombre" required>
                         <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                        <button type="submit" class="cta-button">Suscribirse</button>
+                        <button type="submit" class="cta-button" onclick="gtag('event', 'blog_${post.filename}_newsletter', {'event_category': 'blog_engagement', 'event_label': 'newsletter_subscribe'});">Suscribirse</button>
                     </form>
                 </div>
             </div>
         </section>
+        
+        ${post.related_articles && post.related_articles.length > 0 ? `
+        <section class="blog-post-related">
+            <div class="blog-post-container">
+                <h2>Artículos relacionados</h2>
+                <div class="blog-post-related-grid">
+                    ${post.related_articles.map(related => `
+                    <article class="blog-post-related-card">
+                        <div class="blog-post-related-image">
+                            <img src="${related.image}" alt="${related.title}">
+                        </div>
+                        <div class="blog-post-related-content">
+                            <span class="blog-post-category">${related.category}</span>
+                            <h3>${related.title}</h3>
+                            ${related.description ? `<p>${related.description}</p>` : ''}
+                            <a href="${related.link}" class="read-more" onclick="gtag('event', 'blog_${post.filename}_related_${related.title.toLowerCase().replace(/[^a-z0-9]+/g, '_')}', {'event_category': 'blog_navigation', 'event_label': 'related_article'});">Leer más <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>`).join('')}
+                </div>
+            </div>
+        </section>` : ''}
     </main>
 
     <!-- Footer will be dynamically generated by TypeScript -->
@@ -345,6 +413,8 @@ class MarkdownToBlogConverter {
    */
   public async processMarkdownFiles(): Promise<void> {
     try {
+      console.log('🚀 Processing all markdown files...');
+      
       // Ensure output directory exists
       if (!fs.existsSync(this.outputDir)) {
         fs.mkdirSync(this.outputDir, { recursive: true });
@@ -361,7 +431,6 @@ class MarkdownToBlogConverter {
       }
 
       const blogPosts: BlogPost[] = [];
-      const blogCards: string[] = [];
 
       // Process each markdown file
       for (const filePath of markdownFiles) {
@@ -376,12 +445,14 @@ class MarkdownToBlogConverter {
           const outputPath = path.join(this.outputDir, `${post.filename}.html`);
           fs.writeFileSync(outputPath, blogPostHtml, 'utf-8');
           console.log(`Generated: ${outputPath}`);
-          
-          // Generate blog card HTML
-          const blogCard = this.generateBlogCard(post);
-          blogCards.push(blogCard);
         }
       }
+
+      // Sort blog posts by date (newest first)
+      blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      
+      // Generate blog cards in sorted order
+      const blogCards = blogPosts.map(post => this.generateBlogCard(post));
 
       // Update main blog.html file
       if (blogCards.length > 0) {
@@ -452,9 +523,30 @@ class MarkdownToBlogConverter {
       fs.writeFileSync(outputPath, blogPostHtml, 'utf-8');
       console.log(`✅ Generated: ${outputPath}`);
       
-      // Generate and add blog card to blog.html
-      const blogCard = this.generateBlogCard(post);
-      this.updateBlogHtml([blogCard]);
+      // Process all markdown files to maintain proper date sorting in blog.html
+      const allBlogPosts: BlogPost[] = [];
+      
+      // Get all markdown files (including the one we just processed)
+      const markdownFiles = fs.readdirSync(this.markdownDir)
+        .filter(file => file.endsWith('.md'))
+        .map(file => path.join(this.markdownDir, file));
+      
+      // Parse all markdown files
+      for (const filePath of markdownFiles) {
+        const blogPost = this.parseMarkdownFile(filePath);
+        if (blogPost) {
+          allBlogPosts.push(blogPost);
+        }
+      }
+      
+      // Sort all posts by date (newest first)
+      allBlogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      
+      // Generate blog cards in sorted order
+      const sortedBlogCards = allBlogPosts.map(blogPost => this.generateBlogCard(blogPost));
+      
+      // Update blog.html with all posts in proper order
+      this.updateBlogHtml(sortedBlogCards);
       console.log(`✅ Updated ${this.blogHtmlPath}`);
       
     } catch (error) {
