@@ -1,0 +1,61 @@
+{
+    "app_name": "termopilas-website",
+    "project": "website-400719",
+    "location": "us-central1",
+    "remote_state_bucket_name": "termopilas-terraform-states",
+    "artifact_repo_name": "termopilas-artifact-repo",
+    "services": {
+        "searchconsole":{
+            "name": "searchconsole"
+            , "path": "searchconsole"
+            , "command": ["dbt", "compile"]
+            , "cron": "0 8 * * 1"
+            , "cpu": "1"
+            , "ram": "1024Mi"
+            , "enabled": true
+        }
+    },
+    "api_services": [
+        "serviceusage.googleapis.com",
+        "cloudscheduler.googleapis.com",
+        "cloudapis.googleapis.com",
+        "iam.googleapis.com",
+        "bigquery.googleapis.com",
+        "bigquerydatatransfer.googleapis.com",
+        "bigquerystorage.googleapis.com"
+      ],
+    "service_account":{
+        "name": "termopilas-sa", 
+        "role":{
+            "id": "termopilas_role"
+            , "permissions": [
+                "bigquery.config.get"
+                , "bigquery.datasets.create"
+                , "bigquery.datasets.get"
+                , "bigquery.jobs.create"
+                , "bigquery.readsessions.create"
+                , "bigquery.readsessions.getData"
+                , "bigquery.readsessions.update"
+                , "bigquery.tables.create"
+                , "bigquery.tables.delete"
+                , "bigquery.tables.get"
+                , "bigquery.tables.getData"
+                , "bigquery.tables.list"
+                , "bigquery.tables.update"
+                , "bigquery.tables.updateData"
+                , "resourcemanager.projects.get"
+                , "run.executions.cancel"
+                , "run.jobs.run"
+                , "run.routes.invoke"
+                , "storage.buckets.get"
+                , "storage.buckets.list"
+                , "storage.buckets.update"
+                , "storage.objects.create"
+                , "storage.objects.delete"
+                , "storage.objects.get"
+                , "storage.objects.list"
+                , "storage.objects.update"
+              ]
+        }
+    }
+}
