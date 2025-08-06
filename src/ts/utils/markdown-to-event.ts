@@ -612,9 +612,9 @@ class MarkdownToEventConverter {
         fs.mkdirSync(this.outputDir, { recursive: true });
       }
 
-      // Get all markdown files
+      // Get all markdown files (exclude README files)
       const markdownFiles = fs.readdirSync(this.markdownDir)
-        .filter(file => file.endsWith('.md'))
+        .filter(file => file.endsWith('.md') && !file.toLowerCase().includes('readme'))
         .map(file => path.join(this.markdownDir, file));
 
       if (markdownFiles.length === 0) {
@@ -730,9 +730,9 @@ class MarkdownToEventConverter {
       // Process all markdown files to maintain proper sorting in eventos.html
       const allEventPosts: EventPost[] = [];
       
-      // Get all markdown files (including the one we just processed)
+      // Get all markdown files (including the one we just processed, exclude README files)
       const markdownFiles = fs.readdirSync(this.markdownDir)
-        .filter(file => file.endsWith('.md'))
+        .filter(file => file.endsWith('.md') && !file.toLowerCase().includes('readme'))
         .map(file => path.join(this.markdownDir, file));
       
       // Parse all markdown files
