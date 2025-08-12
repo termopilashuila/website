@@ -206,7 +206,7 @@ function sendEventNotificationEmail(data, timestamp) {
     
     // Contenido HTML del correo
     const htmlBody = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
       <!-- Logo y Encabezado -->
       <div style="text-align: center; margin-bottom: 20px;">
         <img src="${logoUrl}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
@@ -331,7 +331,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
     const subject = `Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas`;
     
     // URL del logo
-    const logoUrl = "https://termopilas.co/assets/images/logo.png";
+  const logoUrl = "https://termopilas.co/assets/images/logo.png";
     
     // Crear mensaje de WhatsApp con contexto
     const whatsappNumber = "+573143428579";
@@ -342,7 +342,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
     
     // Contenido HTML del correo para el usuario
     const htmlBody = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
       <!-- Logo y Encabezado -->
       <div style="text-align: center; margin-bottom: 20px;">
         <img src="${logoUrl}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
