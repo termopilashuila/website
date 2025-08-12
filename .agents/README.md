@@ -12,6 +12,7 @@ This directory contains specialized LLM agents designed to maintain and optimize
 ### 🛠️ Code Maintenance  
 - **css-architecture-agent.md** - Design system and stylesheet maintenance
 - **typescript-quality-agent.md** - JavaScript/TypeScript code quality
+- **sitemap-agent.md** - Sitemap generation, validation, and search engine ping automation
 
 ### 🔌 Integration & Backend
 - **google-apps-script-agent.md** - Backend form processing and automation
