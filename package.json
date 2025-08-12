@@ -9,6 +9,9 @@
     "resize-images": "node resize/resize-images.js",
     "process-blog": "npm run build && node scripts/process-blog.js",
     "process-blog-single": "npm run build && node scripts/process-blog.js",
+    "sitemap:generate": "node scripts/generate-sitemap.js",
+    "sitemap:validate": "node -e \"require('fs').readFileSync('sitemap.xml','utf8'); console.log('sitemap.xml readable')\"",
+    "sitemap:ping": "node -e \"const https=require('https');const u=['https://www.google.com/ping?sitemap=https://termopilas.co/sitemap.xml','https://www.bing.com/ping?sitemap=https://termopilas.co/sitemap.xml'];u.forEach(x=>https.get(x, r=>console.log(x, r.statusCode)));\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
