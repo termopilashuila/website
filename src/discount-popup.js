@@ -10,7 +10,7 @@ class DiscountPopupHandler {
         // Configuration with defaults
         this.config = {
             popupDelay: options.popupDelay || 4000, // 4 seconds
-            timerDuration: options.timerDuration || 40, // 40 seconds
+            timerDuration: options.timerDuration || 100, // 100 seconds
             backendUrl: options.backendUrl || 'https://script.google.com/macros/s/AKfycbwXCkqjA3d4Lj26TWXCHHgg16Z6UYdahdh4fP5kWVqUs0wCokys_TASoiy2Sr5GwktN3g/exec',
             popupId: options.popupId || 'discount-popup',
             ...options
