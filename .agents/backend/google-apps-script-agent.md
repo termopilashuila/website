@@ -600,6 +600,38 @@ function sanitizePersonalData(data) {
 - Data validation failures > 2% → Rule review and adjustment
 - WhatsApp integration failures → Check message formatting and phone number validation
 
+## Operational Lessons Learned
+
+- Keep frontend endpoints synchronized with the latest Web App deployment.
+  - New Web App deployments produce a new `exec` URL. Update all frontend references immediately after deploying.
+  - Centralize endpoints in constants where possible to avoid scattered hard-coded URLs.
+  - Run a repository-wide search for `https://script.google.com/macros/s/` and replace stale URLs.
+- Outdated deployment is a common cause of “works in test but not in production”.
+  - Tests in the IDE invoke the latest code, while the published Web App may still serve an older version.
+  - Always verify which deployment a form is calling.
+- Use Executions logs to verify critical steps in production.
+  - Add structured logs before and after sending emails (e.g., “About to send user confirmation email”, “User confirmation email sent successfully”).
+  - On failures, log and notify admin with context (user name, email, payment method).
+- Email deliverability and reliability
+  - Use a resilient sender wrapper: try `GmailApp.sendEmail` first and fall back to `MailApp.sendEmail` with the same payload.
+  - Include `replyTo` and `bcc` to admin to confirm the user-email path executed in production.
+  - Validate and normalize recipient emails; if invalid, skip sending and notify admin.
+- Frontend networking caveat
+  - `fetch(..., { mode: 'no-cors' })` hides server errors. For debugging, temporarily drop `no-cors` in a controlled environment or add a separate health endpoint.
+  - Even when hidden client-side, you can still debug via Apps Script Executions logs.
+
+## Web App Deployment Checklist (Production)
+
+1. Deploy new version (Web App) with correct access settings (“Anyone” if required by public forms).
+2. Update all frontend endpoints to the new `exec` URL.
+3. Search and replace old `script.google.com/macros/s/.../exec` URLs across the repository.
+4. Perform an end-to-end submission.
+   - Confirm admin notification email received.
+   - Confirm user confirmation email received and BCC copy arrives to admin mailbox.
+5. Review Executions logs and verify presence of send-email logs and absence of errors.
+6. Update README/docs for the form with the new endpoint URL.
+7. Monitor for the first 24 hours for deliverability and quota issues.
+
 ### Form-Specific Issues
 - **Job Applications**: CV upload failures, incomplete application data
 - **Event Quotations**: Template loading errors, pricing calculation issues
