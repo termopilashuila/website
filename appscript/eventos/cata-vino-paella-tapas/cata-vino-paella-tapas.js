@@ -199,7 +199,7 @@ function sendEventNotificationEmail(data, timestamp) {
     const emailAddresses = ["termopilashuila@gmail.com"];
     
     // Asunto del correo
-    const subject = `Nueva Reserva - Cata de Vinos, Paella y Tapas - ${data.firstName} ${data.lastName}`;
+    const subject = `${data.firstName} ${data.lastName} - Nueva Reserva - Cata de Vinos, Paella y Tapas`;
     
     // URL del logo
     const logoUrl = "https://termopilas.co/assets/images/logo.png";
@@ -357,7 +357,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       <p>¡Gracias por tu interés en participar en nuestra experiencia gastronómica única! Hemos recibido tu solicitud de reserva y queremos confirmarte los siguientes pasos:</p>
       
       <div style="background-color: #fdf6ea; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        <h3 style="color: #333; margin-top: 0;">🍷 Detalles del Evento</h3>
+        <h3 style="color: #333; margin-top: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">🍷 Detalles del Evento</h3>
         <p><strong>Evento:</strong> Cata de Vinos, Paella y Tapas</p>
         <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2024</p>
         <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
@@ -367,7 +367,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       
       ${data.paymentMethod === 'transfer' ? `
       <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3 style="color: #856404; margin-top: 0;">💳 Transferencia Bancaria Seleccionada</h3>
+        <h3 style="color: #856404; margin-top: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">💳 Transferencia Bancaria Seleccionada</h3>
         <p style="color: #856404;">Has seleccionado <strong>transferencia bancaria</strong> como método de pago. Para completar tu reserva:</p>
         
         <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
@@ -380,7 +380,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
         </div>
         
         <div style="background: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; margin: 15px 0;">
-          <p style="color: #721c24; margin: 0; font-weight: bold;">📱 IMPORTANTE: Envía tu comprobante de pago</p>
+          <p style="color: #721c24; margin: 0; font-weight: bold; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">📱 IMPORTANTE: Envía tu comprobante de pago</p>
           <p style="color: #721c24; margin: 10px 0 0 0;">Una vez realices la transferencia, debes enviar el comprobante de pago por WhatsApp para confirmar tu reserva:</p>
         </div>
         
@@ -392,7 +392,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       </div>
       ` : `
       <div style="background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3 style="color: #0c5460; margin-top: 0;">💳 Tarjeta de Crédito Seleccionada</h3>
+        <h3 style="color: #0c5460; margin-top: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">💳 Tarjeta de Crédito Seleccionada</h3>
         <p style="color: #0c5460;">Has seleccionado <strong>tarjeta de crédito</strong> como método de pago.</p>
         
         <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 8px; margin: 15px 0;">
@@ -404,7 +404,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       `}
       
       <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 20px;">
-        <h4 style="color: #333; margin-top: 0;">📞 ¿Necesitas ayuda?</h4>
+        <h4 style="color: #333; margin-top: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">📞 ¿Necesitas ayuda?</h4>
         <p style="margin-bottom: 10px;">Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos:</p>
         <p style="margin: 5px 0;"><strong>WhatsApp:</strong> ${whatsappNumber}</p>
         <p style="margin: 5px 0;"><strong>Email:</strong> termopilashuila@gmail.com</p>
@@ -875,7 +875,20 @@ function safeSendEmail(options) {
   // Envuelve MailApp.sendEmail con reintentos
   return retryWithExponentialBackoff(function() {
     try {
-      // Intento 1: GmailApp (permite más opciones y mejora entregabilidad)
+      // Intento 1: MailApp con objeto completo (establece charset UTF-8 claro y consistente)
+      MailApp.sendEmail({
+        to: options.to,
+        subject: options.subject,
+        body: options.body || ' ',
+        htmlBody: options.htmlBody,
+        name: options.name,
+        replyTo: options.replyTo,
+        bcc: options.bcc
+      });
+      return;
+    } catch (mailErr) {
+      console.warn('MailApp.sendEmail failed, falling back to GmailApp:', mailErr);
+      // Intento 2: GmailApp
       var gmailOptions = {
         htmlBody: options.htmlBody,
         name: options.name,
@@ -883,11 +896,6 @@ function safeSendEmail(options) {
         bcc: options.bcc
       };
       GmailApp.sendEmail(options.to, options.subject, options.body || ' ', gmailOptions);
-      return;
-    } catch (gmailErr) {
-      console.warn('GmailApp.sendEmail failed, falling back to MailApp:', gmailErr);
-      // Intento 2: MailApp con objeto completo
-      MailApp.sendEmail(options);
     }
   }, 3);
 }
