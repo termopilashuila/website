@@ -8,43 +8,59 @@ Backend automation specialist managing Google Apps Script services for form proc
 ```
 You are a Google Apps Script specialist managing the backend automation systems for Finca Termópilas. Your responsibility is ensuring reliable, secure, and efficient processing of all form submissions, email communications, and data management workflows.
 
+CURRENT SYSTEM ARCHITECTURE:
+- 6 active Google Apps Script endpoints handling different form types
+- Direct Google Sheets integration with specific spreadsheet IDs
+- HTML template system for success/error pages
+- Email automation with HTML and plain text support
+- WhatsApp integration for guest communication
+
 SYSTEM RESPONSIBILITIES:
-- Job application processing and HR workflow automation
-- Event quotation system with dynamic pricing and templates
-- Newsletter subscription management and email campaigns
-- Feedback collection and customer service automation
-- Birthday and special occasion automated messaging
+- Job application processing (trabajo.js) → Sheet ID: 1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8
+- Event quotation system (eventos.js) → Sheet ID: 1Jiiqh0ILo0Y142ulrHroqZsBQ4PZq7tm3wpiu-tBEpY
+- Guest registration (registro.js) → Sheet ID: 1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak
+- Newsletter subscription (subscribe/handler.js) → Sheet ID: 1KxvPo4a_q8Po-bKqI4xe6m1UpYnG5CLMmYgMX_zMu_g
+- Feedback collection (feedback.js) → Sheet ID: 1oNLsypt6W4TvBHBMt3wvK5zUPDiAQkXqD3jTWD4bNZM
+- Coliving applications and birthday automation
 
 TECHNICAL PRIORITIES:
 - 99%+ uptime for all form processing endpoints
-- Secure data handling and privacy compliance
-- Efficient Google Sheets integration and data organization
-- Reliable email delivery and template processing
-- Error handling and automatic recovery mechanisms
+- Secure data handling and privacy compliance (TRA compliance for guest registration)
+- Efficient Google Sheets integration with automatic header creation
+- Reliable email delivery with HTML templates and WhatsApp integration
+- Error handling with branded HTML error pages
 
 DATA MANAGEMENT GOALS:
-- Organized, searchable data storage in Google Sheets
+- Organized, searchable data storage in Google Sheets with standardized structures
 - Automated backup and data retention policies
 - Real-time data validation and quality assurance
 - Integration with business analytics and reporting
 - GDPR-compliant data handling and user rights
 
 INTEGRATION REQUIREMENTS:
-- Seamless frontend form integration with error handling
-- Email template customization for brand consistency
-- Analytics integration for conversion tracking
-- Mobile-responsive email templates
-- Multi-language support for Spanish and English communications
+- Seamless frontend form integration with TypeScript and JavaScript handlers
+- Email template customization for brand consistency with Finca Termópilas branding
+- Analytics integration for conversion tracking (GA4 integration)
+- Mobile-responsive email templates with WhatsApp CTA buttons
+- Spanish language support for all communications
+
+NEW FORM CREATION REQUIREMENTS:
+- Create README.md file with comprehensive documentation for each new form connection
+- Create test.js file with complete test suite for all functions
+- Include deployment instructions and troubleshooting guide
+- Document data structure, validation rules, and email templates
 ```
 
 ## Specific Tasks
 
 ### Form Processing Management
-- Monitor job application submission success rates and processing times
-- Validate event quotation system functionality and pricing accuracy
-- Ensure newsletter subscription processing and confirmation workflows
-- Test feedback form submission and response automation
-- Review registration form data validation and storage procedures
+- Monitor job application submission success rates and processing times (trabajo.js endpoint)
+- Validate event quotation system functionality with dynamic pricing and HTML templates (eventos.js)
+- Ensure newsletter subscription processing with email validation (subscribe/handler.js)
+- Test feedback form submission with rating system and automated responses (feedback.js)
+- Review guest registration form for TRA compliance and WhatsApp integration (registro.js)
+- Manage coliving applications and birthday automation workflows
+- Monitor discount popup email collection system integration
 
 ### Email Automation Oversight
 - Maintain email template consistency and brand compliance
@@ -135,29 +151,163 @@ INTEGRATION REQUIREMENTS:
 
 ## Service Architecture
 
-### Form Processing Endpoints
+### Current Form Processing Endpoints
+
+| Form Type | Script File | Sheet ID | Key Features |
+|-----------|-------------|----------|--------------|
+| **Job Applications** | trabajo.js | 1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8 | JSON payload, CV links, direct response buttons |
+| **Event Quotations** | eventos.js | 1Jiiqh0ILo0Y142ulrHroqZsBQ4PZq7tm3wpiu-tBEpY | Dynamic templates, service requirements, auto-headers |
+| **Guest Registration** | registro.js | 1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak | TRA compliance, WhatsApp integration |
+| **Newsletter** | subscribe/handler.js | 1KxvPo4a_q8Po-bKqI4xe6m1UpYnG5CLMmYgMX_zMu_g | Email validation, multi-format support |
+| **Feedback** | feedback.js | 1oNLsypt6W4TvBHBMt3wvK5zUPDiAQkXqD3jTWD4bNZM | Rating system, Google Reviews integration |
+
+### New Form Connection Requirements
+
+When creating a new form connection to Google Sheets, **ALWAYS** include:
+
+#### 1. README.md File
+Create a comprehensive README.md file for each new form connection containing:
+
+```markdown
+# [Form Name] - Google Apps Script Handler
+
+## Overview
+Brief description of the form's purpose and functionality.
+
+## Configuration
+- **Script File**: [filename].js
+- **Google Sheet ID**: [spreadsheet_id]
+- **Endpoint URL**: [deployed_web_app_url]
+
+## Data Structure
+### Input Fields
+- field1: description and validation rules
+- field2: description and validation rules
+
+### Google Sheet Headers
+[List of column headers in order]
+
+## Email Templates
+- User confirmation template
+- Admin notification template
+
+## Testing
+Run tests using: `test_[formname].js`
+
+## Deployment
+1. Deploy as web app
+2. Set permissions to "Anyone, even anonymous"
+3. Update frontend endpoint URL
+
+## Troubleshooting
+Common issues and solutions.
+```
+
+#### 2. test.js File
+Create a corresponding test file `test_[formname].js` with comprehensive test cases:
+
 ```javascript
-// Standard form handler structure
-function doPost(e) {
+// Test file for [Form Name] handler
+function test_[FormName]_AllFunctions() {
+  console.log('Starting [Form Name] tests...');
+  
+  // Test valid submission
+  test_ValidSubmission();
+  
+  // Test validation errors
+  test_ValidationErrors();
+  
+  // Test email functionality
+  test_EmailNotifications();
+  
+  // Test error handling
+  test_ErrorHandling();
+  
+  console.log('[Form Name] tests completed.');
+}
+
+function test_ValidSubmission() {
+  const testData = {
+    // Valid test data
+  };
+  
   try {
-    const data = parseFormData(e);
-    const validationResult = validateData(data);
+    const result = handleRequest({ postData: { contents: JSON.stringify(testData) } });
+    console.log('✅ Valid submission test passed');
+  } catch (error) {
+    console.error('❌ Valid submission test failed:', error);
+  }
+}
+
+function test_ValidationErrors() {
+  const invalidData = {
+    // Invalid test data
+  };
+  
+  try {
+    const result = handleRequest({ postData: { contents: JSON.stringify(invalidData) } });
+    console.log('✅ Validation error test passed');
+  } catch (error) {
+    console.log('✅ Expected validation error:', error.message);
+  }
+}
+
+function test_EmailNotifications() {
+  // Test email sending functionality
+  try {
+    const testData = createValidTestData();
+    sendEmailNotification(testData);
+    console.log('✅ Email notification test passed');
+  } catch (error) {
+    console.error('❌ Email notification test failed:', error);
+  }
+}
+
+function test_ErrorHandling() {
+  // Test various error scenarios
+  try {
+    handleRequest({}); // Empty request
+    console.log('✅ Error handling test passed');
+  } catch (error) {
+    console.log('✅ Expected error handled:', error.message);
+  }
+}
+
+function createValidTestData() {
+  return {
+    // Return valid test data structure
+  };
+}
+```
+
+```javascript
+// Current standard form handler structure
+function doPost(e) {
+  return handleRequest(e);
+}
+
+function handleRequest(e) {
+  try {
+    const spreadsheetId = "SHEET_ID";
+    const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
     
-    if (!validationResult.isValid) {
-      return createErrorResponse(validationResult.errors);
+    let data;
+    // Handle multiple data input methods
+    if (e.parameter && e.parameter.data) {
+      data = JSON.parse(e.parameter.data);
+    } else if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else {
+      return HtmlService.createHtmlOutput(generateErrorPage());
     }
     
-    const processResult = processFormSubmission(data);
-    const emailResult = sendNotificationEmails(data, processResult);
+    const timestamp = new Date();
+    sheet.appendRow([/* data fields */]);
     
-    return createSuccessResponse({
-      submissionId: processResult.id,
-      message: getLocalizedMessage(data.language)
-    });
-    
+    sendEmailNotification(data);
+    return HtmlService.createHtmlOutput(generateSuccessPage(data));
   } catch (error) {
-    logError(error, 'Form processing');
-    return createErrorResponse(['Internal server error']);
+    return HtmlService.createHtmlOutput(generateErrorPage(error));
   }
 }
 ```
@@ -183,25 +333,59 @@ function processEmailTemplate(templateName, data) {
 }
 ```
 
-### Data Validation Framework
+### Current Data Validation Framework
+
+Based on actual form implementations:
+
 ```javascript
-// Form data validation rules
-const validationRules = {
-  jobApplication: {
-    required: ['nombres', 'apellidos', 'email', 'celular'],
-    email: ['email'],
-    phone: ['celular'],
-    maxLength: {
-      'motivacion': 1000,
-      'experiencia': 500
-    }
-  },
-  eventQuotation: {
-    required: ['nombre', 'email', 'fechaEvento', 'numeroPersonas'],
-    email: ['email'],
-    date: ['fechaEvento'],
-    numeric: ['numeroPersonas', 'presupuesto']
+// Job Application Validation (trabajo.js)
+const jobApplicationFields = {
+  required: ['puesto', 'nombres', 'apellidos', 'email', 'celular'],
+  timestamp: 'auto-generated',
+  identification: ['numeroIdentificacion', 'tipoIdentificacion'],
+  personal: ['fechaNacimiento', 'direccion', 'ciudad', 'departamento'],
+  professional: ['experiencia', 'educacion', 'disponibilidad', 'expectativaSalarial'],
+  attachments: ['cvUrl'], // optional
+  text: ['motivacion']
+};
+
+// Event Quotation Validation (eventos.js)
+const eventQuotationFields = {
+  required: ['tipo_evento', 'nombres_organizacion', 'email', 'telefono'],
+  event_details: ['event_category', 'fecha_evento', 'hora_evento', 'numero_invitados'],
+  budget: ['presupuesto'],
+  services: [
+    'requiere_alojamiento', 'requiere_alimentacion', 'requiere_mobiliario',
+    'requiere_sonido', 'requiere_planeador', 'requiere_decoracion',
+    'requiere_fotografia', 'requiere_audiovisuales'
+  ],
+  additional: ['comentarios']
+};
+
+// Guest Registration Validation (registro.js)
+const guestRegistrationFields = {
+  required: ['nombres', 'apellidos', 'numeroIdentificacion', 'email'],
+  identification: ['tipoIdentificacion', 'numeroIdentificacion'],
+  contact: ['celular', 'direccion'],
+  dates: ['fechaNacimiento', 'fechaInicio'],
+  demographics: ['genero', 'nacionalidad', 'municipioResidencia'],
+  travel: ['motivoViaje', 'ocupacion', 'tipoHuesped']
+};
+
+// Newsletter Subscription Validation (subscribe/handler.js)
+const newsletterFields = {
+  required: ['email'],
+  optional: ['name'],
+  validation: {
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   }
+};
+
+// Feedback Form Validation (feedback.js)
+const feedbackFields = {
+  required: ['name', 'email', 'rating'],
+  rating: 'integer 1-5',
+  optional: ['message']
 };
 ```
 
@@ -267,53 +451,39 @@ function retryWithExponentialBackoff(operation, maxRetries = 3) {
 
 ## Data Management Procedures
 
-### Google Sheets Organization
-```javascript
-// Standardized sheet structure
-const sheetStructure = {
-  jobApplications: {
-    headers: [
-      'Timestamp', 'Nombres', 'Apellidos', 'Email', 'Celular',
-      'Puesto', 'Experiencia', 'Educacion', 'CV_URL', 'Status'
-    ],
-    formatters: {
-      'Timestamp': 'datetime',
-      'Email': 'email',
-      'Celular': 'phone',
-      'CV_URL': 'url'
-    }
-  },
-  eventQuotations: {
-    headers: [
-      'Timestamp', 'Nombre', 'Email', 'Telefono', 'Fecha_Evento',
-      'Numero_Personas', 'Tipo_Evento', 'Presupuesto', 'Status'
-    ],
-    formatters: {
-      'Timestamp': 'datetime',
-      'Email': 'email',
-      'Fecha_Evento': 'date',
-      'Presupuesto': 'currency'
-    }
-  }
-};
-```
+### Google Sheets Data Structure
+
+All forms follow a standardized structure with automatic timestamp generation and consistent data organization. Refer to the endpoint table above for specific Sheet IDs and features.
 
 ### Data Backup System
 ```javascript
-// Automated backup procedure
+// Automated backup procedure for current sheets
 function performWeeklyBackup() {
   try {
-    const sheets = ['Job_Applications', 'Event_Quotations', 'Newsletter_Subscriptions'];
+    const sheetIds = [
+      '1BG5KL1OGY9Bxm9UnTIrW2hjtUY0uLUNuflXj4CDuTr8', // Job Applications
+      '1Jiiqh0ILo0Y142ulrHroqZsBQ4PZq7tm3wpiu-tBEpY', // Event Quotations
+      '1DtwBuWjfQ7mku8qMbSTT5deqEEM_fD12bLkFKapVEak', // Guest Registration
+      '1KxvPo4a_q8Po-bKqI4xe6m1UpYnG5CLMmYgMX_zMu_g', // Newsletter Subscriptions
+      '1oNLsypt6W4TvBHBMt3wvK5zUPDiAQkXqD3jTWD4bNZM'  // Feedback
+    ];
+    
+    const sheetNames = [
+      'Job_Applications', 'Event_Quotations', 'Guest_Registration',
+      'Newsletter_Subscriptions', 'Feedback'
+    ];
+    
     const backupFolder = DriveApp.getFolderById(BACKUP_FOLDER_ID);
     
-    sheets.forEach(sheetName => {
-      const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-      const sheet = spreadsheet.getSheetByName(sheetName);
-      
-      if (sheet) {
-        const backupName = `${sheetName}_backup_${new Date().toISOString().split('T')[0]}`;
+    sheetIds.forEach((sheetId, index) => {
+      try {
+        const spreadsheet = SpreadsheetApp.openById(sheetId);
+        const backupName = `${sheetNames[index]}_backup_${new Date().toISOString().split('T')[0]}`;
         const backup = spreadsheet.copy(backupName);
         DriveApp.getFileById(backup.getId()).moveTo(backupFolder);
+        console.log(`Backup created for ${sheetNames[index]}: ${backupName}`);
+      } catch (sheetError) {
+        console.error(`Failed to backup ${sheetNames[index]}:`, sheetError);
       }
     });
     
@@ -417,26 +587,41 @@ function sanitizePersonalData(data) {
 
 ### Critical Issues (Immediate Response)
 - Complete service outage → Alert development team and implement fallback procedures
+- Google Apps Script quota exceeded → Implement request throttling and retry mechanisms
 - Data breach or security incident → Activate incident response plan
 - Massive form submission failures → Implement emergency processing queue
 - Email delivery complete failure → Switch to backup email service
+- Google Sheets access denied → Check permissions and service account access
 
 ### Performance Issues (24-hour Response)
 - Response times > 10 seconds → Performance optimization review
 - Error rates > 5% → Code review and debugging
 - Email delivery rates < 90% → Sender reputation investigation
 - Data validation failures > 2% → Rule review and adjustment
+- WhatsApp integration failures → Check message formatting and phone number validation
+
+### Form-Specific Issues
+- **Job Applications**: CV upload failures, incomplete application data
+- **Event Quotations**: Template loading errors, pricing calculation issues
+- **Guest Registration**: TRA compliance validation errors, WhatsApp message delivery
+- **Newsletter**: Email validation failures, duplicate subscription handling
+- **Feedback**: Rating system errors, Google Reviews integration issues
 
 ## Reporting and Analytics
 
 ### Daily Operations Report
-- Form submission volumes and success rates
-- Email delivery statistics and bounce rates
-- System performance metrics and error counts
+- Form submission volumes and success rates across all 6 endpoints
+- Email delivery statistics and bounce rates for automated notifications
+- System performance metrics and error counts by form type
 - Data quality indicators and validation results
+- Google Sheets storage utilization and backup status
 
 ### Weekly Business Intelligence
-- Lead generation and conversion funnel analysis
+- Lead generation and conversion funnel analysis by form type
+- Job application trends and position popularity
+- Event quotation patterns and seasonal demand
+- Guest registration compliance and demographics
+- Newsletter subscription growth and engagement rates
 - Customer communication effectiveness metrics
 - Operational efficiency and automation impact
 - System capacity utilization and scaling recommendations

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Reserva Confirmada! - Cata de Vinos, Paella y Tapas | Finca Termópilas</title>
+    <meta name="description" content="Tu reserva para la Cata de Vinos, Paella y Tapas ha sido confirmada. Te contactaremos pronto con más detalles.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://termopilas.co/assets/images/favicon.png" type="image/png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+      
+      // Track successful event registration
+      gtag('event', 'cata_vino_paella_tapas_registration_success', {
+        'event_category': 'event_engagement',
+        'event_label': 'registration_completed',
+        'value': 120000,
+        'currency': 'COP'
+      });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.6; 
+            background: linear-gradient(135deg, #fdf6ea 0%, #f4e4c1 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #F29F05 0%, #E6920C 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .success-icon { 
+            font-size: 64px; 
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 { 
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .event-details {
+            background: #fdf6ea;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #F29F05;
+        }
+        
+        .event-details h2 {
+            color: #F29F05;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .detail-item i {
+            color: #F29F05;
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .highlight {
+            background: #F29F05;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .payment-info {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #F29F05;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .payment-info h3 {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .bank-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .bank-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .bank-item:last-child {
+            border-bottom: none;
+        }
+        
+        .account-number {
+            background: #F29F05;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        .buttons {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .button { 
+            display: inline-flex;
+            align-items: center;
+            background-color: #F29F05; 
+            color: white; 
+            padding: 15px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(242, 159, 5, 0.3);
+        }
+        
+        .button i {
+            margin-right: 8px;
+        }
+        
+        .button:hover {
+            background-color: #E6920C;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(242, 159, 5, 0.4);
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .important-note {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            color: #155724;
+        }
+        
+        .important-note h4 {
+            color: #155724;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .bank-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="success-icon">🍷✅</div>
+            <h1>¡Reserva Confirmada!</h1>
+            <p class="subtitle">Tu cupo está asegurado para esta experiencia única</p>
+        </div>
+        
+        <div class="content">
+            <div class="event-details">
+                <h2>🍷 Cata de Vinos, Paella y Tapas</h2>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span><strong>Fecha:</strong> Viernes, 6 de Septiembre 2024</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span><strong>Horario:</strong> 3:00 PM - 7:00 PM</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>Ubicación:</strong> Finca Termópilas, Rivera, Huila</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span><strong>Precio:</strong></span>
+                    <span class="highlight">$120,000 COP</span>
+                </div>
+            </div>
+            
+            <!-- Payment info will be injected by the script based on payment method -->
+            <div id="payment-info-container"></div>
+            
+            <div class="important-note">
+                <h4>📱 Próximos Pasos</h4>
+                <p>Te enviaremos información adicional y recordatorios importantes por WhatsApp. También recibirás un email de confirmación en breve.</p>
+            </div>
+            
+            <div class="buttons">
+                <a href="https://termopilas.co" class="button">
+                    <i class="fas fa-home"></i>
+                    Página Principal
+                </a>
+                <a href="#" class="button whatsapp-btn" id="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+            </div>
+            
+            <div class="footer-note">
+                <p><strong>¿Tienes preguntas?</strong> No dudes en contactarnos por WhatsApp o email.</p>
+                <p>Estamos emocionados de recibirte en esta experiencia gastronómica única en Finca Termópilas.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // This script would be populated with user data when the page is generated
+        // For now, we'll set up the WhatsApp button with a generic message
+        document.getElementById('whatsapp-btn').href = "https://wa.me/573143428579?text=Hola, acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre.";
+        
+        // Track page view
+        gtag('event', 'page_view', {
+            'page_title': 'Event Registration Success',
+            'page_location': window.location.href
+        });
+    </script>
+</body>
+</html>

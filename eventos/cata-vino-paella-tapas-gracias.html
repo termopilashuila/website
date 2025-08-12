@@ -536,6 +536,11 @@
                     <p>Vístete con colores cálidos y estampados florales que complementen el ambiente natural. Ropa cómoda para actividades al aire libre.</p>
                 </div>
                 <div class="recommendation-card">
+                    <i class="fas fa-spray-can"></i>
+                    <h4>Repelente</h4>
+                    <p>Muy recomendado traer repelente de insectos. Al estar en un área rural rodeada de naturaleza, es importante estar preparado para mosquitos.</p>
+                </div>
+                <div class="recommendation-card">
                     <i class="fas fa-shoe-prints"></i>
                     <h4>Calzado</h4>
                     <p>Calzado cómodo apropiado para terreno natural y ambiente al aire libre.</p>
@@ -622,9 +627,9 @@
         window.addEventListener('load', createConfetti);
 
         // Track thank you page view
-        gtag('event', 'page_view', {
-            'page_title': 'Thank You - Cata de Vinos',
-            'page_location': window.location.href
+        gtag('event', 'cata_vino_paella_tapas_thank_you_view', {
+            'event_category': 'event_engagement',
+            'event_label': 'thank_you_page_view'
         });
 
         // Display user data if available
@@ -645,10 +650,9 @@
         document.querySelectorAll('.social-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const platform = this.classList[1]; // facebook, twitter, etc.
-                gtag('event', 'share', {
-                    'method': platform,
-                    'content_type': 'event',
-                    'item_id': 'cata_vinos_success_page'
+                gtag('event', `cata_vino_paella_tapas_share_${platform}`, {
+                    'event_category': 'event_share',
+                    'event_label': `thank_you_social_${platform}`
                 });
             });
         });
@@ -657,9 +661,9 @@
         document.querySelectorAll('.whatsapp-btn, .email-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const method = this.classList.contains('whatsapp-btn') ? 'whatsapp' : 'email';
-                gtag('event', 'contact_attempt', {
-                    'method': method,
-                    'source': 'thank_you_page'
+                gtag('event', `cata_vino_paella_tapas_contact_${method}`, {
+                    'event_category': 'event_engagement',
+                    'event_label': `thank_you_contact_${method}`
                 });
             });
         });

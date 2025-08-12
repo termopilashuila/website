@@ -756,7 +756,8 @@
                 Experiencia gastronómica única con sommelier profesional y chef español
                 <br><strong>6 de Septiembre • 3:00 - 7:00 PM • Finca Termópilas</strong>
             </p>
-            <a href="#reservar" class="hero-cta">
+            <a href="#reservar" class="hero-cta"
+               onclick="gtag('event', 'cata_vino_paella_tapas_hero_cta', {'event_category': 'event_engagement', 'event_label': 'hero_reserve_button'});">
                 <i class="fas fa-calendar-check"></i> Reservar Ahora - $120.000
             </a>
         </div>
@@ -973,6 +974,43 @@
         </div>
     </section>
 
+    <!-- Recommendations -->
+    <section class="section recommendations">
+        <div class="container">
+            <h2 class="section-title">Recomendaciones para el Evento</h2>
+            <p class="section-subtitle">
+                Prepárate para una experiencia perfecta siguiendo estas sugerencias
+            </p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-spray-can"></i>
+                    <h3>Repelente</h3>
+                    <p><strong>Muy Recomendado</strong></p>
+                    <p>Trae repelente de insectos. Al estar en un área rural rodeada de naturaleza, es importante estar preparado para mosquitos y otros insectos.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Calzado Cómodo</h3>
+                    <p><strong>Terreno Natural</strong></p>
+                    <p>Usa calzado cómodo apropiado para terreno natural y actividades al aire libre durante el tour por los viñedos.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Cámara</h3>
+                    <p><strong>Momentos Especiales</strong></p>
+                    <p>Trae tu cámara para capturar los hermosos paisajes y momentos únicos de esta experiencia gastronómica.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Puntualidad</h3>
+                    <p><strong>Llegada Temprana</strong></p>
+                    <p>Llega 15 minutos antes para el registro y bienvenida. La experiencia inicia puntualmente a las 3:00 PM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Registration Form -->
     <section class="section registration" id="reservar">
         <div class="container">
@@ -1096,7 +1134,8 @@
                 Contáctanos directamente para resolver cualquier duda
             </p>
             <a href="https://wa.me/573143428579?text=Hola,%20tengo%20una%20pregunta%20sobre%20la%20Cata%20de%20Vinos" 
-               class="whatsapp-btn" target="_blank" rel="noopener">
+               class="whatsapp-btn" target="_blank" rel="noopener"
+               onclick="gtag('event', 'cata_vino_paella_tapas_whatsapp_contact', {'event_category': 'event_engagement', 'event_label': 'contact_whatsapp'});">
                 <i class="fab fa-whatsapp"></i>
                 Escribir por WhatsApp
             </a>
@@ -1123,7 +1162,7 @@
         }
 
         // Form submission
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
+        document.getElementById('registration-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form data
@@ -1136,31 +1175,79 @@
                 return;
             }
             
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Por favor ingresa un email válido');
+                return;
+            }
+            
             // Disable submit button
             const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando reserva...';
             
-            // Store data in localStorage for the payment gateway
-            localStorage.setItem('eventRegistration', JSON.stringify(data));
-            
-            // Track conversion
-            gtag('event', 'conversion', {
-                'send_to': 'G-2406CNRCX9',
-                'event_category': 'event_registration',
-                'event_label': 'cata_vinos_tapas_paella',
-                'value': 120000,
-                'currency': 'COP'
-            });
-            
-            // Redirect to payment gateway
-            window.location.href = 'https://checkout.payulatam.com/ppp-web-gateway-payu/app/v2?k=e8c5cde0f4ef7bfb69e948f5fe33152a#/co/buyer';
+            try {
+                // Track form submission attempt
+                gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_attempt',
+                    'payment_method': data.paymentMethod
+                });
+                
+                // Submit to Google Apps Script
+                const response = await fetch('https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Track successful submission
+                gtag('event', 'cata_vino_paella_tapas_registration_success', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_completed',
+                    'value': 120000,
+                    'currency': 'COP',
+                    'payment_method': data.paymentMethod
+                });
+                
+                // Also track as conversion for Google Ads
+                gtag('event', 'conversion', {
+                    'send_to': 'G-2406CNRCX9',
+                    'value': 120000,
+                    'currency': 'COP'
+                });
+                
+                // Redirect to thank you page
+                window.location.href = 'cata-vino-paella-tapas-gracias.html';
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                
+                // Track submission error
+                gtag('event', 'cata_vino_paella_tapas_registration_error', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_failed',
+                    'error_type': error.message || 'unknown_error'
+                });
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                
+                // Show error message
+                alert('Ha ocurrido un error al procesar tu reserva. Por favor intenta nuevamente o contáctanos por WhatsApp.');
+            }
         });
 
         // Track page engagement
-        gtag('event', 'page_view', {
-            'page_title': 'Cata de Vinos Landing Page',
-            'page_location': window.location.href
+        gtag('event', 'cata_vino_paella_tapas_page_view', {
+            'event_category': 'event_engagement',
+            'event_label': 'landing_page_view'
         });
 
         // Track scroll depth
@@ -1169,10 +1256,9 @@
             const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
             if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
                 maxScroll = scrollPercent;
-                gtag('event', 'scroll', {
-                    'event_category': 'engagement',
-                    'event_label': `${scrollPercent}%`,
-                    'value': scrollPercent
+                gtag('event', `cata_vino_paella_tapas_scroll_${scrollPercent}`, {
+                    'event_category': 'event_engagement',
+                    'event_label': `scroll_depth_${scrollPercent}percent`
                 });
             }
         });
@@ -1180,6 +1266,13 @@
         // Copy account number function
         function copyAccountNumber() {
             const accountNumber = '45700002525';
+            
+            // Track copy action
+            gtag('event', 'cata_vino_paella_tapas_copy_account', {
+                'event_category': 'event_engagement',
+                'event_label': 'bank_account_copy'
+            });
+            
             navigator.clipboard.writeText(accountNumber).then(function() {
                 // Show success message
                 const span = document.querySelector('.account-number');
