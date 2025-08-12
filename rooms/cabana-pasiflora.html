@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabaña Pasiflora - Reserva Directa | Finca Termópilas</title>
+  <meta name="description" content="Cabaña Pasiflora: suite de lujo con dos terrazas, aire acondicionado, Wi‑Fi y vista a la naturaleza. Hasta 4 huéspedes. Reserva directa en Finca Termópilas, Rivera (Huila)." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="Cabaña Pasiflora - Reserva Directa" />
+  <meta property="og:description" content="Suite de lujo con dos terrazas, aire acondicionado, Wi‑Fi y vista a la naturaleza. Hasta 4 huéspedes." />
+  <meta property="og:image" content="https://termopilas.co/assets/images/alojamiento/cabana-1/image1.png" />
+  <meta property="og:url" content="https://termopilas.co/rooms/cabana-pasiflora.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
+
+  <!-- Fonts and Brand Tokens -->
+  <link rel="stylesheet" href="../assets/css/fonts.css" />
+  <link rel="stylesheet" href="../styles/brand-tokens.css" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Flatpickr (lightweight datepicker) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-2406CNRCX9');
+  </script>
+
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body, 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif); color: var(--text-primary, #333); background: var(--bg-primary, #fff); }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-4, 16px); }
+    .section { padding: var(--space-16, 64px) 0; }
+    .section-title { font-family: var(--font-brand, 'Lora', Georgia, serif); font-size: clamp(2rem, 4vw, 3.2rem); text-align: center; color: var(--text-primary); margin-bottom: var(--space-6, 24px); }
+    .section-subtitle { text-align: center; color: var(--text-secondary, #6B7280); max-width: 760px; margin: 0 auto var(--space-12, 48px); line-height: 1.8; }
+
+    /* Hero */
+    .hero { position: relative; min-height: 88vh; display: grid; place-items: center; text-align: center; color: #fff; background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)), url('../assets/images/alojamiento/cabana-1/image1.png') center/cover no-repeat; }
+    .hero-content { padding: var(--space-8, 32px); max-width: 900px; }
+    .hero h1 { font-family: var(--font-brand); font-size: clamp(2.3rem, 6vw, 4rem); line-height: 1.1; margin-bottom: var(--space-4, 16px); text-shadow: 2px 2px 6px rgba(0,0,0,.45); }
+    .hero-subtitle { font-size: clamp(1rem, 2.2vw, 1.35rem); opacity: .95; margin-bottom: var(--space-8, 32px); text-shadow: 1px 1px 2px rgba(0,0,0,.35); }
+    .badge { display: inline-block; background: var(--brand-accent, #F29F05); color: var(--text-inverse, #FDF6EA); padding: .35rem .75rem; border-radius: var(--radius-full, 9999px); font-weight: 600; margin-bottom: var(--space-5, 20px); }
+    .hero-cta { background: var(--interactive-primary, #F29F05); color: #fdf6ea; padding: .9rem 1.8rem; border-radius: 10px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05)); transition: transform var(--transition-base, 300ms), background var(--transition-base, 300ms); display: inline-flex; align-items: center; gap: .6rem; }
+    .hero-cta:hover { transform: translateY(-2px); background: var(--interactive-primary-hover, #D88A04); }
+
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4, 16px); }
+    .gallery img { width: 100%; height: 260px; object-fit: cover; border-radius: var(--radius-lg, 8px); box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06)); transition: transform .3s ease, box-shadow .3s ease; }
+    .gallery img:hover { transform: scale(1.03); box-shadow: var(--shadow-xl, 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04)); }
+
+    /* Amenities */
+    .amenities { background: var(--bg-secondary, #FDF6EA); }
+    .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6, 24px); }
+    .amenity { background: #fff; border-radius: var(--radius-xl, 12px); padding: var(--space-6, 24px); box-shadow: var(--shadow-md); display: flex; align-items: flex-start; gap: 14px; }
+    .amenity i { color: var(--brand-accent, #F29F05); font-size: 1.5rem; margin-top: 2px; }
+    .amenity h3 { font-family: var(--font-brand); font-size: 1.25rem; margin-bottom: .35rem; color: var(--text-primary); }
+    .amenity p, .amenity ul { color: var(--text-secondary); font-size: 1rem; }
+    .amenity ul { padding-left: 1rem; }
+
+    /* Testimonials */
+    .testimonials { background: var(--bg-dark, #000); color: var(--text-inverse, #FDF6EA); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6, 24px); }
+    .testimonial-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: var(--space-6, 24px); backdrop-filter: blur(6px); }
+    .stars { color: var(--brand-accent, #F29F05); margin-bottom: .5rem; }
+    .testimonial-author { display: flex; align-items: center; gap: .75rem; margin-top: .75rem; }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: var(--brand-accent); display: grid; place-items: center; color: #fff; }
+
+    /* Location */
+    .location .map { margin-top: var(--space-4, 16px); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-md); }
+
+    /* FAQs */
+    .faqs { background: var(--bg-secondary, #FDF6EA); }
+    details { background: #fff; border-radius: 12px; padding: 1rem 1.25rem; box-shadow: var(--shadow-base); }
+    details + details { margin-top: .85rem; }
+    summary { cursor: pointer; font-weight: 700; font-family: var(--font-body); }
+    details p { color: var(--text-secondary); margin-top: .6rem; }
+
+    /* Booking CTA Section */
+    .booking { text-align: center; background: var(--bg-dark, #000); color: var(--text-inverse, #FDF6EA); }
+    .booking .cta { display: inline-flex; align-items: center; gap: .6rem; background: var(--interactive-primary, #F29F05); color: #fdf6ea; padding: 0.95rem 1.9rem; border-radius: 10px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; transition: transform var(--transition-base), background var(--transition-base); }
+    .booking .cta:hover { transform: translateY(-2px); background: var(--interactive-primary-hover, #D88A04); }
+    .trust { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 1rem; color: rgba(253,246,234,.9); font-size: .95rem; }
+    .trust i { color: #10B981; margin-right: .35rem; }
+    .date-grid { max-width: 860px; margin: 0 auto var(--space-6, 24px); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4, 16px); }
+    .date-field { text-align: left; }
+    .date-field label { display: block; margin-bottom: .35rem; font-weight: 700; color: rgba(253,246,234,.95); }
+    .date-field input { width: 100%; padding: .85rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: #fff; }
+    .date-actions { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .5rem; }
+
+    /* Contact */
+    .contact { text-align: center; background: var(--bg-secondary, #FDF6EA); }
+    .whatsapp-btn { display: inline-flex; align-items: center; gap: .5rem; background: #25D366; color: white; padding: .8rem 1.4rem; border-radius: 9999px; text-decoration: none; font-weight: 700; }
+    .whatsapp-btn:hover { background: #128C7E; }
+
+    @media (max-width: 768px) {
+      .hero { min-height: 78vh; }
+      .gallery img { height: 220px; }
+    }
+  </style>
+
+  <!-- JSON-LD Schema (Hotel + HotelRoom) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Finca Termópilas",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rivera",
+      "addressRegion": "Huila",
+      "addressCountry": "CO"
+    },
+    "containsPlace": {
+      "@type": "HotelRoom",
+      "name": "Cabaña Pasiflora",
+      "bed": "Queen + nido",
+      "occupancy": {"@type": "QuantitativeValue", "maxValue": 4},
+      "image": [
+        "https://termopilas.co/assets/images/alojamiento/cabana-1/image1.png",
+        "https://termopilas.co/assets/images/alojamiento/cabana-1/image2.png",
+        "https://termopilas.co/assets/images/alojamiento/cabana-1/image3.png"
+      ],
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Aire acondicionado"},
+        {"@type": "LocationFeatureSpecification", "name": "Wi‑Fi"},
+        {"@type": "LocationFeatureSpecification", "name": "Baño privado"},
+        {"@type": "LocationFeatureSpecification", "name": "2 terrazas"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">De Lujo</span>
+      <h1>Cabaña Pasiflora</h1>
+      <p class="hero-subtitle">Hasta 4 huéspedes • Cama queen con nido • Baño privado • Aire acondicionado • Wi‑Fi • 2 terrazas • TV</p>
+      <a href="#disponibilidad" class="hero-cta" onclick="trackCta('hero_reserve_button')"><i class="fas fa-calendar-check"></i> Ver disponibilidad</a>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Galería</h2>
+      <p class="section-subtitle">Explora los espacios de la Cabaña Pasiflora: interiores acogedores, terrazas privadas y vistas que inspiran.</p>
+      <div class="gallery">
+        <img src="../assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña Pasiflora - Habitación principal con cama queen" loading="lazy" />
+        <img src="../assets/images/alojamiento/cabana-1/image2.png" alt="Cabaña Pasiflora - Detalle de terraza privada con vista" loading="lazy" />
+        <img src="../assets/images/alojamiento/cabana-1/image3.png" alt="Cabaña Pasiflora - Área de trabajo con escritorio" loading="lazy" />
+        <img src="../assets/images/alojamiento/cabana-1/image4.png" alt="Cabaña Pasiflora - Baño privado con agua caliente" loading="lazy" />
+        <img src="../assets/images/alojamiento/cabana-1/image5.png" alt="Cabaña Pasiflora - Vista desde la terraza" loading="lazy" />
+        <img src="../assets/images/alojamiento/cabana-1/image6.png" alt="Cabaña Pasiflora - Sala y televisión" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section class="section amenities">
+    <div class="container">
+      <h2 class="section-title">Comodidades Clave</h2>
+      <p class="section-subtitle">Todo lo que necesitas para una estadía confortable y memorable.</p>
+      <div class="amenities-grid">
+        <div class="amenity"><i class="fas fa-snowflake"></i><div><h3>Confort</h3><ul><li>Aire acondicionado</li><li>Baño privado con agua caliente</li><li>TV</li></ul></div></div>
+        <div class="amenity"><i class="fas fa-wifi"></i><div><h3>Trabajo y Conexión</h3><ul><li>Wi‑Fi</li><li>Escritorio</li></ul></div></div>
+        <div class="amenity"><i class="fas fa-mountain"></i><div><h3>Espacios Exteriores</h3><ul><li>2 terrazas con vista</li><li>Entorno natural y viñedos</li></ul></div></div>
+        <div class="amenity"><i class="fas fa-users"></i><div><h3>Capacidad</h3><ul><li>Hasta 4 huéspedes</li><li>Cama queen con nido</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title" style="color:#fff">Lo que dicen nuestros huéspedes</h2>
+      <p class="section-subtitle" style="color:rgba(253,246,234,.85)">Opiniones reales de visitantes que eligieron alojarse rodeados de naturaleza.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Una escapada perfecta. Las terrazas de la cabaña son un sueño para ver el atardecer. Todo impecable y muy tranquilo.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fas fa-user"></i></div>
+            <div><strong>María P.</strong><div style="opacity:.8">Neiva, Huila</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Trabajé remoto dos días y el internet fue estable. Dormimos delicioso y el aire acondicionado se agradece.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fas fa-user"></i></div>
+            <div><strong>Daniel R.</strong><div style="opacity:.8">Bogotá</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>La mejor opción para parejas. Privacidad, naturaleza y muy buena atención. Volveremos sin dudarlo.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fas fa-user"></i></div>
+            <div><strong>Carolina y Luis</strong><div style="opacity:.8">Garzón, Huila</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section location">
+    <div class="container">
+      <h2 class="section-title">Ubicación y Acceso</h2>
+      <p class="section-subtitle">Finca Termópilas • Km 3.3 Vía las Juntas, Rivera, Huila. Estacionamiento disponible, entorno natural, fácil acceso desde Rivera.</p>
+      <div class="map">
+        <iframe title="Mapa Finca Termópilas" src="https://www.google.com/maps?q=Finca%20Term%C3%B3pilas%20Rivera%20Huila&output=embed" width="100%" height="360" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section faqs">
+    <div class="container">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="faqs-grid" style="max-width:860px;margin:0 auto">
+        <details>
+          <summary>¿Cuál es el horario de check-in y check-out?</summary>
+          <p>Check-in desde las 3:00 PM • Check-out hasta las 12:00 M. Podemos ser flexibles según disponibilidad.</p>
+        </details>
+        <details>
+          <summary>¿Se permiten niños o mascotas?</summary>
+          <p>Familias bienvenidas. Mascotas bajo solicitud previa y condiciones de convivencia.</p>
+        </details>
+        <details>
+          <summary>¿Qué incluye la estadía?</summary>
+          <p>Ropa de cama, toallas, Wi‑Fi, aire acondicionado, baño privado con agua caliente. Desayuno disponible con costo adicional.</p>
+        </details>
+        <details>
+          <summary>¿Es accesible para personas con movilidad reducida?</summary>
+          <p>La cabaña se encuentra en segundo piso; no cuenta con acceso para personas con movilidad reducida.</p>
+        </details>
+        <details>
+          <summary>¿Cómo reservo al mejor precio?</summary>
+          <p>Reserva directo en nuestra plataforma de Octorate para mejores condiciones y confirmación inmediata.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section id="disponibilidad" class="section booking">
+    <div class="container">
+      <h2 class="section-title" style="color:#fff">Reserva en Línea</h2>
+      <p class="section-subtitle" style="color:rgba(253,246,234,.85)">Confirmación inmediata a través de nuestro motor de reservas.</p>
+      <div class="date-grid" aria-label="Selector de fechas">
+        <div class="date-field">
+          <label for="checkin">Llegada</label>
+          <input id="checkin" name="checkin" type="text" inputmode="none" placeholder="Selecciona fecha" autocomplete="off" />
+        </div>
+        <div class="date-field">
+          <label for="checkout">Salida</label>
+          <input id="checkout" name="checkout" type="text" inputmode="none" placeholder="Selecciona fecha" autocomplete="off" />
+        </div>
+        <div class="date-field">
+          <label for="guests">Huéspedes</label>
+          <input id="guests" name="guests" type="number" min="1" max="4" step="1" value="2" />
+        </div>
+      </div>
+      <div class="date-actions">
+        <button id="searchBtn" class="cta" type="button"><i class="fas fa-search"></i> Ver disponibilidad</button>
+        <a class="cta" id="directReserve" href="https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES&room=749778" target="_blank" rel="noopener" onclick="trackCta('octorate_book_now')"><i class="fas fa-door-open"></i> Reservar Cabaña Pasiflora</a>
+        <a class="cta" href="/octorate/html/engine_files/" target="_blank" rel="noopener" onclick="trackCta('octorate_all_rooms')"><i class="fas fa-hotel"></i> Ver todos los alojamientos</a>
+      </div>
+      <p style="margin-top:.75rem; opacity:.85">Tip: selecciona tus fechas y presiona “Ver disponibilidad”.</p>
+      <div class="trust">
+        <span><i class="fas fa-shield-alt"></i>Pago 100% seguro</span>
+        <span><i class="fas fa-bolt"></i>Confirmación inmediata</span>
+        <span><i class="fas fa-undo"></i>Políticas claras</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact">
+    <div class="container">
+      <h2 class="section-title">¿Dudas antes de reservar?</h2>
+      <p class="section-subtitle">Escríbenos y te ayudamos a elegir la mejor opción para tu plan.</p>
+      <a href="https://wa.me/573143428579?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20la%20Caba%C3%B1a%20Pasiflora" class="whatsapp-btn" target="_blank" rel="noopener" onclick="trackCta('whatsapp_contact')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </section>
+
+  <script>
+    // Tracking & Telemetry (conversion_lp)
+    function trackCta(id) {
+      gtag('event', 'lp_cta_click', { event_category: 'conversion_lp', event_label: id });
+    }
+    gtag('event', 'lp_page_view', { event_category: 'conversion_lp', event_label: 'cabana_pasiflora_landing_view' });
+
+    // Scroll depth: 25/50/75/100
+    (function(){
+      let sent = {};
+      window.addEventListener('scroll', function() {
+        const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        [25,50,75,100].forEach(mark => {
+          if (pct >= mark && !sent[mark]) {
+            sent[mark] = true;
+            gtag('event', 'lp_scroll_'+mark, { event_category: 'conversion_lp', event_label: 'scroll_depth_'+mark });
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Availability calendar integration
+    const AVAILABILITY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbypEZT7jmGPYcj89L0xLmSeiCUb6k97lC7bdjXkvSJZM7TbWY-aRw2GRF4n5tD_sg4q8Q/exec?room=749778';
+    const OCTORATE_BASE = 'https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES&room=749778';
+
+    let blockedDates = new Set();
+    let fpIn, fpOut;
+
+    function toYmd(date) { return date.toISOString().slice(0,10); }
+
+    function isBlocked(date) { return blockedDates.has(toYmd(date)); }
+
+    function buildDisableFn(extra) {
+      return function(date) {
+        if (isBlocked(date)) return true;
+        if (extra && extra(date)) return true;
+        return false;
+      };
+    }
+
+    async function loadAvailability() {
+      try {
+        const res = await fetch(AVAILABILITY_ENDPOINT, { cache: 'no-store' });
+        const data = await res.json();
+        if (Array.isArray(data.unavailableDates)) {
+          blockedDates = new Set(data.unavailableDates);
+        }
+      } catch(e) {
+        // Fallback: no disabled dates
+      } finally {
+        initPickers();
+      }
+    }
+
+    function initPickers() {
+      const minDate = new Date();
+      fpIn = flatpickr('#checkin', {
+        dateFormat: 'Y-m-d',
+        minDate,
+        disable: [buildDisableFn()],
+        onChange: ([ci]) => {
+          if (!ci) return;
+          const minCo = new Date(ci.getTime() + 24*60*60*1000);
+          fpOut.set('minDate', minCo);
+          fpOut.set('disable', [buildDisableFn(d => d <= ci)]);
+        }
+      });
+
+      fpOut = flatpickr('#checkout', {
+        dateFormat: 'Y-m-d',
+        minDate: new Date(Date.now() + 24*60*60*1000),
+        disable: [buildDisableFn()],
+      });
+    }
+
+    document.getElementById('searchBtn')?.addEventListener('click', () => {
+      const ci = (document.getElementById('checkin').value || '').trim();
+      const co = (document.getElementById('checkout').value || '').trim();
+      const guests = parseInt((document.getElementById('guests').value || '2'), 10);
+      if (!ci || !co) { alert('Selecciona llegada y salida'); return; }
+      // Attempt deep-link with dates; Octorate ignores unknown params gracefully
+      const url = `${OCTORATE_BASE}&checkin=${encodeURIComponent(ci)}&checkout=${encodeURIComponent(co)}&adults=${encodeURIComponent(Math.max(1, Math.min(guests, 4)))}`;
+      trackCta('octorate_search_with_dates');
+      window.open(url, '_blank', 'noopener');
+    });
+
+    // Enhance direct reserve button to include selected dates if available
+    document.getElementById('directReserve')?.addEventListener('click', (e) => {
+      const ci = (document.getElementById('checkin').value || '').trim();
+      const co = (document.getElementById('checkout').value || '').trim();
+      const guests = parseInt((document.getElementById('guests').value || '2'), 10);
+      let url = OCTORATE_BASE;
+      if (ci && co) {
+        url = `${OCTORATE_BASE}&checkin=${encodeURIComponent(ci)}&checkout=${encodeURIComponent(co)}&adults=${encodeURIComponent(Math.max(1, Math.min(guests, 4)))}`;
+        trackCta('octorate_book_with_dates');
+      } else {
+        trackCta('octorate_book_without_dates');
+      }
+      // If anchor default would open anyway, ensure we control it for consistency
+      e.preventDefault();
+      window.open(url, '_blank', 'noopener');
+    });
+
+    loadAvailability();
+  </script>
+</body>
+</html>
+
+
