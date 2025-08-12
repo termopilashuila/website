@@ -99,6 +99,7 @@
     .date-field label { display: block; margin-bottom: .35rem; font-weight: 700; color: rgba(253,246,234,.95); }
     .date-field input { width: 100%; padding: .85rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: #fff; }
     .date-actions { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .5rem; }
+    .error-message { max-width: 860px; margin: .75rem auto 0; color: #FCA5A5; background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.35); padding: .6rem .9rem; border-radius: 8px; display: none; }
 
     /* Contact */
     .contact { text-align: center; background: var(--bg-secondary, #FDF6EA); }
@@ -276,13 +277,16 @@
           <label for="guests">Huéspedes</label>
           <input id="guests" name="guests" type="number" min="1" max="4" step="1" value="2" />
         </div>
+        <div class="date-field">
+          <label for="children">Niños</label>
+          <input id="children" name="children" type="number" min="0" max="3" step="1" value="0" />
+        </div>
       </div>
       <div class="date-actions">
-        <button id="searchBtn" class="cta" type="button"><i class="fas fa-search"></i> Ver disponibilidad</button>
-        <a class="cta" id="directReserve" href="https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES&room=749778" target="_blank" rel="noopener" onclick="trackCta('octorate_book_now')"><i class="fas fa-door-open"></i> Reservar Cabaña Pasiflora</a>
-        <a class="cta" href="/octorate/html/engine_files/" target="_blank" rel="noopener" onclick="trackCta('octorate_all_rooms')"><i class="fas fa-hotel"></i> Ver todos los alojamientos</a>
+        <button id="reserveBtn" class="cta" type="button"><i class="fas fa-door-open"></i> Reservar ahora</button>
       </div>
-      <p style="margin-top:.75rem; opacity:.85">Tip: selecciona tus fechas y presiona “Ver disponibilidad”.</p>
+      <div id="bookingError" class="error-message" role="alert"></div>
+      <p style="margin-top:.75rem; opacity:.85">Selecciona tus fechas y haz clic en “Reservar ahora”.</p>
       <div class="trust">
         <span><i class="fas fa-shield-alt"></i>Pago 100% seguro</span>
         <span><i class="fas fa-bolt"></i>Confirmación inmediata</span>
@@ -326,7 +330,7 @@
   <script>
     // Availability calendar integration
     const AVAILABILITY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbypEZT7jmGPYcj89L0xLmSeiCUb6k97lC7bdjXkvSJZM7TbWY-aRw2GRF4n5tD_sg4q8Q/exec?room=749778';
-    const OCTORATE_BASE = 'https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES&room=749778';
+    const OCTORATE_CONFIRM_BASE = 'https://book.octorate.com/octobook/site/reservation/confirm.xhtml?codice=522604&lang=ES&room=749778_35712';
 
     let blockedDates = new Set();
     let fpIn, fpOut;
@@ -334,6 +338,23 @@
     function toYmd(date) { return date.toISOString().slice(0,10); }
 
     function isBlocked(date) { return blockedDates.has(toYmd(date)); }
+
+    function rangeHasBlocked(ciStr, coStr) {
+      const ci = new Date(ciStr + 'T00:00:00');
+      const co = new Date(coStr + 'T00:00:00');
+      // Iterate nights from ci to day before co
+      for (let d = new Date(ci); d < co; d = new Date(d.getTime() + 86400000)) {
+        if (isBlocked(d)) return true;
+      }
+      return false;
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('bookingError');
+      if (!el) return;
+      if (msg) { el.textContent = msg; el.style.display = 'block'; }
+      else { el.textContent = ''; el.style.display = 'none'; }
+    }
 
     function buildDisableFn(extra) {
       return function(date) {
@@ -376,31 +397,53 @@
         minDate: new Date(Date.now() + 24*60*60*1000),
         disable: [buildDisableFn()],
       });
+
+      // Occupancy validation
+      ['guests','children'].forEach(id => {
+        const el = document.getElementById(id);
+        el?.addEventListener('input', enforceOccupancy);
+        el?.addEventListener('change', enforceOccupancy);
+      });
+      enforceOccupancy();
     }
 
-    document.getElementById('searchBtn')?.addEventListener('click', () => {
-      const ci = (document.getElementById('checkin').value || '').trim();
-      const co = (document.getElementById('checkout').value || '').trim();
-      const guests = parseInt((document.getElementById('guests').value || '2'), 10);
-      if (!ci || !co) { alert('Selecciona llegada y salida'); return; }
-      // Attempt deep-link with dates; Octorate ignores unknown params gracefully
-      const url = `${OCTORATE_BASE}&checkin=${encodeURIComponent(ci)}&checkout=${encodeURIComponent(co)}&adults=${encodeURIComponent(Math.max(1, Math.min(guests, 4)))}`;
-      trackCta('octorate_search_with_dates');
-      window.open(url, '_blank', 'noopener');
-    });
-
-    // Enhance direct reserve button to include selected dates if available
-    document.getElementById('directReserve')?.addEventListener('click', (e) => {
-      const ci = (document.getElementById('checkin').value || '').trim();
-      const co = (document.getElementById('checkout').value || '').trim();
-      const guests = parseInt((document.getElementById('guests').value || '2'), 10);
-      let url = OCTORATE_BASE;
-      if (ci && co) {
-        url = `${OCTORATE_BASE}&checkin=${encodeURIComponent(ci)}&checkout=${encodeURIComponent(co)}&adults=${encodeURIComponent(Math.max(1, Math.min(guests, 4)))}`;
-        trackCta('octorate_book_with_dates');
-      } else {
-        trackCta('octorate_book_without_dates');
+    function enforceOccupancy() {
+      const adults = parseInt((document.getElementById('guests').value || '2'), 10) || 1;
+      const children = parseInt((document.getElementById('children').value || '0'), 10) || 0;
+      const total = adults + children;
+      const MAX = 4; // +1 infante permitido en sitio; no cuenta aquí
+      const reserveBtn = document.getElementById('reserveBtn');
+      if (total > MAX) {
+        showError(`Ocupación máxima: ${MAX} personas (adultos + niños). Ajusta el número de huéspedes.`);
+        reserveBtn?.setAttribute('disabled', 'true');
+        return false;
       }
+      showError('');
+      reserveBtn?.removeAttribute('disabled');
+      return true;
+    }
+
+    // Single CTA: send directly to confirm page with selected dates
+    document.getElementById('reserveBtn')?.addEventListener('click', (e) => {
+      const ci = (document.getElementById('checkin').value || '').trim();
+      const co = (document.getElementById('checkout').value || '').trim();
+      const guests = parseInt((document.getElementById('guests').value || '2'), 10);
+      const children = parseInt((document.getElementById('children').value || '0'), 10) || 0;
+      if (!ci || !co) { alert('Selecciona llegada y salida'); return; }
+      if (!enforceOccupancy()) return;
+      if (rangeHasBlocked(ci, co)) { showError('El rango seleccionado incluye noches no disponibles. Por favor elige otras fechas.'); return; }
+      const adults = Math.max(1, Math.min(guests, 4));
+      // Include children when present; include coupon param empty to avoid discountList null errors on engine
+      const params = new URLSearchParams({
+        checkin: ci,
+        checkout: co,
+        pax: String(adults),
+        children: String(Math.max(0, children)),
+        childrenAges: '',
+        discountList: []
+      });
+      const url = `${OCTORATE_CONFIRM_BASE}&${params.toString()}`;
+      trackCta('octorate_book_with_dates');
       // If anchor default would open anyway, ensure we control it for consistency
       e.preventDefault();
       window.open(url, '_blank', 'noopener');
