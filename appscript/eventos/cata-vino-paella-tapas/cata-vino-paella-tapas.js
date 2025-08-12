@@ -31,12 +31,54 @@ function handleRequest(e) {
     if (e.parameter && e.parameter.data) {
       data = JSON.parse(e.parameter.data);
     } else if (e.postData && e.postData.contents) {
-      data = JSON.parse(e.postData.contents);
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (jsonErr) {
+        // Intentar parsear como x-www-form-urlencoded
+        try {
+          var pairs = (e.postData.contents || '').split('&');
+          data = {};
+          pairs.forEach(function(p){
+            if (!p) return;
+            var kv = p.split('=');
+            var key = decodeURIComponent(kv[0] || '').trim();
+            var val = decodeURIComponent(kv[1] || '').trim();
+            if (key) data[key] = val;
+          });
+        } catch (formErr) {
+          console.error('Failed to parse POST body as JSON or form-encoded', { jsonErr: jsonErr, formErr: formErr });
+          return HtmlService.createHtmlOutput(generateErrorPage());
+        }
+      }
     } else {
       // Return an HTML page with error message
       return HtmlService.createHtmlOutput(generateErrorPage());
     }
     
+    // Fallback alias mapping for common field name variants
+    if (!data.email) {
+      data.email = data.correo || data.correoElectronico || data.correo_electronico || data.mail || data.emailAddress || '';
+    }
+    if (!data.firstName) {
+      data.firstName = data.nombre || data.nombres || data.name || '';
+    }
+    if (!data.lastName) {
+      data.lastName = data.apellido || data.apellidos || '';
+    }
+    if (!data.phone) {
+      data.phone = data.telefono || data.celular || '';
+    }
+    if (!data.paymentMethod) {
+      data.paymentMethod = data.metodoDePago || data.metodo_pago || data.payment || '';
+    }
+
+    // Normalizar campos críticos por si vienen en parámetros directos o con espacios
+    data.firstName = (data.firstName || (e && e.parameter && e.parameter.firstName) || '').toString().trim();
+    data.lastName = (data.lastName || (e && e.parameter && e.parameter.lastName) || '').toString().trim();
+    data.phone = (data.phone || (e && e.parameter && e.parameter.phone) || '').toString().trim();
+    data.email = (data.email || (e && e.parameter && e.parameter.email) || '').toString().trim();
+    data.paymentMethod = (data.paymentMethod || (e && e.parameter && e.parameter.paymentMethod) || '').toString().trim();
+
     // Validate required fields
     if (!validateEventRegistrationData(data)) {
       return HtmlService.createHtmlOutput(generateValidationErrorPage());
@@ -66,11 +108,15 @@ function handleRequest(e) {
       data.source || 'Website'     // Fuente de la reserva
     ]);
     
+    // Asegurar escritura antes de enviar correos
+    SpreadsheetApp.flush();
+
     // Enviar notificación por correo electrónico al administrador
     sendEventNotificationEmail(data, timestamp);
     
     // Enviar correo de confirmación al usuario
-    sendUserConfirmationEmail(data, timestamp);
+    const lastRow = sheet.getLastRow();
+    sendUserConfirmationEmail(data, timestamp, sheet, lastRow);
     
     // Retornar una página HTML de éxito
     return HtmlService.createHtmlOutput(generateSuccessPage(data));
@@ -241,8 +287,46 @@ Ver todas las reservas: https://docs.google.com/spreadsheets/d/1VSTITr2PdITWTZWe
 /**
  * Función para enviar correo de confirmación al usuario
  */
-function sendUserConfirmationEmail(data, timestamp) {
+function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
   try {
+    const adminEmail = "termopilashuila@gmail.com";
+
+    // Normalizar y validar email del destinatario
+    var recipientEmail = normalizeEmail(data.email);
+    if (!isValidEmail(recipientEmail) && sheet && lastRow) {
+      // Intentar recuperar el email directo desde la hoja, usando encabezados
+      try {
+        var headerRange = sheet.getRange(1, 1, 1, sheet.getLastColumn());
+        var headers = headerRange.getValues()[0];
+        var emailColIndex = headers.findIndex(function(h){ return (h + '').toLowerCase() === 'email'; });
+        if (emailColIndex >= 0) {
+          var value = sheet.getRange(lastRow, emailColIndex + 1).getValue();
+          var emailFromSheet = normalizeEmail(value);
+          if (isValidEmail(emailFromSheet)) {
+            recipientEmail = emailFromSheet;
+          }
+        }
+      } catch (sheetReadErr) {
+        console.warn('Could not read email from sheet to recover recipient:', sheetReadErr);
+      }
+    }
+    if (!isValidEmail(recipientEmail)) {
+      console.error('Invalid recipient email after recovery attempts. Aborting user confirmation email.', {
+        original: data.email,
+        recovered: recipientEmail
+      });
+      // Notificar al admin sobre el problema con el email del usuario
+      try {
+        safeSendEmail({
+          to: adminEmail,
+          subject: '⚠️ Error de envío: email inválido del usuario (Cata de Vinos)',
+          body: `No se pudo enviar confirmación al usuario. Email inválido.\n\nNombre: ${data.firstName} ${data.lastName}\nTeléfono: ${data.phone}\nEmail recibido: ${data.email || '(vacío)'}\nEmail recuperado: ${recipientEmail || '(no disponible)'}`,
+        });
+      } catch (notifyErr) {
+        console.error('Also failed to notify admin about invalid user email:', notifyErr);
+      }
+      return;
+    }
     // Asunto del correo para el usuario
     const subject = `Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas`;
     
@@ -327,7 +411,7 @@ function sendUserConfirmationEmail(data, timestamp) {
       </div>
       
       <div style="text-align: center; margin: 30px 0;">
-        <a href="https://termopilas.co" style="display: inline-block; background-color: #F29F05; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 5px; font-weight: 600;">Visitar nuestra página</a>
+        <a href="https://termopilas.co/cata-vinos" style="display: inline-block; background-color: #F29F05; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 5px; font-weight: 600;">Visita nuestro evento</a>
       </div>
       
       <div style="margin-top: 30px; font-size: 12px; color: #777; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
@@ -375,17 +459,51 @@ Nuestro equipo te contactará pronto (2-4 horas en horario laboral) con los deta
 
 Fecha de reserva: ${formatDateSpanish(timestamp)}`;
 
-    // Enviar el correo al usuario
-    MailApp.sendEmail({
-      to: data.email,
+    // Enviar el correo al usuario con reintentos y mejor entregabilidad
+    console.log('About to send user confirmation email', {
+      to: recipientEmail,
+      replyTo: adminEmail,
+      bcc: adminEmail,
+      paymentMethod: data.paymentMethod
+    });
+    safeSendEmail({
+      to: recipientEmail,
       subject: subject,
       body: plainBody,
-      htmlBody: htmlBody
+      htmlBody: htmlBody,
+      name: 'Finca Termópilas',
+      replyTo: adminEmail,
+      bcc: adminEmail
     });
     
-    console.log('User confirmation email sent successfully to:', data.email);
+    console.log('User confirmation email sent successfully to:', recipientEmail);
+
+    // Marcar en la hoja que el correo fue enviado (columna "Notas") si hay contexto de hoja
+    try {
+      if (sheet && lastRow) {
+        var notasColumnIndex = 13; // 'Notas' es la columna 13 según encabezados
+        var marker = 'Correo enviado al usuario: ' + formatDateSpanish(new Date());
+        var currentNote = sheet.getRange(lastRow, notasColumnIndex).getValue();
+        var newValue = currentNote ? currentNote + ' | ' + marker : marker;
+        sheet.getRange(lastRow, notasColumnIndex).setValue(newValue);
+      }
+    } catch (markErr) {
+      console.warn('Failed to mark email sent status in sheet:', markErr);
+    }
   } catch (error) {
     console.error('Error sending user confirmation email:', error);
+    // Notificar al admin si el correo al usuario falla
+    try {
+      safeSendEmail({
+        to: 'termopilashuila@gmail.com',
+        subject: '❌ Error enviando confirmación al usuario - Cata de Vinos',
+        body: 'Se intentó enviar la confirmación al usuario pero falló. Revisa los logs en Apps Script.',
+        htmlBody: `<p>Se intentó enviar la confirmación al usuario pero falló.</p>
+                   <p><strong>Error:</strong> ${error && error.message ? error.message : error}</p>`
+      });
+    } catch (notifyErr) {
+      console.error('Also failed to notify admin about send failure:', notifyErr);
+    }
   }
 }
 
@@ -716,6 +834,62 @@ function formatDateSpanish(date) {
     timeZone: 'America/Bogota'
   };
   return date.toLocaleDateString('es-CO', options);
+}
+
+/**
+ * Helpers de email y resiliencia (según lineamientos del agente)
+ */
+function normalizeEmail(email) {
+  if (!email || typeof email !== 'string') return '';
+  return email.trim().toLowerCase();
+}
+
+function isValidEmail(email) {
+  if (!email) return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function retryWithExponentialBackoff(operation, maxRetries) {
+  var retries = 0;
+  var max = typeof maxRetries === 'number' ? maxRetries : 3;
+  while (true) {
+    try {
+      return operation();
+    } catch (err) {
+      retries++;
+      if (retries > max) {
+        throw err;
+      }
+      var delayMs = Math.pow(2, retries) * 1000; // 2s, 4s, 8s
+      try {
+        Utilities.sleep(delayMs);
+      } catch (sleepErr) {
+        // ignore sleep errors
+      }
+    }
+  }
+}
+
+function safeSendEmail(options) {
+  // Envuelve MailApp.sendEmail con reintentos
+  return retryWithExponentialBackoff(function() {
+    try {
+      // Intento 1: GmailApp (permite más opciones y mejora entregabilidad)
+      var gmailOptions = {
+        htmlBody: options.htmlBody,
+        name: options.name,
+        replyTo: options.replyTo,
+        bcc: options.bcc
+      };
+      GmailApp.sendEmail(options.to, options.subject, options.body || ' ', gmailOptions);
+      return;
+    } catch (gmailErr) {
+      console.warn('GmailApp.sendEmail failed, falling back to MailApp:', gmailErr);
+      // Intento 2: MailApp con objeto completo
+      MailApp.sendEmail(options);
+    }
+  }, 3);
 }
 
 /**
