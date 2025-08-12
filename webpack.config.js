@@ -13,10 +13,6 @@ module.exports = {
     'utils/markdown-to-blog': {
       import: './src/ts/utils/markdown-to-blog.ts',
       filename: 'utils/[name].js'
-    },
-    'utils/markdown-to-event': {
-      import: './src/ts/utils/markdown-to-event.ts',
-      filename: 'utils/[name].js'
     }
   },
   module: {

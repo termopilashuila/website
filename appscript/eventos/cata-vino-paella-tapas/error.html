@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error en la Reserva - Cata de Vinos, Paella y Tapas | Finca Termópilas</title>
+    <meta name="description" content="Ha ocurrido un error al procesar tu reserva. Por favor intenta nuevamente o contáctanos directamente.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://termopilas.co/assets/images/favicon.png" type="image/png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+      
+      // Track registration error
+      gtag('event', 'cata_vino_paella_tapas_registration_error', {
+        'event_category': 'event_engagement',
+        'event_label': 'registration_failed'
+      });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.6; 
+            background: linear-gradient(135deg, #fdf6ea 0%, #f4e4c1 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .error-icon { 
+            font-size: 64px; 
+            margin-bottom: 20px;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        h1 { 
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .error-message {
+            background: #fff5f5;
+            border: 2px solid #fed7d7;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .error-message h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .error-message p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .error-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .error-details h3 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .error-details code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #495057;
+        }
+        
+        .help-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border: 2px solid #28a745;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .help-section h3 {
+            color: #155724;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .help-list {
+            text-align: left;
+            color: #155724;
+        }
+        
+        .help-list li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .help-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .buttons {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .button { 
+            display: inline-flex;
+            align-items: center;
+            background-color: #F29F05; 
+            color: white; 
+            padding: 15px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(242, 159, 5, 0.3);
+        }
+        
+        .button i {
+            margin-right: 8px;
+        }
+        
+        .button:hover {
+            background-color: #E6920C;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(242, 159, 5, 0.4);
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .retry-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+        
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .contact-info h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .contact-item i {
+            color: #F29F05;
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="error-icon">⚠️</div>
+            <h1>Error en la Reserva</h1>
+            <p class="subtitle">No pudimos procesar tu solicitud</p>
+        </div>
+        
+        <div class="content">
+            <div class="error-message">
+                <h2>🚫 ¿Qué ha pasado?</h2>
+                <p>Lo sentimos, ha ocurrido un error técnico al procesar tu reserva para la <strong>Cata de Vinos, Paella y Tapas</strong>.</p>
+                <p>Esto puede deberse a varios factores, pero no te preocupes, podemos solucionarlo fácilmente.</p>
+            </div>
+            
+            <div id="error-details-container">
+                <!-- Error details will be injected here if available -->
+            </div>
+            
+            <div class="help-section">
+                <h3>💡 ¿Qué puedes hacer?</h3>
+                <ul class="help-list">
+                    <li>Verifica que todos los campos obligatorios estén completos</li>
+                    <li>Asegúrate de que tu email tenga un formato válido</li>
+                    <li>Revisa tu conexión a internet</li>
+                    <li>Intenta nuevamente en unos minutos</li>
+                    <li>Contacta directamente por WhatsApp para reservar manualmente</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <h4>📞 Información de Contacto</h4>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span><strong>WhatsApp:</strong> +57 314 342 8579</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><strong>Email:</strong> termopilashuila@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span><strong>Horario:</strong> Lunes a Domingo, 8:00 AM - 8:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <a href="https://termopilas.co/eventos/cata-vino-paella-tapas.html" class="button retry-btn">
+                    <i class="fas fa-redo"></i>
+                    Intentar Nuevamente
+                </a>
+                <a href="https://wa.me/573143428579?text=Hola, tuve un problema al hacer mi reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre. ¿Podrían ayudarme a completar mi reserva?" class="button whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+                <a href="https://termopilas.co" class="button">
+                    <i class="fas fa-home"></i>
+                    Página Principal
+                </a>
+            </div>
+            
+            <div class="footer-note">
+                <p><strong>¡No te preocupes!</strong> Nuestro equipo está disponible para ayudarte a completar tu reserva.</p>
+                <p>Los cupos para este evento especial son limitados, así que te recomendamos contactarnos lo antes posible.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // Track page view
+        gtag('event', 'page_view', {
+            'page_title': 'Event Registration Error',
+            'page_location': window.location.href
+        });
+        
+        // Check if there are error details in the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMessage = urlParams.get('error');
+        
+        if (errorMessage) {
+            const errorDetailsContainer = document.getElementById('error-details-container');
+            errorDetailsContainer.innerHTML = `
+                <div class="error-details">
+                    <h3>Detalles Técnicos</h3>
+                    <p><strong>Error:</strong> <code>${decodeURIComponent(errorMessage)}</code></p>
+                    <p><em>Puedes compartir esta información con nuestro equipo de soporte para una resolución más rápida.</em></p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

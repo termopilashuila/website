@@ -9,8 +9,6 @@
     "resize-images": "node resize/resize-images.js",
     "process-blog": "npm run build && node scripts/process-blog.js",
     "process-blog-single": "npm run build && node scripts/process-blog.js",
-    "process-events": "npm run build && node scripts/process-events.js",
-    "process-events-single": "npm run build && node scripts/process-events.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

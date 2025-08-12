@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Reserva Confirmada! - Cata de Vinos, Tapas y Paella | Finca Termópilas</title>
+    <meta name="description" content="Tu reserva para la Cata de Vinos, Tapas y Paella ha sido confirmada. Te esperamos el 6 de septiembre en Finca Termópilas.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+      
+      // Track successful purchase
+      gtag('event', 'purchase', {
+        'transaction_id': Date.now().toString(),
+        'value': 120000,
+        'currency': 'COP',
+        'items': [{
+          'item_id': 'cata_vinos_tapas_paella',
+          'item_name': 'Cata de Vinos, Tapas y Paella',
+          'category': 'Eventos',
+          'quantity': 1,
+          'price': 120000
+        }]
+      });
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../styles/brand-tokens.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background: linear-gradient(135deg, #fdf6ea 0%, #f8f9fa 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-8);
+        }
+
+        /* Success Hero */
+        .success-hero {
+            text-align: center;
+            padding: var(--space-16) 0;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin: var(--space-8) 0;
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            background: #10B981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: successPulse 2s ease-in-out;
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 2.25rem;
+            color: #10B981;
+            margin-bottom: 1rem;
+        }
+
+        .success-subtitle {
+            font-size: 1.25rem;
+            color: #6B7280;
+            margin-bottom: 2rem;
+        }
+
+        .payment-status-info {
+            margin-top: var(--space-6);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+        }
+
+        .payment-status-paid {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10B981;
+            color: #065f46;
+        }
+
+        .payment-status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid #F59E0B;
+            color: #92400e;
+        }
+
+        /* Event Details Card */
+        .event-details {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            margin: var(--space-8) 0;
+        }
+
+        .event-header {
+            text-align: center;
+            padding-bottom: var(--space-6);
+            border-bottom: 2px solid var(--brand-cream);
+            margin-bottom: var(--space-6);
+        }
+
+        .event-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.875rem;
+            color: #333333;
+            margin-bottom: 1rem;
+        }
+
+        .event-date {
+            font-size: 1.25rem;
+            color: #F29F05;
+            font-weight: 600;
+        }
+
+        .event-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--brand-cream);
+            border-radius: var(--radius-lg);
+        }
+
+        .info-item i {
+            font-size: var(--text-2xl);
+            color: var(--brand-accent);
+            width: 40px;
+            text-align: center;
+        }
+
+        .info-item div h4 {
+            font-weight: var(--font-semibold);
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+
+        .info-item div p {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: var(--brand-primary);
+            color: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .next-steps h3 {
+            font-family: var(--font-brand);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-6);
+            text-align: center;
+        }
+
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            padding: var(--space-4);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            background: var(--brand-accent);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-bold);
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .step-content p {
+            opacity: 0.9;
+            font-size: var(--text-sm);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            margin: var(--space-8) 0;
+        }
+
+        .contact-section h3 {
+            font-family: var(--font-brand);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-4);
+            color: var(--brand-primary);
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: var(--font-semibold);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: var(--transition-base);
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .email-btn {
+            background: var(--brand-accent);
+            color: white;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: var(--font-semibold);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: var(--transition-base);
+        }
+
+        .email-btn:hover {
+            background: var(--interactive-primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: var(--brand-cream);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .recommendations h3 {
+            font-family: var(--font-brand);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-6);
+            color: var(--brand-primary);
+            text-align: center;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .recommendation-card i {
+            font-size: var(--text-3xl);
+            color: var(--brand-accent);
+            margin-bottom: var(--space-4);
+        }
+
+        .recommendation-card h4 {
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--brand-primary);
+        }
+
+        .recommendation-card p {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        /* Social Sharing */
+        .social-sharing {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            text-align: center;
+            margin: var(--space-8) 0;
+        }
+
+        .social-sharing h3 {
+            font-family: var(--font-brand);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-4);
+            color: var(--brand-primary);
+        }
+
+        .social-sharing p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition-base);
+            font-size: var(--text-xl);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .facebook { background: #1877F2; }
+        .twitter { background: #1DA1F2; }
+        .instagram { background: #E4405F; }
+        .linkedin { background: #0A66C2; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-4);
+            }
+            
+            .success-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .event-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--brand-accent);
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti Animation -->
+    <div class="confetti" id="confetti"></div>
+
+    <div class="container">
+        <!-- Success Hero -->
+        <div class="success-hero">
+            <div class="success-icon" id="successIcon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="success-title" id="successTitle">¡Reserva Confirmada!</h1>
+            <p class="success-subtitle" id="successSubtitle">
+                Tu cupo para la Cata de Vinos, Tapas y Paella ha sido asegurado exitosamente
+            </p>
+            <div id="paymentStatus" class="payment-status-info"></div>
+        </div>
+
+        <!-- Event Details -->
+        <div class="event-details">
+            <div class="event-header">
+                <h2 class="event-title">🍷 Cata de Vinos, Tapas y Paella</h2>
+                <p class="event-date">Sábado 6 de Septiembre, 2024</p>
+            </div>
+
+            <div class="event-info">
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <h4>Fecha y Hora</h4>
+                        <p>Sábado 6 de Septiembre<br>3:00 PM - 7:00 PM</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Ubicación</h4>
+                        <p>Finca Termópilas<br>Rivera, Huila</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tshirt"></i>
+                    <div>
+                        <h4>Dress Code</h4>
+                        <p><strong>Floral y Cálido</strong><br>Colores cálidos y estampados florales</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-utensils"></i>
+                    <div>
+                        <h4>Incluye</h4>
+                        <p>Tour viñedos + Cata + Tapas + Paella<br>Experiencia completa de 4 horas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h3>¿Qué Sigue Ahora?</h3>
+            <ol class="steps-list">
+                <li>
+                    <div class="step-content">
+                        <h4>Confirmación por Email</h4>
+                        <p>Recibirás un correo con todos los detalles del evento y la confirmación de tu reserva en los próximos minutos.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <h4>Mensaje de WhatsApp</h4>
+                        <p>Te enviaremos información adicional y recordatorios importantes por WhatsApp.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <h4>Invitación al Calendario</h4>
+                        <p>Agrega el evento a tu calendario para no olvidar esta experiencia única.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <h4>¡Disfruta la Experiencia!</h4>
+                        <p>Llega con apetito y mente abierta. Recuerda: tour de viñedos a las 4:00 PM, seguido de cata, tapas y paella.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="recommendations">
+            <h3>Recomendaciones para el Día del Evento</h3>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h4>Dress Code: Floral y Cálido</h4>
+                    <p>Vístete con colores cálidos y estampados florales que complementen el ambiente natural. Ropa cómoda para actividades al aire libre.</p>
+                </div>
+                <div class="recommendation-card">
+                    <i class="fas fa-spray-can"></i>
+                    <h4>Repelente</h4>
+                    <p>Muy recomendado traer repelente de insectos. Al estar en un área rural rodeada de naturaleza, es importante estar preparado para mosquitos.</p>
+                </div>
+                <div class="recommendation-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h4>Calzado</h4>
+                    <p>Calzado cómodo apropiado para terreno natural y ambiente al aire libre.</p>
+                </div>
+                <div class="recommendation-card">
+                    <i class="fas fa-camera"></i>
+                    <h4>Recuerdos</h4>
+                    <p>Trae tu cámara para capturar momentos especiales en este hermoso escenario natural.</p>
+                </div>
+                <div class="recommendation-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Puntualidad</h4>
+                    <p>Llega 15 minutos antes para el registro y bienvenida. La experiencia inicia puntualmente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h3>¿Necesitas Ayuda?</h3>
+            <p>Si tienes alguna pregunta o necesitas información adicional, no dudes en contactarnos</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/573143428579?text=Hola,%20tengo%20una%20reserva%20confirmada%20para%20la%20Cata%20de%20Vinos%20y%20tengo%20una%20consulta" 
+                   class="whatsapp-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="mailto:termopilashuila@gmail.com?subject=Consulta%20sobre%20Cata%20de%20Vinos&body=Hola,%20tengo%20una%20reserva%20confirmada%20y%20quisiera%20consultar:" 
+                   class="email-btn">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Sharing -->
+        <div class="social-sharing">
+            <h3>¡Comparte tu Emoción!</h3>
+            <p>Cuéntales a tus amigos sobre esta increíble experiencia gastronómica</p>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://termopilas.co/eventos/cata-vino-landing.html" 
+                   target="_blank" rel="noopener" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/eventos/cata-vino-landing.html&text=¡Acabo%20de%20reservar%20mi%20cupo%20para%20la%20Cata%20de%20Vinos,%20Tapas%20y%20Paella%20en%20@TermopilasHuila!%20🍷🥘" 
+                   target="_blank" rel="noopener" class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" 
+                   target="_blank" rel="noopener" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://termopilas.co/eventos/cata-vino-landing.html" 
+                   target="_blank" rel="noopener" class="social-btn linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#F29F05', '#8B4513', '#228B22', '#FDF6EA'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.className = 'confetti-piece';
+                confettiPiece.style.left = Math.random() * 100 + '%';
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiPiece.style.animationDelay = Math.random() * 3 + 's';
+                confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confettiContainer.appendChild(confettiPiece);
+            }
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 5000);
+        }
+
+        // Start confetti on load
+        window.addEventListener('load', createConfetti);
+
+        // Track thank you page view
+        gtag('event', 'cata_vino_paella_tapas_thank_you_view', {
+            'event_category': 'event_engagement',
+            'event_label': 'thank_you_page_view'
+        });
+
+        // Check payment status from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get('payment');
+        
+        // Handle different payment statuses
+        const paymentStatusDiv = document.getElementById('paymentStatus');
+        
+        if (paymentStatus === 'pending') {
+            // Bank transfer - payment pending
+            paymentStatusDiv.innerHTML = `
+                <div class="payment-status-info payment-status-pending">
+                    <i class="fas fa-clock"></i> <strong>Pago Pendiente</strong><br>
+                    Recuerda enviar tu comprobante de transferencia bancaria por WhatsApp para confirmar tu reserva.
+                </div>
+            `;
+            
+            // Update title and subtitle for pending payments
+            document.getElementById('successTitle').textContent = '¡Reserva Recibida!';
+            document.getElementById('successSubtitle').innerHTML = 'Tu reserva está pendiente de confirmación de pago';
+            
+        } else {
+            // Credit card with PayU - payment completed
+            paymentStatusDiv.innerHTML = `
+                <div class="payment-status-info payment-status-paid">
+                    <i class="fas fa-check-circle"></i> <strong>¡Pago Completado con PayU!</strong><br>
+                    Tu pago ha sido procesado exitosamente. No necesitas hacer nada más.
+                </div>
+            `;
+        }
+
+        // Display user data if available
+        const registrationData = localStorage.getItem('eventRegistration');
+        if (registrationData) {
+            const data = JSON.parse(registrationData);
+            console.log('Registration data:', data);
+            
+            // You could display personalized information here
+            // For example, update the success message with the user's name
+            const successSubtitle = document.querySelector('.success-subtitle');
+            if (data.firstName && paymentStatus !== 'pending') {
+                successSubtitle.innerHTML = `¡Hola ${data.firstName}! Tu cupo para la Cata de Vinos, Tapas y Paella ha sido asegurado exitosamente`;
+            } else if (data.firstName && paymentStatus === 'pending') {
+                successSubtitle.innerHTML = `¡Hola ${data.firstName}! Tu reserva está pendiente de confirmación de pago`;
+            }
+        }
+
+        // Track social sharing clicks
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const platform = this.classList[1]; // facebook, twitter, etc.
+                gtag('event', `cata_vino_paella_tapas_share_${platform}`, {
+                    'event_category': 'event_share',
+                    'event_label': `thank_you_social_${platform}`
+                });
+            });
+        });
+
+        // Track contact button clicks
+        document.querySelectorAll('.whatsapp-btn, .email-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const method = this.classList.contains('whatsapp-btn') ? 'whatsapp' : 'email';
+                gtag('event', `cata_vino_paella_tapas_contact_${method}`, {
+                    'event_category': 'event_engagement',
+                    'event_label': `thank_you_contact_${method}`
+                });
+            });
+        });
+    </script>
+</body>
+</html>
