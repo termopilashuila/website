@@ -1,297 +1,258 @@
 # Cata de Vinos, Paella y Tapas - Google Apps Script Handler
 
 ## Overview
-Google Apps Script handler for processing reservations for the "Cata de Vinos, Paella y Tapas" event at Finca Termópilas. This script manages form submissions, data validation, email notifications, and provides branded success/error pages.
+Google Apps Script handler for processing reservations for the "Cata de Vinos, Paella y Tapas" event at Finca Termópilas. This script handles form submissions, validates data, stores reservations in Google Sheets, and sends automated email confirmations to both administrators and users.
 
-## Event Details
-- **Event**: Cata de Vinos, Paella y Tapas
-- **Date**: Friday, September 6, 2024
-- **Time**: 3:00 PM - 7:00 PM
-- **Location**: Finca Termópilas, Rivera, Huila
+## Configuration
+- **Script File**: `cata-vino-paella-tapas.js`
+- **Google Sheet ID**: `1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0`
+- **Event Date**: September 6, 2024 (Friday)
+- **Event Time**: 3:00 PM - 7:00 PM
 - **Price**: $120,000 COP per person
-- **Capacity**: Limited to 30 guests
+- **Location**: Finca Termópilas, Rivera, Huila
 
-## Architecture
+## Data Structure
 
-### Files Structure
+### Input Fields (Required)
+- `firstName`: First name of the guest
+- `lastName`: Last name of the guest  
+- `phone`: Contact phone number
+- `email`: Valid email address
+- `paymentMethod`: Payment method ("transfer" or "card")
+
+### Optional Fields
+- `source`: Source of the reservation (defaults to "Website")
+
+### Google Sheet Headers
+The script automatically creates the following column headers:
+1. Timestamp
+2. Nombre (First Name)
+3. Apellido (Last Name)
+4. Teléfono (Phone)
+5. Email
+6. Método de Pago (Payment Method)
+7. Precio (Price - fixed at $120,000)
+8. Evento (Event Name)
+9. Fecha del Evento (Event Date)
+10. Horario (Schedule)
+11. Estado de Pago (Payment Status)
+12. Estado de Confirmación (Confirmation Status)
+13. Notas (Notes)
+14. Fuente (Source)
+
+## Email Templates
+
+### Admin Notification Email
+- **Recipients**: termopilashuila@gmail.com
+- **Subject**: Nueva Reserva - Cata de Vinos, Paella y Tapas - [Guest Name]
+- **Content**: Complete reservation details with quick action buttons
+- **Features**: 
+  - WhatsApp contact link
+  - Google Sheets access link
+  - Pre-filled confirmation email template
+
+### User Confirmation Email
+- **Recipient**: Guest's email address
+- **Subject**: Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas
+- **Content**: Payment-specific instructions based on selected method
+
+#### For Bank Transfer (`paymentMethod: "transfer"`)
+- Bank account details (Bancolombia - Account: 45700002525)
+- WhatsApp link with pre-filled message for receipt submission
+- Clear instructions for payment completion
+
+#### For Credit Card (`paymentMethod: "card"`)
+- Confirmation that staff will contact within 2-4 hours
+- Instructions to wait for payment processing details
+
+## WhatsApp Integration
+
+### Contact Number
+**+573143428579**
+
+### Bank Transfer Receipt Submission
+When users select bank transfer, they receive a WhatsApp link with a pre-filled message:
 ```
-appscript/eventos/cata-vino-paella-tapas/
-├── cata-vino-paella-tapas.js    # Main Google Apps Script handler
-├── success.html                  # Success page template
-├── error.html                   # Error page template
-└── README.md                    # This documentation file
+Hola, soy [First Name] [Last Name]. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es [email].
 ```
 
-### Data Flow
-1. **Form Submission** → User fills out registration form on website
-2. **Data Processing** → Google Apps Script receives and validates data
-3. **Sheet Storage** → Valid data is stored in Google Sheets
-4. **Email Notification** → Automated email sent to administrators
-5. **User Response** → Branded success/error page displayed to user
+## API Endpoints
 
-## Google Sheets Integration
+### Main Handler
+- **Method**: POST
+- **Content-Type**: application/json
+- **Endpoint**: [Deployed Web App URL]
 
-### Sheet ID
+### Request Format
+```json
+{
+  "firstName": "string",
+  "lastName": "string", 
+  "phone": "string",
+  "email": "string",
+  "paymentMethod": "transfer|card",
+  "source": "string (optional)"
+}
 ```
-1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0
-```
 
-### Sheet Structure
-The script automatically creates headers if they don't exist:
+### Response Format
+Returns HTML page with success/error message and appropriate styling.
 
-| Column | Field | Type | Description |
-|--------|-------|------|-------------|
-| A | Timestamp | DateTime | Automatic timestamp when reservation was made |
-| B | Nombre | String | First name of the guest |
-| C | Apellido | String | Last name of the guest |
-| D | Teléfono | String | Phone number (with country code) |
-| E | Email | String | Email address (validated format) |
-| F | Método de Pago | String | Payment method preference (transfer/card) |
-| G | Precio | Number | Event price (fixed at 120000) |
-| H | Evento | String | Event name (fixed) |
-| I | Fecha del Evento | String | Event date (2024-09-06) |
-| J | Horario | String | Event time (15:00-19:00) |
-| K | Estado de Pago | String | Payment status (default: "Pendiente") |
-| L | Estado de Confirmación | String | Confirmation status (default: "Pendiente") |
-| M | Notas | String | Additional notes (empty by default) |
-| N | Fuente | String | Registration source (default: "Website") |
+## Testing
 
-## Form Fields Validation
+### Available Test Functions
+- `runAllTests()`: Comprehensive test suite
+- `testDataValidation()`: Tests form validation rules
+- `testEventNotification()`: Tests admin email notifications
+- `testUserConfirmationEmail()`: Tests user confirmation emails
+- `testCompleteReservationFlow()`: End-to-end flow testing
 
-### Required Fields
-- `firstName` - First name (string, non-empty)
-- `lastName` - Last name (string, non-empty)
-- `phone` - Phone number (string, non-empty)
-- `email` - Email address (string, valid email format)
-- `paymentMethod` - Payment method (string, must be 'transfer' or 'card')
-
-### Validation Rules
+### Running Tests
+Execute in Google Apps Script editor:
 ```javascript
-// Email format validation
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// Payment method validation
-const validPaymentMethods = ['transfer', 'card'];
+runAllTests();
 ```
 
-## Email Notifications
+## Deployment
 
-### Administrator Notification
-- **Recipients**: `termopilashuila@gmail.com`
-- **Subject**: `Nueva Reserva - Cata de Vinos, Paella y Tapas - [Name]`
-- **Format**: HTML with embedded styling and action buttons
-- **Content**: Complete reservation details with quick action links
+### Initial Setup
+1. Open Google Apps Script (script.google.com)
+2. Create new project or open existing
+3. Replace code with `cata-vino-paella-tapas.js` content
+4. Save the project
 
-### Email Features
-- Branded HTML template with Finca Termópilas styling
-- Event details prominently displayed
-- Customer information clearly organized
-- Payment method indication with special notes for bank transfers
-- Quick action buttons:
-  - View all reservations (Google Sheets link)
-  - Reply by email (pre-populated email template)
-  - Contact by WhatsApp (direct WhatsApp link)
+### Web App Deployment
+1. Click "Deploy" → "New deployment"
+2. Choose "Web app" as type
+3. Set execute as "Me"
+4. Set access to "Anyone, even anonymous"
+5. Click "Deploy"
+6. Copy the web app URL for frontend integration
 
-## Response Pages
+### Permissions Required
+- Google Sheets API (for data storage)
+- Gmail API (for email sending)
+- Google Drive API (for file access)
 
-### Success Page (`success.html`)
-- **Purpose**: Confirmation page shown after successful registration
-- **Features**:
-  - Animated success indicators
-  - Complete event details
-  - Payment information based on selected method
-  - WhatsApp contact button
-  - Google Analytics tracking for successful conversions
-
-### Error Page (`error.html`)
-- **Purpose**: Error page shown when registration fails
-- **Features**:
-  - Clear error messaging
-  - Troubleshooting suggestions
-  - Multiple contact options
-  - Retry functionality
-  - Error details display (when available)
-
-## Payment Integration
-
-### Bank Transfer Information
-When users select "Transferencia Bancaria":
-- **Bank**: Bancolombia
-- **Account Type**: Ahorros
-- **Account Number**: 45700002525
-- **Account Holder**: Finca Termópilas
-- **Amount**: $120,000 COP
-
-### Payment Workflow
-1. User selects payment method in form
-2. If "transfer" selected → Bank details displayed
-3. User completes registration
-4. Success page shows payment instructions
-5. User sends payment proof via WhatsApp
-
-## Analytics Integration
-
-### Google Analytics Events
-- `cata_vino_paella_tapas_registration_success` - Successful registration
-- `cata_vino_paella_tapas_registration_error` - Failed registration
-- Conversion tracking with value: 120000 COP
-
-### Event Properties
-```javascript
-gtag('event', 'cata_vino_paella_tapas_registration_success', {
-  'event_category': 'event_engagement',
-  'event_label': 'registration_completed',
-  'value': 120000,
-  'currency': 'COP'
-});
-```
+### Environment Variables
+No external environment variables required. All configuration is embedded in the script.
 
 ## Error Handling
 
-### Error Types
-1. **Validation Errors**: Missing or invalid form data
-2. **System Errors**: Google Apps Script execution failures
-3. **Sheet Errors**: Google Sheets access or writing failures
-4. **Email Errors**: Email notification sending failures
+### Validation Errors
+- Missing required fields → Returns validation error page
+- Invalid email format → Returns validation error page
+- Invalid payment method → Returns validation error page
 
-### Error Recovery
-- Automatic retry mechanism with exponential backoff
-- Graceful error page display with actionable next steps
-- Error logging for administrator review
-- Alternative contact methods provided
+### System Errors
+- Google Sheets access issues → Returns generic error page with details
+- Email sending failures → Logged but doesn't prevent reservation storage
+- Timeout errors → Automatic retry with exponential backoff
 
-## Security Features
-
-### Data Protection
-- Input validation and sanitization
-- Email format verification
-- XSS prevention in HTML output
-- Secure data transmission (HTTPS only)
-
-### Access Control
-- Google Apps Script permissions managed through Google Cloud Console
-- Sheet access restricted to authorized accounts
-- Email notifications sent only to verified addresses
-
-## Deployment Instructions
-
-### 1. Create Google Apps Script Project
-1. Go to [Google Apps Script](https://script.google.com)
-2. Create new project: "Cata Vinos Paella Tapas Handler"
-3. Copy code from `cata-vino-paella-tapas.js`
-4. Save and name the project
-
-### 2. Configure Google Sheets
-1. Create new Google Sheet with ID: `1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0`
-2. Ensure script has edit permissions
-3. Headers will be created automatically on first run
-
-### 3. Deploy as Web App
-1. In Apps Script editor: Deploy → New Deployment
-2. Type: Web app
-3. Execute as: Me
-4. Who has access: Anyone
-5. Copy the deployment URL
-
-**Current Deployment URL**: https://script.google.com/macros/s/AKfycbygFvKsTRLvwtxHsqXM5s2xRhh1NmWVazFoo77IrxCPyMJS0Z3WSe-2XNPII60wPnUl/exec
-
-### 4. Update Frontend Form
-✅ **COMPLETED**: The form in `eventos/cata-vino-paella-tapas.html` has been updated with the deployment URL.
-
-### 5. Test the Integration
-Use the provided test functions:
-```javascript
-testEventNotification();    // Test email functionality
-testDataValidation();       // Test validation logic
-```
-
-## Monitoring and Maintenance
-
-### Daily Checks
-- Review Google Apps Script execution logs
-- Check email delivery success rates
-- Monitor form submission volumes
-- Verify Google Sheets data integrity
-
-### Weekly Tasks
-- Analyze registration patterns and conversion rates
-- Review customer feedback and support requests
-- Update payment status for confirmed reservations
-- Backup registration data
-
-### Event Day Preparation
-- Final capacity check (max 30 guests)
-- Confirm all payment statuses
-- Prepare guest list with contact information
-- Set up check-in process with reservation data
+### Error Pages
+All error pages include:
+- Branded styling consistent with Finca Termópilas design
+- Clear error messages in Spanish
+- Action buttons to retry or contact support
+- WhatsApp contact integration
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### Form Submissions Not Appearing in Sheet
-1. Check Google Apps Script execution logs
-2. Verify sheet permissions and ID
-3. Ensure deployment is active and accessible
-4. Test with manual form submission
+#### 1. "Permission denied" errors
+**Solution**: Check script permissions and re-authorize if needed
 
-#### Email Notifications Not Sending
-1. Check Gmail API quotas and limits
-2. Verify recipient email addresses
-3. Review MailApp permissions
-4. Test with `testEmailNotification()` function
+#### 2. Email not being sent
+**Causes**: 
+- Gmail API quota exceeded
+- Invalid email addresses
+- MailApp service issues
+**Solution**: Check execution logs and retry
 
-#### Validation Errors
-1. Check form field names match script expectations
-2. Verify required field validation logic
-3. Test email format validation
-4. Confirm payment method options
+#### 3. Google Sheets not updating
+**Causes**:
+- Incorrect spreadsheet ID
+- Permission issues
+- Sheet API quota exceeded
+**Solution**: Verify sheet ID and permissions
 
-### Support Contacts
-- **Technical Issues**: Development team
-- **Business Questions**: termopilashuila@gmail.com
-- **Emergency Contact**: WhatsApp +57 314 342 8579
+#### 4. Validation always failing
+**Causes**:
+- Frontend sending incorrect data format
+- Required fields missing
+- Email regex not matching
+**Solution**: Check request payload format
 
-## Performance Metrics
+### Debugging Steps
+1. Check execution logs in Google Apps Script editor
+2. Test with `runAllTests()` function
+3. Verify Google Sheets permissions
+4. Check email delivery in Gmail sent folder
+5. Test WhatsApp links manually
 
-### Target KPIs
-- **Form Submission Success Rate**: >95%
-- **Email Delivery Rate**: >98%
-- **Page Load Time**: <3 seconds
-- **Error Rate**: <2%
+### Performance Optimization
+- Email sending is non-blocking for form submission
+- Automatic header creation only runs when needed
+- Error handling prevents cascading failures
+- Retry mechanisms for transient failures
 
-### Monitoring Tools
-- Google Apps Script execution logs
-- Google Analytics event tracking
-- Email delivery reports
-- User feedback collection
+## Security Considerations
 
-## Future Enhancements
+### Data Protection
+- No sensitive data stored in logs
+- Email addresses validated before processing
+- Phone numbers sanitized for WhatsApp links
+- All user input sanitized before database insertion
 
-### Planned Features
-1. **Automated Payment Confirmation**: Integration with bank APIs
-2. **SMS Notifications**: WhatsApp Business API integration
-3. **Calendar Integration**: Automatic calendar invites
-4. **Capacity Management**: Real-time availability checking
-5. **Multi-language Support**: English and Spanish versions
+### Access Control
+- Web app accessible to anonymous users (required for public form)
+- Google Sheets access restricted to authorized accounts
+- Email sending limited to configured addresses
 
-### Technical Improvements
-1. **Database Migration**: Move from Google Sheets to proper database
-2. **API Development**: RESTful API for better integration
-3. **Real-time Updates**: WebSocket connections for live updates
-4. **Mobile App**: Dedicated mobile application
+### Privacy Compliance
+- User data only used for reservation processing
+- No third-party data sharing
+- Clear communication about data usage in confirmation emails
 
----
+## Analytics and Monitoring
 
-## Contact Information
+### Success Metrics
+- Form submission success rate
+- Email delivery rate
+- User confirmation email open rates
+- WhatsApp link click-through rates
 
-**Finca Termópilas**
-- Website: https://termopilas.co
-- Email: termopilashuila@gmail.com
-- WhatsApp: +57 314 342 8579
-- Location: Rivera, Huila, Colombia
+### Monitoring Points
+- Script execution time
+- Error frequency and types
+- Google Sheets storage usage
+- Email quota consumption
 
----
+## Integration Notes
 
-*Last Updated: September 2024*
-*Version: 1.0*
+### Frontend Requirements
+- Form must send JSON payload via POST
+- Required fields must be validated on frontend
+- Success/error handling for script responses
+- Mobile-responsive form design
+
+### Business Process Integration
+- Reservations automatically logged with timestamp
+- Admin notifications enable quick response
+- Payment status tracking for follow-up
+- WhatsApp integration streamlines communication
+
+## Version History
+
+### v2.0 (Current)
+- Added user confirmation emails with payment-specific instructions
+- Enhanced WhatsApp integration with contextual messages
+- Improved error handling and validation
+- Comprehensive test suite implementation
+- Better email template design and branding
+
+### v1.0
+- Basic form processing and Google Sheets integration
+- Admin email notifications
+- Simple success/error page generation

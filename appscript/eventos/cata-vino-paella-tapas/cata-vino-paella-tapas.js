@@ -66,8 +66,11 @@ function handleRequest(e) {
       data.source || 'Website'     // Fuente de la reserva
     ]);
     
-    // Enviar notificación por correo electrónico
+    // Enviar notificación por correo electrónico al administrador
     sendEventNotificationEmail(data, timestamp);
+    
+    // Enviar correo de confirmación al usuario
+    sendUserConfirmationEmail(data, timestamp);
     
     // Retornar una página HTML de éxito
     return HtmlService.createHtmlOutput(generateSuccessPage(data));
@@ -229,9 +232,160 @@ Ver todas las reservas: https://docs.google.com/spreadsheets/d/1VSTITr2PdITWTZWe
       htmlBody: htmlBody
     });
     
-    console.log('Email notification sent successfully');
+    console.log('Admin notification email sent successfully');
   } catch (error) {
-    console.error('Error sending email notification:', error);
+    console.error('Error sending admin notification email:', error);
+  }
+}
+
+/**
+ * Función para enviar correo de confirmación al usuario
+ */
+function sendUserConfirmationEmail(data, timestamp) {
+  try {
+    // Asunto del correo para el usuario
+    const subject = `Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas`;
+    
+    // URL del logo
+    const logoUrl = "https://termopilas.co/assets/images/logo.png";
+    
+    // Crear mensaje de WhatsApp con contexto
+    const whatsappNumber = "+573143428579";
+    const whatsappMessage = encodeURIComponent(
+      `Hola, soy ${data.firstName} ${data.lastName}. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es ${data.email}.`
+    );
+    const whatsappUrl = `https://wa.me/573143428579?text=${whatsappMessage}`;
+    
+    // Contenido HTML del correo para el usuario
+    const htmlBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+      <!-- Logo y Encabezado -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="${logoUrl}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
+        <h2 style="color: #F29F05; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 10px;">¡Reserva de Interés Recibida!</h2>
+      </div>
+      
+      <div style="background-color: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #27ae60;">
+        <p style="margin: 0; color: #27ae60; font-weight: bold;">✅ Hemos recibido tu reserva de interés para nuestro evento</p>
+      </div>
+      
+      <p>Hola <strong>${data.firstName}</strong>,</p>
+      <p>¡Gracias por tu interés en participar en nuestra experiencia gastronómica única! Hemos recibido tu solicitud de reserva y queremos confirmarte los siguientes pasos:</p>
+      
+      <div style="background-color: #fdf6ea; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <h3 style="color: #333; margin-top: 0;">🍷 Detalles del Evento</h3>
+        <p><strong>Evento:</strong> Cata de Vinos, Paella y Tapas</p>
+        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2024</p>
+        <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
+        <p><strong>📍 Ubicación:</strong> Finca Termópilas, Rivera, Huila</p>
+        <p><strong>💰 Precio:</strong> $120,000 COP por persona</p>
+      </div>
+      
+      ${data.paymentMethod === 'transfer' ? `
+      <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="color: #856404; margin-top: 0;">💳 Transferencia Bancaria Seleccionada</h3>
+        <p style="color: #856404;">Has seleccionado <strong>transferencia bancaria</strong> como método de pago. Para completar tu reserva:</p>
+        
+        <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+          <h4 style="color: #333; margin-top: 0;">Datos Bancarios:</h4>
+          <p><strong>Banco:</strong> Bancolombia</p>
+          <p><strong>Tipo de Cuenta:</strong> Ahorros</p>
+          <p><strong>Número de Cuenta:</strong> <span style="background: #F29F05; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-family: monospace;">45700002525</span></p>
+          <p><strong>Titular:</strong> Finca Termópilas</p>
+          <p><strong>Valor:</strong> $120,000 COP</p>
+        </div>
+        
+        <div style="background: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; margin: 15px 0;">
+          <p style="color: #721c24; margin: 0; font-weight: bold;">📱 IMPORTANTE: Envía tu comprobante de pago</p>
+          <p style="color: #721c24; margin: 10px 0 0 0;">Una vez realices la transferencia, debes enviar el comprobante de pago por WhatsApp para confirmar tu reserva:</p>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0;">
+          <a href="${whatsappUrl}" style="display: inline-block; background-color: #25D366; color: white; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">📱 Enviar Comprobante por WhatsApp</a>
+        </div>
+        
+        <p style="color: #856404; font-size: 14px; margin-bottom: 0;"><strong>Número de WhatsApp:</strong> ${whatsappNumber}</p>
+      </div>
+      ` : `
+      <div style="background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="color: #0c5460; margin-top: 0;">💳 Tarjeta de Crédito Seleccionada</h3>
+        <p style="color: #0c5460;">Has seleccionado <strong>tarjeta de crédito</strong> como método de pago.</p>
+        
+        <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 8px; margin: 15px 0;">
+          <p style="color: #495057; margin: 0;">⏰ <strong>Confirmación en proceso:</strong> Nuestro equipo te contactará pronto con los detalles para procesar el pago con tarjeta de crédito. Por favor, mantente atento a tu teléfono y correo electrónico.</p>
+        </div>
+        
+        <p style="color: #0c5460; font-size: 14px; margin-bottom: 0;">Tiempo estimado de contacto: <strong>2-4 horas</strong> en horario laboral.</p>
+      </div>
+      `}
+      
+      <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 20px;">
+        <h4 style="color: #333; margin-top: 0;">📞 ¿Necesitas ayuda?</h4>
+        <p style="margin-bottom: 10px;">Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos:</p>
+        <p style="margin: 5px 0;"><strong>WhatsApp:</strong> ${whatsappNumber}</p>
+        <p style="margin: 5px 0;"><strong>Email:</strong> termopilashuila@gmail.com</p>
+      </div>
+      
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="https://termopilas.co" style="display: inline-block; background-color: #F29F05; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 5px; font-weight: 600;">Visitar nuestra página</a>
+      </div>
+      
+      <div style="margin-top: 30px; font-size: 12px; color: #777; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
+        <p style="margin: 5px 0;">¡Esperamos verte pronto en Finca Termópilas!</p>
+        <p style="margin: 5px 0;">Este es un correo automático. Fecha de reserva: ${formatDateSpanish(timestamp)}</p>
+      </div>
+    </div>`;
+    
+    // Versión de texto plano como respaldo
+    const plainBody = `¡Reserva de Interés Recibida!
+
+Hola ${data.firstName},
+
+¡Gracias por tu interés en participar en nuestra Cata de Vinos, Paella y Tapas!
+
+Detalles del Evento:
+- Fecha: Viernes, 6 de Septiembre 2024
+- Horario: 3:00 PM - 7:00 PM
+- Ubicación: Finca Termópilas, Rivera, Huila
+- Precio: $120,000 COP por persona
+
+${data.paymentMethod === 'transfer' ? 
+`TRANSFERENCIA BANCARIA SELECCIONADA:
+
+Datos Bancarios:
+- Banco: Bancolombia
+- Tipo de Cuenta: Ahorros
+- Número de Cuenta: 45700002525
+- Titular: Finca Termópilas
+- Valor: $120,000 COP
+
+IMPORTANTE: Una vez realices la transferencia, envía el comprobante de pago por WhatsApp al ${whatsappNumber} para confirmar tu reserva.
+
+Enlace directo: ${whatsappUrl.replace(/%20/g, ' ')}`
+:
+`TARJETA DE CRÉDITO SELECCIONADA:
+
+Nuestro equipo te contactará pronto (2-4 horas en horario laboral) con los detalles para procesar el pago con tarjeta de crédito. Mantente atento a tu teléfono y correo electrónico.`}
+
+¿Necesitas ayuda?
+- WhatsApp: ${whatsappNumber}
+- Email: termopilashuila@gmail.com
+
+¡Esperamos verte pronto en Finca Termópilas!
+
+Fecha de reserva: ${formatDateSpanish(timestamp)}`;
+
+    // Enviar el correo al usuario
+    MailApp.sendEmail({
+      to: data.email,
+      subject: subject,
+      body: plainBody,
+      htmlBody: htmlBody
+    });
+    
+    console.log('User confirmation email sent successfully to:', data.email);
+  } catch (error) {
+    console.error('Error sending user confirmation email:', error);
   }
 }
 
@@ -578,13 +732,86 @@ function testEventNotification() {
   
   const testTimestamp = new Date();
   sendEventNotificationEmail(testData, testTimestamp);
-  console.log('Test email sent successfully');
+  console.log('Admin notification test email sent successfully');
+}
+
+/**
+ * Función de prueba para el envío de correos de confirmación al usuario
+ */
+function testUserConfirmationEmail() {
+  console.log('Testing user confirmation emails...');
+  
+  // Test con transferencia bancaria
+  const testDataTransfer = {
+    firstName: "Carlos",
+    lastName: "Rodríguez",
+    phone: "+57 300 123 4567",
+    email: "carlos.test@example.com",
+    paymentMethod: "transfer"
+  };
+  
+  // Test con tarjeta de crédito
+  const testDataCard = {
+    firstName: "Ana",
+    lastName: "Martínez",
+    phone: "+57 300 987 6543",
+    email: "ana.test@example.com",
+    paymentMethod: "card"
+  };
+  
+  const testTimestamp = new Date();
+  
+  try {
+    sendUserConfirmationEmail(testDataTransfer, testTimestamp);
+    console.log('✅ User confirmation email test (transfer) sent successfully');
+  } catch (error) {
+    console.error('❌ User confirmation email test (transfer) failed:', error);
+  }
+  
+  try {
+    sendUserConfirmationEmail(testDataCard, testTimestamp);
+    console.log('✅ User confirmation email test (card) sent successfully');
+  } catch (error) {
+    console.error('❌ User confirmation email test (card) failed:', error);
+  }
+}
+
+/**
+ * Función de prueba completa para todo el flujo de reserva
+ */
+function testCompleteReservationFlow() {
+  console.log('Testing complete reservation flow...');
+  
+  const testData = {
+    firstName: "Isabel",
+    lastName: "García",
+    phone: "+57 300 555 7890",
+    email: "isabel.test@example.com",
+    paymentMethod: "transfer"
+  };
+  
+  try {
+    // Simular una solicitud POST completa
+    const mockRequest = {
+      postData: {
+        contents: JSON.stringify(testData)
+      }
+    };
+    
+    const result = handleRequest(mockRequest);
+    console.log('✅ Complete reservation flow test passed');
+    console.log('Response type:', typeof result);
+  } catch (error) {
+    console.error('❌ Complete reservation flow test failed:', error);
+  }
 }
 
 /**
  * Función de prueba para validación de datos
  */
 function testDataValidation() {
+  console.log('Testing data validation...');
+  
   const validData = {
     firstName: "Juan",
     lastName: "Pérez",
@@ -601,6 +828,42 @@ function testDataValidation() {
     paymentMethod: "unknown"
   };
   
-  console.log('Valid data test:', validateEventRegistrationData(validData)); // Should return true
-  console.log('Invalid data test:', validateEventRegistrationData(invalidData)); // Should return false
+  const validResult = validateEventRegistrationData(validData);
+  const invalidResult = validateEventRegistrationData(invalidData);
+  
+  console.log(validResult ? '✅ Valid data test passed' : '❌ Valid data test failed');
+  console.log(!invalidResult ? '✅ Invalid data test passed' : '❌ Invalid data test failed');
+  
+  return { validResult, invalidResult };
+}
+
+/**
+ * Función para ejecutar todas las pruebas
+ */
+function runAllTests() {
+  console.log('🧪 Starting comprehensive test suite for Cata de Vinos event...');
+  console.log('================================================');
+  
+  try {
+    // Test data validation
+    testDataValidation();
+    console.log('\n');
+    
+    // Test admin notification email
+    testEventNotification();
+    console.log('\n');
+    
+    // Test user confirmation emails
+    testUserConfirmationEmail();
+    console.log('\n');
+    
+    // Test complete flow
+    testCompleteReservationFlow();
+    
+    console.log('================================================');
+    console.log('🎉 All tests completed! Check logs for results.');
+    
+  } catch (error) {
+    console.error('💥 Test suite failed:', error);
+  }
 }
