@@ -613,9 +613,15 @@ function sanitizePersonalData(data) {
   - Add structured logs before and after sending emails (e.g., “About to send user confirmation email”, “User confirmation email sent successfully”).
   - On failures, log and notify admin with context (user name, email, payment method).
 - Email deliverability and reliability
-  - Use a resilient sender wrapper: try `GmailApp.sendEmail` first and fall back to `MailApp.sendEmail` with the same payload.
+  - Use a resilient sender wrapper: send with `MailApp.sendEmail` first (more consistent UTF-8/emoji rendering across clients) and fall back to `GmailApp.sendEmail` with the same payload.
   - Include `replyTo` and `bcc` to admin to confirm the user-email path executed in production.
   - Validate and normalize recipient emails; if invalid, skip sending and notify admin.
+  - Emoji rendering reliability: always use an emoji-capable `font-family` stack in HTML emails; do not force `Arial` alone. Recommended stack:
+    ```html
+    style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;"
+    ```
+    If a specific heading/button still shows tofu (�), wrap the emoji in a span using the same stack, or replace with a small inline image.
+  - Align admin and user email paths to use the same sending mechanism (wrapper above). Differences between `MailApp` vs `GmailApp` paths can cause mismatched emoji rendering.
 - Frontend networking caveat
   - `fetch(..., { mode: 'no-cors' })` hides server errors. For debugging, temporarily drop `no-cors` in a controlled environment or add a separate health endpoint.
   - Even when hidden client-side, you can still debug via Apps Script Executions logs.
