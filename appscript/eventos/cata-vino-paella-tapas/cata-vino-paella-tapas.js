@@ -871,11 +871,15 @@ function retryWithExponentialBackoff(operation, maxRetries) {
   }
 }
 
+// Control de fallback para evitar envíos duplicados.
+// Si en algún caso es necesario activar el fallback a GmailApp (por ejemplo, cortes puntuales de MailApp),
+// cambiar este valor a true temporalmente.
+const ENABLE_GMAILAPP_FALLBACK = false;
+
 function safeSendEmail(options) {
-  // Envuelve MailApp.sendEmail con reintentos
-  return retryWithExponentialBackoff(function() {
-    try {
-      // Intento 1: MailApp con objeto completo (establece charset UTF-8 claro y consistente)
+  // Primer intento (con reintentos) solo con MailApp
+  try {
+    return retryWithExponentialBackoff(function() {
       MailApp.sendEmail({
         to: options.to,
         subject: options.subject,
@@ -885,19 +889,28 @@ function safeSendEmail(options) {
         replyTo: options.replyTo,
         bcc: options.bcc
       });
-      return;
-    } catch (mailErr) {
-      console.warn('MailApp.sendEmail failed, falling back to GmailApp:', mailErr);
-      // Intento 2: GmailApp
-      var gmailOptions = {
-        htmlBody: options.htmlBody,
-        name: options.name,
-        replyTo: options.replyTo,
-        bcc: options.bcc
-      };
-      GmailApp.sendEmail(options.to, options.subject, options.body || ' ', gmailOptions);
+    }, 3);
+  } catch (mailErr) {
+    console.warn('MailApp.sendEmail failed after retries:', mailErr);
+    // Opcional: fallback a GmailApp solo si está habilitado explícitamente
+    if (ENABLE_GMAILAPP_FALLBACK) {
+      try {
+        var gmailOptions = {
+          htmlBody: options.htmlBody,
+          name: options.name,
+          replyTo: options.replyTo,
+          bcc: options.bcc
+        };
+        GmailApp.sendEmail(options.to, options.subject, options.body || ' ', gmailOptions);
+        return;
+      } catch (gmailErr) {
+        console.error('GmailApp fallback also failed:', gmailErr);
+        throw gmailErr;
+      }
     }
-  }, 3);
+    // Si el fallback está deshabilitado, propagar el error para que el llamador decida
+    throw mailErr;
+  }
 }
 
 /**
