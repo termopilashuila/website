@@ -315,6 +315,26 @@
             background: rgba(242, 159, 5, 0.1);
         }
 
+        .payment-option.recommended {
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.05);
+            position: relative;
+        }
+
+        .payment-option.recommended:hover,
+        .payment-option.recommended.selected {
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .payment-badge {
+            display: block;
+            font-size: 0.75rem;
+            color: #10B981;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
         .payment-option input[type="radio"] {
             width: auto;
             margin-right: 0.75rem;
@@ -833,6 +853,7 @@
                 <img src="../assets/images/eventos/cata-vino-paella-tapas/vinos.png" alt="Selección de vinos para la cata" loading="lazy">
                 <img src="../assets/images/eventos/cata-vino-paella-tapas/tapas.png" alt="Tapas españolas auténticas" loading="lazy">
                 <img src="../assets/images/eventos/cata-vino-paella-tapas/paella.png" alt="Paella tradicional española" loading="lazy">
+                <img src="../assets/images/eventos/cata-vino-paella-tapas/asistentes.png" alt="Asistentes disfrutando de la experiencia gastronómica" loading="lazy">
                 <img src="../assets/images/eventos/cata-vino-paella-tapas/interior-salon.png" alt="Salón interior del evento" loading="lazy">
                 <img src="../assets/images/eventos/cata-vino-paella-tapas/vista-exterior.png" alt="Vista exterior de Finca Termópilas" loading="lazy">
             </div>
@@ -1070,16 +1091,17 @@
                     <div class="form-group">
                         <label>Método de Pago Preferido *</label>
                         <div class="payment-methods">
+                            <div class="payment-option recommended" onclick="selectPayment('card')">
+                                <input type="radio" id="card" name="paymentMethod" value="card" required>
+                                <label for="card">
+                                    <i class="fas fa-credit-card"></i> Tarjeta de Crédito con PayU
+                                    <span class="payment-badge">Recomendado</span>
+                                </label>
+                            </div>
                             <div class="payment-option" onclick="selectPayment('transfer')">
                                 <input type="radio" id="transfer" name="paymentMethod" value="transfer" required>
                                 <label for="transfer">
                                     <i class="fas fa-university"></i> Transferencia Bancaria
-                                </label>
-                            </div>
-                            <div class="payment-option" onclick="selectPayment('card')">
-                                <input type="radio" id="card" name="paymentMethod" value="card" required>
-                                <label for="card">
-                                    <i class="fas fa-credit-card"></i> Tarjeta de Crédito
                                 </label>
                             </div>
                         </div>
@@ -1103,14 +1125,18 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <i class="fas fa-lock"></i> Proceder al Pago Seguro
+                        <i class="fas fa-lock"></i> Proceder al Pago Seguro con PayU
                     </button>
                 </form>
                 
                 <div class="trust-indicators">
                     <div class="trust-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Pago 100% Seguro</span>
+                        <span>Pago 100% Seguro con PayU</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Tarjetas de Crédito y Débito</span>
                     </div>
                     <div class="trust-item">
                         <i class="fas fa-clock"></i>
@@ -1222,7 +1248,7 @@
                     'payment_method': data.paymentMethod
                 });
                 
-                // Submit to Google Apps Script
+                // Submit to Google Apps Script first
                 const response = await fetch('https://script.google.com/macros/s/AKfycbygFvKsTRLvwtxHsqXM5s2xRhh1NmWVazFoo77IrxCPyMJS0Z3WSe-2XNPII60wPnUl/exec', {
                     method: 'POST',
                     mode: 'no-cors',
@@ -1248,8 +1274,20 @@
                     'currency': 'COP'
                 });
                 
-                // Redirect to thank you page
-                window.location.href = 'cata-vino-paella-tapas-gracias.html';
+                // Handle payment redirection based on method
+                if (data.paymentMethod === 'card') {
+                    // Track PayU redirection
+                    gtag('event', 'cata_vino_paella_tapas_payu_redirect', {
+                        'event_category': 'payment',
+                        'event_label': 'payu_gateway_redirect'
+                    });
+                    
+                    // Redirect to PayU payment gateway for credit card payments
+                    window.location.href = 'https://biz.payulatam.com/L0faafc413D9A99';
+                } else {
+                    // Redirect to thank you page for bank transfers with payment pending status
+                    window.location.href = 'cata-vino-paella-tapas-gracias.html?payment=pending';
+                }
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
