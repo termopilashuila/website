@@ -605,72 +605,7 @@
             line-height: 1.6;
         }
 
-        /* Bank Details */
-        .bank-details {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 2px solid #F29F05;
-        }
 
-        .bank-info h4 {
-            color: #333333;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .bank-info h4 i {
-            color: #F29F05;
-        }
-
-        .bank-data {
-            margin-bottom: 1rem;
-        }
-
-        .bank-data p {
-            margin-bottom: 0.5rem;
-            color: #333333;
-        }
-
-        .account-number {
-            background: #F29F05;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .account-number:hover {
-            background: #E6920C;
-            transform: scale(1.05);
-        }
-
-        .bank-note {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: rgba(242, 159, 5, 0.1);
-            border-radius: 6px;
-        }
-
-        .bank-note i {
-            color: #F29F05;
-            margin-top: 0.25rem;
-            flex-shrink: 0;
-        }
-
-        .bank-note p {
-            color: #6B7280;
-            font-size: 0.875rem;
-            margin: 0;
-        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -1106,22 +1041,7 @@
                             </div>
                         </div>
                         
-                        <div class="bank-details" id="bankDetails" style="display: none;">
-                            <div class="bank-info">
-                                <h4><i class="fas fa-university"></i> Datos para Transferencia</h4>
-                                <div class="bank-data">
-                                    <p><strong>Banco:</strong> Bancolombia</p>
-                                    <p><strong>Tipo de Cuenta:</strong> Ahorros</p>
-                                    <p><strong>Número de Cuenta:</strong> <span class="account-number" onclick="copyAccountNumber()" title="Clic para copiar">45700002525</span></p>
-                                    <p><strong>Titular:</strong> Finca Termópilas</p>
-                                    <p><strong>Valor:</strong> $120.000 COP</p>
-                                </div>
-                                <div class="bank-note">
-                                    <i class="fas fa-info-circle"></i>
-                                    <p>Envía el comprobante de pago por WhatsApp al <strong>+573143428579</strong> para confirmar tu reserva.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     
                     <button type="submit" class="submit-btn" id="submitBtn" disabled>
@@ -1156,7 +1076,7 @@
         <div class="container">
             <h2 class="section-title">Auspiciado por</h2>
             <p class="section-subtitle">
-                Una colaboración entre dos marcas comprometidas con la excelencia gastronómica
+                Marcas comprometidas con la excelencia gastronómica de la región
             </p>
             
             <div class="sponsors-grid">
@@ -1210,17 +1130,10 @@
             if (method === 'card') {
                 submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> Proceder al Pago con PayU';
             } else if (method === 'transfer') {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Registrarme para Enviar Comprobante';
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Registrarme para enviar comprobante';
             }
             
-            // Show/hide bank details
-            const bankDetails = document.getElementById('bankDetails');
-            if (method === 'transfer') {
-                bankDetails.style.display = 'block';
-                bankDetails.style.animation = 'fadeIn 0.3s ease-in';
-            } else {
-                bankDetails.style.display = 'none';
-            }
+
         }
 
         // Form submission
@@ -1343,32 +1256,7 @@
             }
         });
 
-        // Copy account number function
-        function copyAccountNumber() {
-            const accountNumber = '45700002525';
-            
-            // Track copy action
-            gtag('event', 'cata_vino_paella_tapas_copy_account', {
-                'event_category': 'event_engagement',
-                'event_label': 'bank_account_copy'
-            });
-            
-            navigator.clipboard.writeText(accountNumber).then(function() {
-                // Show success message
-                const span = document.querySelector('.account-number');
-                const originalText = span.textContent;
-                span.textContent = '¡Copiado!';
-                span.style.background = '#10B981';
-                
-                setTimeout(() => {
-                    span.textContent = originalText;
-                    span.style.background = '#F29F05';
-                }, 2000);
-            }).catch(function() {
-                // Fallback for older browsers
-                alert('Número de cuenta: 45700002525');
-            });
-        }
+
     </script>
 </body>
 </html>

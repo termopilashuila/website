@@ -248,6 +248,117 @@
             font-size: var(--text-sm);
         }
 
+        /* Bank Transfer Details */
+        .bank-transfer-details {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            margin: var(--space-8) 0;
+            border: 2px solid #F29F05;
+        }
+
+        .bank-info h3 {
+            font-family: var(--font-brand);
+            font-size: var(--text-2xl);
+            color: #F29F05;
+            margin-bottom: var(--space-6);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .bank-data {
+            background: #f8f9fa;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .bank-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .bank-item:last-child {
+            border-bottom: none;
+        }
+
+        .account-number {
+            background: #F29F05;
+            color: white;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-weight: var(--font-semibold);
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: var(--text-lg);
+        }
+
+        .account-number:hover {
+            background: #E6920C;
+            transform: scale(1.05);
+        }
+
+        .bank-instructions {
+            margin-bottom: var(--space-6);
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            margin-bottom: var(--space-3);
+            background: rgba(242, 159, 5, 0.1);
+            border-radius: var(--radius-lg);
+        }
+
+        .instruction-item i {
+            color: #F29F05;
+            font-size: var(--text-xl);
+            margin-top: var(--space-1);
+            flex-shrink: 0;
+        }
+
+        .whatsapp-link {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: var(--font-semibold);
+        }
+
+        .whatsapp-link:hover {
+            text-decoration: underline;
+        }
+
+        .confirmation-note {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .confirmation-note i {
+            color: #10B981;
+            margin-top: var(--space-1);
+            flex-shrink: 0;
+        }
+
+        .confirmation-note p {
+            color: #065f46;
+            margin: 0;
+            font-size: var(--text-sm);
+        }
+
         /* Contact Section */
         .contact-section {
             background: white;
@@ -515,6 +626,57 @@
             </div>
         </div>
 
+        <!-- Bank Transfer Details (only shown for pending payments) -->
+        <div class="bank-transfer-details" id="bankTransferDetails" style="display: none;">
+            <div class="bank-info">
+                <h3><i class="fas fa-university"></i> Datos para Transferencia Bancaria</h3>
+                <div class="bank-data">
+                    <div class="bank-item">
+                        <strong>Banco:</strong> Bancolombia
+                    </div>
+                    <div class="bank-item">
+                        <strong>Tipo de Cuenta:</strong> Ahorros
+                    </div>
+                    <div class="bank-item">
+                        <strong>Número de Cuenta:</strong> 
+                        <span class="account-number" onclick="copyAccountNumber()" title="Clic para copiar">45700002525</span>
+                    </div>
+                    <div class="bank-item">
+                        <strong>Titular:</strong> Finca Termópilas
+                    </div>
+                    <div class="bank-item">
+                        <strong>Valor a Transferir:</strong> $120.000 COP
+                    </div>
+                </div>
+                <div class="bank-instructions">
+                    <div class="instruction-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <strong>Paso 1:</strong> Realiza la transferencia bancaria por $120.000 COP
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fas fa-camera"></i>
+                        <div>
+                            <strong>Paso 2:</strong> Toma una foto del comprobante de transferencia
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>Paso 3:</strong> Envía el comprobante por WhatsApp al 
+                            <a href="https://wa.me/573143428579?text=Hola,%20adjunto%20comprobante%20de%20transferencia%20para%20la%20Cata%20de%20Vinos,%20Tapas%20y%20Paella" 
+                               target="_blank" rel="noopener" class="whatsapp-link">+57 314 342 8579</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirmation-note">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>Importante:</strong> Tu reserva se confirmará una vez recibamos y verifiquemos tu comprobante de pago. Te contactaremos para confirmar tu asistencia.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Next Steps -->
         <div class="next-steps">
             <h3>¿Qué Sigue Ahora?</h3>
@@ -664,13 +826,16 @@
             paymentStatusDiv.innerHTML = `
                 <div class="payment-status-info payment-status-pending">
                     <i class="fas fa-clock"></i> <strong>Pago Pendiente</strong><br>
-                    Recuerda enviar tu comprobante de transferencia bancaria por WhatsApp para confirmar tu reserva.
+                    Realiza tu transferencia bancaria y envía el comprobante por WhatsApp para confirmar tu reserva.
                 </div>
             `;
             
             // Update title and subtitle for pending payments
             document.getElementById('successTitle').textContent = '¡Reserva Recibida!';
             document.getElementById('successSubtitle').innerHTML = 'Tu reserva está pendiente de confirmación de pago';
+            
+            // Show bank transfer details
+            document.getElementById('bankTransferDetails').style.display = 'block';
             
         } else {
             // Credit card with PayU - payment completed
@@ -719,6 +884,33 @@
                 });
             });
         });
+
+        // Copy account number function
+        function copyAccountNumber() {
+            const accountNumber = '45700002525';
+            
+            // Track copy action
+            gtag('event', 'cata_vino_paella_tapas_copy_account_thankyou', {
+                'event_category': 'event_engagement',
+                'event_label': 'bank_account_copy_thankyou'
+            });
+            
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                // Show success message
+                const span = document.querySelector('.account-number');
+                const originalText = span.textContent;
+                span.textContent = '¡Copiado!';
+                span.style.background = '#10B981';
+                
+                setTimeout(() => {
+                    span.textContent = originalText;
+                    span.style.background = '#F29F05';
+                }, 2000);
+            }).catch(function() {
+                // Fallback for older browsers
+                alert('Número de cuenta: 45700002525');
+            });
+        }
     </script>
 </body>
 </html>
