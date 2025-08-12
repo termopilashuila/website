@@ -429,6 +429,19 @@
             color: white;
         }
 
+        .guest-avatar.chef-photo {
+            background: transparent;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .guest-avatar.chef-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
         .guest-card h3 {
             font-family: 'Lora', Georgia, serif;
             font-size: 1.5rem;
@@ -853,8 +866,8 @@
                     <p class="guest-bio">Experto en vinos con más de 10 años de experiencia. Te guiará a través de una experiencia sensorial única, compartiendo conocimientos sobre maridajes, técnicas de cata y la fascinante cultura vinícola.</p>
                 </div>
                 <div class="guest-card">
-                    <div class="guest-avatar">
-                        <i class="fas fa-chef-hat"></i>
+                    <div class="guest-avatar chef-photo">
+                        <img src="../assets/images/eventos/cata-vino-paella-tapas/chef.png" alt="Chef Gentil De La Espriella" loading="lazy">
                     </div>
                     <h3>Gentil De La Espriella</h3>
                     <p class="guest-role">Chef Profesional</p>
@@ -1197,7 +1210,7 @@
                 });
                 
                 // Submit to Google Apps Script
-                const response = await fetch('https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbygFvKsTRLvwtxHsqXM5s2xRhh1NmWVazFoo77IrxCPyMJS0Z3WSe-2XNPII60wPnUl/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {

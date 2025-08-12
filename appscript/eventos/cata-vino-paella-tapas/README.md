@@ -193,8 +193,10 @@ gtag('event', 'cata_vino_paella_tapas_registration_success', {
 4. Who has access: Anyone
 5. Copy the deployment URL
 
+**Current Deployment URL**: https://script.google.com/macros/s/AKfycbygFvKsTRLvwtxHsqXM5s2xRhh1NmWVazFoo77IrxCPyMJS0Z3WSe-2XNPII60wPnUl/exec
+
 ### 4. Update Frontend Form
-Replace the form action URL in `eventos/cata-vino-paella-tapas.html` with the deployment URL.
+✅ **COMPLETED**: The form in `eventos/cata-vino-paella-tapas.html` has been updated with the deployment URL.
 
 ### 5. Test the Integration
 Use the provided test functions:
