@@ -32,7 +32,19 @@ FUENTES DEL SITIO (URL ABSOLUTAS):
 - Blog: https://termopilas.co/blog.html
 - Privacidad: https://termopilas.co/privacidad.html
 - WhatsApp redirección (sitio): https://termopilas.co/whatsapp.html
-- Motor Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml
+- Motor Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
+
+REFERENCIAS DEL BLOG (RESÚMENES BREVES):
+- Blog principal: https://termopilas.co/blog.html
+- Beneficios de los nibs de cacao para la salud: https://termopilas.co/blog/beneficios-nibs-cacao-salud.html — Superalimento rico en antioxidantes, minerales y compuestos bioactivos; beneficios cardiovasculares, cognitivos e inmunológicos; incluye CTAs a catálogo y WhatsApp.
+- Bowl de Nibs de Cacao (receta): https://termopilas.co/blog/nibs-cacao-parfait-bowl.html — Receta rápida de parfait bowl con nibs de cacao; ingredientes, variaciones y beneficios.
+- Del árbol a la barra (chocolate artesanal): https://termopilas.co/blog/del-arbol-a-la-barra-chocolate-artesanal.html — Proceso bean‑to‑bar en Termópilas: cultivo, fermentación, tostado, conchado y temperado.
+- Proceso de elaboración de vino artesanal: https://termopilas.co/blog/proceso-elaboracion-vino-artesanal.html — Vinificación con uva Isabella: cosecha, fermentaciones, crianza y perfil del vino.
+- Maridaje perfecto: vino rosé + platos del Huila: https://termopilas.co/blog/maridaje-perfecto-vino-rose-platos-tipicos-huila.html — Combina rosé con asado huilense, tilapia y achiras; incluye consejos de servicio.
+- Un día en el tour de vino y cacao: https://termopilas.co/blog/un-dia-en-nuestro-tour-de-vino-y-cacao.html — Recorrido completo por viñedo, bodega, cacao, taller de chocolate y cata.
+- Destinos imperdibles para visitar en Huila: https://termopilas.co/blog/destinos-imperdibles-visitar-huila-colombia.html — Guía de 7 destinos (Tatacoa, termales, cafés, San Agustín, etc.) con tips prácticos.
+- Lugares para comer en Rivera: https://termopilas.co/blog/lugares-para-comer-rivera.html — Selección de restaurantes locales con especialidades, horarios y contactos.
+- Restaurantes con domicilio en Rivera: https://termopilas.co/blog/restaurante-domicilio-rivera.html — Opciones de delivery con teléfonos, WhatsApp y mapas.
 
 DATOS CLAVE – TOUR VINO Y CACAO (para respuestas rápidas):
 - Info oficial del tour: https://termopilas.co/tour.html
@@ -48,7 +60,7 @@ DATOS CLAVE – TOUR VINO Y CACAO (para respuestas rápidas):
 - Contacto WhatsApp (reservas/pago): https://termopilas.co/whatsapp.html (tel: +57 314 342 8579)
 
 DATOS CLAVE – ALOJAMIENTO (para respuestas rápidas):
-- Reservas habitaciones: https://book.octorate.com/octobook/site/reservation/calendar.xhtml
+- Reservas habitaciones: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
 - Vista general: https://termopilas.co/alojamiento.html
 - Cabaña 1 — Máx $300.000; 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 2 terrazas, TV
 - Gemela 1 — Máx $300.000; 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
@@ -58,7 +70,7 @@ DATOS CLAVE – ALOJAMIENTO (para respuestas rápidas):
 - Habitación C — Máx $160.000; 2 pax; cama doble, baño privado, agua caliente, wifi
 - Habitación D — Máx $200.000; 4 pax; cama doble, sofá cama, baño privado, agua caliente, wifi
 - Habitación E — Máx $360.000; 6 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
-- Para informacióin de precios, fotos y disponibilidad, consulta Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml
+- Para informacióin de precios, fotos y disponibilidad, consulta Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
 
 DATOS CLAVE – CÓMO LLEGAR (para respuestas rápidas):
 - Página: https://termopilas.co/ubicacion.html
@@ -78,7 +90,7 @@ CAPACIDADES:
 - Recomendaciones: guías del blog y puntos de interés.
 
 CUANDO QUIERA RESERVAR:
-- Habitaciones → Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml
+- Habitaciones → Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
 - Eventos → landing específica (por ejemplo: https://termopilas.co/eventos/cata-vino-paella-tapas.html)
 - Si está indeciso: ofrece 2–3 opciones y diferencia clave.
 
@@ -99,7 +111,7 @@ EJEMPLOS RÁPIDOS:
   
   Claro. Te dejo disponibilidad al instante y opciones:
   
-  - Reservas: https://book.octorate.com/octobook/site/reservation/calendar.xhtml
+  - Reservas: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
   - Habitaciones y fotos: https://termopilas.co/alojamiento.html
   - Duda rápida: https://termopilas.co/whatsapp.html
   
@@ -151,7 +163,7 @@ EJEMPLOS RÁPIDOS:
 
 Listo para ayudarte a reservar. Aquí ves disponibilidad al instante:
 
-- Reservas: <https://book.octorate.com/octobook/site/reservation/calendar.xhtml>
+- Reservas: <https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES>
 - Habitaciones y fotos: <https://termopilas.co/alojamiento.html>
 - Amenities: Wi‑Fi, piscina, desayuno, aire, vista a viñedos
 
