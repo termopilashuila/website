@@ -373,7 +373,7 @@ EXPLAIN ANALYZE
 SELECT r.*, a.available_rooms 
 FROM rooms r 
 JOIN availability a ON r.id = a.room_id 
-WHERE a.date BETWEEN '2024-01-01' AND '2024-01-31'
+WHERE a.date BETWEEN '2025-01-01' AND '2025-01-31'
 AND a.available_rooms > 0;
 ```
 

@@ -9,7 +9,7 @@ const mockFormData = {
   nombres_organizacion: 'María García y Juan Pérez',
   email: 'test@example.com',
   telefono: '3001234567',
-  fecha_evento: '2024-06-15',
+  fecha_evento: '2025-06-15',
   hora_evento: 'Tarde (12:00 PM - 6:00 PM)',
   numero_invitados: '150',
   presupuesto: '$5,000,000 - $10,000,000',
@@ -31,7 +31,7 @@ const mockQuinceaneraData = {
   nombres_organizacion: 'María José González',
   email: 'quinceanos@example.com',
   telefono: '3009876543',
-  fecha_evento: '2024-08-20',
+  fecha_evento: '2025-08-20',
   hora_evento: 'Noche (6:00 PM - 12:00 AM)',
   numero_invitados: '200',
   presupuesto: '$10,000,000 - $20,000,000',
@@ -52,7 +52,7 @@ const mockRetiroData = {
   nombres_organizacion: 'Empresa ABC',
   email: 'retiro@empresaabc.com',
   telefono: '3005555555',
-  fecha_evento: '2024-09-10',
+  fecha_evento: '2025-09-10',
   hora_evento: 'Todo el día',
   numero_invitados: '50',
   presupuesto: '$2,000,000 - $5,000,000',
@@ -159,7 +159,7 @@ function testProcessTemplate() {
   try {
     // Test case 1: Basic template processing
     const template1 = 'Hello {{NAME}}, your event is on {{DATE}}.';
-    const replacements1 = { NAME: 'María', DATE: '2024-06-15' };
+    const replacements1 = { NAME: 'María', DATE: '2025-06-15' };
     const result1 = processTemplate(template1, replacements1);
     
     console.log('Test 1 - Basic template:');
@@ -167,7 +167,7 @@ function testProcessTemplate() {
     console.log('Replacements:', replacements1);
     console.log('Result:', result1);
     
-    if (result1 !== 'Hello María, your event is on 2024-06-15.') {
+    if (result1 !== 'Hello María, your event is on 2025-06-15.') {
       throw new Error('Basic template processing failed');
     }
     

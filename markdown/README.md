@@ -59,7 +59,7 @@ Each markdown file includes YAML frontmatter with:
 ---
 title: "Post Title"
 subtitle: "Optional subtitle"
-date: "2024-01-15"
+date: "2026-01-15"
 author: "Author Name"
 category: "Category"
 featured_image: "/assets/images/blog/post-slug/main.jpg"

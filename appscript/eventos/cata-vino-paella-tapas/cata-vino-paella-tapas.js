@@ -4,7 +4,7 @@
  * Sheet ID: 1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0
  * 
  * Event: Cata de Vinos, Paella y Tapas
- * Date: 6 de Septiembre 2024
+ * Date: 6 de Septiembre 2025
  * Price: $120,000 COP per person
  * Location: Finca Termópilas, Rivera, Huila
  */
@@ -100,7 +100,7 @@ function handleRequest(e) {
       data.paymentMethod,          // Método de pago preferido
       '120000',                    // Precio (fijo para este evento)
       'Cata de Vinos, Paella y Tapas', // Evento
-      '2024-09-06',                // Fecha del evento
+      '2025-09-06',                // Fecha del evento
       '15:00-19:00',               // Horario del evento
       'Pendiente',                 // Estado de pago
       'Pendiente',                 // Estado de confirmación
@@ -216,7 +216,7 @@ function sendEventNotificationEmail(data, timestamp) {
       <div style="background-color: #fdf6ea; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
         <h3 style="color: #333; margin-top: 0;">Detalles del Evento</h3>
         <p><strong>🍷 Evento:</strong> Cata de Vinos, Paella y Tapas</p>
-        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2024</p>
+        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2025</p>
         <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
         <p><strong>📍 Ubicación:</strong> Finca Termópilas, Rivera, Huila</p>
         <p><strong>💰 Precio:</strong> $120,000 COP por persona</p>
@@ -242,7 +242,7 @@ function sendEventNotificationEmail(data, timestamp) {
         <p style="margin-bottom: 15px;"><strong>Acciones Rápidas:</strong></p>
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
           <a href="https://docs.google.com/spreadsheets/d/1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0" style="display: inline-block; background-color: #F29F05; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Ver todas las reservas</a>
-          <a href="mailto:${data.email}?subject=Confirmación de Reserva - Cata de Vinos, Paella y Tapas&body=Hola ${data.firstName},%0D%0A%0D%0AGracias por tu reserva para nuestro evento Cata de Vinos, Paella y Tapas.%0D%0A%0D%0ADetalles:%0D%0AFecha: Viernes, 6 de Septiembre 2024%0D%0AHorario: 3:00 PM - 7:00 PM%0D%0AUbicación: Finca Termópilas, Rivera, Huila%0D%0A%0D%0ASaludos,%0D%0AEquipo Finca Termópilas" style="display: inline-block; background-color: #4285f4; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Enviar confirmación</a>
+          <a href="mailto:${data.email}?subject=Confirmación de Reserva - Cata de Vinos, Paella y Tapas&body=Hola ${data.firstName},%0D%0A%0D%0AGracias por tu reserva para nuestro evento Cata de Vinos, Paella y Tapas.%0D%0A%0D%0ADetalles:%0D%0AFecha: Viernes, 6 de Septiembre 2025%0D%0AHorario: 3:00 PM - 7:00 PM%0D%0AUbicación: Finca Termópilas, Rivera, Huila%0D%0A%0D%0ASaludos,%0D%0AEquipo Finca Termópilas" style="display: inline-block; background-color: #4285f4; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Enviar confirmación</a>
           <a href="https://wa.me/57${data.phone.replace(/[^0-9]/g, '')}?text=Hola ${data.firstName}, gracias por tu reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre. Te confirmaremos todos los detalles pronto." style="display: inline-block; background-color: #25D366; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; text-align: center; min-width: 120px;">Contactar por WhatsApp</a>
         </div>
       </div>
@@ -256,7 +256,7 @@ function sendEventNotificationEmail(data, timestamp) {
     const plainBody = `Nueva reserva para Cata de Vinos, Paella y Tapas:
     
 Evento: Cata de Vinos, Paella y Tapas
-Fecha: Viernes, 6 de Septiembre 2024
+Fecha: Viernes, 6 de Septiembre 2025
 Horario: 3:00 PM - 7:00 PM
 Ubicación: Finca Termópilas, Rivera, Huila
 Precio: $120,000 COP por persona
@@ -359,7 +359,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       <div style="background-color: #fdf6ea; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
         <h3 style="color: #333; margin-top: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;">🍷 Detalles del Evento</h3>
         <p><strong>Evento:</strong> Cata de Vinos, Paella y Tapas</p>
-        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2024</p>
+        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2025</p>
         <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
         <p><strong>📍 Ubicación:</strong> Finca Termópilas, Rivera, Huila</p>
         <p><strong>💰 Precio:</strong> $120,000 COP por persona</p>
@@ -428,7 +428,7 @@ Hola ${data.firstName},
 ¡Gracias por tu interés en participar en nuestra Cata de Vinos, Paella y Tapas!
 
 Detalles del Evento:
-- Fecha: Viernes, 6 de Septiembre 2024
+- Fecha: Viernes, 6 de Septiembre 2025
 - Horario: 3:00 PM - 7:00 PM
 - Ubicación: Finca Termópilas, Rivera, Huila
 - Precio: $120,000 COP por persona
@@ -629,7 +629,7 @@ function generateSuccessPage(data) {
       
       <div class="event-details">
         <h2>🍷 Cata de Vinos, Paella y Tapas</h2>
-        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2024</p>
+        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2025</p>
         <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
         <p><strong>📍 Ubicación:</strong> Finca Termópilas, Rivera, Huila</p>
         <p><strong>💰 Precio:</strong> <span class="highlight">$120,000 COP</span></p>

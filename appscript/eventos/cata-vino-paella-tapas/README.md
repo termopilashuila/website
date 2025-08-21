@@ -6,7 +6,7 @@ Google Apps Script handler for processing reservations for the "Cata de Vinos, P
 ## Configuration
 - **Script File**: `cata-vino-paella-tapas.js`
 - **Google Sheet ID**: `1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0`
-- **Event Date**: September 6, 2024 (Friday)
+- **Event Date**: September 6, 2025 (Friday)
 - **Event Time**: 3:00 PM - 7:00 PM
 - **Price**: $120,000 COP per person
 - **Location**: Finca Termópilas, Rivera, Huila
