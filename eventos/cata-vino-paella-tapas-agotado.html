@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍷 Evento Agotado – Lista de Espera | Cata de Vinos, Tapas y Paella</title>
+    <meta name="description" content="El evento está agotado. Déjanos tus datos para avisarte de nuevas fechas y liberaciones de cupos.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../styles/brand-tokens.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="🍷 Cata de Vinos, Tapas y Paella – Evento Agotado">
+    <meta property="og:description" content="Evento agotado. Únete a la lista de espera para próximas fechas.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                        url('../assets/images/eventos/cata-vino-paella-tapas/main.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: var(--space-8);
+        }
+
+        .hero h1 {
+            font-family: var(--font-brand);
+            font-size: clamp(2.25rem, 5vw, 3.25rem);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-4);
+            color: #fdf6ea;
+        }
+
+        .soldout-badge {
+            background: #ef4444;
+            color: white;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-semibold);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .hero-cta {
+            background: #F29F05;
+            color: #fdf6ea;
+            padding: 0.85rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-cta:hover {
+            background: #E6920C;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .section {
+            padding: var(--space-14) 0;
+        }
+
+        .section-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #6B7280;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .notice-card {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            margin: 0 auto var(--space-8);
+            max-width: 800px;
+        }
+
+        /* Waitlist Form */
+        .waitlist {
+            background: #fdf6ea;
+        }
+
+        .form-container {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--space-10);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #F29F05;
+            box-shadow: 0 0 0 3px rgba(242, 159, 5, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #F29F05;
+            color: #fdf6ea;
+            padding: 0.85rem 1.8rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover { background: #E6920C; transform: translateY(-2px); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .success-message {
+            display: none;
+            margin-top: var(--space-6);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #065f46;
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+        }
+
+        .contact {
+            background: #000000;
+            color: #fdf6ea;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: var(--font-semibold);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: var(--transition-base);
+        }
+        .whatsapp-btn:hover { background: #128C7E; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '760911966545667');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="soldout-badge">
+                <i class="fas fa-circle-exclamation"></i> Evento Agotado
+            </div>
+            <h1>🍷 Cata de Vinos, Tapas y Paella</h1>
+            <p class="hero-subtitle">Gracias por tu gran interés. Ya no estamos recibiendo pagos para esta fecha. Déjanos tus datos y te avisamos si se libera un cupo o para próximas fechas.</p>
+            <a href="#lista-espera" class="hero-cta"
+               onclick="gtag('event', 'cata_vino_paella_tapas_closed_cta', {event_category: 'event_engagement', event_label: 'waitlist_cta'});">
+                <i class="fas fa-user-plus"></i> Unirme a la Lista de Espera
+            </a>
+        </div>
+    </section>
+
+    <!-- Notice -->
+    <section class="section">
+        <div class="container">
+            <div class="notice-card">
+                <p><strong>Importante:</strong> No estamos procesando pagos para este evento. Usaremos tus datos únicamente para notificarte sobre <strong>liberación de cupos</strong> o <strong>nuevas fechas</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form -->
+    <section class="section waitlist" id="lista-espera">
+        <div class="container">
+            <h2 class="section-title">Únete a la Lista de Espera</h2>
+            <p class="section-subtitle">Déjanos tus datos y te escribimos cuando haya cupos disponibles o abramos nueva fecha.</p>
+
+            <div class="form-container">
+                <form id="waitlist-form">
+                    <div class="form-group">
+                        <label for="firstName">Nombre *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Apellido *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Tu apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+57 300 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="people">¿Para cuántas personas? *</label>
+                        <select id="people" name="people" required>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5 personas</option>
+                        </select>
+                    </div>
+
+                    <!-- Hidden fields to satisfy Apps Script validation and tagging -->
+                    <input type="hidden" name="paymentMethod" value="card">
+                    <input type="hidden" name="source" value="Website-Waitlist-Closed">
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Enviar Mis Datos
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message">
+                    <strong>✅ ¡Gracias! Te agregamos a la lista de espera.</strong>
+                    <p>Te avisaremos por WhatsApp o email en cuanto haya novedades. No es necesario que hagas nada más.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title" style="color: white;">¿Tienes Preguntas?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.25rem; color: rgba(253,246,234,0.85);">Escríbenos y con gusto te ayudamos.</p>
+            <a href="https://wa.me/573143428579?text=Hola,%20quiero%20unirme%20a%20la%20lista%20de%20espera%20para%20la%20Cata%20de%20Vinos" 
+               class="whatsapp-btn" target="_blank" rel="noopener"
+               onclick="gtag('event', 'cata_vino_paella_tapas_closed_whatsapp', {event_category: 'event_engagement', event_label: 'waitlist_whatsapp'});">
+                <i class="fab fa-whatsapp"></i>
+                Escribir por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Track page view for closed variant
+        gtag('event', 'cata_vino_paella_tapas_closed_view', {
+            event_category: 'event_engagement',
+            event_label: 'closed_page_view'
+        });
+
+        // Waitlist submit handler (no payment redirection)
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.phone || !data.email) {
+                alert('Por favor completa todos los campos obligatorios.');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Por favor ingresa un email válido');
+                return;
+            }
+
+            const selectedPeople = parseInt(data.people, 10) || 1;
+            if (selectedPeople < 1 || selectedPeople > 5) {
+                alert('Selecciona el número de personas');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            try {
+                // Track attempt
+                gtag('event', 'cata_vino_paella_tapas_waitlist_attempt', {
+                    event_category: 'event_engagement',
+                    event_label: 'waitlist_attempt',
+                    people: selectedPeople
+                });
+
+                // Persist minimal registration data locally (for potential thank-you personalization if needed)
+                try {
+                    localStorage.setItem('eventRegistration', JSON.stringify({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        phone: data.phone,
+                        email: data.email,
+                        paymentMethod: 'card',
+                        people: selectedPeople,
+                        source: 'Website-Waitlist-Closed'
+                    }));
+                } catch (_) {}
+
+                // Always send to existing Apps Script endpoint
+                await fetch('https://script.google.com/macros/s/AKfycbxGDFaaLguuqId4kGaiNewXYLt-T3gybNWQYL8u2hmJ4mjfscVPVJ-BG4WRD9qdSiuh/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        phone: data.phone,
+                        email: data.email,
+                        paymentMethod: 'card',
+                        people: selectedPeople,
+                        source: 'Website-Waitlist-Closed'
+                    })
+                });
+
+                // Track success
+                gtag('event', 'cata_vino_paella_tapas_waitlist_success', {
+                    event_category: 'event_engagement',
+                    event_label: 'waitlist_completed'
+                });
+
+                // Show success inline
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+
+            } catch (error) {
+                console.error('Error submitting waitlist:', error);
+                gtag('event', 'cata_vino_paella_tapas_waitlist_error', {
+                    event_category: 'event_engagement',
+                    event_label: 'waitlist_failed',
+                    error_type: (error && error.message) || 'unknown_error'
+                });
+                alert('Ocurrió un error al enviar tus datos. Por favor intenta nuevamente.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                return;
+            }
+
+            // Re-enable button but keep success visible
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        });
+    </script>
+</body>
+</html>
+
+
