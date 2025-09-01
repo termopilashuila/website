@@ -71,6 +71,8 @@ function handleRequest(e) {
     if (!data.paymentMethod) {
       data.paymentMethod = data.metodoDePago || data.metodo_pago || data.payment || '';
     }
+    // Normalizar número de personas (opcional, por compatibilidad)
+    const DEFAULT_PRICE_PER_PERSON = 120000;
 
     // Normalizar campos críticos por si vienen en parámetros directos o con espacios
     data.firstName = (data.firstName || (e && e.parameter && e.parameter.firstName) || '').toString().trim();
@@ -78,6 +80,12 @@ function handleRequest(e) {
     data.phone = (data.phone || (e && e.parameter && e.parameter.phone) || '').toString().trim();
     data.email = (data.email || (e && e.parameter && e.parameter.email) || '').toString().trim();
     data.paymentMethod = (data.paymentMethod || (e && e.parameter && e.parameter.paymentMethod) || '').toString().trim();
+    // Aceptar people desde payload o parámetros, con fallback a 1
+    var peopleRaw = (data.people != null ? data.people : (e && e.parameter && e.parameter.people));
+    var people = parseInt((peopleRaw || '1').toString().trim(), 10);
+    if (!people || people < 1) people = 1;
+    if (people > 5) people = 5; // límite de seguridad segun landing
+    var totalValue = DEFAULT_PRICE_PER_PERSON * people;
 
     // Validate required fields
     if (!validateEventRegistrationData(data)) {
@@ -87,7 +95,7 @@ function handleRequest(e) {
     // Crear una marca de tiempo para la reserva
     const timestamp = new Date();
     
-    // Create headers if they don't exist
+    // Create headers if they don't exist and ensure extended columns
     createHeadersIfNeeded(sheet);
     
     // Agregar los datos a la hoja en el orden especificado
@@ -98,14 +106,16 @@ function handleRequest(e) {
       data.phone,                  // Teléfono
       data.email,                  // Email
       data.paymentMethod,          // Método de pago preferido
-      '120000',                    // Precio (fijo para este evento)
+      '120000',                    // Precio (fijo por persona)
       'Cata de Vinos, Paella y Tapas', // Evento
       '2025-09-06',                // Fecha del evento
       '15:00-19:00',               // Horario del evento
       'Pendiente',                 // Estado de pago
       'Pendiente',                 // Estado de confirmación
       '',                          // Notas adicionales
-      data.source || 'Website'     // Fuente de la reserva
+      data.source || 'Website',    // Fuente de la reserva
+      people,                      // Personas
+      totalValue                   // Total
     ]);
     
     // Asegurar escritura antes de enviar correos
@@ -159,7 +169,7 @@ function validateEventRegistrationData(data) {
  * Función para crear los encabezados de la hoja si no existen
  */
 function createHeadersIfNeeded(sheet) {
-  const headers = [
+  const baseHeaders = [
     'Timestamp',
     'Nombre',
     'Apellido', 
@@ -177,16 +187,34 @@ function createHeadersIfNeeded(sheet) {
   ];
   
   // Check if the first row has headers
-  const firstRow = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
+  const firstRow = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), baseHeaders.length)).getValues()[0];
   const hasHeaders = firstRow.some(cell => cell && cell.toString().trim() !== '');
   
   if (!hasHeaders) {
+    const headers = baseHeaders.concat(['Personas', 'Total']);
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
     // Format header row
     const headerRange = sheet.getRange(1, 1, 1, headers.length);
     headerRange.setFontWeight('bold');
     headerRange.setBackground('#F29F05');
     headerRange.setFontColor('white');
+  } else {
+    // Ensure extended headers exist; if missing, append them
+    const existingHeaders = firstRow.map(function(h){ return (h || '').toString().trim(); });
+    var changed = false;
+    var nextCol = existingHeaders.length;
+    function ensureHeader(name) {
+      if (existingHeaders.indexOf(name) === -1) {
+        nextCol = sheet.getLastColumn() + 1;
+        sheet.getRange(1, nextCol).setValue(name).setFontWeight('bold').setBackground('#F29F05').setFontColor('white');
+        changed = true;
+      }
+    }
+    ensureHeader('Personas');
+    ensureHeader('Total');
+    if (changed) {
+      SpreadsheetApp.flush();
+    }
   }
 }
 

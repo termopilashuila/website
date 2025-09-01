@@ -664,14 +664,14 @@
                         <strong>Titular:</strong> Finca Termópilas
                     </div>
                     <div class="bank-item">
-                        <strong>Valor a Transferir:</strong> $120.000 COP
+                        <strong>Valor a Transferir:</strong> <span id="transferAmount">$120.000 COP</span>
                     </div>
                 </div>
                 <div class="bank-instructions">
                     <div class="instruction-item">
                         <i class="fas fa-mobile-alt"></i>
                         <div>
-                            <strong>Paso 1:</strong> Realiza la transferencia bancaria por $120.000 COP
+                            <strong>Paso 1:</strong> Realiza la transferencia bancaria por <span id="transferAmountInline">$120.000 COP</span>
                         </div>
                     </div>
                     <div class="instruction-item">
@@ -836,6 +836,7 @@
         // Check payment status from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const paymentStatus = urlParams.get('payment');
+        const PRICE_PER_PERSON = 120000;
         
         // Handle different payment statuses
         const paymentStatusDiv = document.getElementById('paymentStatus');
@@ -855,6 +856,21 @@
             
             // Show bank transfer details
             document.getElementById('bankTransferDetails').style.display = 'block';
+            
+            // Compute and display dynamic transfer amount based on saved registration
+            try {
+                const regRaw = localStorage.getItem('eventRegistration');
+                if (regRaw) {
+                    const reg = JSON.parse(regRaw);
+                    const people = parseInt(reg.people, 10) || 1;
+                    const total = PRICE_PER_PERSON * people;
+                    const formatted = new Intl.NumberFormat('es-CO').format(total);
+                    const transferAmount = document.getElementById('transferAmount');
+                    const transferAmountInline = document.getElementById('transferAmountInline');
+                    if (transferAmount) transferAmount.textContent = `$${formatted} COP`;
+                    if (transferAmountInline) transferAmountInline.textContent = `$${formatted} COP`;
+                }
+            } catch (_) {}
             
         } else {
             // Credit card with PayU - payment completed

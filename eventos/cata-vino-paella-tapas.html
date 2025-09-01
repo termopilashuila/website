@@ -1054,10 +1054,21 @@
                     </div>
                     
                     <div class="form-group">
+                        <label for="people">Número de Personas *</label>
+                        <select id="people" name="people" required>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5 personas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label>Método de Pago Preferido *</label>
                         <div class="payment-methods">
                             <div class="payment-option recommended" onclick="selectPayment('card')">
-                                <input type="radio" id="card" name="paymentMethod" value="card" required>
+                                <input type="radio" id="card" name="paymentMethod" value="card" required checked>
                                 <label for="card">
                                     <i class="fas fa-credit-card"></i> Tarjeta de Crédito con PayU
                                     <span class="payment-badge">Recomendado</span>
@@ -1145,6 +1156,37 @@
     </section>
 
     <script>
+        const PRICE_PER_PERSON = 120000;
+        let payuLinkByPeople = {};
+
+        // Load PayU links by people count from JSON
+        (function loadPayuLinks() {
+            fetch('payu-links.json')
+                .then(r => r.json())
+                .then(items => {
+                    items.forEach(item => {
+                        // JSON keys are capitalized as per file: Personas, URL, Valor
+                        payuLinkByPeople[item.Personas] = item;
+                    });
+                })
+                .catch(() => {
+                    payuLinkByPeople = {};
+                });
+        })();
+
+        // Default selection: PayU (card)
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardOption = document.querySelector('.payment-option.recommended');
+            if (cardOption) cardOption.classList.add('selected');
+            const cardRadio = document.getElementById('card');
+            if (cardRadio) cardRadio.checked = true;
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> Proceder al Pago con PayU';
+            }
+        });
+
         // Payment method selection
         function selectPayment(method) {
             document.querySelectorAll('.payment-option').forEach(option => {
@@ -1179,6 +1221,12 @@
                 alert('Por favor completa todos los campos obligatorios');
                 return;
             }
+            // Validate people selection
+            const selectedPeople = parseInt(data.people, 10);
+            if (!selectedPeople || selectedPeople < 1 || selectedPeople > 5) {
+                alert('Selecciona el número de personas');
+                return;
+            }
             
             // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1204,35 +1252,49 @@
                 gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
                     'event_category': 'event_engagement',
                     'event_label': 'registration_attempt',
-                    'payment_method': data.paymentMethod
+                    'payment_method': data.paymentMethod,
+                    'people': selectedPeople
                 });
                 
                 // Submit to Google Apps Script first - ALWAYS submit data regardless of payment method
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzlsgL2wUyAsdvorfZ0g2rfBb9OASSPWL-gT431glkm4eg8UqFRZDy2BnHund7FF2ZG/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxGDFaaLguuqId4kGaiNewXYLt-T3gybNWQYL8u2hmJ4mjfscVPVJ-BG4WRD9qdSiuh/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({ ...data, people: selectedPeople })
                 });
                 
                 // Track successful submission
                 gtag('event', 'cata_vino_paella_tapas_registration_success', {
                     'event_category': 'event_engagement',
                     'event_label': 'registration_completed',
-                    'value': 120000,
+                    'value': PRICE_PER_PERSON * selectedPeople,
                     'currency': 'COP',
-                    'payment_method': data.paymentMethod
+                    'payment_method': data.paymentMethod,
+                    'people': selectedPeople
                 });
                 
                 // Also track as conversion for Google Ads
                 gtag('event', 'conversion', {
                     'send_to': 'G-2406CNRCX9',
-                    'value': 120000,
+                    'value': PRICE_PER_PERSON * selectedPeople,
                     'currency': 'COP'
                 });
                 
+                // Persist minimal registration data locally for thank-you page personalization
+                try {
+                    localStorage.setItem('eventRegistration', JSON.stringify({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        phone: data.phone,
+                        email: data.email,
+                        paymentMethod: data.paymentMethod,
+                        people: selectedPeople
+                    }));
+                } catch (_) {}
+
                 // Handle payment redirection based on method
                 if (data.paymentMethod === 'card') {
                     // Track PayU redirection
@@ -1241,8 +1303,10 @@
                         'event_label': 'payu_gateway_redirect'
                     });
                     
-                    // For credit card: redirect to PayU payment gateway
-                    window.location.href = 'https://biz.payulatam.com/L0faafc413D9A99';
+                    // For credit card: redirect to PayU payment gateway (URL depends on number of people)
+                    const entry = payuLinkByPeople[selectedPeople];
+                    const payuUrl = entry && entry.URL ? entry.URL : 'https://biz.payulatam.com/L0faafc413D9A99';
+                    window.location.href = payuUrl;
                 } else {
                     // For bank transfer: redirect to thank you page after data is submitted
                     window.location.href = 'cata-vino-paella-tapas-gracias.html?payment=pending';
