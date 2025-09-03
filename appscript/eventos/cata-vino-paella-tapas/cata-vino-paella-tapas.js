@@ -157,7 +157,7 @@ function validateEventRegistrationData(data) {
   }
   
   // Validate payment method
-  const validPaymentMethods = ['transfer', 'card'];
+  const validPaymentMethods = ['transfer', 'card', 'waitList'];
   if (!validPaymentMethods.includes(data.paymentMethod)) {
     return false;
   }
@@ -227,7 +227,9 @@ function sendEventNotificationEmail(data, timestamp) {
     const emailAddresses = ["termopilashuila@gmail.com"];
     
     // Asunto del correo
-    const subject = `${data.firstName} ${data.lastName} - Nueva Reserva - Cata de Vinos, Paella y Tapas`;
+    const subject = data.paymentMethod === 'waitList'
+      ? `${data.firstName} ${data.lastName} - Nueva Lista de Espera - Cata de Vinos, Paella y Tapas`
+      : `${data.firstName} ${data.lastName} - Nueva Reserva - Cata de Vinos, Paella y Tapas`;
     
     // URL del logo
     const logoUrl = "https://termopilas.co/assets/images/logo.png";
@@ -258,6 +260,12 @@ function sendEventNotificationEmail(data, timestamp) {
         <p><strong>Teléfono:</strong> <a href="tel:${data.phone}" style="color: #F29F05;">${data.phone}</a></p>
         <p><strong>Método de pago preferido:</strong> ${getPaymentMethodText(data.paymentMethod)}</p>
       </div>
+      ${data.paymentMethod === 'waitList' ? `
+      <div style="background-color: #e8f5e9; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h4 style="color: #155724; margin-top: 0;"><i class="fas fa-user-clock"></i> Inscripción en Lista de Espera</h4>
+        <p style="color: #155724; margin-bottom: 0;">El evento está agotado. El usuario desea ser notificado si se liberan cupos o se abre nueva fecha.</p>
+      </div>
+      ` : ''}
       
       ${data.paymentMethod === 'transfer' ? `
       <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
@@ -281,7 +289,7 @@ function sendEventNotificationEmail(data, timestamp) {
     </div>`;
     
     // Versión de texto plano como respaldo
-    const plainBody = `Nueva reserva para Cata de Vinos, Paella y Tapas:
+    const plainBody = `${data.paymentMethod === 'waitList' ? 'Nueva inscripción a lista de espera' : 'Nueva reserva'} para Cata de Vinos, Paella y Tapas:
     
 Evento: Cata de Vinos, Paella y Tapas
 Fecha: Viernes, 6 de Septiembre 2025
@@ -356,7 +364,9 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       return;
     }
     // Asunto del correo para el usuario
-    const subject = `Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas`;
+    const subject = data.paymentMethod === 'waitList'
+      ? `Lista de Espera Confirmada - Cata de Vinos, Tapas y Paella`
+      : `Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas`;
     
     // URL del logo
   const logoUrl = "https://termopilas.co/assets/images/logo.png";
@@ -369,7 +379,38 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
     const whatsappUrl = `https://wa.me/573143428579?text=${whatsappMessage}`;
     
     // Contenido HTML del correo para el usuario
-    const htmlBody = `
+    const htmlBody = data.paymentMethod === 'waitList' ? `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="${logoUrl}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
+        <h2 style="color: #F29F05; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 10px;">¡Gracias por unirte a la lista de espera!</h2>
+      </div>
+      <div style="background-color: #e8f5e9; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #27ae60;">
+        <p style="margin: 0; color: #155724; font-weight: bold;">✅ Te avisaremos si se libera un cupo o abrimos nueva fecha.</p>
+      </div>
+      <p>Hola <strong>${data.firstName}</strong>,</p>
+      <p>Tu registro a la lista de espera para nuestra <strong>Cata de Vinos, Tapas y Paella</strong> fue recibido correctamente.</p>
+      <div style="background-color: #fdf6ea; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <h3 style="color: #333; margin-top: 0;">Detalles del Evento</h3>
+        <p><strong>📅 Fecha:</strong> Viernes, 6 de Septiembre 2025</p>
+        <p><strong>🕒 Horario:</strong> 3:00 PM - 7:00 PM</p>
+        <p><strong>📍 Ubicación:</strong> Finca Termópilas, Rivera, Huila</p>
+        <p><strong>💰 Precio:</strong> $120,000 COP por persona</p>
+      </div>
+      <p>Nos pondremos en contacto por WhatsApp o email en cuanto haya novedades.</p>
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;">
+        <h4 style="color: #333; margin-top: 0;">¿Tienes preguntas?</h4>
+        <p style="margin-bottom: 10px;">Escríbenos y con gusto te ayudamos.</p>
+        <p style="margin: 5px 0;"><strong>WhatsApp:</strong> +573143428579</p>
+        <p style="margin: 5px 0;"><strong>Email:</strong> termopilashuila@gmail.com</p>
+      </div>
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="https://termopilas.co/eventos/cata-vino-paella-tapas.html" style="display: inline-block; background-color: #F29F05; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 5px; font-weight: 600;">Ver el evento</a>
+      </div>
+      <div style="margin-top: 30px; font-size: 12px; color: #777; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
+        <p style="margin: 5px 0;">Este es un correo automático. Fecha de registro: ${formatDateSpanish(timestamp)}</p>
+      </div>
+    </div>` : `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
       <!-- Logo y Encabezado -->
       <div style="text-align: center; margin-bottom: 20px;">
@@ -449,7 +490,23 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
     </div>`;
     
     // Versión de texto plano como respaldo
-    const plainBody = `¡Reserva de Interés Recibida!
+    const plainBody = data.paymentMethod === 'waitList' ? `¡Lista de Espera Recibida!
+
+Hola ${data.firstName},
+
+Gracias por unirte a la lista de espera para nuestra Cata de Vinos, Tapas y Paella. Te avisaremos si se liberan cupos o si abrimos una nueva fecha.
+
+Detalles del Evento:
+- Fecha: Viernes, 6 de Septiembre 2025
+- Horario: 3:00 PM - 7:00 PM
+- Ubicación: Finca Termópilas, Rivera, Huila
+- Precio: $120,000 COP por persona
+
+¿Tienes preguntas?
+- WhatsApp: +573143428579
+- Email: termopilashuila@gmail.com
+
+Fecha de registro: ${formatDateSpanish(timestamp)}` : `¡Reserva de Interés Recibida!
 
 Hola ${data.firstName},
 
@@ -544,6 +601,8 @@ function getPaymentMethodText(paymentMethod) {
       return 'Transferencia Bancaria';
     case 'card':
       return 'Tarjeta de Crédito';
+    case 'waitList':
+      return 'Lista de Espera';
     default:
       return paymentMethod;
   }

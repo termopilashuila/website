@@ -333,7 +333,7 @@
                     </div>
 
                     <!-- Hidden fields to satisfy Apps Script validation and tagging -->
-                    <input type="hidden" name="paymentMethod" value="card">
+                    <input type="hidden" name="paymentMethod" value="waitList">
                     <input type="hidden" name="source" value="Website-Waitlist-Closed">
 
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -415,14 +415,14 @@
                         lastName: data.lastName,
                         phone: data.phone,
                         email: data.email,
-                        paymentMethod: 'card',
+                        paymentMethod: 'waitList',
                         people: selectedPeople,
                         source: 'Website-Waitlist-Closed'
                     }));
                 } catch (_) {}
 
                 // Always send to existing Apps Script endpoint
-                await fetch('https://script.google.com/macros/s/AKfycbxGDFaaLguuqId4kGaiNewXYLt-T3gybNWQYL8u2hmJ4mjfscVPVJ-BG4WRD9qdSiuh/exec', {
+                await fetch('https://script.google.com/macros/s/AKfycbxV0fclcsSoMM2hib0fDqOMup56YoQqebRzR4RFsINsaTQZtwrokwSeDjd4OSGC2ffI/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
@@ -431,7 +431,7 @@
                         lastName: data.lastName,
                         phone: data.phone,
                         email: data.email,
-                        paymentMethod: 'card',
+                        paymentMethod: 'waitList',
                         people: selectedPeople,
                         source: 'Website-Waitlist-Closed'
                     })

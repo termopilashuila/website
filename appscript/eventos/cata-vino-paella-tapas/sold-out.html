@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Lista de Espera Confirmada! - Cata de Vinos, Tapas y Paella | Finca Termópilas</title>
+    <meta name="description" content="Gracias por unirte a la lista de espera. Te avisaremos si se liberan cupos o abrimos nuevas fechas.">
+
+    <link rel="icon" href="https://termopilas.co/assets/images/favicon.png" type="image/png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #fdf6ea 0%, #f4e4c1 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(135deg, #F29F05 0%, #E6920C 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+        .icon { font-size: 64px; margin-bottom: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .subtitle { font-size: 1.1rem; opacity: 0.95; }
+        .content { padding: 40px; }
+        .card {
+            background: #fdf6ea;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #F29F05;
+        }
+        h2 { color: #F29F05; margin-bottom: 15px; font-size: 1.6rem; }
+        .buttons { margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .button {
+            display: inline-flex; align-items: center; justify-content: center;
+            background-color: #F29F05; color: white; padding: 12px 22px; text-decoration: none;
+            border-radius: 50px; transition: all 0.3s ease; font-weight: 600; font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(242, 159, 5, 0.3);
+        }
+        .button:hover { background-color: #E6920C; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(242, 159, 5, 0.4); }
+        .whatsapp-btn { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        .footer-note { margin-top: 30px; padding-top: 25px; border-top: 2px solid #f0f0f0; font-size: 0.95rem; color: #666; }
+        @media (max-width: 768px) { .button { width: 100%; max-width: 300px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">🍷⏳</div>
+            <h1>¡Estás en la Lista de Espera!</h1>
+            <p class="subtitle">Te avisaremos apenas haya novedades</p>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <h2>🍷 Cata de Vinos, Tapas y Paella</h2>
+                <p>El evento actual está <strong>agotado</strong>. Te notificaremos por <strong>WhatsApp</strong> o <strong>email</strong> si se liberan cupos o abrimos una nueva fecha.</p>
+            </div>
+
+            <div class="buttons">
+                <a href="https://wa.me/573143428579?text=Hola,%20estoy%20en%20lista%20de%20espera%20para%20la%20Cata%20de%20Vinos" class="button whatsapp-btn">Escribir por WhatsApp</a>
+                <a href="https://termopilas.co" class="button">Volver a Inicio</a>
+            </div>
+
+            <div class="footer-note">
+                <p>Gracias por tu interés. ¡Esperamos verte pronto en Finca Termópilas!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
