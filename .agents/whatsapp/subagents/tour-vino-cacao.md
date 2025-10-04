@@ -19,11 +19,6 @@ REGLAS:
 
 - fecha (o fin de semana), número de personas, horario preferido
 
-## Herramientas
-
-- `tour.get_schedule`
-- `tour.get_pricing`
-- `common.get_location`
 
 ## Plantillas (WhatsApp)
 
@@ -48,21 +43,13 @@ REGLAS:
 - Precios por persona: $50.000 COP (2–5 personas) | $40.000 COP (6–20 personas)
 - Ruta/Paradas: viñedos, jardín zen, miradores, bosque de cacao, Río Frío, taller de chocolate, jardín de orquídeas, desfiladero, cata de vinos
 - Incluye: degustación de uvas y cacao, chocolates (nibs/chocolatinas/mesa/fresas), una copa de vino, hidratación
+- Fotos y detalles: https://termopilas.co/tour
 - Ubicación: Finca Termópilas, Rivera, Huila, Colombia
 - Pago: Bancolombia Ahorros 457 000025 25
-- Contacto WhatsApp (reservas/pago): https://termopilas.co/whatsapp.html (tel: +57 314 342 8579)
 
 ## Plantillas de Respuesta (WhatsApp)
 
-### 3) Tours
-
-Tour de vino y cacao. Agenda y reserva aquí:
-
-- Detalles: <https://termopilas.co/tour.html>
-- Precio: $50.000 p/p (2–5) | $40.000 p/p (6–20)
-- Fechas/horarios: 1er y 3er fds; Sáb 4:00 PM, Dom 9:00 AM (duración ~2h)
-- Ruta: viñedo, cacao, río, desfiladero y cata de vinos
-- Pago: Bancolombia Ahorros 457 000025 25
+### 3) Pago
 
 Enviar por favor imagen con el comprobante de pago
 
