@@ -17,8 +17,8 @@ REGLAS:
 
 ENLACES CLAVE:
 - Reservas (PMS): https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
-- Alojamiento: https://termopilas.co/alojamiento
-- Ubicación: https://termopilas.co/ubicacion
+- Alojamiento: https://termopilas.co/alojamiento.html
+- Ubicación: https://termopilas.co/ubicacion.html
 ```
 
 ## Slots
@@ -37,8 +37,8 @@ ENLACES CLAVE:
 
 - Listo para ayudarte con disponibilidad y reserva:
   - Reservas al instante (PMS): <https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES>
-  - Fotos y detalles: <https://termopilas.co/alojamiento>
-  - Ubicación: <https://termopilas.co/ubicacion>
+  - Fotos y detalles: <https://termopilas.co/alojamiento.html>
+  - Ubicación: <https://termopilas.co/ubicacion.html>
 - ¿Para qué fechas y cuántas personas?
 
 - Si hay descuentos vigentes: “Tenemos promo este mes: [resumen corto]. ¿La aprovechas para tus fechas?”
@@ -50,12 +50,12 @@ ENLACES CLAVE:
 ## DATOS CLAVE – ALOJAMIENTO (para respuestas rápidas):
 - Reservas habitaciones: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
 - Vista general: https://termopilas.co/alojamiento.html
-- Cabaña 1 — Máx $300.000; 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 2 terrazas, TV
-- Gemela 1 — Máx $300.000; 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
-- Gemela 2 — Máx $300.000; 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
-- Habitación A — Máx $240.000; 4 pax; camas dobles, baño privado, agua caliente, wifi
-- Habitación B — Máx $240.000; 4 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
-- Habitación C — Máx $160.000; 2 pax; cama doble, baño privado, agua caliente, wifi
-- Habitación D — Máx $200.000; 4 pax; cama doble, sofá cama, baño privado, agua caliente, wifi
-- Habitación E — Máx $360.000; 6 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
-- Para informacióin de precios, fotos y disponibilidad, consulta Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
+- Cabaña 1 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 2 terrazas, TV
+- Gemela 1 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
+- Gemela 2 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
+- Habitación A — 4 pax; camas dobles, baño privado, agua caliente, wifi
+- Habitación B — 4 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
+- Habitación C — 2 pax; cama doble, baño privado, agua caliente, wifi
+- Habitación D — 4 pax; cama doble, sofá cama, baño privado, agua caliente, wifi
+- Habitación E — 6 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
+- Para información de precios, fotos y disponibilidad, consulta Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES

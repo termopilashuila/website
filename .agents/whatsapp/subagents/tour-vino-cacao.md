@@ -13,15 +13,6 @@ REGLAS:
 - No prometas cupos sin confirmar agenda.
 - Ofrece alternativa si no hay cupo.
 - Enlaces absolutos: https://termopilas.co/...
-
-DATOS RÁPIDOS:
-- Detalles: https://termopilas.co/tour
-- Duración: ~2 horas
-- Días: 1er y 3er fin de semana de cada mes
-- Horarios: Sábado 4:00 PM y Domingo 9:00 AM
-- Grupos: mínimo 2, máximo 20
-- Precio: $50.000 (2–5) | $40.000 (6–20) COP por persona
-- Pago: Bancolombia Ahorros 45700002525
 ```
 
 ## Slots
@@ -37,7 +28,7 @@ DATOS RÁPIDOS:
 ## Plantillas (WhatsApp)
 
 - Te ayudo a agendar el tour de vino y cacao:
-  - Agenda y detalles: <https://termopilas.co/tour>
+  - Agenda y detalles: <https://termopilas.co/tour.html>
   - Precio orientativo: $50.000 (2–5) | $40.000 (6–20)
   - Horarios: Sáb 4:00 PM | Dom 9:00 AM
 - ¿Para cuántas personas y qué fecha te interesa?
@@ -71,7 +62,7 @@ Tour de vino y cacao. Agenda y reserva aquí:
 - Precio: $50.000 p/p (2–5) | $40.000 p/p (6–20)
 - Fechas/horarios: 1er y 3er fds; Sáb 4:00 PM, Dom 9:00 AM (duración ~2h)
 - Ruta: viñedo, cacao, río, desfiladero y cata de vinos
-- Pago: Bancolombia Ahorros 45700002525
+- Pago: Bancolombia Ahorros 457 000025 25
 
 Enviar por favor imagen con el comprobante de pago
 

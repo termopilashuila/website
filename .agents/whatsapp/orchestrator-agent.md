@@ -161,16 +161,7 @@ EJEMPLOS RÁPIDOS:
 
 ## Plantillas de Respuesta (WhatsApp)
 
-### 1) Alojamiento / Reserva
-
-Listo para ayudarte a reservar. Aquí ves disponibilidad al instante:
-
-- Reservas: <https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES>
-- Habitaciones y fotos: <https://termopilas.co/alojamiento.html>
-- Amenities: Wi‑Fi, piscina, desayuno, aire, vista a viñedos
-
-¿Quieres que te recomiende la mejor opción para [n] huéspedes?
-Nota: Precios/fechas exactas en el enlace de reservas.
+Nota: las plantillas detalladas viven en cada subagente (Alojamiento, Tour, Eventos, Promociones). Usa sus secciones de Plantillas según el ruteo.
 
 ## Notas de Implementación
 
@@ -180,8 +171,6 @@ Nota: Precios/fechas exactas en el enlace de reservas.
 
 ## Mensaje
 
-Un usuario te acaba de escribir el siguiente mensaje:
+Hoy es {{ $now }} y un usuario te acaba de escribir el siguiente mensaje:
 
----
-
-{{ $json.message }}
+ {{ $json.context }}

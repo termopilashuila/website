@@ -43,14 +43,3 @@ ENLACES CLAVE:
 
 - Para detalles no publicados (catering, montaje especial, exclusividad de piscina), escalar a humano con requisitos.
 
-## Plantillas de Respuesta (WhatsApp)
-
-### 2) Experiencias / Eventos
-
-Tenemos experiencias de cacao, vino y gastronomía. Aquí lo activo:
-
-- Agenda de eventos: <https://termopilas.co/eventos.html>
-- Ejemplo: <https://termopilas.co/eventos/cata-vino-paella-tapas.html>
-- Regístrate y paga en la landing del evento
-
-¿Buscas fecha específica?
