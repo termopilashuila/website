@@ -50,12 +50,27 @@ ENLACES CLAVE:
 ## DATOS CLAVE – ALOJAMIENTO (para respuestas rápidas):
 - Reservas habitaciones: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
 - Vista general: https://termopilas.co/alojamiento.html
-- Cabaña 1 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 2 terrazas, TV
-- Gemela 1 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
-- Gemela 2 — 4 pax; cama queen con nido, baño privado, agua caliente, aire acondicionado, escritorio, wifi, 1 terraza, proyector con bafle
-- Habitación A — 4 pax; camas dobles, baño privado, agua caliente, wifi
-- Habitación B — 4 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
-- Habitación C — 2 pax; cama doble, baño privado, agua caliente, wifi
-- Habitación D — 4 pax; cama doble, sofá cama, baño privado, agua caliente, wifi
-- Habitación E — 6 pax; camas dobles, baño privado, agua caliente, escritorio, wifi
 - Para información de precios, fotos y disponibilidad, consulta Octorate: https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=522604&lang=ES
+
+# Habitaciones
+
+Cabaña 1: 4 personas máxim, Cama queen con nido, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis, 2 terrazas, TV. Red de Wifi: "APTO". Clave Wifi: "Leonidas4*"
+Gemela 1: 4 personas máxim, Cama queen con nido, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis, 1 terraza, Proyector con bafle. Red wifi "NETGEAR75" y clave "quaintbird441"
+Gemela 2: 4 personas máxim, Cama queen con nido, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis, 1 terraza, Proyector con bafle. Red wifi "NETGEAR75" y clave "quaintbird441"
+Habitación A: 4 personas máxim, Camas doble, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación B: 4 personas máxim, Camas doble, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación C: 2 personas máxim, Cama dobl, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación D: 4 personas máxim, Cama dobl, Sofa cam, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación E: 6 personas máxim, Camas doble, Baño privado, Agua caliente, Escritorio, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+
+# Redes de Wifi
+- Para las cabañas gemelas: Red wifi `NETGEAR75` y clave `quaintbird441`
+- Para la cabaña pasiflora: Red de Wifi: `APTO`. Clave Wifi: `Leonidas4*`
+- Para la casa (Habitaciones A - E): Red de Wifi: `FINCA TERMÓPILAS`. Clave Wifi: `Emilia2022..`
+- Para el salón de eventos: Red de Wifi: `BRER SAS`. Clave Wifi: `Termopil@S`
+
+Restaurante:
+
+Actualmente NO contamos con servicio de restaurante. Está en construcción. 
+Las habitaciones de la casa cuentan con una cocina principal y las cabañas con su propia cocina y menaje. 
+Faciliamos también contactos para realizar domicilios: https://termopilas.co/blog/restaurante-domicilio-rivera.html

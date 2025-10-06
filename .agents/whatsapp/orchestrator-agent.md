@@ -184,5 +184,5 @@ Hoy es {{ $now }} y la conversación con el usuario es:
 
 Como respuesta entrega los siguientes campos:
 - `summary` [text]: resumen de la conversación. ¿Cuáles son los puntos principales?
-- `action_required` [boolean]: basado en la conversación, ¿es necesario responderle al usuario con algún mensaje?
-- `action_suggested` [text]: ¿cuál es el mensaje que se le debería enviar?
+- `action_required` [boolean]: basado en la conversación y lo que sabes, ¿tienes alguna respuesta para enviarle al usuario? Si al usuario ya se le respondieron sus preguntas entonces es `false`, si ves que hay alguna pregunta sin resolver es `true`
+- `action_suggested` [text]: ¿cuál es el mensaje o la información que le hace falta saber al usuario?
