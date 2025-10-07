@@ -59,8 +59,8 @@ Gemela 1: 4 personas máxim, Cama queen con nido, Baño privado, Agua caliente, 
 Gemela 2: 4 personas máxim, Cama queen con nido, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis, 1 terraza, Proyector con bafle. Red wifi "NETGEAR75" y clave "quaintbird441"
 Habitación A: 4 personas máxim, Camas doble, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
 Habitación B: 4 personas máxim, Camas doble, Baño privado, Agua caliente, Aire acondicionado, Escritorio, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
-Habitación C: 2 personas máxim, Cama dobl, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
-Habitación D: 4 personas máxim, Cama dobl, Sofa cam, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación C: 2 personas máxim, Cama doble, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
+Habitación D: 4 personas máxim, Cama doble, Sofa cam, Baño privado, Agua caliente, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
 Habitación E: 6 personas máxim, Camas doble, Baño privado, Agua caliente, Escritorio, Wifi Gratis. Red de Wifi: "FINCA TERMÓPILAS". Clave Wifi: "Emilia2022.."
 
 # Redes de Wifi

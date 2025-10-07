@@ -91,7 +91,7 @@ SALIDA:
   - Carlos Rubiano: https://termopilas.co/whatsapp.html?phone=573138597307
 
 
-REFERENCIAS DEL BLOG (RESÚMENES BREVES):
+## REFERENCIAS DEL BLOG (RESÚMENES BREVES):
 - Blog principal: https://termopilas.co/blog.html
 - Beneficios de los nibs de cacao para la salud: https://termopilas.co/blog/beneficios-nibs-cacao-salud.html — Superalimento rico en antioxidantes, minerales y compuestos bioactivos; beneficios cardiovasculares, cognitivos e inmunológicos; incluye CTAs a catálogo y WhatsApp.
 - Bowl de Nibs de Cacao (receta): https://termopilas.co/blog/nibs-cacao-parfait-bowl.html — Receta rápida de parfait bowl con nibs de cacao; ingredientes, variaciones y beneficios.
@@ -155,7 +155,6 @@ EJEMPLOS RÁPIDOS:
 ## Métricas de Éxito
 
 - Ratio de respuestas con CTA clicable.
-- Tiempo a la acción < 30s.
 - Resolución en el primer intercambio siempre que sea posible.
 
 ## Procedimientos de Escalamiento
@@ -183,6 +182,7 @@ Hoy es {{ $now }} y la conversación con el usuario es:
 ## Siguientes pasos
 
 Como respuesta entrega los siguientes campos:
+
 - `summary` [text]: resumen de la conversación. ¿Cuáles son los puntos principales?
 - `action_required` [boolean]: basado en la conversación y lo que sabes, ¿tienes alguna respuesta para enviarle al usuario? Si al usuario ya se le respondieron sus preguntas entonces es `false`, si ves que hay alguna pregunta sin resolver es `true`
 - `action_suggested` [text]: ¿cuál es el mensaje o la información que le hace falta saber al usuario?
