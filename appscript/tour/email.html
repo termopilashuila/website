@@ -2,13 +2,13 @@
   <!-- Logo y Encabezado -->
   <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid {{COLOR}};">
     <img src="{{LOGO_URL}}" alt="Finca Termópilas Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;">
-    <h2 style="color: {{COLOR}}; margin: 10px 0; font-size: 24px;">{{EMOJI}} Nueva Cotización de {{TIPO_EVENTO}}</h2>
-    <p style="color: #666; font-style: italic;">¡Nueva solicitud de evento!</p>
+    <h2 style="color: {{COLOR}}; margin: 10px 0; font-size: 24px;">🍷 Nueva Reserva de Tour de Vino y Cacao</h2>
+    <p style="color: #666; font-style: italic;">¡Nueva solicitud de reserva!</p>
   </div>
   
   <!-- Información Principal -->
   <div style="background: white; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <h3 style="color: #333; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">📋 Detalles de la Solicitud</h3>
+    <h3 style="color: #333; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">📋 Detalles de la Reserva</h3>
     
     <table style="width: 100%; border-collapse: collapse;">
       <tr style="border-bottom: 1px solid #f0f0f0;">
@@ -16,91 +16,39 @@
         <td style="padding: 10px 0; color: #333;">{{FECHA_SOLICITUD}}</td>
       </tr>
       <tr style="border-bottom: 1px solid #f0f0f0;">
-        <td style="padding: 10px 0; font-weight: bold; color: #555;">🎉 Tipo de Evento:</td>
-        <td style="padding: 10px 0; color: #333; font-size: 16px; font-weight: bold;">{{TIPO_EVENTO}}</td>
+        <td style="padding: 10px 0; font-weight: bold; color: #555;">👤 Nombre:</td>
+        <td style="padding: 10px 0; color: #333;">{{NAME}}</td>
       </tr>
-      {{CAMPOS_ESPECIFICOS}}
       <tr style="border-bottom: 1px solid #f0f0f0;">
         <td style="padding: 10px 0; font-weight: bold; color: #555;">📧 Email:</td>
         <td style="padding: 10px 0;"><a href="mailto:{{EMAIL}}" style="color: {{COLOR}}; text-decoration: none;">{{EMAIL}}</a></td>
       </tr>
       <tr style="border-bottom: 1px solid #f0f0f0;">
         <td style="padding: 10px 0; font-weight: bold; color: #555;">📱 Teléfono:</td>
-        <td style="padding: 10px 0;"><a href="tel:{{TELEFONO}}" style="color: {{COLOR}}; text-decoration: none;">{{TELEFONO}}</a></td>
+        <td style="padding: 10px 0;"><a href="tel:{{PHONE}}" style="color: {{COLOR}}; text-decoration: none;">{{PHONE}}</a></td>
       </tr>
       <tr style="border-bottom: 1px solid #f0f0f0;">
-        <td style="padding: 10px 0; font-weight: bold; color: #555;">🗓️ Fecha del evento:</td>
-        <td style="padding: 10px 0; color: #333;">{{FECHA_EVENTO}} {{DIAS_HASTA_EVENTO}}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #f0f0f0;">
-        <td style="padding: 10px 0; font-weight: bold; color: #555;">🕐 Hora del evento:</td>
-        <td style="padding: 10px 0; color: #333;">{{HORA_EVENTO}}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #f0f0f0;">
-        <td style="padding: 10px 0; font-weight: bold; color: #555;">👥 Número de invitados:</td>
-        <td style="padding: 10px 0; color: #333; font-weight: bold; font-size: 16px;">{{NUMERO_INVITADOS}}</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #f0f0f0;">
-        <td style="padding: 10px 0; font-weight: bold; color: #555;">💰 Presupuesto:</td>
-        <td style="padding: 10px 0; color: #333;">{{PRESUPUESTO}}</td>
+        <td style="padding: 10px 0; font-weight: bold; color: #555;">🗓️ Fecha preferida:</td>
+        <td style="padding: 10px 0; color: #333;">{{DATE}}</td>
       </tr>
     </table>
   </div>
   
-  <!-- Servicios Requeridos -->
-  <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #2196f3;">
-    <h3 style="color: #333; margin-top: 0; margin-bottom: 15px;">🛎️ Servicios Requeridos</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{ALOJAMIENTO_ICON}}</span>
-        <span>Alojamiento</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{ALIMENTACION_ICON}}</span>
-        <span>Alimentación</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{MOBILIARIO_ICON}}</span>
-        <span>Mobiliario (sillas, mesas)</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{PLANEADOR_ICON}}</span>
-        <span>Planeador del evento</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{DECORACION_ICON}}</span>
-        <span>Decoración</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{SONIDO_ICON}}</span>
-        <span>Sonido</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{FOTOGRAFIA_ICON}}</span>
-        <span>Fotografía profesional</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">{{AUDIOVISUALES_ICON}}</span>
-        <span>Equipos audiovisuales</span>
-      </div>
-    </div>
+  <!-- Mensaje -->
+  <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+    <h3 style="color: #333; margin-top: 0; margin-bottom: 12px;">💬 Mensaje</h3>
+    <p style="white-space: pre-line; color: #333;">{{MESSAGE}}</p>
   </div>
-  
-  <!-- Servicios Adicionales -->
-  {{SERVICIOS_ADICIONALES_SECTION}}
-  
-  <!-- Comentarios -->
-  {{COMENTARIOS_SECTION}}
   
   <!-- Acciones -->
   <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 25px;">
     <h3 style="color: #333; margin-top: 0; margin-bottom: 20px;">🚀 Acciones Rápidas</h3>
     <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-      <a href="https://docs.google.com/spreadsheets/d/1Jiiqh0ILo0Y142ulrHroqZsBQ4PZq7tm3wpiu-tBEpY" 
+      <a href="https://docs.google.com/spreadsheets/d/1Qh48t9f4F0iMMTSFV7-fsiCkFDreAsCBXG2CfaUTW6k" 
          style="display: inline-block; background-color: #4285f4; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; text-align: center; min-width: 140px; font-weight: bold;">
          📊 Ver Spreadsheet
       </a>
-      <a href="mailto:{{EMAIL}}?subject=Re: Cotización de {{TIPO_EVENTO}} - Finca Termópilas" 
+      <a href="mailto:{{EMAIL}}?subject=Re: Reserva de Tour - Finca Termópilas" 
          style="display: inline-block; background-color: {{COLOR}}; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; text-align: center; min-width: 140px; font-weight: bold;">
          ✉️ Responder Email
       </a>
@@ -113,8 +61,8 @@
   
   <!-- Footer -->
   <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 13px; color: #777; text-align: center;">
-    <p>💌 Este es un correo automático generado desde el formulario de cotización de eventos de 
-       <a href="https://termopilas.co/eventos.html" style="color: {{COLOR}}; text-decoration: none;">Finca Termópilas</a>.
+    <p>💌 Este es un correo automático generado desde el formulario de reservas de tour de 
+       <a href="https://termopilas.co/tour.html" style="color: {{COLOR}}; text-decoration: none;">Finca Termópilas</a>.
     </p>
     <p>🏡 <strong>Finca Termópilas</strong> - Rivera, Huila | 📧 termopilashuila@gmail.com</p>
   </div>

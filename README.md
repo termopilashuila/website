@@ -13,6 +13,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Cabecera y pie de página generados dinámicamente con TypeScript
 - CTA de WhatsApp con UTM dinámicas por página
 - Popup de descuento con registro de email (Apps Script)
+- Formulario de reservas de tour (Apps Script)
 - Generación y ping de sitemap (scripts dedicados)
 
 ## Tecnologías utilizadas
@@ -338,6 +339,7 @@ website/
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
 - **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
 - **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
+- **Tour (Reservas)**: Formulario en `tour.html` que envía a Apps Script (`appscript/tour/handler.js`)
 - **Características**:
   - Validación de formularios
   - Integración con Google Analytics
@@ -360,6 +362,7 @@ website/
 - **Tracking ID**: G-2406CNRCX9
 - **Ubicación**: En la sección `<head>` de cada documento HTML
 - **Notas**: No implementar mediante TypeScript para asegurar un seguimiento inmediato
+ - **Tour**: Eventos para clics de CTA a `#tour-form` y envío de formulario con fecha y dominio de email
 
 ### Sitemap
 - Generación: `npm run sitemap:generate`

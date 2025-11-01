@@ -50,6 +50,9 @@
     <meta property="twitter:title" content="Tour de Vino y Cacao - Finca Termópilas">
     <meta property="twitter:description" content="Disfruta de nuestro tour de vino artesanal y cacao en Finca Termópilas, Rivera, Huila. Una experiencia sensorial única con degustación y aprendizaje.">
     <meta property="twitter:image" content="https://termopilas.co/assets/images/tour/tour-hero-bg.jpg">
+    
+    <!-- JavaScript -->
+    <script src="dist/main.js" defer></script>
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -84,7 +87,7 @@
                     </div>
                 </div>
                 <div class="cta-container" style="text-align: center; margin-top: 30px;">
-                    <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=wine_tour&utm_content=hero_cta&text=Hola.%20Estaba%20en%20la%20página%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustaría%20programarlo" class="cta-button" target="_blank"><i class="fab fa-whatsapp"></i> RESERVA AHORA</a>
+                    <a href="#tour-form" class="cta-button"><i class="fas fa-calendar-check"></i> RESERVA AHORA</a>
                 </div>
             </div>
         </section>
@@ -306,8 +309,43 @@
                 <div class="cta-container" style="text-align: center; margin-top: 40px;">
                     <h3>¿Listo para vivir esta experiencia?</h3>
                     <br>
-                    <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=wine_tour&utm_content=bottom_cta&text=Hola.%20Estaba%20en%20la%20página%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustaría%20programarlo" class="cta-button" target="_blank"><i class="fab fa-whatsapp"></i> RESERVA TU TOUR AHORA</a>
+                    <a href="#tour-form" class="cta-button"><i class="fas fa-calendar-check"></i> RESERVA TU TOUR AHORA</a>
                 </div>
+            </div>
+        </section>
+
+        <section class="tour-registration section">
+            <div class="container">
+                <h2>Reserva tu Cupo</h2>
+                <p class="registration-description">Completa el formulario y te contactaremos para confirmar tu reserva del tour de vino y cacao.</p>
+
+                <form id="tour-form" class="tour-form">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono / WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Fecha preferida</label>
+                        <select id="date" name="date" required>
+                            <option value="2025-11-22" selected>Sábado, 22 de noviembre de 2025</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje (opcional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Cuéntanos si tienes una fecha específica o alguna necesidad especial"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="cta-button">Enviar Reserva</button>
+                    </div>
+                </form>
             </div>
         </section>
 
@@ -336,20 +374,30 @@
         <!-- Content will be injected by TypeScript -->
     </footer>
 
-    <!-- JavaScript -->
-    <script src="dist/main.js"></script>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize header with custom configuration for Tour
+            if (window.termopilasHeader) {
+                window.termopilasHeader.updateConfig({
+                    heroContent: {
+                        title: 'Tour de <strong>Vino y Cacao</strong>',
+                        subtitle: 'Aprende, degusta y disfruta en la finca',
+                        ctaText: 'RESERVA TU CUPO',
+                        ctaHref: '#tour-form'
+                    },
+                    heroClass: 'hero tour-hero',
+                    heroImage: 'assets/images/tour/tour-hero-bg.jpg'
+                });
+            }
+
             // Track WhatsApp "Reserva Ahora" buttons
-            const reservaButtons = document.querySelectorAll('a[href*="wa.me"][href*="Tour"]');
-            reservaButtons.forEach((button, index) => {
+            const reservaCupoButtons = document.querySelectorAll('a[href="#tour-form"]');
+            reservaCupoButtons.forEach((button, index) => {
                 button.addEventListener('click', function() {
                     const buttonLocation = index === 0 ? 'intro_section' : 'experience_section';
-                    
-                    gtag('event', `tour_reserva_whatsapp_${buttonLocation}`, {
+                    gtag('event', `tour_reserva_cupo_${buttonLocation}`, {
                         'event_category': 'Reservations',
-                        'event_label': `Tour Reservation WhatsApp - ${buttonLocation}`,
+                        'event_label': `Tour Reserva Cupo - ${buttonLocation}`,
                         'page': 'tour',
                         'button_location': buttonLocation,
                         'reservation_type': 'tour',
@@ -411,6 +459,49 @@
                         'page': 'tour',
                         'contact_type': 'payment_inquiry',
                         'value': 1
+                    });
+                });
+            }
+
+            // Form submission handler for Tour reservations
+            const tourForm = document.getElementById('tour-form');
+            if (tourForm) {
+                tourForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = {
+                        name: tourForm.name.value,
+                        email: tourForm.email.value,
+                        phone: tourForm.phone.value,
+                        date: tourForm.date.value,
+                        message: tourForm.message.value
+                    };
+
+                    // Analytics: form submission
+                    gtag('event', 'tour_form_submission', {
+                        'event_category': 'Lead Generation',
+                        'event_label': `Tour Form Submission - ${formData.date}`,
+                        'page': 'tour',
+                        'preferred_date': formData.date,
+                        'email_domain': formData.email.split('@')[1],
+                        'value': 1
+                    });
+
+                    // Submit to Google Apps Script endpoint (replace with deployed Web App URL)
+                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxz96hZuPRhSShNJW7IBd1wW_ajfnehl73ucDhswGX6ALKlrv4OaHzsPuuo-AR9NZpv9Q/exec';
+
+                    fetch(TOUR_FORM_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(() => {
+                        alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar.');
+                        tourForm.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                     });
                 });
             }
