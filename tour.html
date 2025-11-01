@@ -467,6 +467,13 @@
                 tourForm.addEventListener('submit', function(e) {
                     e.preventDefault();
 
+                    const submitButton = tourForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+                    
+                    // Disable button and show loading state
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Enviando...';
+
                     const formData = {
                         name: tourForm.name.value,
                         email: tourForm.email.value,
@@ -475,8 +482,8 @@
                         message: tourForm.message.value
                     };
 
-                    // Analytics: form submission
-                    gtag('event', 'tour_form_submission', {
+                    // Analytics: form submission attempt
+                    gtag('event', 'tour_form_submission_attempt', {
                         'event_category': 'Lead Generation',
                         'event_label': `Tour Form Submission - ${formData.date}`,
                         'page': 'tour',
@@ -485,22 +492,72 @@
                         'value': 1
                     });
 
-                    // Submit to Google Apps Script endpoint (replace with deployed Web App URL)
-                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxz96hZuPRhSShNJW7IBd1wW_ajfnehl73ucDhswGX6ALKlrv4OaHzsPuuo-AR9NZpv9Q/exec';
+                    // Submit to Google Apps Script endpoint
+                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw4AU__CPjOfecy9xXnxCCjRhmf3qE5izrXCJbKzBDFhgVH0td9iqBCsWdO5gjGDuH50w/exec';
 
-                    fetch(TOUR_FORM_ENDPOINT, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(() => {
+                    // Try with redirect method first (more reliable for Google Apps Script)
+                    const params = new URLSearchParams(formData);
+                    const redirectUrl = `${TOUR_FORM_ENDPOINT}?${params.toString()}`;
+                    
+                    // Create hidden iframe for submission
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.name = 'tour-form-iframe';
+                    document.body.appendChild(iframe);
+                    
+                    // Set timeout for success (Google Apps Script doesn't always return proper CORS headers)
+                    const submissionTimeout = setTimeout(() => {
+                        // Assume success after 2 seconds if no error
+                        gtag('event', 'tour_form_submission_success', {
+                            'event_category': 'Lead Generation',
+                            'event_label': 'Tour Form Submitted Successfully',
+                            'page': 'tour',
+                            'preferred_date': formData.date,
+                            'value': 1
+                        });
+                        
                         alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar.');
                         tourForm.reset();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                        
+                        // Clean up iframe
+                        setTimeout(() => {
+                            if (iframe && iframe.parentNode) {
+                                iframe.parentNode.removeChild(iframe);
+                            }
+                        }, 1000);
+                    }, 2000);
+
+                    // Submit via iframe
+                    iframe.onload = function() {
+                        // Clear timeout on successful load
+                        clearTimeout(submissionTimeout);
+                    };
+                    
+                    // Create and submit form via iframe
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = TOUR_FORM_ENDPOINT;
+                    form.target = 'tour-form-iframe';
+                    
+                    Object.keys(formData).forEach(key => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = formData[key];
+                        form.appendChild(input);
                     });
+                    
+                    document.body.appendChild(form);
+                    form.submit();
+                    
+                    // Clean up the temporary form
+                    setTimeout(() => {
+                        if (form && form.parentNode) {
+                            form.parentNode.removeChild(form);
+                        }
+                    }, 100);
                 });
             }
         });

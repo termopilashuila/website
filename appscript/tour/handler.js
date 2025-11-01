@@ -84,7 +84,7 @@ function normalizeDate(dateStr) {
 }
 
 function sendNotificationEmail(data, dateValue, createdAt) {
-  var recipients = ['termopilashuila@gmail.com', 'cecabrera55@gmail.com'];
+  var recipients = ['termopilashuila@gmail.com'];
   var subject = 'Nueva Reserva de Tour - Finca Termópilas';
   var body = '' +
     'Se ha recibido una nueva solicitud de reserva de tour:\n\n' +
