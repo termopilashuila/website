@@ -5,17 +5,15 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 ## Características del sitio
 
 - Diseño responsive para móvil y escritorio
-- Optimización para SEO
-- Galería de imágenes
-- Información de alojamiento y coliving
-- Detalles de productos
-- Testimonios de clientes
-- Información de contacto
-- Sección de tour de vino y cacao
-- Blog con artículos
-- Estilos externos organizados por funcionalidad
-- Scroll horizontal táctil para testimonios en móvil
-- Cabecera y pie de página parametrizados y generados dinámicamente con TypeScript
+- Optimización SEO (sitemap.xml, metadatos, OpenGraph/Twitter Cards)
+- PWA (service worker y caché offline básico)
+- Información de alojamiento, tour y coliving
+- Blog con sistema de conversión automático desde Markdown
+- Testimonios con carrusel y animaciones en scroll
+- Cabecera y pie de página generados dinámicamente con TypeScript
+- CTA de WhatsApp con UTM dinámicas por página
+- Popup de descuento con registro de email (Apps Script)
+- Generación y ping de sitemap (scripts dedicados)
 
 ## Tecnologías utilizadas
 
@@ -24,6 +22,8 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - TypeScript
 - JavaScript ES6+ (módulos newsletter y blog)
 - Webpack para compilación
+- Markdown rendering y front matter: marked, gray-matter
+- Procesamiento de imágenes: sharp (para pipelines utilitarias)
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
 - Google Analytics para seguimiento de usuario
@@ -31,79 +31,70 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 ## Estructura del proyecto
 
 ```
-finca-termopilas/
-├── index.html              # Página principal
-├── alojamiento.html        # Página de habitaciones
-├── tour.html               # Página del tour
-├── ubicacion.html          # Página de cómo llegar
-├── galeria.html            # Galería de imágenes
-├── coliving.html           # Página de coliving
-├── blog.html               # Página principal del blog
-├── 404.html                # Página de error
-├── sitemap.xml             # Sitemap para SEO
-├── robots.txt              # Robots.txt para SEO
-├── CNAME                   # Archivo CNAME para dominio personalizado
-├── .nojekyll               # Archivo para GitHub Pages
-├── README.md               # Documentación del proyecto
-├── assets/
-│   ├── css/
-│   │   └── fonts.css       # Definiciones de tipografía
-│   ├── icons/              # Iconos para PWA
-│   └── images/
-│       ├── home/           # Imágenes de la página principal
-│       │   ├── section0-hero.jpg      # Imagen de fondo del hero
-│       │   ├── section1-accommodation1.jpg  # Imagen de alojamiento para parejas
-│       │   ├── section1-accommodation2.jpg  # Imagen de alojamiento para grupos
-│       │   ├── section2-product1.jpg  # Imagen de Vino F27
-│       │   ├── section2-product2.jpg  # Imagen de Vino Rosé
-│       │   ├── section2-product3.jpg  # Imagen de Nibs de cacao
-│       │   ├── section4-img0.jpg      # Fondo de sección testimonios
-│       │   ├── section4-img1.jpg      # Foto de testimonio 1
-│       │   ├── section4-img2.jpg      # Foto de testimonio 2
-│       │   ├── section4-img3.jpg      # Foto de testimonio 3
-│       │   ├── section5-gallery1.jpg  # Imagen de galería 1
-│       │   ├── section5-gallery2.jpg  # Imagen de galería 2
-│       │   └── section5-gallery3.jpg  # Imagen de galería 3
-│       ├── alojamiento/          # Imágenes de habitaciones
-│       │   ├── couples.jpg # Imagen de alojamiento para parejas
-│       │   └── groups.jpg  # Imagen de alojamiento para grupos
-│       ├── tour/           # Imágenes del tour de vino y cacao
-│       │   ├── tour-hero-bg.jpg  # Imagen de fondo del tour
-│       │   └── ...               # Otras imágenes del tour
-│       ├── gallery/        # Imágenes para la galería
-│       ├── directions/     # Imágenes para la página de ubicación
-│       ├── error/          # Imágenes para páginas de error
-│       └── favicon.png     # Favicon
-├── blog/                   # Archivos de entradas de blog
-├── docs/                   # Documentación del proyecto
-│   └── newsletter-refactoring.md  # Documentación de módulos JavaScript
+website/
+├── index.html               # Página principal
+├── alojamiento.html         # Alojamiento
+├── tour.html                # Tour de vino y cacao
+├── ubicacion.html           # Cómo llegar
+├── coliving.html            # Coliving
+├── eventos.html             # Landing de eventos
+├── catalogo.html            # Catálogo de productos/experiencias
+├── cata-vinos.html          # Página de cata de vinos
+├── trabajo.html             # Portal de vacantes
+├── privacidad.html          # Política de privacidad
+├── blog.html                # Índice del blog
+├── 404.html                 # Página de error
+├── sitemap.xml              # Sitemap SEO (generado por script)
+├── robots.txt               # Robots SEO
+├── CNAME                    # Dominio personalizado
+├── service-worker.js        # PWA cache
+├── share-modal.js           # Stub para evitar 404 en compartir
+├── scripts/                 # Utilidades Node
+│   ├── generate-sitemap.js
+│   └── process-blog.js
 ├── src/
-│   ├── newsletter.js       # Módulo de suscripción a newsletter
-│   ├── blog.js            # Módulo de funcionalidad del blog
-│   ├── discount-popup.js  # Módulo de popup de descuento
+│   ├── newsletter.js        # Newsletter (Apps Script backend)
+│   ├── blog.js              # Interacciones del blog (categorías/animaciones)
+│   ├── discount-popup.js    # Popup de descuento (Apps Script backend)
 │   └── ts/
-│       └── main.ts         # Código TypeScript principal
-├── dist/                   # Archivos compilados por webpack
-│   ├── main.js            # JavaScript principal compilado
-│   ├── newsletter.js      # Módulo newsletter minificado
-│   ├── blog.js           # Módulo blog minificado
-│   ├── discount-popup.js # Módulo popup de descuento minificado
-│   └── components/       # Componentes compilados
-├── .cursor/
-│   └── rules.mdc           # Reglas del proyecto para Cursor IDE
-└── styles/
-    ├── main.css            # Estilos principales
-    ├── hero.css            # Estilos para secciones hero
-    ├── rooms.css           # Estilos específicos para habitaciones
-    ├── tour.css            # Estilos para la página del tour
-    ├── ubicacion.css       # Estilos para la página de cómo llegar
-    ├── gallery.css         # Estilos para la galería de imágenes
-    ├── coliving.css        # Estilos para la página de coliving
-    ├── blog.css            # Estilos para la página de blog
-    ├── blog-post.css       # Estilos para posts individuales de blog
-    ├── main-sections.css   # Estilos específicos para secciones
-    ├── responsive.css      # Estilos de diseño responsivo
-    └── utilities.css       # Clases de utilidad
+│       ├── main.ts          # Bootstrap + SW + rutas por página
+│       ├── components/
+│       │   ├── header.ts    # Cabecera dinámica
+│       │   ├── footer.ts    # Pie de página dinámico
+│       │   ├── blog.ts      # Filtros y orden de blog (TS)
+│       │   └── JobApplicationForm.ts
+│       ├── utils/
+│       │   ├── animations.ts
+│       │   └── markdown-to-blog.ts
+│       └── types/
+│           ├── interfaces.ts
+│           └── jobApplication.ts
+├── dist/                    # Salida de webpack
+│   ├── main.js
+│   ├── newsletter.js
+│   ├── blog.js
+│   ├── discount-popup.js
+│   ├── components/jobApplicationForm.js
+│   └── utils/utils/markdown-to-blog.js
+├── markdown/                # Fuentes en Markdown para el blog
+│   └── blog/*.md
+├── blog/                    # Salida HTML del blog (generada)
+│   └── posts/*.html
+├── assets/
+│   ├── css/fonts.css
+│   └── images/**            # Imágenes del sitio
+├── styles/                  # CSS por sección
+├── docs/
+│   ├── markdown-to-blog-guide.md
+│   ├── brand-guidelines.md
+│   └── newsletter-refactoring.md
+├── resize/                  # Utilidad Python para imágenes
+│   ├── main.py
+│   └── requirements.txt
+├── appscript/               # Scripts de Google (handlers Apps Script)
+├── terraform/               # Infra como código (backend/hosting auxiliares)
+├── octorate/                # Integración puntual (estilos/html)
+└── README.md
 ```
 
 ## Guía de estilo y convenciones
@@ -183,7 +174,7 @@ finca-termopilas/
 ### Configuración de TypeScript
 
 #### Configuración de la cabecera
-- La configuración de la cabecera se define en `src/ts/main.ts`
+- La configuración y generación se implementan en `src/ts/components/header.ts`
 - La interfaz `HeaderConfig` define la estructura de la configuración de la cabecera:
   ```typescript
   interface HeaderConfig {
@@ -194,6 +185,7 @@ finca-termopilas/
       href: string;
       isActive?: boolean;
     }>;
+    heroImage?: string;
     heroContent?: {
       title: string;
       subtitle: string;
@@ -205,9 +197,10 @@ finca-termopilas/
   ```
 - La configuración predeterminada se proporciona en `defaultHeaderConfig`
 - Las configuraciones específicas de página se aplican en la función `initHeader()`
+  - La cabecera no se genera en páginas de posts del blog (`/blog/posts/*`) ni en `404.html`
 
-#### Configuración del pie de página
-- La configuración del pie de página se define en `src/ts/main.ts`
+- #### Configuración del pie de página
+- La configuración y generación se implementan en `src/ts/components/footer.ts`
 - La interfaz `FooterConfig` define la estructura de la configuración del pie de página:
   ```typescript
   interface FooterConfig {
@@ -232,6 +225,7 @@ finca-termopilas/
   ```
 - La configuración predeterminada se proporciona en `defaultFooterConfig`
 - Las configuraciones específicas de página se aplican en la función `initFooter()`
+  - El enlace de WhatsApp se personaliza dinámicamente con UTM y el nombre de la página actual
 
 #### Personalización de cabeceras
 - Para personalizar la cabecera de una página, actualizar la sección correspondiente en la función `initHeader()`:
@@ -335,7 +329,10 @@ finca-termopilas/
 ### TypeScript
 - **Comando de compilación**: `npm run build`
 - **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática durante el desarrollo
-- **Salida**: `dist/main.js`
+- **Entradas principales**: `src/ts/main.ts`, `src/newsletter.js`, `src/blog.js`, `src/discount-popup.js`, `src/ts/components/JobApplicationForm.ts`, `src/ts/utils/markdown-to-blog.ts`
+- **Salida principal**: `dist/main.js` y módulos nombrados
+  - `dist/components/jobApplicationForm.js`
+  - `dist/utils/utils/markdown-to-blog.js`
 
 ### Módulos JavaScript
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
@@ -354,16 +351,26 @@ finca-termopilas/
 - **webpack**: Usado para empaquetar archivos TypeScript
 - **ts-loader**: Usado para cargar archivos TypeScript en webpack
 
+### PWA
+- Registro de Service Worker en `src/ts/main.ts`
+- Estrategia de caché sencilla definida en `service-worker.js`
+
 ### Analytics
 - **Implementación**: Implementado directamente en el HTML de cada página
 - **Tracking ID**: G-2406CNRCX9
 - **Ubicación**: En la sección `<head>` de cada documento HTML
 - **Notas**: No implementar mediante TypeScript para asegurar un seguimiento inmediato
 
+### Sitemap
+- Generación: `npm run sitemap:generate`
+- Validación rápida: `npm run sitemap:validate`
+- Ping a buscadores: `npm run sitemap:ping`
+- Script: `scripts/generate-sitemap.js`
+
 ## Desarrollo local
 
 ### Requisitos previos
-- Node.js instalado en tu sistema (versión recomendada: 16.x o superior)
+- Node.js instalado en tu sistema (versión recomendada: 18.x o superior)
 - npm o npx
 
 ### Instalación y compilación
@@ -404,28 +411,22 @@ finca-termopilas/
    ```
 
 ### Pruebas
-Para ejecutar los tests del proyecto:
-
-```bash
-npx jest
-```
-
-O usando npm:
-```bash
-npm test
-```
+Actualmente no hay pruebas configuradas (el script `npm test` es un placeholder).
 
 ### Optimización de imágenes
-Para redimensionar y optimizar las imágenes del proyecto:
+La herramienta actual es un script en Python ubicado en `resize/`.
 
-```bash
-npx node resize/resize-images.js
-```
-
-O usando npm:
-```bash
-npm run resize-images
-```
+1. Crear entorno y dependencias:
+   ```bash
+   cd resize
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+2. Ejecutar el redimensionamiento:
+   ```bash
+   python main.py
+   ```
+Nota: El script `npm run resize-images` es legado y no está operativo en esta versión.
 
 ### Visualización local
 Para ver el sitio web localmente, puedes usar cualquier servidor web estático. Una opción sencilla es usar el módulo `http-server` de Node.js:
@@ -435,6 +436,14 @@ npx http-server
 ```
 
 Esto iniciará un servidor local en http://localhost:8080 donde podrás visualizar el sitio web.
+
+## Blog: flujo Markdown → HTML
+
+- Guía completa en `docs/markdown-to-blog-guide.md`.
+- Comandos principales:
+  - Procesar todos: `npm run process-blog`
+  - Procesar un archivo: `npm run process-blog-single markdown/blog/mi-post.md`
+- Compilado del conversor: `dist/utils/utils/markdown-to-blog.js`.
 
 ## Implementación
 
