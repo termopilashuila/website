@@ -35,6 +35,31 @@
       padding: 20px;
       margin: 20px 0;
     }
+    .details-box {
+      background: #fff;
+      border: 1px solid #F29F05;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .details-box h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #333;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label { color: #555; font-weight: bold; }
+    .detail-value { color: #333; text-align: right; }
+    #message-value { white-space: pre-line; }
+    .actions { margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -45,10 +70,43 @@
   <div class="info-box" style="border: 1px solid #F29F05;">
     <p><strong>¿Qué sigue ahora?</strong></p>
     <p>📋 Revisaremos los detalles de tu solicitud</p>
-    <p>📞 Te contactaremos dentro de las próximas 24-48 horas para coordinar fecha y hora</p>
-    <p>🍷 Te enviaremos la confirmación de tu reserva</p>
+    <p>👥 Confirmaremos el <strong>número de personas</strong> y horario</p>
+    <p>💳 Realiza el <strong>pago</strong> para asegurar tu cupo</p>
+    <p>📞 Te contactaremos dentro de las próximas 24-48 horas con la confirmación</p>
   </div>
   
+  <div class="details-box">
+    <h2>🧾 Tu solicitud</h2>
+    <div class="detail-row">
+      <div class="detail-label">👤 Nombre</div>
+      <div class="detail-value" id="name-value">—</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">📧 Email</div>
+      <div class="detail-value" id="email-value">—</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">📱 Teléfono</div>
+      <div class="detail-value" id="phone-value">—</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">🗓️ Fecha preferida</div>
+      <div class="detail-value" id="date-value">—</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">👥 Número de personas</div>
+      <div class="detail-value" id="people-value">Por confirmar</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">💬 Mensaje</div>
+      <div class="detail-value" id="message-value">—</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="https://checkout.wompi.co/l/VPOS_qU0Y2V" class="button" style="background-color: #1e7e34;">Ir a pagar</a>
+  </div>
+
   <p>Mientras tanto, pueden explorar más sobre nuestros servicios:</p>
   
   <div>
@@ -59,7 +117,37 @@
   <p style="margin-top: 30px; font-size: 0.9em; color: #777;">
     Si tienes alguna pregunta urgente, contáctanos directamente:<br>
     📧 termopilashuila@gmail.com<br>
-    📱 WhatsApp: <a href="https://wa.me/573143428579" style="color: {{COLOR}};">+57 314 342 8579</a>
+    📱 WhatsApp: <a href="https://wa.me/573143428579" style="color: #F29F05;">+57 314 342 8579</a>
   </p>
+
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var get = function(key) { return (params.get(key) || '').trim(); };
+
+        var name = get('name');
+        var email = get('email');
+        var phone = get('phone');
+        var date = get('date');
+        var message = get('message');
+        var people = get('people');
+
+        var setText = function(id, value, fallback) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = value || fallback || '—';
+        };
+
+        setText('name-value', name);
+        setText('email-value', email);
+        setText('phone-value', phone);
+        setText('date-value', date);
+        setText('message-value', message);
+        setText('people-value', people, 'Por confirmar');
+      } catch (e) {
+        // no-op: keep static placeholders
+      }
+    })();
+  </script>
 </body>
 </html> 
