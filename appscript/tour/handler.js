@@ -1,7 +1,7 @@
 /**
  * Google Apps Script - Tour Reservation Handler
  * Spreadsheet: 1Qh48t9f4F0iMMTSFV7-fsiCkFDreAsCBXG2CfaUTW6k
- * Columns: name | email | phone | date | message | created_at
+ * Columns: name | email | phone | date | numberOfPeople | message | created_at
  */
 
 function doGet() {
@@ -24,6 +24,7 @@ function doPost(e) {
       data.email || '',
       data.phone || '',
       dateValue,
+      data.numberOfPeople || '',
       data.message || '',
       createdAt
     ]);
@@ -69,7 +70,7 @@ function parseFormEncoded(body) {
 
 function ensureHeaders(sheet) {
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['name', 'email', 'phone', 'date', 'message', 'created_at']);
+    sheet.appendRow(['name', 'email', 'phone', 'date', 'numberOfPeople', 'message', 'created_at']);
   }
 }
 
@@ -86,13 +87,26 @@ function normalizeDate(dateStr) {
 function sendNotificationEmail(data, dateValue, createdAt) {
   var recipients = ['termopilashuila@gmail.com'];
   var subject = 'Nueva Reserva de Tour - Finca Termópilas';
+  
+  // Determine payment URL based on number of people
+  var paymentUrl = '';
+  var numberOfPeople = data.numberOfPeople || '';
+  
+  if (numberOfPeople === '1') {
+    paymentUrl = 'https://checkout.wompi.co/l/9DVeTW';
+  } else if (numberOfPeople === '2') {
+    paymentUrl = 'https://checkout.wompi.co/l/d1w3RS';
+  }
+  
   var body = '' +
     'Se ha recibido una nueva solicitud de reserva de tour:\n\n' +
     'Nombre: ' + (data.name || '') + '\n' +
     'Email: ' + (data.email || '') + '\n' +
     'Teléfono: ' + (data.phone || '') + '\n' +
     'Fecha preferida: ' + (dateValue || '') + '\n' +
-    (data.message ? ('Mensaje:\n' + data.message + '\n') : '') +
+    'Número de personas: ' + numberOfPeople + '\n' +
+    (paymentUrl ? ('Link de pago Wompi: ' + paymentUrl + '\n') : '') +
+    (data.message ? ('\nMensaje:\n' + data.message + '\n') : '') +
     '\nRegistrado: ' + Utilities.formatDate(createdAt, Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
 
   MailApp.sendEmail({ to: recipients.join(','), subject: subject, body: body });

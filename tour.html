@@ -346,6 +346,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="numberOfPeople">Número de personas</label>
+                        <select id="numberOfPeople" name="numberOfPeople" required>
+                            <option value="">Selecciona el número de personas</option>
+                            <option value="1">1 persona - $40,000 COP</option>
+                            <option value="2">2 personas - $80,000 COP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="message">Mensaje (opcional)</label>
                         <textarea id="message" name="message" rows="4" placeholder="Cuéntanos si tienes una fecha específica o alguna necesidad especial"></textarea>
                     </div>
@@ -486,7 +494,14 @@
                         email: tourForm.email.value,
                         phone: tourForm.phone.value,
                         date: tourForm.date.value,
+                        numberOfPeople: tourForm.numberOfPeople.value,
                         message: tourForm.message.value
+                    };
+
+                    // Payment URLs based on number of people
+                    const paymentUrls = {
+                        '1': 'https://checkout.wompi.co/l/9DVeTW',
+                        '2': 'https://checkout.wompi.co/l/d1w3RS'
                     };
 
                     // Analytics: form submission attempt
@@ -495,12 +510,13 @@
                         'event_label': `Tour Form Submission - ${formData.date}`,
                         'page': 'tour',
                         'preferred_date': formData.date,
+                        'number_of_people': formData.numberOfPeople,
                         'email_domain': formData.email.split('@')[1],
                         'value': 1
                     });
 
                     // Submit to Google Apps Script endpoint
-                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw4AU__CPjOfecy9xXnxCCjRhmf3qE5izrXCJbKzBDFhgVH0td9iqBCsWdO5gjGDuH50w/exec';
+                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwN-CwWGdbwFFHF-9fubTO9m0t_p6U9_30oZDsQLD2Ct_KIzL8qYJEsVySYOVQ7hWRrLg/exec';
 
                     // Try with redirect method first (more reliable for Google Apps Script)
                     const params = new URLSearchParams(formData);
@@ -520,20 +536,38 @@
                             'event_label': 'Tour Form Submitted Successfully',
                             'page': 'tour',
                             'preferred_date': formData.date,
+                            'number_of_people': formData.numberOfPeople,
                             'value': 1
                         });
                         
-                        alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar.');
-                        tourForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.textContent = originalButtonText;
-                        
                         // Clean up iframe
-                        setTimeout(() => {
-                            if (iframe && iframe.parentNode) {
-                                iframe.parentNode.removeChild(iframe);
-                            }
-                        }, 1000);
+                        if (iframe && iframe.parentNode) {
+                            iframe.parentNode.removeChild(iframe);
+                        }
+                        
+                        // Get payment URL based on number of people
+                        const paymentUrl = paymentUrls[formData.numberOfPeople];
+                        
+                        if (paymentUrl) {
+                            alert('¡Gracias! Tu reserva ha sido registrada. Ahora serás redirigido al portal de pago.');
+                            
+                            // Track payment redirect
+                            gtag('event', 'tour_payment_redirect', {
+                                'event_category': 'Payment',
+                                'event_label': `Payment Redirect - ${formData.numberOfPeople} people`,
+                                'page': 'tour',
+                                'number_of_people': formData.numberOfPeople,
+                                'value': 1
+                            });
+                            
+                            // Redirect to payment gateway
+                            window.location.href = paymentUrl;
+                        } else {
+                            alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar.');
+                            tourForm.reset();
+                            submitButton.disabled = false;
+                            submitButton.textContent = originalButtonText;
+                        }
                     }, 2000);
 
                     // Submit via iframe

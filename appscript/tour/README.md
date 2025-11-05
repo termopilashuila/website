@@ -22,7 +22,7 @@ Archivo de pruebas y utilidades heredado. Puede servir de referencia para valida
 ## 🗃️ Hoja de Cálculo
 
 - Sheet ID: `1Qh48t9f4F0iMMTSFV7-fsiCkFDreAsCBXG2CfaUTW6k`
-- Columnas en orden: `name`, `email`, `phone`, `date`, `message`, `created_at`
+- Columnas en orden: `name`, `email`, `phone`, `date`, `numberOfPeople`, `message`, `created_at`
 - Encabezados: `handler.js` los crea si la hoja está vacía
 
 ## 🔗 Endpoint
@@ -39,18 +39,37 @@ Archivo de pruebas y utilidades heredado. Puede servir de referencia para valida
   "email": "correo@dominio.com",
   "phone": "+57...",
   "date": "YYYY-MM-DD",
+  "numberOfPeople": "1" | "2",
   "message": "Texto opcional"
 }
 ```
+
+## 💳 Enlaces de Pago
+
+El sistema incluye integración con Wompi para pagos. Los enlaces de pago se asignan automáticamente según el número de personas:
+
+- **1 persona**: `https://checkout.wompi.co/l/9DVeTW` - $40,000 COP
+- **2 personas**: `https://checkout.wompi.co/l/d1w3RS` - $80,000 COP
+
+### Flujo de Pago
+
+1. Usuario completa el formulario de reserva (nombre, email, teléfono, fecha, número de personas)
+2. El formulario se envía al endpoint de Google Apps Script
+3. Los datos se guardan en Google Sheets
+4. Se envía un email de notificación al equipo con el link de pago correspondiente
+5. Después de guardar la reserva, el usuario es redirigido automáticamente al portal de pago Wompi
+6. El usuario completa el pago en Wompi
 
 ## 🌐 Integración en el sitio
 
 - Página: `tour.html`
 - El formulario hace `fetch(POST)` al endpoint anterior con `mode: 'no-cors'`
 - El CTA de la cabecera y botones de sección enlazan a `#tour-form`
-- Analytics: eventos para clics en CTA y envío del formulario (fecha preferida y dominio de email)
+- Analytics: eventos para clics en CTA, envío del formulario (fecha preferida, número de personas y dominio de email), y redirección a pago
 
 ## 🧩 Notas
 
-- `handler.js` envía un email en texto plano a `termopilashuila@gmail.com` y `cecabrera55@gmail.com`.
+- `handler.js` envía un email en texto plano a `termopilashuila@gmail.com` con todos los detalles de la reserva, incluyendo el link de pago Wompi correspondiente.
+- El email incluye automáticamente el enlace de pago correcto basado en el número de personas seleccionado.
 - Si deseas usar `email.html` o responder con `success.html`/`error.html`, integra su carga vía `DriveApp` y `HtmlService`.
+- Los templates HTML (`email.html`, `success.html`, `error.html`) están actualizados con soporte para el campo `numberOfPeople` y `PAYMENT_URL`.
