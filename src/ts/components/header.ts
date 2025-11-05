@@ -5,9 +5,9 @@ import { HTMLElementWithStyle, HeaderConfig } from '../types/interfaces';
 const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   alojamiento: {
     heroClass: 'hero rooms-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/alojamiento/header.png',
     heroContent: {
-      title: 'Alojamiento',
+      title: 'Alojamiento <strong>Finca Termópilas</strong>',
       subtitle: 'Habitaciones cómodas en un entorno natural',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
@@ -55,7 +55,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   trabajo: {
     heroClass: 'hero trabajo-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/trabajo/header.png',
     heroContent: {
       title: 'Trabaja con Nosotros',
       subtitle: 'Descubre oportunidades laborales en un entorno natural único',
