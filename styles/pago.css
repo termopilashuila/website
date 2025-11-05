@@ -203,49 +203,42 @@
 
 /* Gateway Logos */
 .gateway-logo {
-    height: 80px;
+    height: 200px;
     margin: 1rem auto 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
+    padding: 1.5rem;
     border-radius: 8px;
     background-color: var(--background-warm);
 }
 
-.gateway-logo.wompi::after {
-    content: 'WOMPI';
-    color: #00D4B4;
-}
-
-.gateway-logo.bold::after {
-    content: 'BOLD';
-    color: #FF6B35;
+.gateway-logo img.payment-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 /* Bank Logos */
 .bank-logo {
-    height: 60px;
+    height: 160px;
     margin: 1rem auto 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
+    padding: 1.5rem;
     border-radius: 8px;
     background-color: var(--background-warm);
 }
 
-.bank-logo.bancolombia::after {
-    content: 'Bancolombia';
-    color: #FDDA24;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.bank-logo.nequi::after {
-    content: 'nequi';
-    color: #FF0090;
+.bank-logo img.payment-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .bank-logos-group {
@@ -255,12 +248,19 @@
     margin: 1rem 0 1.5rem;
 }
 
-.bank-logo.bancolombia-sm,
-.bank-logo.nequi-sm {
-    height: 40px;
-    width: 80px;
-    font-size: 0.9rem;
+.bank-logos-group .bank-logo {
+    height: 120px;
+    width: 200px;
     margin: 0;
+    padding: 1rem;
+}
+
+.bank-logos-group img.payment-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 /* Cash Icon */
@@ -726,6 +726,12 @@
         align-items: flex-start;
         gap: 0.5rem;
     }
+
+    .gateway-logo,
+    .bank-logo {
+        height: 80px;
+        padding: 0.75rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -754,6 +760,17 @@
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
+    }
+
+    .gateway-logo,
+    .bank-logo {
+        height: 70px;
+        padding: 0.5rem;
+    }
+
+    .bank-logos-group .bank-logo {
+        height: 50px;
+        width: 80px;
     }
 }
 

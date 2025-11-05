@@ -107,15 +107,15 @@ La página `pago.html` proporciona información completa sobre todas las opcione
 ### Métodos de pago soportados
 
 **Pagos en línea:**
-- Tarjetas de crédito (VISA, MasterCard)
-- Pasarelas de pago (Wompi, Bold)
-- Transferencias bancarias (Bancolombia, Nequi)
+- Pasarelas de pago (Wompi, Bold) con enlaces directos
+- Transferencias bancarias (Bancolombia)
 
 **Pagos en sitio:**
-- Tarjetas de crédito (VISA, MasterCard)
 - Pasarelas de pago (Wompi, Bold)
-- Transferencias bancarias (Bancolombia, Nequi)
+- Transferencias bancarias (Bancolombia)
 - Efectivo
+
+**Nota:** Wompi acepta múltiples métodos incluyendo tarjetas de crédito/débito, PSE, Nequi y Daviplata.
 
 ### Estructura de la página
 
@@ -138,9 +138,14 @@ La página incluye tracking avanzado con Google Analytics:
 
 Para actualizar la información de pago, edita directamente `pago.html`:
 - Números de cuenta bancaria
-- Enlaces de pasarelas de pago
+- Enlaces de pasarelas de pago (Wompi, Bold)
 - Información de contacto de WhatsApp
-- Estado de disponibilidad de métodos ("Próximamente disponible" vs "Disponible")
+- Estado de disponibilidad de métodos
+
+**Logos de pago:** Los logos de Wompi, Bold y Bancolombia se encuentran en `assets/images/pago/`:
+- `wompi.png` - Logo de Wompi
+- `bold.png` - Logo de Bold  
+- `bancolombia.png` - Logo de Bancolombia
 
 Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según sea necesario.
 
