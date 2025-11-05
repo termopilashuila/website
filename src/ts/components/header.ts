@@ -75,9 +75,9 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   eventos: {
     heroClass: 'hero events-hero',
-    heroImage: '/assets/images/eventos/hero-big.jpg',
+    heroImage: '/assets/images/eventos/header.png',
     heroContent: {
-      title: 'Salón de Eventos',
+      title: 'Salón de <strong>Eventos</strong>',
       subtitle: 'Celebra los momentos más importantes de tu vida',
       ctaText: 'Ver Eventos',
       ctaHref: '#main-content'
