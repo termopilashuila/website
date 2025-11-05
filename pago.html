@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Pago - Finca Termópilas</title>
+    <meta name="description" content="Conoce nuestros métodos de pago disponibles: tarjetas de crédito, transferencias bancarias, pagos en línea y efectivo. Paga de forma segura en Finca Termópilas.">
+    <meta name="keywords" content="Finca Termópilas, pagos, métodos de pago, tarjetas de crédito, transferencias, Wompi, Bold, Bancolombia, Nequi">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/utilities.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/pago.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/pago.html">
+    <meta property="og:title" content="Métodos de Pago - Finca Termópilas">
+    <meta property="og:description" content="Conoce nuestros métodos de pago disponibles: tarjetas de crédito, transferencias bancarias, pagos en línea y efectivo. Paga de forma segura en Finca Termópilas.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/home/header.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/pago.html">
+    <meta property="twitter:title" content="Métodos de Pago - Finca Termópilas">
+    <meta property="twitter:description" content="Conoce nuestros métodos de pago disponibles: tarjetas de crédito, transferencias bancarias, pagos en línea y efectivo. Paga de forma segura en Finca Termópilas.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/home/header.jpg">
+    
+    <!-- JavaScript -->
+    <script src="dist/main.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track payment method section views
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        if (sectionId) {
+                            gtag('event', 'pago_section_view', {
+                                'event_category': 'Payment Methods',
+                                'event_label': `Section Viewed - ${sectionId}`,
+                                'section': sectionId,
+                                'page': 'pago',
+                                'value': 1
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe payment method sections
+            document.querySelectorAll('.payment-section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Track payment method card clicks
+            document.querySelectorAll('.payment-method-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const methodType = this.closest('.payment-section').id;
+                    const methodName = this.querySelector('h3').textContent;
+                    const isComingSoon = this.classList.contains('coming-soon');
+                    
+                    gtag('event', 'pago_method_click', {
+                        'event_category': 'Payment Methods',
+                        'event_label': `Payment Method Clicked - ${methodName}`,
+                        'method_type': methodType,
+                        'method_name': methodName,
+                        'is_available': !isComingSoon,
+                        'page': 'pago',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track external payment link clicks
+            document.querySelectorAll('.payment-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const methodName = this.closest('.payment-method-card').querySelector('h3').textContent;
+                    const destination = this.getAttribute('href');
+                    
+                    gtag('event', 'pago_external_link', {
+                        'event_category': 'External Link',
+                        'event_label': `Payment Link Clicked - ${methodName}`,
+                        'method_name': methodName,
+                        'destination': destination,
+                        'page': 'pago',
+                        'value': 1
+                    });
+                });
+            });
+
+            // Track copy account details clicks
+            document.querySelectorAll('.copy-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const accountType = this.closest('.account-details').dataset.accountType;
+                    
+                    gtag('event', 'pago_copy_account', {
+                        'event_category': 'User Interaction',
+                        'event_label': `Copy Account Details - ${accountType}`,
+                        'account_type': accountType,
+                        'page': 'pago',
+                        'value': 1
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header will be dynamically generated by TypeScript -->
+    <header class="hero pago-hero">
+        <!-- Content will be injected by TypeScript -->
+    </header>
+
+    <main id="main-content">
+        <div class="payment-container">
+            
+            <!-- Introduction Section -->
+            <section class="payment-intro">
+                <div class="content-wrapper">
+                    <h2>Métodos de Pago Seguros y Flexibles</h2>
+                    <p class="intro-text">En Finca Termópilas, queremos hacer tu experiencia lo más cómoda posible. Por eso ofrecemos múltiples opciones de pago para que elijas la que mejor se adapte a tus necesidades.</p>
+                    
+                    <div class="payment-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Pagos Seguros</h3>
+                            <p>Todas nuestras transacciones están protegidas con los más altos estándares de seguridad</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>Confirmación Inmediata</h3>
+                            <p>Recibe confirmación instantánea de tu pago por correo electrónico y WhatsApp</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-headset"></i>
+                            <h3>Soporte 24/7</h3>
+                            <p>Nuestro equipo está disponible para ayudarte con cualquier consulta sobre pagos</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Online Payment Methods -->
+            <section id="pagos-en-linea" class="payment-section online-payments">
+                <div class="content-wrapper">
+                    <div class="section-header">
+                        <i class="fas fa-laptop section-icon"></i>
+                        <h2>Pagos en Línea</h2>
+                        <p class="section-description">Realiza tu pago desde la comodidad de tu hogar, de forma rápida y segura.</p>
+                    </div>
+
+                    <div class="payment-methods-grid">
+                        <!-- Wompi -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>Wompi</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="gateway-logo wompi"></div>
+                                <p>Pasarela de pagos colombiana de confianza</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> PSE (débito desde tu banco)</li>
+                                    <li><i class="fas fa-check"></i> Tarjetas de crédito/débito</li>
+                                    <li><i class="fas fa-check"></i> Nequi y Daviplata</li>
+                                </ul>
+                                <a href="https://checkout.wompi.co/l/VPOS_qU0Y2V" class="cta-button payment-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-external-link-alt"></i> Pagar con Wompi
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bold -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-bolt"></i>
+                                <h3>Bold</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="gateway-logo bold"></div>
+                                <p>Plataforma de pagos digital fácil y rápida</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> Transferencias bancarias</li>
+                                    <li><i class="fas fa-check"></i> Tarjetas crédito/débito</li>
+                                    <li><i class="fas fa-check"></i> Sin costos adicionales</li>
+                                </ul>
+                                <a href="https://checkout.bold.co/payment/LNK_ZRSZU80B4C" class="cta-button payment-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-external-link-alt"></i> Pagar con Bold
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfers - Bancolombia -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-university"></i>
+                                <h3>Transferencia Bancolombia</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="bank-logo bancolombia"></div>
+                                <p>Transferencia bancaria directa desde tu cuenta</p>
+                                <div class="account-details" data-account-type="bancolombia">
+                                    <div class="account-item">
+                                        <span class="account-label">Titular:</span>
+                                        <span class="account-value" id="bancolombia-titular">BRER SAS</span>
+                                    </div>
+                                    <div class="account-item">
+                                        <span class="account-label">Número de cuenta:</span>
+                                        <span class="account-value" id="bancolombia-cuenta">45700002525</span>
+                                    </div>
+                                    <div class="account-item">
+                                        <span class="account-label">Tipo de cuenta:</span>
+                                        <span class="account-value" id="bancolombia-tipo">Ahorros</span>
+                                    </div>
+                                </div>
+                                <button class="copy-button" onclick="copyAccountDetails('bancolombia')">
+                                    <i class="fas fa-copy"></i> Copiar datos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p><strong>Nota importante:</strong> Después de realizar tu pago en línea, por favor envíanos el comprobante por WhatsApp al número que aparece abajo para confirmar tu reserva.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Onsite Payment Methods -->
+            <section id="pagos-en-sitio" class="payment-section onsite-payments">
+                <div class="content-wrapper">
+                    <div class="section-header">
+                        <i class="fas fa-store section-icon"></i>
+                        <h2>Pagos en Sitio</h2>
+                        <p class="section-description">Si prefieres pagar al llegar a la finca, también tenemos múltiples opciones para ti.</p>
+                    </div>
+
+                    <div class="payment-methods-grid">
+                        <!-- Wompi Onsite -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>Wompi</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="gateway-logo wompi"></div>
+                                <p>Pago digital al momento del check-in</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> PSE (débito desde tu banco)</li>
+                                    <li><i class="fas fa-check"></i> Tarjetas de crédito/débito</li>
+                                    <li><i class="fas fa-check"></i> Nequi y Daviplata</li>
+                                </ul>
+                                <div class="payment-badge">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bold Onsite -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-bolt"></i>
+                                <h3>Bold</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="gateway-logo bold"></div>
+                                <p>Link de pago al momento de tu llegada</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> Transferencias bancarias</li>
+                                    <li><i class="fas fa-check"></i> Tarjetas crédito/débito</li>
+                                    <li><i class="fas fa-check"></i> Proceso rápido y seguro</li>
+                                </ul>
+                                <div class="payment-badge">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfers Onsite -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-university"></i>
+                                <h3>Transferencia Bancolombia</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="bank-logo bancolombia"></div>
+                                <p>Realiza tu transferencia bancaria al llegar</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> Datos bancarios disponibles</li>
+                                    <li><i class="fas fa-check"></i> Confirmación inmediata</li>
+                                    <li><i class="fas fa-check"></i> Sin comisiones</li>
+                                </ul>
+                                <div class="payment-badge">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cash -->
+                        <div class="payment-method-card cash-payment">
+                            <div class="card-header">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h3>Efectivo</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="cash-icon">
+                                    <i class="fas fa-hand-holding-usd"></i>
+                                </div>
+                                <p>Acepta pesos colombianos en efectivo</p>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> Sin comisiones</li>
+                                    <li><i class="fas fa-check"></i> Recibo de pago</li>
+                                    <li><i class="fas fa-check"></i> Atención en recepción</li>
+                                </ul>
+                                <div class="payment-badge">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Disponible</span>
+                                </div>
+                                <div class="cash-note">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <small>Por favor, trae el monto exacto o cercano. El cambio puede ser limitado.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p><strong>Recuerda:</strong> Los pagos en sitio se realizan en nuestra recepción durante el check-in. Nuestro equipo te guiará en el proceso.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Instructions -->
+            <section class="payment-instructions">
+                <div class="content-wrapper">
+                    <h2>¿Cómo Realizar tu Pago?</h2>
+                    
+                    <div class="instructions-grid">
+                        <div class="instruction-card">
+                            <div class="step-number">1</div>
+                            <h3>Elige tu método</h3>
+                            <p>Selecciona la opción de pago que prefieras entre nuestros métodos disponibles en línea o en sitio.</p>
+                        </div>
+                        
+                        <div class="instruction-card">
+                            <div class="step-number">2</div>
+                            <h3>Realiza el pago</h3>
+                            <p>Sigue las instrucciones del método elegido para completar tu transacción de forma segura.</p>
+                        </div>
+                        
+                        <div class="instruction-card">
+                            <div class="step-number">3</div>
+                            <h3>Envía comprobante</h3>
+                            <p>Para pagos en línea, envíanos tu comprobante por WhatsApp para confirmar tu reserva al instante.</p>
+                        </div>
+                        
+                        <div class="instruction-card">
+                            <div class="step-number">4</div>
+                            <h3>Recibe confirmación</h3>
+                            <p>Te enviaremos un correo y mensaje de WhatsApp confirmando tu pago y detalles de tu reserva.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="payment-faq">
+                <div class="content-wrapper">
+                    <h2>Preguntas Frecuentes</h2>
+                    
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Son seguros los pagos en línea?</h3>
+                            <p>Sí, todos nuestros métodos de pago en línea utilizan protocolos de seguridad certificados y encriptación de datos. Tus transacciones están protegidas.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Cuándo debo pagar mi reserva?</h3>
+                            <p>Para garantizar tu reserva, recomendamos realizar el pago lo antes posible. También puedes pagar al llegar si prefieres usar nuestros métodos en sitio.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Puedo pagar en cuotas?</h3>
+                            <p>Sí, algunos métodos de pago con tarjeta de crédito ofrecen la opción de pago en cuotas sin intereses. Consulta con tu banco las condiciones.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Qué pasa si mi pago falla?</h3>
+                            <p>Si tu pago no se procesa correctamente, contáctanos de inmediato por WhatsApp y te ayudaremos a resolverlo o te sugeriremos un método alternativo.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Emiten factura?</h3>
+                            <p>Sí, emitimos factura electrónica para todos los pagos. Solo necesitamos tus datos de facturación al momento de realizar la reserva.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> ¿Tienen política de reembolso?</h3>
+                            <p>Sí, contamos con una política de cancelación y reembolso. Consulta los términos y condiciones específicos al momento de tu reserva.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact CTA -->
+            <section class="payment-cta">
+                <div class="content-wrapper">
+                    <div class="cta-content">
+                        <h2>¿Necesitas Ayuda con tu Pago?</h2>
+                        <p>Nuestro equipo está disponible para asistirte con cualquier consulta sobre métodos de pago, reservas o transacciones.</p>
+                        <div class="cta-buttons">
+                            <a href="whatsapp.html?phone=573143428579&utm_source=website&utm_medium=page&utm_campaign=payment_support&text=Hola%2C%20necesito%20ayuda%20con%20el%20proceso%20de%20pago" class="cta-button primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                            </a>
+                            <a href="mailto:info@termopilas.co" class="cta-button secondary">
+                                <i class="fas fa-envelope"></i> Enviar Email
+                            </a>
+                        </div>
+                        <p class="contact-hours"><i class="fas fa-clock"></i> Atención: Lunes a Domingo de 8:00 AM a 8:00 PM</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+
+    <!-- Copy Account Details Script -->
+    <script>
+        function copyAccountDetails(accountType) {
+            let textToCopy = '';
+            
+            if (accountType === 'bancolombia') {
+                const titular = document.getElementById('bancolombia-titular').textContent;
+                const cuenta = document.getElementById('bancolombia-cuenta').textContent;
+                const tipo = document.getElementById('bancolombia-tipo').textContent;
+                textToCopy = `Bancolombia\nTitular: ${titular}\nNúmero de cuenta: ${cuenta}\nTipo: ${tipo}`;
+            }
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Cambiar texto del botón temporalmente
+                const button = event.target.closest('button');
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+                button.style.backgroundColor = 'var(--success)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.backgroundColor = '';
+                }, 2000);
+                
+                // Track copy event
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'pago_account_copied', {
+                        'event_category': 'User Interaction',
+                        'event_label': `Account Details Copied - ${accountType}`,
+                        'account_type': accountType,
+                        'page': 'pago',
+                        'value': 1
+                    });
+                }
+            }).catch(err => {
+                console.error('Error al copiar:', err);
+                alert('No se pudo copiar automáticamente. Por favor, copia manualmente los datos.');
+            });
+        }
+    </script>
+</body>
+</html>
+

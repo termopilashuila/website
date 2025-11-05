@@ -103,6 +103,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  pago: {
+    heroClass: 'hero pago-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Métodos de <strong>Pago</strong>',
+      subtitle: 'Paga de forma segura y flexible',
+      ctaText: 'VER MÉTODOS',
+      ctaHref: '#main-content'
+    }
+  },
   '404': {
     heroClass: 'hero',
     heroImage: '/assets/images/header.png',

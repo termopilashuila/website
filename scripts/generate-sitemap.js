@@ -32,6 +32,7 @@ const PRIMARY_PAGES = new Set([
   'blog.html',
   'catalogo.html',
   'cata-vinos.html',
+  'pago.html',
 ]);
 
 const UTILITY_PAGES = new Set([

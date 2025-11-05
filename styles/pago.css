@@ -1,0 +1,772 @@
+/* Payment Page Styles */
+
+/* Hero Section */
+.pago-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('../assets/images/header.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+}
+
+/* Container */
+.payment-container {
+    width: 100%;
+    background-color: var(--background-cream);
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Introduction Section */
+.payment-intro {
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.payment-intro h2 {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.payment-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.highlight-item {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.highlight-item i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.highlight-item h3 {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.highlight-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Payment Sections */
+.payment-section {
+    padding: 4rem 0;
+}
+
+.online-payments {
+    background-color: var(--background-warm);
+}
+
+.onsite-payments {
+    background-color: var(--background-cream);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-icon {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.section-header h2 {
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Payment Methods Grid */
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Payment Method Cards */
+.payment-method-card {
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    color: var(--light-text);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-header i {
+    font-size: 2rem;
+}
+
+.card-header h3 {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.card-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body > p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Card Logos */
+.card-logos {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.card-logo {
+    height: 40px;
+    width: 60px;
+    border-radius: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-logo.visa {
+    background-color: #1434CB;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="14">VISA</text></svg>');
+}
+
+.card-logo.mastercard {
+    background-color: #EB001B;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="10">MC</text></svg>');
+}
+
+/* Gateway Logos */
+.gateway-logo {
+    height: 80px;
+    margin: 1rem auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: var(--background-warm);
+}
+
+.gateway-logo.wompi::after {
+    content: 'WOMPI';
+    color: #00D4B4;
+}
+
+.gateway-logo.bold::after {
+    content: 'BOLD';
+    color: #FF6B35;
+}
+
+/* Bank Logos */
+.bank-logo {
+    height: 60px;
+    margin: 1rem auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: var(--background-warm);
+}
+
+.bank-logo.bancolombia::after {
+    content: 'Bancolombia';
+    color: #FDDA24;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.bank-logo.nequi::after {
+    content: 'nequi';
+    color: #FF0090;
+}
+
+.bank-logos-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0 1.5rem;
+}
+
+.bank-logo.bancolombia-sm,
+.bank-logo.nequi-sm {
+    height: 40px;
+    width: 80px;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Cash Icon */
+.cash-icon {
+    font-size: 4rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin: 1rem 0 1.5rem;
+}
+
+.cash-payment .cash-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--background-warm);
+    border-radius: 8px;
+    border-left: 4px solid var(--warning);
+}
+
+.cash-note i {
+    color: var(--warning);
+    margin-right: 0.5rem;
+}
+
+.cash-note small {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Features List */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.features-list li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.features-list i {
+    color: var(--success);
+    font-size: 1rem;
+}
+
+/* Payment Info */
+.payment-info {
+    margin-top: auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.payment-info.coming-soon {
+    background-color: var(--background-warm);
+    border: 2px dashed var(--gray-300);
+}
+
+.payment-info strong {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.info-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Payment Badge */
+.payment-badge {
+    margin-top: auto;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--success);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.payment-badge i {
+    font-size: 1.2rem;
+}
+
+/* Account Details */
+.account-details {
+    background-color: var(--background-warm);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.account-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.account-item:last-child {
+    border-bottom: none;
+}
+
+.account-label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.account-value {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+/* Payment Link Button */
+.payment-link {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    box-shadow: var(--shadow-md);
+}
+
+.payment-link:hover {
+    background-color: var(--interactive-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--light-text);
+}
+
+.payment-link i {
+    font-size: 1rem;
+}
+
+/* Copy Button */
+.copy-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-base), transform var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.copy-button:hover:not(:disabled) {
+    background-color: var(--interactive-primary-hover);
+    transform: translateY(-2px);
+}
+
+.copy-button:disabled {
+    background-color: var(--gray-300);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.copy-button i {
+    font-size: 1rem;
+}
+
+/* Section Note */
+.section-note {
+    background-color: #fff;
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.section-note i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.section-note p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.section-note strong {
+    color: var(--text-color);
+}
+
+/* Payment Instructions */
+.payment-instructions {
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.payment-instructions h2 {
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+}
+
+.instructions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.instruction-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-base);
+}
+
+.instruction-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #D88A04 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.instruction-card h3 {
+    font-family: var(--heading-font);
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.instruction-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* FAQ Section */
+.payment-faq {
+    background-color: var(--background-warm);
+}
+
+.payment-faq h2 {
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.faq-item {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-base);
+    transition: box-shadow var(--transition-base);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.faq-item h3 {
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.faq-item h3 i {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+}
+
+.faq-item p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.payment-cta {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    color: var(--light-text);
+}
+
+.payment-cta .content-wrapper {
+    text-align: center;
+}
+
+.payment-cta h2 {
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.payment-cta p {
+    font-size: 1.15rem;
+    color: var(--light-text);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.cta-button.primary {
+    background-color: #25D366;
+    color: white;
+}
+
+.cta-button.secondary {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+.cta-button i {
+    font-size: 1.3rem;
+}
+
+.contact-hours {
+    color: var(--light-text);
+    opacity: 0.9;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-hours i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 3rem 1.5rem;
+    }
+
+    .payment-intro h2,
+    .section-header h2,
+    .payment-instructions h2,
+    .payment-faq h2,
+    .payment-cta h2 {
+        font-size: 2.2rem;
+    }
+
+    .intro-text,
+    .section-description {
+        font-size: 1rem;
+    }
+
+    .payment-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .instructions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-icon {
+        font-size: 2.5rem;
+    }
+
+    .highlight-item i {
+        font-size: 2.5rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .account-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-intro h2,
+    .section-header h2,
+    .payment-instructions h2,
+    .payment-faq h2,
+    .payment-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .content-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .card-logos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-logo {
+        width: 100px;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .payment-cta,
+    .cta-button,
+    .copy-button {
+        display: none;
+    }
+
+    .payment-method-card {
+        break-inside: avoid;
+    }
+}
+
