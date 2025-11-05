@@ -35,7 +35,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   coliving: {
     heroClass: 'hero coliving-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/coliving/header.png',
     heroContent: {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
