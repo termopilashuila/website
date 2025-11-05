@@ -41,6 +41,8 @@ website/
 ├── eventos.html             # Landing de eventos
 ├── catalogo.html            # Catálogo de productos/experiencias
 ├── cata-vinos.html          # Página de cata de vinos
+├── galeria.html             # Galería de fotos
+├── pago.html                # Métodos de pago
 ├── trabajo.html             # Portal de vacantes
 ├── privacidad.html          # Política de privacidad
 ├── blog.html                # Índice del blog
@@ -97,6 +99,50 @@ website/
 ├── octorate/                # Integración puntual (estilos/html)
 └── README.md
 ```
+
+## Página de Métodos de Pago
+
+La página `pago.html` proporciona información completa sobre todas las opciones de pago disponibles en Finca Termópilas:
+
+### Métodos de pago soportados
+
+**Pagos en línea:**
+- Tarjetas de crédito (VISA, MasterCard)
+- Pasarelas de pago (Wompi, Bold)
+- Transferencias bancarias (Bancolombia, Nequi)
+
+**Pagos en sitio:**
+- Tarjetas de crédito (VISA, MasterCard)
+- Pasarelas de pago (Wompi, Bold)
+- Transferencias bancarias (Bancolombia, Nequi)
+- Efectivo
+
+### Estructura de la página
+
+- **Sección de introducción:** Destaca la seguridad y flexibilidad de los pagos
+- **Pagos en línea:** Muestra todos los métodos disponibles para pago remoto
+- **Pagos en sitio:** Detalla opciones disponibles al llegar a la finca
+- **Instrucciones:** Guía paso a paso del proceso de pago
+- **FAQ:** Preguntas frecuentes sobre pagos
+- **CTA de contacto:** Soporte por WhatsApp y email
+
+### Tracking y Analytics
+
+La página incluye tracking avanzado con Google Analytics:
+- Vista de secciones de métodos de pago
+- Clics en tarjetas de métodos de pago
+- Clics en enlaces externos de pago
+- Copias de datos de cuenta bancaria
+
+### Actualización de datos
+
+Para actualizar la información de pago, edita directamente `pago.html`:
+- Números de cuenta bancaria
+- Enlaces de pasarelas de pago
+- Información de contacto de WhatsApp
+- Estado de disponibilidad de métodos ("Próximamente disponible" vs "Disponible")
+
+Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según sea necesario.
 
 ## Guía de estilo y convenciones
 
@@ -324,6 +370,9 @@ website/
 #### Galería
 - Estructura: Diseño basado en cuadrícula con diseño responsivo
 - Lightbox: Visor de imágenes basado en modal para imágenes de tamaño completo
+- Navegación: Soporte para teclado (flechas y Escape) y gestos táctiles (swipe)
+- Optimización: Carga diferida (lazy loading) para mejor rendimiento
+- Analytics: Seguimiento de interacciones con Google Analytics
 
 ## Flujo de trabajo de compilación
 

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Finca Termópilas</title>
+    <meta name="description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos, árboles de cacao y paisajes naturales que te esperan en Rivera, Huila.">
+    <meta name="keywords" content="Finca Termópilas, galería, fotos, instalaciones, viñedos, cacao, naturaleza, Rivera, Huila">
+    <meta name="author" content="Finca Termópilas">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/galeria.html">
+    <meta property="og:title" content="Galería - Finca Termópilas">
+    <meta property="og:description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos y paisajes naturales.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/header.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://termopilas.co/galeria.html">
+    <meta property="twitter:title" content="Galería - Finca Termópilas">
+    <meta property="twitter:description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos y paisajes naturales.">
+    <meta property="twitter:image" content="https://termopilas.co/assets/images/header.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/utilities.css">
+    <link rel="stylesheet" href="styles/whatsapp-button.css">
+    
+    <!-- Custom styles for reservation button -->
+    <style>
+        .reservation-button {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .reservation-button:hover {
+            background-color: #d88d04 !important;
+            transform: scale(1.1);
+        }
+    </style>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Gallery-specific styles -->
+    <style>
+        .gallery-hero {
+            background-image: url('assets/images/header.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .gallery-main-section {
+            background-color: var(--background-light);
+            padding: 4rem 2rem;
+        }
+        
+        .gallery-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .gallery-intro h2 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item-overlay i {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10000;
+            transition: color 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            color: var(--accent-color);
+        }
+        
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(242, 159, 5, 0.8);
+        }
+        
+        .lightbox-prev {
+            left: 30px;
+        }
+        
+        .lightbox-next {
+            right: 30px;
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+            
+            .gallery-intro h2 {
+                font-size: 2.2rem;
+            }
+            
+            .lightbox-prev,
+            .lightbox-next {
+                font-size: 2rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-main-section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+    
+    <!-- JavaScript -->
+    <script src="dist/main.js" defer></script>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header will be dynamically generated by TypeScript -->
+    <header class="hero gallery-hero">
+        <!-- Content will be injected by TypeScript -->
+    </header>
+
+    <main id="main-content">
+        <section class="gallery-main-section">
+            <div class="gallery-intro">
+                <h2>Galería Finca Termópilas</h2>
+                <p>Descubre la belleza natural de nuestra finca a través de estas imágenes. Desde nuestras instalaciones y viñedos hasta los hermosos paisajes que nos rodean, cada rincón de Finca Termópilas cuenta una historia.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="0">
+                    <img src="assets/images/galeria/galeria-01.jpeg" alt="Finca Termópilas - Imagen 1" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="1">
+                    <img src="assets/images/galeria/galeria-02.jpeg" alt="Finca Termópilas - Imagen 2" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="2">
+                    <img src="assets/images/galeria/galeria-03.jpeg" alt="Finca Termópilas - Imagen 3" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="3">
+                    <img src="assets/images/galeria/galeria-04.jpeg" alt="Finca Termópilas - Imagen 4" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="4">
+                    <img src="assets/images/galeria/galeria-05.jpeg" alt="Finca Termópilas - Imagen 5" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="5">
+                    <img src="assets/images/galeria/galeria-06.jpeg" alt="Finca Termópilas - Imagen 6" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="6">
+                    <img src="assets/images/galeria/galeria-07.jpeg" alt="Finca Termópilas - Imagen 7" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="7">
+                    <img src="assets/images/galeria/galeria-08.jpeg" alt="Finca Termópilas - Imagen 8" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="8">
+                    <img src="assets/images/galeria/galeria-09.jpeg" alt="Finca Termópilas - Imagen 9" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="9">
+                    <img src="assets/images/galeria/galeria-10.jpeg" alt="Finca Termópilas - Imagen 10" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="10">
+                    <img src="assets/images/galeria/galeria-11.jpeg" alt="Finca Termópilas - Imagen 11" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="11">
+                    <img src="assets/images/galeria/galeria-12.jpeg" alt="Finca Termópilas - Imagen 12" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="12">
+                    <img src="assets/images/galeria/galeria-13.jpeg" alt="Finca Termópilas - Imagen 13" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="13">
+                    <img src="assets/images/galeria/galeria-14.jpeg" alt="Finca Termópilas - Imagen 14" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="14">
+                    <img src="assets/images/galeria/galeria-15.jpeg" alt="Finca Termópilas - Imagen 15" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="15">
+                    <img src="assets/images/galeria/galeria-16.jpeg" alt="Finca Termópilas - Imagen 16" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="16">
+                    <img src="assets/images/galeria/galeria-17.jpeg" alt="Finca Termópilas - Imagen 17" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="17">
+                    <img src="assets/images/galeria/galeria-18.jpeg" alt="Finca Termópilas - Imagen 18" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="18">
+                    <img src="assets/images/galeria/galeria-19.jpeg" alt="Finca Termópilas - Imagen 19" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="19">
+                    <img src="assets/images/galeria/galeria-20.jpeg" alt="Finca Termópilas - Imagen 20" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="20">
+                    <img src="assets/images/galeria/galeria-21.jpeg" alt="Finca Termópilas - Imagen 21" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="21">
+                    <img src="assets/images/galeria/galeria-22.jpeg" alt="Finca Termópilas - Imagen 22" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="22">
+                    <img src="assets/images/galeria/galeria-23.jpeg" alt="Finca Termópilas - Imagen 23" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" aria-label="Cerrar galería">&times;</button>
+        <button class="lightbox-prev" aria-label="Imagen anterior">&#10094;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" src="" alt="Imagen ampliada">
+        </div>
+        <button class="lightbox-next" aria-label="Siguiente imagen">&#10095;</button>
+        <div class="lightbox-counter"></div>
+    </div>
+
+    <!-- Reservation Button -->
+    <a href="alojamiento.html#main-content" 
+       class="whatsapp-button reservation-button" 
+       aria-label="Reservar alojamiento"
+       title="Reservar ahora"
+       id="reservation-button">
+        <i class="fas fa-calendar-check"></i>
+    </a>
+
+    <!-- Footer will be dynamically generated by TypeScript -->
+    <footer id="contacto">
+        <!-- Content will be injected by TypeScript -->
+    </footer>
+
+    <!-- Lightbox functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-image');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+            const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+            
+            let currentIndex = 0;
+            const images = Array.from(galleryItems).map(item => ({
+                src: item.querySelector('img').src,
+                alt: item.querySelector('img').alt
+            }));
+            
+            function openLightbox(index) {
+                currentIndex = index;
+                updateLightbox();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Track lightbox open event
+                gtag('event', 'galeria_lightbox_open', {
+                    'event_category': 'Engagement',
+                    'event_label': `Image ${index + 1}`,
+                    'page': 'galeria',
+                    'image_index': index + 1,
+                    'value': 1
+                });
+            }
+            
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Track lightbox close event
+                gtag('event', 'galeria_lightbox_close', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Lightbox Closed',
+                    'page': 'galeria',
+                    'value': 1
+                });
+            }
+            
+            function updateLightbox() {
+                lightboxImg.src = images[currentIndex].src;
+                lightboxImg.alt = images[currentIndex].alt;
+                lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+            }
+            
+            function showNext() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateLightbox();
+                
+                // Track next navigation
+                gtag('event', 'galeria_lightbox_next', {
+                    'event_category': 'Navigation',
+                    'event_label': `Image ${currentIndex + 1}`,
+                    'page': 'galeria',
+                    'image_index': currentIndex + 1,
+                    'value': 1
+                });
+            }
+            
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateLightbox();
+                
+                // Track previous navigation
+                gtag('event', 'galeria_lightbox_prev', {
+                    'event_category': 'Navigation',
+                    'event_label': `Image ${currentIndex + 1}`,
+                    'page': 'galeria',
+                    'image_index': currentIndex + 1,
+                    'value': 1
+                });
+            }
+            
+            // Event listeners
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => openLightbox(index));
+            });
+            
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxNext.addEventListener('click', showNext);
+            lightboxPrev.addEventListener('click', showPrev);
+            
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+            });
+            
+            // Touch swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) showNext();
+                if (touchEndX > touchStartX + 50) showPrev();
+            }
+            
+            // Track reservation button click
+            const reservationButton = document.getElementById('reservation-button');
+            if (reservationButton) {
+                reservationButton.addEventListener('click', function() {
+                    gtag('event', 'galeria_reservation_click', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Reservation Button - Go to Alojamiento',
+                        'page': 'galeria',
+                        'destination': 'alojamiento',
+                        'value': 1
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

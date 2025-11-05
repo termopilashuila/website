@@ -93,6 +93,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  galeria: {
+    heroClass: 'hero gallery-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Galería <strong>Finca Termópilas</strong>',
+      subtitle: 'Descubre la belleza natural de nuestra finca',
+      ctaText: 'VER GALERÍA',
+      ctaHref: '#main-content'
+    }
+  },
   '404': {
     heroClass: 'hero',
     heroImage: '/assets/images/header.png',
@@ -110,6 +120,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Tour', href: '/tour.html#main-content' },
     { text: 'Coliving', href: '/coliving.html#main-content' },
     { text: 'Eventos', href: '/eventos.html#main-content' },
+    { text: 'Galería', href: '/galeria.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
     { text: 'Blog', href: '/blog.html#main-content' }
   ],
