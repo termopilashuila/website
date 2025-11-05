@@ -65,7 +65,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   blog: {
     heroClass: 'hero blog-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/blog/header.png',
     heroContent: {
       title: 'Nuestro Blog',
       subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
