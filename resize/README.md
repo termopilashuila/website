@@ -31,7 +31,7 @@ pip install -r requirements.txt
 python main.py
 
 # Resize a specific image (from project root):
-python main.py ../assets/images/blog/restaurante-domicilio-rivera/main.png --width=400 --quality=50
+python main.py ../assets/images/**/header.png --width=900 --quality=100
 
 # Resize all images in a specific directory:
 python main.py ../assets/images/eventos --width=600 --quality=80
