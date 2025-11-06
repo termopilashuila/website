@@ -25,10 +25,10 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   tour: {
     heroClass: 'hero tour-hero',
-    heroImage: '/assets/images/tour/section0.jpg',
+    heroImage: '/assets/images/tour/header.png',
     heroContent: {
       title: 'Tour de Vino y Chocolate',
-      subtitle: 'Una experiencia sensorial única en Finca Termópilas',
+      subtitle: 'Una experiencia sensorial única',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
     }
@@ -45,10 +45,10 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   ubicacion: {
     heroClass: 'hero directions-hero',
-    heroImage: '/assets/images/directions/section0.jpg',
+    heroImage: '/assets/images/ubicacion/header.png',
     heroContent: {
       title: 'Cómo Llegar',
-      subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+      subtitle: 'Instrucciones detalladas',
       ctaText: '',
       ctaHref: ''
     }
