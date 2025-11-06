@@ -6,10 +6,11 @@ This script resizes images to a specified width while maintaining the aspect rat
 Original images are only replaced if the new version is smaller in file size.
 
 Usage:
-  python main.py [path] [options]
+  python main.py [path ...] [options]
 
 Arguments:
-  path               Path to an image or directory (default: "./")
+  path               Path(s) to image(s) or directory/directories (default: "./")
+                     Multiple paths can be specified
 
 Options:
   --width=N          Maximum width in pixels (default: 1200)
@@ -19,6 +20,8 @@ Examples:
   python main.py
   python main.py assets/images/gallery
   python main.py assets/images/blog/featured-image.jpg --width=800 --quality=90
+  python main.py image1.jpg image2.jpg image3.jpg --width=400 --quality=50
+  python main.py ../assets/images/blog/header.png ../assets/images/catalog/header.png --width=400
 """
 
 import os
@@ -40,10 +43,10 @@ def parse_arguments():
     )
     
     parser.add_argument(
-        "path", 
-        nargs="?", 
-        default="./",
-        help="Path to an image or directory (default: ./)"
+        "paths", 
+        nargs="*", 
+        default=["./"],
+        help="Path(s) to image(s) or directory/directories (default: ./)"
     )
     
     parser.add_argument(
@@ -67,20 +70,29 @@ def main():
     """Main entry point of the script."""
     args = parse_arguments()
     
+    # Handle default case when no paths are provided
+    paths = args.paths if args.paths else ["./"]
+    
     # Set options
     options = {
         'max_width': args.width,
         'quality': args.quality
     }
     
-    # Process file or directory
-    if os.path.exists(args.path):
-        if os.path.isdir(args.path):
-            process_directory(args.path, options)
+    # Process each file or directory
+    errors = []
+    for path in paths:
+        if os.path.exists(path):
+            if os.path.isdir(path):
+                process_directory(path, options)
+            else:
+                resize_image(path, options)
         else:
-            resize_image(args.path, options)
-    else:
-        print(f"Error: Path {args.path} does not exist")
+            errors.append(path)
+            print(f"Error: Path {path} does not exist")
+    
+    # Exit with error code if any paths were invalid
+    if errors:
         sys.exit(1)
 
 
