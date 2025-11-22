@@ -78,7 +78,7 @@
                         <p>El recorrido es por el viñedo y el cultivo de cacao, con degustación de frutos de cacao, nibs, fresas con fuente de chocolate de la finca y una copa de vino rosado o tinto en la cava.</p>
                         <ul class="tour-info">
                             <li><i class="far fa-clock"></i> <strong>Duración:</strong>&nbsp;Aproximada de 2 Horas</li>
-                            <li><i class="fas fa-calendar-alt"></i> <strong>Día:</strong>&nbsp;Sábado 22 de Noviembre</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;Por definir</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Horarios:</strong>&nbsp;&nbsp;4:00 PM - 6:00 PM</li>
                             <!-- <li><i class="fas fa-calendar-alt"></i> <strong>Días:</strong>&nbsp;1er y 3er fds de cada mes</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Horarios:</strong>&nbsp;&nbsp;Sábado 4:00 PM y Domingo 9:00 AM</li> -->
@@ -342,7 +342,7 @@
                     <div class="form-group">
                         <label for="date">Fecha preferida</label>
                         <select id="date" name="date" required>
-                            <option value="2025-11-22" selected>Sábado, 22 de noviembre de 2025</option>
+                            <option value="por-definir" selected>Fecha por definir</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -553,29 +553,11 @@
                             iframe.parentNode.removeChild(iframe);
                         }
                         
-                        // Get payment URL based on number of people
-                        const paymentUrl = paymentUrls[formData.numberOfPeople];
-                        
-                        if (paymentUrl) {
-                            alert('¡Gracias! Tu reserva ha sido registrada. Ahora serás redirigido al portal de pago.');
-                            
-                            // Track payment redirect
-                            gtag('event', 'tour_payment_redirect', {
-                                'event_category': 'Payment',
-                                'event_label': `Payment Redirect - ${formData.numberOfPeople} people`,
-                                'page': 'tour',
-                                'number_of_people': formData.numberOfPeople,
-                                'value': 1
-                            });
-                            
-                            // Redirect to payment gateway
-                            window.location.href = paymentUrl;
-                        } else {
-                            alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar.');
-                            tourForm.reset();
-                            submitButton.disabled = false;
-                            submitButton.textContent = originalButtonText;
-                        }
+                        // Show success message without payment redirect
+                        alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar la fecha y los detalles del pago.');
+                        tourForm.reset();
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
                     }, 2000);
 
                     // Submit via iframe
