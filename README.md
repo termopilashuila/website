@@ -35,12 +35,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 website/
 ├── index.html               # Página principal
 ├── alojamiento.html         # Alojamiento
-<<<<<<< HEAD
-├── tour/                    # Tour de vino y cacao
-│   └── index.html           # Página principal del tour
-=======
 ├── tour.html                # Tour de vino y cacao
->>>>>>> main
 ├── ubicacion.html           # Cómo llegar
 ├── coliving.html            # Coliving
 ├── eventos.html             # Landing de eventos
@@ -60,7 +55,6 @@ website/
 ├── scripts/                 # Utilidades Node
 │   ├── generate-sitemap.js
 │   └── process-blog.js
-<<<<<<< HEAD
 ├── src/
 │   ├── newsletter.js        # Newsletter (Apps Script backend)
 │   ├── blog.js              # Interacciones del blog (categorías/animaciones)
@@ -121,8 +115,6 @@ website/
 ├── blog/                   # Archivos de entradas de blog
 ├── docs/                   # Documentación del proyecto
 │   └── newsletter-refactoring.md  # Documentación de módulos JavaScript
-=======
->>>>>>> main
 ├── src/
 │   ├── newsletter.js        # Newsletter (Apps Script backend)
 │   ├── blog.js              # Interacciones del blog (categorías/animaciones)
