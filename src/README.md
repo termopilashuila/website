@@ -107,7 +107,12 @@ window.discountPopupHandler.reset()
 // Initializes different components based on current page
 switch (pageName) {
   case 'blog.html': initBlogCategoryFiltering(); break;
-  case 'tour.html': initTourExperienceLazyLoading(); break;
+  case 'tour.html':
+  case 'index.html': // For tour/index.html
+    if (currentPath.includes('/tour/') || currentPath.endsWith('/tour')) {
+      initTourExperienceLazyLoading();
+    }
+    break;
 }
 ```
 

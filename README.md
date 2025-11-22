@@ -84,6 +84,66 @@ website/
 ├── blog/                    # Salida HTML del blog (generada)
 │   └── posts/*.html
 ├── assets/
+│   ├── css/
+│   │   └── fonts.css       # Definiciones de tipografía
+│   ├── icons/              # Iconos para PWA
+│   └── images/
+│       ├── home/           # Imágenes de la página principal
+│       │   ├── section0-hero.jpg      # Imagen de fondo del hero
+│       │   ├── section1-accommodation1.jpg  # Imagen de alojamiento para parejas
+│       │   ├── section1-accommodation2.jpg  # Imagen de alojamiento para grupos
+│       │   ├── section2-product1.jpg  # Imagen de Vino F27
+│       │   ├── section2-product2.jpg  # Imagen de Vino Rosé
+│       │   ├── section2-product3.jpg  # Imagen de Nibs de cacao
+│       │   ├── section4-img0.jpg      # Fondo de sección testimonios
+│       │   ├── section4-img1.jpg      # Foto de testimonio 1
+│       │   ├── section4-img2.jpg      # Foto de testimonio 2
+│       │   ├── section4-img3.jpg      # Foto de testimonio 3
+│       │   ├── section5-gallery1.jpg  # Imagen de galería 1
+│       │   ├── section5-gallery2.jpg  # Imagen de galería 2
+│       │   └── section5-gallery3.jpg  # Imagen de galería 3
+│       ├── alojamiento/          # Imágenes de habitaciones
+│       │   ├── couples.jpg # Imagen de alojamiento para parejas
+│       │   └── groups.jpg  # Imagen de alojamiento para grupos
+│       ├── tour/           # Imágenes del tour de vino y cacao
+│       │   ├── tour-hero-bg.jpg  # Imagen de fondo del tour
+│       │   └── ...               # Otras imágenes del tour
+│       ├── gallery/        # Imágenes para la galería
+│       ├── directions/     # Imágenes para la página de ubicación
+│       ├── error/          # Imágenes para páginas de error
+│       └── favicon.png     # Favicon
+├── blog/                   # Archivos de entradas de blog
+├── docs/                   # Documentación del proyecto
+│   └── newsletter-refactoring.md  # Documentación de módulos JavaScript
+├── src/
+│   ├── newsletter.js        # Newsletter (Apps Script backend)
+│   ├── blog.js              # Interacciones del blog (categorías/animaciones)
+│   ├── discount-popup.js    # Popup de descuento (Apps Script backend)
+│   └── ts/
+│       ├── main.ts          # Bootstrap + SW + rutas por página
+│       ├── components/
+│       │   ├── header.ts    # Cabecera dinámica
+│       │   ├── footer.ts    # Pie de página dinámico
+│       │   ├── blog.ts      # Filtros y orden de blog (TS)
+│       │   └── JobApplicationForm.ts
+│       ├── utils/
+│       │   ├── animations.ts
+│       │   └── markdown-to-blog.ts
+│       └── types/
+│           ├── interfaces.ts
+│           └── jobApplication.ts
+├── dist/                    # Salida de webpack
+│   ├── main.js
+│   ├── newsletter.js
+│   ├── blog.js
+│   ├── discount-popup.js
+│   ├── components/jobApplicationForm.js
+│   └── utils/utils/markdown-to-blog.js
+├── markdown/                # Fuentes en Markdown para el blog
+│   └── blog/*.md
+├── blog/                    # Salida HTML del blog (generada)
+│   └── posts/*.html
+├── assets/
 │   ├── css/fonts.css
 │   └── images/**            # Imágenes del sitio
 ├── styles/                  # CSS por sección

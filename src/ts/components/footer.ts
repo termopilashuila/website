@@ -108,8 +108,12 @@ export function initFooter(): void {
       footerConfig.contact.description = 'Escríbenos para más información sobre nuestros productos';
       break;
     case 'tour.html':
-      pageNameInSpanish = 'Tour de Vino y Chocolate';
-      footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+    case 'index.html':
+      // Check if we're in the tour/ directory
+      if (window.location.pathname.includes('/tour/') || window.location.pathname.endsWith('/tour')) {
+        pageNameInSpanish = 'Tour de Vino y Chocolate';
+        footerConfig.contact.description = 'Escríbenos para reservar tu tour';
+      }
       break;
     case 'coliving.html':
       pageNameInSpanish = 'Coliving';
@@ -157,9 +161,10 @@ export function initGlobalFooter(): void {
       const pageName = currentPath.split('/').pop() || 'index.html';
       
       // Apply page-specific configurations
+      const currentPath = window.location.pathname;
       if (pageName === 'alojamiento.html') {
         footerConfig.contact.description = 'Escríbenos para más información o reservas';
-      } else if (pageName === 'tour.html') {
+      } else if (pageName === 'tour.html' || (pageName === 'index.html' && (currentPath.includes('/tour/') || currentPath.endsWith('/tour')))) {
         footerConfig.contact.description = 'Escríbenos para reservar tu tour';
       }
       

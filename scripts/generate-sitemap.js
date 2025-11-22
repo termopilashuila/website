@@ -22,11 +22,11 @@ const TARGET_DIRECTORIES = [
   'trabajo',
   'blog',
   path.join('blog', 'posts'),
+  'tour',
 ];
 
 const PRIMARY_PAGES = new Set([
   'alojamiento.html',
-  'tour.html',
   'coliving.html',
   'eventos.html',
   'blog.html',
@@ -148,6 +148,10 @@ function classifyPage(relativeHtmlPath) {
   const base = path.basename(relativeHtmlPath);
   if (relativeHtmlPath === 'index.html') {
     return { changefreq: 'monthly', priority: 1.0, group: 0 };
+  }
+  // Special case for tour/index.html
+  if (relativeHtmlPath === path.join('tour', 'index.html')) {
+    return { changefreq: 'monthly', priority: 0.9, group: 1 };
   }
   if (PRIMARY_PAGES.has(base)) {
     const changefreq = base === 'blog.html' ? 'weekly' : 'monthly';
