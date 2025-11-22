@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo... - Tour de Vino y Cacao</title>
+    <meta http-equiv="refresh" content="0; url=../tour.html">
+    <link rel="canonical" href="https://termopilas.co/tour.html">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #fdf6ea 0%, #fff 100%);
+            text-align: center;
+            padding: 20px;
+        }
+        .redirect-container {
+            max-width: 500px;
+        }
+        .spinner {
+            border: 4px solid rgba(242, 159, 5, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #F29F05;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #F29F05;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="spinner"></div>
+        <h1>Redirigiendo...</h1>
+        <p>Te estamos llevando a la página del Tour de Vino y Cacao.</p>
+        <p>Si no eres redirigido automáticamente, <a href="../tour.html">haz clic aquí</a>.</p>
+    </div>
+    <script>
+        // Immediate redirect if meta refresh doesn't work
+        setTimeout(function() {
+            window.location.href = '../tour.html';
+        }, 100);
+    </script>
+</body>
+</html>
+
