@@ -5,9 +5,9 @@ import { HTMLElementWithStyle, HeaderConfig } from '../types/interfaces';
 const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   alojamiento: {
     heroClass: 'hero rooms-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/alojamiento/header.png',
     heroContent: {
-      title: 'Alojamiento',
+      title: 'Alojamiento <strong>Finca Termópilas</strong>',
       subtitle: 'Habitaciones cómodas en un entorno natural',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
@@ -25,17 +25,17 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   tour: {
     heroClass: 'hero tour-hero',
-    heroImage: '/assets/images/tour/section0.jpg',
+    heroImage: '/assets/images/tour/header.png',
     heroContent: {
-      title: 'Tour de Vino 🍷 y Chocolate 🍫',
-      subtitle: 'Una experiencia sensorial única en Finca Termópilas',
+      title: 'Tour de Vino y Chocolate',
+      subtitle: 'Una experiencia sensorial única',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
     }
   },
   coliving: {
     heroClass: 'hero coliving-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/coliving/header.png',
     heroContent: {
       title: 'Coliving para <strong>Nómadas Digitales</strong>',
       subtitle: 'Trabajo remoto en un paraíso natural',
@@ -45,17 +45,17 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   ubicacion: {
     heroClass: 'hero directions-hero',
-    heroImage: '/assets/images/directions/section0.jpg',
+    heroImage: '/assets/images/ubicacion/header.png',
     heroContent: {
       title: 'Cómo Llegar',
-      subtitle: 'Instrucciones detalladas para encontrarnos fácilmente',
+      subtitle: 'Instrucciones detalladas',
       ctaText: '',
       ctaHref: ''
     }
   },
   trabajo: {
     heroClass: 'hero trabajo-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/trabajo/header.png',
     heroContent: {
       title: 'Trabaja con Nosotros',
       subtitle: 'Descubre oportunidades laborales en un entorno natural único',
@@ -65,7 +65,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   blog: {
     heroClass: 'hero blog-hero',
-    heroImage: '/assets/images/header.png',
+    heroImage: '/assets/images/blog/header.png',
     heroContent: {
       title: 'Nuestro Blog',
       subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
@@ -75,9 +75,9 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
   },
   eventos: {
     heroClass: 'hero events-hero',
-    heroImage: '/assets/images/eventos/hero-big.jpg',
+    heroImage: '/assets/images/eventos/header.png',
     heroContent: {
-      title: 'Salón de Eventos',
+      title: 'Salón de <strong>Eventos</strong>',
       subtitle: 'Celebra los momentos más importantes de tu vida',
       ctaText: 'Ver Eventos',
       ctaHref: '#main-content'
@@ -90,6 +90,26 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       title: 'Política de Privacidad',
       subtitle: 'Protección y tratamiento responsable de tus datos personales',
       ctaText: 'LEER POLÍTICA',
+      ctaHref: '#main-content'
+    }
+  },
+  galeria: {
+    heroClass: 'hero gallery-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Galería <strong>Finca Termópilas</strong>',
+      subtitle: 'Descubre la belleza natural de nuestra finca',
+      ctaText: 'VER GALERÍA',
+      ctaHref: '#main-content'
+    }
+  },
+  pago: {
+    heroClass: 'hero pago-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Métodos de <strong>Pago</strong>',
+      subtitle: 'Paga de forma segura y flexible',
+      ctaText: 'VER MÉTODOS',
       ctaHref: '#main-content'
     }
   },
@@ -110,6 +130,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Tour', href: '/tour/#main-content' },
     { text: 'Coliving', href: '/coliving.html#main-content' },
     { text: 'Eventos', href: '/eventos.html#main-content' },
+    { text: 'Galería', href: '/galeria.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
     { text: 'Blog', href: '/blog.html#main-content' }
   ],

@@ -77,6 +77,15 @@
 /* Video Section Styles */
 .video-container {
     margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.help-video {
+    width: 50%;
+    max-width: 900px;
+    height: auto;
+    display: block;
 }
 
 .video-card {

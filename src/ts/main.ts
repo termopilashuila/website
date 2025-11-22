@@ -25,6 +25,7 @@ function initPage(): void {
   initScrollAnimations();
   initNavbarScroll();
   initSmoothScroll();
+  initExternalLinks();
 
   // Initialize page-specific components
   const currentPath = window.location.pathname;
@@ -60,6 +61,35 @@ function initProductOrderButtons(): void {
       const whatsappUrl = `whatsapp.html?utm_source=website&utm_medium=homepage&utm_campaign=product_orders&utm_content=product_button&text=${message}`;
       window.open(whatsappUrl, '_blank');
     });
+  });
+}
+
+// Initialize external links to open in new tab
+function initExternalLinks(): void {
+  // Get all anchor tags
+  const links = document.querySelectorAll('a');
+  
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    
+    // Skip if no href or it's a hash link
+    if (!href || href.startsWith('#')) {
+      return;
+    }
+    
+    // Check if link is external (starts with http/https and doesn't include current domain)
+    const isExternal = href.startsWith('http://') || href.startsWith('https://');
+    const isCurrentDomain = href.includes(window.location.hostname);
+    
+    // If it's an external link (and not to current domain), open in new tab
+    if (isExternal && !isCurrentDomain) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    } else if (!isExternal) {
+      // For all other links (internal links), also open in new tab if user wants all links to open in new tabs
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener');
+    }
   });
 }
 

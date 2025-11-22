@@ -79,6 +79,6 @@ replaceTextInDom([
   { find: 'COP', replace: 'COP ' },
   { find: 'Beneficiario: BRER SAS', replace: 'Razón Social: BRER SAS' },
   { find: 'IBAN:', replace: 'Tipo de cuenta:' },
-  { find: 'Bic / Swift: COLOCOBMXXX', replace: 'Número de cuenta: 45700002525' },
+  { find: 'Bic / Swift - Sort Code: COLOCOBMXXX', replace: 'Número de cuenta: 45700002525' },
   { find: 'Routing / ABA: 45700002525', replace: 'Enviar por favor comprobante a termopilashuila@gmail.com o al Whatsapp +573143428579' }
 ]);

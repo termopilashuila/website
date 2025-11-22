@@ -12,11 +12,6 @@ p {
   font-family: 'Montserrat', 'Helvetica Neue' !important;
 }
 
-/* Target the specific div containing "Habitaciones" text inside SiteHeader:paxSelection */
-#SiteHeader\:paxSelection .CursPointer:nth-child(3) {
-  display: none !important;
-}
-
 /* Hide the guest policies section */
 #guestPolicies > div.box.policies.animated.slow.fadeInRightShort.flex-auto.flexDirectionColumn.go {
   display: none !important;

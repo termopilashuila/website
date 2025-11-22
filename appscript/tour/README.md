@@ -62,7 +62,7 @@ El sistema incluye integración con Wompi para pagos. Los enlaces de pago se asi
 
 ## 🌐 Integración en el sitio
 
-- Página: `tour/index.html`
+- Página: `tour.html`
 - El formulario hace `fetch(POST)` al endpoint anterior con `mode: 'no-cors'`
 - El CTA de la cabecera y botones de sección enlazan a `#tour-form`
 - Analytics: eventos para clics en CTA, envío del formulario (fecha preferida, número de personas y dominio de email), y redirección a pago

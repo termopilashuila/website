@@ -34,6 +34,67 @@
     <link rel="stylesheet" href="../styles/blog-post.css">
     <link rel="stylesheet" href="../styles/newsletter.css">
     
+    <style>
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            text-decoration: none !important;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .contact-button i {
+            font-size: 16px;
+        }
+        
+        .contact-button.whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+        }
+        
+        .contact-button.whatsapp:hover {
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+        
+        .contact-button.location {
+            background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%);
+            box-shadow: 0 2px 8px rgba(234, 67, 53, 0.3);
+        }
+        
+        .contact-button.location:hover {
+            box-shadow: 0 4px 12px rgba(234, 67, 53, 0.4);
+        }
+        
+        .contact-button.website {
+            background: linear-gradient(135deg, #4285F4 0%, #1967D2 100%);
+            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+        }
+        
+        .contact-button.website:hover {
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
+        }
+    </style>
+    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -123,15 +184,20 @@
 
                 <p><strong>Contacto:</strong></p>
 
-                <ul>
-
-                    <li>Teléfono: <a href="tel:+573164206408">+57 316 420 6408</a></li>
-
-                    <li>WhatsApp: <a href="../whatsapp.html?phone=573164206408&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=pizzas_parrilla&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio">+57 316 420 6408</a></li>
-
-                    <li>Ubicación: <a href="https://maps.app.goo.gl/FZCXEgkVPiWw5tEq5">Ver en Mapa</a></li>
-
-                </ul>
+                <div class="contact-buttons">
+                    <a href="tel:+573164206408" class="contact-button">
+                        <i class="fas fa-phone"></i>
+                        +57 316 420 6408
+                    </a>
+                    <a href="../whatsapp.html?phone=573164206408&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=pizzas_parrilla&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio%20para%20Finca%20Term%C3%B3pilas%20por%20favor" class="contact-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://maps.app.goo.gl/FZCXEgkVPiWw5tEq5" target="_blank" rel="noopener" class="contact-button location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ver en Mapa
+                    </a>
+                </div>
 
                 <h2>🌮 CHAVELA RESTAURANTE</h2>
 
@@ -142,17 +208,24 @@
 
                 <p><strong>Contacto:</strong></p>
 
-                <ul>
-
-                    <li>Teléfono: <a href="tel:+573053538067">+57 305 353 8067</a></li>
-
-                    <li>WhatsApp: <a href="../whatsapp.html?phone=573053538067&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chavela_restaurante&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio">+57 305 353 8067</a></li>
-
-                    <li>Ubicación: <a href="https://maps.app.goo.gl/EjBr4SBhjT7SFnvJ7">Ver en Mapa</a></li>
-
-                    <li>Sitio Web: <a href="https://sites.google.com/view/chavela-restaurante/inicio">Chavela Restaurante</a></li>
-
-                </ul>
+                <div class="contact-buttons">
+                    <a href="tel:+573053538067" class="contact-button">
+                        <i class="fas fa-phone"></i>
+                        +57 305 353 8067
+                    </a>
+                    <a href="../whatsapp.html?phone=573053538067&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chavela_restaurante&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio%20para%20Finca%20Term%C3%B3pilas%20por%20favor" class="contact-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://maps.app.goo.gl/EjBr4SBhjT7SFnvJ7" target="_blank" rel="noopener" class="contact-button location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ver en Mapa
+                    </a>
+                    <a href="https://sites.google.com/view/chavela-restaurante/inicio" target="_blank" rel="noopener" class="contact-button website">
+                        <i class="fas fa-globe"></i>
+                        Sitio Web
+                    </a>
+                </div>
 
                 <h2>🍽️ La Casa de las Flores Rivera</h2>
 
@@ -163,15 +236,20 @@
 
                 <p><strong>Contacto:</strong></p>
 
-                <ul>
-
-                    <li>Teléfono: <a href="tel:+573214970162">+57 321 497 0162</a></li>
-
-                    <li>WhatsApp: <a href="../whatsapp.html?phone=573214970162&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=casa_flores_delivery&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio">+57 321 497 0162</a></li>
-
-                    <li>Ubicación: <a href="https://maps.app.goo.gl/J4tXo7tAKwQ5TJk68">Ver en Mapa</a></li>
-
-                </ul>
+                <div class="contact-buttons">
+                    <a href="tel:+573202648008" class="contact-button">
+                        <i class="fas fa-phone"></i>
+                        +57 321 497 0162
+                    </a>
+                    <a href="../whatsapp.html?phone=573202648008&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=casa_flores_delivery&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio%20para%20Finca%20Term%C3%B3pilas%20por%20favor" class="contact-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://maps.app.goo.gl/J4tXo7tAKwQ5TJk68" target="_blank" rel="noopener" class="contact-button location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ver en Mapa
+                    </a>
+                </div>
 
                 <h2>🍸 Chibchili</h2>
 
@@ -182,17 +260,24 @@
 
                 <p><strong>Contacto:</strong></p>
 
-                <ul>
-
-                    <li>Teléfono: <a href="tel:+573176816101">+57 317 681 6101</a></li>
-
-                    <li>WhatsApp: <a href="../whatsapp.html?phone=573176816101&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chibchili&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio">+57 317 681 6101</a></li>
-
-                    <li>Ubicación: <a href="https://maps.app.goo.gl/oLnu2p4tBJvdoFdV6">Ver en Mapa</a></li>
-
-                    <li>Sitio Web: <a href="http://www.chibchili.jimdo.com">Chibchili</a></li>
-
-                </ul>
+                <div class="contact-buttons">
+                    <a href="tel:+573176816101" class="contact-button">
+                        <i class="fas fa-phone"></i>
+                        +57 317 681 6101
+                    </a>
+                    <a href="../whatsapp.html?phone=573176816101&utm_source=website&utm_medium=blog&utm_campaign=delivery_referrals&utm_content=chibchili&text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20a%20domicilio%20para%20Finca%20Term%C3%B3pilas%20por%20favor" class="contact-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://maps.app.goo.gl/oLnu2p4tBJvdoFdV6" target="_blank" rel="noopener" class="contact-button location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ver en Mapa
+                    </a>
+                    <a href="http://www.chibchili.jimdo.com" target="_blank" rel="noopener" class="contact-button website">
+                        <i class="fas fa-globe"></i>
+                        Sitio Web
+                    </a>
+                </div>
 
                 <h2>🍗 Asadero de pollo Donde Betty</h2>
 
@@ -204,13 +289,13 @@
 
                 <p><strong>Contacto:</strong></p>
 
-                <ul>
-
-                    <li>Ubicación: <a href="https://maps.app.goo.gl/PcoxsHFyd6xThPtw8">Ver en Mapa</a></li>
-
-                    <li><em>Contacto directo en el establecimiento</em></li>
-
-                </ul>
+                <div class="contact-buttons">
+                    <a href="https://maps.app.goo.gl/PcoxsHFyd6xThPtw8" target="_blank" rel="noopener" class="contact-button location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ver en Mapa
+                    </a>
+                </div>
+                <p><em>Contacto directo en el establecimiento</em></p>
 
                 <h2>💡 Consejos para Pedir a Domicilio</h2>
 

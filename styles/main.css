@@ -1,20 +1,24 @@
+/* Import Brand Token System */
+@import url('./brand-tokens.css');
+
 /* Direct Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-    --primary-color: #000000;
-    --secondary-color: #333333;
-    --accent-color: #F29F05;
-    --text-color: #333333;
-    --light-text: #fdf6ea;
-    --background-light: #FFFFFF;
-    --background-dark: #000000;
-    --background-cream: #FFFFFF;
-    --background-warm: #F9F9F9;
-    --spacing-unit: 1rem;
-    /* Font variables defined here as fallback */
-    --heading-font: 'Lora', Georgia, serif;
-    --body-font: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    /* Legacy variables for backward compatibility - will be deprecated */
+    --primary-color: var(--brand-primary);
+    --secondary-color: var(--brand-secondary);
+    --accent-color: var(--brand-accent);
+    --text-color: var(--text-primary);
+    --light-text: var(--text-inverse);
+    --background-light: var(--bg-primary);
+    --background-dark: var(--bg-dark);
+    --background-cream: var(--brand-cream);
+    --background-warm: var(--bg-warm);
+    --spacing-unit: var(--space-4);
+    /* Font variables - now using brand tokens */
+    --heading-font: var(--font-brand);
+    --body-font: var(--font-body);
 }
 
 * {

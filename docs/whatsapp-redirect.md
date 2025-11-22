@@ -18,7 +18,7 @@ None - the page works with default values if no parameters are provided.
 #### UTM Parameters for Analytics
 - `utm_source` - Campaign source (e.g., `facebook`, `google`, `email`)
 - `utm_medium` - Campaign medium (e.g., `social`, `cpc`, `email`)
-- `utm_campaign` - Campaign name (e.g., `summer2024`, `wine_tour_promo`)
+- `utm_campaign` - Campaign name (e.g., `summer2025`, `wine_tour_promo`)
 - `utm_content` - Content variation (e.g., `header_cta`, `sidebar_button`)
 - `utm_term` - Search term (for paid search campaigns)
 
@@ -39,7 +39,7 @@ https://termopilas.co/whatsapp.html?text=Hola%2C%20me%20gustar%C3%ADa%20reservar
 
 ### Full UTM Tracking Example
 ```
-https://termopilas.co/whatsapp.html?utm_source=facebook&utm_medium=social&utm_campaign=wine_tour_2024&utm_content=hero_cta&text=Hola%2C%20vi%20su%20publicaci%C3%B3n%20sobre%20el%20tour%20de%20vino
+https://termopilas.co/whatsapp.html?utm_source=facebook&utm_medium=social&utm_campaign=wine_tour_2025&utm_content=hero_cta&text=Hola%2C%20vi%20su%20publicaci%C3%B3n%20sobre%20el%20tour%20de%20vino
 ```
 
 ### Email Campaign Example
@@ -71,7 +71,7 @@ https://termopilas.co/whatsapp.html?utm_source=google&utm_medium=cpc&utm_campaig
 ### QR Codes for Print Materials
 Generate QR codes pointing to:
 ```
-https://termopilas.co/whatsapp.html?utm_source=print&utm_medium=qr_code&utm_campaign=brochure_2024&text=Escanee%20su%20c%C3%B3digo%20QR%20desde%20el%20folleto
+https://termopilas.co/whatsapp.html?utm_source=print&utm_medium=qr_code&utm_campaign=brochure_2025&text=Escanee%20su%20c%C3%B3digo%20QR%20desde%20el%20folleto
 ```
 
 ## Analytics Tracking

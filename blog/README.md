@@ -27,12 +27,12 @@ Busca y reemplaza las siguientes variables en el nuevo archivo:
 | `{{BLOG_KEYWORDS}}` | Palabras clave separadas por comas | vino artesanal, F27, uva Isabella, elaboración vino |
 | `{{BLOG_SLUG}}` | Nombre del archivo sin extensión | lugares-para-comer-rivera |
 | `{{BLOG_FEATURED_IMAGE}}` | Ruta a la imagen destacada | assets/images/blog/lugares-para-comer-rivera/casa-flores.png |
-| `{{BLOG_PUBLISHED_DATE}}` | Fecha de publicación en formato ISO | 2024-03-15T10:00:00-05:00 |
-| `{{BLOG_MODIFIED_DATE}}` | Fecha de última modificación en formato ISO | 2024-03-15T10:00:00-05:00 |
+| `{{BLOG_PUBLISHED_DATE}}` | Fecha de publicación en formato ISO | 2025-03-15T10:00:00-05:00 |
+| `{{BLOG_MODIFIED_DATE}}` | Fecha de última modificación en formato ISO | 2025-03-15T10:00:00-05:00 |
 | `{{BLOG_AUTHOR}}` | Nombre del autor | Julio Manchola |
 | `{{BLOG_AUTHOR_IMAGE}}` | Ruta a la imagen del autor | assets/images/blog/lugares-para-comer-rivera/author.png |
 | `{{BLOG_AUTHOR_BIO}}` | Biografía del autor | Experto en gastronomía colombiana y periodista especializado en turismo. |
-| `{{BLOG_DATE}}` | Fecha en formato legible | 15 de marzo, 2024 |
+| `{{BLOG_DATE}}` | Fecha en formato legible | 15 de marzo, 2025 |
 | `{{BLOG_CATEGORY}}` | Categoría principal del artículo | Vino |
 | `{{BLOG_SUBTITLE}}` | Subtítulo o descripción | Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera. |
 | `{{BLOG_CONTENT}}` | Contenido principal del artículo | Todo el contenido HTML del artículo |

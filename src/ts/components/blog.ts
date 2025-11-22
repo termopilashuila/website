@@ -1,4 +1,4 @@
-// Function to parse Spanish dates like "5 de abril, 2024" into Date objects
+// Function to parse Spanish dates like "5 de abril, 2025" into Date objects
 function parseSpanishDate(dateString: string): Date {
   const monthMap: { [key: string]: number } = {
     'enero': 0,
@@ -15,7 +15,7 @@ function parseSpanishDate(dateString: string): Date {
     'diciembre': 11
   };
 
-  // Format: "5 de abril, 2024"
+  // Format: "5 de abril, 2025"
   const parts = dateString.split(' ');
   if (parts.length === 4) {
     const day = parseInt(parts[0], 10);
