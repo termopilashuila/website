@@ -107,7 +107,7 @@ const defaultHeaderConfig: HeaderConfig = {
   navItems: [
     { text: 'Inicio', href: '/index.html' },
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
-    { text: 'Tour', href: '/tour.html#main-content' },
+    { text: 'Tour', href: '/tour/#main-content' },
     { text: 'Coliving', href: '/coliving.html#main-content' },
     { text: 'Eventos', href: '/eventos.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },

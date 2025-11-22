@@ -31,20 +31,58 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 ## Estructura del proyecto
 
 ```
-finca-termopilas/
-├── index.html              # Página principal
-├── alojamiento.html        # Página de habitaciones
-├── tour.html               # Página del tour
-├── ubicacion.html          # Página de cómo llegar
-├── galeria.html            # Galería de imágenes
-├── coliving.html           # Página de coliving
-├── blog.html               # Página principal del blog
-├── 404.html                # Página de error
-├── sitemap.xml             # Sitemap para SEO
-├── robots.txt              # Robots.txt para SEO
-├── CNAME                   # Archivo CNAME para dominio personalizado
-├── .nojekyll               # Archivo para GitHub Pages
-├── README.md               # Documentación del proyecto
+website/
+├── index.html               # Página principal
+├── alojamiento.html         # Alojamiento
+├── tour/                    # Tour de vino y cacao
+│   └── index.html           # Página principal del tour
+├── ubicacion.html           # Cómo llegar
+├── coliving.html            # Coliving
+├── eventos.html             # Landing de eventos
+├── catalogo.html            # Catálogo de productos/experiencias
+├── cata-vinos.html          # Página de cata de vinos
+├── galeria.html             # Galería de fotos
+├── pago.html                # Métodos de pago
+├── trabajo.html             # Portal de vacantes
+├── privacidad.html          # Política de privacidad
+├── blog.html                # Índice del blog
+├── 404.html                 # Página de error
+├── sitemap.xml              # Sitemap SEO (generado por script)
+├── robots.txt               # Robots SEO
+├── CNAME                    # Dominio personalizado
+├── service-worker.js        # PWA cache
+├── share-modal.js           # Stub para evitar 404 en compartir
+├── scripts/                 # Utilidades Node
+│   ├── generate-sitemap.js
+│   └── process-blog.js
+├── src/
+│   ├── newsletter.js        # Newsletter (Apps Script backend)
+│   ├── blog.js              # Interacciones del blog (categorías/animaciones)
+│   ├── discount-popup.js    # Popup de descuento (Apps Script backend)
+│   └── ts/
+│       ├── main.ts          # Bootstrap + SW + rutas por página
+│       ├── components/
+│       │   ├── header.ts    # Cabecera dinámica
+│       │   ├── footer.ts    # Pie de página dinámico
+│       │   ├── blog.ts      # Filtros y orden de blog (TS)
+│       │   └── JobApplicationForm.ts
+│       ├── utils/
+│       │   ├── animations.ts
+│       │   └── markdown-to-blog.ts
+│       └── types/
+│           ├── interfaces.ts
+│           └── jobApplication.ts
+├── dist/                    # Salida de webpack
+│   ├── main.js
+│   ├── newsletter.js
+│   ├── blog.js
+│   ├── discount-popup.js
+│   ├── components/jobApplicationForm.js
+│   └── utils/utils/markdown-to-blog.js
+├── markdown/                # Fuentes en Markdown para el blog
+│   └── blog/*.md
+├── blog/                    # Salida HTML del blog (generada)
+│   └── posts/*.html
 ├── assets/
 │   ├── css/
 │   │   └── fonts.css       # Definiciones de tipografía
@@ -341,6 +379,7 @@ finca-termopilas/
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
 - **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
 - **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
+- **Tour (Reservas)**: Formulario en `tour/index.html` que envía a Apps Script (`appscript/tour/handler.js`)
 - **Características**:
   - Validación de formularios
   - Integración con Google Analytics

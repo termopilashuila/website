@@ -27,12 +27,17 @@ function initPage(): void {
   initSmoothScroll();
 
   // Initialize page-specific components
+  const currentPath = window.location.pathname;
   switch (pageName) {
     case 'blog.html':
       initBlogCategoryFiltering();
       break;
     case 'tour.html':
-      initTourExperienceLazyLoading();
+    case 'index.html':
+      // Check if we're in the tour/ directory
+      if (currentPath.includes('/tour/') || currentPath.endsWith('/tour')) {
+        initTourExperienceLazyLoading();
+      }
       break;
   }
 
