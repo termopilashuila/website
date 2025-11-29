@@ -78,7 +78,7 @@
                         <p>El recorrido es por el viñedo y el cultivo de cacao, con degustación de frutos de cacao, nibs, fresas con fuente de chocolate de la finca y una copa de vino rosado o tinto en la cava.</p>
                         <ul class="tour-info">
                             <li><i class="far fa-clock"></i> <strong>Duración:</strong>&nbsp;Aproximada de 2 Horas</li>
-                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;Por definir</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;28 de Diciembre de 2025</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Horarios:</strong>&nbsp;&nbsp;4:00 PM - 6:00 PM</li>
                             <!-- <li><i class="fas fa-calendar-alt"></i> <strong>Días:</strong>&nbsp;1er y 3er fds de cada mes</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Horarios:</strong>&nbsp;&nbsp;Sábado 4:00 PM y Domingo 9:00 AM</li> -->
@@ -113,11 +113,11 @@
                     <div class="pricing-card">
                         <div class="price-header">
                             <h3>Grupos</h3>
-                            <p class="price">$40.000 COP</p>
+                            <p class="price">$65.000 COP</p>
                             <p class="price-detail">por persona</p>
                         </div>
                         <div class="price-body">
-                            <p>De 6 a 25 personas</p>
+                            <p>De 1 a 25 personas</p>
                             <p>Incluye degustaciones</p>
                             <!-- <p>Sin obsequio</p> -->
                         </div>
@@ -342,19 +342,20 @@
                     <div class="form-group">
                         <label for="date">Fecha preferida</label>
                         <select id="date" name="date" required>
-                            <option value="por-definir" selected>Fecha por definir</option>
+                            <option value="">Selecciona una fecha</option>
+                            <option value="2025-12-28" selected>28 de Diciembre de 2025 - 4:00 PM</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="numberOfPeople">Número de personas</label>
                         <select id="numberOfPeople" name="numberOfPeople" required>
                             <option value="">Selecciona el número de personas</option>
-                            <option value="1">1 persona - $40,000 COP</option>
-                            <option value="2">2 personas - $80,000 COP</option>
-                            <option value="3">3 personas - $120,000 COP</option>
-                            <option value="4">4 personas - $160,000 COP</option>
-                            <option value="5">5 personas - $200,000 COP</option>
-                            <option value="6">6 personas - $240,000 COP</option>
+                            <option value="1">1 persona - $65,000 COP</option>
+                            <option value="2">2 personas - $130,000 COP</option>
+                            <option value="3">3 personas - $195,000 COP</option>
+                            <option value="4">4 personas - $260,000 COP</option>
+                            <option value="5">5 personas - $325,000 COP</option>
+                            <option value="6">6 personas - $390,000 COP</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -553,11 +554,29 @@
                             iframe.parentNode.removeChild(iframe);
                         }
                         
-                        // Show success message without payment redirect
-                        alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar la fecha y los detalles del pago.');
-                        tourForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.textContent = originalButtonText;
+                        // Get payment URL based on number of people
+                        const paymentUrl = paymentUrls[formData.numberOfPeople];
+                        
+                        if (paymentUrl) {
+                            // Track payment redirect
+                            gtag('event', 'tour_payment_redirect', {
+                                'event_category': 'Lead Generation',
+                                'event_label': `Tour Payment Redirect - ${formData.numberOfPeople} people`,
+                                'page': 'tour',
+                                'number_of_people': formData.numberOfPeople,
+                                'payment_amount': parseInt(formData.numberOfPeople) * 65000,
+                                'value': 1
+                            });
+                            
+                            // Redirect to payment
+                            window.location.href = paymentUrl;
+                        } else {
+                            // No payment URL for this number of people
+                            alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar la fecha y los detalles del pago.');
+                            tourForm.reset();
+                            submitButton.disabled = false;
+                            submitButton.textContent = originalButtonText;
+                        }
                     }, 2000);
 
                     // Submit via iframe
