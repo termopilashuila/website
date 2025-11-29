@@ -20,7 +20,7 @@ Create payment links from input files:
 python lib/create_links.py
 
 # Process a specific file
-python lib/create_links.py input/my_payment_link.json
+python lib/create_links.py input/params.json
 ```
 
 ### As a Library
