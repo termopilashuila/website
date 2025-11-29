@@ -1,0 +1,7 @@
+{
+  "name": "Pago Evento Ejemplo",
+  "description": "Pago para evento de cata de vinos",
+  "single_use": false,
+  "collect_shipping": false
+}
+

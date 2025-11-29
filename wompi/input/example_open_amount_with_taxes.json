@@ -1,0 +1,14 @@
+{
+  "name": "Donación con IVA",
+  "description": "Donación voluntaria para eventos de la comunidad",
+  "single_use": false,
+  "collect_shipping": false,
+  "taxes": [
+    {
+      "type": "VAT",
+      "percentage": 19
+    }
+  ],
+  "redirect_url": "https://termopilas.co/feedback.html"
+}
+

@@ -1,0 +1,11 @@
+{
+  "name": "Tour de Vino y Cacao - Pago Completo",
+  "description": "Tour completo de vino y cacao en Termopilas Huila",
+  "single_use": false,
+  "collect_shipping": false,
+  "currency": "COP",
+  "amount_in_cents": 15000000,
+  "redirect_url": "https://termopilas.co/tour/gracias.html",
+  "image_url": "https://termopilas.co/assets/images/tour/tour-hero.jpg"
+}
+

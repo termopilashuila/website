@@ -37,6 +37,10 @@ yarn-error.log*
 .eslintcache
 .stylelintcache
 .parcel-cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Temporary files
 tmp/
@@ -48,3 +52,6 @@ coverage/
 
 octorate/html/engine_files/**
 octorate/html/engine.html
+
+# Wompi payment link data
+wompi/data/*.json

@@ -1,0 +1,16 @@
+{
+  "name": "Cata de Vinos con IVA",
+  "description": "Cata de vinos artesanales incluye IVA",
+  "single_use": false,
+  "collect_shipping": false,
+  "currency": "COP",
+  "amount_in_cents": 10000000,
+  "taxes": [
+    {
+      "type": "VAT",
+      "amount_in_cents": 1900000
+    }
+  ],
+  "redirect_url": "https://termopilas.co/tour/gracias.html"
+}
+

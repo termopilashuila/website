@@ -1,0 +1,12 @@
+{
+  "name": "Oferta Especial Navidad 2025",
+  "description": "Tour especial de fin de año con descuento",
+  "single_use": false,
+  "collect_shipping": false,
+  "currency": "COP",
+  "amount_in_cents": 12000000,
+  "expires_at": "2025-12-31T23:59:59",
+  "redirect_url": "https://termopilas.co/tour/gracias.html",
+  "sku": "TOUR-NAV-2025"
+}
+
