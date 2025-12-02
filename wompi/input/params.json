@@ -2,7 +2,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 1px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 1 persona",
-        "amount_in_cop": 65000,
+        "amount_in_cop": 80000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
@@ -12,7 +12,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 2px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 2 personas",
-        "amount_in_cop": 130000,
+        "amount_in_cop": 160000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
@@ -22,7 +22,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 3px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 3 personas",
-        "amount_in_cop": 195000,
+        "amount_in_cop": 240000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
@@ -32,7 +32,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 4px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 4 personas",
-        "amount_in_cop": 260000,
+        "amount_in_cop": 320000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
@@ -42,7 +42,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 5px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 5 personas",
-        "amount_in_cop": 325000,
+        "amount_in_cop": 400000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
@@ -52,7 +52,7 @@
     {
         "name": "Tour Termópilas 28 Dic 2025 6px",
         "description": "Reservación de tour de Termópilas el 28 de diciembre de 2025 para 6 personas",
-        "amount_in_cop": 390000,
+        "amount_in_cop": 480000,
         "currency": "COP",
         "expires_at": "2025-12-29T14:30:00",
         "single_use": false,
