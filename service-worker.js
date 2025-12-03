@@ -1,31 +1,31 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/alojamiento.html',
-  '/tour.html',
-  '/ubicacion.html',
-  '/galeria.html',
-  '/coliving.html',
-  '/blog.html',
-  '/catalogo.html',
+// Smart caching: Network-first for HTML, Cache-first for static assets
+const CACHE_NAME = 'termopilas-cache-v2';
+
+// Static assets to pre-cache (cache-first strategy)
+const staticAssets = [
   '/dist/main.js',
   '/styles/main.css',
   '/styles/hero.css',
   '/styles/utilities.css',
   '/styles/main-sections.css',
   '/styles/responsive.css',
+  '/styles/tour.css',
+  '/styles/whatsapp-button.css',
   '/assets/images/favicon.png',
   '/assets/css/fonts.css'
 ];
 
-// Install the service worker and cache assets
+// Install the service worker and cache static assets only
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        return cache.addAll(urlsToCache);
+        return cache.addAll(staticAssets);
+      })
+      .then(() => {
+        // Skip waiting to activate immediately
+        return self.skipWaiting();
       })
   );
 });
@@ -36,67 +36,133 @@ function isValidUrl(url) {
   return url.startsWith('http:') || url.startsWith('https:');
 }
 
-// Serve cached content when offline
+// Check if request is for an HTML page
+function isHtmlRequest(request) {
+  const url = new URL(request.url);
+  const path = url.pathname;
+  
+  // Navigation requests or explicit .html files
+  return request.mode === 'navigate' || 
+         path.endsWith('.html') || 
+         path === '/' ||
+         (!path.includes('.') && !path.startsWith('/assets/') && !path.startsWith('/dist/') && !path.startsWith('/styles/'));
+}
+
+// Check if request is for a static asset (should use cache-first)
+function isStaticAsset(request) {
+  const url = new URL(request.url);
+  const path = url.pathname;
+  
+  return path.startsWith('/assets/') ||
+         path.startsWith('/dist/') ||
+         path.startsWith('/styles/') ||
+         path.endsWith('.css') ||
+         path.endsWith('.js') ||
+         path.endsWith('.png') ||
+         path.endsWith('.jpg') ||
+         path.endsWith('.jpeg') ||
+         path.endsWith('.gif') ||
+         path.endsWith('.webp') ||
+         path.endsWith('.woff') ||
+         path.endsWith('.woff2') ||
+         path.endsWith('.ttf');
+}
+
+// Network-first strategy for HTML pages
+async function networkFirst(request) {
+  try {
+    const networkResponse = await fetch(request);
+    
+    // Cache the fresh response for offline use
+    if (networkResponse && networkResponse.status === 200) {
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(request, networkResponse.clone());
+    }
+    
+    return networkResponse;
+  } catch (error) {
+    // Network failed, try cache
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    
+    // If no cache for this page, return cached index.html as fallback
+    return caches.match('/index.html');
+  }
+}
+
+// Cache-first strategy for static assets
+async function cacheFirst(request) {
+  const cachedResponse = await caches.match(request);
+  
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+  
+  try {
+    const networkResponse = await fetch(request);
+    
+    // Cache the response for future use
+    if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(request, networkResponse.clone());
+    }
+    
+    return networkResponse;
+  } catch (error) {
+    // Return null if both cache and network fail
+    return null;
+  }
+}
+
+// Serve content with appropriate strategy
 self.addEventListener('fetch', event => {
-  // Skip non-HTTP(S) requests to avoid cache errors with chrome-extension:// and others
+  // Skip non-HTTP(S) requests
   if (!isValidUrl(event.request.url)) {
     return;
   }
+  
+  // Skip non-GET requests
+  if (event.request.method !== 'GET') {
+    return;
+  }
 
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        
-        // Try to fetch the resource from the network
-        return fetch(event.request)
-          .then(response => {
-            // Return the response without caching if not valid or not a GET request
-            if (!response || response.status !== 200 || response.type !== 'basic' || event.request.method !== 'GET') {
-              return response;
-            }
-
-            // Clone the response since it can only be consumed once
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                // Double-check URL is valid before putting in cache
-                if (isValidUrl(event.request.url)) {
-                  cache.put(event.request, responseToCache);
-                }
-              });
-
-            return response;
-          })
-          .catch(() => {
-            // If fetch fails (e.g., offline), try to serve index.html for navigation requests
-            if (event.request.mode === 'navigate') {
-              return caches.match('/index.html');
-            }
-            
-            return null;
-          });
-      })
-  );
+  // Use network-first for HTML pages (always fresh content)
+  if (isHtmlRequest(event.request)) {
+    event.respondWith(networkFirst(event.request));
+    return;
+  }
+  
+  // Use cache-first for static assets (fast loading)
+  if (isStaticAsset(event.request)) {
+    event.respondWith(cacheFirst(event.request));
+    return;
+  }
+  
+  // Default: cache-first for everything else
+  event.respondWith(cacheFirst(event.request));
 });
 
-// Clean up old caches when a new service worker activates
+// Clean up old caches and take control immediately
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys()
+      .then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheWhitelist.indexOf(cacheName) === -1) {
+              console.log('Deleting old cache:', cacheName);
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+      .then(() => {
+        // Take control of all clients immediately
+        return self.clients.claim();
+      })
   );
 }); 
