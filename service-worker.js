@@ -1,6 +1,7 @@
 // Finca Termópilas - Service Worker
 // Smart caching: Network-first for HTML, Cache-first for static assets
-const CACHE_NAME = 'termopilas-cache-v2';
+// Build timestamp is auto-replaced during build process
+const CACHE_NAME = 'termopilas-__BUILD_TIMESTAMP__';
 
 // Static assets to pre-cache (cache-first strategy)
 const staticAssets = [

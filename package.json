@@ -5,6 +5,9 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack",
+    "build:deploy": "webpack && node scripts/stamp-service-worker.js",
+    "sw:stamp": "node scripts/stamp-service-worker.js",
+    "sw:restore": "node scripts/restore-service-worker.js",
     "watch": "webpack --watch",
     "resize-images": "node resize/resize-images.js",
     "process-blog": "npm run build && node scripts/process-blog.js",
