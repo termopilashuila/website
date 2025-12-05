@@ -42,6 +42,53 @@ function initPage(): void {
 
   // Initialize product order buttons
   initProductOrderButtons();
+
+  // Auto-scroll to main content on page load
+  scrollToMainContent();
+}
+
+// Auto-scroll to main-content section on page load
+function scrollToMainContent(): void {
+  // Only auto-scroll if there's no hash in the URL (don't override direct links to sections)
+  if (window.location.hash) {
+    return;
+  }
+
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    // Use requestAnimationFrame to ensure DOM is fully rendered
+    requestAnimationFrame(() => {
+      smoothScrollTo(mainContent, 4000); // 4 seconds duration
+    });
+  }
+}
+
+// Custom smooth scroll with configurable duration
+function smoothScrollTo(element: HTMLElement, duration: number): void {
+  const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  let startTime: number | null = null;
+
+  // Easing function for smooth deceleration (ease-out cubic)
+  function easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animation(currentTime: number): void {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const easeProgress = easeOutCubic(progress);
+    
+    window.scrollTo(0, startPosition + distance * easeProgress);
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
 }
 
 // Initialize product order buttons with WhatsApp integration

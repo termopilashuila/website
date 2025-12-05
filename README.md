@@ -14,7 +14,10 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - CTA de WhatsApp con UTM dinámicas por página
 - Popup de descuento con registro de email (Apps Script)
 - Formulario de reservas de tour (Apps Script)
+- Sistema de eventos con registro y pagos
+- Portal de empleo con formulario de aplicación
 - Generación y ping de sitemap (scripts dedicados)
+- Servicio de generación de enlaces de pago Wompi
 
 ## Tecnologías utilizadas
 
@@ -28,6 +31,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
 - Google Analytics para seguimiento de usuario
+- Jest para pruebas unitarias
 
 ## Estructura del proyecto
 
@@ -37,13 +41,16 @@ website/
 ├── alojamiento.html         # Alojamiento
 ├── tour.html                # Tour de vino y cacao
 ├── ubicacion.html           # Cómo llegar
-├── coliving.html            # Coliving
+├── coliving.html            # Coliving para nómadas digitales
 ├── eventos.html             # Landing de eventos
 ├── catalogo.html            # Catálogo de productos/experiencias
 ├── cata-vinos.html          # Página de cata de vinos
 ├── galeria.html             # Galería de fotos
 ├── pago.html                # Métodos de pago
 ├── trabajo.html             # Portal de vacantes
+├── registro.html            # Registro de huéspedes (TRA)
+├── feedback.html            # Formulario de feedback
+├── whatsapp.html            # Página de redirección a WhatsApp
 ├── privacidad.html          # Política de privacidad
 ├── blog.html                # Índice del blog
 ├── 404.html                 # Página de error
@@ -52,9 +59,25 @@ website/
 ├── CNAME                    # Dominio personalizado
 ├── service-worker.js        # PWA cache
 ├── share-modal.js           # Stub para evitar 404 en compartir
+├── tour/                    # Páginas del flujo de tour
+│   ├── index.html           # Formulario de reserva de tour
+│   ├── gracias.html         # Confirmación de reserva
+│   └── error.html           # Error en reserva
+├── trabajo/                 # Páginas de vacantes
+│   ├── cocinero.html
+│   ├── conserje.html
+│   ├── recepcionista.html
+│   ├── web-developer.html
+│   └── template.html
+├── eventos/                 # Páginas de eventos específicos
+│   ├── cata-vino-paella-tapas.html
+│   ├── cata-vino-paella-tapas-gracias.html
+│   ├── cata-vino-paella-tapas-fallido.html
+│   └── payu-links.json
 ├── scripts/                 # Utilidades Node
 │   ├── generate-sitemap.js
-│   └── process-blog.js
+│   ├── process-blog.js
+│   └── update-sw-version.js
 ├── src/
 │   ├── newsletter.js        # Newsletter (Apps Script backend)
 │   ├── blog.js              # Interacciones del blog (categorías/animaciones)
@@ -65,6 +88,7 @@ website/
 │       │   ├── header.ts    # Cabecera dinámica
 │       │   ├── footer.ts    # Pie de página dinámico
 │       │   ├── blog.ts      # Filtros y orden de blog (TS)
+│       │   ├── tour.ts      # Lazy loading del timeline de tour
 │       │   └── JobApplicationForm.ts
 │       ├── utils/
 │       │   ├── animations.ts
@@ -77,26 +101,96 @@ website/
 │   ├── newsletter.js
 │   ├── blog.js
 │   ├── discount-popup.js
-│   ├── components/jobApplicationForm.js
-│   └── utils/utils/markdown-to-blog.js
+│   ├── components/
+│   │   ├── components.js
+│   │   └── jobApplicationForm.js
+│   └── utils/
+│       └── utils/
+│           └── markdown-to-blog.js
 ├── markdown/                # Fuentes en Markdown para el blog
 │   └── blog/*.md
 ├── blog/                    # Salida HTML del blog (generada)
-│   └── posts/*.html
+│   ├── posts/*.html         # Posts procesados
+│   ├── *.html               # Posts legacy
+│   └── template.html
 ├── assets/
 │   ├── css/fonts.css
-│   └── images/**            # Imágenes del sitio
+│   └── images/              # Imágenes del sitio
+│       ├── alojamiento/
+│       ├── blog/
+│       ├── cacao/
+│       ├── catalog/
+│       ├── coliving/
+│       ├── directions/
+│       ├── eventos/
+│       ├── galeria/
+│       ├── home/
+│       ├── orchids/
+│       ├── pago/
+│       ├── pool/
+│       ├── tour/
+│       ├── trabajo/
+│       ├── ubicacion/
+│       └── venue/
 ├── styles/                  # CSS por sección
-├── docs/
-│   ├── markdown-to-blog-guide.md
+│   ├── main.css
+│   ├── brand-tokens.css
+│   ├── hero.css
+│   ├── blog.css
+│   ├── blog-post.css
+│   ├── carousel.css
+│   ├── catalog.css
+│   ├── catalog-carousel.css
+│   ├── coliving.css
+│   ├── components.css
+│   ├── main-sections.css
+│   ├── newsletter.css
+│   ├── pago.css
+│   ├── privacy.css
+│   ├── responsive.css
+│   ├── rooms.css
+│   ├── tour.css
+│   ├── trabajo.css
+│   ├── ubicacion.css
+│   ├── utilities.css
+│   ├── whatsapp-button.css
+│   └── whatsapp-redirect.css
+├── docs/                    # Documentación
 │   ├── brand-guidelines.md
-│   └── newsletter-refactoring.md
+│   ├── markdown-to-blog-guide.md
+│   ├── newsletter-refactoring.md
+│   ├── restaurantes.md
+│   ├── turismo.md
+│   └── whatsapp-redirect.md
+├── .agents/                 # Agentes LLM para mantenimiento
+│   ├── content/             # Blog, SEO, landing pages
+│   ├── technical/           # CSS, TypeScript, sitemap, imágenes
+│   ├── backend/             # Apps Script, booking system
+│   ├── design/              # UI/UX, brand guidelines
+│   ├── infrastructure/      # Cloud, deployment
+│   ├── whatsapp/            # Chatbot y subagentes
+│   └── ...
+├── appscript/               # Scripts de Google Apps
+│   ├── trabajo.js           # Aplicaciones de empleo
+│   ├── eventos/             # Sistema de eventos
+│   ├── coliving/            # Sistema de coliving
+│   ├── subscribe/           # Suscripciones newsletter
+│   ├── tour/                # Reservas de tour
+│   ├── feedback.js          # Feedback de clientes
+│   ├── registro.js          # Registro de huéspedes
+│   └── birthday.js          # Automatización cumpleaños
+├── wompi/                   # Servicio de enlaces de pago
+│   ├── lib/                 # Librería Python
+│   │   ├── payment_link_service.py
+│   │   └── create_links.py
+│   ├── input/               # JSONs de configuración
+│   └── data/                # Enlaces generados
+├── terraform/               # Infra como código (GCP)
+│   ├── main.tf
+│   ├── modules/
+│   └── config.json
+├── octorate/                # Integración booking (estilos/html)
 ├── resize/                  # Utilidad Python para imágenes
-│   ├── main.py
-│   └── requirements.txt
-├── appscript/               # Scripts de Google (handlers Apps Script)
-├── terraform/               # Infra como código (backend/hosting auxiliares)
-├── octorate/                # Integración puntual (estilos/html)
 └── README.md
 ```
 
@@ -148,6 +242,52 @@ Para actualizar la información de pago, edita directamente `pago.html`:
 - `bancolombia.png` - Logo de Bancolombia
 
 Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según sea necesario.
+
+## Servicio de Enlaces de Pago Wompi
+
+El directorio `wompi/` contiene un servicio Python para generar enlaces de pago programáticamente usando la API de Wompi.
+
+### Características
+
+- Creación de enlaces de pago con diversas configuraciones
+- Montos fijos o abiertos
+- Enlaces de un solo uso o múltiples usos
+- Fechas de expiración
+- Campos personalizados
+- Cálculos de impuestos (IVA/consumo)
+- Procesamiento por lotes desde archivos JSON
+
+### Uso rápido
+
+```bash
+cd wompi
+pip install -r requirements.txt
+
+# Procesar todos los archivos JSON en input/
+python lib/create_links.py
+
+# O procesar un archivo específico
+python lib/create_links.py input/my_links.json
+```
+
+Los enlaces generados se guardan en `data/payment_links_TIMESTAMP.json`.
+
+Para más detalles, consulta `wompi/README.md`.
+
+## Agentes de Mantenimiento LLM
+
+El directorio `.agents/` contiene agentes especializados de LLM diseñados para mantener y optimizar el sitio web:
+
+### Categorías de agentes
+
+- **Content:** Blog, SEO, landing pages, contenido multilingüe
+- **Technical:** Arquitectura CSS, calidad TypeScript, sitemap, imágenes
+- **Backend:** Google Apps Script, sistema de reservas
+- **Design:** UI/UX, brand guardian, visual storyteller
+- **Infrastructure:** Cloud, deployment, monitoring
+- **WhatsApp:** Chatbot orquestador y subagentes especializados
+
+Cada archivo de agente contiene prompts detallados, métricas de éxito y procedimientos operativos.
 
 ## Guía de estilo y convenciones
 
@@ -366,6 +506,7 @@ Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según se
 #### Línea de tiempo del tour
 - Estructura: Línea de tiempo vertical con línea de acento naranja
 - Iconos: Circulares con fondo naranja
+- Lazy loading: Items se revelan al hacer scroll (ver `src/ts/components/tour.ts`)
 
 #### Testimonios
 - Contenedor: Desplazamiento horizontal en todos los dispositivos
@@ -388,12 +529,13 @@ Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según se
 - **Salida principal**: `dist/main.js` y módulos nombrados
   - `dist/components/jobApplicationForm.js`
   - `dist/utils/utils/markdown-to-blog.js`
+- **Actualización de Service Worker**: El script `update-sw-version.js` actualiza automáticamente la versión del SW después de cada build
 
 ### Módulos JavaScript
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
 - **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
 - **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
-- **Tour (Reservas)**: Formulario en `tour.html` que envía a Apps Script (`appscript/tour/handler.js`)
+- **Tour (Reservas)**: Formulario en `tour/index.html` que envía a Apps Script (`appscript/tour/handler.js`)
 - **Características**:
   - Validación de formularios
   - Integración con Google Analytics
@@ -410,6 +552,7 @@ Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según se
 ### PWA
 - Registro de Service Worker en `src/ts/main.ts`
 - Estrategia de caché sencilla definida en `service-worker.js`
+- Versión actualizada automáticamente con cada build
 
 ### Analytics
 - **Implementación**: Implementado directamente en el HTML de cada página
@@ -423,6 +566,30 @@ Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según se
 - Validación rápida: `npm run sitemap:validate`
 - Ping a buscadores: `npm run sitemap:ping`
 - Script: `scripts/generate-sitemap.js`
+
+## Google Apps Script Backend
+
+El directorio `appscript/` contiene scripts de Google Apps que manejan funcionalidad del servidor:
+
+### Sistemas principales
+
+- **Trabajo** (`trabajo.js`): Procesamiento de aplicaciones de empleo
+- **Eventos** (`eventos/`): Sistema de cotización y registro de eventos
+- **Coliving** (`coliving/`): Sistema de aplicaciones de coliving
+- **Tour** (`tour/`): Reservas de tour con integración Wompi
+- **Newsletter** (`subscribe/`): Gestión de suscripciones
+- **Feedback** (`feedback.js`): Recolección de feedback de clientes
+- **Registro** (`registro.js`): Registro de huéspedes (TRA)
+- **Birthday** (`birthday.js`): Automatización de cumpleaños
+
+### Características
+
+- Procesamiento de formularios con validación
+- Integración con Google Sheets para almacenamiento
+- Automatización de emails con templates personalizados
+- Endpoints API para comunicación frontend-backend
+
+Para más detalles, consulta `appscript/README.md`.
 
 ## Desarrollo local
 
@@ -468,7 +635,17 @@ Los estilos se encuentran en `styles/pago.css` y pueden personalizarse según se
    ```
 
 ### Pruebas
-Actualmente no hay pruebas configuradas (el script `npm test` es un placeholder).
+
+El proyecto usa Jest para pruebas unitarias:
+
+```bash
+npm test
+```
+
+**Nota:** Actualmente el script de test es un placeholder. Las pruebas están configuradas con:
+- Jest como framework de testing
+- ts-jest para soporte TypeScript
+- jest-environment-jsdom para pruebas DOM
 
 ### Optimización de imágenes
 La herramienta actual es un script en Python ubicado en `resize/`.
@@ -502,14 +679,38 @@ Esto iniciará un servidor local en http://localhost:8080 donde podrás visualiz
   - Procesar un archivo: `npm run process-blog-single markdown/blog/mi-post.md`
 - Compilado del conversor: `dist/utils/utils/markdown-to-blog.js`.
 
+### Posts actuales
+
+El blog incluye posts sobre:
+- Proceso de elaboración de vino artesanal
+- Tour de vino y cacao
+- Destinos del Huila
+- Chocolate artesanal
+- Nibs de cacao y recetas
+- Maridaje de vinos con platos típicos
+- Restaurantes y domicilios en Rivera
+
+## Infraestructura (Terraform)
+
+El directorio `terraform/` gestiona la infraestructura de Google Cloud Platform:
+
+- Service accounts e IAM
+- BigQuery para analytics
+- Cloud Run para servicios
+- Cloud Scheduler para tareas programadas
+- Artifact Registry
+
+Para más detalles, consulta `terraform/README.md`.
+
 ## Implementación
 
 - **Plataforma**: GitHub Pages
 - **Rama**: main (implementada automáticamente)
-- **Dominio**: Dominio personalizado configurado a través del archivo CNAME
+- **Dominio**: Dominio personalizado configurado a través del archivo CNAME (termopilas.co)
 - **SEO**:
   - Sitemap (`sitemap.xml`) para indexación de motores de búsqueda
   - Robots.txt (`robots.txt`) para instrucciones de rastreadores
 - **Lista de verificación**:
   - Asegurarse de que todos los archivos estén correctamente confirmados y enviados
   - Verificar que todos los enlaces y recursos funcionen correctamente
+  - Ejecutar `npm run build` antes de hacer commit para actualizar el service worker
