@@ -56,16 +56,20 @@ function scrollToMainContent(): void {
 
   const mainContent = document.getElementById('main-content');
   if (mainContent) {
-    // Use requestAnimationFrame to ensure DOM is fully rendered
-    requestAnimationFrame(() => {
-      smoothScrollTo(mainContent, 4000); // 4 seconds duration
-    });
+    // Wait a short moment for dynamically generated navbar to be fully rendered
+    setTimeout(() => {
+      // Get navbar height to offset the scroll position
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80; // fallback to 80px
+      
+      smoothScrollTo(mainContent, 1500, navbarHeight + 80); // 2 seconds duration, offset by navbar height
+    }, 50); // Small delay to ensure navbar is rendered
   }
 }
 
-// Custom smooth scroll with configurable duration
-function smoothScrollTo(element: HTMLElement, duration: number): void {
-  const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+// Custom smooth scroll with configurable duration and offset
+function smoothScrollTo(element: HTMLElement, duration: number, offset: number = 0): void {
+  const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   let startTime: number | null = null;
