@@ -139,7 +139,7 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
           <a href="https://www.instagram.com/fincatermopilas/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
             📸
           </a>
-          <a href="https://www.facebook.com/termopilashuila/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
+          <a href="https://www.facebook.com/fincatermopilas/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
             👥
           </a>
           <a href="https://wa.me/573143428579?text=${encodedWhatsappMessage}" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">

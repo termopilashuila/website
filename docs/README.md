@@ -145,4 +145,4 @@ ISC
 
 - Email: termopilashuila@gmail.com
 - Instagram: [@fincatermopilas](https://www.instagram.com/fincatermopilas/)
-- Facebook: [termopilashuila](https://www.facebook.com/termopilashuila/)
+- Facebook: [fincatermopilas](https://www.facebook.com/fincatermopilas/)

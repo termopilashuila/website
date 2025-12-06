@@ -26,7 +26,7 @@ const defaultFooterConfig: FooterConfig = {
       },
       {
         platform: 'Facebook',
-        url: 'https://www.facebook.com/termopilashuila/',
+        url: 'https://www.facebook.com/fincatermopilas/',
         icon: 'fab fa-facebook'
       },
       {
