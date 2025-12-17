@@ -185,6 +185,38 @@
                     </div>
 
                     <div class="payment-methods-grid">
+
+                        <!-- Bank Transfers - Bancolombia -->
+                        <div class="payment-method-card">
+                            <div class="card-header">
+                                <i class="fas fa-university"></i>
+                                <h3>Transferencia Bancolombia</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="bank-logo">
+                                    <img src="assets/images/pago/bancolombia.png" alt="Bancolombia Logo" class="payment-logo-img">
+                                </div>
+                                <p>Transferencia bancaria directa desde tu cuenta</p>
+                                <div class="account-details" data-account-type="bancolombia">
+                                    <div class="account-item">
+                                        <span class="account-label">Titular:</span>
+                                        <span class="account-value" id="bancolombia-titular">BRER SAS</span>
+                                    </div>
+                                    <div class="account-item">
+                                        <span class="account-label">Número de cuenta:</span>
+                                        <span class="account-value" id="bancolombia-cuenta">45700002525</span>
+                                    </div>
+                                    <div class="account-item">
+                                        <span class="account-label">Tipo de cuenta:</span>
+                                        <span class="account-value" id="bancolombia-tipo">Ahorros</span>
+                                    </div>
+                                </div>
+                                <button class="copy-button" onclick="copyAccountDetails('bancolombia')">
+                                    <i class="fas fa-copy"></i> Copiar datos
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Wompi -->
                         <div class="payment-method-card">
                             <div class="card-header">
@@ -229,36 +261,6 @@
                             </div>
                         </div>
 
-                        <!-- Bank Transfers - Bancolombia -->
-                        <div class="payment-method-card">
-                            <div class="card-header">
-                                <i class="fas fa-university"></i>
-                                <h3>Transferencia Bancolombia</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="bank-logo">
-                                    <img src="assets/images/pago/bancolombia.png" alt="Bancolombia Logo" class="payment-logo-img">
-                                </div>
-                                <p>Transferencia bancaria directa desde tu cuenta</p>
-                                <div class="account-details" data-account-type="bancolombia">
-                                    <div class="account-item">
-                                        <span class="account-label">Titular:</span>
-                                        <span class="account-value" id="bancolombia-titular">BRER SAS</span>
-                                    </div>
-                                    <div class="account-item">
-                                        <span class="account-label">Número de cuenta:</span>
-                                        <span class="account-value" id="bancolombia-cuenta">45700002525</span>
-                                    </div>
-                                    <div class="account-item">
-                                        <span class="account-label">Tipo de cuenta:</span>
-                                        <span class="account-value" id="bancolombia-tipo">Ahorros</span>
-                                    </div>
-                                </div>
-                                <button class="copy-button" onclick="copyAccountDetails('bancolombia')">
-                                    <i class="fas fa-copy"></i> Copiar datos
-                                </button>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="section-note">
