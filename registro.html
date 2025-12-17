@@ -399,6 +399,7 @@
                 
                 // Instead of fetch API, use formData to redirect user with URL parameters
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbwYzxegy5dZBalhYMpj3495Rkbh1qksiv848UUZaHk0GuhxuRYDt1Slf708lUHZ5OdoGA/exec';
+                const webhookURL = 'https://n8n.termopilas.co/webhook/139cf446-b7f3-4d4a-a337-dda543fb2687';
                 const jsonString = JSON.stringify(formData);
                 
                 // Show processing message
@@ -409,6 +410,17 @@
                     <p>Por favor espera mientras procesamos tu información.</p>
                 `;
                 successMessage.style.display = 'block';
+                
+                // Send data to n8n webhook (fire and forget - don't block form submission)
+                fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: jsonString,
+                }).catch(error => {
+                    console.error('Webhook error:', error);
+                });
                 
                 // Create a hidden form to submit data
                 const hiddenForm = document.createElement('form');
