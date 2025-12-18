@@ -52,6 +52,10 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
   const phoneNumber = config.contact.phone;
   const formattedPhone = `(+57) ${phoneNumber.slice(3)}`;
   
+  // Get WhatsApp phone URL if available, otherwise fallback to default
+  const whatsappPhoneUrl = (config as any).whatsappPhoneUrl || 
+    `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=general&utm_content=phone_link&text=${encodeURIComponent('Hola. Me gustaría saber más sobre')}`;
+  
   // Generate the footer content HTML
   const footerContentHTML = `
     <div class="footer-content">
@@ -65,7 +69,7 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
       <div class="contact">
         <h3>${config.contact.title}</h3>
         <p>${config.contact.description}</p>
-        <a href="tel:${config.contact.phone}"><i class="fas fa-phone"></i> ${formattedPhone}</a>
+        <a href="${whatsappPhoneUrl}"><i class="fas fa-phone"></i> ${formattedPhone}</a>
         <a href="mailto:${config.contact.email}"><i class="fas fa-envelope"></i> ${config.contact.email}</a>
         <div class="social-media">
           ${config.contact.socialMedia.map(social => 
@@ -133,12 +137,16 @@ export function initFooter(): void {
     
     // Determine UTM campaign based on page
     const utmCampaign = pageNameInSpanish.toLowerCase().replace(/\s+/g, '_');
-    const whatsappUrl = `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=${utmCampaign}&utm_content=social_link&text=${encodedMessage}`;
+    const whatsappSocialUrl = `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=${utmCampaign}&utm_content=social_link&text=${encodedMessage}`;
+    const whatsappPhoneUrl = `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=${utmCampaign}&utm_content=phone_link&text=${encodedMessage}`;
+
+    // Store the WhatsApp phone URL for use in the footer generation
+    (footerConfig as any).whatsappPhoneUrl = whatsappPhoneUrl;
 
     // Update the WhatsApp social media link
     const whatsappIndex = footerConfig.contact.socialMedia.findIndex(social => social.platform === 'WhatsApp');
     if (whatsappIndex !== -1) {
-        footerConfig.contact.socialMedia[whatsappIndex].url = whatsappUrl;
+        footerConfig.contact.socialMedia[whatsappIndex].url = whatsappSocialUrl;
     }
   
   // Generate the footer with the customized config

@@ -1,5 +1,5 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v2025.12.17.125454';
+const CACHE_NAME = 'termopilas-cache-v2025.12.18.174911';
 const urlsToCache = [
   '/',
   '/index.html',
