@@ -69,7 +69,7 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
       <div class="contact">
         <h3>${config.contact.title}</h3>
         <p>${config.contact.description}</p>
-        <a href="${whatsappPhoneUrl}"><i class="fas fa-phone"></i> ${formattedPhone}</a>
+        <a href="${whatsappPhoneUrl}"><i class="fab fa-whatsapp"></i> ${formattedPhone}</a>
         <a href="mailto:${config.contact.email}"><i class="fas fa-envelope"></i> ${config.contact.email}</a>
         <div class="social-media">
           ${config.contact.socialMedia.map(social => 
