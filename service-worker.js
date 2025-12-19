@@ -1,5 +1,5 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v2025.12.19.090409';
+const CACHE_NAME = 'termopilas-cache-v2025.12.19.2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -26,6 +26,10 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         return cache.addAll(urlsToCache);
+      })
+      .then(() => {
+        // Force the new service worker to activate immediately (don't wait for tabs to close)
+        return self.skipWaiting();
       })
   );
 });
@@ -97,6 +101,9 @@ self.addEventListener('activate', event => {
           }
         })
       );
+    }).then(() => {
+      // Take control of all clients immediately (don't wait for page reload)
+      return self.clients.claim();
     })
   );
 }); 
