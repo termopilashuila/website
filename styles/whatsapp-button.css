@@ -24,6 +24,30 @@
     background-color: #20c35a;
 }
 
+/* Pulse animation to attract attention */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+.whatsapp-button.pulse {
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+.whatsapp-button.pulse:hover {
+    animation: none;
+}
+
 @media (max-width: 768px) {
     .whatsapp-button {
         width: 50px;
