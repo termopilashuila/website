@@ -202,7 +202,11 @@ y vive un momento simbólico de cierre de año alrededor de una fogata.
 
         <section class="tour-experience section">
             <div class="container">
-                <h2>La Experiencia</h2>
+                <h2 class="collapsible-header" id="experience-toggle">
+                    La Experiencia
+                    <i class="fas fa-chevron-down collapsible-icon"></i>
+                </h2>
+                <div class="collapsible-content" id="experience-content">
                 <div class="experience-timeline">
                     <div class="experience-item">
                         <div class="experience-icon">
@@ -342,6 +346,7 @@ y vive un momento simbólico de cierre de año alrededor de una fogata.
                     <br>
                     <a href="#tour-form" class="cta-button"><i class="fas fa-calendar-check"></i> RESERVA TU TOUR AHORA</a>
                 </div>
+                </div>
             </div>
         </section>
 
@@ -418,6 +423,29 @@ y vive un momento simbólico de cierre de año alrededor de una fogata.
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Collapsible "La Experiencia" section - collapsed by default
+            const experienceToggle = document.getElementById('experience-toggle');
+            const experienceContent = document.getElementById('experience-content');
+            
+            if (experienceToggle && experienceContent) {
+                // Start collapsed
+                experienceContent.classList.add('collapsed');
+                
+                experienceToggle.addEventListener('click', function() {
+                    experienceContent.classList.toggle('collapsed');
+                    experienceToggle.classList.toggle('expanded');
+                    
+                    // Track toggle action
+                    const isExpanded = !experienceContent.classList.contains('collapsed');
+                    gtag('event', 'tour_experience_toggle', {
+                        'event_category': 'Engagement',
+                        'event_label': isExpanded ? 'Expanded' : 'Collapsed',
+                        'page': 'tour',
+                        'value': 1
+                    });
+                });
+            }
+
             // Initialize header with custom configuration for Tour
             if (window.termopilasHeader) {
                 window.termopilasHeader.updateConfig({
