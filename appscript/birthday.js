@@ -142,12 +142,12 @@ function sendBirthdayInvitation(name, email, birthdayDate) {
           <a href="https://www.facebook.com/fincatermopilas/" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
             👥
           </a>
-          <a href="https://wa.me/573143428579?text=${encodedWhatsappMessage}" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
+          <a href="https://wa.me/573170182644?text=${encodedWhatsappMessage}" target="_blank" style="margin: 0 10px; color: #fdf6ea; text-decoration: none; font-size: 24px;">
             💬
           </a>
         </div>
         Si no quieres seguir recibiendo este email de cumpleaños, desuscríbete 
-        <a href="https://wa.me/573143428579?text=${encodeURIComponent(`Hola, soy ${name}. Por favor, quisiera dejar de recibir correos de cumpleaños de Termópilas.`)}" style="color: #B48E63;">aquí</a>
+        <a href="https://wa.me/573170182644?text=${encodeURIComponent(`Hola, soy ${name}. Por favor, quisiera dejar de recibir correos de cumpleaños de Termópilas.`)}" style="color: #B48E63;">aquí</a>
       </div>
     </div>
   `;

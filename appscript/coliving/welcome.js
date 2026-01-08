@@ -54,7 +54,7 @@ function sendWelcomeEmail(nomadData) {
       
       <div style="margin-top: 30px; text-align: center;">
         <p>Si necesitas cualquier información adicional o tienes alguna duda, no dudes en contactarnos:</p>
-        <p><strong>WhatsApp:</strong> <a href=      "https://wa.me/573143428579?text=Hola%2C%20acabo%20de%20recibir%20el%20email%20de%20bienvenida%20al%20Coliving%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20informaci%C3%B3n." style="color: #B48E63; text-decoration: none;">+573143428579</a></p>
+        <p><strong>WhatsApp:</strong> <a href=      "https://wa.me/573170182644?text=Hola%2C%20acabo%20de%20recibir%20el%20email%20de%20bienvenida%20al%20Coliving%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20informaci%C3%B3n." style="color: #B48E63; text-decoration: none;">+573170182644</a></p>
       </div>
       
       <div style="margin-top: 30px; font-size: 12px; color: #777; border-top: 1px solid #eee; padding-top: 10px; text-align: center;">
@@ -81,7 +81,7 @@ function sendWelcomeEmail(nomadData) {
                   "Cómo llegar a Finca Termópilas:\n" +
                   "https://termopilas.co/ubicacion\n\n" +
                   "Si necesitas cualquier información adicional o tienes alguna duda, no dudes en contactarnos:\n" +
-                  "WhatsApp: +573143428579 (Mensaje: 'Hola, acabo de recibir el email de bienvenida al Coliving y me gustaría saber más información')\n\n" +
+                  "WhatsApp: +573170182644 (Mensaje: 'Hola, acabo de recibir el email de bienvenida al Coliving y me gustaría saber más información')\n\n" +
                   "¡Nos vemos en Finca Termópilas!\n" +
                   "www.termopilas.co";
   

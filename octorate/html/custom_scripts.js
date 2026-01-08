@@ -80,5 +80,5 @@ replaceTextInDom([
   { find: 'Beneficiario: BRER SAS', replace: 'Razón Social: BRER SAS' },
   { find: 'IBAN:', replace: 'Tipo de cuenta:' },
   { find: 'Bic / Swift - Sort Code: COLOCOBMXXX', replace: 'Número de cuenta: 45700002525' },
-  { find: 'Routing / ABA: 45700002525', replace: 'Enviar por favor comprobante a termopilashuila@gmail.com o al Whatsapp +573143428579' }
+  { find: 'Routing / ABA: 45700002525', replace: 'Enviar por favor comprobante a termopilashuila@gmail.com o al Whatsapp +573170182644' }
 ]);

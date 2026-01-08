@@ -16,7 +16,7 @@ const defaultFooterConfig: FooterConfig = {
   contact: {
     title: '¿Tienes preguntas?',
     description: 'Escríbenos para más información',
-    phone: '+573143428579',
+    phone: '+573170182644',
     email: 'termopilashuila@gmail.com',
     socialMedia: [
       {

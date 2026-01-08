@@ -377,11 +377,11 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
   const logoUrl = "https://termopilas.co/assets/images/logo.png";
     
     // Crear mensaje de WhatsApp con contexto
-    const whatsappNumber = "+573143428579";
+    const whatsappNumber = "+573170182644";
     const whatsappMessage = encodeURIComponent(
       `Hola, soy ${data.firstName} ${data.lastName}. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es ${data.email}.`
     );
-    const whatsappUrl = `https://wa.me/573143428579?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/573170182644?text=${whatsappMessage}`;
     
     // Contenido HTML del correo para el usuario
     const htmlBody = data.paymentMethod === 'waitList' ? `
@@ -399,7 +399,7 @@ function sendUserConfirmationEmail(data, timestamp, sheet, lastRow) {
       <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;">
         <h4 style="color: #333; margin-top: 0;">¿Tienes preguntas?</h4>
         <p style="margin-bottom: 10px;">Escríbenos y con gusto te ayudamos.</p>
-        <p style="margin: 5px 0;"><strong>WhatsApp:</strong> +573143428579</p>
+        <p style="margin: 5px 0;"><strong>WhatsApp:</strong> +573170182644</p>
         <p style="margin: 5px 0;"><strong>Email:</strong> termopilashuila@gmail.com</p>
       </div>
       <div style="text-align: center; margin: 30px 0;">
@@ -495,7 +495,7 @@ Hola ${data.firstName},
 Gracias por unirte a la lista de espera para nuestra Cata de Vinos, Tapas y Paella. Te avisaremos si se liberan cupos o si abrimos una nueva fecha.
 
 ¿Tienes preguntas?
-- WhatsApp: +573143428579
+- WhatsApp: +573170182644
 - Email: termopilashuila@gmail.com
 
 Fecha de registro: ${formatDateSpanish(timestamp)}` : `¡Reserva de Interés Recibida!
@@ -724,7 +724,7 @@ function generateSuccessPage(data) {
           <p><strong>Titular:</strong> Finca Termópilas</p>
           <p><strong>Valor:</strong> $120,000 COP</p>
         </div>
-        <p><strong>Importante:</strong> Envía el comprobante de pago por WhatsApp al <strong>+573143428579</strong> para confirmar tu reserva.</p>
+        <p><strong>Importante:</strong> Envía el comprobante de pago por WhatsApp al <strong>+573170182644</strong> para confirmar tu reserva.</p>
       </div>
       ` : `
       <div class="payment-info">
@@ -737,7 +737,7 @@ function generateSuccessPage(data) {
       
       <div style="margin-top: 30px;">
         <a href="https://termopilas.co" class="button">Volver a la página principal</a>
-        <a href="https://wa.me/573143428579?text=Hola, acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre. Mi nombre es ${data.firstName} ${data.lastName}." class="button whatsapp-btn">Contactar por WhatsApp</a>
+        <a href="https://wa.me/573170182644?text=Hola, acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre. Mi nombre es ${data.firstName} ${data.lastName}." class="button whatsapp-btn">Contactar por WhatsApp</a>
       </div>
       
       <p style="font-size: 0.9em; color: #777; margin-top: 30px;">
@@ -819,7 +819,7 @@ function generateErrorPage(error = null) {
       <p>Por favor intenta nuevamente o contáctanos directamente por WhatsApp.</p>
       <div>
         <a href="https://termopilas.co/eventos/cata-vino-paella-tapas.html" class="button">Intentar nuevamente</a>
-        <a href="https://wa.me/573143428579?text=Hola, tuve un problema al hacer mi reserva para la Cata de Vinos, Paella y Tapas. ¿Podrían ayudarme?" class="button whatsapp-btn">Contactar por WhatsApp</a>
+        <a href="https://wa.me/573170182644?text=Hola, tuve un problema al hacer mi reserva para la Cata de Vinos, Paella y Tapas. ¿Podrían ayudarme?" class="button whatsapp-btn">Contactar por WhatsApp</a>
       </div>
     </body>
   </html>`;

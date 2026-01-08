@@ -68,7 +68,7 @@ The script automatically creates the following column headers:
 ## WhatsApp Integration
 
 ### Contact Number
-**+573143428579**
+**+573170182644**
 
 ### Bank Transfer Receipt Submission
 When users select bank transfer, they receive a WhatsApp link with a pre-filled message:

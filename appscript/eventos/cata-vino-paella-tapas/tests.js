@@ -288,9 +288,9 @@ function testWhatsAppIntegration() {
     // Test WhatsApp URL generation
     const expectedMessage = `Hola, soy ${testData.firstName} ${testData.lastName}. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es ${testData.email}.`;
     const encodedMessage = encodeURIComponent(expectedMessage);
-    const whatsappUrl = `https://wa.me/573143428579?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/573170182644?text=${encodedMessage}`;
     
-    if (whatsappUrl.includes('573143428579') && whatsappUrl.includes(testData.firstName)) {
+    if (whatsappUrl.includes('573170182644') && whatsappUrl.includes(testData.firstName)) {
       console.log('    ✅ WhatsApp URL generation working');
     } else {
       console.log('    ❌ WhatsApp URL generation failed');

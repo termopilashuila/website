@@ -13,7 +13,7 @@ None - the page works with default values if no parameters are provided.
 
 #### WhatsApp Parameters
 - `text` - Custom WhatsApp message (URL encoded)
-- `phone` - WhatsApp phone number (defaults to `573143428579`)
+- `phone` - WhatsApp phone number (defaults to `573170182644`)
 
 #### UTM Parameters for Analytics
 - `utm_source` - Campaign source (e.g., `facebook`, `google`, `email`)
@@ -29,7 +29,7 @@ None - the page works with default values if no parameters are provided.
 https://termopilas.co/whatsapp.html
 ```
 - Uses default message: "Hola, estoy interesado en conocer más sobre Finca Termópilas."
-- Uses default phone: 573143428579
+- Uses default phone: 573170182644
 
 ### Custom Message
 ```
