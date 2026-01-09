@@ -473,6 +473,59 @@
             </div>
         </section>
 
+        <section class="tour-faq section">
+            <div class="container">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cómo llego a la Finca Termópilas?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Estamos ubicados en Rivera, Huila, a 20 minutos de Neiva. Puedes llegar en vehículo particular o en transporte público hasta Rivera y luego tomar un mototaxi hasta la finca. Te enviaremos las indicaciones exactas y un mapa al confirmar tu reserva.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Es una experiencia apta para todas las edades?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. El Tour de Cacao y Vino es una experiencia tranquila, ideal para adultos, parejas y familias. Los menores pueden asistir siempre acompañados por un adulto.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿El recorrido es muy exigente físicamente?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. El recorrido es de dificultad baja y se realiza a un ritmo tranquilo, con espacios para descansar y disfrutar del entorno.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cómo confirmo mi reserva?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Una vez realices la reserva y gestiones el pago a través de la página, debes enviar el comprobante de pago a nuestra línea de whatsapp.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿El tour incluye comida?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>El tour incluye degustaciones: uvas frescas, cacao, chocolates artesanales, un parfait de yogurt griego con nibs de cacao, y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después del tour.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- <section class="feedback section">
             <div class="container">
                 <h2>¿Ya tomaste el tour?</h2>
@@ -612,6 +665,36 @@
                     });
                 });
             }
+
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    faqItems.forEach(faqItem => {
+                        faqItem.classList.remove('active');
+                        faqItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    
+                    // Open clicked item if it wasn't already open
+                    if (!isActive) {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                        
+                        // Track FAQ interaction
+                        const questionText = question.querySelector('span').textContent;
+                        gtag('event', 'tour_faq_opened', {
+                            'event_category': 'Engagement',
+                            'event_label': questionText,
+                            'page': 'tour',
+                            'value': 1
+                        });
+                    }
+                });
+            });
 
             // Form submission handler for Tour reservations
             const tourForm = document.getElementById('tour-form');
