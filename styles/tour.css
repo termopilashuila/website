@@ -512,10 +512,9 @@
 }
 
 .tour-testimonials h2 {
-    color: #fff;
+    color: #000;
     text-align: center;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .tour-testimonials .testimonials-slider {
