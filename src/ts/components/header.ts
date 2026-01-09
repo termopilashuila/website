@@ -27,8 +27,8 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
     heroClass: 'hero tour-hero',
     heroImage: '/assets/images/tour/header.png',
     heroContent: {
-      title: 'Tour de Vino y Chocolate',
-      subtitle: 'Una experiencia sensorial única',
+      title: 'Tour Finca Termópilas',
+      subtitle: '',
       ctaText: 'RESERVA AHORA',
       ctaHref: '#main-content'
     }
