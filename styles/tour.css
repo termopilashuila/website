@@ -505,47 +505,102 @@
 /* Testimonials Section */
 .tour-testimonials {
     padding: 4rem 0;
-    background-color: #fdf6ea;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/tour/tour-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.testimonials-grid {
+.tour-testimonials h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tour-testimonials .testimonials-slider {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.testimonial-card {
-    background-color: #fff;
+.tour-testimonials .testimonial-card {
+    background-color: rgba(253, 246, 234, 0.95);
+    border-radius: 0;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.3s ease;
 }
 
-.testimonial-card:hover {
+.tour-testimonials .testimonial-card:hover {
     transform: translateY(-5px);
 }
 
-.testimonial-quote {
-    font-size: 2rem;
-    color: #F29F05;
-    opacity: 0.5;
-    margin-bottom: 1rem;
-}
-
-.testimonial-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #333;
-    font-style: italic;
+.tour-testimonials .testimonial-content {
     margin-bottom: 1.5rem;
 }
 
-.testimonial-author {
+.tour-testimonials .testimonial-content p {
+    font-style: italic;
+    line-height: 1.7;
+    color: #333;
+    font-size: 1rem;
+}
+
+.tour-testimonials .testimonial-footer {
+    border-top: 1px solid rgba(242, 159, 5, 0.3);
+    padding-top: 1rem;
+}
+
+.tour-testimonials .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tour-testimonials .testimonial-author-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F29F05;
+}
+
+.tour-testimonials .testimonial-author-name {
     font-weight: 600;
-    color: #504127;
-    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.tour-testimonials .author-location {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.tour-testimonials .stars {
+    color: #F29F05;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .tour-testimonials {
+        background-attachment: scroll;
+    }
+    
+    .tour-testimonials .testimonials-slider {
+        grid-template-columns: 1fr;
+    }
+    
+    .tour-testimonials .testimonial-card {
+        padding: 1.5rem;
+    }
 }
 
 /* Feedback Section */
