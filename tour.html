@@ -76,13 +76,13 @@
                     </div>
                     <div class="tour-details">
                         <ul class="tour-info">
-                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;28 de Diciembre de 2025</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;31 de Enero de 2026</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Hora:</strong>&nbsp;&nbsp;4:00 PM - 6:30 PM</li>
                             <li><i class="far fa-clock"></i> <strong>Duración:</strong>&nbsp;2 Horas y media</li>
                             <!-- <li><i class="fas fa-calendar-alt"></i> <strong>Días:</strong>&nbsp;1er y 3er fds de cada mes</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Horarios:</strong>&nbsp;&nbsp;Sábado 4:00 PM y Domingo 9:00 AM</li> -->
                             <li><i class="fas fa-users"></i> <strong>Grupos:</strong>&nbsp;Máximo 30 Personas</li>
-                            <li><i class="fas fa-exclamation-circle"></i> <strong>Reserva:</strong>&nbsp;con anticipación $80.000 COP por persona</li>
+                            <li><i class="fas fa-exclamation-circle"></i> <strong>Reserva:</strong>&nbsp;con anticipación $50.000 COP por persona</li>
                             <li><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong>&nbsp;Finca Termópilas, Rivera, Huila, Colombia</li>
                         </ul>
                     </div>
@@ -168,11 +168,6 @@
                         <i class="fas fa-fire"></i>
                         <h3>Fogata</h3>
                         <p>Disfruta de una acogedora fogata al finalizar el tour.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-star"></i>
-                        <h3>Momento de Fin de Año</h3>
-                        <p>Participa en nuestro especial momento de fin de año para cerrar el 2025.</p>
                     </div>
                 </div>
             </div>
@@ -331,8 +326,8 @@
                             <i class="fas fa-fire"></i>
                         </div>
                         <div class="experience-content">
-                            <h3>Fogata y Ritual de Año Viejo</h3>
-                            <p>Cerramos esta experiencia única reuniéndonos alrededor de una acogedora fogata donde realizaremos un ritual especial de Año Viejo. Reflexiona sobre el 2024, establece intenciones para el 2025, y conecta con otros participantes mientras compartimos este momento mágico bajo las estrellas de la Finca Termópilas.</p>
+                            <h3>Fogata</h3>
+                            <p>Cerramos esta experiencia única reuniéndonos alrededor de una acogedora fogata, conectando con otros participantes mientras compartimos este momento mágico bajo las estrellas de la Finca Termópilas.</p>
                             <div class="experience-image">
                                 <img src="assets/images/tour/tour-fire.png" alt="Fogata en Finca Termópilas al atardecer">
                             </div>
@@ -370,19 +365,19 @@
                         <label for="date">Fecha</label>
                         <select id="date" name="date" required>
                             <option value="">Selecciona una fecha</option>
-                            <option value="2025-12-28" selected>28 de Diciembre de 2025 - 4:00 PM</option>
+                            <option value="2026-01-31" selected>31 de Enero de 2026 - 4:00 PM</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="numberOfPeople">Número de personas</label>
                         <select id="numberOfPeople" name="numberOfPeople" required>
                             <option value="">Selecciona el número de personas</option>
-                            <option value="1">1 persona - $80,000 COP</option>
-                            <option value="2" selected>2 personas - $160,000 COP</option>
-                            <option value="3">3 personas - $240,000 COP</option>
-                            <option value="4">4 personas - $320,000 COP</option>
-                            <option value="5">5 personas - $400,000 COP</option>
-                            <option value="6">6 personas - $480,000 COP</option>
+                            <option value="1">1 persona - $50,000 COP</option>
+                            <option value="2" selected>2 personas - $100,000 COP</option>
+                            <option value="3">3 personas - $150,000 COP</option>
+                            <option value="4">4 personas - $200,000 COP</option>
+                            <option value="5">5 personas - $250,000 COP</option>
+                            <option value="6">6 personas - $300,000 COP</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -558,14 +553,14 @@
                         message: tourForm.message.value
                     };
 
-                    // Payment URLs based on number of people (Updated prices: 80,000 COP per person)
+                    // Payment URLs based on number of people (Updated prices: 50,000 COP per person)
                     const paymentUrls = {
-                        '1': 'https://checkout.wompi.co/l/xeOEpO',
-                        '2': 'https://checkout.wompi.co/l/pFJt0m',
-                        '3': 'https://checkout.wompi.co/l/jjGrgb',
-                        '4': 'https://checkout.wompi.co/l/mJkyto',
-                        '5': 'https://checkout.wompi.co/l/0ZgTYa',
-                        '6': 'https://checkout.wompi.co/l/3Xwc15'
+                        '1': 'https://checkout.wompi.co/l/Yvlvv7',
+                        '2': 'https://checkout.wompi.co/l/NrFGlU',
+                        '3': 'https://checkout.wompi.co/l/O9RPMQ',
+                        '4': 'https://checkout.wompi.co/l/JAllLu',
+                        '5': 'https://checkout.wompi.co/l/yapa4V',
+                        '6': 'https://checkout.wompi.co/l/u4fm40'
                     };
 
                     // Analytics: form submission attempt
@@ -619,7 +614,7 @@
                                 'event_label': `Tour Payment Redirect - ${formData.numberOfPeople} people`,
                                 'page': 'tour',
                                 'number_of_people': formData.numberOfPeople,
-                                'payment_amount': parseInt(formData.numberOfPeople) * 80000,
+                                'payment_amount': parseInt(formData.numberOfPeople) * 50000,
                                 'value': 1
                             });
                             
