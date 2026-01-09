@@ -502,6 +502,52 @@
     color: #000;
 }
 
+/* Testimonials Section */
+.tour-testimonials {
+    padding: 4rem 0;
+    background-color: #fdf6ea;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-quote {
+    font-size: 2rem;
+    color: #F29F05;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #333;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: #504127;
+    font-size: 0.95rem;
+}
+
 /* Feedback Section */
 .feedback {
     padding: 4rem 0;
