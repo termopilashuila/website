@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Cata de Vinos, Tapas y Paella - 1 persona",
+    "description": "Cata de Vino, Tapas y Paella 28 feb 2026 - 1 persona",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 160000,
+    "redirect_url": "https://termopilas.co/eventos/cata-vino-paella-tapas-gracias.html",
+    "image_url": "https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png"
+  },
+  {
+    "name": "Cata de Vinos, Tapas y Paella - 2 personas",
+    "description": "Cata de Vino, Tapas y Paella 28 feb 2026 - 2 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 320000,
+    "redirect_url": "https://termopilas.co/eventos/cata-vino-paella-tapas-gracias.html",
+    "image_url": "https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png"
+  },
+  {
+    "name": "Cata de Vinos, Tapas y Paella - 3 personas",
+    "description": "Cata de Vino, Tapas y Paella 28 feb 2026 - 3 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 480000,
+    "redirect_url": "https://termopilas.co/eventos/cata-vino-paella-tapas-gracias.html",
+    "image_url": "https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png"
+  },
+  {
+    "name": "Cata de Vinos, Tapas y Paella - 4 personas",
+    "description": "Cata de Vino, Tapas y Paella 28 feb 2026 - 4 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 640000,
+    "redirect_url": "https://termopilas.co/eventos/cata-vino-paella-tapas-gracias.html",
+    "image_url": "https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png"
+  },
+  {
+    "name": "Cata de Vinos, Tapas y Paella - 5 personas",
+    "description": "Cata de Vino, Tapas y Paella 28 feb 2026 - 5 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 800000,
+    "redirect_url": "https://termopilas.co/eventos/cata-vino-paella-tapas-gracias.html",
+    "image_url": "https://termopilas.co/assets/images/eventos/cata-vino-paella-tapas/main.png"
+  }
+]
