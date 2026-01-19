@@ -1,0 +1,836 @@
+/* Tour de Vino y Cacao - Styles */
+
+/* Hero Section */
+.tour-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-position: center;
+    background-size: cover;
+    padding-top: 70px; /* Add padding for the fixed navbar */
+}
+
+/* Container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tour Intro */
+.tour-intro {
+    padding: 4rem 0;
+}
+
+.tour-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tour-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.tour-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tour-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
+.tour-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.tour-info {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.tour-info li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.tour-info li i {
+    margin-right: 10px;
+    color: #F29F05;
+}
+
+/* Pricing Section */
+.tour-pricing {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+}
+
+.pricing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.pricing-card {
+    background-color: #504127;
+    color: #fdf6ea;
+    padding: 2rem;
+    border-radius: 0;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.price-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F29F05;
+    margin: 0.5rem 0;
+}
+
+.price-detail {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.price-body p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.price-body p::before {
+    content: "✓";
+    color: #F29F05;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.payment-info {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fdf6ea;
+    border-radius: 0;
+}
+
+.payment-info h3 {
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.payment-info p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-info i {
+    margin-right: 10px;
+    color: #F29F05;
+}
+
+/* Includes Section */
+.tour-includes {
+    padding: 4rem 0;
+}
+
+.includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.include-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fdf6ea;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.include-item:hover {
+    transform: translateY(-5px);
+}
+
+.include-item i {
+    font-size: 2.5rem;
+    color: #F29F05;
+    margin-bottom: 1rem;
+}
+
+.include-item h3 {
+    margin-bottom: 1rem;
+}
+
+/* Recommendations Section */
+.tour-recommendations {
+    background-color: #fdf6ea;
+    padding: 4rem 0;
+}
+
+.recommendations-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.recommendation {
+    display: flex;
+    align-items: center;
+    background-color: #fdf6ea;
+    padding: 1.5rem;
+    border-radius: 0;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation i {
+    font-size: 2rem;
+    color: #F29F05;
+    margin-right: 1.5rem;
+}
+
+/* Audience Section */
+.tour-audience {
+    padding: 4rem 0;
+}
+
+.audience-description {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.audience-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: #fdf6ea;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.audience-item:hover {
+    transform: translateY(-5px);
+}
+
+.audience-item i {
+    font-size: 2.5rem;
+    color: #F29F05;
+    margin-bottom: 1rem;
+}
+
+.audience-item h3 {
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.audience-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Collapsible Section */
+.collapsible-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.collapsible-header:hover {
+    color: #F29F05;
+}
+
+.collapsible-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-header.expanded .collapsible-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    max-height: 10000px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.collapsible-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Experience Timeline */
+.tour-experience {
+    padding: 4rem 0;
+    overflow: visible; /* Ensure overflow is visible for animations */
+}
+
+.experience-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto 0;
+    min-height: 500px; /* Ensure there's enough height for the timeline line */
+    overflow: visible; /* Ensure overflow is visible for animations */
+}
+
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #F29F05;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    margin-left: -1px;
+    z-index: 0; /* Ensure the line stays behind the items */
+}
+
+.experience-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1; /* Ensure items appear above the timeline line */
+}
+
+/* Lazy loading classes */
+.lazy-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.lazy-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear;
+}
+
+.experience-icon {
+    background-color: #F29F05;
+    color: #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 1;
+    position: relative;
+}
+
+.experience-content {
+    margin-left: 2rem;
+    background-color: #fdf6ea;
+    padding: 1.5rem;
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: calc(100% - 100px);
+}
+
+.experience-content h3 {
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+/* Lazy loading placeholder for images */
+.experience-image {
+    margin-top: 1.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.experience-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
+.experience-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading-shimmer 1.5s infinite;
+    display: none;
+}
+
+.experience-image.loading::before {
+    display: block;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.experience-blog-recommendation {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #fdf6ea;
+    border-left: 3px solid #F29F05;
+}
+
+.experience-blog-recommendation p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.experience-blog-recommendation a {
+    color: #F29F05;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.experience-blog-recommendation a:hover {
+    color: #d8810a;
+}
+
+/* Other Services */
+.other-services {
+    background-color: #fdf6ea;
+    padding: 4rem 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background-color: #fdf6ea;
+    color: #000;
+    padding: 2rem;
+    border-radius: 0;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: #F29F05;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.service-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #F29F05;
+    color: #fdf6ea;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.service-link:hover {
+    background-color: #fdf6ea;
+    color: #000;
+}
+
+/* Testimonials Section */
+.tour-testimonials {
+    padding: 4rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/tour/tour-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.tour-testimonials h2 {
+    color: #000;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tour-testimonials .testimonials-slider {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tour-testimonials .testimonial-card {
+    background-color: rgba(253, 246, 234, 0.95);
+    border-radius: 0;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.tour-testimonials .testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.tour-testimonials .testimonial-content {
+    margin-bottom: 1.5rem;
+}
+
+.tour-testimonials .testimonial-content p {
+    font-style: italic;
+    line-height: 1.7;
+    color: #333;
+    font-size: 1rem;
+}
+
+.tour-testimonials .testimonial-footer {
+    border-top: 1px solid rgba(242, 159, 5, 0.3);
+    padding-top: 1rem;
+}
+
+.tour-testimonials .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tour-testimonials .testimonial-author-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F29F05;
+}
+
+.tour-testimonials .testimonial-author-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.tour-testimonials .author-location {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.tour-testimonials .stars {
+    color: #F29F05;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .tour-testimonials {
+        background-attachment: scroll;
+    }
+    
+    .tour-testimonials .testimonials-slider {
+        grid-template-columns: 1fr;
+    }
+    
+    .tour-testimonials .testimonial-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Fix for touch devices - background-attachment: fixed causes scroll blocking on iOS/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .tour-testimonials {
+        background-attachment: scroll;
+    }
+}
+
+/* Feedback Section */
+.feedback {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Registration/Form Section (mirrors coliving form styles) */
+.tour-registration {
+    padding: 4rem 0;
+    background-color: #fdf6ea;
+}
+
+.registration-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+.tour-form {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    font-family: var(--body-font, 'Montserrat', 'Helvetica Neue', Arial, sans-serif);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #F29F05;
+    box-shadow: 0 0 0 3px rgba(242, 159, 5, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Custom Select Styling */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23504127' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group select:hover {
+    border-color: #F29F05;
+}
+
+.form-group select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F29F05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Style the select options */
+.form-group select option {
+    padding: 0.8rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.form-group select option:checked,
+.form-group select option:hover {
+    background-color: #fdf6ea;
+}
+
+/* Disabled/placeholder option styling */
+.form-group select option[value=""] {
+    color: #999;
+}
+
+.form-group button {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* FAQ Section */
+.tour-faq {
+    padding: 4rem 0;
+    background-color: #fff;
+}
+
+.tour-faq h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #333;
+    font-family: inherit;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #F29F05;
+}
+
+.faq-question span {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.faq-icon {
+    color: #F29F05;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 0 0 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 0 1.25rem 0;
+}
+
+.faq-answer p {
+    margin: 0;
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .tour-hero {
+        min-height: 100vh; /* Ensure full height on mobile */
+    }
+    
+    .tour-overview {
+        flex-direction: column;
+    }
+    
+    .experience-timeline::before {
+        left: 30px;
+    }
+    
+    .experience-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .recommendation {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .recommendation i {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .tour-form {
+        padding: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 1rem 0;
+    }
+
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+} 
