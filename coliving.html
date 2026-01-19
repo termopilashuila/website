@@ -246,7 +246,7 @@
                     <div class="experience-option">
                         <div class="experience-header">
                             <h3>Experiencia Estándar</h3>
-                            <p class="experience-price">$990.000 COP</p>
+                            <p class="experience-price">$1.290.000 COP</p>
                             <p class="per-person">por persona</p>
                         </div>
                         <div class="experience-image">
@@ -289,7 +289,7 @@
                         <div class="luxury-badge">De Lujo</div>
                         <div class="experience-header">
                             <h3>Experiencia De Lujo</h3>
-                            <p class="experience-price">$1.290.000 COP</p>
+                            <p class="experience-price">$1.590.000 COP</p>
                             <p class="per-person">por persona</p>
                         </div>
                         <div class="experience-image">
@@ -340,40 +340,15 @@
                 
                 <form id="coliving-form" class="coliving-form">
                     <div class="form-group">
-                        <label for="name">Nombre completo</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="experience_type">Tipo de Experiencia</label>
+                        <select id="experience_type" name="experience_type" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Estándar" data-price="1290000" data-url="https://checkout.wompi.co/l/S6gUak">Experiencia Estándar ($1.290.000)</option>
+                            <option value="De Lujo" data-price="1590000" data-url="https://checkout.wompi.co/l/0czIcF">Experiencia De Lujo ($1.590.000)</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Teléfono / WhatsApp</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="profession">Profesión / Ocupación</label>
-                        <input type="text" id="profession" name="profession" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo de Experiencia</label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="standard" name="experience_type" value="Estándar" required>
-                                <label for="standard">Experiencia Estándar ($990.000)</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="luxury" name="experience_type" value="De Lujo" required>
-                                <label for="luxury">Experiencia De Lujo ($1.290.000)</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Cuéntanos sobre ti</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="cta-button">Enviar Información</button>
+                        <button type="submit" class="cta-button">Ir a Pagar</button>
                     </div>
                 </form>
             </div>
@@ -510,59 +485,53 @@
                 });
             });
 
-            // Form submission handler with enhanced tracking
+            // Payment URLs for each experience type
+            const paymentUrls = {
+                'Estándar': 'https://checkout.wompi.co/l/S6gUak',
+                'De Lujo': 'https://checkout.wompi.co/l/0czIcF'
+            };
+
+            // Form submission handler - redirect to Wompi payment
             const form = document.getElementById('coliving-form');
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    const experienceType = form.elements['experience_type'].value;
-                    const profession = form.profession.value;
-                    const email = form.email.value;
+                    const experienceSelect = form.elements['experience_type'];
+                    const experienceType = experienceSelect.value;
+                    const selectedOption = experienceSelect.options[experienceSelect.selectedIndex];
+                    const paymentUrl = selectedOption.dataset.url || paymentUrls[experienceType];
+                    
+                    if (!experienceType) {
+                        alert('Por favor selecciona un tipo de experiencia');
+                        return;
+                    }
                     
                     // Track form submission in Google Analytics
-                    gtag('event', `coliving_form_submission_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
-                        'event_category': 'Lead Generation',
-                        'event_label': `Coliving Form Submission - ${experienceType}`,
+                    gtag('event', `coliving_payment_redirect_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
+                        'event_category': 'Payment',
+                        'event_label': `Coliving Payment - ${experienceType}`,
                         'experience_type': experienceType,
-                        'profession': profession,
-                        'email_domain': email.split('@')[1],
                         'page': 'coliving',
                         'value': 1
                     });
 
-                    let data = {
-                        name: form.name.value,
-                        email: form.email.value,
-                        phone: form.phone.value,
-                        profession: form.profession.value,
-                        experience_type: form.elements['experience_type'].value,
-                        message: form.message.value
+                    // Redirect to Wompi payment page
+                    if (paymentUrl) {
+                        window.location.href = paymentUrl;
+                    } else {
+                        alert('El enlace de pago no está configurado. Por favor contacta a soporte.');
                     }
-
-                    fetch('https://script.google.com/macros/s/AKfycbwTAllA4rtQLk2lIIj5hU7-tZCzXHdETpexHLH3K-7wxTEM_GsUxFBt8sNyRJMCPFLM/exec', {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify(data)
-                    })
-                    .then(() => {
-                        alert('¡Gracias por tu interés! Te contactaremos pronto con información sobre nuestra próxima semana de coliving.');
-                        form.reset();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
                 });
             }
 
-            // Track radio button selection for experience type
-            const experienceRadios = document.querySelectorAll('input[name="experience_type"]');
-            experienceRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.checked) {
-                        const experienceType = this.value;
-                        
+            // Track select change for experience type
+            const experienceSelect = document.getElementById('experience_type');
+            if (experienceSelect) {
+                experienceSelect.addEventListener('change', function() {
+                    const experienceType = this.value;
+                    
+                    if (experienceType) {
                         gtag('event', `coliving_experience_selection_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
                             'event_category': 'Form Interaction',
                             'event_label': `Experience Type Selection - ${experienceType}`,
@@ -572,7 +541,7 @@
                         });
                     }
                 });
-            });
+            }
         });
     </script>
 </body>

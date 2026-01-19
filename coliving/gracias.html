@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Pago Exitoso! - Coliving Nómada Digital - Finca Termópilas</title>
+    <meta name="description" content="Tu pago para la Semana de Coliving para Nómadas Digitales ha sido procesado exitosamente. ¡Nos vemos pronto!">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fdf6ea 0%, #fff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #F29F05 0%, #e89005 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: checkmark 0.5s ease-in-out;
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .info-box {
+            background: rgba(242, 159, 5, 0.1);
+            border-left: 4px solid #F29F05;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .info-box p {
+            margin-bottom: 12px;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-box .icon {
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .details-box {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .details-box h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        
+        .detail-value {
+            color: #333;
+            text-align: right;
+            word-break: break-word;
+        }
+        
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .button-primary {
+            background: #1e7e34;
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: #155d27;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 126, 52, 0.3);
+        }
+        
+        .button-secondary {
+            background: #F29F05;
+            color: white;
+        }
+        
+        .button-secondary:hover {
+            background: #d88b04;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(242, 159, 5, 0.3);
+        }
+        
+        .contact-info {
+            background: #fff3cd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #856404;
+        }
+        
+        .contact-info p {
+            margin: 8px 0;
+            color: #856404;
+        }
+        
+        .contact-info a {
+            color: #F29F05;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #F29F05;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .detail-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="success-icon">✅</div>
+            <h1>¡Pago Exitoso!</h1>
+            <p>Tu reserva para la Semana de Coliving Nómada está confirmada</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-box">
+                <h2>¿Qué sigue ahora?</h2>
+                <p><span class="icon">📧</span> <span>Recibirás un correo de confirmación con todos los detalles</span></p>
+                <p><span class="icon">📋</span> <span>Te enviaremos información sobre qué llevar y cómo llegar</span></p>
+                <p><span class="icon">📅</span> <span>Recibirás recordatorios antes de la fecha del coliving</span></p>
+                <p><span class="icon">📞</span> <span>Te contactaremos dentro de las próximas <strong>24-48 horas</strong> para coordinar los detalles</span></p>
+            </div>
+            
+            <div class="details-box">
+                <h2><i class="fas fa-laptop-house"></i> Tu Experiencia Incluye</h2>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-home"></i> Alojamiento</div>
+                    <div class="detail-value">7 días y 6 noches</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-utensils"></i> Alimentación</div>
+                    <div class="detail-value">Completa (mercado y cocinera)</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-seedling"></i> Tour de Cacao</div>
+                    <div class="detail-value">Con degustación</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-wine-glass-alt"></i> Tour de Vino</div>
+                    <div class="detail-value">Con cata</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-spa"></i> Yoga Matutino</div>
+                    <div class="detail-value">Martes a Viernes</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-fire"></i> Fogata Nocturna</div>
+                    <div class="detail-value">Jueves</div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="https://wa.me/573170182644?text=Hola!%20Acabo%20de%20pagar%20mi%20reserva%20de%20coliving%20y%20tengo%20algunas%20preguntas." class="button button-primary">
+                    <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+                </a>
+                <a href="https://termopilas.co" class="button button-secondary">
+                    <i class="fas fa-home"></i> Volver al Inicio
+                </a>
+                <a href="https://termopilas.co/coliving.html" class="button button-secondary">
+                    <i class="fas fa-laptop-house"></i> Ver más sobre Coliving
+                </a>
+            </div>
+            
+            <div class="contact-info">
+                <h3>¿Tienes alguna pregunta?</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a></p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/573170182644" target="_blank">WhatsApp: +57 317 018 2644</a></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2026 Finca Termópilas - Rivera, Huila, Colombia</p>
+            <p><a href="https://termopilas.co">www.termopilas.co</a></p>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            try {
+                // Track successful coliving payment
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'coliving_payment_success_page_view', {
+                        'event_category': 'Conversion',
+                        'event_label': 'Coliving Payment Success Page',
+                        'page': 'coliving/gracias',
+                        'value': 1
+                    });
+                }
+            } catch (e) {
+                console.error('Error tracking conversion:', e);
+            }
+        })();
+    </script>
+</body>
+</html>

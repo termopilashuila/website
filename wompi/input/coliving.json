@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Coliving Estándar - Semana Nómada Digital",
+    "description": "Semana de Coliving para Nómadas Digitales - Experiencia Estándar con habitación compartida, alimentación completa, tour de cacao, tour de vino, yoga matutino y fogata nocturna.",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 1290000,
+    "redirect_url": "https://termopilas.co/coliving/gracias.html",
+    "image_url": "https://termopilas.co/assets/images/coliving/header.png"
+  },
+  {
+    "name": "Coliving De Lujo - Semana Nómada Digital",
+    "description": "Semana de Coliving para Nómadas Digitales - Experiencia De Lujo con cabaña o habitación de lujo, aire acondicionado, alimentación completa, tour de cacao, tour de vino, yoga matutino, fogata nocturna y botella de vino de bienvenida.",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 1590000,
+    "redirect_url": "https://termopilas.co/coliving/gracias.html",
+    "image_url": "https://termopilas.co/assets/images/coliving/header.png"
+  }
+]
