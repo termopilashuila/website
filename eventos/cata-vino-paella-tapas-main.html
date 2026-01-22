@@ -980,11 +980,26 @@
         <div class="container">
             <h2 class="section-title">Reserva Tu Cupo Ahora</h2>
             <p class="section-subtitle">
-                Selecciona el número de personas y procede al pago seguro con Wompi.
+                Completa tus datos y procede al pago seguro con Wompi.
             </p>
             
             <div class="form-container">
                 <form id="registration-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo *</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="3XX XXX XXXX" required>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="people">Número de Personas</label>
                         <select id="people" name="people" required>
@@ -997,7 +1012,7 @@
                     </div>
                     
                     <button type="submit" class="submit-btn" id="submitBtn">
-                        <i class="fas fa-credit-card"></i> Pagar con Wompi
+                        <i class="fas fa-calendar-check"></i> Reserva ahora
                     </button>
                 </form>
                 
@@ -1064,6 +1079,7 @@
 
     <script>
         const PRICE_PER_PERSON = 160000;
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGDFaaLguuqId4kGaiNewXYLt-T3gybNWQYL8u2hmJ4mjfscVPVJ-BG4WRD9qdSiuh/exec';
         
         // Wompi payment links by number of people
         const wompiLinkByPeople = {
@@ -1074,12 +1090,37 @@
             '5': 'https://checkout.wompi.co/l/C6tiJw'
         };
 
-        // Form submission - redirect directly to Wompi
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
+        // Form submission - send data to Google Apps Script then redirect to Wompi
+        document.getElementById('registration-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validate required fields
+            if (!data.name || !data.email || !data.phone) {
+                alert('Por favor completa todos los campos obligatorios');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Por favor ingresa un correo electrónico válido');
+                return;
+            }
+            
+            // Validate phone (basic check for Colombian numbers)
+            const phoneRegex = /^[0-9]{10}$/;
+            const cleanPhone = data.phone.replace(/\s/g, '');
+            if (!phoneRegex.test(cleanPhone)) {
+                alert('Por favor ingresa un número de teléfono válido (10 dígitos)');
+                return;
+            }
+            
             // Get selected number of people
-            const selectedPeople = parseInt(document.getElementById('people').value, 10);
+            const selectedPeople = parseInt(data.people, 10);
             if (!selectedPeople || selectedPeople < 1 || selectedPeople > 5) {
                 alert('Selecciona el número de personas');
                 return;
@@ -1089,35 +1130,87 @@
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirigiendo a Wompi...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando reserva...';
             
-            // Track form submission
-            gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
-                'event_category': 'event_engagement',
-                'event_label': 'registration_attempt',
-                'payment_method': 'wompi',
-                'people': selectedPeople
-            });
-            
-            // Track Wompi redirection
-            gtag('event', 'cata_vino_paella_tapas_wompi_redirect', {
-                'event_category': 'payment',
-                'event_label': 'wompi_gateway_redirect',
-                'value': PRICE_PER_PERSON * selectedPeople,
-                'currency': 'COP'
-            });
-            
-            // Store people count for thank-you page
             try {
-                localStorage.setItem('eventRegistration', JSON.stringify({
-                    people: selectedPeople,
-                    paymentMethod: 'wompi'
-                }));
-            } catch (_) {}
-            
-            // Redirect to Wompi payment gateway
-            const wompiUrl = wompiLinkByPeople[selectedPeople] || wompiLinkByPeople['1'];
-            window.location.href = wompiUrl;
+                // Track form submission attempt
+                gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_attempt',
+                    'payment_method': 'wompi',
+                    'people': selectedPeople
+                });
+                
+                // Send data to Google Apps Script
+                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: data.name,
+                        email: data.email,
+                        phone: cleanPhone,
+                        people: selectedPeople,
+                        paymentMethod: 'wompi',
+                        eventName: 'Cata de Vinos, Tapas y Paella',
+                        eventDate: '2026-02-28',
+                        totalAmount: PRICE_PER_PERSON * selectedPeople,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                // Track successful submission
+                gtag('event', 'cata_vino_paella_tapas_registration_success', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_completed',
+                    'value': PRICE_PER_PERSON * selectedPeople,
+                    'currency': 'COP',
+                    'payment_method': 'wompi',
+                    'people': selectedPeople
+                });
+                
+                // Track Wompi redirection
+                gtag('event', 'cata_vino_paella_tapas_wompi_redirect', {
+                    'event_category': 'payment',
+                    'event_label': 'wompi_gateway_redirect',
+                    'value': PRICE_PER_PERSON * selectedPeople,
+                    'currency': 'COP'
+                });
+                
+                // Store registration data for thank-you page
+                try {
+                    localStorage.setItem('eventRegistration', JSON.stringify({
+                        name: data.name,
+                        email: data.email,
+                        phone: cleanPhone,
+                        people: selectedPeople,
+                        paymentMethod: 'wompi'
+                    }));
+                } catch (_) {}
+                
+                // Redirect to Wompi payment gateway
+                const wompiUrl = wompiLinkByPeople[selectedPeople] || wompiLinkByPeople['1'];
+                window.location.href = wompiUrl;
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                
+                // Track submission error
+                gtag('event', 'cata_vino_paella_tapas_registration_error', {
+                    'event_category': 'event_engagement',
+                    'event_label': 'registration_failed',
+                    'error_type': error.message || 'unknown_error'
+                });
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                
+                // Show error message
+                alert('Ha ocurrido un error al procesar tu reserva. Por favor intenta nuevamente o contáctanos por WhatsApp.');
+            }
         });
 
         // Track page engagement
