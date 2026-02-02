@@ -276,20 +276,28 @@
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 1rem;
             border: 2px solid #D1D5DB;
             border-radius: 8px;
             font-size: 1rem;
+            font-family: inherit;
             transition: all 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #F29F05;
             box-shadow: 0 0 0 3px rgba(242, 159, 5, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
         .submit-btn {
@@ -1001,14 +1009,26 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="people">Número de Personas</label>
-                        <select id="people" name="people" required>
+                        <label for="date">Fecha del Evento</label>
+                        <select id="date" name="date" required>
+                            <option value="2026-02-28" selected>28 de Febrero 2026 - 3:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numberOfPeople">Número de Personas</label>
+                        <select id="numberOfPeople" name="numberOfPeople" required>
                             <option value="1">1 persona - $160.000</option>
-                            <option value="2">2 personas - $320.000</option>
+                            <option value="2" selected>2 personas - $320.000</option>
                             <option value="3">3 personas - $480.000</option>
                             <option value="4">4 personas - $640.000</option>
                             <option value="5">5 personas - $800.000</option>
                         </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje (opcional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Cuéntanos si tienes alguna necesidad especial o comentario"></textarea>
                     </div>
                     
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -1078,161 +1098,197 @@
     </section>
 
     <script>
-        const PRICE_PER_PERSON = 160000;
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGDFaaLguuqId4kGaiNewXYLt-T3gybNWQYL8u2hmJ4mjfscVPVJ-BG4WRD9qdSiuh/exec';
-        
-        // Wompi payment links by number of people
-        const wompiLinkByPeople = {
-            '1': 'https://checkout.wompi.co/l/woFJnp',
-            '2': 'https://checkout.wompi.co/l/TEgNTf',
-            '3': 'https://checkout.wompi.co/l/P1ntW5',
-            '4': 'https://checkout.wompi.co/l/mE6oSJ',
-            '5': 'https://checkout.wompi.co/l/C6tiJw'
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            const PRICE_PER_PERSON = 160000;
+            const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzX9Gk4g90jQ_s6KtTS08DyX5Ak1u7DAnoDylJv8DaHOvKfyLE9axAxTudTluJ2rE2I/exec';
+            const N8N_WEBHOOK_URL = 'https://n8n.termopilas.co/webhook/18a6f2c2-ffac-4469-81b2-865f4a565571';
+            
+            // Wompi payment links by number of people
+            const wompiLinkByPeople = {
+                '1': 'https://checkout.wompi.co/l/woFJnp',
+                '2': 'https://checkout.wompi.co/l/TEgNTf',
+                '3': 'https://checkout.wompi.co/l/P1ntW5',
+                '4': 'https://checkout.wompi.co/l/mE6oSJ',
+                '5': 'https://checkout.wompi.co/l/C6tiJw'
+            };
 
-        // Form submission - send data to Google Apps Script then redirect to Wompi
-        document.getElementById('registration-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Validate required fields
-            if (!data.name || !data.email || !data.phone) {
-                alert('Por favor completa todos los campos obligatorios');
-                return;
-            }
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                alert('Por favor ingresa un correo electrónico válido');
-                return;
-            }
-            
-            // Validate phone (basic check for Colombian numbers)
-            const phoneRegex = /^[0-9]{10}$/;
-            const cleanPhone = data.phone.replace(/\s/g, '');
-            if (!phoneRegex.test(cleanPhone)) {
-                alert('Por favor ingresa un número de teléfono válido (10 dígitos)');
-                return;
-            }
-            
-            // Get selected number of people
-            const selectedPeople = parseInt(data.people, 10);
-            if (!selectedPeople || selectedPeople < 1 || selectedPeople > 5) {
-                alert('Selecciona el número de personas');
-                return;
-            }
-            
-            // Disable submit button and show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando reserva...';
-            
-            try {
-                // Track form submission attempt
-                gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
-                    'event_category': 'event_engagement',
-                    'event_label': 'registration_attempt',
-                    'payment_method': 'wompi',
-                    'people': selectedPeople
+            const registrationForm = document.getElementById('registration-form');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = document.getElementById('submitBtn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Disable button and show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando reserva...';
+                    
+                    // Get form data
+                    const formData = {
+                        name: registrationForm.name.value,
+                        email: registrationForm.email.value,
+                        phone: registrationForm.phone.value.replace(/\s/g, ''),
+                        date: registrationForm.date.value,
+                        numberOfPeople: registrationForm.numberOfPeople.value,
+                        message: registrationForm.message.value
+                    };
+                    
+                    // Validate required fields
+                    if (!formData.name || !formData.email || !formData.phone) {
+                        alert('Por favor completa todos los campos obligatorios');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        return;
+                    }
+                    
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(formData.email)) {
+                        alert('Por favor ingresa un correo electrónico válido');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        return;
+                    }
+                    
+                    // Validate phone (basic check for Colombian numbers)
+                    const phoneRegex = /^[0-9]{10}$/;
+                    if (!phoneRegex.test(formData.phone)) {
+                        alert('Por favor ingresa un número de teléfono válido (10 dígitos)');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        return;
+                    }
+                    
+                    const selectedPeople = parseInt(formData.numberOfPeople, 10);
+                    const totalAmount = PRICE_PER_PERSON * selectedPeople;
+                    
+                    // Analytics: form submission attempt
+                    gtag('event', 'cata_vino_paella_tapas_registration_attempt', {
+                        'event_category': 'event_engagement',
+                        'event_label': 'registration_attempt',
+                        'payment_method': 'wompi',
+                        'number_of_people': selectedPeople,
+                        'value': totalAmount,
+                        'currency': 'COP'
+                    });
+                    
+                    // Send to n8n webhook (fire and forget)
+                    fetch(N8N_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            ...formData,
+                            eventName: 'Menú 3 Tiempos',
+                            totalAmount: totalAmount,
+                            source: 'website',
+                            timestamp: new Date().toISOString()
+                        })
+                    }).catch(err => console.warn('n8n webhook error:', err));
+                    
+                    // Create hidden iframe for Google Apps Script submission
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.name = 'cata-form-iframe';
+                    document.body.appendChild(iframe);
+                    
+                    // Set timeout for success (Google Apps Script doesn't always return proper CORS headers)
+                    const submissionTimeout = setTimeout(() => {
+                        // Assume success after 2 seconds
+                        gtag('event', 'cata_vino_paella_tapas_registration_success', {
+                            'event_category': 'event_engagement',
+                            'event_label': 'registration_completed',
+                            'value': totalAmount,
+                            'currency': 'COP',
+                            'number_of_people': selectedPeople
+                        });
+                        
+                        // Clean up iframe
+                        if (iframe && iframe.parentNode) {
+                            iframe.parentNode.removeChild(iframe);
+                        }
+                        
+                        // Get payment URL based on number of people
+                        const paymentUrl = wompiLinkByPeople[formData.numberOfPeople];
+                        
+                        if (paymentUrl) {
+                            // Track payment redirect
+                            gtag('event', 'cata_vino_paella_tapas_wompi_redirect', {
+                                'event_category': 'payment',
+                                'event_label': 'wompi_gateway_redirect',
+                                'value': totalAmount,
+                                'currency': 'COP',
+                                'number_of_people': selectedPeople
+                            });
+                            
+                            // Store registration data for thank-you page
+                            try {
+                                localStorage.setItem('eventRegistration', JSON.stringify({
+                                    ...formData,
+                                    totalAmount: totalAmount
+                                }));
+                            } catch (_) {}
+                            
+                            // Redirect to payment
+                            window.location.href = paymentUrl;
+                        } else {
+                            alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar los detalles del pago.');
+                            registrationForm.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                        }
+                    }, 2000);
+                    
+                    // Submit via iframe
+                    iframe.onload = function() {
+                        clearTimeout(submissionTimeout);
+                    };
+                    
+                    // Create and submit form via iframe to Google Apps Script
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = GOOGLE_APPS_SCRIPT_URL;
+                    form.target = 'cata-form-iframe';
+                    
+                    Object.keys(formData).forEach(key => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = formData[key];
+                        form.appendChild(input);
+                    });
+                    
+                    document.body.appendChild(form);
+                    form.submit();
+                    
+                    // Clean up the temporary form
+                    setTimeout(() => {
+                        if (form && form.parentNode) {
+                            form.parentNode.removeChild(form);
+                        }
+                    }, 100);
                 });
-                
-                // Send data to Google Apps Script
-                await fetch(GOOGLE_APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: data.name,
-                        email: data.email,
-                        phone: cleanPhone,
-                        people: selectedPeople,
-                        paymentMethod: 'wompi',
-                        eventName: 'Menú 3 Tiempos',
-                        eventDate: '2026-02-28',
-                        totalAmount: PRICE_PER_PERSON * selectedPeople,
-                        timestamp: new Date().toISOString()
-                    })
-                });
-                
-                // Track successful submission
-                gtag('event', 'cata_vino_paella_tapas_registration_success', {
-                    'event_category': 'event_engagement',
-                    'event_label': 'registration_completed',
-                    'value': PRICE_PER_PERSON * selectedPeople,
-                    'currency': 'COP',
-                    'payment_method': 'wompi',
-                    'people': selectedPeople
-                });
-                
-                // Track Wompi redirection
-                gtag('event', 'cata_vino_paella_tapas_wompi_redirect', {
-                    'event_category': 'payment',
-                    'event_label': 'wompi_gateway_redirect',
-                    'value': PRICE_PER_PERSON * selectedPeople,
-                    'currency': 'COP'
-                });
-                
-                // Store registration data for thank-you page
-                try {
-                    localStorage.setItem('eventRegistration', JSON.stringify({
-                        name: data.name,
-                        email: data.email,
-                        phone: cleanPhone,
-                        people: selectedPeople,
-                        paymentMethod: 'wompi'
-                    }));
-                } catch (_) {}
-                
-                // Redirect to Wompi payment gateway
-                const wompiUrl = wompiLinkByPeople[selectedPeople] || wompiLinkByPeople['1'];
-                window.location.href = wompiUrl;
-                
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                
-                // Track submission error
-                gtag('event', 'cata_vino_paella_tapas_registration_error', {
-                    'event_category': 'event_engagement',
-                    'event_label': 'registration_failed',
-                    'error_type': error.message || 'unknown_error'
-                });
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                
-                // Show error message
-                alert('Ha ocurrido un error al procesar tu reserva. Por favor intenta nuevamente o contáctanos por WhatsApp.');
             }
+
+            // Track page engagement
+            gtag('event', 'cata_vino_paella_tapas_page_view', {
+                'event_category': 'event_engagement',
+                'event_label': 'landing_page_view'
+            });
+
+            // Track scroll depth
+            let maxScroll = 0;
+            window.addEventListener('scroll', function() {
+                const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+                    maxScroll = scrollPercent;
+                    gtag('event', `cata_vino_paella_tapas_scroll_${scrollPercent}`, {
+                        'event_category': 'event_engagement',
+                        'event_label': `scroll_depth_${scrollPercent}percent`
+                    });
+                }
+            });
         });
-
-        // Track page engagement
-        gtag('event', 'cata_vino_paella_tapas_page_view', {
-            'event_category': 'event_engagement',
-            'event_label': 'landing_page_view'
-        });
-
-        // Track scroll depth
-        let maxScroll = 0;
-        window.addEventListener('scroll', function() {
-            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
-                maxScroll = scrollPercent;
-                gtag('event', `cata_vino_paella_tapas_scroll_${scrollPercent}`, {
-                    'event_category': 'event_engagement',
-                    'event_label': `scroll_depth_${scrollPercent}percent`
-                });
-            }
-        });
-
-
     </script>
 </body>
 </html>
