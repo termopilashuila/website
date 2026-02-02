@@ -6,13 +6,12 @@
   "scripts": {
     "build": "webpack && node scripts/update-sw-version.js",
     "watch": "webpack --watch",
-    "resize-images": "node resize/resize-images.js",
+    "resize-images": "cd resize && python main.py",
     "process-blog": "npm run build && node scripts/process-blog.js",
     "process-blog-single": "npm run build && node scripts/process-blog.js",
     "sitemap:generate": "node scripts/generate-sitemap.js",
     "sitemap:validate": "node -e \"require('fs').readFileSync('sitemap.xml','utf8'); console.log('sitemap.xml readable')\"",
-    "sitemap:ping": "node -e \"const https=require('https');const u=['https://www.google.com/ping?sitemap=https://termopilas.co/sitemap.xml','https://www.bing.com/ping?sitemap=https://termopilas.co/sitemap.xml'];u.forEach(x=>https.get(x, r=>console.log(x, r.statusCode)));\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sitemap:ping": "node -e \"const https=require('https');const u=['https://www.google.com/ping?sitemap=https://termopilas.co/sitemap.xml','https://www.bing.com/ping?sitemap=https://termopilas.co/sitemap.xml'];u.forEach(x=>https.get(x, r=>console.log(x, r.statusCode)));\""
   },
   "repository": {
     "type": "git",
@@ -26,10 +25,6 @@
   },
   "homepage": "https://github.com/termopilashuila/website#readme",
   "devDependencies": {
-    "@types/jest": "^29.5.14",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "ts-jest": "^29.3.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",

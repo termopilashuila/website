@@ -26,13 +26,12 @@ website/
 
 - TypeScript
 - Webpack
-- Jest (Testing)
 - CSS3
 - HTML5
 
 ## Requisitos
 
-- Node.js >= 14.x
+- Node.js >= 18.x
 - npm >= 6.x
 
 ## Instalación
@@ -57,10 +56,7 @@ website/
 
 - `npm run build`: Compila el proyecto para producción
 - `npm run watch`: Inicia el servidor de desarrollo con recarga automática
-- `npm run test`: Ejecuta las pruebas unitarias
-- `npm run test:watch`: Ejecuta las pruebas en modo observador
-- `npm run test:coverage`: Genera un reporte de cobertura de pruebas
-- `npm run resize-images`: Redimensiona las imágenes para optimización
+- `npm run resize-images`: Redimensiona las imágenes para optimización (requiere Python)
 
 ## Estructura de Componentes
 
@@ -76,12 +72,6 @@ El componente de pie de página (`components/footer.ts`) incluye:
 - Enlaces de redes sociales
 - Ubicación
 
-### Galería
-El componente de galería (`components/gallery.ts`) proporciona:
-- Vista en cuadrícula de imágenes
-- Lightbox para vista ampliada
-- Navegación entre imágenes
-
 ### Blog
 El sistema de blog (`components/blog.ts`) incluye:
 - Filtrado por categorías
@@ -95,28 +85,6 @@ El módulo de animaciones (`utils/animations.ts`) proporciona:
 - Animaciones de desplazamiento
 - Efectos de parallax
 - Transiciones suaves
-
-### Interacciones Táctiles
-El módulo táctil (`utils/touch.ts`) maneja:
-- Gestos de deslizamiento
-- Interacciones móviles
-- Navegación táctil
-
-## Pruebas
-
-Las pruebas están organizadas en directorios `__tests__` junto a los componentes que prueban:
-
-```
-src/
-└── ts/
-    ├── components/
-    │   └── __tests__/
-    │       ├── header.test.ts
-    │       └── footer.test.ts
-    └── utils/
-        └── __tests__/
-            └── animations.test.ts
-```
 
 ## Convenciones de Código
 
@@ -133,9 +101,8 @@ El sitio se despliega automáticamente a GitHub Pages cuando se fusiona código 
 
 1. Crear una rama desde `main`
 2. Realizar cambios
-3. Ejecutar pruebas
-4. Crear pull request
-5. Esperar revisión
+3. Crear pull request
+4. Esperar revisión
 
 ## Licencia
 

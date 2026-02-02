@@ -19,7 +19,7 @@ KEY OBJECTIVES:
 CONTENT SOURCES TO INDEX:
 - Root and top-level pages in repository root: *.html (e.g., index, alojamiento, tour, coliving, catalogo, cata-vinos, eventos.html, blog.html, privacidad, whatsapp, etc.).
 - Section pages: `eventos/*.html`, `trabajo/*.html` (and other public directories containing .html).
-- Blog posts: `blog/posts/*.html` and top-level `blog/*.html` index pages.
+- Blog posts: `blog/*.html` and top-level `blog/*.html` index pages.
 
 IMAGERY SOURCES:
 - Blog images in `assets/images/blog/[slug]/main.(jpg|png)` when present.
@@ -56,7 +56,7 @@ POST-UPDATE ACTIONS:
 ### Generation & Updates
 - Discover public `.html` files from:
   - Repository root
-  - `eventos/`, `trabajo/`, `blog/`, `blog/posts/`
+  - `eventos/`, `trabajo/`, `blog/`, `blog/`
 - Map files to canonical URLs and infer images.
 - Compute `lastmod` per the date strategy.
 - Assign `changefreq` and `priority` per rules above.
@@ -86,7 +86,7 @@ POST-UPDATE ACTIONS:
 ## Triggers
 
 ### Event-driven
-- On changes to any `.html` in root, `eventos/`, `trabajo/`, `blog/`, or `blog/posts/`.
+- On changes to any `.html` in root, `eventos/`, `trabajo/`, `blog/`, or `blog/`.
 - On changes to blog images under `assets/images/blog/**`.
 
 ### Scheduled

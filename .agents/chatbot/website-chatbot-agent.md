@@ -79,7 +79,7 @@ OBJETIVO FINAL:
 - Experiencias y eventos: detectar eventos activos y guiar al flujo de registro/pago indicado en la landing.
 - Tours: explicar brevemente vino/cacao/naturaleza y dirigir a `tour.html`.
 - Cómo llegar: resumir indicaciones y apuntar a `ubicacion.html`.
-- Recomendaciones locales: enlazar a `blog.html` y a contenidos de `blog/posts/` cuando sea relevante.
+- Recomendaciones locales: enlazar a `blog.html` y a contenidos de `blog/` cuando sea relevante.
 - Derivación humana: incluir `whatsapp.html` cuando haya dudas, urgencia o casos atípicos.
 
 ## Triggers

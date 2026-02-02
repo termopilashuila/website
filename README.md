@@ -44,7 +44,7 @@ website/
 ├── coliving.html            # Coliving para nómadas digitales
 ├── eventos.html             # Landing de eventos
 ├── catalogo.html            # Catálogo de productos/experiencias
-├── cata-vinos.html          # Página de cata de vinos
+├── cata.html                # Página de cata de vinos
 ├── galeria.html             # Galería de fotos
 ├── pago.html                # Métodos de pago
 ├── trabajo.html             # Portal de vacantes
@@ -69,11 +69,10 @@ website/
 │   ├── recepcionista.html
 │   ├── web-developer.html
 │   └── template.html
-├── eventos/                 # Páginas de eventos específicos
-│   ├── cata-vino-paella-tapas.html
+├── cata/                    # Páginas de eventos de cata
+│   ├── cata-vino-paella-tapas-main.html
 │   ├── cata-vino-paella-tapas-gracias.html
-│   ├── cata-vino-paella-tapas-fallido.html
-│   └── payu-links.json
+│   └── cata-vino-paella-tapas-fallido.html
 ├── scripts/                 # Utilidades Node
 │   ├── generate-sitemap.js
 │   ├── process-blog.js
@@ -389,7 +388,7 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
   ```
 - La configuración predeterminada se proporciona en `defaultHeaderConfig`
 - Las configuraciones específicas de página se aplican en la función `initHeader()`
-  - La cabecera no se genera en páginas de posts del blog (`/blog/posts/*`) ni en `404.html`
+  - La cabecera no se genera en páginas de posts del blog (`/blog/*`) ni en `404.html`
 
 - #### Configuración del pie de página
 - La configuración y generación se implementan en `src/ts/components/footer.ts`

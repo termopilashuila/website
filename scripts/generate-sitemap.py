@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Sitemap generator for termopilas.co (Python version)
-- Discovers public .html files in repo root, eventos/, trabajo/, blog/, blog/posts/
+- Discovers public .html files in repo root, cata/, trabajo/, blog/
 - Computes lastmod using Git commit time (fallback to file mtime)
 - Assigns changefreq and priority per policy
 - Resolves representative images
@@ -20,10 +20,9 @@ OUTPUT_FILE = REPO_ROOT / 'sitemap.xml'
 
 TARGET_DIRECTORIES = [
     '.',
-    'eventos',
+    'cata',
     'trabajo',
     'blog',
-    'blog/posts',
 ]
 
 PRIMARY_PAGES = {
@@ -33,7 +32,7 @@ PRIMARY_PAGES = {
     'eventos.html',
     'blog.html',
     'catalogo.html',
-    'cata-vinos.html',
+    'cata.html',
     'pago.html',
 }
 
@@ -189,10 +188,6 @@ def xml_escape(text):
 
 def main():
     """Generate sitemap.xml."""
-    # Pre-compute slugs from blog/posts to avoid duplicating top-level blog post duplicates
-    blog_posts = collect_html_files(str(Path('blog') / 'posts'))
-    post_slugs = {Path(p).stem for p in blog_posts}
-
     # Collect files from target directories
     all_files_nested = []
     for target_dir in TARGET_DIRECTORIES:
@@ -218,14 +213,8 @@ def main():
         if os.path.basename(p).lower() == 'template.html':
             continue
 
-        # Exclude duplicate blog top-level posts when a posts/* of same slug exists
-        if len(parts) >= 2 and parts[0] == 'blog' and parts[1] != 'posts':
-            slug = Path(p).stem
-            if slug in post_slugs:
-                continue
-
         # Include root .html files only (except target subdirectories)
-        if parts[0] not in ['eventos', 'trabajo', 'blog'] and len(parts) > 1:
+        if parts[0] not in ['cata', 'trabajo', 'blog'] and len(parts) > 1:
             continue
 
         filtered_files.append(p)

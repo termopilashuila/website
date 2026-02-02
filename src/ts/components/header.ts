@@ -296,7 +296,7 @@ export function initHeader(): void {
   const pageNameWithoutExt = pageName.replace('.html', '');
   const pathSegments = currentPath.split('/').filter(segment => segment.length > 0);
   
-  // Check if this is a blog post page (located in blog/posts/ directory)
+  // Check if this is a blog post page (located in blog/ directory)
   if (currentPath.includes('/blog/')) {
     // Skip header generation for blog post pages
     console.log('Blog post page detected, skipping header generation');
@@ -403,9 +403,9 @@ export function initHeader(): void {
 export function initGlobalHeader(): void {
   window.termopilasHeader = {
     updateConfig: (config: Partial<HeaderConfig>) => {
-      // Check if this is a blog post page (located in blog/posts/ directory)
+      // Check if this is a blog post page (located in blog/ directory)
       const currentPath = window.location.pathname;
-      if (currentPath.includes('/blog/posts/')) {
+      if (currentPath.includes('/blog/')) {
         // Skip header generation for blog post pages
         console.log('Blog post page detected, skipping header update');
         return;
@@ -450,9 +450,9 @@ export function initGlobalHeader(): void {
       generateHeader(headerConfig);
     },
     regenerateHeader: () => {
-      // Check if this is a blog post page (located in blog/posts/ directory)
+      // Check if this is a blog post page (located in blog/ directory)
       const currentPath = window.location.pathname;
-      if (currentPath.includes('/blog/posts/')) {
+      if (currentPath.includes('/blog/')) {
         // Skip header regeneration for blog post pages
         console.log('Blog post page detected, skipping header regeneration');
         return;

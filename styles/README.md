@@ -60,7 +60,7 @@ This directory contains all CSS stylesheets for the Termopilas Huila website, or
 
 ### 📝 Typography
 
-- **Headings**: 'Playfair Display' (serif) - elegant and classic
+- **Headings**: 'Lora' (serif) - elegant and classic
 - **Body Text**: 'Montserrat' (sans-serif) - clean and readable
 - **System Fallbacks**: Georgia, Arial, system fonts
 

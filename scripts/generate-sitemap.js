@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
   Sitemap generator for termopilas.co
-  - Discovers public .html files in repo root, eventos/, trabajo/, blog/, blog/posts/
+  - Discovers public .html files in repo root, cata/, trabajo/, blog/
   - Computes lastmod using Git commit time (fallback to file mtime)
   - Assigns changefreq and priority per policy
   - Resolves representative images (blog posts get specific image when available; otherwise fallback)
@@ -18,10 +18,9 @@ const OUTPUT_FILE = path.join(REPO_ROOT, 'sitemap.xml');
 
 const TARGET_DIRECTORIES = [
   '.',
-  'eventos',
+  'cata',
   'trabajo',
   'blog',
-  path.join('blog', 'posts'),
 ];
 
 const PRIMARY_PAGES = new Set([
@@ -31,7 +30,7 @@ const PRIMARY_PAGES = new Set([
   'eventos.html',
   'blog.html',
   'catalogo.html',
-  'cata-vinos.html',
+  'cata.html',
   'pago.html',
 ]);
 
@@ -183,10 +182,6 @@ function xmlEscape(str) {
 }
 
 async function main() {
-  // Pre-compute slugs from blog/posts to avoid duplicating top-level blog post duplicates
-  const blogPosts = await collectHtmlFiles(path.join('blog', 'posts'));
-  const postSlugs = new Set(blogPosts.map((p) => path.basename(p, '.html')));
-
   // Collect files from target directories
   const allFilesNested = await Promise.all(
     TARGET_DIRECTORIES.map((dir) => collectHtmlFiles(dir))
@@ -204,10 +199,8 @@ async function main() {
       if (path.basename(p).toLowerCase() === '404.html') return false;
       // Exclude template files from indexing
       if (path.basename(p).toLowerCase() === 'template.html') return false;
-      // Exclude duplicate blog top-level posts when a posts/* of same slug exists
-      if (parts[0] === 'blog' && parts[1] !== 'posts') {
-        const slug = path.basename(p, '.html');
-        if (postSlugs.has(slug)) return false;
+      // Allow all blog posts in blog/ directory
+      if (parts[0] === 'blog') {
       }
       // Include root .html files only
       if (!['eventos', 'trabajo', 'blog'].includes(parts[0]) && parts.length > 1) return false;

@@ -147,7 +147,7 @@ Después de crear un nuevo artículo, actualiza `blog.html` para incluir una tar
         </div>
         <h3>Lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
-        <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="blog/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
@@ -158,7 +158,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/posts/lugares-para-comer-rivera.html</loc>
+    <loc>https://termopilas.co/blog/lugares-para-comer-rivera.html</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -168,7 +168,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 ## Convenciones de nomenclatura
 
 ### Archivos de blog
-- Los archivos de blog se guardan en la carpeta `blog/posts/`.
+- Los archivos de blog se guardan en la carpeta `blog/` (no en subcarpetas).
 - Convención de nomenclatura: kebab-case.
 - Preferentemente con un prefijo numérico (por ejemplo, `lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
 
@@ -238,7 +238,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
         </div>
         <h3>Lugares para comer en Rivera, Huila</h3>
         <p>Una guía gastronómica con los mejores lugares para disfrutar la diversa oferta culinaria de Rivera.</p>
-        <a href="blog/posts/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+        <a href="blog/lugares-para-comer-rivera.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>
 ```
@@ -247,7 +247,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/posts/lugares-para-comer-rivera.html</loc>
+    <loc>https://termopilas.co/blog/lugares-para-comer-rivera.html</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

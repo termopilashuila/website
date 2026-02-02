@@ -10,6 +10,6 @@ Use the "blog/template.html" file as base file of the new blog article.
 
 Make sure you follow the same styles (CSS) as the template file. 
 
-When suggesting new articles at the end, reference the ones that have already been created in the "blog/posts" folder. 
+When suggesting new articles at the end, reference the ones that have already been created in the "blog" folder. 
 
 The author of the article is Camilo Cabrera. Take his bio info from other articles available in the folder.
