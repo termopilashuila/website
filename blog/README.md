@@ -5,7 +5,7 @@ Este directorio contiene el sistema de blog para el sitio web de Finca Termópil
 ## Estructura de archivos
 
 - `template.html`: Plantilla base para crear nuevos artículos de blog
-- `posts/`: Directorio que contiene todos los artículos de blog individuales
+- `*.html`: Artículos de blog individuales
 - `README.md`: Este archivo de documentación
 
 ## Cómo crear un nuevo artículo de blog
@@ -13,7 +13,7 @@ Este directorio contiene el sistema de blog para el sitio web de Finca Termópil
 ### 1. Crear un nuevo archivo HTML
 
 1. Copia el archivo `template.html` y renómbralo con un nombre descriptivo usando kebab-case (por ejemplo, `lugares-para-comer-rivera.html` o `proceso-elaboracion-vino-artesanal.html`).
-2. Guarda el archivo en el directorio `blog/` (no en el directorio `blog/`).
+2. Guarda el archivo en el directorio `blog/`.
 3. Actualiza las variables de la plantilla con la información del nuevo artículo.
 
 ### 2. Reemplazar las variables de la plantilla

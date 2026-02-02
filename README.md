@@ -109,8 +109,7 @@ website/
 ├── markdown/                # Fuentes en Markdown para el blog
 │   └── blog/*.md
 ├── blog/                    # Salida HTML del blog (generada)
-│   ├── posts/*.html         # Posts procesados
-│   ├── *.html               # Posts legacy
+│   ├── *.html               # Posts de blog
 │   └── template.html
 ├── assets/
 │   ├── css/fonts.css
