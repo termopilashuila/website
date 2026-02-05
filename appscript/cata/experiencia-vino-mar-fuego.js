@@ -1,9 +1,9 @@
 /**
- * Google Apps Script para manejar las reservas del evento Menú 3 Tiempos de Finca Termópilas
+ * Google Apps Script para manejar las reservas del evento Experiencia Vino Mar y Fuego de Finca Termópilas
  * Este script recibe los datos del formulario de reserva y los guarda en una hoja de cálculo
  * Sheet ID: 1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0
  * 
- * Event: Menú 3 Tiempos (Cata de Vinos, Paella y Tapas)
+ * Event: Experiencia Vino Mar y Fuego
  * Date: 28 de Febrero 2026
  * Price: $160,000 COP per person
  * Location: Finca Termópilas, Rivera, Huila
@@ -21,12 +21,12 @@
 
 const SPREADSHEET_ID = "1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0";
 const PRICE_PER_PERSON = 160000;
-const EVENT_NAME = "Menú 3 Tiempos";
+const EVENT_NAME = "Experiencia Vino Mar y Fuego";
 const EVENT_DATE = "2026-02-28";
 
 // Función que se ejecuta cuando se recibe una solicitud GET
 function doGet(e) {
-  return ContentService.createTextOutput('Finca Termópilas - Menú 3 Tiempos reservation handler is running.').setMimeType(ContentService.MimeType.TEXT);
+  return ContentService.createTextOutput('Finca Termópilas - Experiencia Vino Mar y Fuego reservation handler is running.').setMimeType(ContentService.MimeType.TEXT);
 }
 
 // Función que se ejecuta cuando se recibe una solicitud POST
@@ -142,11 +142,11 @@ function sendNotificationEmail(data, dateValue, numberOfPeople, totalAmount, cre
   
   // Wompi payment links by number of people
   var paymentUrls = {
-    '1': 'https://checkout.wompi.co/l/woFJnp',
-    '2': 'https://checkout.wompi.co/l/TEgNTf',
-    '3': 'https://checkout.wompi.co/l/P1ntW5',
-    '4': 'https://checkout.wompi.co/l/mE6oSJ',
-    '5': 'https://checkout.wompi.co/l/C6tiJw'
+    '1': 'https://checkout.wompi.co/l/Ou8k0N',
+    '2': 'https://checkout.wompi.co/l/PCNLzu',
+    '3': 'https://checkout.wompi.co/l/4LWK8f',
+    '4': 'https://checkout.wompi.co/l/6MoZkq',
+    '5': 'https://checkout.wompi.co/l/fbQsfG'
   };
   
   var paymentUrl = paymentUrls[numberOfPeople.toString()] || '';

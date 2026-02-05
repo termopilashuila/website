@@ -1,10 +1,10 @@
-# Cata de Vinos, Paella y Tapas - Google Apps Script Handler
+# Experiencia Vino Mar y Fuego - Google Apps Script Handler
 
 ## Overview
-Google Apps Script handler for processing reservations for the "Cata de Vinos, Paella y Tapas" event at Finca Termópilas. This script handles form submissions, validates data, stores reservations in Google Sheets, and sends automated email confirmations to both administrators and users.
+Google Apps Script handler for processing reservations for the "Experiencia Vino Mar y Fuego" event at Finca Termópilas. This script handles form submissions, validates data, stores reservations in Google Sheets, and sends automated email confirmations to both administrators and users.
 
 ## Configuration
-- **Script File**: `cata-vino-paella-tapas.js`
+- **Script File**: `experiencia-vino-mar-fuego.js`
 - **Google Sheet ID**: `1VSTITr2PdITWTZWeJ9l3sKrlOBGIUUP48D5T1DUayJ0`
 - **Event Date**: September 6, 2025 (Friday)
 - **Event Time**: 3:00 PM - 7:00 PM
@@ -44,7 +44,7 @@ The script automatically creates the following column headers:
 
 ### Admin Notification Email
 - **Recipients**: termopilashuila@gmail.com
-- **Subject**: Nueva Reserva - Cata de Vinos, Paella y Tapas - [Guest Name]
+- **Subject**: Nueva Reserva - Experiencia Vino Mar y Fuego - [Guest Name]
 - **Content**: Complete reservation details with quick action buttons
 - **Features**: 
   - WhatsApp contact link
@@ -53,7 +53,7 @@ The script automatically creates the following column headers:
 
 ### User Confirmation Email
 - **Recipient**: Guest's email address
-- **Subject**: Reserva Recibida - Cata de Vinos, Paella y Tapas - Finca Termópilas
+- **Subject**: Reserva Recibida - Experiencia Vino Mar y Fuego - Finca Termópilas
 - **Content**: Payment-specific instructions based on selected method
 
 #### For Bank Transfer (`paymentMethod: "transfer"`)
@@ -73,7 +73,7 @@ The script automatically creates the following column headers:
 ### Bank Transfer Receipt Submission
 When users select bank transfer, they receive a WhatsApp link with a pre-filled message:
 ```
-Hola, soy [First Name] [Last Name]. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es [email].
+Hola, soy [First Name] [Last Name]. Acabo de hacer una reserva para la Experiencia Vino Mar y Fuego del 28 de febrero y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es [email].
 ```
 
 ## API Endpoints
@@ -118,7 +118,7 @@ runAllTests();
 ### Initial Setup
 1. Open Google Apps Script (script.google.com)
 2. Create new project or open existing
-3. Replace code with `cata-vino-paella-tapas.js` content
+3. Replace code with `experiencia-vino-mar-fuego.js` content
 4. Save the project
 
 ### Web App Deployment

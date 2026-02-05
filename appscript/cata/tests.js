@@ -1,5 +1,5 @@
 /**
- * Comprehensive test suite for Cata de Vinos, Paella y Tapas event handler
+ * Comprehensive test suite for Experiencia Vino Mar y Fuego event handler
  * Tests all major functionality including form processing, email sending, and error handling
  */
 
@@ -7,7 +7,7 @@
  * Main test runner - executes all test functions
  */
 function runAllCataVinoTests() {
-  console.log('🧪 Starting Cata de Vinos, Paella y Tapas Test Suite');
+  console.log('🧪 Starting Experiencia Vino Mar y Fuego Test Suite');
   console.log('=====================================================');
   
   let testResults = {
@@ -286,7 +286,7 @@ function testWhatsAppIntegration() {
   
   try {
     // Test WhatsApp URL generation
-    const expectedMessage = `Hola, soy ${testData.firstName} ${testData.lastName}. Acabo de hacer una reserva para la Cata de Vinos, Paella y Tapas del 6 de septiembre y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es ${testData.email}.`;
+    const expectedMessage = `Hola, soy ${testData.firstName} ${testData.lastName}. Acabo de hacer una reserva para la Experiencia Vino Mar y Fuego del 28 de febrero y necesito enviar el comprobante de pago por transferencia bancaria. Mi email de contacto es ${testData.email}.`;
     const encodedMessage = encodeURIComponent(expectedMessage);
     const whatsappUrl = `https://wa.me/573170182644?text=${encodedMessage}`;
     
