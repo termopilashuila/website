@@ -62,6 +62,11 @@ function doPost(e) {
     // Send notification email to admin
     sendNotificationEmail(data, dateValue, numberOfPeople, totalAmount, createdAt);
     
+    // Send confirmation email to user
+    if (data.email) {
+      sendUserConfirmationEmail(data, dateValue, numberOfPeople, totalAmount);
+    }
+    
     return ContentService.createTextOutput('Success').setMimeType(ContentService.MimeType.TEXT);
   } catch (err) {
     console.error('Error processing reservation:', err);
@@ -167,6 +172,121 @@ function sendNotificationEmail(data, dateValue, numberOfPeople, totalAmount, cre
     '\n\nVer todas las reservas: https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID;
 
   MailApp.sendEmail({ to: recipients.join(','), subject: subject, body: body });
+}
+
+/**
+ * Send confirmation email to user
+ */
+function sendUserConfirmationEmail(data, dateValue, numberOfPeople, totalAmount) {
+  var userName = data.name || 'Estimado/a';
+  var firstName = userName.split(' ')[0];
+  var subject = '¡Datos Registrados! - ' + EVENT_NAME + ' | Finca Termópilas';
+  
+  var htmlBody = '<!DOCTYPE html>' +
+    '<html lang="es">' +
+    '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>' +
+    '<body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;line-height:1.6;background-color:#fdf6ea;">' +
+    '<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#fdf6ea;padding:20px;">' +
+    '<tr><td align="center">' +
+    '<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.1);">' +
+    
+    // Header
+    '<tr><td style="background:linear-gradient(135deg,#F29F05 0%,#E6920C 100%);color:#ffffff;padding:40px 30px;text-align:center;">' +
+    '<div style="font-size:48px;margin-bottom:15px;">🍷📝</div>' +
+    '<h1 style="margin:0;font-size:28px;font-weight:700;">¡Hola ' + firstName + '!</h1>' +
+    '<p style="margin:10px 0 0;font-size:16px;opacity:0.95;">Hemos recibido tu información correctamente</p>' +
+    '</td></tr>' +
+    
+    // Content
+    '<tr><td style="padding:40px 30px;">' +
+    
+    // Event details card
+    '<div style="background-color:#fdf6ea;padding:25px;border-radius:12px;border-left:5px solid #F29F05;margin-bottom:25px;">' +
+    '<h2 style="color:#F29F05;margin:0 0 20px;font-size:22px;">🍷🔥 ' + EVENT_NAME + '</h2>' +
+    '<table width="100%" cellpadding="8" cellspacing="0">' +
+    '<tr><td style="color:#666;"><strong>📅 Fecha:</strong></td><td style="color:#333;">Sábado, 28 de Febrero 2026</td></tr>' +
+    '<tr><td style="color:#666;"><strong>🕒 Horario:</strong></td><td style="color:#333;">3:00 PM - 8:00 PM</td></tr>' +
+    '<tr><td style="color:#666;"><strong>📍 Ubicación:</strong></td><td style="color:#333;">Finca Termópilas, Rivera, Huila</td></tr>' +
+    '<tr><td style="color:#666;"><strong>👥 Personas:</strong></td><td style="color:#333;">' + numberOfPeople + '</td></tr>' +
+    '<tr><td style="color:#666;"><strong>💰 Total:</strong></td><td style="color:#333;"><span style="background:#F29F05;color:#fff;padding:4px 12px;border-radius:20px;font-weight:bold;">$' + totalAmount.toLocaleString('es-CO') + ' COP</span></td></tr>' +
+    '</table>' +
+    '</div>' +
+    
+    // Important note about Wompi
+    '<div style="background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);border:2px solid #4caf50;padding:20px;border-radius:12px;margin-bottom:25px;">' +
+    '<h3 style="color:#2e7d32;margin:0 0 12px;font-size:18px;">📧 Confirmación de Pago</h3>' +
+    '<p style="color:#1b5e20;margin:0 0 10px;"><strong>Importante:</strong> El email de confirmación de tu pago será enviado directamente por <strong>Wompi</strong>, nuestra plataforma de pagos segura.</p>' +
+    '<p style="color:#1b5e20;margin:0;">Nosotros hemos registrado tus datos y te contactaremos por WhatsApp con información adicional y recordatorios sobre el evento.</p>' +
+    '</div>' +
+    
+    // Contact buttons
+    '<div style="text-align:center;margin:30px 0;">' +
+    '<a href="https://wa.me/573170182644?text=Hola,%20acabo%20de%20registrarme%20para%20la%20Experiencia%20Vino%20Mar%20y%20Fuego%20del%2028%20de%20febrero." style="display:inline-block;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:50px;font-weight:600;font-size:15px;margin:5px;">💬 Contactar por WhatsApp</a>' +
+    '</div>' +
+    
+    // Footer note
+    '<div style="border-top:2px solid #f0f0f0;padding-top:25px;margin-top:25px;text-align:center;color:#666;font-size:14px;">' +
+    '<p style="margin:0 0 10px;"><strong>¿Tienes preguntas?</strong> No dudes en contactarnos.</p>' +
+    '<p style="margin:0;">📱 WhatsApp: +57 317 018 2644</p>' +
+    '<p style="margin:5px 0 0;">📧 Email: termopilashuila@gmail.com</p>' +
+    '</div>' +
+    
+    '</td></tr>' +
+    
+    // Footer
+    '<tr><td style="background-color:#333;color:#fff;padding:25px 30px;text-align:center;">' +
+    '<p style="margin:0 0 5px;font-size:14px;">Estamos emocionados de recibirte en esta experiencia gastronómica única</p>' +
+    '<p style="margin:0;font-size:12px;opacity:0.8;">Finca Termópilas • Rivera, Huila • Colombia</p>' +
+    '<p style="margin:10px 0 0;"><a href="https://termopilas.co" style="color:#F29F05;text-decoration:none;font-weight:600;">termopilas.co</a></p>' +
+    '</td></tr>' +
+    
+    '</table>' +
+    '</td></tr>' +
+    '</table>' +
+    '</body></html>';
+  
+  // Plain text fallback
+  var plainBody = 'Hola ' + firstName + ',\n\n' +
+    'Hemos recibido tu información para ' + EVENT_NAME + '.\n\n' +
+    'DETALLES DEL EVENTO:\n' +
+    '- Fecha: Sábado, 28 de Febrero 2026\n' +
+    '- Horario: 3:00 PM - 8:00 PM\n' +
+    '- Ubicación: Finca Termópilas, Rivera, Huila\n' +
+    '- Personas: ' + numberOfPeople + '\n' +
+    '- Total: $' + totalAmount.toLocaleString('es-CO') + ' COP\n\n' +
+    'IMPORTANTE: El email de confirmación de tu pago será enviado directamente por Wompi.\n' +
+    'Nosotros te contactaremos por WhatsApp con información adicional.\n\n' +
+    '¿Preguntas? Contáctanos:\n' +
+    'WhatsApp: +57 317 018 2644\n' +
+    'Email: termopilashuila@gmail.com\n\n' +
+    '¡Te esperamos!\n' +
+    'Finca Termópilas';
+  
+  MailApp.sendEmail({
+    to: data.email,
+    subject: subject,
+    body: plainBody,
+    htmlBody: htmlBody,
+    name: 'Finca Termópilas',
+    replyTo: 'termopilashuila@gmail.com'
+  });
+}
+
+/**
+ * Test function for user confirmation email
+ */
+function testUserConfirmationEmail() {
+  var testData = {
+    name: "María González",
+    email: "test@example.com", // Change this to your email for testing
+    phone: "3001234567",
+    date: EVENT_DATE,
+    numberOfPeople: "2",
+    message: "Test reservation"
+  };
+  
+  sendUserConfirmationEmail(testData, EVENT_DATE, 2, PRICE_PER_PERSON * 2);
+  console.log('Test user confirmation email sent successfully');
 }
 
 /**
