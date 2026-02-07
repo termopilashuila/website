@@ -1,0 +1,33 @@
+{
+  "comment": "Paths to precache in service-worker.js. Build step (update-sw-version.js) merges these with discovered HTML and writes service-worker.js.",
+  "static": [
+    "/",
+    "/index.html",
+    "/alojamiento.html",
+    "/tour.html",
+    "/ubicacion.html",
+    "/galeria.html",
+    "/coliving.html",
+    "/blog.html",
+    "/catalogo.html",
+    "/cata.html",
+    "/eventos.html",
+    "/pago.html",
+    "/privacidad.html",
+    "/whatsapp.html",
+    "/registro.html",
+    "/feedback.html",
+    "/trabajo.html",
+    "/dist/main.js",
+    "/styles/main.css",
+    "/styles/hero.css",
+    "/styles/utilities.css",
+    "/styles/main-sections.css",
+    "/styles/responsive.css",
+    "/styles/brand-tokens.css",
+    "/styles/components.css",
+    "/assets/images/favicon.png",
+    "/assets/css/fonts.css"
+  ],
+  "directories": ["cata", "trabajo", "blog", "coliving", "tour"]
+}

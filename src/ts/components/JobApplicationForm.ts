@@ -1,8 +1,6 @@
-import { JobApplicationData, JobApplicationResponse, JobFormElements } from '../types/jobApplication';
-
 declare global {
     interface Window {
-        [key: string]: any; // Allow dynamic callback property assignment
+        [key: string]: unknown; // Allow dynamic callback property assignment
     }
 }
 
@@ -67,13 +65,13 @@ export class JobApplicationForm {
         }
     }
 
-    private formatSubmittedData(data: any): string {
-        const formatField = (key: string, value: any): string => {
-            if (!value) return '';
+    private formatSubmittedData(data: Record<string, unknown>): string {
+        const formatField = (key: string, value: unknown): string => {
+            if (value === undefined || value === null) return '';
             const fieldName = key.charAt(0).toUpperCase() + key.slice(1)
                 .replace(/([A-Z])/g, ' $1')
                 .trim();
-            return `${fieldName}: ${value}\n`;
+            return `${fieldName}: ${String(value)}\n`;
         };
 
         let summary = '📝 Datos Enviados:\n\n';
@@ -114,7 +112,8 @@ export class JobApplicationForm {
         e.preventDefault();
         
         const formData = new FormData(this.form);
-        const formDataObj = Object.fromEntries(formData.entries());
+        const formDataObj: Record<string, unknown> = {};
+        formData.forEach((value, key) => { formDataObj[key] = value instanceof File ? value.name : value; });
         
         this.setFormState('loading', 'Enviando formulario...');
         console.log('Starting form submission...');

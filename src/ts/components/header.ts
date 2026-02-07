@@ -169,7 +169,7 @@ function initMobileNav(): void {
       e.stopPropagation();
     }, { passive: true });
 
-    navMenu.addEventListener('touchmove', (e: TouchEvent) => {
+    navMenu.addEventListener('touchmove', (_e: TouchEvent) => {
       // Allow default scrolling behavior within the menu
     }, { passive: true });
 
@@ -245,7 +245,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
     (headerElement as HTMLElementWithStyle).style.backgroundPosition = 'center';
   }
   
-  let navItems = [...config.navItems];
+  const navItems = [...config.navItems];
   
   // Generate the navbar HTML
   const navbarHTML = `

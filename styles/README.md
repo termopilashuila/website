@@ -25,6 +25,7 @@ This directory contains all CSS stylesheets for the Termopilas Huila website, or
 - **`tour.css`** - Tour experience page with timeline and interactive elements
 - **`trabajo.css`** - Job application and careers page styling
 - **`ubicacion.css`** - Location and directions page design
+- **`cata-event.css`** - Shared styles for event landing pages (e.g. Experiencia Vino Mar y Fuego in `cata/`). Loaded by `cata/experiencia-vino-mar-fuego.html`; event-specific overrides (e.g. hero background) stay inline.
 - **`privacy.css`** - Privacy policy page formatting
 - **`rooms.css`** - Accommodation rooms display and gallery
 

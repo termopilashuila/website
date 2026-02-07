@@ -60,7 +60,7 @@ declare global {
   interface Window {
     termopilasHeader: TermopilasHeader;
     termopilasFooter: TermopilasFooter;
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 } 

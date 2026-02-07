@@ -53,7 +53,7 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
   const formattedPhone = `(+57) ${phoneNumber.slice(3)}`;
   
   // Get WhatsApp phone URL if available, otherwise fallback to default
-  const whatsappPhoneUrl = (config as any).whatsappPhoneUrl || 
+  const whatsappPhoneUrl = (config as FooterConfig & { whatsappPhoneUrl?: string }).whatsappPhoneUrl || 
     `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=general&utm_content=phone_link&text=${encodeURIComponent('Hola. Me gustaría saber más sobre')}`;
   
   // Generate the footer content HTML
@@ -141,7 +141,7 @@ export function initFooter(): void {
     const whatsappPhoneUrl = `whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=${utmCampaign}&utm_content=phone_link&text=${encodedMessage}`;
 
     // Store the WhatsApp phone URL for use in the footer generation
-    (footerConfig as any).whatsappPhoneUrl = whatsappPhoneUrl;
+    (footerConfig as FooterConfig & { whatsappPhoneUrl: string }).whatsappPhoneUrl = whatsappPhoneUrl;
 
     // Update the WhatsApp social media link
     const whatsappIndex = footerConfig.contact.socialMedia.findIndex(social => social.platform === 'WhatsApp');

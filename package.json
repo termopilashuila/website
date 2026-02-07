@@ -6,9 +6,11 @@
   "scripts": {
     "build": "webpack && node scripts/update-sw-version.js",
     "watch": "webpack --watch",
-    "resize-images": "cd resize && python main.py",
+    "lint": "eslint src/ scripts/ --max-warnings 0",
+    "lint:appscript": "eslint appscript/ --max-warnings 999",
     "process-blog": "npm run build && node scripts/process-blog.js",
     "process-blog-single": "npm run build && node scripts/process-blog.js",
+    "config:inject": "node scripts/inject-ga-from-config.js",
     "sitemap:generate": "node scripts/generate-sitemap.js",
     "sitemap:validate": "node -e \"require('fs').readFileSync('sitemap.xml','utf8'); console.log('sitemap.xml readable')\"",
     "sitemap:ping": "node -e \"const https=require('https');const u=['https://www.google.com/ping?sitemap=https://termopilas.co/sitemap.xml','https://www.bing.com/ping?sitemap=https://termopilas.co/sitemap.xml'];u.forEach(x=>https.get(x, r=>console.log(x, r.statusCode)));\""
@@ -25,8 +27,11 @@
   },
   "homepage": "https://github.com/termopilashuila/website#readme",
   "devDependencies": {
+    "eslint": "^9.39.2",
+    "globals": "^17.3.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^8.54.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },

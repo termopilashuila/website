@@ -31,7 +31,6 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
 - Google Analytics para seguimiento de usuario
-- Jest para pruebas unitarias
 
 ## Estructura del proyecto
 
@@ -69,10 +68,11 @@ website/
 │   ├── recepcionista.html
 │   ├── web-developer.html
 │   └── template.html
-├── cata/                    # Páginas de eventos de cata
-│   ├── cata-vino-paella-tapas-main.html
-│   ├── cata-vino-paella-tapas-gracias.html
-│   └── cata-vino-paella-tapas-fallido.html
+├── cata/                    # Páginas del evento de cata activo (Experiencia Vino Mar y Fuego)
+│   ├── experiencia-vino-mar-fuego.html
+│   ├── experiencia-vino-mar-fuego-gracias.html
+│   └── experiencia-vino-mar-fuego-fallido.html
+├── archive/                 # Versiones archivadas de landings (cata, coliving, tour); no se despliegan como páginas principales
 ├── scripts/                 # Utilidades Node
 │   ├── generate-sitemap.js
 │   ├── process-blog.js
@@ -546,6 +546,7 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 ### Herramientas de compilación
 - **webpack**: Usado para empaquetar archivos TypeScript
 - **ts-loader**: Usado para cargar archivos TypeScript en webpack
+- **ESLint**: Lint para `src/` y `scripts/` con `npm run lint`; opcionalmente `npm run lint:appscript` para scripts de Google Apps
 
 ### PWA
 - Registro de Service Worker en `src/ts/main.ts`
@@ -554,7 +555,7 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 
 ### Analytics
 - **Implementación**: Implementado directamente en el HTML de cada página
-- **Tracking ID**: G-2406CNRCX9
+- **Configuración**: El ID de Google Analytics se define en `scripts/site-config.json` (`gaId`). Ejecuta `npm run config:inject` para propagar el ID a todos los HTML; el build no lo hace automáticamente.
 - **Ubicación**: En la sección `<head>` de cada documento HTML
 - **Notas**: No implementar mediante TypeScript para asegurar un seguimiento inmediato
  - **Tour**: Eventos para clics de CTA a `#tour-form` y envío de formulario con fecha y dominio de email
@@ -634,19 +635,10 @@ Para más detalles, consulta `appscript/README.md`.
 
 ### Pruebas
 
-El proyecto usa Jest para pruebas unitarias:
-
-```bash
-npm test
-```
-
-**Nota:** Actualmente el script de test es un placeholder. Las pruebas están configuradas con:
-- Jest como framework de testing
-- ts-jest para soporte TypeScript
-- jest-environment-jsdom para pruebas DOM
+No hay suite de pruebas automatizadas en el proyecto. Si quieres añadir pruebas en el futuro, puedes configurar Jest (o Vitest) y definir un script `test` en `package.json`.
 
 ### Optimización de imágenes
-La herramienta actual es un script en Python ubicado en `resize/`.
+La única herramienta de redimensionamiento es el script Python en `resize/`. No hay script npm; usar Python directamente:
 
 1. Crear entorno y dependencias:
    ```bash
@@ -658,7 +650,6 @@ La herramienta actual es un script en Python ubicado en `resize/`.
    ```bash
    python main.py
    ```
-Nota: El script `npm run resize-images` es legado y no está operativo en esta versión.
 
 ### Visualización local
 Para ver el sitio web localmente, puedes usar cualquier servidor web estático. Una opción sencilla es usar el módulo `http-server` de Node.js:
@@ -672,10 +663,9 @@ Esto iniciará un servidor local en http://localhost:8080 donde podrás visualiz
 ## Blog: flujo Markdown → HTML
 
 - Guía completa en `docs/markdown-to-blog-guide.md`.
-- Comandos principales:
-  - Procesar todos: `npm run process-blog`
-  - Procesar un archivo: `npm run process-blog-single markdown/blog/mi-post.md`
-- Compilado del conversor: `dist/utils/utils/markdown-to-blog.js`.
+- Procesar todos: `npm run process-blog`
+- Procesar un solo archivo: `npm run build && node scripts/process-blog.js markdown/blog/mi-post.md`
+- Compilado del conversor: `dist/utils/utils/markdown-to-blog.js`
 
 ### Posts actuales
 

@@ -30,16 +30,6 @@ interface RelatedArticle {
   description?: string;
 }
 
-interface BlogCardData {
-  title: string;
-  subtitle?: string;
-  date: string;
-  category: string;
-  categories: string;
-  featured_image: string;
-  description: string;
-  link: string;
-}
 
 class MarkdownToBlogConverter {
   private markdownDir: string;
@@ -151,7 +141,7 @@ class MarkdownToBlogConverter {
    * Format HTML with proper line breaks and indentation
    */
   private formatHtml(html: string): string {
-    let formatted = html
+    const formatted = html
       // Add line breaks before opening tags
       .replace(/<(h[1-6]|p|div|ul|ol|li|blockquote)([^>]*)>/g, '\n                <$1$2>')
       // Add line breaks after closing tags
@@ -186,8 +176,7 @@ class MarkdownToBlogConverter {
     const htmlContent = await this.markdownToHtml(post.content);
     const spanishDate = this.formatDateToSpanish(post.date);
     const absoluteImagePath = this.toAbsolutePath(post.featured_image);
-    const absoluteAuthorImagePath = post.author_image ? this.toAbsolutePath(post.author_image) : '';
-    
+
     return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -472,7 +461,7 @@ class MarkdownToBlogConverter {
    */
   private updateBlogHtml(blogCards: string[]): void {
     try {
-      let blogHtml = fs.readFileSync(this.blogHtmlPath, 'utf-8');
+      const blogHtml = fs.readFileSync(this.blogHtmlPath, 'utf-8');
       
       // Find the blog grid section
       const gridStartMarker = '<div class="blog-grid">';

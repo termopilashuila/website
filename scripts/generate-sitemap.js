@@ -52,12 +52,11 @@ async function collectHtmlFiles(relativeDir) {
   let entries = [];
   try {
     entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
-  } catch (_) {
+  } catch {
     return collected;
   }
   for (const entry of entries) {
     const entryRelPath = path.join(relativeDir, entry.name);
-    const entryAbsPath = path.join(REPO_ROOT, entryRelPath);
     if (entry.isDirectory()) {
       // Skip hidden and non-target deep directories by default
       if (entry.name.startsWith('.')) continue;
@@ -78,8 +77,8 @@ async function collectHtmlFiles(relativeDir) {
       ].includes(entry.name) && relativeDir === '.') {
         continue;
       }
-      // Allow recursion inside directories we explicitly target (eventos, trabajo, blog)
-      if (relativeDir === '.' || ['eventos', 'trabajo', 'blog'].includes(relativeDir) || relativeDir.startsWith('blog')) {
+      // Allow recursion inside directories we explicitly target (cata, eventos, trabajo, blog)
+      if (relativeDir === '.' || ['cata', 'eventos', 'trabajo', 'blog'].includes(relativeDir) || relativeDir.startsWith('blog')) {
         const nested = await collectHtmlFiles(entryRelPath);
         collected.push(...nested);
       }
@@ -100,7 +99,7 @@ function getGitLastCommitIso(fileAbsPath) {
     });
     const output = (res.stdout || '').trim();
     if (res.status === 0 && output) return output;
-  } catch (_) {}
+  } catch {}
   return null;
 }
 
@@ -120,7 +119,7 @@ function toCanonicalUrl(relativeHtmlPath) {
 function fileExists(relPath) {
   try {
     return fs.existsSync(path.join(REPO_ROOT, relPath));
-  } catch (_) {
+  } catch {
     return false;
   }
 }
@@ -154,6 +153,9 @@ function classifyPage(relativeHtmlPath) {
   }
   if (UTILITY_PAGES.has(base)) {
     return { changefreq: 'yearly', priority: 0.3, group: 2 };
+  }
+  if (relativeHtmlPath.startsWith('cata' + path.sep)) {
+    return { changefreq: 'monthly', priority: 0.8, group: 3 };
   }
   if (relativeHtmlPath.startsWith('eventos' + path.sep)) {
     return { changefreq: 'monthly', priority: 0.8, group: 3 };
@@ -202,8 +204,8 @@ async function main() {
       // Allow all blog posts in blog/ directory
       if (parts[0] === 'blog') {
       }
-      // Include root .html files only
-      if (!['eventos', 'trabajo', 'blog'].includes(parts[0]) && parts.length > 1) return false;
+      // Include root .html files and targeted subfolders (cata, eventos, trabajo, blog)
+      if (!['cata', 'eventos', 'trabajo', 'blog'].includes(parts[0]) && parts.length > 1) return false;
       return true;
     });
 
@@ -257,12 +259,10 @@ async function main() {
 
   const numUrls = entries.length;
   const numImages = entries.filter((e) => Boolean(e.image)).length;
-  // eslint-disable-next-line no-console
   console.log(`Generated sitemap.xml with ${numUrls} URLs (${numImages} images)`);
 }
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exit(1);
 });
