@@ -1109,6 +1109,31 @@
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Auto-scroll to content below hero on page load (same effect as tour.html)
+            (function autoScrollToContent() {
+                if (window.location.hash) return;
+                var target = document.querySelector('.event-details');
+                if (!target) return;
+                setTimeout(function() {
+                    var offset = 80;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    var startPosition = window.pageYOffset;
+                    var distance = targetPosition - startPosition;
+                    var duration = 1500;
+                    var startTime = null;
+                    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+                    function step(now) {
+                        if (startTime === null) startTime = now;
+                        var elapsed = now - startTime;
+                        var progress = Math.min(elapsed / duration, 1);
+                        var easeProgress = easeOutCubic(progress);
+                        window.scrollTo(0, startPosition + distance * easeProgress);
+                        if (elapsed < duration) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                }, 50);
+            })();
+
             const PRICE_PER_PERSON = 160000;
             const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRjaJtp9VSkkX0xVScgmk06S4SRv6JYt8avjksHHXEgVoPMJ2SjrQWkUcLbz2fzpfS/exec';
             const N8N_WEBHOOK_URL = 'https://n8n.termopilas.co/webhook/tour-registration';
