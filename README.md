@@ -522,6 +522,8 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 
 ### TypeScript
 - **Comando de compilación**: `npm run build`
+- **Compilación con optimización de imágenes**: `npm run build:with-images` (ejecuta resize y luego build; requiere Python y Pillow en `resize/`)
+- **Redimensionar imágenes**: `npm run resize-images` para optimizar imágenes en `assets/images` (requiere Python; ver `resize/README.md`)
 - **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática durante el desarrollo
 - **Entradas principales**: `src/ts/main.ts`, `src/newsletter.js`, `src/blog.js`, `src/discount-popup.js`, `src/ts/components/JobApplicationForm.ts`, `src/ts/utils/markdown-to-blog.ts`
 - **Salida principal**: `dist/main.js` y módulos nombrados
