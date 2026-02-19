@@ -12,7 +12,9 @@
     "lint:appscript": "eslint appscript/ --max-warnings 999",
     "process-blog": "npm run build && node scripts/process-blog.js",
     "process-blog-single": "npm run build && node scripts/process-blog.js",
-    "config:inject": "node scripts/inject-ga-from-config.js",
+    "config:inject": "node scripts/inject-ga-from-config.js && node scripts/inject-fb-pixel-from-config.js",
+    "config:inject-ga": "node scripts/inject-ga-from-config.js",
+    "config:inject-pixel": "node scripts/inject-fb-pixel-from-config.js",
     "sitemap:generate": "node scripts/generate-sitemap.js",
     "sitemap:validate": "node -e \"require('fs').readFileSync('sitemap.xml','utf8'); console.log('sitemap.xml readable')\"",
     "sitemap:ping": "node -e \"const https=require('https');const u=['https://www.google.com/ping?sitemap=https://termopilas.co/sitemap.xml','https://www.bing.com/ping?sitemap=https://termopilas.co/sitemap.xml'];u.forEach(x=>https.get(x, r=>console.log(x, r.statusCode)));\""
