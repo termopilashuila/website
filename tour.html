@@ -92,7 +92,7 @@
                     </div>
                     <div class="tour-details">
                         <ul class="tour-info">
-                            <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;31 de Enero de 2026</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Próximas fechas:</strong>&nbsp;28 Mar, 25 Abr, 30 May 2026</li>
                             <li><i class="fas fa-calendar-alt"></i> <strong>Hora:</strong>&nbsp;&nbsp;4:00 PM - 6:30 PM</li>
                             <li><i class="far fa-clock"></i> <strong>Duración:</strong>&nbsp;2 Horas y media</li>
                             <!-- <li><i class="fas fa-calendar-alt"></i> <strong>Días:</strong>&nbsp;1er y 3er fds de cada mes</li>
@@ -443,7 +443,9 @@
                         <label for="date">Fecha</label>
                         <select id="date" name="date" required>
                             <option value="">Selecciona una fecha</option>
-                            <option value="2026-01-31" selected>31 de Enero de 2026 - 4:00 PM</option>
+                            <option value="2026-03-28" selected>28 de Marzo de 2026 - 4:00 PM</option>
+                            <option value="2026-04-25">25 de Abril de 2026 - 4:00 PM</option>
+                            <option value="2026-05-30">30 de Mayo de 2026 - 4:00 PM</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -734,14 +736,32 @@
                         message: tourForm.message.value
                     };
 
-                    // Payment URLs based on number of people (Updated prices: 50,000 COP per person)
+                    // Payment URLs keyed by date then number of people ($50,000 COP per person)
                     const paymentUrls = {
-                        '1': 'https://checkout.wompi.co/l/Yvlvv7',
-                        '2': 'https://checkout.wompi.co/l/NrFGlU',
-                        '3': 'https://checkout.wompi.co/l/O9RPMQ',
-                        '4': 'https://checkout.wompi.co/l/JAllLu',
-                        '5': 'https://checkout.wompi.co/l/yapa4V',
-                        '6': 'https://checkout.wompi.co/l/u4fm40'
+                        '2026-03-28': {
+                            '1': 'https://checkout.wompi.co/l/ZQhIix',
+                            '2': 'https://checkout.wompi.co/l/RArVdc',
+                            '3': 'https://checkout.wompi.co/l/iKZxCD',
+                            '4': 'https://checkout.wompi.co/l/fMR2K0',
+                            '5': 'https://checkout.wompi.co/l/W2nDWE',
+                            '6': 'https://checkout.wompi.co/l/ofod9o'
+                        },
+                        '2026-04-25': {
+                            '1': 'https://checkout.wompi.co/l/gmZUyd',
+                            '2': 'https://checkout.wompi.co/l/z1Z5Av',
+                            '3': 'https://checkout.wompi.co/l/qIUXnh',
+                            '4': 'https://checkout.wompi.co/l/GAxxrs',
+                            '5': 'https://checkout.wompi.co/l/PUep9h',
+                            '6': 'https://checkout.wompi.co/l/UyPwcC'
+                        },
+                        '2026-05-30': {
+                            '1': 'https://checkout.wompi.co/l/TXEKqR',
+                            '2': 'https://checkout.wompi.co/l/PUAGyC',
+                            '3': 'https://checkout.wompi.co/l/zThiBI',
+                            '4': 'https://checkout.wompi.co/l/TjxYNr',
+                            '5': 'https://checkout.wompi.co/l/xjLpOV',
+                            '6': 'https://checkout.wompi.co/l/pPNSC7'
+                        }
                     };
 
                     // Analytics: form submission attempt
@@ -785,8 +805,9 @@
                             iframe.parentNode.removeChild(iframe);
                         }
                         
-                        // Get payment URL based on number of people
-                        const paymentUrl = paymentUrls[formData.numberOfPeople];
+                        // Get payment URL based on date and number of people
+                        const dateUrls = paymentUrls[formData.date];
+                        const paymentUrl = dateUrls && dateUrls[formData.numberOfPeople];
                         
                         if (paymentUrl) {
                             // Track payment redirect
