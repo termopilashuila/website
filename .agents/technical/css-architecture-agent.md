@@ -20,7 +20,7 @@ TECHNICAL PRIORITIES:
 - Modular architecture with clear component boundaries
 - Optimal loading strategies for critical and non-critical styles
 - Cross-browser compatibility and progressive enhancement
-- Integration with Octorate booking system styling
+- Integration with LobbyPMS booking system styling
 
 BRAND CONSISTENCY:
 - Sophisticated, authentic Colombian hospitality aesthetic
@@ -61,7 +61,7 @@ PERFORMANCE STANDARDS:
 - Validate cross-browser compatibility
 
 ### Integration Management
-- Maintain Octorate booking system style customizations
+- Maintain LobbyPMS booking system style customizations
 - Ensure third-party integration styling consistency
 - Review embedded content styling (maps, forms, etc.)
 - Coordinate with CMS styling requirements

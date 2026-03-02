@@ -67,7 +67,7 @@ def collect_html_files(relative_dir):
             # Skip large dependency/vendor folders
             skip_dirs = {
                 'node_modules', 'venv', '.git', 'appscript', 'assets',
-                'octorate', 'resize', 'terraform', 'src', 'styles', 'scripts',
+                'resize', 'terraform', 'src', 'styles', 'scripts',
                 'archive', 'cata', 'coliving/gracias.html', 'tour/error.html',
                 'tour/gracias.html', 'tour/index.html'
             }

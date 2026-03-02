@@ -13,13 +13,13 @@ CURRENT ANALYTICS INFRASTRUCTURE:
 - Google Analytics 4 (GA4) with tracking ID: G-2406CNRCX9
 - Comprehensive event tracking across all pages and user interactions
 - Newsletter subscription tracking with Google Apps Script integration
-- Octorate booking system integration for accommodation reservations
+- LobbyPMS booking system integration for accommodation reservations
 - Service worker implementation for performance and offline capabilities
 
 PERFORMANCE MONITORING PRIORITIES:
 - Real-time website performance tracking and Core Web Vitals optimization
 - User experience monitoring across all devices and browsers
-- Booking funnel analysis through Octorate integration and conversion optimization
+- Booking funnel analysis through LobbyPMS integration and conversion optimization
 - Error tracking and proactive issue resolution
 - Business KPI monitoring and reporting
 
@@ -57,7 +57,7 @@ BUSINESS INTELLIGENCE FOCUS:
 
 ### Business Analytics
 
-- Analyze Octorate booking conversion funnels and drop-off points
+- Analyze LobbyPMS booking conversion funnels and drop-off points
 - Track revenue attribution across marketing channels (UTM campaigns implemented)
 - Monitor seasonal booking patterns and demand cycles
 - Analyze user engagement with content and experiences (blog posts, tours, events)
@@ -97,7 +97,7 @@ BUSINESS INTELLIGENCE FOCUS:
 - Enhanced ecommerce tracking for booking conversions and event registrations
 - Google Search Console for SEO performance
 - Google Tag Manager for tracking implementation (recommended future enhancement)
-- Octorate booking system analytics integration
+- LobbyPMS booking system analytics integration
 - Google Apps Script for newsletter subscription data processing
 - Hotjar or similar for user experience insights (recommended future addition)
 
@@ -119,7 +119,7 @@ BUSINESS INTELLIGENCE FOCUS:
 
 ### Business KPIs
 
-- Octorate booking conversion rate: 8%+ from qualified traffic
+- LobbyPMS booking conversion rate: 8%+ from qualified traffic
 - Event registration conversion rate: 15%+ for targeted campaigns
 - Newsletter subscription rate: 5%+ of website visitors
 - Revenue growth: 25% year-over-year
@@ -228,10 +228,10 @@ gtag('event', 'cata_vino_paella_tapas_scroll_75', {
 });
 ```
 
-### Octorate Booking System Integration
+### LobbyPMS Booking System Integration
 
 ```javascript
-// Recommended booking funnel tracking for Octorate integration
+// Recommended booking funnel tracking for LobbyPMS integration
 const trackBookingStep = (step, bookingData) => {
   gtag('event', 'begin_checkout', {
     currency: 'COP',
@@ -261,7 +261,7 @@ gtag('event', 'purchase', {
 
 - Website down > 5 minutes → Immediate infrastructure team alert
 - Core Web Vitals fail → Priority optimization with development team
-- Octorate booking system errors > 5% → Emergency booking system review
+- LobbyPMS booking system errors > 5% → Emergency booking system review
 - Newsletter subscription failures → Google Apps Script troubleshooting
 - Service worker cache failures → PWA functionality review
 - Security incidents detected → Immediate security protocol activation
@@ -271,7 +271,7 @@ gtag('event', 'purchase', {
 ### Daily Dashboard
 
 - Performance metrics and alerts (Core Web Vitals, page load times)
-- Octorate booking conversion rates and accommodation performance
+- LobbyPMS booking conversion rates and accommodation performance
 - Newsletter subscription rates and engagement metrics
 - Event registration performance (wine tasting, tours, coliving)
 - Traffic sources and user behavior (including UTM campaign attribution)
@@ -285,7 +285,7 @@ gtag('event', 'purchase', {
 - Event performance analysis (wine tasting events, tours)
 - Mobile vs desktop trends and user behavior patterns
 - Newsletter subscription growth and engagement rates
-- Octorate booking patterns and seasonal trends
+- LobbyPMS booking patterns and seasonal trends
 - Competitive positioning updates
 
 ### Monthly Strategic Report
@@ -296,7 +296,7 @@ gtag('event', 'purchase', {
 - Technical optimization roadmap (Core Web Vitals, performance)
 - Newsletter and email marketing performance analysis
 - Event-specific insights and optimization recommendations
-- Octorate booking system performance and enhancement opportunities
+- LobbyPMS booking system performance and enhancement opportunities
 
 ## Current Tracking Categories
 

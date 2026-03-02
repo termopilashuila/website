@@ -17,7 +17,7 @@ This directory contains specialized LLM agents designed to maintain and optimize
 
 ### 🔌 Integration & Backend
 - **google-apps-script-agent.md** - Backend form processing and automation
-- **booking-system-agent.md** - Octorate integration maintenance
+- **booking-system-agent.md** - LobbyPMS integration maintenance
 
 ### 🚀 DevOps & Infrastructure
 - **infrastructure-agent.md** - Cloud infrastructure and deployment

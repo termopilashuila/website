@@ -68,7 +68,6 @@ async function collectHtmlFiles(relativeDir) {
         '.git',
         'appscript',
         'assets',
-        'octorate',
         'resize',
         'terraform',
         'src',

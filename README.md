@@ -187,7 +187,6 @@ website/
 │   ├── main.tf
 │   ├── modules/
 │   └── config.json
-├── octorate/                # Integración booking (estilos/html)
 ├── resize/                  # Utilidad Python para imágenes
 └── README.md
 ```

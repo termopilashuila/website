@@ -241,7 +241,7 @@ monitoring:
       timeout: 10s
       
     - name: "Booking System"  
-      url: "https://termopilas.co/octorate"
+      url: "https://engine.lobbypms.com/finca-termopilas"
       frequency: 300s
       timeout: 15s
 

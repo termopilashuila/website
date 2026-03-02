@@ -24,7 +24,7 @@ FOCUS AREAS:
 CONTEXT:
 - Brand tone: warm, trustworthy, experiential, premium-local
 - Markets: Colombia (primary), international Spanish-speaking travelers (secondary)
-- Booking flows: Payment gateway for events, Octorate engine for rooms
+- Booking flows: Payment gateway for events, LobbyPMS engine for rooms
 
 NON-NEGOTIABLES:
 - Clear primary CTA above the fold
@@ -56,13 +56,13 @@ NON-NEGOTIABLES:
 - Pages directory: `rooms/`
 - Images: `assets/images/**`
 - Styles: `styles/**`, tokens: `styles/brand-tokens.css`
-- Booking systems: Octorate (engine widgets in `octorate/html/`), PayU links for events
+- Booking systems: LobbyPMS for rooms, PayU links for events
 - Analytics: Google Analytics (G-2406CNRCX9), Search Console
 - Apps Script endpoints for forms (see event example submission logic in `appscript/eventos` folder)
 
 ## Success Metrics
 
-- Primary: Booking conversion rate (to PayU or Octorate) ≥ 8% from qualified traffic
+- Primary: Booking conversion rate (to PayU or LobbyPMS) ≥ 8% from qualified traffic
 - Secondary: CTA click-through rate ≥ 25% from hero, Form completion ≥ 40%
 - Experience: Time-to-First-CTA click < 30s for new visitors, Mobile bounce rate < 45%
 - Scroll depth: ≥ 50% of visitors reach the offer/pricing section
@@ -141,9 +141,8 @@ NON-NEGOTIABLES:
 
 <!-- Availability / Booking -->
 <section id="disponibilidad" class="booking">
-  <!-- Octorate embed or deep link -->
-  <a class="hero-cta" href="/octorate/html/engine_files/" target="_blank" rel="noopener">Reservar en Línea</a>
-  <!-- Alternative: deep-link con parámetros de room code si aplica -->
+  <!-- LobbyPMS booking link -->
+  <a class="hero-cta" href="https://engine.lobbypms.com/finca-termopilas" target="_blank" rel="noopener">Reservar en Línea</a>
 </section>
 ```
 
@@ -160,7 +159,7 @@ gtag('event', 'lp_page_view', {
 function trackCta(id) {
   gtag('event', 'lp_cta_click', {
     event_category: 'conversion_lp',
-    event_label: id, // e.g., 'hero_reserve_button', 'octorate_book_now'
+    event_label: id, // e.g., 'hero_reserve_button', 'lobbypms_book_now'
   });
 }
 
@@ -242,7 +241,7 @@ gtag('event', 'lp_form_error',   { event_category: 'conversion_lp', event_label:
       "priceCurrency": "COP",
       "price": "[desde_precio]",
       "availability": "https://schema.org/InStock",
-      "url": "https://termopilas.co/octorate/html/engine_files/"
+      "url": "https://termopilas.co/alojamiento.html"
     }
   }
 }
@@ -266,7 +265,7 @@ gtag('event', 'lp_form_error',   { event_category: 'conversion_lp', event_label:
 
 - Booking UX
   - Sticky or repeated CTA after each major section
-  - For rooms: seamless link to Octorate; for eventos: PayU + alternativa de transferencia
+  - For rooms: seamless link to LobbyPMS; for eventos: PayU + alternativa de transferencia
 
 - Mobile & Speed
   - Images compressed and sized; lazy loading on non-hero images
@@ -289,7 +288,7 @@ gtag('event', 'lp_form_error',   { event_category: 'conversion_lp', event_label:
 
 - Reuse tokenized styles from `styles/brand-tokens.css` (colors, radius, shadows)
 - Mirror analytics patterns from `eventos/cata-vino-paella-tapas.html` for consistency
-- For room pages, prefer deep links to Octorate engine or embed components in `octorate/html/`
+- For room pages, prefer deep links to LobbyPMS booking engine
 - Forms for events should POST to Apps Script endpoint first, then redirect to payment method
 - Always provide meaningful `alt` text for gallery images
 

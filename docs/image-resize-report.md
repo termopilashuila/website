@@ -10,7 +10,7 @@ Scan date: 2025-02-07
 | **Images wider than 1200px** (candidates for resize) | 38 |
 | **Largest files** | eventos/corporativos.png, eventos/quince-anos.png (~10 MB each) |
 
-Images are under `assets/images/`, `archive/`, and (excluded) `octorate/`. The **resize** service (`resize/main.py`) supports PNG and JPG/JPEG; it only resizes when width &gt; max_width and only overwrites when the new file is smaller.
+Images are under `assets/images/` and `archive/`. The **resize** service (`resize/main.py`) supports PNG and JPG/JPEG; it only resizes when width &gt; max_width and only overwrites when the new file is smaller.
 
 ## Which images should go through resize
 
@@ -47,7 +47,6 @@ Images are under `assets/images/`, `archive/`, and (excluded) `octorate/`. The *
 ### Excluded from resize
 
 - **SVG** — vector; no resize needed.
-- **octorate/html/engine_files/** — in `.gitignore`; not part of site build.
 - **Small icons** (e.g. favicon, small logos) — resize script skips when width ≤ max_width and when resizing would increase file size.
 
 ## How to run resize

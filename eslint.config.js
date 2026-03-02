@@ -12,7 +12,6 @@ module.exports = tseslint.config(
       '*.html',
       'wompi/**',
       'terraform/**',
-      'octorate/**',
       'resize/**',
       '.agents/**',
     ],
