@@ -71,35 +71,48 @@ function isValidUrl(url) {
   return url.startsWith('http:') || url.startsWith('https:');
 }
 
-// Serve cached content when offline
+// Network-first for navigation (HTML pages), cache-first for static assets
 self.addEventListener('fetch', event => {
-  // Skip non-HTTP(S) requests to avoid cache errors with chrome-extension:// and others
   if (!isValidUrl(event.request.url)) {
     return;
   }
 
+  if (event.request.mode === 'navigate') {
+    // HTML pages: always try the network first so visitors see the latest content
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200 && response.type === 'basic') {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+          }
+          return response;
+        })
+        .catch(() => {
+          return caches.match(event.request)
+            .then(cached => cached || caches.match('/index.html'));
+        })
+    );
+    return;
+  }
+
+  // Static assets (CSS, JS, images): cache-first for performance
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache hit - return response
         if (response) {
           return response;
         }
-        
-        // Try to fetch the resource from the network
+
         return fetch(event.request)
           .then(response => {
-            // Return the response without caching if not valid or not a GET request
             if (!response || response.status !== 200 || response.type !== 'basic' || event.request.method !== 'GET') {
               return response;
             }
 
-            // Clone the response since it can only be consumed once
             const responseToCache = response.clone();
-
             caches.open(CACHE_NAME)
               .then(cache => {
-                // Double-check URL is valid before putting in cache
                 if (isValidUrl(event.request.url)) {
                   cache.put(event.request, responseToCache);
                 }
@@ -107,14 +120,7 @@ self.addEventListener('fetch', event => {
 
             return response;
           })
-          .catch(() => {
-            // If fetch fails (e.g., offline), try to serve index.html for navigation requests
-            if (event.request.mode === 'navigate') {
-              return caches.match('/index.html');
-            }
-            
-            return null;
-          });
+          .catch(() => null);
       })
   );
 });
