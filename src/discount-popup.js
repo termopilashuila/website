@@ -11,7 +11,7 @@ class DiscountPopupHandler {
         this.config = {
             popupDelay: options.popupDelay || 10000, // 10 seconds
             timerDuration: options.timerDuration || 30, // 30 seconds
-            backendUrl: options.backendUrl || 'https://script.google.com/macros/s/AKfycbwXCkqjA3d4Lj26TWXCHHgg16Z6UYdahdh4fP5kWVqUs0wCokys_TASoiy2Sr5GwktN3g/exec',
+            backendUrl: options.backendUrl || 'https://script.google.com/macros/s/AKfycbzG1hJCKAVmaMQHzI_P6zcucOauwLPbcZGhIUDAKvYDaxrxmCYQmjGodigTH0sRkO0glw/exec',
             popupId: options.popupId || 'discount-popup',
             ...options
         };

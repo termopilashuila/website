@@ -1,5 +1,5 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v2026.02.07.123809';
+const CACHE_NAME = 'termopilas-cache-v2026.03.01.225207';
 const urlsToCache = [
   '/',
   '/alojamiento.html',
@@ -16,6 +16,7 @@ const urlsToCache = [
   '/blog/restaurante-domicilio-rivera.html',
   '/blog/un-dia-en-nuestro-tour-de-vino-y-cacao.html',
   '/cata.html',
+  '/cata/cata-vino-paella-tapas-main.html',
   '/cata/experiencia-vino-mar-fuego-fallido.html',
   '/cata/experiencia-vino-mar-fuego-gracias.html',
   '/cata/experiencia-vino-mar-fuego.html',

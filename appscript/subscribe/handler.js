@@ -69,13 +69,13 @@ function validateEmail(email) {
 
 function sendCouponEmail(email, timestamp) {
   var subject = '¡Tu cupón de descuento en Finca Termópilas!';
-  var couponCode = 'TERMO15K';
+  var couponCode = 'Termo10P';
   var validDays = 30;
   var validUntil = new Date(timestamp);
   validUntil.setDate(validUntil.getDate() + validDays);
   var formattedDate = Utilities.formatDate(validUntil, Session.getScriptTimeZone(), 'dd MMMM yyyy');
   var htmlBody = getEmailHtml(couponCode, validDays, formattedDate);
-  var plainBody = '¡Felicidades!\n\nHas recibido un cupón de descuento de $15.000 COP para tu próxima reserva en Finca Termópilas.\n\nCódigo: ' + couponCode + '\nVálido por 30 días desde hoy.\n\nPara redimirlo, ingresa a https://termopilas.co/alojamiento?utm_source=popup&utm_medium=email&utm_campaign=cupon15k y escribe el código en el motor de reservas.\n\n¡Te esperamos!';
+  var plainBody = '¡Felicidades!\n\nHas recibido un cupón de 10% de descuento en alojamiento para tu próxima reserva en Finca Termópilas.\n\nCódigo: ' + couponCode + '\nVálido por 30 días desde hoy.\n\nPara redimirlo, ingresa a https://termopilas.co/alojamiento?utm_source=popup&utm_medium=email&utm_campaign=cupon10p y escribe el código en el motor de reservas.\n\nTe esperamos!';
   MailApp.sendEmail({
     to: email,
     subject: subject,
