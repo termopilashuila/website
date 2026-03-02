@@ -1,63 +1,63 @@
 [
   {
-    "name": "Tour Termópilas 28 Mar 2026 1px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 1 persona",
+    "name": "Tour Termópilas 21 Mar 2026 1px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 1 persona",
     "amount_in_cop": 50000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
-    "name": "Tour Termópilas 28 Mar 2026 2px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 2 personas",
+    "name": "Tour Termópilas 21 Mar 2026 2px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 2 personas",
     "amount_in_cop": 100000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
-    "name": "Tour Termópilas 28 Mar 2026 3px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 3 personas",
+    "name": "Tour Termópilas 21 Mar 2026 3px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 3 personas",
     "amount_in_cop": 150000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
-    "name": "Tour Termópilas 28 Mar 2026 4px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 4 personas",
+    "name": "Tour Termópilas 21 Mar 2026 4px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 4 personas",
     "amount_in_cop": 200000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
-    "name": "Tour Termópilas 28 Mar 2026 5px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 5 personas",
+    "name": "Tour Termópilas 21 Mar 2026 5px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 5 personas",
     "amount_in_cop": 250000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
-    "name": "Tour Termópilas 28 Mar 2026 6px",
-    "description": "Reservación de tour de Termópilas el 28 de marzo de 2026 para 6 personas",
+    "name": "Tour Termópilas 21 Mar 2026 6px",
+    "description": "Reservación de tour de Termópilas el 21 de marzo de 2026 para 6 personas",
     "amount_in_cop": 300000,
     "currency": "COP",
-    "expires_at": "2026-03-29T14:30:00",
+    "expires_at": "2026-03-22T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=21-mar-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 1px",
@@ -67,7 +67,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 2px",
@@ -77,7 +77,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 3px",
@@ -87,7 +87,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 4px",
@@ -97,7 +97,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 5px",
@@ -107,7 +107,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 25 Abr 2026 6px",
@@ -117,7 +117,7 @@
     "expires_at": "2026-04-26T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=25-abr-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 1px",
@@ -127,7 +127,7 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 2px",
@@ -137,7 +137,7 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 3px",
@@ -147,7 +147,7 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 4px",
@@ -157,7 +157,7 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 5px",
@@ -167,7 +167,7 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   },
   {
     "name": "Tour Termópilas 30 May 2026 6px",
@@ -177,6 +177,6 @@
     "expires_at": "2026-05-31T14:30:00",
     "single_use": false,
     "collect_shipping": false,
-    "redirect_url": "https://termopilas.co/tour/gracias.html"
+    "redirect_url": "https://termopilas.co/tour/gracias.html?utm_source=wompi&utm_medium=payment_link&utm_campaign=tour-vino-cacao&utm_content=30-may-2026"
   }
 ]
