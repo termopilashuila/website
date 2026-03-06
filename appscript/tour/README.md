@@ -1,20 +1,17 @@
 # Sistema de Reservas de Tour - Finca Termópilas
 
-Este directorio contiene el handler de Google Apps Script y plantillas auxiliares para procesar reservas del Tour de Vino y Cacao.
+Este directorio contiene el handler de Google Apps Script y la plantilla de email para procesar reservas del Tour de Vino y Cacao.
 
 ## 📁 Estructura de Archivos
 
 ### `handler.js`
 Script principal de Google Apps Script para el tour. Funcionalidades:
-- Recepción de formularios web (GET/POST) en JSON o x-www-form-urlencoded
+- Recepción de formularios web (POST) en JSON o x-www-form-urlencoded
 - Guardado en Google Sheets (ID abajo)
-- Envío de notificaciones por email al equipo
+- Envío de notificación HTML al equipo con link de pago Wompi y acciones rápidas
 
 ### `email.html`
-Plantilla opcional de email pensada para el flujo de tour (no utilizada por defecto por `handler.js`, que envía texto plano). Puede adaptarse si se desea HTML en los correos.
-
-### `success.html` y `error.html`
-Plantillas genéricas de éxito y error (no utilizadas por defecto). Útiles si se desea responder con HTML desde Apps Script.
+Plantilla HTML utilizada por `handler.js` para el correo de notificación al equipo. Incluye detalles de la reserva, link de pago Wompi, y botones de acción rápida (Spreadsheet, Email, WhatsApp). Se carga vía `HtmlService.createHtmlOutputFromFile('email')`.
 
 ### `tests.js`
 Archivo de pruebas y utilidades heredado. Puede servir de referencia para validaciones futuras; actualmente no es requerido para el flujo de tour.
@@ -27,7 +24,7 @@ Archivo de pruebas y utilidades heredado. Puede servir de referencia para valida
 
 ## 🔗 Endpoint
 
-- Web App URL: `https://script.google.com/macros/s/AKfycbxz96hZuPRhSShNJW7IBd1wW_ajfnehl73ucDhswGX6ALKlrv4OaHzsPuuo-AR9NZpv9Q/exec`
+- Web App URL: `https://script.google.com/macros/s/AKfycbx0nZgiEzzq3MpTJFlcugnraC1HelqnubXrZaoXxJqFx6ihqr2sxEGGq-RbmoLL3KYL4Q/exec`
 - Métodos: `POST` (principal) y `GET` (ping)
 - Tipos soportados: `application/json` y `application/x-www-form-urlencoded`
 
@@ -37,39 +34,43 @@ Archivo de pruebas y utilidades heredado. Puede servir de referencia para valida
 {
   "name": "Nombre completo",
   "email": "correo@dominio.com",
-  "phone": "+57...",
+  "phone": "3101234567",
   "date": "YYYY-MM-DD",
-  "numberOfPeople": "1" | "2",
+  "numberOfPeople": "1" a "6",
   "message": "Texto opcional"
 }
 ```
 
 ## 💳 Enlaces de Pago
 
-El sistema incluye integración con Wompi para pagos. Los enlaces de pago se asignan automáticamente según el número de personas:
+El sistema incluye integración con Wompi para pagos a $50,000 COP por persona. Los enlaces están organizados por **fecha + número de personas** (18 combinaciones: 3 fechas x 6 personas).
 
-- **1 persona**: `https://checkout.wompi.co/l/9DVeTW` - $40,000 COP
-- **2 personas**: `https://checkout.wompi.co/l/d1w3RS` - $80,000 COP
+> **Importante:** Los enlaces de pago en `handler.js` deben mantenerse sincronizados con los de `tour.html`.
+
+### Fechas activas
+- 21 de Marzo 2026
+- 25 de Abril 2026
+- 30 de Mayo 2026
 
 ### Flujo de Pago
 
-1. Usuario completa el formulario de reserva (nombre, email, teléfono, fecha, número de personas)
-2. El formulario se envía al endpoint de Google Apps Script
-3. Los datos se guardan en Google Sheets
-4. Se envía un email de notificación al equipo con el link de pago correspondiente
-5. Después de guardar la reserva, el usuario es redirigido automáticamente al portal de pago Wompi
-6. El usuario completa el pago en Wompi
+1. Usuario completa el formulario de reserva en `tour.html`
+2. Se valida el formulario en el cliente (email, teléfono 10 dígitos, campos requeridos)
+3. Los datos se envían en paralelo a:
+   - Google Apps Script (vía iframe POST) → guarda en Sheets + envía email HTML al equipo
+   - n8n webhook (`https://n8n.termopilas.co/webhook/tour-registration`) → fire-and-forget
+4. El usuario es redirigido automáticamente al portal de pago Wompi según fecha + número de personas
+5. El usuario completa el pago en Wompi
 
 ## 🌐 Integración en el sitio
 
 - Página: `tour.html`
-- El formulario hace `fetch(POST)` al endpoint anterior con `mode: 'no-cors'`
-- El CTA de la cabecera y botones de sección enlazan a `#tour-form`
-- Analytics: eventos para clics en CTA, envío del formulario (fecha preferida, número de personas y dominio de email), y redirección a pago
+- El formulario se envía vía un iframe oculto (POST) al endpoint de Apps Script
+- También se envía al webhook de n8n como respaldo
+- Los datos de la reserva se guardan en `localStorage` (`tourRegistration`) antes de redirigir a Wompi
+- Analytics: eventos para clics en CTA, intento de envío, envío exitoso, y redirección a pago (con monto y moneda)
 
 ## 🧩 Notas
 
-- `handler.js` envía un email en texto plano a `termopilashuila@gmail.com` con todos los detalles de la reserva, incluyendo el link de pago Wompi correspondiente.
-- El email incluye automáticamente el enlace de pago correcto basado en el número de personas seleccionado.
-- Si deseas usar `email.html` o responder con `success.html`/`error.html`, integra su carga vía `DriveApp` y `HtmlService`.
-- Los templates HTML (`email.html`, `success.html`, `error.html`) están actualizados con soporte para el campo `numberOfPeople` y `PAYMENT_URL`.
+- `handler.js` envía un email HTML (con fallback en texto plano) a `termopilashuila@gmail.com` con todos los detalles, link de pago Wompi, y acciones rápidas.
+- La plantilla `email.html` usa placeholders `{{VARIABLE}}` que se reemplazan en `sendNotificationEmail()`.

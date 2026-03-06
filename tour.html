@@ -717,132 +717,177 @@
             // Form submission handler for Tour reservations
             const tourForm = document.getElementById('tour-form');
             if (tourForm) {
+                const PRICE_PER_PERSON = 50000;
+                const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0nZgiEzzq3MpTJFlcugnraC1HelqnubXrZaoXxJqFx6ihqr2sxEGGq-RbmoLL3KYL4Q/exec';
+                const N8N_WEBHOOK_URL = 'https://n8n.termopilas.co/webhook/tour-registration';
+
+                const paymentUrls = {
+                    '2026-03-21': {
+                        '1': 'https://checkout.wompi.co/l/fF0mXs',
+                        '2': 'https://checkout.wompi.co/l/UEwMib',
+                        '3': 'https://checkout.wompi.co/l/1XLtu0',
+                        '4': 'https://checkout.wompi.co/l/BTqygq',
+                        '5': 'https://checkout.wompi.co/l/bUsR4w',
+                        '6': 'https://checkout.wompi.co/l/Wdqu2Y'
+                    },
+                    '2026-04-25': {
+                        '1': 'https://checkout.wompi.co/l/1toOnF',
+                        '2': 'https://checkout.wompi.co/l/09Ffty',
+                        '3': 'https://checkout.wompi.co/l/f2R8eU',
+                        '4': 'https://checkout.wompi.co/l/HYNnaW',
+                        '5': 'https://checkout.wompi.co/l/UAAWMW',
+                        '6': 'https://checkout.wompi.co/l/X2M8cA'
+                    },
+                    '2026-05-30': {
+                        '1': 'https://checkout.wompi.co/l/bXpQni',
+                        '2': 'https://checkout.wompi.co/l/7wTBif',
+                        '3': 'https://checkout.wompi.co/l/FEUgzU',
+                        '4': 'https://checkout.wompi.co/l/fhw4B4',
+                        '5': 'https://checkout.wompi.co/l/Agn84P',
+                        '6': 'https://checkout.wompi.co/l/CQNcqu'
+                    }
+                };
+
                 tourForm.addEventListener('submit', function(e) {
                     e.preventDefault();
 
                     const submitButton = tourForm.querySelector('button[type="submit"]');
-                    const originalButtonText = submitButton.textContent;
-                    
-                    // Disable button and show loading state
+                    const originalButtonHTML = submitButton.innerHTML;
+
                     submitButton.disabled = true;
-                    submitButton.textContent = 'Enviando...';
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando reserva...';
 
                     const formData = {
                         name: tourForm.name.value,
                         email: tourForm.email.value,
-                        phone: tourForm.phone.value,
+                        phone: tourForm.phone.value.replace(/\s/g, ''),
                         date: tourForm.date.value,
                         numberOfPeople: tourForm.numberOfPeople.value,
                         message: tourForm.message.value
                     };
 
-                    // Payment URLs keyed by date then number of people ($50,000 COP per person)
-                    const paymentUrls = {
-                        '2026-03-21': {
-                            '1': 'https://checkout.wompi.co/l/fF0mXs',
-                            '2': 'https://checkout.wompi.co/l/UEwMib',
-                            '3': 'https://checkout.wompi.co/l/1XLtu0',
-                            '4': 'https://checkout.wompi.co/l/BTqygq',
-                            '5': 'https://checkout.wompi.co/l/bUsR4w',
-                            '6': 'https://checkout.wompi.co/l/Wdqu2Y'
-                        },
-                        '2026-04-25': {
-                            '1': 'https://checkout.wompi.co/l/1toOnF',
-                            '2': 'https://checkout.wompi.co/l/09Ffty',
-                            '3': 'https://checkout.wompi.co/l/f2R8eU',
-                            '4': 'https://checkout.wompi.co/l/HYNnaW',
-                            '5': 'https://checkout.wompi.co/l/UAAWMW',
-                            '6': 'https://checkout.wompi.co/l/X2M8cA'
-                        },
-                        '2026-05-30': {
-                            '1': 'https://checkout.wompi.co/l/bXpQni',
-                            '2': 'https://checkout.wompi.co/l/7wTBif',
-                            '3': 'https://checkout.wompi.co/l/FEUgzU',
-                            '4': 'https://checkout.wompi.co/l/fhw4B4',
-                            '5': 'https://checkout.wompi.co/l/Agn84P',
-                            '6': 'https://checkout.wompi.co/l/CQNcqu'
-                        }
-                    };
+                    if (!formData.name || !formData.email || !formData.phone) {
+                        alert('Por favor completa todos los campos obligatorios');
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonHTML;
+                        return;
+                    }
 
-                    // Analytics: form submission attempt
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(formData.email)) {
+                        alert('Por favor ingresa un correo electrónico válido');
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonHTML;
+                        return;
+                    }
+
+                    const phoneRegex = /^[0-9]{10}$/;
+                    if (!phoneRegex.test(formData.phone)) {
+                        alert('Por favor ingresa un número de teléfono válido (10 dígitos)');
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonHTML;
+                        return;
+                    }
+
+                    const selectedPeople = parseInt(formData.numberOfPeople, 10);
+                    const totalAmount = PRICE_PER_PERSON * selectedPeople;
+
                     gtag('event', 'tour_form_submission_attempt', {
                         'event_category': 'Lead Generation',
                         'event_label': `Tour Form Submission - ${formData.date}`,
                         'page': 'tour',
                         'preferred_date': formData.date,
-                        'number_of_people': formData.numberOfPeople,
+                        'number_of_people': selectedPeople,
                         'email_domain': formData.email.split('@')[1],
-                        'value': 1
+                        'value': totalAmount,
+                        'currency': 'COP'
                     });
 
-                    // Submit to Google Apps Script endpoint
-                    const TOUR_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwN-CwWGdbwFFHF-9fubTO9m0t_p6U9_30oZDsQLD2Ct_KIzL8qYJEsVySYOVQ7hWRrLg/exec';
+                    // Send to n8n webhook (fire and forget)
+                    fetch(N8N_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            ...formData,
+                            eventName: 'Tour de Vino y Cacao',
+                            totalAmount: totalAmount,
+                            source: 'website',
+                            timestamp: new Date().toISOString()
+                        })
+                    }).catch(err => console.warn('n8n webhook error:', err));
 
-                    // Try with redirect method first (more reliable for Google Apps Script)
-                    const params = new URLSearchParams(formData);
-                    const redirectUrl = `${TOUR_FORM_ENDPOINT}?${params.toString()}`;
-                    
-                    // Create hidden iframe for submission
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.name = 'tour-form-iframe';
-                    document.body.appendChild(iframe);
-                    
-                    // Set timeout for success (Google Apps Script doesn't always return proper CORS headers)
-                    const submissionTimeout = setTimeout(() => {
-                        // Assume success after 2 seconds if no error
+                    // Shared handler for post-submission redirect/fallback
+                    function handleSubmissionSuccess() {
                         gtag('event', 'tour_form_submission_success', {
                             'event_category': 'Lead Generation',
                             'event_label': 'Tour Form Submitted Successfully',
                             'page': 'tour',
                             'preferred_date': formData.date,
-                            'number_of_people': formData.numberOfPeople,
-                            'value': 1
+                            'number_of_people': selectedPeople,
+                            'value': totalAmount,
+                            'currency': 'COP'
                         });
-                        
-                        // Clean up iframe
+
                         if (iframe && iframe.parentNode) {
                             iframe.parentNode.removeChild(iframe);
                         }
-                        
-                        // Get payment URL based on date and number of people
+
                         const dateUrls = paymentUrls[formData.date];
                         const paymentUrl = dateUrls && dateUrls[formData.numberOfPeople];
-                        
+
                         if (paymentUrl) {
-                            // Track payment redirect
                             gtag('event', 'tour_payment_redirect', {
                                 'event_category': 'Lead Generation',
-                                'event_label': `Tour Payment Redirect - ${formData.numberOfPeople} people`,
+                                'event_label': `Tour Payment Redirect - ${selectedPeople} people`,
                                 'page': 'tour',
-                                'number_of_people': formData.numberOfPeople,
-                                'payment_amount': parseInt(formData.numberOfPeople) * 50000,
-                                'value': 1
+                                'number_of_people': selectedPeople,
+                                'payment_amount': totalAmount,
+                                'value': totalAmount,
+                                'currency': 'COP'
                             });
-                            
-                            // Redirect to payment
+
+                            try {
+                                localStorage.setItem('tourRegistration', JSON.stringify({
+                                    ...formData,
+                                    totalAmount: totalAmount
+                                }));
+                            } catch (_) {}
+
                             window.location.href = paymentUrl;
                         } else {
-                            // No payment URL for this number of people
                             alert('¡Gracias! Hemos recibido tu solicitud de reserva. Te contactaremos pronto para confirmar la fecha y los detalles del pago.');
                             tourForm.reset();
                             submitButton.disabled = false;
-                            submitButton.textContent = originalButtonText;
+                            submitButton.innerHTML = originalButtonHTML;
+                        }
+                    }
+
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.name = 'tour-form-iframe';
+                    document.body.appendChild(iframe);
+
+                    let handled = false;
+                    const submissionTimeout = setTimeout(() => {
+                        if (!handled) {
+                            handled = true;
+                            handleSubmissionSuccess();
                         }
                     }, 2000);
 
-                    // Submit via iframe
                     iframe.onload = function() {
-                        // Clear timeout on successful load
                         clearTimeout(submissionTimeout);
+                        if (!handled) {
+                            handled = true;
+                            handleSubmissionSuccess();
+                        }
                     };
-                    
-                    // Create and submit form via iframe
+
                     const form = document.createElement('form');
                     form.method = 'POST';
                     form.action = TOUR_FORM_ENDPOINT;
                     form.target = 'tour-form-iframe';
-                    
+
                     Object.keys(formData).forEach(key => {
                         const input = document.createElement('input');
                         input.type = 'hidden';
@@ -850,11 +895,10 @@
                         input.value = formData[key];
                         form.appendChild(input);
                     });
-                    
+
                     document.body.appendChild(form);
                     form.submit();
-                    
-                    // Clean up the temporary form
+
                     setTimeout(() => {
                         if (form && form.parentNode) {
                             form.parentNode.removeChild(form);
