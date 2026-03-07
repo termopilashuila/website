@@ -8,12 +8,13 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - Optimización SEO (sitemap.xml, metadatos, OpenGraph/Twitter Cards)
 - PWA (service worker y caché offline básico)
 - Información de alojamiento, tour y coliving
+- Meta Pixel (Facebook) para tracking de conversiones
 - Blog con sistema de conversión automático desde Markdown
 - Testimonios con carrusel y animaciones en scroll
 - Cabecera y pie de página generados dinámicamente con TypeScript
 - CTA de WhatsApp con UTM dinámicas por página
 - Popup de descuento con registro de email (Apps Script)
-- Formulario de reservas de tour (Apps Script)
+- Formulario de reservas de tour con pago Wompi integrado (Apps Script + n8n)
 - Sistema de eventos con registro y pagos
 - Portal de empleo con formulario de aplicación
 - Generación y ping de sitemap (scripts dedicados)
@@ -59,9 +60,10 @@ website/
 ├── service-worker.js        # PWA cache
 ├── share-modal.js           # Stub para evitar 404 en compartir
 ├── tour/                    # Páginas del flujo de tour
-│   ├── index.html           # Formulario de reserva de tour
+│   ├── index.html           # Redirección a tour.html (legacy URL)
 │   ├── gracias.html         # Confirmación de reserva
-│   └── error.html           # Error en reserva
+│   ├── error.html           # Error en reserva
+│   └── images/              # Imágenes del tour (vacío; las imágenes viven en assets/images/tour/)
 ├── trabajo/                 # Páginas de vacantes
 │   ├── cocinero.html
 │   ├── conserje.html
@@ -173,7 +175,7 @@ website/
 │   ├── eventos/             # Sistema de eventos
 │   ├── coliving/            # Sistema de coliving
 │   ├── subscribe/           # Suscripciones newsletter
-│   ├── tour/                # Reservas de tour
+│   ├── tour/                # Reservas de tour (handler.js, email.html, tests.js)
 │   ├── feedback.js          # Feedback de clientes
 │   ├── registro.js          # Registro de huéspedes
 │   └── birthday.js          # Automatización cumpleaños
@@ -534,15 +536,18 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
 - **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
 - **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
-- **Tour (Reservas)**: Formulario en `tour/index.html` que envía a Apps Script (`appscript/tour/handler.js`)
+- **Tour (Reservas)**: Formulario inline en `tour.html` con envío dual a Apps Script (`appscript/tour/handler.js`) y n8n webhook (`https://n8n.termopilas.co/webhook/tour-registration`). Tras el envío, el usuario es redirigido a Wompi para pagar según fecha y número de personas. `tour/index.html` redirige a `tour.html` para preservar URLs legacy.
 - **Características**:
-  - Validación de formularios
-  - Integración con Google Analytics
+  - Validación de formularios (email, teléfono 10 dígitos, campos requeridos)
+  - Integración con Google Analytics y Meta Pixel (Facebook)
+  - Redirección automática a enlace de pago Wompi por fecha + personas
+  - Envío paralelo a Apps Script (vía iframe) y n8n (fetch fire-and-forget)
+  - Sección "Así se vive" colapsable con lazy loading de imágenes
+  - FAQ accordion con tracking de interacciones
+  - CTA flotante de reserva con animación pulse
+  - Datos de reserva persistidos en `localStorage` antes de redirigir a pago
   - Animaciones suaves
   - Manejo de errores
-  - Soporte para notificaciones toast
-  - Configuración flexible
-  - API pública para control externo
 
 ### Herramientas de compilación
 - **webpack**: Usado para empaquetar archivos TypeScript
@@ -555,11 +560,19 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 - Versión actualizada automáticamente con cada build
 
 ### Analytics
-- **Implementación**: Implementado directamente en el HTML de cada página
-- **Configuración**: El ID de Google Analytics se define en `scripts/site-config.json` (`gaId`). Ejecuta `npm run config:inject` para propagar el ID a todos los HTML; el build no lo hace automáticamente.
+- **Google Analytics**: Implementado directamente en el HTML de cada página
+- **Configuración GA**: El ID de Google Analytics se define en `scripts/site-config.json` (`gaId`). Ejecuta `npm run config:inject` para propagar el ID a todos los HTML; el build no lo hace automáticamente.
 - **Ubicación**: En la sección `<head>` de cada documento HTML
 - **Notas**: No implementar mediante TypeScript para asegurar un seguimiento inmediato
- - **Tour**: Eventos para clics de CTA a `#tour-form` y envío de formulario con fecha y dominio de email
+- **Meta Pixel (Facebook)**: Implementado en páginas de tour (`tour.html`, `tour/index.html`, `tour/gracias.html`, `tour/error.html`) y la mayoría de páginas del sitio para tracking de conversiones
+- **Tour (GA)**: Eventos detallados:
+  - Clics de CTA a `#tour-form` (intro, experiencia, flotante, sección de pago)
+  - Toggle de sección "Así se vive" (expandir/colapsar)
+  - Clic en recomendación de blog (nibs de cacao)
+  - Intento y éxito de envío de formulario (con fecha, personas, monto, moneda)
+  - Redirección a pago Wompi (con monto)
+  - Apertura de preguntas FAQ
+  - Clic en formulario de feedback
 
 ### Sitemap
 - Generación: `npm run sitemap:generate`
@@ -576,7 +589,7 @@ El directorio `appscript/` contiene scripts de Google Apps que manejan funcional
 - **Trabajo** (`trabajo.js`): Procesamiento de aplicaciones de empleo
 - **Eventos** (`eventos/`): Sistema de cotización y registro de eventos
 - **Coliving** (`coliving/`): Sistema de aplicaciones de coliving
-- **Tour** (`tour/`): Reservas de tour con integración Wompi
+- **Tour** (`tour/`): Reservas de tour con integración Wompi y plantilla de email HTML (`email.html`)
 - **Newsletter** (`subscribe/`): Gestión de suscripciones
 - **Feedback** (`feedback.js`): Recolección de feedback de clientes
 - **Registro** (`registro.js`): Registro de huéspedes (TRA)
