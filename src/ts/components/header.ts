@@ -113,6 +113,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  parrillada: {
+    heroClass: 'hero events-hero',
+    heroImage: '/assets/images/eventos/header.png',
+    heroContent: {
+      title: 'Parrillada de <strong>Autor</strong>',
+      subtitle: 'Brasas, vino, sol y montaña',
+      ctaText: 'RESERVA TU CUPO',
+      ctaHref: '#evento-form'
+    }
+  },
   '404': {
     heroClass: 'hero',
     heroImage: '/assets/images/header.png',
@@ -315,11 +325,17 @@ export function initHeader(): void {
   
   // Set the active nav item based on current page
   headerConfig.navItems = headerConfig.navItems.map(item => {
-    // Check if this is a subpage of a main section (e.g., trabajo/cocinero.html)
+    // Check if this is a subpage of a main section (e.g., trabajo/cocinero.html, eventos/parrillada.html)
     if (pathSegments.length > 1 && pathSegments[0] === 'trabajo') {
       return {
         ...item,
         isActive: item.href === '/trabajo.html#main-content'
+      };
+    }
+    if (pathSegments.length > 1 && pathSegments[0] === 'eventos') {
+      return {
+        ...item,
+        isActive: item.href === '/eventos.html#main-content'
       };
     }
     
@@ -391,6 +407,12 @@ export function initHeader(): void {
           // For any other trabajo subpage, use the generic trabajo hero config
           Object.assign(headerConfig, pageConfigs['trabajo']);
           break;
+      }
+    } else if (pathSegments[0] === 'eventos') {
+      if (pageNameWithoutExt in pageConfigs) {
+        Object.assign(headerConfig, pageConfigs[pageNameWithoutExt]);
+      } else {
+        Object.assign(headerConfig, pageConfigs['eventos']);
       }
     }
   }
