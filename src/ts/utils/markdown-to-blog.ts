@@ -218,7 +218,7 @@ class MarkdownToBlogConverter {
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://termopilas.co/blog/${post.filename}.html">
+    <meta property="og:url" content="https://blog.termopilas.co/${post.filename}/">
     <meta property="og:title" content="${post.title} - Finca Termópilas">
     <meta property="og:description" content="${post.description}">
     <meta property="og:image" content="https://termopilas.co/${absoluteImagePath}">
@@ -228,7 +228,7 @@ class MarkdownToBlogConverter {
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/blog/${post.filename}.html">
+    <meta property="twitter:url" content="https://blog.termopilas.co/${post.filename}/">
     <meta property="twitter:title" content="${post.title} - Finca Termópilas">
     <meta property="twitter:description" content="${post.description}">
     <meta property="twitter:image" content="https://termopilas.co/${absoluteImagePath}">
@@ -257,7 +257,7 @@ class MarkdownToBlogConverter {
       "description": "${post.description}",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://termopilas.co/blog/${post.filename}.html"
+        "@id": "https://blog.termopilas.co/${post.filename}/"
       },
       "keywords": "${post.keywords.join(', ')}"
     }
@@ -301,16 +301,16 @@ class MarkdownToBlogConverter {
             <div class="blog-post-share">
                 <h3>Comparte este artículo</h3>
                 <div class="blog-post-share-buttons">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_facebook', {'event_category': 'blog_share', 'event_label': 'facebook_share'});">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.termopilas.co/${post.filename}/" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_facebook', {'event_category': 'blog_share', 'event_label': 'facebook_share'});">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url=https://termopilas.co/blog/${post.filename}.html&text=${post.title}" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_twitter', {'event_category': 'blog_share', 'event_label': 'twitter_share'});">
+                    <a href="https://twitter.com/intent/tweet?url=https://blog.termopilas.co/${post.filename}/&text=${post.title}" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_twitter', {'event_category': 'blog_share', 'event_label': 'twitter_share'});">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="../whatsapp.html?utm_source=website&utm_medium=blog&utm_campaign=blog_share&utm_content=${post.filename}&text=${post.title}%20https://termopilas.co/blog/${post.filename}.html" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
+                    <a href="../whatsapp.html?utm_source=website&utm_medium=blog&utm_campaign=blog_share&utm_content=${post.filename}&text=${post.title}%20https://blog.termopilas.co/${post.filename}/" target="_blank" rel="noopener" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_whatsapp', {'event_category': 'blog_share', 'event_label': 'whatsapp_share'});">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="mailto:?subject=${post.title}&body=Te recomiendo este artículo: https://termopilas.co/blog/${post.filename}.html" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_email', {'event_category': 'blog_share', 'event_label': 'email_share'});">
+                    <a href="mailto:?subject=${post.title}&body=Te recomiendo este artículo: https://blog.termopilas.co/${post.filename}/" class="blog-post-share-button" onclick="gtag('event', 'blog_${post.filename}_email', {'event_category': 'blog_share', 'event_label': 'email_share'});">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>

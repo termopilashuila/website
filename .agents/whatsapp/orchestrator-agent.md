@@ -108,15 +108,15 @@ SALIDA:
 
 # REFERENCIAS DEL BLOG (RESÚMENES BREVES):
 - Blog principal: https://termopilas.co/blog.html
-- Beneficios de los nibs de cacao para la salud: https://termopilas.co/blog/beneficios-nibs-cacao-salud — Superalimento rico en antioxidantes, minerales y compuestos bioactivos; beneficios cardiovasculares, cognitivos e inmunológicos; incluye CTAs a catálogo y WhatsApp.
-- Bowl de Nibs de Cacao (receta): https://termopilas.co/blog/nibs-cacao-parfait-bowl — Receta rápida de parfait bowl con nibs de cacao; ingredientes, variaciones y beneficios.
-- Del árbol a la barra (chocolate artesanal): https://termopilas.co/blog/del-arbol-a-la-barra-chocolate-artesanal — Proceso bean‑to‑bar en Termópilas: cultivo, fermentación, tostado, conchado y temperado.
-- Proceso de elaboración de vino artesanal: https://termopilas.co/blog/proceso-elaboracion-vino-artesanal — Vinificación con uva Isabella: cosecha, fermentaciones, crianza y perfil del vino.
-- Maridaje perfecto: vino rosé + platos del Huila: https://termopilas.co/blog/maridaje-perfecto-vino-rose-platos-tipicos-huila — Combina rosé con asado huilense, tilapia y achiras; incluye consejos de servicio.
-- Un día en el tour de vino y cacao: https://termopilas.co/blog/un-dia-en-nuestro-tour-de-vino-y-cacao — Recorrido completo por viñedo, bodega, cacao, taller de chocolate y cata.
-- Destinos imperdibles para visitar en Huila: https://termopilas.co/blog/destinos-imperdibles-visitar-huila-colombia — Guía de 7 destinos (Tatacoa, termales, cafés, San Agustín, etc.) con tips prácticos.
-- Lugares para comer en Rivera: https://termopilas.co/blog/lugares-para-comer-rivera — Selección de restaurantes locales con especialidades, horarios y contactos.
-- Restaurantes con domicilio en Rivera: https://termopilas.co/blog/restaurante-domicilio-rivera — Opciones de delivery con teléfonos, WhatsApp y mapas.
+- Beneficios de los nibs de cacao para la salud: https://blog.termopilas.co/beneficios-nibs-cacao-salud/ — Superalimento rico en antioxidantes, minerales y compuestos bioactivos; beneficios cardiovasculares, cognitivos e inmunológicos; incluye CTAs a catálogo y WhatsApp.
+- Bowl de Nibs de Cacao (receta): https://blog.termopilas.co/nibs-cacao-parfait-bowl/ — Receta rápida de parfait bowl con nibs de cacao; ingredientes, variaciones y beneficios.
+- Del árbol a la barra (chocolate artesanal): https://blog.termopilas.co/del-arbol-a-la-barra-chocolate-artesanal/ — Proceso bean‑to‑bar en Termópilas: cultivo, fermentación, tostado, conchado y temperado.
+- Proceso de elaboración de vino artesanal: https://blog.termopilas.co/proceso-elaboracion-vino-artesanal/ — Vinificación con uva Isabella: cosecha, fermentaciones, crianza y perfil del vino.
+- Maridaje perfecto: vino rosé + platos del Huila: https://blog.termopilas.co/maridaje-perfecto-vino-rose-platos-tipicos-huila/ — Combina rosé con asado huilense, tilapia y achiras; incluye consejos de servicio.
+- Un día en el tour de vino y cacao: https://blog.termopilas.co/un-dia-en-nuestro-tour-de-vino-y-cacao/ — Recorrido completo por viñedo, bodega, cacao, taller de chocolate y cata.
+- Destinos imperdibles para visitar en Huila: https://blog.termopilas.co/destinos-imperdibles-visitar-huila-colombia/ — Guía de 7 destinos (Tatacoa, termales, cafés, San Agustín, etc.) con tips prácticos.
+- Lugares para comer en Rivera: https://blog.termopilas.co/lugares-para-comer-rivera/ — Selección de restaurantes locales con especialidades, horarios y contactos.
+- Restaurantes con domicilio en Rivera: https://blog.termopilas.co/restaurante-domicilio-rivera/ — Opciones de delivery con teléfonos, WhatsApp y mapas.
 
 
 # CAPACIDADES:

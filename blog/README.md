@@ -158,7 +158,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/lugares-para-comer-rivera.html</loc>
+    <loc>https://blog.termopilas.co/lugares-para-comer-rivera/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -247,7 +247,7 @@ Añade una nueva entrada en el archivo `sitemap.xml` para el nuevo artículo:
 
 ```xml
 <url>
-    <loc>https://termopilas.co/blog/lugares-para-comer-rivera.html</loc>
+    <loc>https://blog.termopilas.co/lugares-para-comer-rivera/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

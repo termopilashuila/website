@@ -73,4 +73,4 @@ Restaurante:
 
 Actualmente NO contamos con servicio de restaurante. Está en construcción. 
 Las habitaciones de la casa cuentan con una cocina principal y las cabañas con su propia cocina y menaje. 
-Faciliamos también contactos para realizar domicilios: https://termopilas.co/blog/restaurante-domicilio-rivera.html
+Faciliamos también contactos para realizar domicilios: https://blog.termopilas.co/restaurante-domicilio-rivera/
