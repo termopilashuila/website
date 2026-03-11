@@ -124,9 +124,6 @@ export function initFooter(): void {
     case 'galeria.html':
       pageNameInSpanish = 'Galería';
       break;
-    case 'blog.html':
-      pageNameInSpanish = 'Blog';
-      break;
     default:
       pageNameInSpanish = 'Inicio';
   }

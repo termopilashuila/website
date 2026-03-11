@@ -28,7 +28,6 @@ const PRIMARY_PAGES = new Set([
   'tour.html',
   'coliving.html',
   'eventos.html',
-  'blog.html',
   'catalogo.html',
   'cata.html',
   'pago.html',
@@ -147,8 +146,7 @@ function classifyPage(relativeHtmlPath) {
     return { changefreq: 'monthly', priority: 1.0, group: 0 };
   }
   if (PRIMARY_PAGES.has(base)) {
-    const changefreq = base === 'blog.html' ? 'weekly' : 'monthly';
-    return { changefreq, priority: 0.9, group: 1 };
+    return { changefreq: 'monthly', priority: 0.9, group: 1 };
   }
   if (UTILITY_PAGES.has(base)) {
     return { changefreq: 'yearly', priority: 0.3, group: 2 };

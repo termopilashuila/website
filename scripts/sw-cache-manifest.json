@@ -8,7 +8,6 @@
     "/ubicacion.html",
     "/galeria.html",
     "/coliving.html",
-    "/blog.html",
     "/catalogo.html",
     "/cata.html",
     "/eventos.html",
@@ -29,5 +28,5 @@
     "/assets/images/favicon.png",
     "/assets/css/fonts.css"
   ],
-  "directories": ["cata", "trabajo", "blog", "coliving", "tour"]
+  "directories": ["cata", "trabajo", "coliving", "tour"]
 }

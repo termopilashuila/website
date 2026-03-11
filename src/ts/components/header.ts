@@ -63,16 +63,6 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
-  blog: {
-    heroClass: 'hero blog-hero',
-    heroImage: '/assets/images/blog/header.png',
-    heroContent: {
-      title: 'Nuestro Blog',
-      subtitle: 'Historias, consejos y experiencias de Finca Termópilas',
-      ctaText: 'EXPLORAR',
-      ctaHref: '#main-content'
-    }
-  },
   eventos: {
     heroClass: 'hero events-hero',
     heroImage: '/assets/images/eventos/header.png',
@@ -142,7 +132,7 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Eventos', href: '/eventos.html#main-content' },
     { text: 'Galería', href: '/galeria.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
-    { text: 'Blog', href: '/blog.html#main-content' }
+    { text: 'Blog', href: 'https://blog.termopilas.co' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
