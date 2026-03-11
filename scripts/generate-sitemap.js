@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /*
   Sitemap generator for termopilas.co
-  - Discovers public .html files in repo root, cata/, trabajo/, blog/
+  - Discovers public .html files in repo root, cata/, trabajo/
   - Computes lastmod using Git commit time (fallback to file mtime)
   - Assigns changefreq and priority per policy
-  - Resolves representative images (blog posts get specific image when available; otherwise fallback)
+  - Resolves representative images (fallback to site-wide header image)
   - Writes sitemap.xml with proper namespaces and deterministic ordering
 */
 
@@ -20,7 +20,6 @@ const TARGET_DIRECTORIES = [
   '.',
   'cata',
   'trabajo',
-  'blog',
 ];
 
 const PRIMARY_PAGES = new Set([
@@ -75,8 +74,7 @@ async function collectHtmlFiles(relativeDir) {
       ].includes(entry.name) && relativeDir === '.') {
         continue;
       }
-      // Allow recursion inside directories we explicitly target (cata, eventos, trabajo, blog)
-      if (relativeDir === '.' || ['cata', 'eventos', 'trabajo', 'blog'].includes(relativeDir) || relativeDir.startsWith('blog')) {
+      if (relativeDir === '.' || ['cata', 'eventos', 'trabajo'].includes(relativeDir)) {
         const nested = await collectHtmlFiles(entryRelPath);
         collected.push(...nested);
       }
@@ -123,17 +121,6 @@ function fileExists(relPath) {
 }
 
 function guessImageForPage(relativeHtmlPath) {
-  // Blog posts: assets/images/blog/[slug]/main.(jpg|png|jpeg)
-  if (relativeHtmlPath.startsWith(path.join('blog', 'posts') + path.sep)) {
-    const slug = path.basename(relativeHtmlPath, '.html');
-    const candidates = ['jpg', 'jpeg', 'png'].map((ext) =>
-      path.join('assets', 'images', 'blog', slug, `main.${ext}`)
-    );
-    for (const rel of candidates) {
-      if (fileExists(rel)) return `${SITE_URL}/${rel.replace(/\\/g, '/')}`;
-    }
-  }
-  // Fallbacks
   for (const fallback of FALLBACK_IMAGES) {
     if (fileExists(fallback)) return `${SITE_URL}/${fallback.replace(/\\/g, '/')}`;
   }
@@ -160,14 +147,6 @@ function classifyPage(relativeHtmlPath) {
   if (relativeHtmlPath.startsWith('trabajo' + path.sep)) {
     return { changefreq: 'monthly', priority: 0.6, group: 4 };
   }
-  if (relativeHtmlPath.startsWith(path.join('blog', 'posts') + path.sep)) {
-    return { changefreq: 'monthly', priority: 0.8, group: 6 };
-  }
-  // Treat top-level blog/*.html (non-post index pages) as regular pages at 0.7 priority
-  if (relativeHtmlPath.startsWith('blog' + path.sep)) {
-    return { changefreq: 'monthly', priority: 0.7, group: 5 };
-  }
-  // Other public pages
   return { changefreq: 'monthly', priority: 0.7, group: 5 };
 }
 
@@ -196,13 +175,8 @@ async function main() {
       if (parts[0] === '.') return false;
       // Exclude 404 pages
       if (path.basename(p).toLowerCase() === '404.html') return false;
-      // Exclude template files from indexing
       if (path.basename(p).toLowerCase() === 'template.html') return false;
-      // Allow all blog posts in blog/ directory
-      if (parts[0] === 'blog') {
-      }
-      // Include root .html files and targeted subfolders (cata, eventos, trabajo, blog)
-      if (!['cata', 'eventos', 'trabajo', 'blog'].includes(parts[0]) && parts.length > 1) return false;
+      if (!['cata', 'eventos', 'trabajo'].includes(parts[0]) && parts.length > 1) return false;
       return true;
     });
 
@@ -222,14 +196,8 @@ async function main() {
     entries.push({ relPath, loc, lastmod, changefreq, priority, image: img, group });
   }
 
-  // Sort: root, primary, other root, eventos, trabajo, other, blog posts by lastmod desc
   entries.sort((a, b) => {
     if (a.group !== b.group) return a.group - b.group;
-    if (a.group === 6) {
-      // blog posts by lastmod desc
-      return new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime();
-    }
-    // Otherwise alpha by path
     return a.relPath.localeCompare(b.relPath);
   });
 
