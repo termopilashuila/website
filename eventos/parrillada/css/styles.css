@@ -268,7 +268,7 @@ html {
 }
 
 /* Guests */
-.guests {
+.section.guests {
     background-color: #fdf6ea !important;
 }
 
@@ -321,7 +321,7 @@ html {
 }
 
 /* Sponsors */
-.sponsors {
+.section.sponsors {
     background-color: #fdf6ea !important;
 }
 
@@ -377,7 +377,7 @@ html {
 }
 
 /* Testimonials */
-.testimonials {
+.section.testimonials {
     background-color: #000000 !important;
     color: #fdf6ea;
 }
@@ -460,7 +460,7 @@ html {
 }
 
 /* Registration */
-.registration {
+.section.registration {
     background-color: #fdf6ea !important;
 }
 
@@ -627,7 +627,7 @@ html {
 }
 
 /* Community */
-.community {
+.section.community {
     background-color: #000000 !important;
     text-align: center;
     color: #fdf6ea;
