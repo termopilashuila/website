@@ -269,7 +269,7 @@ html {
 
 /* Guests */
 .guests {
-    background: #fdf6ea;
+    background-color: #fdf6ea !important;
 }
 
 .guests-grid {
@@ -322,7 +322,7 @@ html {
 
 /* Sponsors */
 .sponsors {
-    background: #fdf6ea;
+    background-color: #fdf6ea !important;
 }
 
 .sponsors-grid {
@@ -378,7 +378,7 @@ html {
 
 /* Testimonials */
 .testimonials {
-    background: #000000;
+    background-color: #000000 !important;
     color: #fdf6ea;
 }
 
@@ -461,7 +461,7 @@ html {
 
 /* Registration */
 .registration {
-    background: #fdf6ea;
+    background-color: #fdf6ea !important;
 }
 
 .form-container {
@@ -628,7 +628,7 @@ html {
 
 /* Community */
 .community {
-    background: #000000;
+    background-color: #000000 !important;
     text-align: center;
     color: #fdf6ea;
 }
