@@ -24,7 +24,8 @@ html {
 
 .section:nth-child(odd),
 .section:nth-child(even) {
-    background-image: none;
+    background-color: transparent !important;
+    background-image: none !important;
 }
 
 /* Hero */
