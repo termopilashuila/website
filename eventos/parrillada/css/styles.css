@@ -378,6 +378,15 @@ html {
 /* Testimonials */
 .testimonials {
     background: #000000;
+    color: #fdf6ea;
+}
+
+.testimonials .section-title {
+    color: #ffffff;
+}
+
+.testimonials .section-subtitle {
+    color: rgba(253, 246, 234, 0.8);
 }
 
 .testimonials-grid {
@@ -620,10 +629,11 @@ html {
 .community {
     background: #000000;
     text-align: center;
+    color: #fdf6ea;
 }
 
 .community .section-title {
-    color: #fdf6ea;
+    color: #ffffff;
 }
 
 .community .section-subtitle {
