@@ -17,6 +17,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Reset main.css overrides */
+.section h2::after {
+    display: none;
+}
+
+.section:nth-child(odd),
+.section:nth-child(even) {
+    background-image: none;
+}
+
 /* Hero */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
@@ -25,6 +35,7 @@ html {
     background-position: center;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
