@@ -95,7 +95,7 @@
                         <li><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong>&nbsp;12 de Abril de 2026</li>
                         <li><i class="fas fa-clock"></i> <strong>Hora:</strong>&nbsp;11:00 AM a 4:00 PM</li>
                         <li><i class="fas fa-map-marker-alt"></i> <strong>Lugar:</strong>&nbsp;Finca Termópilas, Rivera, Huila</li>
-                        <li><i class="fas fa-tag"></i> <strong>Valor:</strong>&nbsp;$60.000 COP por persona / $100.000 COP por pareja</li>
+                        <li><i class="fas fa-tag"></i> <strong>Valor:</strong>&nbsp;$70.000 COP por persona / $120.000 COP por pareja</li>
                         <li><i class="fas fa-users"></i> <strong>Cupos:</strong>&nbsp;50 personas</li>
                     </ul>
                 </div>
@@ -347,22 +347,14 @@
                             <input type="tel" id="phone" name="phone" placeholder="3XX XXX XXXX" required>
                         </div>
                         <div class="form-group">
-                            <label for="ticketType">Tipo de entrada</label>
-                            <select id="ticketType" name="ticketType" required>
+                            <label for="numberOfPeople">Número de personas</label>
+                            <select id="numberOfPeople" name="numberOfPeople" required>
                                 <option value="">Selecciona una opción</option>
-                                <option value="individual">Individual — $60.000 COP</option>
-                                <option value="pareja">Pareja — $100.000 COP</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="numberOfTickets">Cantidad</label>
-                            <select id="numberOfTickets" name="numberOfTickets" required>
-                                <option value="">Selecciona la cantidad</option>
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1">1 persona — $70.000 COP</option>
+                                <option value="2">2 personas — $120.000 COP</option>
+                                <option value="3">3 personas — $190.000 COP</option>
+                                <option value="4">4 personas — $240.000 COP</option>
+                                <option value="5">5 personas — $310.000 COP</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -424,7 +416,7 @@
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>Una vez realices la reserva y gestiones el pago, debes enviar el comprobante de pago a nuestra línea de WhatsApp para confirmar tu cupo.</p>
+                            <p>Al completar el formulario de reserva serás redirigido a Wompi para realizar el pago de forma segura. Una vez procesado, Wompi te enviará un correo de confirmación con los detalles de tu transacción.</p>
                         </div>
                     </div>
                 </div>
@@ -580,12 +572,11 @@
                         name: eventoForm.name.value,
                         email: eventoForm.email.value,
                         phone: eventoForm.phone.value.replace(/\s/g, ''),
-                        ticketType: eventoForm.ticketType.value,
-                        numberOfTickets: eventoForm.numberOfTickets.value,
+                        numberOfPeople: eventoForm.numberOfPeople.value,
                         message: eventoForm.message.value
                     };
 
-                    if (!formData.name || !formData.email || !formData.phone || !formData.ticketType) {
+                    if (!formData.name || !formData.email || !formData.phone || !formData.numberOfPeople) {
                         alert('Por favor completa todos los campos obligatorios');
                         submitButton.disabled = false;
                         submitButton.innerHTML = originalButtonHTML;
@@ -608,15 +599,30 @@
                         return;
                     }
 
-                    const pricePerUnit = formData.ticketType === 'pareja' ? 100000 : 60000;
-                    const totalAmount = pricePerUnit * parseInt(formData.numberOfTickets, 10);
+                    var wompiLinks = {
+                        '1': { url: 'https://checkout.wompi.co/l/iAqfIL', amount: 70000 },
+                        '2': { url: 'https://checkout.wompi.co/l/PzBCtr', amount: 120000 },
+                        '3': { url: 'https://checkout.wompi.co/l/HBx6Y9', amount: 190000 },
+                        '4': { url: 'https://checkout.wompi.co/l/pDraqD', amount: 240000 },
+                        '5': { url: 'https://checkout.wompi.co/l/73FXOW', amount: 310000 }
+                    };
+
+                    var linkInfo = wompiLinks[formData.numberOfPeople];
+
+                    if (!linkInfo) {
+                        alert('Error al generar el enlace de pago. Por favor intenta de nuevo.');
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonHTML;
+                        return;
+                    }
+
+                    var totalAmount = linkInfo.amount;
 
                     gtag('event', 'parrillada_form_submission', {
                         'event_category': 'Lead Generation',
                         'event_label': 'Parrillada Form Submission',
                         'page': 'parrillada',
-                        'ticket_type': formData.ticketType,
-                        'number_of_tickets': formData.numberOfTickets,
+                        'number_of_people': formData.numberOfPeople,
                         'value': totalAmount,
                         'currency': 'COP'
                     });
@@ -632,23 +638,8 @@
                             source: 'website',
                             timestamp: new Date().toISOString()
                         })
-                    }).then(() => {
-                        gtag('event', 'parrillada_form_success', {
-                            'event_category': 'Lead Generation',
-                            'event_label': 'Parrillada Form Success',
-                            'page': 'parrillada',
-                            'value': totalAmount,
-                            'currency': 'COP'
-                        });
-                        alert('¡Gracias! Hemos recibido tu reserva. Te contactaremos pronto para confirmar los detalles del pago.');
-                        eventoForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonHTML;
-                    }).catch(() => {
-                        alert('¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.');
-                        eventoForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonHTML;
+                    }).finally(() => {
+                        window.location.href = linkInfo.url;
                     });
                 });
             }

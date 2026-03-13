@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Parrillada 12 Abr 2026 - 1 persona",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 1 persona",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 70000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=1-persona"
+  },
+  {
+    "name": "Parrillada 12 Abr 2026 - 2 personas",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 2 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 120000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=2-personas"
+  },
+  {
+    "name": "Parrillada 12 Abr 2026 - 3 personas",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 3 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 190000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=3-personas"
+  },
+  {
+    "name": "Parrillada 12 Abr 2026 - 4 personas",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 4 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 240000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=4-personas"
+  },
+  {
+    "name": "Parrillada 12 Abr 2026 - 5 personas",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 5 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 310000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=5-personas"
+  }
+]
