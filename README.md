@@ -536,7 +536,7 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 - **Newsletter**: `src/newsletter.js` → `dist/newsletter.js` (módulo de suscripción a newsletter)
 - **Blog**: `src/blog.js` → `dist/blog.js` (módulo de funcionalidad del blog)
 - **Discount Popup**: `src/discount-popup.js` → `dist/discount-popup.js` (módulo de popup de descuento)
-- **Tour (Reservas)**: Formulario inline en `tour.html` con envío dual a Apps Script (`appscript/tour/handler.js`) y n8n webhook (`https://n8n.termopilas.co/webhook/tour-registration`). Tras el envío, el usuario es redirigido a Wompi para pagar según fecha y número de personas. `tour/index.html` redirige a `tour.html` para preservar URLs legacy.
+- **Tour (Reservas)**: Formulario inline en `tour.html` con envío dual a Apps Script (`appscript/tour/handler.js`) y n8n webhook (`https://n8n.termopilas.co/webhook/registro-website`). Tras el envío, el usuario es redirigido a Wompi para pagar según fecha y número de personas. `tour/index.html` redirige a `tour.html` para preservar URLs legacy.
 - **Características**:
   - Validación de formularios (email, teléfono 10 dígitos, campos requeridos)
   - Integración con Google Analytics y Meta Pixel (Facebook)

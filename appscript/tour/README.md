@@ -58,7 +58,7 @@ El sistema incluye integración con Wompi para pagos a $50,000 COP por persona. 
 2. Se valida el formulario en el cliente (email, teléfono 10 dígitos, campos requeridos)
 3. Los datos se envían en paralelo a:
    - Google Apps Script (vía iframe POST) → guarda en Sheets + envía email HTML al equipo
-   - n8n webhook (`https://n8n.termopilas.co/webhook/tour-registration`) → fire-and-forget
+   - n8n webhook (`https://n8n.termopilas.co/webhook/registro-website`) → fire-and-forget
 4. El usuario es redirigido automáticamente al portal de pago Wompi según fecha + número de personas
 5. El usuario completa el pago en Wompi
 
