@@ -43,5 +43,14 @@
     "currency": "COP",
     "amount_in_cop": 310000,
     "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=5-personas"
+  },
+  {
+    "name": "Parrillada 12 Abr 2026 - 6 personas",
+    "description": "Brasas, vino, sol y montañas - 12 Abr 2026 - 6 personas",
+    "single_use": false,
+    "collect_shipping": false,
+    "currency": "COP",
+    "amount_in_cop": 360000,
+    "redirect_url": "https://termopilas.co/eventos/parrillada/gracias.html?utm_source=wompi&utm_campaign=parrillada-abr-2026&utm_content=6-personas"
   }
 ]
