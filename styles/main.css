@@ -457,6 +457,10 @@ footer a:hover {
 
 .footer-links {
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .footer-links .privacy-link {
@@ -467,6 +471,12 @@ footer a:hover {
     transition: opacity 0.3s ease, color 0.3s ease;
     display: inline-block;
     margin: 0;
+}
+
+.footer-links .footer-separator {
+    color: #fdf6ea;
+    opacity: 0.5;
+    font-size: 0.9rem;
 }
 
 .footer-links .privacy-link:hover {

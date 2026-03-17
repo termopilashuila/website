@@ -83,6 +83,16 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
+  terminos: {
+    heroClass: 'hero privacy-hero',
+    heroImage: '/assets/images/header.png',
+    heroContent: {
+      title: 'Términos del Servicio',
+      subtitle: 'Condiciones de uso de nuestros servicios y plataformas digitales',
+      ctaText: 'LEER TÉRMINOS',
+      ctaHref: '#main-content'
+    }
+  },
   galeria: {
     heroClass: 'hero gallery-hero',
     heroImage: '/assets/images/header.png',
