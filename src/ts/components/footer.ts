@@ -36,7 +36,7 @@ const defaultFooterConfig: FooterConfig = {
       }
     ]
   },
-  copyright: '© 2025 Finca Termópilas. Todos los derechos reservados.'
+  copyright: `© ${new Date().getFullYear()} Finca Termópilas. Todos los derechos reservados.`
 };
 
 // Function to generate footer HTML
