@@ -36,7 +36,7 @@ const defaultFooterConfig: FooterConfig = {
       }
     ]
   },
-  copyright: '© 2025 Finca Termópilas. Todos los derechos reservados.'
+  copyright: `© ${new Date().getFullYear()} Finca Termópilas. Todos los derechos reservados.`
 };
 
 // Function to generate footer HTML
@@ -84,6 +84,8 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
       <p>${config.copyright}</p>
       <div class="footer-links">
         <a href="privacidad.html" class="privacy-link">Política de Privacidad</a>
+        <span class="footer-separator">&middot;</span>
+        <a href="terminos.html" class="privacy-link">Términos del Servicio</a>
       </div>
     </div>
   `;
