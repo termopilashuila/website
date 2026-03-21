@@ -137,13 +137,11 @@ const defaultHeaderConfig: HeaderConfig = {
   navItems: [
     { text: 'Inicio', href: '/index.html' },
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
-    { text: 'Tour', href: '/tour.html#main-content' },
-    { text: 'Coliving', href: '/coliving.html#main-content' },
-    { text: 'Salón', href: '/salon.html#main-content' },
     { text: 'Eventos', href: 'https://eventos.termopilas.co' },
-    { text: 'Galería', href: '/galeria.html#main-content' },
+    { text: 'Salón', href: '/salon.html#main-content' },
+    { text: 'Blog', href: 'https://blog.termopilas.co' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
-    { text: 'Blog', href: 'https://blog.termopilas.co' }
+    { text: 'Galería', href: '/galeria.html#main-content' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
