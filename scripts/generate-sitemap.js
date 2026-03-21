@@ -120,7 +120,56 @@ function fileExists(relPath) {
   }
 }
 
+const PAGE_IMAGE_MAP = {
+  'index.html': 'assets/images/home/section1-accommodation1.jpg',
+  'alojamiento.html': 'assets/images/alojamiento/habitacion-a/image1.png',
+  'tour.html': 'assets/images/tour/header.png',
+  'coliving.html': 'assets/images/coliving/header.png',
+  'salon.html': 'assets/images/venue/image1.png',
+  'catalogo.html': 'assets/images/catalog/header.png',
+  'cata.html': 'assets/images/tour/tour-wine.jpg',
+  'pago.html': 'assets/images/pago/wompi.png',
+  'galeria.html': 'assets/images/galeria/galeria-01.jpeg',
+  'blog.html': 'assets/images/blog/header.png',
+  'ubicacion.html': 'assets/images/ubicacion/header.png',
+  'trabajo.html': 'assets/images/trabajo/header.png',
+  'feedback.html': 'assets/images/home/section3-img1.jpg',
+  'registro.html': 'assets/images/home/section1-accommodation2.jpg',
+  'privacidad.html': 'assets/images/header.png',
+  'whatsapp.html': 'assets/images/header.png',
+  'cata-vinos.html': 'assets/images/tour/tour-wine.jpg',
+  'cata/cata-vino-paella-tapas-main.html': 'assets/images/eventos/cata-vino-paella-tapas/main.png',
+  'cata/experiencia-vino-mar-fuego-fallido.html': 'assets/images/eventos/cata-vino-paella-tapas/vinos.png',
+  'cata/experiencia-vino-mar-fuego-gracias.html': 'assets/images/eventos/cata-vino-paella-tapas/vinos.png',
+  'cata/experiencia-vino-mar-fuego.html': 'assets/images/eventos/cata-vino-paella-tapas/main.png',
+  'eventos/parrillada.html': 'assets/images/eventos/evento-piscina.jpg',
+  'eventos/parrillada/index.html': 'assets/images/eventos/evento-piscina.jpg',
+  'eventos/parrillada/gracias.html': 'assets/images/eventos/momento-comida.jpg',
+  'trabajo/cocinero.html': 'assets/images/trabajo/header.png',
+  'trabajo/conserje.html': 'assets/images/trabajo/header.png',
+  'trabajo/recepcionista.html': 'assets/images/trabajo/header.png',
+  'trabajo/web-developer.html': 'assets/images/trabajo/header.png',
+};
+
 function guessImageForPage(relativeHtmlPath) {
+  const normalized = relativeHtmlPath.replace(/\\/g, '/');
+
+  if (PAGE_IMAGE_MAP[normalized]) {
+    const imagePath = PAGE_IMAGE_MAP[normalized];
+    if (fileExists(imagePath)) {
+      return `${SITE_URL}/${imagePath.replace(/\\/g, '/')}`;
+    }
+  }
+
+  if (normalized.startsWith('blog/') && normalized.endsWith('.html') && normalized !== 'blog/template.html') {
+    const blogSlug = path.basename(normalized, '.html');
+    const blogImagePath = path.join('assets', 'images', 'blog', blogSlug, 'main.jpg');
+    if (fileExists(blogImagePath)) {
+      return `${SITE_URL}/${blogImagePath.replace(/\\/g, '/')}`;
+    }
+    return `${SITE_URL}/assets/images/blog/header.png`;
+  }
+
   for (const fallback of FALLBACK_IMAGES) {
     if (fileExists(fallback)) return `${SITE_URL}/${fallback.replace(/\\/g, '/')}`;
   }
