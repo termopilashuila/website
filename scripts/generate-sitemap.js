@@ -26,7 +26,7 @@ const PRIMARY_PAGES = new Set([
   'alojamiento.html',
   'tour.html',
   'coliving.html',
-  'eventos.html',
+  'salon.html',
   'catalogo.html',
   'cata.html',
   'pago.html',

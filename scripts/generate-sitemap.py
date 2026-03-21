@@ -29,7 +29,7 @@ PRIMARY_PAGES = {
     'alojamiento.html',
     'tour.html',
     'coliving.html',
-    'eventos.html',
+    'salon.html',
     'blog.html',
     'catalogo.html',
     'cata.html',

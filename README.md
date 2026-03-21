@@ -42,7 +42,7 @@ website/
 ├── tour.html                # Tour de vino y cacao
 ├── ubicacion.html           # Cómo llegar
 ├── coliving.html            # Coliving para nómadas digitales
-├── eventos.html             # Landing de eventos
+├── salon.html               # Salón de eventos
 ├── catalogo.html            # Catálogo de productos/experiencias
 ├── cata.html                # Página de cata de vinos
 ├── galeria.html             # Galería de fotos

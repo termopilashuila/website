@@ -63,7 +63,7 @@ const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
       ctaHref: '#main-content'
     }
   },
-  eventos: {
+  salon: {
     heroClass: 'hero events-hero',
     heroImage: '/assets/images/eventos/header.png',
     heroContent: {
@@ -129,7 +129,8 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Alojamiento', href: '/alojamiento.html#main-content' },
     { text: 'Tour', href: '/tour.html#main-content' },
     { text: 'Coliving', href: '/coliving.html#main-content' },
-    { text: 'Eventos', href: '/eventos.html#main-content' },
+    { text: 'Salón', href: '/salon.html#main-content' },
+    { text: 'Eventos', href: 'https://eventos.termopilas.co' },
     { text: 'Galería', href: '/galeria.html#main-content' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
     { text: 'Blog', href: 'https://blog.termopilas.co' }
@@ -325,7 +326,7 @@ export function initHeader(): void {
     if (pathSegments.length > 1 && pathSegments[0] === 'eventos') {
       return {
         ...item,
-        isActive: item.href === '/eventos.html#main-content'
+        isActive: item.href === '/salon.html#main-content'
       };
     }
     
@@ -402,7 +403,7 @@ export function initHeader(): void {
       if (pageNameWithoutExt in pageConfigs) {
         Object.assign(headerConfig, pageConfigs[pageNameWithoutExt]);
       } else {
-        Object.assign(headerConfig, pageConfigs['eventos']);
+        Object.assign(headerConfig, pageConfigs['salon']);
       }
     }
   }
