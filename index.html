@@ -18,10 +18,6 @@
       gtag('config', 'G-2406CNRCX9');
     </script>
     
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     
@@ -82,11 +78,9 @@
         }
     </style>
     
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    </noscript>
+    <!-- Preload critical self-hosted fonts -->
+    <link rel="preload" href="assets/fonts/montserrat-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/lora-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Brand system and non-critical CSS loaded asynchronously -->
     <link rel="stylesheet" href="styles/brand-tokens.css" media="print" onload="this.media='all'">
@@ -128,18 +122,18 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
+      "@type": "LocalBusiness",
       "name": "Finca Termópilas",
-      "image": "https://termopilas.co/assets/images/header.png",
+      "image": "https://termopilas.co/assets/images/home/section1-accommodation1.jpg",
       "url": "https://termopilas.co",
       "telephone": "+573170182644",
-      "whatsapp": "+573170182644",
       "email": "termopilashuila@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Km 3.3 Vía las Juntas",
         "addressLocality": "Rivera",
         "addressRegion": "Huila",
+        "postalCode": "412040",
         "addressCountry": "CO"
       },
       "geo": {
@@ -147,29 +141,49 @@
         "latitude": "2.7775",
         "longitude": "-75.2513"
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
       "priceRange": "$$",
+      "servesCuisine": "Colombian",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "50"
+      },
       "amenityFeature": [
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Piscina"
+          "name": "Piscina",
+          "value": true
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Jacuzzi"
+          "name": "Jacuzzi",
+          "value": true
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Río"
+          "name": "WiFi",
+          "value": true
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Viñedos"
+          "name": "Estacionamiento gratuito",
+          "value": true
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Árboles de cacao"
+          "name": "Acceso al río",
+          "value": true
         }
-      ]
+      ],
+      "hasMap": "https://www.google.com/maps/place/Finca+Termopilas/@2.7775,-75.2513,15z"
     }
     </script>
     

@@ -16,14 +16,7 @@
       gtag('js', new Date());
 
       gtag('config', 'G-2406CNRCX9');
-    </script>
-    
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Favicon -->
+    </script>    <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     
     <!-- CSS -->
@@ -71,6 +64,142 @@
     src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Structured Data - TouristAttraction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": "Tour de Vino y Cacao - Finca Termópilas",
+      "description": "Recorre los viñedos, el bosque de cacao, conoce la fábrica de chocolate, disfruta una cata de vinos y cierra la tarde alrededor de una fogata.",
+      "image": "https://termopilas.co/assets/images/tour/header.png",
+      "url": "https://termopilas.co/tour.html",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Km 3.3 Vía las Juntas",
+        "addressLocality": "Rivera",
+        "addressRegion": "Huila",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "2.7775",
+        "longitude": "-75.2513"
+      },
+      "touristType": ["Parejas", "Amigos", "Familias", "Turistas"],
+      "availableLanguage": "es",
+      "isAccessibleForFree": false,
+      "publicAccess": true
+    }
+    </script>
+
+    <!-- Structured Data - Product (Tour) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Tour de Vino y Cacao",
+      "description": "Experiencia sensorial única: recorrido por viñedos y bosque de cacao, degustación de uvas, cacao, chocolates y cata de 3 vinos artesanales. Incluye parfait, hidratación y fogata.",
+      "image": "https://termopilas.co/assets/images/tour/header.png",
+      "brand": {
+        "@type": "Organization",
+        "name": "Finca Termópilas"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://termopilas.co/tour.html",
+        "priceCurrency": "COP",
+        "price": "50000",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-03-21",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availableAtOrFrom": {
+          "@type": "Place",
+          "name": "Finca Termópilas",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Rivera",
+            "addressRegion": "Huila",
+            "addressCountry": "CO"
+          }
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "30"
+      },
+      "category": "Tour",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Duración",
+          "value": "2.5 horas"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Capacidad máxima",
+          "value": "30 personas"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Dificultad",
+          "value": "Baja"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo llego a la Finca Termópilas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Estamos ubicados en Rivera, Huila, a 20 minutos de Neiva. Puedes llegar en vehículo particular o en transporte público hasta Rivera y luego tomar un mototaxi hasta la finca."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es una experiencia apta para todas las edades?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. El Tour de Cacao y Vino es una experiencia tranquila, ideal para adultos, parejas y familias. Los menores pueden asistir siempre acompañados por un adulto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El recorrido es muy exigente físicamente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El recorrido es de dificultad baja y se realiza a un ritmo tranquilo, con espacios para descansar y disfrutar del entorno."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo confirmo mi reserva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una vez realices la reserva y gestiones el pago a través de la página, debes enviar el comprobante de pago a nuestra línea de whatsapp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El tour incluye comida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tour incluye degustaciones: uvas frescas, cacao, chocolates artesanales, un parfait de yogurt griego con nibs de cacao, y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después del tour."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -218,7 +347,11 @@
                             <h3>Jardín Zen</h3>
                             <p>Visitaremos nuestro jardín zen, un espacio de tranquilidad y conexión con la naturaleza, ideal para la meditación y el descanso.</p>
                             <div class="experience-image">
-                                <img loading="lazy" src="assets/images/tour/tour-zen.png" alt="Jardín Zen de Finca Termópilas">
+                                <picture>
+                                    <source srcset="assets/images/tour/tour-zen.avif" type="image/avif">
+                                    <source srcset="assets/images/tour/tour-zen.webp" type="image/webp">
+                                    <img loading="lazy" src="assets/images/tour/tour-zen.png" alt="Jardín Zen de Finca Termópilas">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -231,7 +364,11 @@
                             <h3>Vistas panorámicas</h3>
                             <p>Disfrutarás de impresionantes vistas de las montañas y valles que rodean la finca, perfectas para tomar fotografías memorables.</p>
                             <div class="experience-image">
-                                <img loading="lazy" src="assets/images/tour/tour-mountains.png" alt="Vista de montañas desde Finca Termópilas">
+                                <picture>
+                                    <source srcset="assets/images/tour/tour-mountains.avif" type="image/avif">
+                                    <source srcset="assets/images/tour/tour-mountains.webp" type="image/webp">
+                                    <img loading="lazy" src="assets/images/tour/tour-mountains.png" alt="Vista de montañas desde Finca Termópilas">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -244,7 +381,11 @@
                             <h3>Bosque de cacao</h3>
                             <p>Continuamos con un recorrido por nuestro bosque de cacao, donde conocerás las diferentes variedades, su cultivo y cuidado.</p>
                             <div class="experience-image">
-                                <img loading="lazy" src="assets/images/tour/tour-cacao.png" alt="Árboles de cacao en Finca Termópilas">
+                                <picture>
+                                    <source srcset="assets/images/tour/tour-cacao.avif" type="image/avif">
+                                    <source srcset="assets/images/tour/tour-cacao.webp" type="image/webp">
+                                    <img loading="lazy" src="assets/images/tour/tour-cacao.png" alt="Árboles de cacao en Finca Termópilas">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -286,7 +427,11 @@
                             <h3>Jardín de orquídeas</h3>
                             <p>Descubrirás nuestro jardín de orquídeas, donde cultivamos diversas especies nativas de la región.</p>
                             <div class="experience-image">
-                                <img loading="lazy" src="assets/images/tour/tour-orchids.png" alt="Orquídeas en Finca Termópilas">
+                                <picture>
+                                    <source srcset="assets/images/tour/tour-orchids.avif" type="image/avif">
+                                    <source srcset="assets/images/tour/tour-orchids.webp" type="image/webp">
+                                    <img loading="lazy" src="assets/images/tour/tour-orchids.png" alt="Orquídeas en Finca Termópilas">
+                                </picture>
                             </div>
                         </div>
                     </div>
