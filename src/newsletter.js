@@ -30,10 +30,10 @@ class NewsletterHandler {
 
     async handleSubmit(event) {
         event.preventDefault();
-        
+
         const form = event.target;
         const submitButton = form.querySelector('button[type="submit"]');
-        
+
         if (!this.validateForm(form)) {
             return;
         }
@@ -48,6 +48,7 @@ class NewsletterHandler {
 
         try {
             await this.submitForm(formData);
+            this.trackConversionSuccess();
             this.showSuccess();
             form.reset();
         } catch (error) {
@@ -128,10 +129,22 @@ class NewsletterHandler {
     }
 
     trackFormSubmission() {
+        // GA4 standard event: sign_up
         if (window.gtag && typeof window.gtag === 'function') {
-            window.gtag('event', 'form_submission', {
+            window.gtag('event', 'sign_up', {
                 'event_category': 'newsletter',
-                'event_label': 'newsletter_subscription'
+                'event_label': 'newsletter_subscription',
+                'method': 'email'
+            });
+        }
+    }
+
+    trackConversionSuccess() {
+        // Meta Pixel standard event: Lead
+        if (window.fbq && typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead', {
+                content_name: 'Newsletter Subscription',
+                content_category: 'Newsletter'
             });
         }
     }
