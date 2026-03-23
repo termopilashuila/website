@@ -28,7 +28,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
@@ -37,8 +37,51 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             padding: 20px;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            width: 100%;
+        }
+
+        .breadcrumb ol {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: '›';
+            margin-left: 0.5rem;
+            color: #6B7280;
+        }
+
+        .breadcrumb a {
+            color: #F29F05;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: #E6920C;
+            text-decoration: underline;
+        }
+
+        .breadcrumb li[aria-current="page"] {
+            color: #6B7280;
         }
         
         .container {
@@ -287,8 +330,32 @@
     src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#F29F05">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Termópilas">
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#F29F05">
+    <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
+
 </head>
 <body>
+    <nav class="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="../../index.html">Inicio</a></li>
+            <li><a href="https://eventos.termopilas.co/events/1/finca-termopilas">Experiencias</a></li>
+            <li><a href="index.html">Brasas, vino, sol y montañas</a></li>
+            <li aria-current="page">Confirmación</li>
+        </ol>
+    </nav>
+
     <div class="container">
         <div class="header">
             <div class="success-icon">🔥</div>

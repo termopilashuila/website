@@ -1,5 +1,5 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v2026.03.21.185350';
+const CACHE_NAME = 'termopilas-cache-v2026.03.23.135136';
 const urlsToCache = [
   '/',
   '/alojamiento.html',
@@ -10,6 +10,7 @@ const urlsToCache = [
   '/cata/experiencia-vino-mar-fuego-fallido.html',
   '/cata/experiencia-vino-mar-fuego-gracias.html',
   '/cata/experiencia-vino-mar-fuego.html',
+  '/cata/index.html',
   '/catalogo.html',
   '/coliving.html',
   '/coliving/gracias.html',
@@ -80,7 +81,7 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => {
           return caches.match(event.request)
-            .then(cached => cached || caches.match('/index.html'));
+            .then(cached => cached || caches.match('/offline.html'));
         })
     );
     return;

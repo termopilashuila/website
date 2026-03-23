@@ -48,6 +48,49 @@
             padding: 0;
         }
 
+        /* Breadcrumb */
+        .breadcrumb {
+            background: #fdf6ea;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .breadcrumb ol {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: '›';
+            margin-left: 0.5rem;
+            color: #6B7280;
+        }
+
+        .breadcrumb a {
+            color: #F29F05;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: #E6920C;
+            text-decoration: underline;
+        }
+
+        .breadcrumb li[aria-current="page"] {
+            color: #6B7280;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -756,9 +799,35 @@
     }
     </script>
 
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#F29F05">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Termópilas">
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#F29F05">
+    <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
+
 </head>
 <body>
     <main id="main-content" tabindex="-1">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="breadcrumb">
+        <div class="container">
+            <ol>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="https://eventos.termopilas.co/events/1/finca-termopilas">Experiencias</a></li>
+                <li aria-current="page">Experiencia Vino Mar y Fuego</li>
+            </ol>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">

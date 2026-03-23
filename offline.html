@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sin conexión - Finca Termópilas</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <style>
+        :root {
+            --text-color: #333333;
+            --accent-color: #F29F05;
+            --background-dark: #000000;
+            --background-light: #fdf6ea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--background-dark) 0%, #1a1a1a 100%);
+            color: var(--background-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .offline-container {
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background-color: var(--accent-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(242, 159, 5, 0.3);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+
+        .message {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            color: #999999;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background-color: rgba(242, 159, 5, 0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--background-light);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .retry-button {
+            background-color: var(--accent-color);
+            color: var(--background-dark);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(242, 159, 5, 0.4);
+            font-family: inherit;
+        }
+
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(242, 159, 5, 0.5);
+        }
+
+        .retry-button:active {
+            transform: translateY(0);
+        }
+
+        .cached-pages {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(242, 159, 5, 0.3);
+        }
+
+        .cached-pages h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #cccccc;
+        }
+
+        .page-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .page-link {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--background-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(242, 159, 5, 0.3);
+        }
+
+        .page-link:hover {
+            background-color: var(--accent-color);
+            color: var(--background-dark);
+            border-color: var(--accent-color);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .message {
+                font-size: 0.95rem;
+            }
+
+            .contact-info {
+                padding: 20px;
+            }
+
+            .contact-item {
+                font-size: 0.9rem;
+            }
+
+            .retry-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Finca Termópilas Logo" onerror="this.style.display='none'">
+        </div>
+
+        <h1>Sin conexión</h1>
+        <p class="subtitle">No hay conexión a internet</p>
+
+        <p class="message">
+            Parece que no tienes conexión a internet en este momento.
+            Algunas páginas que ya visitaste están disponibles sin conexión.
+        </p>
+
+        <div class="contact-info">
+            <h2>Contáctanos</h2>
+            <div class="contact-item">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                <span>+57 317 018 2644</span>
+            </div>
+            <div class="contact-item">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span>termopilashuila@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span>Rivera, Huila, Colombia</span>
+            </div>
+        </div>
+
+        <button class="retry-button" onclick="location.reload()">
+            Reintentar conexión
+        </button>
+
+        <div class="cached-pages">
+            <h3>Páginas disponibles sin conexión:</h3>
+            <div class="page-links">
+                <a href="/" class="page-link">Inicio</a>
+                <a href="/alojamiento.html" class="page-link">Alojamiento</a>
+                <a href="https://eventos.termopilas.co/events/1/finca-termopilas" class="page-link">Tour</a>
+                <a href="/catalogo.html" class="page-link">Catálogo</a>
+                <a href="/galeria.html" class="page-link">Galería</a>
+                <a href="/coliving.html" class="page-link">Coliving</a>
+                <a href="/salon.html" class="page-link">Salón de Eventos</a>
+                <a href="/ubicacion.html" class="page-link">Ubicación</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
