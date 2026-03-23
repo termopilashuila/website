@@ -26,11 +26,11 @@
       },
       {
         "resourceType": "document",
-        "budget": 50
+        "budget": 100
       },
       {
         "resourceType": "total",
-        "budget": 1000
+        "budget": 2000
       }
     ],
     "resourceCounts": [

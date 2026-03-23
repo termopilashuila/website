@@ -26,23 +26,12 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
-            https://termopilas.co/index.html
-            https://termopilas.co/alojamiento.html
-            https://termopilas.co/blog.html
+            http://localhost/index.html
+            http://localhost/alojamiento.html
+            http://localhost/blog.html
+          staticDistDir: .
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 3
           budgetPath: .github/lighthouse/budget.json
-          configPath: .github/lighthouse/lighthouserc.json
-
-      - name: Check Lighthouse scores
-        uses: treosh/lighthouse-ci-action@v12
-        with:
-          urls: |
-            https://termopilas.co/index.html
-            https://termopilas.co/alojamiento.html
-            https://termopilas.co/blog.html
-          uploadArtifacts: false
-          temporaryPublicStorage: false
-          runs: 1
           configPath: .github/lighthouse/lighthouserc.json
