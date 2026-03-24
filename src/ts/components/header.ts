@@ -216,7 +216,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   if (headerElement.getAttribute('data-static-hero') === 'true') {
     // Only generate the navbar for static hero sections
     const navbarHTML = `
-      <nav class="navbar">
+      <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="logo">
           <a href="/index.html">
             <i class="${config.logoIcon}"></i>
@@ -227,7 +227,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
           <span class="hamburger"></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-          ${config.navItems.map(item => 
+          ${config.navItems.map(item =>
             `<li><a href="${item.href}"${item.isActive ? ' class="active"' : ''}>${item.text}</a></li>`
           ).join('')}
         </ul>
@@ -258,7 +258,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
   
   // Generate the navbar HTML
   const navbarHTML = `
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
       <div class="logo">
         <a href="/index.html">
           <i class="${config.logoIcon}"></i>
@@ -269,7 +269,7 @@ function generateHeader(config: HeaderConfig = defaultHeaderConfig): void {
         <span class="hamburger"></span>
       </button>
       <ul class="nav-menu" id="nav-menu">
-        ${navItems.map(item => 
+        ${navItems.map(item =>
           `<li><a href="${item.href}"${item.isActive ? ' class="active"' : ''}>${item.text}</a></li>`
         ).join('')}
       </ul>

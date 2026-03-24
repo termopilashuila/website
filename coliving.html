@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coliving - Finca Termópilas</title>
-    <meta name="description" content="Semana de Coliving para Nómadas Digitales en Finca Termópilas, Rivera, Huila. Disfruta de una experiencia única de trabajo remoto en un paraíso natural con viñedos, piscina y río.">
-    <meta name="description" lang="en" content="Digital Nomad Coliving Week at Finca Termópilas, Rivera, Huila. Remote work experience in natural paradise with vineyards, pool, and river in Colombia.">
-    <meta name="keywords" content="Coliving, Nómadas Digitales, Trabajo Remoto, Comunidad, Libertad, Naturaleza, Conectividad, Finca Termópilas, Rivera, Huila">
-    <meta name="author" content="Finca Termópilas">
+    <title>Coliving Nómada - Redirigiendo...</title>
 
-    <!-- hreflang tags for multilingual SEO -->
-    <link rel="alternate" hreflang="es-CO" href="https://termopilas.co/coliving.html">
-    <link rel="alternate" hreflang="x-default" href="https://termopilas.co/coliving.html">
+    <!-- 301 Redirect via meta refresh (GitHub Pages doesn't support .htaccess) -->
+    <meta http-equiv="refresh" content="0; url=https://eventos.termopilas.co/event/6/semana-de-coliving-nomada">
+    <link rel="canonical" href="https://eventos.termopilas.co/event/6/semana-de-coliving-nomada">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
@@ -19,546 +15,71 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-2406CNRCX9');
-    </script>    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/fonts.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/hero.css">
-    <link rel="stylesheet" href="styles/utilities.css">
-    <link rel="stylesheet" href="styles/tour.css">
-    <link rel="stylesheet" href="styles/coliving.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://termopilas.co/coliving.html">
-    <meta property="og:title" content="Coliving - Finca Termópilas">
-    <meta property="og:description" content="Semana de Coliving para Nómadas Digitales en Finca Termópilas, Rivera, Huila. Disfruta de una experiencia única de trabajo remoto en un paraíso natural con viñedos, piscina y río.">
-    <meta property="og:image" content="https://termopilas.co/assets/images/coliving/header.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/coliving.html">
-    <meta property="twitter:title" content="Coliving - Finca Termópilas">
-    <meta property="twitter:description" content="Semana de Coliving para Nómadas Digitales en Finca Termópilas, Rivera, Huila. Disfruta de una experiencia única de trabajo remoto en un paraíso natural con viñedos, piscina y río.">
-    <meta property="twitter:image" content="https://termopilas.co/assets/images/coliving/header.png">
-    
-    <!-- JavaScript -->
-    <script src="dist/main.js" defer></script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '760911966545667');
-        fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#F29F05">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
 
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Termópilas">
-
-    <!-- Microsoft Tiles -->
-    <meta name="msapplication-TileColor" content="#F29F05">
-    <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
-
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .redirect-message {
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
-    <!-- Header will be dynamically generated by TypeScript -->
-    <header role="banner" class="hero coliving-hero">
-        <!-- Content will be injected by TypeScript -->
-    </header>
-
-    <main id="main-content">
-        <section class="coliving-intro section">
-            <div class="container">
-                <h2>Semana de Coliving Nómada</h2>
-                <p class="coliving-description">
-                    Disfruta de una experiencia única de coliving en un paraíso natural con viñedos, piscina y río. Perfecto para desconectarte del ruido de la ciudad mientras trabajas de forma remota y conectas con otros nómadas digitales. ¿Solo vienes de visita? Consulta nuestras <a href="alojamiento.html" style="color: #F29F05; text-decoration: underline;">opciones de alojamiento por noche</a> o reserva nuestro <a href="https://eventos.termopilas.co/events/1/finca-termopilas" style="color: #F29F05; text-decoration: underline;">Tour de Vino y Cacao</a>.
-                </p>
-                
-                <div class="coliving-highlights">
-                    <div class="highlight-item">
-                        <i class="fas fa-laptop-house"></i>
-                        <h3>Trabajo Remoto</h3>
-                        <p>Espacios diseñados para teletrabajo con escritorios en cada habitación, zonas comunes amplias y conexión estable.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-users"></i>
-                        <h3>Comunidad</h3>
-                        <p>Conecta con otros nómadas digitales, comparte experiencias y crea nuevas amistades en un entorno inspirador.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Naturaleza</h3>
-                        <p>Trabaja rodeado de naturaleza exuberante, con vistas a viñedos, árboles de cacao y el Desfiladero de las Termópilas.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-wifi"></i>
-                        <h3>Conectividad</h3>
-                        <p>Conexión a internet estable para que puedas trabajar sin interrupciones mientras disfrutas del entorno natural.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="coliving-details section">
-            <div class="container">
-                <h2>¿Qué Incluye?</h2>
-                <div class="includes-grid">
-                    <div class="include-item">
-                        <i class="fas fa-home"></i>
-                        <h3>Alojamiento</h3>
-                        <p>5 días y 4 noches en habitaciones con agua caliente y escritorios para trabajar.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Alimentación</h3>
-                        <p>Alimentación completa (mercado y cocinera incluida) durante toda tu estancia.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-glass-cheers"></i>
-                        <h3>Cena de Bienvenida</h3>
-                        <p>Cena de bienvenida el lunes por la noche para conocer a tus colegas nómadas.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-seedling"></i>
-                        <h3>Tour de Cacao</h3>
-                        <p>Tour de cacao con degustación el lunes por la tarde. Conoce el proceso del chocolate.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-wine-glass-alt"></i>
-                        <h3>Tour de Vino</h3>
-                        <p>Tour de vino y cata el miércoles por la noche. Descubre nuestros viñedos y producción artesanal.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-fire"></i>
-                        <h3>Fogata Nocturna</h3>
-                        <p>Fogata nocturna para compartir y relajarse el jueves por la noche bajo las estrellas.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-spa"></i>
-                        <h3>Yoga Matutino</h3>
-                        <p>Sesiones de yoga en las mañanas (martes a viernes) para comenzar el día con energía.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-star"></i>
-                        <h3>Desierto de la Tatacoa</h3>
-                        <p>El viernes después del almuerzo, visita al Desierto Rojo y observación de estrellas en la noche.</p>
-                    </div>
-                    <div class="include-item">
-                        <i class="fas fa-hot-tub"></i>
-                        <h3>Termales (Opcional)</h3>
-                        <p>Reservamos el martes por la noche para visitar las mejores termales de la región (no incluido).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="coliving-not-included section">
-            <div class="container">
-                <h2>No Incluye</h2>
-                <div class="not-included-list">
-                    <div class="not-included-item">
-                        <i class="fas fa-car"></i>
-                        <p><strong>Transporte:</strong> Opcional: taxi desde el aeropuerto de Neiva a la finca, $100.000 para 4 personas.</p>
-                    </div>
-                    <div class="not-included-item">
-                        <i class="fas fa-ticket-alt"></i>
-                        <p><strong>Entrada a las termales:</strong> Coordinamos el transporte para los que quieran ir de manera independiente.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="coliving-schedule section">
-            <div class="container">
-                <h2>Agenda</h2>
-                <div class="experience-timeline">
-                    <div class="experience-item">
-                        <div class="experience-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="experience-content">
-                            <h3>Lunes - Día de Llegada</h3>
-                            <p>Llegada y acomodación en las habitaciones. Tour de cacao con degustación por la tarde. Cena de bienvenida por la noche.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="experience-content">
-                            <h3>Martes - Primer Día de Trabajo</h3>
-                            <p>Yoga matutino, trabajo durante el día. Piscina, jacuzzi y visita opcional a las termales por la noche.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-icon">
-                            <i class="fas fa-wine-glass-alt"></i>
-                        </div>
-                        <div class="experience-content">
-                            <h3>Miércoles - Tour de Vino</h3>
-                            <p>Yoga matutino, trabajo durante el día. Tour y cata de vino por la noche.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="experience-content">
-                            <h3>Jueves - Fogata Nocturna</h3>
-                            <p>Yoga matutino, trabajo durante el día. Fogata nocturna para compartir experiencias y relajarse.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="experience-content">
-                            <h3>Viernes - Desierto de la Tatacoa</h3>
-                            <p>Yoga matutino, último día de trabajo por la mañana. Después del almuerzo, salida al Desierto de la Tatacoa para explorar el Desierto Rojo y observar las estrellas en la noche. Fin de la experiencia de coliving.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="coliving-experiences section" id="coliving-experiences">
-            <div class="container">
-                <h2>Tipos de Experiencia</h2>
-                <p class="experience-description">Elige la opción que mejor se adapte a tus necesidades. Ambas experiencias incluyen todas las actividades mencionadas anteriormente.</p>
-                
-                <div class="experience-options">
-                    <!-- Experiencia Estándar -->
-                    <div class="experience-option">
-                        <div class="experience-header">
-                            <h3>Experiencia Estándar</h3>
-                            <p class="experience-price">$1.290.000 COP</p>
-                            <p class="per-person">por persona</p>
-                        </div>
-                        <div class="experience-image">
-                            <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación Estándar para Coliving">
-                        </div>
-                        <div class="experience-features">
-                            <ul>
-                                <li><i class="fas fa-bed"></i> Habitación estándar compartida</li>
-                                <li><i class="fas fa-bath"></i> Baño privado con agua caliente</li>
-                                <li><i class="fas fa-laptop-house"></i> Escritorios compartidos</li>
-                                <li><i class="fas fa-wifi"></i> Internet de alta velocidad</li>
-                                <li><i class="fas fa-utensils"></i> Alimentación completa gourmet</li>
-                                <li><i class="fas fa-calendar-alt"></i> Todas las actividades incluidas</li>
-                            </ul>
-                            <p class="experience-note">Ideal para quienes buscan una experiencia completa a un precio accesible.</p>
-                            <a href="#coliving-form" class="cta-button">Reserva tu cupo</a>
-                        </div>
-                        <div class="experience-rooms">
-                            <h4>Habitaciones Disponibles:</h4>
-                            <div class="room-thumbnails">
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/habitacion-a/image1.png" alt="Habitación A">
-                                    <span>Habitación A</span>
-                                </div>
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación B">
-                                    <span>Habitación B</span>
-                                </div>
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image1.png" alt="Habitación C">
-                                    <span>Habitación C</span>
-                                </div>
-                            </div>
-                            <a href="alojamiento.html#standard" class="view-rooms">Ver más detalles de habitaciones</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Experiencia De Lujo -->
-                    <div class="experience-option luxury">
-                        <div class="luxury-badge">De Lujo</div>
-                        <div class="experience-header">
-                            <h3>Experiencia De Lujo</h3>
-                            <p class="experience-price">$1.590.000 COP</p>
-                            <p class="per-person">por persona</p>
-                        </div>
-                        <div class="experience-image">
-                            <img loading="lazy" src="assets/images/alojamiento/cabana-1/image1.png" alt="Habitación De Lujo para Coliving">
-                        </div>
-                        <div class="experience-features">
-                            <ul>
-                                <li><i class="fas fa-bed"></i> Cabaña o habitación de lujo</li>
-                                <li><i class="fas fa-bath"></i> Baño privado con agua caliente</li>
-                                <li><i class="fas fa-snowflake"></i> Aire acondicionado</li>
-                                <li><i class="fas fa-laptop-house"></i> Escritorio para trabajo</li>
-                                <li><i class="fas fa-wifi"></i> Internet de alta velocidad</li>
-                                <li><i class="fas fa-utensils"></i> Alimentación completa gourmet</li>
-                                <li><i class="fas fa-calendar-alt"></i> Todas las actividades incluidas</li>
-                                <li><i class="fas fa-glass-cheers"></i> Botella de vino de bienvenida</li>
-                            </ul>
-                            <p class="experience-note">Para quienes buscan máximo confort mientras trabajan en remoto.</p>
-                            <a href="#coliving-form" class="cta-button">Reserva tu cupo</a>
-                        </div>
-                        <div class="experience-rooms">
-                            <h4>Habitaciones Disponibles:</h4>
-                            <div class="room-thumbnails">
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña 1">
-                                    <span>Cabaña 1</span>
-                                </div>
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/gemela-1/image1.png" alt="Gemela 1">
-                                    <span>Gemela 1</span>
-                                </div>
-                                <div class="room-thumbnail">
-                                    <img loading="lazy" src="assets/images/alojamiento/gemela-2/image1.png" alt="Gemela 2">
-                                    <span>Gemela 2</span>
-                                </div>
-                            </div>
-                            <a href="alojamiento.html#luxury" class="view-rooms">Ver más detalles de habitaciones</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="coliving-registration section">
-            <div class="container">
-                <h2>Reserva tu Próxima Experiencia</h2>
-                <p class="registration-description">¿Te interesa participar en nuestra próxima semana de coliving para nómadas digitales? Déjanos tus datos y te contactaremos cuando tengamos fechas disponibles.</p>
-                
-                <form id="coliving-form" class="coliving-form">
-                    <div class="form-group">
-                        <label for="experience_type">Tipo de Experiencia</label>
-                        <select id="experience_type" name="experience_type" required>
-                            <option value="">Selecciona una opción</option>
-                            <option value="Estándar" data-price="1290000" data-url="https://checkout.wompi.co/l/S6gUak">Experiencia Estándar ($1.290.000)</option>
-                            <option value="De Lujo" data-price="1590000" data-url="https://checkout.wompi.co/l/0czIcF">Experiencia De Lujo ($1.590.000)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="cta-button">Ir a Pagar</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section class="coliving-testimonials section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/coliving/section0.jpg'); background-size: cover; background-position: center;">
-            <div class="container">
-                <h2>Testimonios de Nómadas Digitales</h2>
-                <div class="testimonials-slider">
-                    <div class="testimonial testimonial-card">
-                        <div class="testimonial-content">
-                            <p>Una experiencia increíble que combinó perfectamente el trabajo remoto con la conexión con la naturaleza. Conocí personas maravillosas y pude trabajar en un entorno inspirador.</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-author">
-                                <img loading="lazy" src="assets/images/coliving/testimonials/testimonial1.jpg" alt="Foto de Ángela" class="testimonial-author-img">
-                                <div>
-                                    <div class="author testimonial-author-name">Ángela Garrido</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial testimonial-card">
-                        <div class="testimonial-content">
-                            <p>Nunca pensé que podría ser tan productivo trabajando desde un lugar tan hermoso. La conexión a internet fue excelente y las actividades complementarias fueron el balance perfecto.</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-author">
-                                <img loading="lazy" src="assets/images/coliving/testimonials/testimonial2.jpg" alt="Foto de Nicolás" class="testimonial-author-img">
-                                <div>
-                                    <div class="author testimonial-author-name">Nicolás Zapata</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial testimonial-card">
-                        <div class="testimonial-content">
-                            <p>Las sesiones de yoga por la mañana y las actividades por la tarde fueron el complemento perfecto para mis jornadas de trabajo. Definitivamente repetiré la experiencia.</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-author">
-                                <img loading="lazy" src="assets/images/coliving/testimonials/testimonial3.jpg" alt="Foto de Nicolás" class="testimonial-author-img">
-                                <div>
-                                    <div class="author testimonial-author-name">Nicolás Ospina</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer will be dynamically generated by TypeScript -->
-    <footer role="contentinfo" id="contacto">
-        <!-- Content will be injected by TypeScript -->
-    </footer>
+    <div class="redirect-message">
+        <h1>💻 Semana de Coliving Nómada</h1>
+        <p>Redirigiendo a nuestra página de eventos...</p>
+        <div class="spinner"></div>
+        <p style="margin-top: 2rem; font-size: 1rem;">
+            Si no eres redirigido automáticamente,
+            <a href="https://eventos.termopilas.co/event/6/semana-de-coliving-nomada">haz clic aquí</a>
+        </p>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize header with custom configuration
-            if (window.termopilasHeader) {
-                window.termopilasHeader.updateConfig({
-                    heroContent: {
-                        title: 'Coliving para <strong>Nómadas Digitales</strong>',
-                        subtitle: 'Trabajo remoto en un paraíso natural',
-                        ctaText: 'RESERVA TU CUPO',
-                        ctaHref: '#coliving-form'
-                    },
-                    heroClass: 'hero coliving-hero',
-                    heroImage: 'assets/images/coliving/section0.jpg'
-                });
-            }
-
-            // Track "Reserva tu cupo" buttons for each experience type
-            const reservaCupoButtons = document.querySelectorAll('a[href="#coliving-form"]');
-            reservaCupoButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const experienceOption = this.closest('.experience-option');
-                    const experienceType = experienceOption.classList.contains('luxury') ? 'luxury' : 'standard';
-                    const experienceTitle = experienceOption.querySelector('.experience-header h3').textContent;
-                    const experiencePrice = experienceOption.querySelector('.experience-price').textContent;
-
-                    // GA4 standard event: generate_lead
-                    gtag('event', 'generate_lead', {
-                        'event_category': 'Reservations',
-                        'event_label': `Reserva Cupo - ${experienceTitle}`,
-                        'experience_type': experienceType,
-                        'experience_title': experienceTitle,
-                        'experience_price': experiencePrice,
-                        'page': 'coliving',
-                        'value': 1
-                    });
-                });
-            });
-
-            // Track "Ver más detalles de habitaciones" links
-            const roomDetailsLinks = document.querySelectorAll('.view-rooms');
-            roomDetailsLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const href = this.getAttribute('href');
-                    const roomType = href.includes('luxury') ? 'luxury' : 'standard';
-                    
-                    gtag('event', `coliving_room_details_${roomType}`, {
-                        'event_category': 'Navigation',
-                        'event_label': `View Room Details - ${roomType}`,
-                        'room_type': roomType,
-                        'page': 'coliving',
-                        'destination': 'alojamiento',
-                        'value': 1
-                    });
-                });
-            });
-
-            // Track room thumbnail interactions
-            const roomThumbnails = document.querySelectorAll('.room-thumbnail');
-            roomThumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener('click', function() {
-                    const roomName = this.querySelector('span').textContent;
-                    const experienceSection = this.closest('.experience-option');
-                    const experienceType = experienceSection.classList.contains('luxury') ? 'luxury' : 'standard';
-                    const roomSlug = roomName.toLowerCase().replace(/\s+/g, '_');
-                    
-                    gtag('event', `coliving_room_thumbnail_${roomSlug}`, {
-                        'event_category': 'Engagement',
-                        'event_label': `Room Thumbnail - ${roomName}`,
-                        'room_name': roomName,
-                        'experience_type': experienceType,
-                        'page': 'coliving',
-                        'value': 1
-                    });
-                });
-            });
-
-            // Payment URLs for each experience type
-            const paymentUrls = {
-                'Estándar': 'https://checkout.wompi.co/l/S6gUak',
-                'De Lujo': 'https://checkout.wompi.co/l/0czIcF'
-            };
-
-            // Form submission handler - redirect to Wompi payment
-            const form = document.getElementById('coliving-form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const experienceSelect = form.elements['experience_type'];
-                    const experienceType = experienceSelect.value;
-                    const selectedOption = experienceSelect.options[experienceSelect.selectedIndex];
-                    const paymentUrl = selectedOption.dataset.url || paymentUrls[experienceType];
-                    
-                    if (!experienceType) {
-                        alert('Por favor selecciona un tipo de experiencia');
-                        return;
-                    }
-                    
-                    // Track form submission in Google Analytics
-                    gtag('event', `coliving_payment_redirect_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
-                        'event_category': 'Payment',
-                        'event_label': `Coliving Payment - ${experienceType}`,
-                        'experience_type': experienceType,
-                        'page': 'coliving',
-                        'value': 1
-                    });
-
-                    // Redirect to Wompi payment page
-                    if (paymentUrl) {
-                        window.location.href = paymentUrl;
-                    } else {
-                        alert('El enlace de pago no está configurado. Por favor contacta a soporte.');
-                    }
-                });
-            }
-
-            // Track select change for experience type
-            const experienceSelect = document.getElementById('experience_type');
-            if (experienceSelect) {
-                experienceSelect.addEventListener('change', function() {
-                    const experienceType = this.value;
-                    
-                    if (experienceType) {
-                        gtag('event', `coliving_experience_selection_${experienceType.toLowerCase().replace(/\s+/g, '_')}`, {
-                            'event_category': 'Form Interaction',
-                            'event_label': `Experience Type Selection - ${experienceType}`,
-                            'experience_type': experienceType,
-                            'page': 'coliving',
-                            'value': 1
-                        });
-                    }
-                });
-            }
-        });
+        // Immediate redirect (backup to meta refresh)
+        window.location.replace('https://eventos.termopilas.co/event/6/semana-de-coliving-nomada');
     </script>
 </body>
-</html> 
+</html>

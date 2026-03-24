@@ -55,12 +55,33 @@ npm run resize-images -- assets/images/tour --width=800 --quality=90
 
 - Maximum width: 1200px (height is adjusted proportionally)
 - Image quality: 80%
+- WebP quality: 80%
+- AVIF quality: 75%
 - Supported formats: JPG/JPEG and PNG
+
+## Features
+
+- Automatically generates WebP and AVIF variants for modern browsers
+- Resizes images that exceed the maximum width while maintaining aspect ratio
+- Only replaces original images if the new version is smaller
+- WebP provides 25-50% smaller file sizes with excellent browser support (95%+)
+- AVIF provides even better compression (30-60% smaller) with growing browser support (85%+)
+
+## Output
+
+For each processed image, the script generates:
+- Original format (JPEG/PNG) - optimized and resized if needed
+- `.webp` variant - WebP version for modern browsers
+- `.avif` variant - AVIF version for cutting-edge browsers
+
+Example: `tour-hero.jpg` → `tour-hero.jpg`, `tour-hero.webp`, `tour-hero.avif`
 
 ## Notes
 
 - The script will only resize images that are larger than the specified maximum width
-- Original images will be replaced with the resized versions
+- Original images will be replaced with the resized versions only if smaller
 - The aspect ratio is preserved
-- Smaller images remain unchanged 
-- Original images are only replaced if the new version is smaller in file size 
+- Smaller images remain unchanged
+- Original images are only replaced if the new version is smaller in file size
+- WebP and AVIF variants are always generated regardless of original size
+- RGBA/transparent images are converted to RGB with white background for JPEG/AVIF compatibility 
