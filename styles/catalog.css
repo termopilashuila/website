@@ -154,11 +154,41 @@
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+    display: block;
 }
 
 .catalog-card .cta-button:hover {
-    background-color: #F29F05;
+    opacity: 0.9;
+}
+
+.catalog-card .cta-button.cta-secondary {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}
+
+.catalog-card .cta-button.cta-secondary:hover {
+    border-color: #F29F05;
+    color: #F29F05;
+    opacity: 1;
+}
+
+.catalog-price {
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    color: #F29F05 !important;
+    margin-bottom: 0.5rem !important;
+    opacity: 1 !important;
+}
+
+.catalog-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 /* Responsive Design */

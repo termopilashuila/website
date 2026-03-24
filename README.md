@@ -604,6 +604,102 @@ El directorio `appscript/` contiene scripts de Google Apps que manejan funcional
 
 Para más detalles, consulta `appscript/README.md`.
 
+## n8n Webhook Integration
+
+El sitio web envía datos de formularios a n8n workflows para procesamiento adicional, notificaciones, y almacenamiento en base de datos PostgreSQL. Todos los webhooks usan el método `POST` con `Content-Type: application/json` en modo "fire and forget" (no bloquean la experiencia del usuario).
+
+### Website → n8n Workflow Mapping
+
+| Página | Webhook URL | n8n Workflow | Workflow ID | Estado |
+|--------|-------------|--------------|-------------|---------|
+| `cata/experiencia-vino-mar-fuego.html` | `https://n8n.termopilas.co/webhook/registro-website` | **Reserva de eventos** | `lSWD3QX0XedFnDFU` | 🟢 Active |
+| `registro.html` | `https://n8n.termopilas.co/webhook/139cf446-b7f3-4d4a-a337-dda543fb2687` | **Registro de huéspedes** | `nQk99FC9E7giNMRL` | 🟢 Active |
+
+### Payload Structure by Form
+
+#### Cata Event Registration (`cata/experiencia-vino-mar-fuego.html`)
+```javascript
+{
+  name: string,              // Guest name
+  email: string,             // Email address
+  phone: string,             // 10-digit Colombian phone (no spaces)
+  date: string,              // Event date (YYYY-MM-DD)
+  numberOfPeople: string,    // Number of attendees (1-5)
+  message: string,           // Optional message
+  eventName: "Experiencia Vino Mar y Fuego",
+  totalAmount: number,       // PRICE_PER_PERSON (160,000 COP) × numberOfPeople
+  source: "website",
+  timestamp: string          // ISO 8601 format
+}
+```
+
+#### Guest Registration (`registro.html`)
+```javascript
+{
+  nombres: string,                // First names
+  apellidos: string,              // Last names
+  tipoIdentificacion: string,     // ID type (Cédula de Ciudadanía, Cédula de Extranjería, Pasaporte, etc.)
+  numeroIdentificacion: string,   // ID number
+  email: string,                  // Email address
+  celular: string,                // Mobile phone (10 digits)
+  fechaNacimiento: string,        // Birth date (YYYY-MM-DD)
+  fechaInicio: string,            // Check-in date (YYYY-MM-DD)
+  direccion: string,              // Address
+  genero: string,                 // Gender (Masculino, Femenino, Otro, Prefiero no decirlo)
+  nacionalidad: string,           // Nationality
+  motivoViaje: string,            // Travel reason (Turismo, Negocios, Visita familiar, etc.)
+  ocupacion: string,              // Occupation
+  municipioResidencia: string,    // City of residence
+  tipoHuesped: string             // Guest type (Huésped principal, Huésped acompañante)
+}
+```
+
+### Implementation Pattern
+
+All forms follow this dual-submission pattern:
+
+1. **Google Apps Script** (via iframe POST): Saves data to Google Sheets and sends HTML email to team
+2. **n8n webhook** (via fetch fire-and-forget): Sends to workflow for database storage and additional processing
+
+```javascript
+// Send to n8n webhook (fire and forget - doesn't block user)
+fetch(webhookURL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+}).catch(error => console.error('Webhook error:', error));
+
+// Send to Google Apps Script (primary submission path)
+// User redirected after successful Apps Script response
+```
+
+### Verification
+
+To verify webhook connectivity and workflow status:
+
+```bash
+# From selfhost repo
+cd clients/n8n
+source .env
+
+# List all active workflows
+python3 entrypoint.py workflows --active
+
+# Search for specific webhook path
+python3 entrypoint.py search "registro-website"
+python3 entrypoint.py search "139cf446-b7f3-4d4a-a337-dda543fb2687"
+
+# Get workflow details
+python3 entrypoint.py workflow lSWD3QX0XedFnDFU
+python3 entrypoint.py workflow nQk99FC9E7giNMRL
+```
+
+### Related Services
+
+- **n8n UI**: `https://n8n.termopilas.co` (workflow editor and monitoring)
+- **PostgreSQL Database**: Docker container `n8n-postgres` (stores form submissions in `website.guest_registration` and `website.tour_registration` tables)
+- **Google Apps Script**: Primary form processing path (see `appscript/README.md`)
+
 ## Desarrollo local
 
 ### Requisitos previos
