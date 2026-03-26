@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiencia Vino Mar y Fuego - Finca Termópilas</title>
-    <meta http-equiv="refresh" content="0; url=./cata/experiencia-vino-mar-fuego.html">
-    <link rel="canonical" href="./cata/experiencia-vino-mar-fuego.html">
+    <title>Cata de Vinos - Redirigiendo...</title>
+
+    <!-- 301 Redirect via meta refresh (GitHub Pages doesn't support .htaccess) -->
+    <meta http-equiv="refresh" content="0; url=https://eventos.termopilas.co/cata">
+    <link rel="canonical" href="https://eventos.termopilas.co/cata">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -21,9 +23,13 @@
     <meta property="twitter:description" content="Disfruta de nuestras experiencias de cata de vino artesanal en Finca Termópilas, Rivera, Huila.">
     <meta property="twitter:image" content="https://termopilas.co/assets/images/tour/tour-wine.jpg">
 
-    <!-- Fallback for users with JavaScript disabled -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
     <script>
-        window.location.replace("./cata/experiencia-vino-mar-fuego.html");
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2406CNRCX9');
     </script>
 
     <!-- Meta Pixel Code -->
@@ -42,7 +48,9 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -58,9 +66,64 @@
     <meta name="msapplication-TileColor" content="#F29F05">
     <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
 
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .redirect-message {
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirigiendo a la página del evento...</p>
-    <p>Si no eres redirigido automáticamente, <a href="./cata/experiencia-vino-mar-fuego.html">haz clic aquí</a>.</p>
+    <div class="redirect-message">
+        <h1>🍷 Cata de Vinos</h1>
+        <p>Redirigiendo a nuestra página de eventos...</p>
+        <div class="spinner"></div>
+        <p style="margin-top: 2rem; font-size: 1rem;">
+            Si no eres redirigido automáticamente,
+            <a href="https://eventos.termopilas.co/cata">haz clic aquí</a>
+        </p>
+    </div>
+
+    <script>
+        window.location.replace('https://eventos.termopilas.co/cata');
+    </script>
 </body>
 </html>
