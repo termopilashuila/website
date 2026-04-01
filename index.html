@@ -294,7 +294,7 @@
                             <li>14% alcohol</li>
                             <li>750 ml</li>
                         </ul>
-                        <button class="order-button">Pedir</button>
+                        <a href="https://tienda.termopilas.co/product/vino-f27/" class="order-button" target="_blank" rel="noopener" data-product="Vino F27" data-price="Desde $25.000">Pedir</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -313,7 +313,7 @@
                             <li>12% alcohol</li>
                             <li>750 ml</li>
                         </ul>
-                        <button class="order-button">Pedir</button>
+                        <a href="https://tienda.termopilas.co/product/vino-rose/" class="order-button" target="_blank" rel="noopener" data-product="Vino Rosé" data-price="Desde $30.000">Pedir</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -332,7 +332,7 @@
                             <li>Producido en Termópilas</li>
                             <li>Caramelizado con panela</li>
                         </ul>
-                        <button class="order-button">Pedir</button>
+                        <a href="https://tienda.termopilas.co/product/nibs-de-cacao/" class="order-button" target="_blank" rel="noopener" data-product="Nibs de cacao" data-price="Desde $10.000">Pedir</a>
                     </div>
                 </div>
             </div>
@@ -370,6 +370,7 @@
                     <div class="service-card-content">
                         <h3>Pasadía</h3>
                         <p>¿Plan de domingo? ¡De todos los días! Disfruta nuestro pasadía en familia o amigos.</p>
+                        <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=home&utm_content=service_pasadia&text=Hola.%20Vi%20la%20oferta%20de%20Pasad%C3%ADa%20en%20la%20p%C3%A1gina%20principal%20de%20Term%C3%B3pilas.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20detalles%20sobre%20horarios%2C%20servicios%20incluidos%20y%20precios%20para%20el%20pasad%C3%ADa%20en%20familia%20o%20amigos" class="service-link">Ver más</a>
                     </div>
                 </div>
 
@@ -508,25 +509,24 @@
             const orderButtons = document.querySelectorAll('.order-button');
             orderButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const productCard = this.closest('.product-card');
-                    const productTitle = productCard.querySelector('.product-overlay h3').textContent;
-                    const productPrice = productCard.querySelector('.price').textContent;
-                    const productSlug = productTitle.toLowerCase().replace(/\s+/g, '_');
+                    const productName = this.getAttribute('data-product');
+                    const productPrice = this.getAttribute('data-price');
 
-                    // GA4 standard event: generate_lead (product inquiry via WhatsApp)
+                    // GA4 standard event: generate_lead (product inquiry via tienda)
                     gtag('event', 'generate_lead', {
                         'event_category': 'Product',
-                        'event_label': `Order ${productTitle}`,
-                        'product_name': productTitle,
+                        'event_label': `Order ${productName}`,
+                        'product_name': productName,
                         'product_price': productPrice,
                         'page': 'home',
+                        'destination': 'tienda',
                         'value': 1
                     });
 
                     // Meta Pixel standard event: Contact (product inquiry)
                     if (window.fbq && typeof window.fbq === 'function') {
                         fbq('track', 'Contact', {
-                            content_name: `Product Order - ${productTitle}`,
+                            content_name: `Product Order - ${productName}`,
                             content_category: 'Products'
                         });
                     }
@@ -568,6 +568,20 @@
                         'event_label': 'Eventos Service - Ver más',
                         'page': 'home',
                         'service_type': 'eventos',
+                        'value': 1
+                    });
+                });
+            }
+
+            const pasadiaLink = document.querySelector('a[href*="service_pasadia"]');
+            if (pasadiaLink) {
+                pasadiaLink.addEventListener('click', function() {
+                    gtag('event', 'home_services_pasadia', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Pasadía Service - Ver más',
+                        'page': 'home',
+                        'service_type': 'pasadia',
+                        'destination': 'whatsapp',
                         'value': 1
                     });
                 });
