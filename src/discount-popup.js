@@ -10,20 +10,29 @@ class DiscountPopupHandler {
         // Configuration with defaults
         this.config = {
             popupDelay: options.popupDelay || 10000, // 10 seconds
-            timerDuration: options.timerDuration || 30, // 30 seconds
+            timerDuration: options.timerDuration || 40, // 40 seconds (matches HTML)
             backendUrl: options.backendUrl || 'https://script.google.com/macros/s/AKfycbzG1hJCKAVmaMQHzI_P6zcucOauwLPbcZGhIUDAKvYDaxrxmCYQmjGodigTH0sRkO0glw/exec',
             popupId: options.popupId || 'discount-popup',
+            dismissedExpiry: options.dismissedExpiry || 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
             ...options
+        };
+
+        // LocalStorage keys
+        this.storageKeys = {
+            dismissed: 'termopilas_discount_popup_dismissed',
+            submitted: 'termopilas_discount_popup_submitted',
+            dismissedAt: 'termopilas_discount_popup_dismissed_at'
         };
 
         // State management
         this.timer = this.config.timerDuration;
         this.timerInterval = null;
         this.popupShown = false;
-        
+        this.timerExpired = false;
+
         // DOM elements
         this.elements = {};
-        
+
         this.init();
     }
 
@@ -65,7 +74,7 @@ class DiscountPopupHandler {
             this.elements.closeBtn.addEventListener('click', () => {
                 console.log('[Discount Popup] Close button clicked');
                 this.trackEvent('discount_popup_closed', 'engagement', 'close_button');
-                this.hidePopup();
+                this.hidePopup('close_button');
             });
         }
 
@@ -74,7 +83,7 @@ class DiscountPopupHandler {
             if (e.target === this.elements.popup) {
                 console.log('[Discount Popup] Backdrop clicked, closing popup');
                 this.trackEvent('discount_popup_closed', 'engagement', 'backdrop_click');
-                this.hidePopup();
+                this.hidePopup('backdrop');
             }
         });
 
@@ -93,6 +102,17 @@ class DiscountPopupHandler {
     }
 
     schedulePopup() {
+        // Check if user has already submitted or dismissed the popup
+        if (this.hasSubmitted()) {
+            console.log('[Discount Popup] User has already submitted email, skipping popup');
+            return;
+        }
+
+        if (this.isDismissed()) {
+            console.log('[Discount Popup] User has dismissed popup recently, skipping popup');
+            return;
+        }
+
         console.log(`[Discount Popup] Scheduling popup with ${this.config.popupDelay / 1000} second delay`);
         setTimeout(() => this.showPopup(), this.config.popupDelay);
     }
@@ -116,26 +136,33 @@ class DiscountPopupHandler {
         this.startTimer();
     }
 
-    hidePopup() {
-        console.log('[Discount Popup] Hiding popup');
+    hidePopup(reason = 'manual') {
+        console.log('[Discount Popup] Hiding popup, reason:', reason);
         this.elements.popup.style.display = 'none';
         this.clearTimer();
+
+        // Store dismissed state with timestamp (only if manually dismissed, not on submit)
+        if (reason === 'manual' || reason === 'close_button' || reason === 'backdrop') {
+            this.setDismissed();
+        }
     }
 
     startTimer() {
         this.clearTimer(); // Clear any existing timer
-        
+        this.timerExpired = false;
+
         this.timerInterval = setInterval(() => {
             this.timer--;
-            
+
             if (this.elements.timerSpan) {
                 this.elements.timerSpan.textContent = this.timer;
             }
-            
+
             if (this.timer <= 0) {
-                console.log('[Discount Popup] Timer expired, hiding popup');
+                console.log('[Discount Popup] Timer expired, showing gentle message');
                 this.trackEvent('discount_popup_timeout', 'engagement', 'timer_expired');
-                this.hidePopup();
+                this.showTimerExpiredMessage();
+                this.clearTimer();
             }
         }, 1000);
     }
@@ -247,13 +274,16 @@ class DiscountPopupHandler {
         if (this.elements.form) {
             this.elements.form.style.display = 'none';
         }
-        
+
         if (this.elements.successDiv) {
             this.elements.successDiv.style.display = 'block';
         }
-        
+
+        // Mark as submitted permanently
+        this.setSubmitted();
+
         // Hide popup after showing success message
-        setTimeout(() => this.hidePopup(), 2000);
+        setTimeout(() => this.hidePopup('submit_success'), 2000);
     }
 
     showError(message) {
@@ -284,6 +314,62 @@ class DiscountPopupHandler {
                 ...additionalParams
             });
         }
+    }
+
+    // LocalStorage persistence methods
+    hasSubmitted() {
+        return localStorage.getItem(this.storageKeys.submitted) === 'true';
+    }
+
+    setSubmitted() {
+        console.log('[Discount Popup] Marking as submitted (permanent)');
+        localStorage.setItem(this.storageKeys.submitted, 'true');
+    }
+
+    isDismissed() {
+        const dismissed = localStorage.getItem(this.storageKeys.dismissed);
+        const dismissedAt = localStorage.getItem(this.storageKeys.dismissedAt);
+
+        if (dismissed !== 'true' || !dismissedAt) {
+            return false;
+        }
+
+        const dismissedTime = parseInt(dismissedAt, 10);
+        const now = Date.now();
+        const elapsed = now - dismissedTime;
+
+        // Check if 7 days have passed
+        if (elapsed > this.config.dismissedExpiry) {
+            console.log('[Discount Popup] Dismissed state expired, clearing');
+            this.clearDismissed();
+            return false;
+        }
+
+        return true;
+    }
+
+    setDismissed() {
+        console.log('[Discount Popup] Marking as dismissed (7-day expiry)');
+        localStorage.setItem(this.storageKeys.dismissed, 'true');
+        localStorage.setItem(this.storageKeys.dismissedAt, Date.now().toString());
+    }
+
+    clearDismissed() {
+        localStorage.removeItem(this.storageKeys.dismissed);
+        localStorage.removeItem(this.storageKeys.dismissedAt);
+    }
+
+    showTimerExpiredMessage() {
+        this.timerExpired = true;
+
+        // Find the timer message element
+        const timerMessage = this.elements.popup.querySelector('p span[style*="color:#F29F05"]');
+        if (timerMessage) {
+            timerMessage.innerHTML = '<span style="color:#27ae60; font-weight:bold;">¿Aún te interesa? Completa tu correo arriba.</span>';
+        }
+
+        // Keep popup visible with gentle message
+        console.log('[Discount Popup] Timer expired, showing gentle reminder instead of auto-closing');
     }
 
     // Public methods for external control
