@@ -14,6 +14,7 @@ const urlsToCache = [
   '/catalogo.html',
   '/coliving.html',
   '/coliving/gracias.html',
+  '/despierta.html',
   '/dist/main.js',
   '/feedback.html',
   '/galeria.html',
