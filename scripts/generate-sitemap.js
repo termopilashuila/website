@@ -30,6 +30,7 @@ const PRIMARY_PAGES = new Set([
   'catalogo.html',
   'cata.html',
   'despierta.html',
+  'eventos.html',
   'pago.html',
 ]);
 
@@ -130,6 +131,7 @@ const PAGE_IMAGE_MAP = {
   'catalogo.html': 'assets/images/catalog/header.png',
   'cata.html': 'assets/images/tour/tour-wine.jpg',
   'despierta.html': 'assets/images/tour/header.png',
+  'eventos.html': 'assets/images/eventos/header.png',
   'pago.html': 'assets/images/pago/wompi.png',
   'galeria.html': 'assets/images/galeria/galeria-01.jpeg',
   'blog.html': 'assets/images/blog/header.png',
