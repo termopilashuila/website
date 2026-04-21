@@ -29,3 +29,6 @@ jobs:
 
       - name: Sitemap validate
         run: npm run sitemap:validate
+
+      # Note: Product sync is not run in CI (requires WooCommerce API credentials)
+      # Run manually before deployment: npm run sync:products

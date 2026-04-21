@@ -75,10 +75,14 @@ website/
 │   ├── experiencia-vino-mar-fuego-gracias.html
 │   └── experiencia-vino-mar-fuego-fallido.html
 ├── archive/                 # Versiones archivadas de landings (cata, coliving, tour); no se despliegan como páginas principales
-├── scripts/                 # Utilidades Node
+├── scripts/                 # Utilidades Node y Python
 │   ├── generate-sitemap.js
 │   ├── process-blog.js
-│   └── update-sw-version.js
+│   ├── update-sw-version.js
+│   ├── sync_products_from_woocommerce.py   # Sync products from WooCommerce
+│   ├── compare_products_woocommerce.py     # Validate products against WooCommerce
+│   ├── compare_rooms_lobbypms.py           # Validate rooms against LobbyPMS
+│   └── generate_blog_crosslinks.py         # Generate Ghost blog cross-links
 ├── src/
 │   ├── newsletter.js        # Newsletter (Apps Script backend)
 │   ├── blog.js              # Interacciones del blog (categorías/animaciones)
@@ -579,6 +583,34 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 - Validación rápida: `npm run sitemap:validate`
 - Ping a buscadores: `npm run sitemap:ping`
 - Script: `scripts/generate-sitemap.js`
+
+### Product Catalog Sync
+
+The `catalogo.html` product catalog is automatically synced from the WooCommerce store at `tienda.termopilas.co`. This ensures product prices, descriptions, and availability are always up-to-date.
+
+**Sync Script:**
+- **Location**: `scripts/sync_products_from_woocommerce.py`
+- **Run manually**: `npm run sync:products`
+- **Dry run** (preview without writing): `python3 scripts/sync_products_from_woocommerce.py --dry-run`
+
+**What it does:**
+1. Fetches all published products from WooCommerce REST API
+2. Categorizes products into "vinos" and "chocolates" sections
+3. Generates HTML product cards with images, prices, descriptions, and CTAs
+4. Updates Schema.org Product structured data (JSON-LD)
+5. Preserves WhatsApp CTAs and WooCommerce shop links
+
+**When to run:**
+- Before deploying catalog changes
+- After updating product prices in WooCommerce
+- After adding new products to the store
+- After editing product descriptions in WooCommerce
+
+**Requirements:**
+- WooCommerce API credentials in `.env` file (symlinked from `/home/camilo/Github/cecabrera/selfhost/clients/woocommerce/.env`)
+- Python 3 with `python-dotenv` and WooCommerce client installed
+
+**Note**: The sync script is NOT run automatically in CI/CD (requires API credentials). Always run manually before deployment.
 
 ## Google Apps Script Backend
 

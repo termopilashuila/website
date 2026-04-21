@@ -141,7 +141,8 @@ const defaultHeaderConfig: HeaderConfig = {
     { text: 'Salón', href: '/salon.html#main-content' },
     { text: 'Blog', href: 'https://blog.termopilas.co' },
     { text: 'Trabajo', href: '/trabajo.html#main-content' },
-    { text: 'Galería', href: '/galeria.html#main-content' }
+    { text: 'Galería', href: '/galeria.html#main-content' },
+    { text: 'Tienda', href: 'https://tienda.termopilas.co' }
   ],
   heroContent: {
     title: 'Entorno que <strong>cautiva</strong>',
