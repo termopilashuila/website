@@ -1259,6 +1259,42 @@
                         'value': 0
                     });
                 });
+
+                // Fire-and-forget: send form data to n8n salon-cotizacion webhook (SAL-003).
+                // Non-blocking — runs after the GAS fetch starts; n8n errors are silently swallowed.
+                try {
+                    const servicioLabels = {
+                        requiere_alojamiento:   'Alojamiento',
+                        requiere_alimentacion:  'Alimentación',
+                        requiere_mobiliario:    'Mobiliario',
+                        requiere_planeador:     'Planeador de bodas',
+                        requiere_decoracion:    'Decoración',
+                        requiere_sonido:        'Sonido',
+                        requiere_fotografia:    'Fotografía / Video',
+                        requiere_audiovisuales: 'Audiovisuales'
+                    };
+                    const serviciosChecked = Object.entries(servicioLabels)
+                        .filter(([field]) => formData.get(field) === 'Sí')
+                        .map(([, label]) => label);
+                    fetch('https://n8n.termopilas.co/webhook/salon-cotizacion', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            tipo_evento:          formData.get('tipo_evento'),
+                            nombres_organizacion: formData.get('nombres_organizacion'),
+                            email:                formData.get('email'),
+                            telefono:             formData.get('telefono'),
+                            fecha_evento:         formData.get('fecha_evento'),
+                            hora_evento:          formData.get('hora_evento'),
+                            numero_invitados:     formData.get('numero_invitados'),
+                            presupuesto:          formData.get('presupuesto'),
+                            servicios:            serviciosChecked,
+                            event_category:       formData.get('event_category'),
+                            comentarios:          formData.get('comentarios')
+                        })
+                    }).catch(() => { /* silently ignore n8n errors */ });
+                } catch (_) { /* silently ignore */ }
+
                         });
             
             // Track budget selection
