@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiencias Corporativas | Finca Termópilas - Rivera, Huila</title>
+  <meta name="description" content="Transforma tu equipo en Finca Termópilas, Rivera Huila. Experiencias corporativas únicas rodeadas de naturaleza, vino, cacao y gastronomía. Ideal para empresas, universidades y organizaciones." />
+  <meta property="og:title" content="Experiencias Corporativas | Finca Termópilas" />
+  <meta property="og:description" content="Fortalece tu equipo en un entorno natural único en el Huila. Reserva tu experiencia." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde-profundo: #1a3a2a;
+      --verde-medio: #2d5e40;
+      --verde-claro: #4a8c5c;
+      --verde-suave: #7ab88a;
+      --verde-menta: #b8d9c0;
+      --crema: #f5f0e8;
+      --crema-oscura: #ede5d4;
+      --tierra: #8b5e3c;
+      --dorado: #c9a84c;
+      --dorado-claro: #e8c97a;
+      --blanco: #fdfaf5;
+      --texto-oscuro: #1c2b20;
+      --texto-medio: #3d5440;
+      --texto-suave: #6b8570;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--blanco);
+      color: var(--texto-oscuro);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--verde-profundo) 0%, var(--verde-medio) 50%, #1e4a30 100%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434269/B2B%20Banner.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 40%, rgba(74,140,92,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 80% 70%, rgba(26,58,42,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a8c5c' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dorado-claro);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      position: relative;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--blanco);
+      line-height: 1.05;
+      max-width: 820px;
+      position: relative;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--dorado-claro);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      color: var(--verde-menta);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-top: 24px;
+      position: relative;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .hero-cta-wrap {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: fadeUp 1s 0.3s ease both;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-claro) 100%);
+      color: var(--verde-profundo);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 18px 44px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(201,168,76,0.5);
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: rgba(184,217,192,0.7);
+      letter-spacing: 0.3px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(184,217,192,0.5);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll span { width: 1px; height: 40px; background: rgba(184,217,192,0.3); display: block; }
+
+    .hero-logos {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 56px;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    .hero-logos .tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--verde-menta);
+      border: 1px solid rgba(184,217,192,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ── DOLOR ── */
+    .dolor {
+      background: var(--crema);
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .dolor h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--verde-profundo);
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.2;
+    }
+
+    .dolor p {
+      font-size: 1.05rem;
+      color: var(--texto-medio);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .dolor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
+    .dolor-card {
+      background: var(--blanco);
+      border: 1px solid var(--crema-oscura);
+      border-radius: 8px;
+      padding: 32px 28px;
+      text-align: left;
+    }
+
+    .dolor-card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--crema-oscura);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .dolor-card .icon svg { width: 20px; height: 20px; stroke: var(--verde-medio); fill: none; stroke-width: 1.8; }
+
+    .dolor-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--verde-profundo);
+      margin-bottom: 10px;
+    }
+
+    .dolor-card p {
+      font-size: 0.9rem;
+      color: var(--texto-suave);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── SOLUCIÓN ── */
+    .solucion {
+      background: var(--verde-profundo);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solucion::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,140,92,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .solucion .section-label { color: var(--dorado-claro); }
+
+    .solucion h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--blanco);
+      max-width: 700px;
+      margin: 0 auto 60px;
+      line-height: 1.2;
+    }
+
+    .bullets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .bullet {
+      display: flex;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .bullet-num {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dorado-claro);
+    }
+
+    .bullet-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--blanco);
+      margin-bottom: 8px;
+    }
+
+    .bullet-text p {
+      font-size: 0.9rem;
+      color: var(--verde-menta);
+      line-height: 1.7;
+    }
+
+    /* ── EXPERIENCIAS ── */
+    .experiencias {
+      background: var(--crema);
+      padding: 100px 24px;
+    }
+
+    .experiencias-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .experiencias-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--verde-profundo);
+      margin-top: 12px;
+      line-height: 1.2;
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .exp-card {
+      background: var(--blanco);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--crema-oscura);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .exp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(26,58,42,0.12);
+    }
+
+    .exp-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .exp-body {
+      padding: 28px;
+    }
+
+    .exp-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .exp-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--verde-profundo);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .exp-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-includes li {
+      font-size: 0.88rem;
+      color: var(--texto-medio);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .exp-includes li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--verde-claro);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .exp-ideal {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--crema-oscura);
+      font-size: 0.82rem;
+      color: var(--texto-suave);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .exp-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: var(--crema);
+      border-radius: 6px;
+      border-left: 3px solid var(--verde-claro);
+    }
+
+    .exp-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--verde-profundo);
+    }
+
+    .exp-price-label {
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+      line-height: 1.4;
+    }
+
+    .exp-price-note {
+      font-size: 0.75rem;
+      color: var(--verde-claro);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── TESTIMONIOS ── */
+    .testimonios {
+      background: var(--blanco);
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .testimonios h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      color: var(--verde-profundo);
+      margin-top: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.2;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 60px auto 0;
+    }
+
+    .testi-card {
+      background: var(--crema);
+      border-radius: 8px;
+      padding: 36px 32px;
+      text-align: left;
+      position: relative;
+    }
+
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      color: var(--verde-menta);
+      line-height: 1;
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      opacity: 0.6;
+    }
+
+    .testi-text {
+      font-size: 0.95rem;
+      color: var(--texto-medio);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      padding-top: 36px;
+      position: relative;
+    }
+
+    .testi-author strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--verde-profundo);
+    }
+
+    .testi-author span {
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+    }
+
+    .stars {
+      color: var(--dorado);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    /* ── OFERTA ── */
+    .oferta {
+      background: linear-gradient(160deg, var(--verde-profundo) 0%, #243f30 100%);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oferta::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,140,92,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .oferta .section-label { color: var(--dorado-claro); }
+
+    .oferta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--blanco);
+      max-width: 700px;
+      margin: 0 auto 16px;
+      line-height: 1.2;
+    }
+
+    .oferta-sub {
+      font-size: 1rem;
+      color: var(--verde-menta);
+      max-width: 560px;
+      margin: 0 auto 60px;
+      line-height: 1.7;
+    }
+
+    .oferta-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 52px 48px;
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .oferta-box { padding: 36px 24px; }
+    }
+
+    .incluye-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 32px;
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 560px) {
+      .incluye-list { grid-template-columns: 1fr; }
+    }
+
+    .incluye-list li {
+      font-size: 0.9rem;
+      color: var(--verde-menta);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .incluye-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(74,140,92,0.3);
+      border: 1px solid rgba(74,140,92,0.5);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%234a8c5c' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 2px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 36px 0;
+    }
+
+    .bonos-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dorado-claro);
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .bono-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .bono-badge {
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-claro) 100%);
+      color: var(--verde-profundo);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-top: 2px;
+    }
+
+    .bono-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--blanco);
+      margin-bottom: 6px;
+    }
+
+    .bono-item p {
+      font-size: 0.85rem;
+      color: var(--verde-menta);
+      line-height: 1.6;
+    }
+
+    .urgencia-section {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 36px;
+      text-align: left;
+    }
+
+    .urgencia-section h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dorado-claro);
+      margin-bottom: 20px;
+    }
+
+    .urgencia-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .urgencia-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--dorado);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .urgencia-item p {
+      font-size: 0.88rem;
+      color: var(--verde-menta);
+      line-height: 1.6;
+    }
+
+    .urgencia-item p strong {
+      color: var(--dorado-claro);
+      font-weight: 600;
+    }
+
+    .precio-area {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .precio-label {
+      font-size: 0.85rem;
+      color: var(--verde-menta);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .precio-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blanco);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .precio-note {
+      font-size: 0.8rem;
+      color: rgba(184,217,192,0.6);
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    /* ── CIERRE ── */
+    .cierre {
+      background: var(--crema);
+      padding: 120px 24px;
+      text-align: center;
+    }
+
+    .cierre h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: var(--verde-profundo);
+      max-width: 700px;
+      margin: 16px auto 24px;
+      line-height: 1.1;
+    }
+
+    .cierre h2 em {
+      font-style: italic;
+      color: var(--verde-claro);
+    }
+
+    .cierre p {
+      font-size: 1rem;
+      color: var(--texto-suave);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .cierre-contact {
+      margin-top: 48px;
+      font-size: 0.85rem;
+      color: var(--texto-suave);
+    }
+
+    .cierre-contact a {
+      color: var(--verde-claro);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { padding: 100px 24px 80px; }
+      .bullets { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTION IMAGES ── */
+    .section-img-wrap {
+      max-width: 1100px;
+      margin: 60px auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .section-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .solucion-img-wrap {
+      max-width: 1000px;
+      margin: 56px auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .solucion-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      opacity: 0.92;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-badge">Finca Termópilas · Rivera, Huila</div>
+  <h1>Transforma tu próxima reunión grupal en una experiencia <em>inolvidable</em></h1>
+  <p class="hero-sub">Para empresas, universidades, colegios, fundaciones y organizaciones que quieren vivir algo diferente, rodeados de viñedos, cacao y montañas del Huila.</p>
+  <div class="hero-cta-wrap">
+    <a href="https://wa.link/g6fgyg" target="_blank" rel="noopener" class="btn-primary">Agenda tu experiencia ahora</a>
+    <span class="hero-note">Cupos limitados por mes · Respuesta en menos de 24 horas</span>
+  </div>
+  <div class="hero-logos">
+    <span class="tag">Empresas y equipos</span>
+    <span class="tag">Universidades y colegios</span>
+    <span class="tag">Entidades públicas y privadas</span>
+    <span class="tag">Fundaciones</span>
+    <span class="tag">Grupos y organizaciones</span>
+  </div>
+  <div class="hero-scroll">
+    Explorar
+    <span></span>
+  </div>
+</section>
+
+<!-- DOLOR -->
+<section class="dolor">
+  <span class="section-label reveal">El problema real</span>
+  <h2 class="reveal">Las actividades grupales de siempre ya no generan impacto</h2>
+  <p class="reveal">Alquilar un salón, repetir el mismo almuerzo o hacer dinámicas que todos olvidan al día siguiente ya no es suficiente, sin importar si eres una empresa, una universidad o una organización.</p>
+  <div class="dolor-grid">
+    <div class="dolor-card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Actividades sin propósito claro</h3>
+      <p>Eventos que no conectan con la cultura del equipo ni generan recuerdos compartidos que duren en el tiempo.</p>
+    </div>
+    <div class="dolor-card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Logística que agota al organizador</h3>
+      <p>Coordinar proveedores, espacios, alimentación y actividades al mismo tiempo consume energía que debería ir al equipo.</p>
+    </div>
+    <div class="dolor-card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Poca diferenciación y desconexión</h3>
+      <p>Los espacios convencionales no crean el ambiente necesario para que las personas se abran, conversen y se reconecten.</p>
+    </div>
+  </div>
+  <div class="section-img-wrap reveal">
+    <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434048/ChatGPT_Image_2_jun_2026_03_42_07_p.m._ze7eo9.png" alt="Finca Termópilas - naturaleza y experiencias grupales" />
+  </div>
+</section>
+<section class="solucion">
+  <span class="section-label reveal">La solución</span>
+  <h2 class="reveal">Experiencias diseñadas para transformar grupos en equipos</h2>
+  <div class="bullets">
+    <div class="bullet reveal">
+      <div class="bullet-num">01</div>
+      <div class="bullet-text">
+        <h3>Naturaleza como escenario</h3>
+        <p>Viñedos, bosque de cacao, piscina y montañas del Huila crean el ambiente perfecto para que las personas se desconecten del día a día y se conecten entre sí.</p>
+      </div>
+    </div>
+    <div class="bullet reveal">
+      <div class="bullet-num">02</div>
+      <div class="bullet-text">
+        <h3>Experiencias participativas y únicas</h3>
+        <p>Catas de vino, elaboración de chocolatinas, gastronomía de autor y parrillas al atardecer. Cada actividad está diseñada para generar conversación y recuerdos reales.</p>
+      </div>
+    </div>
+    <div class="bullet reveal">
+      <div class="bullet-num">03</div>
+      <div class="bullet-text">
+        <h3>Todo coordinado, sin estrés</h3>
+        <p>Un coordinador de experiencia acompaña a tu grupo desde el inicio hasta el cierre. Tu grupo solo llega y disfruta.</p>
+      </div>
+    </div>
+  </div>
+  <div class="solucion-img-wrap reveal">
+    <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434048/ChatGPT_Image_2_jun_2026_03_44_11_p.m._ksdisc.png" alt="Coordinador de experiencia Finca Termópilas" />
+  </div>
+</section>
+<section class="experiencias">
+  <div class="experiencias-header">
+    <span class="section-label reveal">Nuestras experiencias</span>
+    <h2 class="reveal">Elige la experiencia que se adapta a tu grupo</h2>
+  </div>
+  <div class="exp-grid">
+
+    <!-- Vino, Mar y Fuego -->
+    <div class="exp-card reveal">
+      <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434063/Experiencia_Vino_mar_y_fuego_fd7l4x.png" alt="Experiencia Vino, Mar y Fuego" class="exp-img" />
+      <div class="exp-body">
+        <span class="exp-tag">Experiencia premium</span>
+        <h3>Vino, Mar y Fuego</h3>
+        <ul class="exp-includes">
+          <li>Recorrido guiado por los viñedos</li>
+          <li>Experiencia de cocina de autor</li>
+          <li>Cata de vinos guiada</li>
+          <li>Mariscos preparados en vivo</li>
+          <li>Selección de tapas diseñadas para maridar</li>
+          <li>Acompañamiento permanente de sommelier</li>
+          <li>Espacio de cierre alrededor de la fogata</li>
+        </ul>
+        <p class="exp-ideal">Ideal para clientes especiales, equipos directivos, celebraciones universitarias o eventos donde el detalle, la exclusividad y la sofisticación marcan la diferencia.</p>
+        <div class="exp-price">
+          <div>
+            <span class="exp-price-amount">$160.000</span>
+            <span class="exp-price-label"> por persona</span>
+            <span class="exp-price-note">Tarifa especial para grupos superiores a 20 personas</span>
+          </div>
+        </div>
+    <div class="exp-card reveal">
+      <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434063/Experiencia_Cacao_v9iono.png" alt="Experiencia Cacao del Árbol a la Mesa" class="exp-img" />
+      <div class="exp-body">
+        <span class="exp-tag">Experiencia participativa</span>
+        <h3>Cacao: Del Árbol a la Mesa</h3>
+        <ul class="exp-includes">
+          <li>Recorrido por el bosque de cacao</li>
+          <li>Reconocimiento del fruto y sus etapas</li>
+          <li>Degustación de cacao y parfait</li>
+          <li>Elaboración de chocolatina artesanal</li>
+          <li>Mesa de frutas y fuente de chocolate</li>
+        </ul>
+        <p class="exp-ideal">Ideal para colegios, universidades, organizaciones y grupos que quieren transformar una actividad tradicional en algo participativo, donde el cacao se descubre, se transforma y se disfruta.</p>
+        <div class="exp-price">
+          <div>
+            <span class="exp-price-amount">$60.000</span>
+            <span class="exp-price-label"> por persona</span>
+            <span class="exp-price-note">Tarifa especial para grupos superiores a 20 personas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour de Vino & Cacao -->
+    <div class="exp-card reveal">
+      <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434048/ChatGPT_Image_2_jun_2026_03_50_34_p.m._x9pvit.png" alt="Tour de Vino y Cacao" class="exp-img" />
+      <div class="exp-body">
+        <span class="exp-tag">Experiencia educativa</span>
+        <h3>Tour de Vino y Cacao</h3>
+        <ul class="exp-includes">
+          <li>Recorrido guiado por viñedos y bosque de cacao</li>
+          <li>Experiencia de degustación</li>
+          <li>Visita a la fábrica de chocolates</li>
+          <li>Cata de vino</li>
+          <li>Fogata</li>
+        </ul>
+        <p class="exp-ideal">Perfecto para experiencias educativas, bienestar organizacional, salidas pedagógicas o actividades diferentes para grupos que buscan aprender y disfrutar al mismo tiempo.</p>
+        <div class="exp-price">
+          <div>
+            <span class="exp-price-amount">$60.000</span>
+            <span class="exp-price-label"> por persona</span>
+            <span class="exp-price-note">Tarifa especial para grupos superiores a 20 personas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brasas, Vino, Sol y Montaña -->
+    <div class="exp-card reveal">
+      <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1780434063/Experiencia_Parrillada_hdu6f8.png" alt="Brasas, Vino, Sol y Montaña" class="exp-img" />
+      <div class="exp-body">
+        <span class="exp-tag">Experiencia de integración</span>
+        <h3>Brasas, Vino, Sol y Montaña</h3>
+        <ul class="exp-includes">
+          <li>Experiencia de parrilla al aire libre</li>
+          <li>Menú especial diseñado para la ocasión</li>
+          <li>Cóctel de bienvenida</li>
+          <li>Acceso a espacios naturales y piscina</li>
+          <li>Ambiente cálido y familiar para compartir</li>
+        </ul>
+        <p class="exp-ideal">Perfecta para empresas, fundaciones, colegios o cualquier grupo que quiera compartir, celebrar y fortalecer lazos en un ambiente natural, sin horarios estrictos ni recorridos.</p>
+        <div class="exp-price">
+          <div>
+            <span class="exp-price-amount">$60.000</span>
+            <span class="exp-price-label"> por persona</span>
+            <span class="exp-price-note">Tarifa especial para grupos superiores a 50 personas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <span class="section-label reveal">Lo que dicen quienes ya vivieron esto</span>
+  <h2 class="reveal">Resultados reales de equipos reales</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Llevamos a nuestro equipo de 40 personas y fue completamente diferente a todo lo que habíamos hecho antes. La experiencia de cacao fue un momento de conexión genuina. El equipo aún habla de eso.</p>
+      <div class="testi-author">
+        <strong>Directora de Talento Humano</strong>
+        <span>Empresa de servicios financieros · Neiva</span>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <p class="testi-text">Organizamos el cierre de año con la experiencia Vino, Mar y Fuego para nuestros clientes estratégicos. El nivel de detalle, el sommelier, la atención... fue exactamente lo que necesitábamos para diferenciarnos.</p>
+      <div class="testi-author">
+        <strong>Gerente Comercial</strong>
+        <span>Constructora regional · Huila</span>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <p class="testi-text">Como organizadora del evento, lo que más valoro es que el equipo de Termópilas se encargó de absolutamente todo. Yo solo llegué a disfrutar con mis colegas. Eso no tiene precio.</p>
+      <div class="testi-author">
+        <strong>Coordinadora de Bienestar</strong>
+        <span>Entidad pública · Huila</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta">
+  <span class="section-label reveal">Lo que obtienes</span>
+  <h2 class="reveal">Una experiencia completa, sin sorpresas</h2>
+  <p class="oferta-sub reveal">Cada experiencia corporativa en Finca Termópilas está diseñada para que tu grupo llegue, disfrute y se vaya transformado.</p>
+
+  <div class="oferta-box reveal">
+
+    <div class="incluye-list-wrap">
+      <ul class="incluye-list">
+        <li>Experiencia seleccionada completa</li>
+        <li>Degustaciones y gastronomía incluidas</li>
+        <li>Acceso a espacios naturales de la finca</li>
+        <li>Coordinador de experiencia asignado</li>
+        <li>Espacio para actividades propias del grupo</li>
+        <li>Capacidad para grupos de todos los tamaños</li>
+        <li>Tarifa especial por volumen disponible</li>
+        <li>Fecha reservada exclusivamente para tu grupo</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="bonos-title">Bonos incluidos sin costo adicional</p>
+
+    <div class="bono-item">
+      <span class="bono-badge">Bono 1</span>
+      <div>
+        <h4>Coordinador de experiencia incluido</h4>
+        <p>Nos encargamos de toda la logística de la actividad para que tu equipo solo se preocupe por disfrutar. Sin listas de chequeo, sin estrés de último momento.</p>
+      </div>
+    </div>
+
+      <div class="bono-item">
+      <span class="bono-badge">Bono 2</span>
+      <div>
+        <h4>Espacio para actividades propias</h4>
+        <p>Tu grupo podrá realizar dinámicas, reconocimientos, capacitaciones, actividades pedagógicas o intervenciones durante la experiencia, sin costo adicional ni restricciones de tiempo.</p>
+      </div>
+    </div>
+
+    <div class="urgencia-section">
+      <h4>Por qué reservar con anticipación</h4>
+      <div class="urgencia-item">
+        <div class="urgencia-dot"></div>
+        <p><strong>Agenda limitada:</strong> Debido a la capacidad operativa de la finca, solo recibimos un número limitado de grupos por mes para garantizar la calidad de cada experiencia.</p>
+      </div>
+      <div class="urgencia-item">
+        <div class="urgencia-dot"></div>
+        <p><strong>Tarifas preferenciales:</strong> Reservar con anticipación da acceso a tarifas especiales para grupos que no están disponibles en fechas de alta demanda.</p>
+      </div>
+      <div class="urgencia-item">
+        <div class="urgencia-dot"></div>
+        <p><strong>Octubre, noviembre y diciembre:</strong> Estos meses suelen agotarse con varias semanas de anticipación. Si tu evento cae en esta temporada, el momento de reservar es ahora.</p>
+      </div>
+    </div>
+
+    <div class="precio-area">
+      <span class="precio-label">El valor varía según la experiencia elegida y el número de personas</span>
+      <span class="precio-value">Consulta disponibilidad y tarifas para tu grupo</span>
+      <span class="precio-note">Tarifas especiales con reserva anticipada para grupos de cualquier tamaño</span>
+      <a href="https://wa.link/g6fgyg" target="_blank" rel="noopener" class="btn-primary">Consultar disponibilidad y precio</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="cierre">
+  <span class="section-label reveal">Da el siguiente paso</span>
+  <h2 class="reveal">Tu equipo merece una experiencia que <em>recuerde</em></h2>
+  <p class="reveal">No más actividades grupales olvidables. Regálale a tu equipo, estudiantes u organización un momento real, en un lugar real, que genere conexiones que se mantengan mucho después de la jornada.</p>
+  <a href="https://wa.link/g6fgyg" target="_blank" rel="noopener" class="btn-primary reveal">Reservar mi experiencia corporativa</a>
+  <div class="cierre-contact reveal">
+    <p>317 0182644 · <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a> · <a href="https://eventos.termopilas.co" target="_blank">eventos.termopilas.co</a></p>
+    <p style="margin-top:8px;">Vereda Termópilas · Rivera, Huila · <a href="https://instagram.com/fincatermopilas" target="_blank">@fincatermopilas</a></p>
+  </div>
+</section>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
