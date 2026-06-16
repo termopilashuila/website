@@ -1425,8 +1425,30 @@
     });
   });
 
-  // Form submission via WhatsApp
-  function enviarFormulario() {
+  const GRUPOS_WEBHOOK_URL = 'https://n8n.termopilas.co/webhook/grupos-form';
+
+  function crearMensajeGrupos(datos) {
+    return `Hola, me interesa una experiencia en Finca Termópilas.
+
+*Nombre:* ${datos.nombre}
+*Celular:* ${datos.celular}
+*Ciudad:* ${datos.ciudad}
+*Correo:* ${datos.correo}
+*Entidad:* ${datos.entidad || 'No aplica'}
+*Cantidad de personas:* ${datos.personas}
+*Nota:* ${datos.nota || 'Sin nota adicional'}`;
+  }
+
+  function crearSourceKey() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+
+  // Form submission via n8n, with WhatsApp fallback
+  async function enviarFormulario() {
+    const submitButton = document.querySelector('.form-submit button');
     const nombre = document.getElementById('nombre').value.trim();
     const celular = document.getElementById('celular').value.trim();
     const ciudad = document.getElementById('ciudad').value.trim();
@@ -1440,21 +1462,55 @@
       return;
     }
 
-    const mensaje = `Hola, me interesa una experiencia en Finca Termópilas.
+    const datos = { nombre, celular, ciudad, correo, entidad, personas, nota };
+    const mensaje = crearMensajeGrupos(datos);
+    const whatsappUrl = `https://wa.me/573170182644?text=${encodeURIComponent(mensaje)}`;
+    const params = new URLSearchParams(window.location.search);
+    window.gruposFormSourceKey = window.gruposFormSourceKey || crearSourceKey();
 
-*Nombre:* ${nombre}
-*Celular:* ${celular}
-*Ciudad:* ${ciudad}
-*Correo:* ${correo}
-*Entidad:* ${entidad || 'No aplica'}
-*Cantidad de personas:* ${personas}
-*Nota:* ${nota || 'Sin nota adicional'}`;
+    const payload = {
+      ...datos,
+      personas: Number(personas),
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString(),
+      source: 'grupos_form',
+      source_key: window.gruposFormSourceKey,
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || ''
+    };
 
-    const url = `https://wa.me/573170182644?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.dataset.originalText || submitButton.textContent;
+      submitButton.textContent = 'Enviando solicitud...';
+    }
 
-    document.getElementById('form-wrap').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    try {
+      const response = await fetch(GRUPOS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Webhook returned ${response.status}`);
+      }
+
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (error) {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.originalText || 'Quiero reservar mi experiencia';
+      }
+
+      const continuarPorWhatsApp = confirm('No pudimos enviar la solicitud automáticamente. ¿Quieres continuar por WhatsApp?');
+      if (continuarPorWhatsApp) {
+        window.open(whatsappUrl, '_blank');
+      }
+    }
   }
 </script>
 
