@@ -18,8 +18,18 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: resize/requirements.txt
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Install image resize dependencies
+        run: python -m pip install -r resize/requirements.txt
 
       - name: Lint
         run: npm run lint
