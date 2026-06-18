@@ -781,16 +781,28 @@
 
     /* ── CIERRE ── */
     .cierre {
-      background: var(--crema);
-      padding: 120px 24px;
+      background: var(--verde-profundo);
+      padding: 100px 24px 80px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cierre::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,140,92,0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .cierre h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 700;
-      color: var(--verde-profundo);
+      color: var(--blanco);
       max-width: 700px;
       margin: 16px auto 24px;
       line-height: 1.1;
@@ -798,26 +810,74 @@
 
     .cierre h2 em {
       font-style: italic;
-      color: var(--verde-claro);
+      color: var(--dorado-claro);
     }
 
-    .cierre p {
+    .cierre > p {
       font-size: 1rem;
-      color: var(--texto-suave);
-      max-width: 480px;
+      color: var(--verde-menta);
+      max-width: 520px;
       margin: 0 auto 48px;
-      line-height: 1.7;
+      line-height: 1.8;
+    }
+
+    .cierre-opciones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto 52px;
+    }
+
+    .cierre-opcion {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 28px 24px;
+      text-align: left;
+    }
+
+    .cierre-opcion-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dorado-claro);
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .cierre-opcion h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--blanco);
+      margin-bottom: 8px;
+    }
+
+    .cierre-opcion p {
+      font-size: 0.85rem;
+      color: var(--verde-menta);
+      line-height: 1.6;
+      margin: 0;
     }
 
     .cierre-contact {
       margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
       font-size: 0.85rem;
-      color: var(--texto-suave);
+      color: rgba(184,217,192,0.6);
     }
 
     .cierre-contact a {
-      color: var(--verde-claro);
+      color: var(--verde-menta);
       text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cierre-contact a:hover {
+      color: var(--dorado-claro);
     }
 
     /* ── ANIMATIONS ── */
@@ -1394,13 +1454,38 @@
 
 <!-- CIERRE -->
 <section class="cierre">
-  <span class="section-label reveal">Da el siguiente paso</span>
-  <h2 class="reveal">Tu equipo merece una experiencia que <em>recuerde</em></h2>
-  <p class="reveal">No más actividades grupales olvidables. Regálale a tu equipo, estudiantes u organización un momento real, en un lugar real, que genere conexiones que se mantengan mucho después de la jornada.</p>
-  <a href="#formulario" class="btn-primary reveal">Reservar mi experiencia corporativa</a>
+  <span class="section-label reveal" style="color: var(--dorado-claro);">¿Listo para vivir la experiencia?</span>
+  <h2 class="reveal">Así de fácil es <em>reservar</em> tu experiencia</h2>
+  <p class="reveal">Sin complicaciones. Cuéntanos sobre tu grupo y nosotros nos encargamos de todo lo demás.</p>
+
+  <div class="cierre-opciones">
+    <div class="cierre-opcion reveal">
+      <span class="cierre-opcion-num">01</span>
+      <h4>Completa el formulario</h4>
+      <p>Cuéntanos cuántas personas son, qué experiencia te interesa y la fecha aproximada.</p>
+    </div>
+    <div class="cierre-opcion reveal">
+      <span class="cierre-opcion-num">02</span>
+      <h4>Te contactamos en 24 horas</h4>
+      <p>Un asesor de Finca Termópilas te escribe con disponibilidad y tarifas para tu grupo.</p>
+    </div>
+    <div class="cierre-opcion reveal">
+      <span class="cierre-opcion-num">03</span>
+      <h4>Confirma y disfruta</h4>
+      <p>Reserva tu fecha y ven a vivir una experiencia que tu grupo no va a olvidar.</p>
+    </div>
+  </div>
+
+  <a href="#formulario" class="btn-primary reveal">Quiero reservar mi experiencia</a>
+
   <div class="cierre-contact reveal">
-    <p>317 0182644 · <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a> · <a href="https://eventos.termopilas.co" target="_blank">eventos.termopilas.co</a></p>
-    <p style="margin-top:8px;">Vereda Termópilas · Rivera, Huila · <a href="https://instagram.com/fincatermopilas" target="_blank">@fincatermopilas</a></p>
+    <p>También puedes escribirnos directamente</p>
+    <p style="margin-top:10px;">
+      <a href="tel:3170182644">317 0182644</a> · 
+      <a href="mailto:termopilashuila@gmail.com">termopilashuila@gmail.com</a> · 
+      <a href="https://instagram.com/fincatermopilas" target="_blank">@fincatermopilas</a>
+    </p>
+    <p style="margin-top:8px;">Vereda Termópilas · Rivera, Huila</p>
   </div>
 </section>
 
