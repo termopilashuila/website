@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campamento del Vino — Finca Termópilas | 10 al 12 de octubre</title>
+<meta name="description" content="Tres días de finca, fuego y copa. 31 vinos de 8 países, 3 chefs y un sommelier, en Finca Termópilas, Rivera - Huila. Solo 12 cupos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a24b' stroke-width='1.6'%3E%3Cpath d='M12 3l7 2v4a7 7 0 01-14 0V5l7-2z'/%3E%3Cpath d='M12 14v7M8 21h8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --negro-cava:   #17130f;
+    --negro-cava-2: #1f1a14;
+    --cafe-medio:   #241c15;
+    --cafe-tostado: #2e2318;
+    --madera:       #2b2119;
+    --madera-claro: #3a2c1d;
+    --oro:          #c9a24b;
+    --oro-suave:    #e6cd8c;
+    --vino:         #7a2432;
+    --hueso:        #f3ecdd;
+    --hueso-tenue:  #cfc4ac;
+    --linea:        rgba(230, 205, 140, 0.18);
+    --radio:        2px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--negro-cava);
+    color:var(--hueso);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* grano sutil sobre toda la página, para un acabado editorial, no plano */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    z-index:999;
+    pointer-events:none;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    letter-spacing:0.01em;
+    color:var(--hueso);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+
+  .envoltura{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:12px;
+    color:var(--oro);
+    font-weight:500;
+  }
+
+  /* ---------- textura de fondo compartida ---------- */
+  .textura-madera{
+    background:
+      repeating-linear-gradient(180deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 34px),
+      linear-gradient(180deg, var(--negro-cava) 0%, var(--negro-cava-2) 100%);
+  }
+
+  /* ---------- placeholder de imagen (fallback) ---------- */
+  .img-slot{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+      repeating-linear-gradient(45deg, rgba(230,205,140,0.05) 0px, rgba(230,205,140,0.05) 10px, transparent 10px, transparent 20px),
+      var(--madera);
+    border:1px dashed rgba(230,205,140,0.35);
+    color:var(--hueso-tenue);
+    font-family:'Jost',sans-serif;
+    font-size:12px;
+    letter-spacing:0.06em;
+    line-height:1.5;
+    padding:14px;
+  }
+  .img-slot span{ position:relative; z-index:1; }
+  .img-slot::before{
+    content:"◇ ESPACIO PARA IMAGEN ◇";
+    display:block;
+    font-size:10px;
+    letter-spacing:0.2em;
+    color:var(--oro);
+    margin-bottom:8px;
+  }
+
+  /* ---------- imagen real (contenedor con foto) ---------- */
+  .img-real{
+    position:relative;
+    overflow:hidden;
+    background:var(--madera);
+  }
+  .img-real img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+
+  /* ---------- fondo completo (hero / cierre) ---------- */
+  .media-fondo{
+    position:absolute; inset:0; z-index:0; overflow:hidden;
+  }
+  .media-fondo img{
+    width:100%; height:100%; object-fit:cover;
+    object-position:center 22%; /* prioriza la parte superior: rostro + copa */
+  }
+  .media-veladura{
+    position:absolute; inset:0; z-index:1;
+  }
+
+  /* ---------- monograma para testimonios (sin foto) ---------- */
+  .monograma{
+    width:54px; height:54px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(150deg, var(--madera-claro) 0%, var(--negro-cava) 100%);
+    border:1.5px solid var(--oro);
+    box-shadow:inset 0 0 0 3px rgba(23,19,15,0.5);
+    color:var(--oro-suave);
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:1.2rem;
+  }
+
+  /* ---------- animación de aparición al hacer scroll ---------- */
+  .rvl{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1);
+  }
+  .rvl.rvl-visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .rvl{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ============ BOTÓN PRINCIPAL ============ */
+  .boton{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--oro);
+    color:var(--negro-cava);
+    font-family:'Jost',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.03em;
+    padding:17px 34px;
+    border-radius:var(--radio);
+    border:1px solid var(--oro);
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+    box-shadow:0 0 0 rgba(201,162,75,0);
+    cursor:pointer;
+  }
+  .boton:hover{
+    background:var(--oro-suave);
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(201,162,75,0.25);
+  }
+  .boton.fantasma{
+    background:transparent;
+    color:var(--oro-suave);
+  }
+  .boton.fantasma:hover{ background:rgba(230,205,140,0.08); }
+  .boton-envoltura{ text-align:center; }
+  .boton-nota{
+    display:block;
+    margin-top:12px;
+    font-size:13px;
+    color:var(--hueso-tenue);
+    letter-spacing:0.02em;
+  }
+
+  /* ============ separador ornamental (firma visual) ============ */
+  .separador-copa{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin:0 auto;
+    width:fit-content;
+  }
+  .separador-copa .linea{
+    width:60px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--oro), transparent);
+  }
+  .separador-copa svg{ width:22px; height:22px; opacity:0.85; }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    background:var(--madera);
+  }
+  .hero .media-fondo{ z-index:0; }
+  .hero .media-veladura{
+    background:linear-gradient(180deg, rgba(23,19,15,0.25) 0%, rgba(23,19,15,0.5) 55%, rgba(23,19,15,0.97) 100%);
+  }
+  .hero-contenido{
+    position:relative; z-index:2;
+    padding:120px 28px 64px;
+    max-width:1180px;
+    margin:0 auto;
+    width:100%;
+  }
+  .hero-marca{
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:38px;
+  }
+  .hero-marca svg{ width:26px; height:26px; }
+  .hero-marca span{
+    font-family:'Jost',sans-serif;
+    letter-spacing:0.3em;
+    font-size:12px;
+    text-transform:uppercase;
+    color:var(--hueso-tenue);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    line-height:1.02;
+    max-width:820px;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--oro-suave);
+  }
+  .hero-cita{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(1.05rem,2vw,1.3rem);
+    color:var(--hueso-tenue);
+    max-width:560px;
+    margin-bottom:36px;
+    border-left:2px solid var(--oro);
+    padding-left:18px;
+  }
+  .hero-specs{
+    display:flex; flex-wrap:wrap;
+    gap:0;
+    margin-bottom:42px;
+    border-top:1px solid var(--linea);
+  }
+  .hero-specs div{
+    flex:1 1 130px;
+    padding:16px 20px 0 0;
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-specs strong{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.9rem;
+    color:var(--oro-suave);
+    font-weight:600;
+  }
+  .hero-specs small{
+    font-size:12px;
+    letter-spacing:0.05em;
+    color:var(--hueso-tenue);
+    text-transform:uppercase;
+  }
+  .hero-cta{ display:flex; flex-direction:column; align-items:flex-start; gap:0; }
+
+  /* ============ SECCIÓN GENERAL ============ */
+  section{ padding:100px 0; position:relative; }
+  .titulo-seccion{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .titulo-seccion .eyebrow{ display:block; margin-bottom:14px; }
+  .titulo-seccion h2{
+    font-size:clamp(2rem, 4vw, 3rem);
+    line-height:1.1;
+  }
+  .titulo-seccion p{
+    margin-top:18px;
+    color:var(--hueso-tenue);
+    font-size:1.05rem;
+    max-width:520px;
+  }
+  .centrado{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ============ DOLOR ============ */
+  .dolor{
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 0%, rgba(201,162,75,0.07), transparent 60%),
+      linear-gradient(165deg, var(--negro-cava-2) 0%, var(--negro-cava) 55%);
+    padding:0;
+    overflow:hidden;
+  }
+  .dolor-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:stretch;
+    min-height:640px;
+  }
+  .dolor-texto{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:100px 60px 100px 28px;
+    max-width:560px;
+    margin-left:auto;
+  }
+  .dolor-texto p{
+    font-size:1.15rem;
+    color:var(--hueso-tenue);
+    margin-bottom:20px;
+  }
+  .dolor-texto p strong{ color:var(--hueso); font-weight:500; }
+  .dolor-remate{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.5rem;
+    color:var(--oro-suave);
+    margin-top:28px;
+  }
+  .dolor-foto{
+    position:relative;
+    height:100%;
+    min-height:420px;
+  }
+  .dolor-foto::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(23,19,15,0.35) 0%, transparent 25%);
+    pointer-events:none;
+  }
+  .dolor-foto img{ height:100%; }
+
+  /* ============ SOLUCIÓN ============ */
+  .solucion{ background:linear-gradient(180deg, var(--cafe-medio) 0%, var(--negro-cava-2) 100%); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); }
+  .solucion-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--linea);
+  }
+  .solucion-item{
+    background:linear-gradient(160deg, var(--cafe-medio) 0%, var(--negro-cava-2) 100%);
+    padding:44px 34px;
+    transition:background .3s ease;
+  }
+  .solucion-item:hover{
+    background:linear-gradient(160deg, var(--cafe-tostado) 0%, var(--negro-cava-2) 100%);
+  }
+  .solucion-item .num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1rem;
+    color:var(--oro);
+    letter-spacing:0.15em;
+    margin-bottom:22px;
+    display:block;
+  }
+  .solucion-item h3{
+    font-size:1.5rem;
+    margin-bottom:14px;
+  }
+  .solucion-item p{
+    color:var(--hueso-tenue);
+    font-size:0.98rem;
+  }
+
+  /* ============ ITINERARIO (capítulos) ============ */
+  .capitulos{ background:
+      radial-gradient(ellipse 50% 40% at 90% 10%, rgba(201,162,75,0.06), transparent 55%),
+      var(--negro-cava); }
+  .capitulo{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:0 64px;
+    align-items:center;
+    padding:96px 0 70px;
+    border-bottom:1px solid var(--linea);
+  }
+  .capitulo:last-child{ border-bottom:none; }
+  .capitulo:nth-child(even){ direction:rtl; }
+  .capitulo:nth-child(even) > *{ direction:ltr; }
+
+  /* --- tratamiento editorial: foto dominante + numeral + placa flotante --- */
+  .capitulo-visual{
+    position:relative;
+    isolation:isolate;
+  }
+  .capitulo-numero{
+    position:absolute;
+    top:-32px; left:-14px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:7.5rem;
+    line-height:1;
+    font-weight:600;
+    color:transparent;
+    -webkit-text-stroke:1.5px rgba(201,162,75,0.45);
+    z-index:0;
+    pointer-events:none;
+    user-select:none;
+  }
+  .capitulo:nth-child(even) .capitulo-numero{ left:auto; right:-18px; }
+  .capitulo-img{
+    position:relative;
+    z-index:1;
+    aspect-ratio:5/4;
+    border-radius:var(--radio);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+  }
+  .capitulo-placa{
+    position:absolute;
+    z-index:2;
+    left:24px; right:24px; bottom:-26px;
+    background:linear-gradient(120deg, rgba(23,19,15,0.92), rgba(43,33,25,0.92));
+    border:1px solid var(--linea);
+    border-left:3px solid var(--oro);
+    padding:18px 24px;
+    backdrop-filter:blur(2px);
+  }
+  .capitulo:nth-child(even) .capitulo-placa{ border-left:none; border-right:3px solid var(--oro); }
+  .capitulo-placa h3{ font-size:1.55rem; margin:0; }
+
+  .capitulo-texto{ padding-top:46px; }
+  .capitulo-eyebrow{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--oro);
+    font-size:1rem;
+    margin-bottom:6px;
+    display:block;
+  }
+  .capitulo-frase{
+    color:var(--hueso-tenue);
+    font-style:italic;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.15rem;
+    margin-bottom:20px;
+  }
+  .capitulo ul{ list-style:none; }
+  .capitulo li{
+    padding:12px 0;
+    border-top:1px solid var(--linea);
+    font-size:0.98rem;
+  }
+  .capitulo li:last-child{ border-bottom:1px solid var(--linea); }
+  .capitulo li b{ color:var(--hueso); font-weight:500; }
+  .capitulo li span{ display:block; color:var(--hueso-tenue); font-size:0.9rem; margin-top:3px; }
+
+  /* ============ CHEFS ============ */
+  .chefs{ background:linear-gradient(180deg, var(--cafe-tostado) 0%, var(--negro-cava-2) 100%); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); }
+  .chefs-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+  }
+  .chef-card{
+    background:transparent;
+    padding:0;
+  }
+  .chef-visual{
+    position:relative;
+    aspect-ratio:3/4;
+    border-radius:var(--radio);
+    margin-bottom:20px;
+    overflow:hidden;
+    box-shadow:0 24px 48px -18px rgba(0,0,0,0.5);
+    transition:transform .4s ease, box-shadow .4s ease;
+  }
+  .chef-card:hover .chef-visual{
+    transform:translateY(-6px);
+    box-shadow:0 32px 56px -16px rgba(0,0,0,0.6);
+  }
+  .chef-visual img{
+    transition:transform .6s ease;
+  }
+  .chef-card:hover .chef-visual img{ transform:scale(1.05); }
+  .chef-overlay{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:60px 22px 22px;
+    background:linear-gradient(180deg, transparent 0%, rgba(15,11,8,0.55) 45%, rgba(15,11,8,0.96) 100%);
+  }
+  .chef-overlay .rol{
+    color:var(--oro-suave);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .chef-overlay h3{ font-size:1.5rem; margin:0; color:var(--hueso); }
+  .chef-card p{ color:var(--hueso-tenue); font-size:0.96rem; padding:0 2px; }
+
+  /* ============ SOMMELIER ============ */
+  .sommelier{
+    background:
+      radial-gradient(ellipse 55% 60% at 85% 100%, rgba(122,36,50,0.14), transparent 60%),
+      var(--negro-cava);
+    padding:0;
+    overflow:hidden;
+  }
+  .sommelier-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:stretch;
+    min-height:640px;
+  }
+  .sommelier-foto{
+    position:relative;
+    height:100%;
+    min-height:420px;
+    order:1;
+  }
+  .sommelier-foto::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(270deg, rgba(23,19,15,0.35) 0%, transparent 25%);
+    pointer-events:none;
+  }
+  .sommelier-foto img{ height:100%; }
+  .sommelier-texto{
+    order:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:100px 28px 100px 60px;
+    max-width:560px;
+  }
+  .sommelier-cita{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.7rem;
+    color:var(--oro-suave);
+    line-height:1.35;
+    margin-bottom:24px;
+  }
+  .sommelier p.bio{ color:var(--hueso-tenue); margin-bottom:10px; }
+  .sommelier .firma{ font-size:0.95rem; color:var(--hueso); margin-top:16px; }
+  .sommelier .firma small{ display:block; color:var(--hueso-tenue); }
+
+  /* ============ BODEGAS ============ */
+  .bodegas{ background:linear-gradient(180deg, var(--negro-cava-2) 0%, var(--cafe-medio) 100%); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); }
+  .bodegas-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .bodega-logo{
+    aspect-ratio:3/2;
+    border-radius:var(--radio);
+    font-size:11px;
+  }
+  .bodega-logo span small{ display:block; color:var(--oro); margin-top:4px; font-size:10px; }
+
+  /* tarjeta de logo real, tratamiento monocromático elegante */
+  .logo-tarjeta{
+    aspect-ratio:3/2;
+    border-radius:var(--radio);
+    background:linear-gradient(150deg, rgba(243,236,221,0.05), rgba(243,236,221,0.02));
+    border:1px solid var(--linea);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:22px 18px;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  .logo-tarjeta:hover{
+    background:linear-gradient(150deg, rgba(243,236,221,0.09), rgba(243,236,221,0.03));
+    border-color:var(--oro);
+  }
+  .logo-tarjeta img{
+    max-width:78%;
+    max-height:56px;
+    object-fit:contain;
+    filter:brightness(0) invert(1) opacity(0.82);
+    transition:filter .35s ease, opacity .35s ease;
+  }
+  .logo-tarjeta:hover img{ filter:none; opacity:1; }
+  .logo-tarjeta small{
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--hueso-tenue);
+  }
+  .bodegas-cierre{
+    text-align:center;
+    margin-top:36px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--hueso-tenue);
+    font-size:1.15rem;
+  }
+
+  /* ============ PRUEBA / TESTIMONIOS ============ */
+  .prueba{ background:
+      radial-gradient(ellipse 50% 40% at 10% 100%, rgba(201,162,75,0.05), transparent 55%),
+      var(--negro-cava); }
+  .testimonios{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+  }
+  .testimonio{
+    background:linear-gradient(155deg, var(--madera-claro) 0%, var(--madera) 100%);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    padding:34px 28px;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .testimonio .comillas{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    color:var(--oro);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .testimonio p.texto{
+    color:var(--hueso-tenue);
+    font-size:1rem;
+    flex-grow:1;
+    margin-bottom:22px;
+  }
+  .testimonio-autor{ display:flex; align-items:center; gap:12px; }
+  .testimonio-autor .img-slot{
+    width:52px; height:52px; border-radius:50%; flex-shrink:0; font-size:8px; padding:4px;
+  }
+  .testimonio-autor .img-slot::before{ display:none; }
+  .testimonio-autor strong{ display:block; font-size:0.95rem; color:var(--hueso); font-weight:500; }
+  .testimonio-autor small{ color:var(--hueso-tenue); font-size:0.82rem; }
+  .nota-testimonios{
+    margin-top:26px;
+    font-size:12.5px;
+    color:var(--hueso-tenue);
+    opacity:0.7;
+    text-align:center;
+  }
+
+  /* ============ OFERTA ============ */
+  .oferta{ background:linear-gradient(180deg, var(--cafe-medio) 0%, var(--negro-cava-2) 45%, var(--cafe-tostado) 100%); border-top:1px solid var(--linea); }
+  .incluye{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px 32px;
+    margin-bottom:60px;
+  }
+  .incluye li{
+    display:flex; gap:12px; align-items:flex-start;
+    color:var(--hueso-tenue);
+    font-size:0.98rem;
+  }
+  .incluye li svg{ flex-shrink:0; width:18px; height:18px; margin-top:3px; color:var(--oro); }
+
+  .precios{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+    margin-bottom:44px;
+  }
+  .plan{
+    background:linear-gradient(165deg, var(--cafe-medio) 0%, var(--negro-cava) 100%);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    padding:38px 34px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .plan.destacado{
+    border-color:var(--oro);
+    box-shadow:0 0 0 1px var(--oro), 0 20px 50px rgba(201,162,75,0.12);
+  }
+  .plan-badge{
+    position:absolute; top:-13px; right:28px;
+    background:var(--oro); color:var(--negro-cava);
+    font-size:11px; font-weight:600; letter-spacing:0.05em;
+    padding:5px 14px; border-radius:20px;
+    text-transform:uppercase;
+  }
+  .plan .eyebrow{ margin-bottom:10px; }
+  .plan h3{ font-size:1.7rem; margin-bottom:4px; }
+  .plan .desc{ color:var(--hueso-tenue); font-size:0.92rem; margin-bottom:24px; }
+  .plan .precio{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.6rem;
+    color:var(--oro-suave);
+    margin-bottom:2px;
+  }
+  .plan .precio small{ font-size:0.9rem; color:var(--hueso-tenue); font-family:'Jost',sans-serif; }
+  .plan .cupos{
+    font-size:12.5px; letter-spacing:0.04em; color:var(--vino-claro,#d98b93);
+    margin-bottom:22px; text-transform:uppercase;
+  }
+  .plan ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+  .plan li{
+    padding:9px 0; border-top:1px solid var(--linea);
+    font-size:0.92rem; color:var(--hueso-tenue);
+  }
+  .plan .boton{ width:100%; justify-content:center; }
+
+  .bonus{
+    background:linear-gradient(135deg, rgba(122,36,50,0.35), rgba(201,162,75,0.12));
+    border:1px solid var(--oro);
+    border-radius:var(--radio);
+    padding:36px 38px;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:24px;
+    align-items:center;
+    margin-bottom:20px;
+  }
+  .bonus .icono{ font-size:2.6rem; line-height:1; }
+  .bonus h4{
+    font-size:1.4rem; margin-bottom:8px; color:var(--oro-suave);
+  }
+  .bonus p{ color:var(--hueso-tenue); font-size:0.98rem; }
+  .bonus p strong{ color:var(--hueso); font-weight:500; }
+
+  .urgencia-linea{
+    display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center; justify-content:center;
+    color:var(--hueso-tenue); font-size:13.5px; text-align:center;
+    padding-top:8px;
+  }
+  .urgencia-linea b{ color:var(--oro-suave); font-weight:500; }
+  .punto{ width:5px; height:5px; border-radius:50%; background:var(--oro); display:inline-block; }
+
+  .faq{ background:
+      radial-gradient(ellipse 45% 35% at 95% 0%, rgba(201,162,75,0.05), transparent 55%),
+      var(--negro-cava); }
+  .faq-lista{ max-width:820px; margin:0 auto; }
+  .faq-item{
+    border-bottom:1px solid var(--linea);
+  }
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    padding:26px 40px 26px 14px;
+    margin:0 -14px;
+    position:relative;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.35rem;
+    color:var(--hueso);
+    font-weight:600;
+    transition:background .3s ease;
+  }
+  .faq-item summary:hover{
+    background:rgba(230,205,140,0.04);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:"+";
+    position:absolute;
+    right:6px; top:22px;
+    font-family:'Jost',sans-serif;
+    font-size:1.6rem;
+    font-weight:300;
+    color:var(--oro);
+    transition:transform .25s ease;
+  }
+  .faq-item[open] summary::after{ content:"–"; }
+  .faq-item p{
+    color:var(--hueso-tenue);
+    padding:0 40px 28px 0;
+    font-size:0.98rem;
+    max-width:680px;
+  }
+
+  /* ============ CIERRE ============ */
+  .cierre{
+    position:relative;
+    background:var(--madera);
+    padding:130px 0;
+    text-align:center;
+  }
+  .cierre .media-veladura{
+    background:linear-gradient(180deg, rgba(23,19,15,0.45) 0%, rgba(23,19,15,0.93) 100%);
+  }
+  .cierre-contenido{ position:relative; z-index:2; max-width:720px; margin:0 auto; }
+  .cierre h2{
+    font-size:clamp(2.1rem,4.5vw,3.2rem);
+    margin-bottom:22px;
+    line-height:1.15;
+  }
+  .cierre h2 em{ color:var(--oro-suave); font-style:italic; }
+  .cierre-sub{
+    color:var(--hueso-tenue);
+    font-size:1.05rem;
+    margin-bottom:40px;
+  }
+  .cierre-specs{
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--oro);
+    margin-top:34px;
+  }
+  .cierre-firma{
+    margin-top:30px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--hueso-tenue);
+    font-size:0.98rem;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:900px){
+    .dolor-grid, .sommelier-grid{ grid-template-columns:1fr; min-height:auto; }
+    .dolor-texto, .sommelier-texto{ max-width:100%; margin-left:0; padding:56px 20px; }
+    .dolor-foto, .sommelier-foto{ min-height:340px; order:-1; }
+    /* (imagen de sommelier ya ordenada arriba por .sommelier-foto{order:-1}) */
+    .solucion-grid{ grid-template-columns:1fr; }
+    .chefs-grid{ grid-template-columns:1fr; max-width:380px; margin:0 auto; }
+    .bodegas-grid{ grid-template-columns:repeat(2,1fr); }
+    .testimonios{ grid-template-columns:1fr; }
+    .incluye{ grid-template-columns:1fr; }
+    .precios{ grid-template-columns:1fr; }
+    .capitulo, .capitulo:nth-child(even){ grid-template-columns:1fr; direction:ltr; padding:60px 0 46px; }
+    .capitulo-visual{ order:-1; margin-bottom:16px; }
+    .capitulo-numero{ font-size:6rem; top:-34px; left:-6px; }
+    .capitulo:nth-child(even) .capitulo-numero{ left:auto; right:-6px; }
+    .capitulo-placa{ left:14px; right:14px; bottom:-20px; padding:14px 18px; }
+    .capitulo-texto{ padding-top:40px; }
+    .bonus{ grid-template-columns:1fr; text-align:center; }
+    section{ padding:70px 0; }
+    .hero-contenido{ padding:100px 20px 48px; }
+  }
+
+  @media (max-width:600px){
+    /* Ajuste fino del encuadre del HERO en celular.
+       El segundo valor (22% / 15%) mueve el encuadre verticalmente:
+       un número más BAJO muestra más de la parte de ARRIBA de la foto (rostro),
+       un número más ALTO muestra más de la parte de ABAJO (copa/manos).
+       Ajusta este valor si la foto real necesita otro encuadre. */
+    .hero .media-fondo img{ object-position:center 15%; }
+    .cierre .media-fondo img{ object-position:center 35%; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .boton{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="media-fondo">
+    <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792762/Hero_2.png" alt="Sommelier catando una copa de vino en Finca Termópilas">
+  </div>
+  <div class="media-veladura"></div>
+  <div class="hero-contenido">
+    <div class="hero-marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--oro)"><path d="M12 3l7 2v4a7 7 0 01-14 0V5l7-2z"/><path d="M12 14v7M8 21h8"/></svg>
+      <span>Finca Termópilas · Una aventura histórica</span>
+    </div>
+
+    <h1>Campamento <em>del Vino</em></h1>
+
+    <p class="hero-cita">"El tiempo, cuando se sabe usar, se sirve en copa."</p>
+
+    <div class="hero-specs">
+      <div><strong>8</strong><small>Países</small></div>
+      <div><strong>31</strong><small>Etiquetas</small></div>
+      <div><strong>3</strong><small>Chefs</small></div>
+      <div><strong>3</strong><small>Días / 2 noches</small></div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="boton" href="https://wa.link/464eyn" target="_blank" rel="noopener">
+        Quiero mi lugar en la mesa
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <span class="boton-nota">Solo 12 cupos · 10 al 12 de octubre · Rivera, Huila</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DOLOR ============ -->
+<section class="dolor">
+  <div class="dolor-grid rvl">
+    <div class="dolor-texto">
+      <span class="eyebrow">Seamos honestos</span>
+      <h2 style="margin:14px 0 26px;">La mayoría toma vino sin saber por qué le gusta</h2>
+      <p>Pides <strong>"el de siempre"</strong> en el restaurante. Brindas sin preguntarte qué hay detrás de la etiqueta. Confundes precio con calidad, y terminas repitiendo la misma copa por costumbre, no por criterio.</p>
+      <p>No es falta de gusto. Es falta de una experiencia que te haya enseñado a <strong>notar la diferencia</strong> — sin volverse un examen, sin tecnicismos, sin sentirte fuera de lugar.</p>
+      <p class="dolor-remate">El Campamento del Vino no es una cata. Es el fin de semana donde tu paladar empieza a tener criterio propio.</p>
+    </div>
+    <div class="dolor-foto img-real"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792854/Dolor_2.png" alt="Mesa servida con copas de vino en la finca al atardecer" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============ SOLUCIÓN ============ -->
+<section class="solucion">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Lo que vas a vivir</span>
+      <h2>Tres días diseñados para que dejes de tomar por costumbre</h2>
+    </div>
+    <div class="solucion-grid rvl">
+      <div class="solucion-item">
+        <span class="num">Vino</span>
+        <h3>31 etiquetas, 8 países</h3>
+        <p>De Veuve Clicquot a Luigi Bosca — vinos que normalmente solo ves en la carta, aquí los tienes en la mano, guiados copa por copa por un sommelier que te explica qué estás sintiendo y por qué.</p>
+      </div>
+      <div class="solucion-item">
+        <span class="num">Fuego</span>
+        <h3>Gastronomía en vivo</h3>
+        <p>Paella valenciana, cortes premium a la parrilla y tapas españolas, preparadas frente a ti por 3 chefs invitados — cada plato maridado con la copa exacta que lo completa.</p>
+      </div>
+      <div class="solucion-item">
+        <span class="num">Recuerdo</span>
+        <h3>Una historia para contar</h3>
+        <p>No es un curso. Es un fin de semana en una finca con cava propia y jardín de orquídeas, con gente de tu mismo nivel — el tipo de plan que sí vas a mencionar en la próxima cena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ITINERARIO / CAPÍTULOS ============ -->
+<section class="capitulos">
+  <div class="envoltura">
+    <div class="titulo-seccion rvl">
+      <span class="eyebrow">El recorrido</span>
+      <h2>Tres capítulos, una sola historia</h2>
+    </div>
+
+    <div class="capitulo rvl">
+      <div class="capitulo-visual">
+        <span class="capitulo-numero">I</span>
+        <div class="img-real capitulo-img"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792612/Cap%C3%ADtulo_I.png" alt="Chef Carlos Puentes preparando paella en vivo" loading="lazy"></div>
+        <div class="capitulo-placa">
+          <span class="capitulo-eyebrow">Capítulo I · Sábado</span>
+          <h3>Tradición y fuego</h3>
+        </div>
+      </div>
+      <div class="capitulo-texto">
+        <p class="capitulo-frase">"Un día que empieza con tradición y termina en fuego — copa en mano, siempre."</p>
+        <ul>
+          <li><b>Madrinaje Colombiano</b><span>Sabores de nuestra tierra, elevados con la copa correcta.</span></li>
+          <li><b>Master Class — Secreto de las burbujas</b><span>Charcutería y quesos madurados, maridados pieza a pieza.</span></li>
+          <li><b>Show de Paella en vivo — Chef Carlos Puentes</b><span>Paella valenciana frente a ti, con los vinos del viejo mundo que la vieron nacer.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="capitulo rvl">
+      <div class="capitulo-visual">
+        <span class="capitulo-numero">II</span>
+        <div class="img-real capitulo-img"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792610/Cap%C3%ADtulo_II.png" alt="Corte de carne premium y parrilla al fuego vivo" loading="lazy"></div>
+        <div class="capitulo-placa">
+          <span class="capitulo-eyebrow">Capítulo II · Domingo</span>
+          <h3>El día del fuego</h3>
+        </div>
+      </div>
+      <div class="capitulo-texto">
+        <p class="capitulo-frase">"El día del fuego — y la copa que lo sabe acompañar."</p>
+        <ul>
+          <li><b>Brunch, panadería y repostería</b><span>Fermentación lenta y repostería de autor, con espumantes y blancos frescos.</span></li>
+          <li><b>Curso de Parrillada — Alejandro Rodríguez</b><span>Cortes premium al fuego vivo, guiados copa en mano.</span></li>
+          <li><b>Master Class — Vino Argentino</b><span>El Real Malbec.</span></li>
+          <li><b>Tapas Españolas</b><span>Un recorrido ibérico en miniatura — cada tapa, con su vino correspondiente.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="capitulo rvl">
+      <div class="capitulo-visual">
+        <span class="capitulo-numero">III</span>
+        <div class="img-real capitulo-img"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792605/Cap%C3%ADtulo_III.png" alt="Pintura sobre lienzo junto a copa de vino y quesos madurados" loading="lazy"></div>
+        <div class="capitulo-placa">
+          <span class="capitulo-eyebrow">Capítulo III · Lunes festivo</span>
+          <h3>El cierre perfecto</h3>
+        </div>
+      </div>
+      <div class="capitulo-texto">
+        <p class="capitulo-frase">"Arte, sabor y una última copa memorable."</p>
+        <ul>
+          <li><b>Pintura sobre lienzos + Quesos Madurados</b><span>Crea mientras catas — cada trazo, acompañado de una copa distinta.</span></li>
+          <li><b>Gastronomía especializada — Chef FelipeAndres Barrera</b><span>El broche de oro: una experiencia final maridada de principio a fin.</span></li>
+        </ul>
+        <p class="capitulo-frase" style="margin-top:22px;">"El campamento no termina en la última copa. Termina en el recuerdo que deja."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEFS ============ -->
+<section class="chefs">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Quiénes cocinan para ti</span>
+      <h2>Tres chefs, tres momentos irrepetibles</h2>
+      <p class="centrado" style="margin:18px auto 0;">Cada uno trae su propio oficio a la mesa — y su propia historia con el fuego.</p>
+    </div>
+
+    <div class="chefs-grid rvl">
+      <div class="chef-card">
+        <div class="chef-visual img-real">
+          <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792607/Foto_Chef_Carlos_Puentes.png" alt="Chef Carlos Puentes" loading="lazy">
+          <div class="chef-overlay">
+            <span class="rol">Sábado · Show de Paella en vivo</span>
+            <h3>Carlos Puentes</h3>
+          </div>
+        </div>
+        <p>Su paella valenciana se prepara frente a ti, grano por grano, con el mismo respeto por la tradición con el que se sirve en la costa mediterránea. [Espacio para su trayectoria y restaurante — 2 a 3 líneas contando su historia con el fuego y la cocina española.]</p>
+      </div>
+
+      <div class="chef-card">
+        <div class="chef-visual img-real">
+          <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792605/Foto_Chef_Alejandro_Rodr%C3%ADguez.png" alt="Chef Alejandro Rodríguez" loading="lazy">
+          <div class="chef-overlay">
+            <span class="rol">Domingo · Curso de Parrillada</span>
+            <h3>Alejandro Rodríguez</h3>
+          </div>
+        </div>
+        <p>Restaurante Marmoreo. Cortes premium al fuego vivo, con una técnica que convierte la parrilla en un acto de precisión, no de improvisación. [Espacio para su trayectoria — años de oficio, formación, reconocimientos.]</p>
+      </div>
+
+      <div class="chef-card">
+        <div class="chef-visual img-real">
+          <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792604/Foto_Chef_FelipeAndres_Barrera.png" alt="Chef FelipeAndres Barrera" loading="lazy">
+          <div class="chef-overlay">
+            <span class="rol">Lunes festivo · Gastronomía especializada</span>
+            <h3>FelipeAndres Barrera</h3>
+          </div>
+        </div>
+        <p>El encargado del broche de oro del campamento: una experiencia gastronómica final, maridada de principio a fin. [Espacio para su trayectoria y enfoque culinario.]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOMMELIER / AUTORIDAD ============ -->
+<section class="sommelier">
+  <div class="sommelier-grid rvl">
+    <div class="sommelier-foto img-real"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792605/Foto_Juan_Jos%C3%A9_M%C3%A9ndez.png" alt="Juan José Méndez, sommelier de Finca Termópilas" loading="lazy"></div>
+    <div class="sommelier-texto">
+      <span class="eyebrow">Quién te guía</span>
+      <p class="sommelier-cita" style="margin-top:16px;">"Un sommelier que te enseña a distinguir cuál vino merece tu paladar."</p>
+      <p class="bio">No es una cata guiada. Es un sommelier que te enseña a pensar como uno — a leer una etiqueta, a notar un aroma antes de nombrarlo, a defender tu copa favorita con argumentos, no con costumbre.</p>
+      <p class="bio">Más de 10 años de experiencia y reconocido en eventos culturales del departamento. Guió la cata de vinos en el evento cultural "Huila E", que reunió a más de 1.200 asistentes en Neiva.</p>
+      <p class="firma">Juan José Méndez
+        <small>Sommelier — Finca Termópilas y Entre Copas</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BODEGAS ============ -->
+<section class="bodegas">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Las bodegas del campamento</span>
+      <h2>Ocho países, en tu copa</h2>
+    </div>
+    <div class="bodegas-grid rvl">
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792600/Veuve_Clicquot.png" alt="Veuve Clicquot" loading="lazy"><small>Francia</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792600/Luigi_Bosca.png" alt="Luigi Bosca" loading="lazy"><small>Argentina</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792602/Joel_Gott.png" alt="Joel Gott" loading="lazy"><small>Estados Unidos</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792600/Casa_Marin.png" alt="Casa Marin" loading="lazy"><small>Chile</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792602/Diamandes.png" alt="Diamandes" loading="lazy"><small>Argentina</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792600/Enate.png" alt="Enate" loading="lazy"><small>España</small></div>
+      <div class="logo-tarjeta"><img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792601/Terras_Gauda.png" alt="Terras Gauda" loading="lazy"><small>España</small></div>
+      <div class="logo-tarjeta" style="border-style:dashed;"><span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--oro-suave);">+20</span><small>Etiquetas por descubrir</small></div>
+    </div>
+    <p class="bodegas-cierre">"Y más de 20 etiquetas por descubrir."</p>
+  </div>
+</section>
+
+<!-- ============ PRUEBA / TESTIMONIOS ============ -->
+<section class="prueba">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Quienes ya conocen Finca Termópilas</span>
+      <h2>Esto no es la primera vez que sorprendemos</h2>
+      <p class="centrado" style="margin:18px auto 0;">El Campamento del Vino es nuestra primera edición — pero la finca, la atención y la experiencia ya tienen quien las respalde.</p>
+    </div>
+    <div class="testimonios rvl">
+      <div class="testimonio">
+        <span class="comillas">"</span>
+        <p class="texto">Fuimos para un evento familiar y terminamos hablando de la finca semanas después. Los jardines, la atención, cada detalle — se nota que aquí piensan en la experiencia completa, no solo en el espacio.</p>
+        <div class="testimonio-autor">
+          <div class="monograma">AS</div>
+          <div><strong>Andrea Salcedo</strong><small>Visitante, Neiva</small></div>
+        </div>
+      </div>
+      <div class="testimonio">
+        <span class="comillas">"</span>
+        <p class="texto">Lo que más me sorprendió fue la cava y el jardín de orquídeas — no esperaba encontrar algo así de cuidado en una finca en Huila. Un lugar que vale la pena conocer con calma.</p>
+        <div class="testimonio-autor">
+          <div class="monograma">CR</div>
+          <div><strong>Camilo Restrepo</strong><small>Visitante, Bogotá</small></div>
+        </div>
+      </div>
+      <div class="testimonio">
+        <span class="comillas">"</span>
+        <p class="texto">Hemos estado en varios eventos en Termópilas y siempre queda la misma sensación: todo está pensado hasta el último detalle. Por eso cuando anunciaron el Campamento del Vino, no lo pensamos dos veces.</p>
+        <div class="testimonio-autor">
+          <div class="monograma">MD</div>
+          <div><strong>Mariana Duarte</strong><small>Visitante recurrente, Rivera</small></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota-testimonios">Nombres ilustrativos — reemplázalos por testimonios reales y verificados de huéspedes de Finca Termópilas antes de publicar.</p>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="oferta" id="reservar">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Tu lugar en la mesa</span>
+      <h2>Qué incluye tu cupo</h2>
+    </div>
+
+    <ul class="incluye">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>3 días y 2 noches en Finca Termópilas, Rivera - Huila</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Alimentación completa incluida</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>31 etiquetas de vino de 8 países</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>3 chefs invitados en vivo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>1 sommelier curando cada maridaje</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Master classes y actividades exclusivas</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Acceso a cava de vinos, jardín de orquídeas y piscina</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Grupo reducido — solo 12 personas en total</li>
+    </ul>
+
+    <div class="precios rvl">
+      <div class="plan">
+        <span class="eyebrow">Casa Termópilas</span>
+        <h3>Estándar</h3>
+        <p class="desc">Habitación en la casa principal de la finca, sin aire acondicionado.</p>
+        <p class="precio">$2.300.000 <small>COP / persona</small></p>
+        <p class="cupos">Solo 6 cupos disponibles</p>
+        <ul>
+          <li>Misma experiencia completa de vino y gastronomía</li>
+          <li>Acceso a todas las master classes</li>
+          <li>Alimentación y hospedaje incluidos</li>
+        </ul>
+        <a class="boton" href="https://wa.link/464eyn" target="_blank" rel="noopener">Reservar Estándar</a>
+      </div>
+
+      <div class="plan destacado">
+        <span class="plan-badge">Más elegido</span>
+        <span class="eyebrow">Cabaña Privada</span>
+        <h3>Lujo</h3>
+        <p class="desc">Cabaña privada con aire acondicionado, mayor privacidad y confort.</p>
+        <p class="precio">$2.500.000 <small>COP / persona</small></p>
+        <p class="cupos">Solo 6 cupos disponibles</p>
+        <ul>
+          <li>Misma experiencia completa de vino y gastronomía</li>
+          <li>Acceso a todas las master classes</li>
+          <li>Alimentación y hospedaje incluidos</li>
+          <li>Privacidad y aire acondicionado</li>
+        </ul>
+        <a class="boton" href="https://wa.link/464eyn" target="_blank" rel="noopener">Reservar Lujo</a>
+      </div>
+    </div>
+
+    <div class="bonus rvl">
+      <div class="icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="width:34px;height:34px;color:var(--oro-suave);">
+          <path d="M7 3l1.2 6.4a3.8 3.8 0 003.8 3.1v0a3.8 3.8 0 003.8-3.1L17 3"/>
+          <path d="M12 12.5V19M9 21h6"/>
+          <path d="M4 3h6M14 3h6"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Capítulo 0 — Bienvenida privada</h4>
+        <p>No todos empiezan el campamento igual. <strong>Quienes reserven antes del 30 de septiembre</strong> tienen acceso a una <strong>sesión especial premium de bienvenida</strong>, exclusiva con Juan José Méndez, el <strong>10 de octubre a las 11:00 a.m.</strong> — antes de que el resto del grupo cruce la puerta.</p>
+      </div>
+    </div>
+
+    <div class="urgencia-linea">
+      <span><b>Solo 12 lugares en total</b> · 6 Estándar y 6 Lujo</span>
+      <span class="punto"></span>
+      <span>Bonus válido hasta el <b>30 de septiembre</b> o hasta agotar cupos</span>
+      <span class="punto"></span>
+      <span>10 al 12 de octubre · Finca Termópilas, Rivera - Huila</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="envoltura">
+    <div class="titulo-seccion centrado rvl">
+      <span class="eyebrow">Antes de reservar</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-lista rvl">
+      <details class="faq-item">
+        <summary>¿Cómo llego a la finca?</summary>
+        <p>Estamos a solo 20 minutos de Neiva, en Rivera - Huila. Puedes llegar en carro particular o en transporte público + mototaxi.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Es apto para todas las edades?</summary>
+        <p>No. El Campamento del Vino es exclusivo para mayores de 18 años — los asistentes estarán tomando vino durante toda la experiencia, así que no está diseñado para niños ni adolescentes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Para quién es este evento?</summary>
+        <p>Para quienes disfrutan el buen vino y la buena mesa, pero no necesitan ser expertos — parejas, amigos o colegas que buscan una experiencia distinta a lo que ya conocen, en un ambiente íntimo y cuidado al detalle.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo confirmo mi reserva?</summary>
+        <p>Escríbenos directo por WhatsApp. Ahí confirmamos disponibilidad, resolvemos tus dudas y coordinamos el pago para asegurar tu cupo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Incluye comida?</summary>
+        <p>Sí. Tu cupo incluye alimentación completa durante los 3 días — desde el brunch hasta la cena, con cada plato pensado para maridar con la copa correspondiente.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuáles son las formas de pago?</summary>
+        <p>Aceptamos transferencia y tarjeta de crédito. También puedes separar tu cupo pagando el 50% y completar el resto antes del evento.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa si no puedo asistir? ¿Hay política de cancelación?</summary>
+        <p>Puedes solicitar la cancelación de tu reserva con al menos 5 días de anticipación al evento y accedes al reembolso completo de tu compra. Si cancelas con menos de 5 días de anticipación, se realiza la devolución del 25% del valor pagado. Esto nos permite garantizar la organización, logística y disponibilidad de cupos para cada experiencia.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué debo llevar?</summary>
+        <p>Ropa cómoda para el día, algo más elegante para las noches, protector solar y muchas ganas de brindar. El resto — copas, vinos y buena mesa — lo ponemos nosotros.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo ir sin saber nada de vino?</summary>
+        <p>Totalmente. El campamento está diseñado para que aprendas disfrutando, sin tecnicismos ni exámenes — el sommelier te guía paso a paso, copa por copa.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre">
+  <div class="media-fondo">
+    <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792795/Cierre_1.png" alt="Finca Termópilas al atardecer" loading="lazy">
+  </div>
+  <div class="media-veladura"></div>
+  <div class="envoltura cierre-contenido rvl">
+    <div class="separador-copa" style="margin-bottom:28px;">
+      <span class="linea"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--oro)" stroke-width="1.4"><path d="M12 3l7 2v4a7 7 0 01-14 0V5l7-2z"/><path d="M12 14v7M8 21h8"/></svg>
+      <span class="linea"></span>
+    </div>
+    <h2>No estás comprando un tiquete.<br><em>Estás reservando un lugar en la mesa.</em></h2>
+    <p class="cierre-sub">Tres días de finca, fuego y copa, donde 31 vinos de 8 países dejan de ser una etiqueta y se convierten en un criterio para toda la vida.</p>
+
+    <div class="boton-envoltura">
+      <a class="boton" href="https://wa.link/464eyn" target="_blank" rel="noopener">
+        Reservar mi lugar en la mesa
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <span class="boton-nota">Solo 12 cupos · Bonus de bienvenida hasta el 30 de septiembre</span>
+    </div>
+
+    <p class="cierre-specs">31 etiquetas · 3 chefs · 1 sommelier · 3 días / 2 noches</p>
+    <p class="cierre-firma">Una experiencia curada por Juan José Méndez, Sommelier — Finca Termópilas y Entre Copas.</p>
+  </div>
+</section>
+
+<script>
+  // Aparición suave de secciones al hacer scroll
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('rvl-visible');
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.rvl').forEach((el) => observador.observe(el));
+  } else {
+    document.querySelectorAll('.rvl').forEach((el) => el.classList.add('rvl-visible'));
+  }
+</script>
+</body>
+</html>
