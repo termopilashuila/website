@@ -22,9 +22,12 @@
     --oro:          #c9a24b;
     --oro-suave:    #e6cd8c;
     --vino:         #7a2432;
+    --verde-oliva:  #3f4a30;
+    --verde-suave:  #7c8f5e;
     --hueso:        #f3ecdd;
     --hueso-tenue:  #cfc4ac;
     --linea:        rgba(230, 205, 140, 0.18);
+    --linea-verde:  rgba(124, 143, 94, 0.22);
     --radio:        2px;
   }
 
@@ -365,7 +368,7 @@
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:1px;
-    background:var(--linea);
+    background:var(--linea-verde);
   }
   .solucion-item{
     background:linear-gradient(160deg, var(--cafe-medio) 0%, var(--negro-cava-2) 100%);
@@ -565,11 +568,17 @@
   .sommelier .firma small{ display:block; color:var(--hueso-tenue); }
 
   /* ============ BODEGAS ============ */
-  .bodegas{ background:linear-gradient(180deg, var(--negro-cava-2) 0%, var(--cafe-medio) 100%); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); }
+  .bodegas{
+    background:
+      radial-gradient(ellipse 55% 45% at 88% 8%, rgba(124,143,94,0.09), transparent 55%),
+      linear-gradient(180deg, var(--negro-cava-2) 0%, var(--cafe-medio) 100%);
+    border-top:1px solid var(--linea-verde);
+    border-bottom:1px solid var(--linea-verde);
+  }
   .bodegas-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
   }
   .bodega-logo{
     aspect-ratio:3/2;
@@ -580,7 +589,7 @@
 
   /* tarjeta de logo real, tratamiento monocromático elegante */
   .logo-tarjeta{
-    aspect-ratio:3/2;
+    aspect-ratio:16/10;
     border-radius:var(--radio);
     background:linear-gradient(150deg, rgba(243,236,221,0.05), rgba(243,236,221,0.02));
     border:1px solid var(--linea);
@@ -588,8 +597,8 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    padding:22px 18px;
+    gap:14px;
+    padding:30px 26px;
     transition:background .3s ease, border-color .3s ease;
   }
   .logo-tarjeta:hover{
@@ -597,15 +606,15 @@
     border-color:var(--oro);
   }
   .logo-tarjeta img{
-    max-width:78%;
-    max-height:56px;
+    max-width:85%;
+    max-height:92px;
     object-fit:contain;
     filter:brightness(0) invert(1) opacity(0.82);
     transition:filter .35s ease, opacity .35s ease;
   }
   .logo-tarjeta:hover img{ filter:none; opacity:1; }
   .logo-tarjeta small{
-    font-size:10.5px;
+    font-size:11.5px;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--hueso-tenue);
@@ -621,7 +630,7 @@
 
   /* ============ PRUEBA / TESTIMONIOS ============ */
   .prueba{ background:
-      radial-gradient(ellipse 50% 40% at 10% 100%, rgba(201,162,75,0.05), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 10% 100%, rgba(124,143,94,0.08), transparent 55%),
       var(--negro-cava); }
   .testimonios{
     display:grid;
@@ -718,7 +727,7 @@
   }
   .plan .precio small{ font-size:0.9rem; color:var(--hueso-tenue); font-family:'Jost',sans-serif; }
   .plan .cupos{
-    font-size:12.5px; letter-spacing:0.04em; color:var(--vino-claro,#d98b93);
+    font-size:12.5px; letter-spacing:0.04em; color:var(--verde-suave);
     margin-bottom:22px; text-transform:uppercase;
   }
   .plan ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
@@ -727,24 +736,6 @@
     font-size:0.92rem; color:var(--hueso-tenue);
   }
   .plan .boton{ width:100%; justify-content:center; }
-
-  .bonus{
-    background:linear-gradient(135deg, rgba(122,36,50,0.35), rgba(201,162,75,0.12));
-    border:1px solid var(--oro);
-    border-radius:var(--radio);
-    padding:36px 38px;
-    display:grid;
-    grid-template-columns:auto 1fr;
-    gap:24px;
-    align-items:center;
-    margin-bottom:20px;
-  }
-  .bonus .icono{ font-size:2.6rem; line-height:1; }
-  .bonus h4{
-    font-size:1.4rem; margin-bottom:8px; color:var(--oro-suave);
-  }
-  .bonus p{ color:var(--hueso-tenue); font-size:0.98rem; }
-  .bonus p strong{ color:var(--hueso); font-weight:500; }
 
   .urgencia-linea{
     display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center; justify-content:center;
@@ -850,7 +841,7 @@
     .capitulo:nth-child(even) .capitulo-numero{ left:auto; right:-6px; }
     .capitulo-placa{ left:14px; right:14px; bottom:-20px; padding:14px 18px; }
     .capitulo-texto{ padding-top:40px; }
-    .bonus{ grid-template-columns:1fr; text-align:center; }
+    /* (bono retirado) */
     section{ padding:70px 0; }
     .hero-contenido{ padding:100px 20px 48px; }
   }
@@ -861,7 +852,7 @@
        un número más BAJO muestra más de la parte de ARRIBA de la foto (rostro),
        un número más ALTO muestra más de la parte de ABAJO (copa/manos).
        Ajusta este valor si la foto real necesita otro encuadre. */
-    .hero .media-fondo img{ object-position:center 15%; }
+    .hero .media-fondo img{ object-position:center 20%; } /* imagen nueva sin ajustar aún — dime si hay que mover este % */
     .cierre .media-fondo img{ object-position:center 35%; }
   }
 
@@ -876,7 +867,7 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="media-fondo">
-    <img src="https://res.cloudinary.com/mh4ery7e/image/upload/v1787792762/Hero_2.png" alt="Sommelier catando una copa de vino en Finca Termópilas">
+    <img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1787964745/ChatGPT_Image_28_ago_2026_07_02_00_p.m._fzmie9.png" alt="Sommelier catando una copa de vino en Finca Termópilas">
   </div>
   <div class="media-veladura"></div>
   <div class="hero-contenido">
@@ -1187,24 +1178,8 @@
       </div>
     </div>
 
-    <div class="bonus rvl">
-      <div class="icono">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="width:34px;height:34px;color:var(--oro-suave);">
-          <path d="M7 3l1.2 6.4a3.8 3.8 0 003.8 3.1v0a3.8 3.8 0 003.8-3.1L17 3"/>
-          <path d="M12 12.5V19M9 21h6"/>
-          <path d="M4 3h6M14 3h6"/>
-        </svg>
-      </div>
-      <div>
-        <h4>Capítulo 0 — Bienvenida privada</h4>
-        <p>No todos empiezan el campamento igual. <strong>Quienes reserven antes del 30 de septiembre</strong> tienen acceso a una <strong>sesión especial premium de bienvenida</strong>, exclusiva con Juan José Méndez, el <strong>10 de octubre a las 11:00 a.m.</strong> — antes de que el resto del grupo cruce la puerta.</p>
-      </div>
-    </div>
-
     <div class="urgencia-linea">
       <span><b>Solo 12 lugares en total</b> · 6 Estándar y 6 Lujo</span>
-      <span class="punto"></span>
-      <span>Bonus válido hasta el <b>30 de septiembre</b> o hasta agotar cupos</span>
       <span class="punto"></span>
       <span>10 al 12 de octubre · Finca Termópilas, Rivera - Huila</span>
     </div>
@@ -1221,7 +1196,7 @@
     <div class="faq-lista rvl">
       <details class="faq-item">
         <summary>¿Cómo llego a la finca?</summary>
-        <p>Estamos a solo 20 minutos de Neiva, en Rivera - Huila. Puedes llegar en carro particular o en transporte público + mototaxi.</p>
+        <p>Estamos a solo 20 minutos de Neiva, en Rivera - Huila. Puedes llegar en carro particular o en transporte público + mototaxi. Puedes ver la ubicación exacta y cómo llegar en <a href="https://termopilas.co/ubicacion.html" target="_blank" rel="noopener" style="color:var(--oro-suave); text-decoration:underline;">este enlace</a>.</p>
       </details>
       <details class="faq-item">
         <summary>¿Es apto para todas las edades?</summary>
@@ -1233,7 +1208,7 @@
       </details>
       <details class="faq-item">
         <summary>¿Cómo confirmo mi reserva?</summary>
-        <p>Escríbenos directo por WhatsApp. Ahí confirmamos disponibilidad, resolvemos tus dudas y coordinamos el pago para asegurar tu cupo.</p>
+        <p>Selecciona el tipo de ticket que prefieras (Estándar o Lujo) en esta misma página — al hacer clic te redirige directo a WhatsApp, donde coordinamos el pago y confirmamos tu cupo.</p>
       </details>
       <details class="faq-item">
         <summary>¿Incluye comida?</summary>
@@ -1279,7 +1254,7 @@
         Reservar mi lugar en la mesa
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <span class="boton-nota">Solo 12 cupos · Bonus de bienvenida hasta el 30 de septiembre</span>
+      <span class="boton-nota">Solo 12 cupos · 10 al 12 de octubre</span>
     </div>
 
     <p class="cierre-specs">31 etiquetas · 3 chefs · 1 sommelier · 3 días / 2 noches</p>
