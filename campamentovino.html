@@ -520,6 +520,96 @@
   .chef-overlay h3{ font-size:1.5rem; margin:0; color:var(--hueso); }
   .chef-card p{ color:var(--hueso-tenue); font-size:0.96rem; padding:0 2px; }
 
+  /* ============ LA FINCA ============ */
+  .finca{ background:var(--negro-cava); }
+
+  .finca-portada{
+    position:relative;
+    height:78vh;
+    min-height:460px;
+    max-height:720px;
+    overflow:hidden;
+  }
+  .finca-portada .media-veladura{
+    background:linear-gradient(180deg, rgba(23,19,15,0.25) 0%, rgba(23,19,15,0.55) 65%, var(--negro-cava) 100%);
+  }
+  .finca-portada-texto{
+    position:relative; z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 24px;
+  }
+  .finca-portada-texto .eyebrow{ margin-bottom:16px; }
+  .finca-portada-texto h2{
+    font-size:clamp(1.9rem, 4vw, 3rem);
+    line-height:1.2;
+    max-width:760px;
+  }
+
+  .finca-cuerpo{ padding-top:64px; }
+  .finca-intro{
+    max-width:680px;
+    margin:0 auto 52px;
+    text-align:center;
+    color:var(--hueso-tenue);
+    font-size:1.1rem;
+  }
+
+  .finca-datos{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid var(--linea-verde);
+    border-bottom:1px solid var(--linea-verde);
+    margin-bottom:56px;
+  }
+  .finca-datos > div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    text-align:center;
+    padding:28px 16px;
+    border-left:1px solid var(--linea-verde);
+  }
+  .finca-datos > div:first-child{ border-left:none; }
+  .finca-datos svg{ width:28px; height:28px; color:var(--verde-suave); }
+  .finca-datos strong{ font-weight:500; font-size:0.95rem; color:var(--hueso); }
+
+  .finca-mosaico{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:16px;
+    height:560px;
+    margin-bottom:44px;
+  }
+  .finca-mosaico .grande{ grid-row:1 / 3; }
+  .finca-mosaico .peq1{ grid-column:2; grid-row:1; }
+  .finca-mosaico .peq2{ grid-column:2; grid-row:2; }
+
+  .finca-instagram{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:fit-content;
+    margin:0 auto;
+    padding:16px 30px;
+    border:1px solid var(--oro);
+    border-radius:30px;
+    color:var(--oro-suave);
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+    transition:background .3s ease, color .3s ease;
+  }
+  .finca-instagram svg{ width:18px; height:18px; }
+  .finca-instagram:hover{ background:var(--oro); color:var(--negro-cava); }
+
   /* ============ SOMMELIER ============ */
   .sommelier{
     background:
@@ -577,7 +667,7 @@
   }
   .bodegas-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3, minmax(0,1fr));
     gap:28px;
   }
   .bodega-logo{
@@ -829,9 +919,19 @@
     .dolor-texto, .sommelier-texto{ max-width:100%; margin-left:0; padding:56px 20px; }
     .dolor-foto, .sommelier-foto{ min-height:340px; order:-1; }
     /* (imagen de sommelier ya ordenada arriba por .sommelier-foto{order:-1}) */
+    .finca-portada{ height:56vh; min-height:360px; }
+    .finca-datos{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .finca-datos > div{ border-left:none; border-top:1px solid var(--linea-verde); }
+    .finca-datos > div:nth-child(1), .finca-datos > div:nth-child(2){ border-top:none; }
+    .finca-mosaico{ grid-template-columns:1fr; grid-template-rows:none; height:auto; gap:14px; }
+    .finca-mosaico .grande{ grid-row:auto; aspect-ratio:4/3; }
+    .finca-mosaico .peq1, .finca-mosaico .peq2{ grid-column:auto; grid-row:auto; aspect-ratio:4/3; }
     .solucion-grid{ grid-template-columns:1fr; }
     .chefs-grid{ grid-template-columns:1fr; max-width:380px; margin:0 auto; }
-    .bodegas-grid{ grid-template-columns:repeat(2,1fr); }
+    .bodegas-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
+    .logo-tarjeta{ padding:20px 14px; }
+    .logo-tarjeta img{ max-height:64px; }
+    .logo-tarjeta small{ font-size:10px; letter-spacing:0.08em; }
     .testimonios{ grid-template-columns:1fr; }
     .incluye{ grid-template-columns:1fr; }
     .precios{ grid-template-columns:1fr; }
@@ -1049,6 +1149,52 @@
         <p>El encargado del broche de oro del campamento: una experiencia gastronómica final, maridada de principio a fin. [Espacio para su trayectoria y enfoque culinario.]</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ LA FINCA ============ -->
+<section class="finca">
+  <div class="finca-portada">
+    <div class="media-fondo"><img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1787966347/Autores_i8f48w.png" alt="Finca Termópilas, vista general" loading="lazy"></div>
+    <div class="media-veladura"></div>
+    <div class="finca-portada-texto rvl">
+      <span class="eyebrow">El escenario</span>
+      <h2>No es solo dónde te quedas.<br>Es parte de la experiencia.</h2>
+    </div>
+  </div>
+
+  <div class="envoltura finca-cuerpo">
+    <p class="finca-intro rvl">Finca Termópilas es mucho más que un lugar para dormir entre actividades. Es jardines para caminar de noche, una cava para perderse antes de la cena, y rincones que vas a querer fotografiar aunque nadie te lo pida.</p>
+
+    <div class="finca-datos rvl">
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2C8 6 6 9 6 12a6 6 0 0012 0c0-3-2-6-6-10z"/></svg>
+        <strong>Jardín de orquídeas</strong>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="9" width="18" height="9" rx="1"/><path d="M3 13h18M7 9V6a2 2 0 012-2h6a2 2 0 012 2v3"/></svg>
+        <strong>Cava de vinos propia</strong>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><path d="M5 17V6h14v11"/></svg>
+        <strong>Piscina y zonas al aire libre</strong>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <strong>A 20 min de Neiva</strong>
+      </div>
+    </div>
+
+    <div class="finca-mosaico rvl">
+      <div class="img-real grande"><img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1787966333/Autores_1_nh6lsc.png" alt="Finca Termópilas" loading="lazy"></div>
+      <div class="img-real peq1"><img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1787966333/Autores_2_darewp.png" alt="Finca Termópilas" loading="lazy"></div>
+      <div class="img-real peq2"><img src="https://res.cloudinary.com/dgh2nqr0o/image/upload/v1787966332/Autores_3_keui3w.png" alt="Finca Termópilas" loading="lazy"></div>
+    </div>
+
+    <a class="finca-instagram rvl" href="https://www.instagram.com/fincatermopilas/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+      Conoce más de la finca en Instagram
+    </a>
   </div>
 </section>
 
