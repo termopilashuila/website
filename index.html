@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finca Termópilas</title>
+    <title>Finca Termópilas: viñedo, cacao y hospedaje en Rivera, Huila</title>
     <meta name="description" content="Disfruta de alojamiento para parejas y grupos en Finca Termópilas, Rivera, Huila. Vino artesanal, cacao, eventos, pasadías y retiros rodeados de naturaleza.">
+    <link rel="canonical" href="https://termopilas.co/">
+    <link rel="preload" as="image" href="/assets/images/header.avif" type="image/avif" fetchpriority="high">
     <meta name="keywords" content="Finca Termópilas, alojamiento Huila, vino artesanal, cacao, eventos Rivera, pasadía, retiros, turismo Huila">
     <meta name="author" content="Finca Termópilas">
-
-    <!-- hreflang tags for multilingual SEO -->
-    <link rel="alternate" hreflang="es-CO" href="https://termopilas.co/index.html">
-    <link rel="alternate" hreflang="x-default" href="https://termopilas.co/index.html">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
@@ -34,6 +32,10 @@
             --background-dark: #000000;
         }
         
+        :where(img[width][height]) {
+            height: auto;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -111,25 +113,31 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://termopilas.co/">
-    <meta property="og:title" content="Finca Termópilas">
+    <meta property="og:title" content="Finca Termópilas: viñedo, cacao y hospedaje en Rivera, Huila">
     <meta property="og:description" content="Disfruta de alojamiento para parejas y grupos en Finca Termópilas, Rivera, Huila. Vino artesanal, cacao, eventos, pasadías y retiros rodeados de naturaleza.">
     <meta property="og:image" content="https://termopilas.co/assets/images/home/section1-accommodation1.jpg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/">
-    <meta property="twitter:title" content="Finca Termópilas">
-    <meta property="twitter:description" content="Disfruta de alojamiento para parejas y grupos en Finca Termópilas, Rivera, Huila. Vino artesanal, cacao, eventos, pasadías y retiros rodeados de naturaleza.">
-    <meta property="twitter:image" content="https://termopilas.co/assets/images/home/section1-accommodation1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://termopilas.co/">
+    <meta name="twitter:title" content="Finca Termópilas: viñedo, cacao y hospedaje en Rivera, Huila">
+    <meta name="twitter:description" content="Disfruta de alojamiento para parejas y grupos en Finca Termópilas, Rivera, Huila. Vino artesanal, cacao, eventos, pasadías y retiros rodeados de naturaleza.">
+    <meta name="twitter:image" content="https://termopilas.co/assets/images/home/section1-accommodation1.jpg">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": [
+        "LodgingBusiness",
+        "Winery"
+      ],
+      "@id": "https://termopilas.co/#organization",
       "name": "Finca Termópilas",
+      "url": "https://termopilas.co/",
       "image": "https://termopilas.co/assets/images/home/section1-accommodation1.jpg",
-      "url": "https://termopilas.co",
+      "logo": "https://termopilas.co/assets/images/icons/icon-512x512.png",
+      "description": "Finca en Rivera, Huila, con hospedaje, viñedo y vino artesanal, cultivo de cacao, salón de eventos y tour de vino y cacao.",
       "telephone": "+573170182644",
       "email": "termopilashuila@gmail.com",
       "address": {
@@ -142,24 +150,15 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "2.7775",
-        "longitude": "-75.2513"
+        "latitude": 2.767188,
+        "longitude": -75.230941
       },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
+      "hasMap": "https://maps.app.goo.gl/Sv7AgA1EJQRauGP46",
+      "sameAs": [
+        "https://www.instagram.com/fincatermopilas/",
+        "https://www.facebook.com/fincatermopilas/"
       ],
       "priceRange": "$$",
-      "servesCuisine": "Colombian",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "50"
-      },
       "amenityFeature": [
         {
           "@type": "LocationFeatureSpecification",
@@ -186,8 +185,7 @@
           "name": "Acceso al río",
           "value": true
         }
-      ],
-      "hasMap": "https://www.google.com/maps/place/Finca+Termopilas/@2.7775,-75.2513,15z"
+      ]
     }
     </script>
     
@@ -239,7 +237,7 @@
             <div class="alojamiento-container">
                 <div class="alojamiento-content">
                     <h2>Alojamiento</h2>
-                    <p class="section-description">Bienvenidos a Finca Termópilas, ubicada en Rivera, Huila, a solo 3.3 km del centro de Rivera. Ofrecemos una experiencia única con habitaciones de lujo y estándar para parejas y grupos, rodeadas de naturaleza exuberante. Combina tu estancia con nuestros <a href="https://eventos.termopilas.co/events/1/finca-termopilas" style="color: #F29F05; text-decoration: underline;">eventos y tours</a> o consulta nuestras opciones de <a href="salon.html" style="color: #F29F05; text-decoration: underline;">alquiler de salón para tus eventos</a>.</p>
+                    <p class="section-description">Bienvenidos a Finca Termópilas, ubicada en Rivera, Huila, a solo 3.3 km del centro de Rivera. Ofrecemos una experiencia única con habitaciones de lujo y estándar para parejas y grupos, rodeadas de naturaleza exuberante. Combina tu estancia con nuestros <a href="https://eventos.termopilas.co/events/1/finca-termopilas" style="color: #F29F05; text-decoration: underline;">eventos y tours</a> o consulta nuestras opciones de <a href="salon.html" style="color: #F29F05; text-decoration: underline;">alquiler de salón para tus eventos</a> y nuestras <a href="grupos.html" style="color: #F29F05; text-decoration: underline;">experiencias para grupos y empresas</a>.</p>
                     <p class="section-description">Nuestros servicios incluyen:</p>
                     <ul class="alojamiento-features">
                         <li><i class="fas fa-bed"></i> 8 habitaciones confortables (3 de lujo)</li>
@@ -255,17 +253,17 @@
                 </div>
                 <div class="alojamiento-gallery">
                     <div class="alojamiento-image main-image">
-                        <img loading="lazy" src="assets/images/home/section1-accommodation1.jpg" alt="Alojamiento en Finca Termópilas - Vista principal">
+                        <img width="720" height="540" loading="lazy" src="assets/images/home/section1-accommodation1.jpg" alt="Alojamiento en Finca Termópilas - Vista principal">
                     </div>
                     <div class="alojamiento-image-grid">
                         <div class="alojamiento-image">
-                            <img loading="lazy" src="assets/images/home/section1-accommodation2.jpg" alt="Alojamiento en Finca Termópilas - Habitación">
+                            <img width="720" height="960" loading="lazy" src="assets/images/home/section1-accommodation2.jpg" alt="Alojamiento en Finca Termópilas - Habitación">
                         </div>
                         <div class="alojamiento-image">
-                            <img loading="lazy" src="assets/images/home/section1-accommodation3.jpg" alt="Alojamiento en Finca Termópilas - Piscina">
+                            <img width="720" height="960" loading="lazy" src="assets/images/home/section1-accommodation3.jpg" alt="Alojamiento en Finca Termópilas - Piscina">
                         </div>
                         <div class="alojamiento-image">
-                            <img loading="lazy" src="assets/images/home/section1-accommodation4.jpg" alt="Alojamiento en Finca Termópilas - Viñedos">
+                            <img width="720" height="540" loading="lazy" src="assets/images/home/section1-accommodation4.jpg" alt="Alojamiento en Finca Termópilas - Viñedos">
                         </div>
                     </div>
                 </div>
@@ -280,7 +278,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img loading="lazy" src="assets/images/catalog/chocolate-100.jpg" alt="Chocolatina 100% cacao" class="product-image">
+                        <img width="238" height="194" loading="lazy" src="assets/images/catalog/chocolate-100.jpg" alt="Chocolatina 100% cacao" class="product-image">
                         <div class="product-overlay">
                             <h3>Chocolatina 100%</h3>
                             <p class="price">$15.000</p>
@@ -299,7 +297,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img loading="lazy" src="assets/images/catalog/chocolate-70.jpg" alt="Chocolatina 75% cacao" class="product-image">
+                        <img width="238" height="194" loading="lazy" src="assets/images/catalog/chocolate-70.jpg" alt="Chocolatina 75% cacao" class="product-image">
                         <div class="product-overlay">
                             <h3>Chocolatina 75%</h3>
                             <p class="price">$15.000</p>
@@ -318,7 +316,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img loading="lazy" src="assets/images/home/section2-product3.jpg" alt="Nibs de cacao" class="product-image">
+                        <img width="580" height="580" loading="lazy" src="assets/images/home/section2-product3.jpg" alt="Nibs de cacao" class="product-image">
                         <div class="product-overlay">
                             <h3>Nibs de cacao</h3>
                             <p class="price">Desde $10.000</p>
@@ -342,7 +340,7 @@
             <h2>Ofrecemos</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img loading="lazy" src="assets/images/home/section3-img1.jpg" alt="Eventos en Finca Termópilas" class="service-card-image">
+                    <img width="600" height="449" loading="lazy" src="assets/images/home/section3-img1.jpg" alt="Eventos en Finca Termópilas" class="service-card-image">
                     <div class="service-card-content">
                         <h3>Eventos</h3>
                         <p>Contamos con un salón de eventos con capacidad para 300 personas. Parqueaderos, piscina, baños, duchas y kiosko.</p>
@@ -350,7 +348,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img loading="lazy" src="assets/images/home/section3-img2.jpg" alt="Tour de vino y cacao en Finca Termópilas" class="service-card-image">
+                    <img width="512" height="383" loading="lazy" src="assets/images/home/section3-img2.jpg" alt="Tour de vino y cacao en Finca Termópilas" class="service-card-image">
                     <div class="service-card-content">
                         <h3>Tour de vino y cacao</h3>
                         <p>Conoce las bondades de la uva Isabella y el cacao en este tour gastronómico por la finca Termópilas</p>
@@ -358,7 +356,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img loading="lazy" src="assets/images/coliving/main.png" alt="Coliving para Nómadas Digitales" class="service-card-image">
+                    <img width="600" height="442" loading="lazy" src="assets/images/coliving/main.png" alt="Coliving para Nómadas Digitales" class="service-card-image">
                     <div class="service-card-content">
                         <h3>Coliving Nómada</h3>
                         <p>Trabaja de forma remota mientras disfrutas de la naturaleza y conectas con otros nómadas digitales.</p>
@@ -366,7 +364,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img loading="lazy" src="assets/images/home/section3-img3.jpg" alt="Pasadía en Finca Termópilas" class="service-card-image">
+                    <img width="600" height="450" loading="lazy" src="assets/images/home/section3-img3.jpg" alt="Pasadía en Finca Termópilas" class="service-card-image">
                     <div class="service-card-content">
                         <h3>Pasadía</h3>
                         <p>¿Plan de domingo? ¡De todos los días! Disfruta nuestro pasadía en familia o amigos.</p>
@@ -386,7 +384,7 @@
                     </div>
                     <div class="testimonial-footer">
                         <div class="testimonial-author">
-                            <img loading="lazy" src="assets/images/home/section4-img1.jpg" alt="Foto de Gilberto" class="testimonial-author-img">
+                            <img width="120" height="90" loading="lazy" src="assets/images/home/section4-img1.jpg" alt="Foto de Gilberto" class="testimonial-author-img">
                             <div>
                                 <div class="author testimonial-author-name">Gilberto</div>
                                 <div class="stars">★★★★★</div>
@@ -400,7 +398,7 @@
                     </div>
                     <div class="testimonial-footer">
                         <div class="testimonial-author">
-                            <img loading="lazy" src="assets/images/home/section4-img2.jpg" alt="Foto de Camilo" class="testimonial-author-img">
+                            <img width="144" height="81" loading="lazy" src="assets/images/home/section4-img2.jpg" alt="Foto de Camilo" class="testimonial-author-img">
                             <div>
                                 <div class="author testimonial-author-name">Camilo</div>
                                 <div class="stars">★★★★★</div>
@@ -414,7 +412,7 @@
                     </div>
                     <div class="testimonial-footer">
                         <div class="testimonial-author">
-                            <img loading="lazy" src="assets/images/home/section4-img3.jpg" alt="Foto de Héctor" class="testimonial-author-img">
+                            <img width="96" height="96" loading="lazy" src="assets/images/home/section4-img3.jpg" alt="Foto de Héctor" class="testimonial-author-img">
                             <div>
                                 <div class="author testimonial-author-name">Héctor</div>
                                 <div class="stars">★★★★★</div>
@@ -431,7 +429,7 @@
                 <!-- Blog Post 1 -->
                 <article class="blog-card" data-categories="turismo">
                     <div class="blog-image">
-                        <img loading="lazy" src="assets/images/blog/destinos-imperdibles-visitar-huila-colombia/main.jpg" alt="Destinos imperdibles para visitar en Huila, Colombia">
+                        <img width="814" height="585" loading="lazy" src="assets/images/blog/destinos-imperdibles-visitar-huila-colombia/main.jpg" alt="Destinos imperdibles para visitar en Huila, Colombia">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -446,7 +444,7 @@
                 <!-- Blog Post 2 -->
                 <article class="blog-card" data-categories="cacao gastronomia recetas">
                     <div class="blog-image">
-                        <img loading="lazy" src="assets/images/blog/nibs-cacao-parfait-bowl/main.jpg" alt="Bowl de Nibs de Cacao: El Desayuno Energético y Nutritivo">
+                        <img width="500" height="334" loading="lazy" src="assets/images/blog/nibs-cacao-parfait-bowl/main.jpg" alt="Bowl de Nibs de Cacao: El Desayuno Energético y Nutritivo">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -461,7 +459,7 @@
                 <!-- Blog Post 3 -->
                 <article class="blog-card" data-categories="turismo gastronomia">
                     <div class="blog-image">
-                        <img loading="lazy" src="assets/images/blog/lugares-para-comer-rivera/main.png" alt="Mejores restaurantes para comer en Rivera, Huila">
+                        <img width="480" height="405" loading="lazy" src="assets/images/blog/lugares-para-comer-rivera/main.png" alt="Mejores restaurantes para comer en Rivera, Huila">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -656,7 +654,7 @@
     <div id="discount-popup" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
       <div style="background:#fff; max-width:350px; width:90%; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:2rem 1.5rem; text-align:center; position:relative;">
         <button id="discount-popup-close" aria-label="Cerrar" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5rem; color:#888; cursor:pointer;">&times;</button>
-        <img src="assets/images/logo.png" alt="Finca Termópilas Logo" style="max-width:120px; margin-bottom:1rem;">
+        <img width="355" height="179" src="assets/images/logo.png" alt="Finca Termópilas Logo" style="max-width:120px; margin-bottom:1rem;">
         <h2 style="color:#B48E63; margin-bottom:0.5rem;">¡Obtén 10% de descuento en alojamiento!</h2>
         <p style="color:#333; margin-bottom:1rem;">Ingresa tu correo y recibe un cupón exclusivo para tu próxima reserva.<br><span style="color:#F29F05; font-weight:bold;">¡Solo tienes <span id='discount-timer'>40</span> segundos!</span></p>
         <form id="discount-popup-form" autocomplete="off" style="display:flex; flex-direction:column; gap:0.75rem;">
