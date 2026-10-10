@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://termopilas.co/</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/alojamiento.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/catalogo.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/grupos.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/salon.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/campamentovino.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/galeria.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -64,8 +64,26 @@
     </image:image>
   </url>
   <url>
+    <loc>https://termopilas.co/preguntas-frecuentes.html</loc>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://termopilas.co/assets/images/header.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://termopilas.co/tour.html</loc>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://termopilas.co/assets/images/header.png</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://termopilas.co/trabajo.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -74,7 +92,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/ubicacion.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -83,7 +101,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/trabajo/cocinero.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -92,7 +110,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/trabajo/conserje.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -101,7 +119,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/trabajo/recepcionista.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -110,7 +128,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/trabajo/web-developer.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -119,7 +137,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/privacidad.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <image:image>
@@ -128,7 +146,7 @@
   </url>
   <url>
     <loc>https://termopilas.co/terminos.html</loc>
-    <lastmod>2026-10-10T12:35:23-05:00</lastmod>
+    <lastmod>2026-10-10T18:17:43Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <image:image>
