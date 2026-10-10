@@ -1,22 +1,18 @@
 {
-  "comment": "Paths to precache in service-worker.js. Build step (update-sw-version.js) merges these with discovered HTML and writes service-worker.js.",
+  "comment": "Paths to precache in service-worker.js. Build step (update-sw-version.js) merges these with discovered HTML and writes service-worker.js. HTML pages that redirect (meta refresh) or are noindex are skipped automatically, except the ones in 'keep' (offline fallback).",
   "static": [
     "/",
-    "/index.html",
     "/alojamiento.html",
     "/tour.html",
     "/ubicacion.html",
     "/galeria.html",
-    "/coliving.html",
     "/catalogo.html",
-    "/cata.html",
     "/salon.html",
-    "/pago.html",
-    "/privacidad.html",
-    "/whatsapp.html",
-    "/registro.html",
-    "/feedback.html",
+    "/preguntas-frecuentes.html",
     "/trabajo.html",
+    "/privacidad.html",
+    "/terminos.html",
+    "/offline.html",
     "/dist/main.js",
     "/styles/main.css",
     "/styles/hero.css",
@@ -25,8 +21,11 @@
     "/styles/responsive.css",
     "/styles/brand-tokens.css",
     "/styles/components.css",
+    "/styles/tour.css",
+    "/styles/faq.css",
     "/assets/images/favicon.png",
     "/assets/css/fonts.css"
   ],
-  "directories": ["cata", "trabajo", "coliving", "tour"]
+  "keep": ["/offline.html"],
+  "directories": ["trabajo"]
 }

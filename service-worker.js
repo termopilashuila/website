@@ -1,45 +1,34 @@
 // Finca Termópilas - Service Worker
-const CACHE_NAME = 'termopilas-cache-v2026.10.10.122730';
+const CACHE_NAME = 'termopilas-cache-v2026.10.10.131742';
 const urlsToCache = [
   '/',
   '/alojamiento.html',
   '/assets/css/fonts.css',
   '/assets/images/favicon.png',
-  '/cata.html',
-  '/cata/cata-vino-paella-tapas-main.html',
-  '/cata/experiencia-vino-mar-fuego-fallido.html',
-  '/cata/experiencia-vino-mar-fuego-gracias.html',
-  '/cata/experiencia-vino-mar-fuego.html',
-  '/cata/index.html',
   '/catalogo.html',
-  '/coliving.html',
-  '/coliving/gracias.html',
   '/dist/main.js',
-  '/feedback.html',
   '/galeria.html',
-  '/index.html',
-  '/pago.html',
+  '/offline.html',
+  '/preguntas-frecuentes.html',
   '/privacidad.html',
-  '/registro.html',
   '/salon.html',
   '/styles/brand-tokens.css',
   '/styles/components.css',
+  '/styles/faq.css',
   '/styles/hero.css',
   '/styles/main-sections.css',
   '/styles/main.css',
   '/styles/responsive.css',
+  '/styles/tour.css',
   '/styles/utilities.css',
+  '/terminos.html',
   '/tour.html',
-  '/tour/error.html',
-  '/tour/gracias.html',
-  '/tour/index.html',
   '/trabajo.html',
   '/trabajo/cocinero.html',
   '/trabajo/conserje.html',
   '/trabajo/recepcionista.html',
   '/trabajo/web-developer.html',
-  '/ubicacion.html',
-  '/whatsapp.html'
+  '/ubicacion.html'
 ];
 
 // Install the service worker and cache assets
