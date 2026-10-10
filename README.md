@@ -9,7 +9,7 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - PWA (service worker y caché offline básico)
 - Información de alojamiento, tour y coliving
 - Meta Pixel (Facebook) para tracking de conversiones
-- Blog con sistema de conversión automático desde Markdown
+- Blog en Ghost (https://blog.termopilas.co); aquí solo quedan redirecciones
 - Testimonios con carrusel y animaciones en scroll
 - Cabecera y pie de página generados dinámicamente con TypeScript
 - CTA de WhatsApp con UTM dinámicas por página
@@ -27,7 +27,6 @@ Este repositorio contiene el código fuente del sitio web oficial de Finca Term�
 - TypeScript
 - JavaScript ES6+ (módulos newsletter y blog)
 - Webpack para compilación
-- Markdown rendering y front matter: marked, gray-matter
 - Procesamiento de imágenes: sharp (para pipelines utilitarias)
 - Font Awesome para iconos
 - Google Fonts (Lora y Montserrat)
@@ -77,7 +76,6 @@ website/
 ├── archive/                 # Versiones archivadas de landings (cata, coliving, tour); no se despliegan como páginas principales
 ├── scripts/                 # Utilidades Node y Python
 │   ├── generate-sitemap.js
-│   ├── process-blog.js
 │   ├── update-sw-version.js
 │   ├── sync_products_from_woocommerce.py   # Sync products from WooCommerce
 │   ├── compare_products_woocommerce.py     # Validate products against WooCommerce
@@ -96,8 +94,7 @@ website/
 │       │   ├── tour.ts      # Lazy loading del timeline de tour
 │       │   └── JobApplicationForm.ts
 │       ├── utils/
-│       │   ├── animations.ts
-│       │   └── markdown-to-blog.ts
+│       │   └── animations.ts
 │       └── types/
 │           ├── interfaces.ts
 │           └── jobApplication.ts
@@ -109,14 +106,7 @@ website/
 │   ├── components/
 │   │   ├── components.js
 │   │   └── jobApplicationForm.js
-│   └── utils/
-│       └── utils/
-│           └── markdown-to-blog.js
-├── markdown/                # Fuentes en Markdown para el blog
-│   └── blog/*.md
-├── blog/                    # Salida HTML del blog (generada)
-│   ├── *.html               # Posts de blog
-│   └── template.html
+├── blog/                    # Redirecciones a blog.termopilas.co (Ghost)
 ├── assets/
 │   ├── css/fonts.css
 │   └── images/              # Imágenes del sitio
@@ -161,7 +151,6 @@ website/
 │   └── whatsapp-redirect.css
 ├── docs/                    # Documentación
 │   ├── brand-guidelines.md
-│   ├── markdown-to-blog-guide.md
 │   ├── newsletter-refactoring.md
 │   ├── restaurantes.md
 │   ├── turismo.md
@@ -530,10 +519,9 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
 - **Compilación con optimización de imágenes**: `npm run build:with-images` (ejecuta resize y luego build; requiere Python y Pillow en `resize/`)
 - **Redimensionar imágenes**: `npm run resize-images` para optimizar imágenes en `assets/images` (requiere Python; ver `resize/README.md`)
 - **Vigilancia durante el desarrollo**: `npm run watch` para recompilación automática durante el desarrollo
-- **Entradas principales**: `src/ts/main.ts`, `src/newsletter.js`, `src/blog.js`, `src/discount-popup.js`, `src/ts/components/JobApplicationForm.ts`, `src/ts/utils/markdown-to-blog.ts`
+- **Entradas principales**: `src/ts/main.ts`, `src/newsletter.js`, `src/blog.js`, `src/discount-popup.js`, `src/ts/components/JobApplicationForm.ts`
 - **Salida principal**: `dist/main.js` y módulos nombrados
   - `dist/components/jobApplicationForm.js`
-  - `dist/utils/utils/markdown-to-blog.js`
 - **Actualización de Service Worker**: El script `update-sw-version.js` actualiza automáticamente la versión del SW después de cada build
 
 ### Módulos JavaScript
@@ -803,23 +791,9 @@ npx http-server
 
 Esto iniciará un servidor local en http://localhost:8080 donde podrás visualizar el sitio web.
 
-## Blog: flujo Markdown → HTML
+## Blog
 
-- Guía completa en `docs/markdown-to-blog-guide.md`.
-- Procesar todos: `npm run process-blog`
-- Procesar un solo archivo: `npm run build && node scripts/process-blog.js markdown/blog/mi-post.md`
-- Compilado del conversor: `dist/utils/utils/markdown-to-blog.js`
-
-### Posts actuales
-
-El blog incluye posts sobre:
-- Proceso de elaboración de vino artesanal
-- Tour de vino y cacao
-- Destinos del Huila
-- Chocolate artesanal
-- Nibs de cacao y recetas
-- Maridaje de vinos con platos típicos
-- Restaurantes y domicilios en Rivera
+El blog vive en Ghost (https://blog.termopilas.co) y los posts se publican desde su admin. `blog.html`, `blog/*.html` y `blog/posts/*.html` solo redirigen a Ghost; `npm run site:check` falla si alguno deja de hacerlo. Más detalle en `blog/README.md`.
 
 ## Infraestructura (Terraform)
 

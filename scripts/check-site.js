@@ -7,6 +7,9 @@
   3. SEO consistency: each indexable page has exactly one absolute canonical, every sitemap
      <loc> is published, indexable and matches its page's canonical, and every JSON-LD
      block parses.
+  4. The blog lives in Ghost: blog.html and every page under blog/ must stay a redirect to
+     https://blog.termopilas.co with a canonical pointing to the same URL, so the posts are
+     never duplicated on termopilas.co.
 
   Exit code 1 on any problem. Usage: node scripts/check-site.js [siteDir]
 */
@@ -17,6 +20,7 @@ const path = require('path');
 const REPO_ROOT = path.resolve(__dirname, '..');
 const SITE = path.resolve(REPO_ROOT, process.argv[2] || process.env.SITE_DIR || '_site');
 const SITE_URL = 'https://termopilas.co';
+const BLOG_URL = 'https://blog.termopilas.co';
 
 const FORBIDDEN = [
   /\.md$/i, /^terraform\//, /^appscript\//, /^archive\//, /^markdown\//, /^resize\//,
@@ -154,6 +158,18 @@ function main() {
     if (!isRedirectOrNoindex(html) && rel !== '404.html' && /<head/i.test(html)) {
       indexable.push(rel);
       if (canonicals.length !== 1) problem(rel, `indexable page needs exactly one canonical (has ${canonicals.length})`);
+    }
+  }
+
+  // Blog pages must only redirect to Ghost
+  for (const rel of pages.filter((f) => f === 'blog.html' || f.startsWith('blog/'))) {
+    const head = headOf(fs.readFileSync(path.join(SITE, rel), 'utf8'));
+    const refresh = head.match(/http-equiv=["']refresh["'][^>]*content=["']\d+;\s*url=([^"']+)["']/i);
+    const target = refresh && refresh[1];
+    if (!target || !target.startsWith(BLOG_URL)) {
+      problem(rel, `blog page must redirect to ${BLOG_URL} (the blog lives in Ghost)`);
+    } else if (JSON.stringify(canonicalOf[rel]) !== JSON.stringify([target])) {
+      problem(rel, `canonical ${canonicalOf[rel]} must match the redirect target ${target}`);
     }
   }
 

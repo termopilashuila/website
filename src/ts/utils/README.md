@@ -12,15 +12,6 @@ This directory contains utility functions and helper modules that provide common
   - Performance-optimized animation triggers
   - Responsive animation handling
 
-### 📖 Content Processing
-
-- **`markdown-to-blog.ts`** - Markdown to HTML blog post conversion utility
-  - Converts markdown blog posts to HTML with frontmatter support
-  - Processes blog metadata (title, author, date, categories, etc.)
-  - Handles related articles and SEO metadata
-  - Template-based HTML generation
-  - File system operations for blog content management
-
 ## Features
 
 ### 🔄 Scroll Animations
@@ -29,14 +20,6 @@ This directory contains utility functions and helper modules that provide common
 - **Data attribute configuration** (`data-animate`)
 - **Threshold-based triggering** for smooth animations
 - **Automatic cleanup** to prevent memory leaks
-
-### 📝 Blog Processing
-
-- **Gray-matter frontmatter parsing**
-- **Marked.js markdown rendering**
-- **SEO-friendly HTML generation**
-- **Related articles management**
-- **Image and metadata handling**
 
 ## Usage
 
@@ -52,15 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-### Blog Processing
-
-```typescript
-import { convertMarkdownToBlog } from './utils/markdown-to-blog';
-
-// Process markdown files to HTML blog posts
-convertMarkdownToBlog('path/to/markdown', 'output/path');
-```
-
 ## HTML Data Attributes
 
 ### Animation Triggers
@@ -74,9 +48,6 @@ Add to any HTML element to enable scroll animations:
 
 ## Dependencies
 
-- **Node.js fs/path modules** (for blog processing)
-- **marked** - Markdown parsing library
-- **gray-matter** - Frontmatter parsing
 - **Intersection Observer API** (modern browser support)
 
 ## Performance Considerations

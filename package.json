@@ -12,8 +12,6 @@
     "watch": "webpack --watch",
     "lint": "eslint src/ scripts/ --max-warnings 0",
     "lint:appscript": "eslint appscript/ --max-warnings 999",
-    "process-blog": "npm run build && node scripts/process-blog.js",
-    "process-blog-single": "npm run build && node scripts/process-blog.js",
     "config:inject": "node scripts/inject-ga-from-config.js && node scripts/inject-fb-pixel-from-config.js",
     "config:inject-ga": "node scripts/inject-ga-from-config.js",
     "config:inject-pixel": "node scripts/inject-fb-pixel-from-config.js",
@@ -46,9 +44,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "@types/marked": "^5.0.2",
-    "gray-matter": "^4.0.3",
-    "marked": "^16.1.1",
     "sharp": "^0.33.5"
   }
 }
