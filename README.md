@@ -579,10 +579,11 @@ Cada archivo de agente contiene prompts detallados, métricas de éxito y proced
   - Clic en formulario de feedback
 
 ### Sitemap
-- Generación: `npm run sitemap:generate`
+- Generación: `npm run sitemap:generate` (también corre al final de `npm run build`)
 - Validación rápida: `npm run sitemap:validate`
-- Ping a buscadores: `npm run sitemap:ping`
-- Script: `scripts/generate-sitemap.js`
+- Script: `scripts/generate-sitemap.js`. Excluye páginas con meta refresh, `noindex`, canonical hacia otra URL, plantillas y páginas de prueba. El `lastmod` sale de `git log`.
+- Para ver qué páginas se excluyen y por qué: `SITEMAP_VERBOSE=1 npm run sitemap:generate`
+- Google retiró el endpoint de ping de sitemaps: el sitemap se envía en Search Console y se declara en `robots.txt`.
 
 ### Product Catalog Sync
 

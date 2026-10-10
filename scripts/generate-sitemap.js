@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /*
   Sitemap generator for termopilas.co
-  - Discovers public .html files in repo root, cata/, trabajo/
-  - Computes lastmod using Git commit time (fallback to file mtime)
-  - Assigns changefreq and priority per policy
-  - Resolves representative images (fallback to site-wide header image)
-  - Writes sitemap.xml with proper namespaces and deterministic ordering
+  - Discovers public .html files (repo root plus a few content subfolders)
+  - Skips pages that must not be indexed: meta refresh redirects, robots noindex,
+    canonical pointing to another URL, templates, tests and utility pages
+  - lastmod comes from `git log -1 --format=%cI -- <file>`:
+      * files with uncommitted changes use the current time (they are about to change)
+      * shallow clones (e.g. CI checkouts) reuse the lastmod already in sitemap.xml
+      * fallback: file mtime
+  - Writes sitemap.xml with deterministic ordering
+  Runs as part of `npm run build`.
 */
 
 const fs = require('fs');
@@ -16,191 +20,129 @@ const SITE_URL = 'https://termopilas.co';
 const REPO_ROOT = path.resolve(__dirname, '..');
 const OUTPUT_FILE = path.join(REPO_ROOT, 'sitemap.xml');
 
-const TARGET_DIRECTORIES = [
-  '.',
-  'cata',
-  'trabajo',
-];
+// Subfolders whose .html files may be public content (besides the repo root).
+const CONTENT_SUBDIRS = ['cata', 'eventos', 'trabajo', 'tour', 'coliving'];
+
+// Never listed, regardless of their meta tags.
+const EXCLUDED_FILES = new Set([
+  '404.html',
+  'offline.html',
+  'whatsapp.html',
+  'test-popup-automated.html',
+  'pago.html',
+  'registro.html',
+  'feedback.html',
+]);
 
 const PRIMARY_PAGES = new Set([
   'alojamiento.html',
-  'tour.html',
-  'coliving.html',
-  'salon.html',
   'catalogo.html',
-  'cata.html',
-  'despierta.html',
-  'eventos.html',
-  'pago.html',
+  'salon.html',
+  'grupos.html',
 ]);
 
-const UTILITY_PAGES = new Set([
+const LOW_PRIORITY_PAGES = new Set([
   'privacidad.html',
-  'whatsapp.html',
-  'registro.html',
+  'terminos.html',
 ]);
-
-const FALLBACK_IMAGES = [
-  path.join('assets', 'images', 'home', 'header.jpg'),
-  path.join('assets', 'images', 'header.png'),
-];
-
-/** Recursively collect .html files in a directory (relative to REPO_ROOT). */
-async function collectHtmlFiles(relativeDir) {
-  const collected = [];
-  const dirPath = path.join(REPO_ROOT, relativeDir);
-  let entries = [];
-  try {
-    entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
-  } catch {
-    return collected;
-  }
-  for (const entry of entries) {
-    const entryRelPath = path.join(relativeDir, entry.name);
-    if (entry.isDirectory()) {
-      // Skip hidden and non-target deep directories by default
-      if (entry.name.startsWith('.')) continue;
-      // Only recurse into target directories when starting from '.' or explicit subdirectories
-      // Avoid scanning huge dependency/vendor folders
-      if ([
-        'node_modules',
-        'venv',
-        '.git',
-        'appscript',
-        'assets',
-        'resize',
-        'terraform',
-        'src',
-        'styles',
-        'scripts',
-      ].includes(entry.name) && relativeDir === '.') {
-        continue;
-      }
-      if (relativeDir === '.' || ['cata', 'eventos', 'trabajo'].includes(relativeDir)) {
-        const nested = await collectHtmlFiles(entryRelPath);
-        collected.push(...nested);
-      }
-      continue;
-    }
-    if (entry.isFile() && entry.name.endsWith('.html')) {
-      collected.push(entryRelPath);
-    }
-  }
-  return collected;
-}
-
-function getGitLastCommitIso(fileAbsPath) {
-  try {
-    const res = spawnSync('git', ['log', '-1', '--format=%cI', '--', fileAbsPath], {
-      cwd: REPO_ROOT,
-      encoding: 'utf-8',
-    });
-    const output = (res.stdout || '').trim();
-    if (res.status === 0 && output) return output;
-  } catch {}
-  return null;
-}
-
-async function getLastModIso(fileAbsPath) {
-  const fromGit = getGitLastCommitIso(fileAbsPath);
-  if (fromGit) return fromGit;
-  const stat = await fs.promises.stat(fileAbsPath);
-  // RFC3339 with timezone: use toISOString (UTC)
-  return stat.mtime.toISOString();
-}
-
-function toCanonicalUrl(relativeHtmlPath) {
-  if (relativeHtmlPath === 'index.html') return `${SITE_URL}/`;
-  return `${SITE_URL}/${relativeHtmlPath.replace(/\\/g, '/')}`;
-}
-
-function fileExists(relPath) {
-  try {
-    return fs.existsSync(path.join(REPO_ROOT, relPath));
-  } catch {
-    return false;
-  }
-}
 
 const PAGE_IMAGE_MAP = {
   'index.html': 'assets/images/home/section1-accommodation1.jpg',
   'alojamiento.html': 'assets/images/alojamiento/habitacion-a/image1.png',
-  'tour.html': 'assets/images/tour/header.png',
-  'coliving.html': 'assets/images/coliving/header.png',
   'salon.html': 'assets/images/venue/image1.png',
   'catalogo.html': 'assets/images/catalog/header.png',
-  'cata.html': 'assets/images/tour/tour-wine.jpg',
-  'despierta.html': 'assets/images/tour/header.png',
-  'eventos.html': 'assets/images/eventos/header.png',
-  'pago.html': 'assets/images/pago/wompi.png',
   'galeria.html': 'assets/images/galeria/galeria-01.jpeg',
-  'blog.html': 'assets/images/blog/header.png',
+  'grupos.html': 'assets/images/eventos/header.png',
   'ubicacion.html': 'assets/images/ubicacion/header.png',
   'trabajo.html': 'assets/images/trabajo/header.png',
-  'feedback.html': 'assets/images/home/section3-img1.jpg',
-  'registro.html': 'assets/images/home/section1-accommodation2.jpg',
-  'privacidad.html': 'assets/images/header.png',
-  'whatsapp.html': 'assets/images/header.png',
-  'cata-vinos.html': 'assets/images/tour/tour-wine.jpg',
-  'cata/cata-vino-paella-tapas-main.html': 'assets/images/eventos/cata-vino-paella-tapas/main.png',
-  'cata/experiencia-vino-mar-fuego-fallido.html': 'assets/images/eventos/cata-vino-paella-tapas/vinos.png',
-  'cata/experiencia-vino-mar-fuego-gracias.html': 'assets/images/eventos/cata-vino-paella-tapas/vinos.png',
-  'cata/experiencia-vino-mar-fuego.html': 'assets/images/eventos/cata-vino-paella-tapas/main.png',
-  'eventos/parrillada.html': 'assets/images/eventos/evento-piscina.jpg',
-  'eventos/parrillada/index.html': 'assets/images/eventos/evento-piscina.jpg',
-  'eventos/parrillada/gracias.html': 'assets/images/eventos/momento-comida.jpg',
   'trabajo/cocinero.html': 'assets/images/trabajo/header.png',
   'trabajo/conserje.html': 'assets/images/trabajo/header.png',
   'trabajo/recepcionista.html': 'assets/images/trabajo/header.png',
   'trabajo/web-developer.html': 'assets/images/trabajo/header.png',
 };
+const FALLBACK_IMAGE = 'assets/images/header.png';
 
-function guessImageForPage(relativeHtmlPath) {
-  const normalized = relativeHtmlPath.replace(/\\/g, '/');
+function git(args) {
+  const res = spawnSync('git', args, { cwd: REPO_ROOT, encoding: 'utf-8' });
+  if (res.status !== 0) return null;
+  return (res.stdout || '').trim();
+}
 
-  if (PAGE_IMAGE_MAP[normalized]) {
-    const imagePath = PAGE_IMAGE_MAP[normalized];
-    if (fileExists(imagePath)) {
-      return `${SITE_URL}/${imagePath.replace(/\\/g, '/')}`;
+const IS_GIT_REPO = git(['rev-parse', '--is-inside-work-tree']) === 'true';
+const IS_SHALLOW = IS_GIT_REPO && git(['rev-parse', '--is-shallow-repository']) === 'true';
+
+function listHtmlFiles() {
+  const files = [];
+  const pushHtml = (relDir) => {
+    const abs = path.join(REPO_ROOT, relDir);
+    if (!fs.existsSync(abs)) return;
+    for (const entry of fs.readdirSync(abs, { withFileTypes: true })) {
+      if (entry.isFile() && entry.name.endsWith('.html')) {
+        files.push(relDir === '.' ? entry.name : `${relDir}/${entry.name}`);
+      }
     }
-  }
+  };
+  pushHtml('.');
+  for (const dir of CONTENT_SUBDIRS) pushHtml(dir);
+  return files.sort();
+}
 
-  if (normalized.startsWith('blog/') && normalized.endsWith('.html') && normalized !== 'blog/template.html') {
-    const blogSlug = path.basename(normalized, '.html');
-    const blogImagePath = path.join('assets', 'images', 'blog', blogSlug, 'main.jpg');
-    if (fileExists(blogImagePath)) {
-      return `${SITE_URL}/${blogImagePath.replace(/\\/g, '/')}`;
-    }
-    return `${SITE_URL}/assets/images/blog/header.png`;
-  }
+function toUrl(relPath) {
+  if (relPath === 'index.html') return `${SITE_URL}/`;
+  if (relPath.endsWith('/index.html')) return `${SITE_URL}/${relPath.slice(0, -'index.html'.length)}`;
+  return `${SITE_URL}/${relPath}`;
+}
 
-  for (const fallback of FALLBACK_IMAGES) {
-    if (fileExists(fallback)) return `${SITE_URL}/${fallback.replace(/\\/g, '/')}`;
-  }
+/** Returns a reason string when the page must not be in the sitemap, otherwise null. */
+function exclusionReason(relPath, html) {
+  const base = path.basename(relPath).toLowerCase();
+  if (EXCLUDED_FILES.has(relPath) || base === 'template.html') return 'excluded file';
+  if (/^test[-_]/.test(base)) return 'test page';
+  const head = (html.split(/<\/head>/i)[0] || html);
+  if (/<meta[^>]+http-equiv=["']refresh["']/i.test(head)) return 'meta refresh';
+  const robots = head.match(/<meta[^>]+name=["']robots["'][^>]*>/i);
+  if (robots && /noindex/i.test(robots[0])) return 'noindex';
+  const canonical = head.match(/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
+  if (canonical && canonical[1] !== toUrl(relPath)) return `canonical -> ${canonical[1]}`;
   return null;
 }
 
-function classifyPage(relativeHtmlPath) {
-  const base = path.basename(relativeHtmlPath);
-  if (relativeHtmlPath === 'index.html') {
-    return { changefreq: 'monthly', priority: 1.0, group: 0 };
+function readExistingLastmods() {
+  const map = new Map();
+  try {
+    const xml = fs.readFileSync(OUTPUT_FILE, 'utf-8');
+    const re = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
+    let m;
+    while ((m = re.exec(xml))) map.set(m[1], m[2]);
+  } catch {
+    // no previous sitemap
   }
-  if (PRIMARY_PAGES.has(base)) {
-    return { changefreq: 'monthly', priority: 0.9, group: 1 };
+  return map;
+}
+
+function lastModFor(relPath, url, previous) {
+  if (IS_GIT_REPO) {
+    const dirty = git(['status', '--porcelain', '--', relPath]);
+    if (dirty) return new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+    if (IS_SHALLOW && previous.has(url)) return previous.get(url);
+    const fromGit = git(['log', '-1', '--format=%cI', '--', relPath]);
+    if (fromGit) return fromGit;
   }
-  if (UTILITY_PAGES.has(base)) {
-    return { changefreq: 'yearly', priority: 0.3, group: 2 };
-  }
-  if (relativeHtmlPath.startsWith('cata' + path.sep)) {
-    return { changefreq: 'monthly', priority: 0.8, group: 3 };
-  }
-  if (relativeHtmlPath.startsWith('eventos' + path.sep)) {
-    return { changefreq: 'monthly', priority: 0.8, group: 3 };
-  }
-  if (relativeHtmlPath.startsWith('trabajo' + path.sep)) {
-    return { changefreq: 'monthly', priority: 0.6, group: 4 };
-  }
-  return { changefreq: 'monthly', priority: 0.7, group: 5 };
+  if (previous.has(url)) return previous.get(url);
+  return fs.statSync(path.join(REPO_ROOT, relPath)).mtime.toISOString();
+}
+
+function classify(relPath) {
+  if (relPath === 'index.html') return { changefreq: 'weekly', priority: 1.0, group: 0 };
+  if (PRIMARY_PAGES.has(relPath)) return { changefreq: 'monthly', priority: 0.9, group: 1 };
+  if (LOW_PRIORITY_PAGES.has(relPath)) return { changefreq: 'yearly', priority: 0.3, group: 4 };
+  if (relPath.startsWith('trabajo/')) return { changefreq: 'monthly', priority: 0.6, group: 3 };
+  return { changefreq: 'monthly', priority: 0.7, group: 2 };
+}
+
+function imageFor(relPath) {
+  const candidate = PAGE_IMAGE_MAP[relPath] || FALLBACK_IMAGE;
+  return fs.existsSync(path.join(REPO_ROOT, candidate)) ? `${SITE_URL}/${candidate}` : null;
 }
 
 function xmlEscape(str) {
@@ -212,52 +154,38 @@ function xmlEscape(str) {
     .replace(/'/g, '&apos;');
 }
 
-async function main() {
-  // Collect files from target directories
-  const allFilesNested = await Promise.all(
-    TARGET_DIRECTORIES.map((dir) => collectHtmlFiles(dir))
-  );
-  let allFiles = Array.from(new Set(allFilesNested.flat()));
-
-  // Normalize and filter
-  allFiles = allFiles
-    .map((p) => p.replace(/^\.\//, ''))
-    .filter((p) => {
-      // Only top-level or specifically targeted subfolders
-      const parts = p.split(path.sep);
-      if (parts[0] === '.') return false;
-      // Exclude 404 pages
-      if (path.basename(p).toLowerCase() === '404.html') return false;
-      if (path.basename(p).toLowerCase() === 'template.html') return false;
-      if (!['cata', 'eventos', 'trabajo'].includes(parts[0]) && parts.length > 1) return false;
-      return true;
-    });
-
-  // Ensure index.html is included if present
-  if (fileExists('index.html') && !allFiles.includes('index.html')) {
-    allFiles.push('index.html');
-  }
-
-  // Build entries with metadata
+function main() {
+  const previous = readExistingLastmods();
   const entries = [];
-  for (const relPath of allFiles) {
-    const abs = path.join(REPO_ROOT, relPath);
-    const loc = toCanonicalUrl(relPath);
-    const lastmod = await getLastModIso(abs);
-    const img = guessImageForPage(relPath);
-    const { changefreq, priority, group } = classifyPage(relPath);
-    entries.push({ relPath, loc, lastmod, changefreq, priority, image: img, group });
+  const skipped = [];
+
+  for (const relPath of listHtmlFiles()) {
+    const html = fs.readFileSync(path.join(REPO_ROOT, relPath), 'utf-8');
+    const reason = exclusionReason(relPath, html);
+    if (reason) {
+      skipped.push(`${relPath} (${reason})`);
+      continue;
+    }
+    const loc = toUrl(relPath);
+    entries.push({
+      relPath,
+      loc,
+      lastmod: lastModFor(relPath, loc, previous),
+      image: imageFor(relPath),
+      ...classify(relPath),
+    });
   }
 
-  entries.sort((a, b) => {
-    if (a.group !== b.group) return a.group - b.group;
-    return a.relPath.localeCompare(b.relPath);
-  });
+  if (!entries.some((e) => e.relPath === 'index.html')) {
+    throw new Error('index.html missing from sitemap: refusing to write an incomplete sitemap');
+  }
 
-  // Write XML
-  const lines = [];
-  lines.push('<?xml version="1.0" encoding="UTF-8"?>');
-  lines.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">');
+  entries.sort((a, b) => (a.group - b.group) || a.relPath.localeCompare(b.relPath));
+
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+  ];
   for (const e of entries) {
     lines.push('  <url>');
     lines.push(`    <loc>${xmlEscape(e.loc)}</loc>`);
@@ -273,16 +201,14 @@ async function main() {
   }
   lines.push('</urlset>');
 
-  await fs.promises.writeFile(OUTPUT_FILE, lines.join('\n') + '\n', 'utf-8');
-
-  const numUrls = entries.length;
-  const numImages = entries.filter((e) => Boolean(e.image)).length;
-  console.log(`Generated sitemap.xml with ${numUrls} URLs (${numImages} images)`);
+  fs.writeFileSync(OUTPUT_FILE, lines.join('\n') + '\n', 'utf-8');
+  console.log(`Generated sitemap.xml with ${entries.length} URLs (skipped ${skipped.length}${IS_SHALLOW ? ', shallow clone: reused previous lastmod' : ''})`);
+  if (process.env.SITEMAP_VERBOSE) skipped.forEach((s) => console.log(`  skip: ${s}`));
 }
 
-main().catch((err) => {
+try {
+  main();
+} catch (err) {
   console.error(err);
   process.exit(1);
-});
-
-
+}
