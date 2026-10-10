@@ -1,0 +1,83 @@
+name: GitHub Pages
+
+# Builds the site and publishes ONLY the public files (_site/, assembled by
+# scripts/build-site.js) instead of the whole repository.
+#
+# - Pull requests: build + verify _site (links, canonicals, sitemap, JSON-LD). No deploy.
+# - Push to main: build + verify + deploy, but only once the repository's Pages source is
+#   "GitHub Actions" (Settings -> Pages -> Source). While Pages still deploys from the
+#   branch ("legacy"), the deploy job is skipped with a notice, so this workflow is harmless.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Images are committed already resized (AVIF/WebP), so the slow Python resize step is skipped.
+      - name: Build (webpack, static header/footer, service worker, sitemap)
+        run: npm run build:no-images
+
+      - name: Assemble _site (public files only)
+        run: npm run site:assemble
+
+      - name: Check _site (local links, private files, canonicals, sitemap, JSON-LD)
+        run: npm run site:check
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check Pages source
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type || echo unknown)
+          echo "build_type=${build_type}" >> "$GITHUB_OUTPUT"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::notice title=Pages deploy skipped::Pages source is '${build_type}'. Set Settings -> Pages -> Source = GitHub Actions to publish _site from this workflow."
+          fi
+
+      - name: Configure Pages
+        if: steps.source.outputs.build_type == 'workflow'
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: steps.source.outputs.build_type == 'workflow'
+        uses: actions/deploy-pages@v4

@@ -54,3 +54,5 @@ coverage/
 wompi/data/*.json
 **/.terraform.lock.hcl
 **/.terraform/**
+_site/
+.lighthouseci/

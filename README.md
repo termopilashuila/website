@@ -835,13 +835,13 @@ Para más detalles, consulta `terraform/README.md`.
 
 ## Implementación
 
-- **Plataforma**: GitHub Pages
-- **Rama**: main (implementada automáticamente)
-- **Dominio**: Dominio personalizado configurado a través del archivo CNAME (termopilas.co)
-- **SEO**:
-  - Sitemap (`sitemap.xml`) para indexación de motores de búsqueda
-  - Robots.txt (`robots.txt`) para instrucciones de rastreadores
-- **Lista de verificación**:
-  - Asegurarse de que todos los archivos estén correctamente confirmados y enviados
-  - Verificar que todos los enlaces y recursos funcionen correctamente
-  - Ejecutar `npm run build` antes de hacer commit para actualizar el service worker
+- **Plataforma**: GitHub Pages, desplegado por GitHub Actions (`.github/workflows/pages.yml`).
+- **Qué se publica**: solo `_site/`, que arma `scripts/build-site.js` con una lista de permitidos (páginas HTML públicas, `assets/` sin `assets/data/`, `styles/`, `dist/`, `CNAME`, `robots.txt`, `sitemap.xml`, `manifest.json`, `service-worker.js`). Docs, `terraform/`, `appscript/`, `archive/`, `markdown/`, `scripts/`, `src/`, `wompi/` y los tests no se publican.
+- **Verificación**: `scripts/check-site.js` falla si un enlace local de `_site/` está roto, si se coló un archivo privado, o si canonical, sitemap o JSON-LD no son consistentes.
+- **Rama**: `main`. En los PR el workflow solo compila y verifica; el deploy corre en `main` cuando Settings → Pages → Source = GitHub Actions.
+- **Dominio**: `termopilas.co`, por el archivo `CNAME` (va dentro de `_site/`).
+- **Header y footer estáticos**: `scripts/render-layout.js` escribe la nav, el H1 del hero y el footer en el HTML de las páginas principales a partir de `src/ts/components/layout.ts`. No se editan a mano: se cambia `layout.ts` y se corre `npm run layout:render` (también corre en `npm run build`).
+- **Comandos**:
+  - `npm run build:site`: compila sin redimensionar imágenes, arma `_site/` y lo verifica.
+  - `npm run build`: igual que antes, con `resize-images` al inicio.
+  - Ver el sitio publicado en local: `npm run build:site && python3 -m http.server -d _site 8000`.
