@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tour de Vino y Cacao - Redirigiendo...</title>
-
-    <!-- 301 Redirect via meta refresh (GitHub Pages doesn't support .htaccess) -->
-    <meta http-equiv="refresh" content="0; url=https://eventos.termopilas.co/tour">
-    <link rel="canonical" href="https://eventos.termopilas.co/tour">
+    <title>Tour de vino y cacao en Rivera, Huila | Finca Termópilas</title>
+    <meta name="description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <link rel="canonical" href="https://termopilas.co/tour.html">
+    <link rel="preload" as="image" href="/assets/images/tour/header.avif" type="image/avif" fetchpriority="high">
+    <meta name="author" content="Finca Termópilas">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
@@ -19,67 +19,747 @@
     </script>
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png">
 
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 20px;
+    <!-- Preload critical self-hosted fonts -->
+    <link rel="preload" href="/assets/fonts/montserrat-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/lora-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/hero.css">
+    <link rel="stylesheet" href="/styles/utilities.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+    <link rel="stylesheet" href="/styles/tour.css">
+    <link rel="stylesheet" href="/styles/faq.css">
+
+    <!-- Font Awesome for icons (non-blocking: icons are decorative) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://termopilas.co/tour.html">
+    <meta property="og:title" content="Tour de vino y cacao en Rivera, Huila | Finca Termópilas">
+    <meta property="og:description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <meta property="og:image" content="https://termopilas.co/assets/images/tour/header.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://termopilas.co/tour.html">
+    <meta name="twitter:title" content="Tour de vino y cacao en Rivera, Huila | Finca Termópilas">
+    <meta name="twitter:description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <meta name="twitter:image" content="https://termopilas.co/assets/images/tour/header.png">
+
+    <!-- JavaScript -->
+    <script src="/dist/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // GA4: clicks to the booking page and to WhatsApp
+            document.querySelectorAll('a[href^="https://eventos.termopilas.co/tour"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', { 'event_category': 'Reservations', 'reservation_type': 'tour', 'page': 'tour', 'button_location': link.dataset.location || 'content' });
+                    }
+                });
+            });
+            document.querySelectorAll('a[href*="whatsapp.html"][href*="utm_campaign=tour"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'contact', { 'event_category': 'Contact', 'method': 'whatsapp', 'page': 'tour' });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '760911966545667');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#F29F05">
+    <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Termópilas">
+    <meta name="msapplication-TileColor" content="#F29F05">
+    <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "@id": "https://termopilas.co/tour.html#tour",
+      "name": "Tour de vino y cacao en Finca Termópilas",
+      "url": "https://termopilas.co/tour.html",
+      "description": "Recorrido guiado por los viñedos, el bosque de cacao, la fábrica de chocolate, el Río Frío y el Desfiladero de las Termópilas en Rivera, Huila, con degustación de uvas, cacao y chocolates, cata de tres vinos artesanales y fogata.",
+      "image": [
+        "https://termopilas.co/assets/images/tour/header.png",
+        "https://termopilas.co/assets/images/tour/tour-overview.png"
+      ],
+      "touristType": [
+        "Parejas",
+        "Amigos",
+        "Familias",
+        "Turistas"
+      ],
+      "inLanguage": "es",
+      "availableLanguage": "es",
+      "provider": {
+        "@id": "https://termopilas.co/#organization"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Recorrido por los viñedos",
+              "description": "Comenzamos con un paseo por nuestros viñedos, donde aprenderás sobre las variedades de uva que cultivamos y las técnicas de viticultura que empleamos en el clima tropical del Huila."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Jardín zen",
+              "description": "Visitamos nuestro jardín zen, un espacio de tranquilidad y conexión con la naturaleza."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Vistas panorámicas",
+              "description": "Disfrutarás de vistas de las montañas y valles que rodean la finca, perfectas para tomar fotografías."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Bosque de cacao",
+              "description": "Recorremos nuestro bosque de cacao, donde conocerás las diferentes variedades, su cultivo y cuidado, y probarás el cacao fresco directamente del árbol."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Río Frío",
+              "description": "Visitamos el Río Frío que atraviesa la finca, un lugar refrescante para conectar con la naturaleza y disfrutar del sonido del agua."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Fábrica de chocolate",
+              "description": "Aprenderás el proceso de transformación del cacao en chocolate, desde la cosecha hasta la elaboración de barras artesanales."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Jardín de orquídeas",
+              "description": "Descubrirás nuestro jardín de orquídeas, donde cultivamos diversas especies nativas de la región."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Desfiladero de las Termópilas",
+              "description": "Caminamos por el Desfiladero de las Termópilas, que da nombre a nuestra finca."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Cata de vinos",
+              "description": "Finalizamos con una cata de nuestros vinos artesanales, donde aprenderás a apreciar sus características y su proceso de elaboración."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Fogata",
+              "description": "Cerramos la experiencia alrededor de una fogata, compartiendo con los demás participantes al caer la tarde."
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://eventos.termopilas.co/tour",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://termopilas.co/#organization"
         }
-        .redirect-message {
-            max-width: 600px;
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://termopilas.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tour de vino y cacao",
+          "item": "https://termopilas.co/tour.html"
         }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto dura el tour y a qué hora empieza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dura unas 2 horas y media. En las últimas fechas el recorrido empezó a las 4:00 p. m. y terminó hacia las 6:30 p. m. con la fogata. El horario exacto de cada fecha aparece en nuestra <a href=\"https://eventos.termopilas.co/tour\">página de eventos</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta y cuándo es la próxima fecha?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tour se hace en fechas programadas. Consulta fechas y precios en <a href=\"https://eventos.termopilas.co/tour\">eventos.termopilas.co/tour</a> o escríbenos por <a href=\"/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_precio&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas\">WhatsApp</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo reservo y confirmo mi cupo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elige la fecha en nuestra página de eventos y completa allí la reserva. Si tienes dudas sobre tu reserva o el pago, escríbenos por <a href=\"/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_reserva&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas\">WhatsApp</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El tour incluye comida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Incluye degustaciones: uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después. Consulta nuestra guía de <a href=\"https://blog.termopilas.co/lugares-para-comer-rivera/\">lugares para comer en Rivera</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es una experiencia apta para todas las edades?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Es una experiencia tranquila, ideal para adultos, parejas y familias. Los menores pueden asistir siempre acompañados por un adulto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El recorrido es muy exigente físicamente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El recorrido es de dificultad baja y se hace a un ritmo tranquilo, con espacios para descansar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántas personas participan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los grupos son de máximo 30 personas. Si quieres el tour para tu empresa o un grupo privado, mira nuestras <a href=\"/grupos.html\">experiencias para grupos y empresas</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo quedarme a dormir en la finca?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes combinar el tour con una noche en nuestras <a href=\"/alojamiento.html\">habitaciones y cabañas</a>."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo llego a Finca Termópilas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Estamos en el km 3,3 de la vía a Las Juntas, en Rivera (Huila), a unos 20 minutos de Neiva. Puedes llegar en vehículo particular o en transporte público hasta Rivera y luego en motocarro hasta la finca. En la <a href=\"/ubicacion.html\">página de ubicación</a> encontrarás mapas, un video y contactos de transporte local."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué debo llevar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zapatos cómodos, protector solar o sombrero y repelente para mosquitos. Si quieres meterte al río, unos zapatos de agua ayudan, pero no son obligatorios."
+          }
         }
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        a {
-            color: white;
-            text-decoration: underline;
-            font-weight: bold;
-        }
-    </style>
+      ]
+    }
+    </script>
 </head>
 <body>
-    <div class="redirect-message">
-        <h1>🍷 Tour de Vino y Cacao</h1>
-        <p>Redirigiendo a nuestra página de eventos...</p>
-        <div class="spinner"></div>
-        <p style="margin-top: 2rem; font-size: 1rem;">
-            Si no eres redirigido automáticamente,
-            <a href="https://eventos.termopilas.co/tour">haz clic aquí</a>
-        </p>
-    </div>
+    <header role="banner" class="hero tour-hero" style="background-image: url('/assets/images/tour/header.png'); background-image: image-set(url('/assets/images/tour/header.avif') type('image/avif'), url('/assets/images/tour/header.webp') type('image/webp'), url('/assets/images/tour/header.png') type('image/png')); background-size: cover; background-position: center;" data-prerendered="true">
+        <!-- Generado por scripts/render-layout.js desde src/ts/components/layout.ts: no editar a mano -->
+        <nav class="navbar" role="navigation" aria-label="Navegación principal">
+          <div class="logo">
+            <a href="/">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Finca Termópilas</span>
+            </a>
+          </div>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="/">Inicio</a></li><li><a href="/alojamiento.html#main-content">Alojamiento</a></li><li><a href="/tour.html" class="active">Tour</a></li><li><a href="https://eventos.termopilas.co">Eventos</a></li><li><a href="/salon.html#main-content">Salón</a></li><li><a href="/grupos.html">Grupos</a></li><li><a href="https://blog.termopilas.co">Blog</a></li><li><a href="/trabajo.html#main-content">Trabajo</a></li><li><a href="/galeria.html#main-content">Galería</a></li><li><a href="https://tienda.termopilas.co">Tienda</a></li>
+          </ul>
+        </nav>
+        <div class="hero-content">
+          <h1>Tour de vino y cacao en <strong>Rivera, Huila</strong></h1>
+          <p>Viñedos, bosque de cacao, chocolate artesanal y cata de vinos en Finca Termópilas</p>
+          <a href="https://eventos.termopilas.co/tour" class="cta-button">VER PRÓXIMAS FECHAS</a>
+        </div>
+    </header>
 
-    <script>
-        // Immediate redirect (backup to meta refresh)
-        window.location.replace('https://eventos.termopilas.co/tour');
-    </script>
+    <main id="main-content">
+        <section class="tour-intro section">
+            <div class="container">
+                <h2>Una tarde entre viñedos, cacao y vino</h2>
+                <p class="tour-description">
+                    En Finca Termópilas, en Rivera (Huila), cultivamos uva y cacao y elaboramos nuestro propio vino y chocolate artesanal. En este tour guiado recorres los viñedos, el bosque de cacao y la fábrica de chocolate, caminas hasta el Río Frío y el Desfiladero de las Termópilas, pruebas lo que se produce en la finca y cierras la tarde con una cata de vinos alrededor de una fogata.
+                </p>
+                <div class="tour-overview">
+                    <div class="tour-image">
+                        <picture>
+                            <source srcset="/assets/images/tour/tour-overview.avif" type="image/avif">
+                            <source srcset="/assets/images/tour/tour-overview.webp" type="image/webp">
+                            <img src="/assets/images/tour/tour-overview.png" width="1200" height="900" loading="lazy" decoding="async" alt="Vista panorámica de Finca Termópilas con viñedos y árboles de cacao">
+                        </picture>
+                    </div>
+                    <div class="tour-details">
+                        <ul class="tour-info">
+                            <li><i class="far fa-clock" aria-hidden="true"></i> <strong>Duración:</strong>&nbsp;unas 2 horas y media</li>
+                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> <strong>Fechas:</strong>&nbsp;programadas; consulta fechas y precios</li>
+                            <li><i class="fas fa-users" aria-hidden="true"></i> <strong>Grupos:</strong>&nbsp;máximo 30 personas</li>
+                            <li><i class="fas fa-shoe-prints" aria-hidden="true"></i> <strong>Dificultad:</strong>&nbsp;baja, a ritmo tranquilo</li>
+                            <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Lugar:</strong>&nbsp;Finca Termópilas, km 3,3 vía Las Juntas, Rivera, Huila</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cta-container tour-cta">
+                    <a href="https://eventos.termopilas.co/tour" class="cta-button" data-location="intro"><i class="fas fa-calendar-check" aria-hidden="true"></i> Ver próximas fechas</a>
+                    <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=intro_whatsapp&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas" class="cta-button cta-button-secondary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tour-includes section">
+            <div class="container">
+                <h2>¿Qué incluye?</h2>
+                <div class="includes-grid">
+                    <div class="include-item">
+                        <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
+                        <h3>Degustación de uvas</h3>
+                        <p>Diferentes variedades de uvas cultivadas en la finca.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-seedling" aria-hidden="true"></i>
+                        <h3>Degustación de cacao</h3>
+                        <p>El sabor del cacao fresco, directamente del árbol.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+                        <h3>Degustación de chocolates</h3>
+                        <p>Nibs de cacao, chocolatinas y chocolate de mesa artesanal.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-wine-bottle" aria-hidden="true"></i>
+                        <h3>Cata de vinos</h3>
+                        <p>Tres vinos artesanales producidos en nuestra finca.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-ice-cream" aria-hidden="true"></i>
+                        <h3>Parfait</h3>
+                        <p>Parfait de yogur griego con nibs de cacao.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-tint" aria-hidden="true"></i>
+                        <h3>Hidratación</h3>
+                        <p>Botella de agua durante la caminata.</p>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-fire" aria-hidden="true"></i>
+                        <h3>Fogata</h3>
+                        <p>Una fogata para cerrar la tarde.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tour-experience section">
+            <div class="container">
+                <h2>Así es el recorrido</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-wine-glass-alt" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Recorrido por los viñedos</h3>
+                            <p>Comenzamos con un paseo por nuestros viñedos, donde aprenderás sobre las variedades de uva que cultivamos y las técnicas de viticultura que empleamos en el clima tropical del Huila.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-vineyards.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-vineyards.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-vineyards.jpg" width="974" height="518" loading="lazy" decoding="async" alt="Viñedos de Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-spa" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Jardín zen</h3>
+                            <p>Visitamos nuestro jardín zen, un espacio de tranquilidad y conexión con la naturaleza.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-zen.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-zen.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-zen.png" width="1200" height="813" loading="lazy" decoding="async" alt="Jardín zen de Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-mountain" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Vistas panorámicas</h3>
+                            <p>Disfrutarás de vistas de las montañas y valles que rodean la finca, perfectas para tomar fotografías.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-mountains.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-mountains.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-mountains.png" width="1200" height="899" loading="lazy" decoding="async" alt="Vista de las montañas desde Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-seedling" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Bosque de cacao</h3>
+                            <p>Recorremos nuestro bosque de cacao, donde conocerás las diferentes variedades, su cultivo y cuidado, y probarás el cacao fresco directamente del árbol.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-cacao.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-cacao.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-cacao.png" width="1200" height="1011" loading="lazy" decoding="async" alt="Árboles de cacao en Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-water" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Río Frío</h3>
+                            <p>Visitamos el Río Frío que atraviesa la finca, un lugar refrescante para conectar con la naturaleza y disfrutar del sonido del agua.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-river.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-river.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-river.png" width="1200" height="900" loading="lazy" decoding="async" alt="Río Frío en Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-cookie-bite" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Fábrica de chocolate</h3>
+                            <p>Aprenderás el proceso de transformación del cacao en chocolate, desde la cosecha hasta la elaboración de barras artesanales.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-chocolate.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-chocolate.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-chocolate.png" width="1200" height="900" loading="lazy" decoding="async" alt="Fábrica de chocolate de Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Jardín de orquídeas</h3>
+                            <p>Descubrirás nuestro jardín de orquídeas, donde cultivamos diversas especies nativas de la región.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-orchids.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-orchids.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-orchids.png" width="1200" height="900" loading="lazy" decoding="async" alt="Orquídeas en Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-hiking" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Desfiladero de las Termópilas</h3>
+                            <p>Caminamos por el Desfiladero de las Termópilas, que da nombre a nuestra finca.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-gorge.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-gorge.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-gorge.png" width="1200" height="900" loading="lazy" decoding="async" alt="Desfiladero de las Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-wine-bottle" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Cata de vinos</h3>
+                            <p>Finalizamos con una cata de nuestros vinos artesanales, donde aprenderás a apreciar sus características y su proceso de elaboración.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-wine.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-wine.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-wine.jpg" width="633" height="502" loading="lazy" decoding="async" alt="Cata de vino en Finca Termópilas">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon"><i class="fas fa-fire" aria-hidden="true"></i></div>
+                        <div class="experience-content">
+                            <h3>Fogata</h3>
+                            <p>Cerramos la experiencia alrededor de una fogata, compartiendo con los demás participantes al caer la tarde.</p>
+                            <div class="experience-image">
+                                <picture>
+                                    <source srcset="/assets/images/tour/tour-fire.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/tour-fire.webp" type="image/webp">
+                                    <img src="/assets/images/tour/tour-fire.png" width="660" height="575" loading="lazy" decoding="async" alt="Fogata en Finca Termópilas al atardecer">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="experience-blog-recommendation">¿Quieres saber más? Lee <a href="https://blog.termopilas.co/un-dia-en-nuestro-tour-de-vino-y-cacao/">un día en nuestro tour de vino y cacao</a> y <a href="https://blog.termopilas.co/nibs-cacao-parfait-bowl/">cómo preparar un bowl con nibs de cacao</a> en nuestro blog.</p>
+            </div>
+        </section>
+
+        <section class="tour-audience section">
+            <div class="container">
+                <h2>¿Para quién es este tour?</h2>
+                <div class="audience-grid">
+                    <div class="audience-item"><i class="fas fa-heart" aria-hidden="true"></i><h3>Parejas</h3><p>Que buscan un plan diferente</p></div>
+                    <div class="audience-item"><i class="fas fa-user-friends" aria-hidden="true"></i><h3>Amigos</h3><p>Que quieren compartir una experiencia especial</p></div>
+                    <div class="audience-item"><i class="fas fa-users" aria-hidden="true"></i><h3>Familias</h3><p>Que disfrutan actividades en la naturaleza</p></div>
+                    <div class="audience-item"><i class="fas fa-globe-americas" aria-hidden="true"></i><h3>Turistas</h3><p>Que quieren conocer el cacao y el vino del Huila</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tour-testimonials section">
+            <div class="container">
+                <h2>Lo que dicen nuestros visitantes</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial testimonial-card">
+                        <div class="testimonial-content"><p>Los tours que realizan son una actividad diferente a lo acostumbrado al rededor de Neiva y son una experiencia gratificante, se aprende y se disfruta. El sitio es hermoso por sus paisajes y espacios. La atención y la compañía del personal es muy grata.</p></div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author">
+                                <picture>
+                                    <source srcset="/assets/images/tour/testimonial1.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/testimonial1.webp" type="image/webp">
+                                    <img src="/assets/images/tour/testimonial1.png" width="271" height="267" loading="lazy" decoding="async" alt="Foto de Juan Maná" class="testimonial-author-img">
+                                </picture>
+                                <div>
+                                    <div class="author testimonial-author-name">Juan Maná</div>
+                                    <div class="testimonial-author-location">Neiva</div>
+                                    <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial testimonial-card">
+                        <div class="testimonial-content"><p>El lugar es muy bello y tranquilo, con un clima delicioso, perfecto para una escapada de la rutina. El tour de Vino y Cacao que realiza Kathe alrededor de la finca muy enriquecedor y divertido, super recomendada la finca para descanso, esparcimiento y el tour para salir de las actividades comunes.</p></div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author">
+                                <picture>
+                                    <source srcset="/assets/images/tour/testimonial2.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/testimonial2.webp" type="image/webp">
+                                    <img src="/assets/images/tour/testimonial2.png" width="233" height="220" loading="lazy" decoding="async" alt="Foto de Julia Yineth" class="testimonial-author-img">
+                                </picture>
+                                <div>
+                                    <div class="author testimonial-author-name">Julia Yineth</div>
+                                    <div class="testimonial-author-location">Rivera</div>
+                                    <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial testimonial-card">
+                        <div class="testimonial-content"><p>Un lugar muy amplio, tranquilo y agradable. El toque especial con su tour de viñedo y cacao con sus respectivos productos a comercializar brindado por su administradora Kathe de una manera sabía y amena me encantó, definitivamente recomendado.</p></div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author">
+                                <picture>
+                                    <source srcset="/assets/images/tour/testimonial3.avif" type="image/avif">
+                                    <source srcset="/assets/images/tour/testimonial3.webp" type="image/webp">
+                                    <img src="/assets/images/tour/testimonial3.png" width="254" height="225" loading="lazy" decoding="async" alt="Foto de Aleja Ortega" class="testimonial-author-img">
+                                </picture>
+                                <div>
+                                    <div class="author testimonial-author-name">Aleja Ortega</div>
+                                    <div class="testimonial-author-location">Bogotá</div>
+                                    <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tour-faq section" id="preguntas">
+            <div class="container">
+                <h2>Preguntas frecuentes sobre el tour</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Cuánto dura el tour y a qué hora empieza?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Dura unas 2 horas y media. En las últimas fechas el recorrido empezó a las 4:00 p. m. y terminó hacia las 6:30 p. m. con la fogata. El horario exacto de cada fecha aparece en nuestra <a href="https://eventos.termopilas.co/tour">página de eventos</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Cuánto cuesta y cuándo es la próxima fecha?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>El tour se hace en fechas programadas. Consulta fechas y precios en <a href="https://eventos.termopilas.co/tour">eventos.termopilas.co/tour</a> o escríbenos por <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_precio&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas">WhatsApp</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Cómo reservo y confirmo mi cupo?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Elige la fecha en nuestra página de eventos y completa allí la reserva. Si tienes dudas sobre tu reserva o el pago, escríbenos por <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_reserva&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas">WhatsApp</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿El tour incluye comida?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Incluye degustaciones: uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después. Consulta nuestra guía de <a href="https://blog.termopilas.co/lugares-para-comer-rivera/">lugares para comer en Rivera</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Es una experiencia apta para todas las edades?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Sí. Es una experiencia tranquila, ideal para adultos, parejas y familias. Los menores pueden asistir siempre acompañados por un adulto.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿El recorrido es muy exigente físicamente?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>No. El recorrido es de dificultad baja y se hace a un ritmo tranquilo, con espacios para descansar.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Cuántas personas participan?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Los grupos son de máximo 30 personas. Si quieres el tour para tu empresa o un grupo privado, mira nuestras <a href="/grupos.html">experiencias para grupos y empresas</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Puedo quedarme a dormir en la finca?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Sí. Puedes combinar el tour con una noche en nuestras <a href="/alojamiento.html">habitaciones y cabañas</a>.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Cómo llego a Finca Termópilas?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Estamos en el km 3,3 de la vía a Las Juntas, en Rivera (Huila), a unos 20 minutos de Neiva. Puedes llegar en vehículo particular o en transporte público hasta Rivera y luego en motocarro hasta la finca. En la <a href="/ubicacion.html">página de ubicación</a> encontrarás mapas, un video y contactos de transporte local.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question"><span>¿Qué debo llevar?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Zapatos cómodos, protector solar o sombrero y repelente para mosquitos. Si quieres meterte al río, unos zapatos de agua ayudan, pero no son obligatorios.</p></div>
+                    </details>
+                </div>
+                <p class="faq-more">¿Tienes otra pregunta? Revisa todas nuestras <a href="/preguntas-frecuentes.html">preguntas frecuentes</a>.</p>
+            </div>
+        </section>
+
+        <section class="tour-booking section">
+            <div class="container">
+                <h2>Reserva tu cupo</h2>
+                <p>Los cupos son limitados. Consulta las próximas fechas y precios en nuestra página de eventos, o escríbenos y te ayudamos a reservar.</p>
+                <div class="cta-container tour-cta">
+                    <a href="https://eventos.termopilas.co/tour" class="cta-button" data-location="footer"><i class="fas fa-calendar-check" aria-hidden="true"></i> Ver próximas fechas</a>
+                    <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=booking_whatsapp&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas" class="cta-button cta-button-secondary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo" id="contacto" data-prerendered="true">
+        <!-- Generado por scripts/render-layout.js desde src/ts/components/layout.ts: no editar a mano -->
+        <div class="footer-content">
+          <div class="location">
+            <h3>¿Cómo llegar?</h3>
+            <p>Km 3.3</p><p>Vía las Juntas</p><p>Rivera</p><p>Huila</p>
+            <a href="/ubicacion.html" class="directions-link" rel="noopener">
+              <i class="fas fa-map-marker-alt"></i> Ver instrucciones
+            </a>
+          </div>
+          <div class="contact">
+            <h3>¿Tienes preguntas?</h3>
+            <p>Escríbenos para reservar tu tour</p>
+            <a href="/whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=tour_de_vino_y_chocolate&utm_content=phone_link&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre"><i class="fab fa-whatsapp"></i> (+57) 3170182644</a>
+            <a href="mailto:termopilashuila@gmail.com"><i class="fas fa-envelope"></i> termopilashuila@gmail.com</a>
+            <div class="social-media">
+              <a href="https://www.instagram.com/fincatermopilas/" target="_blank" rel="noopener" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a><a href="https://www.facebook.com/fincatermopilas/" target="_blank" rel="noopener" aria-label="Facebook">
+                  <i class="fab fa-facebook"></i>
+                </a><a href="/whatsapp.html?utm_source=website&utm_medium=footer&utm_campaign=tour_de_vino_y_chocolate&utm_content=social_link&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20de%20Tour%20de%20Vino%20y%20Chocolate%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre" target="_blank" rel="noopener" aria-label="WhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Finca Termópilas. Todos los derechos reservados.</p>
+          <div class="footer-links">
+            <a href="https://tienda.termopilas.co" class="privacy-link" target="_blank" rel="noopener">Tienda</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="/grupos.html" class="privacy-link">Grupos y empresas</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="/preguntas-frecuentes.html" class="privacy-link">Preguntas frecuentes</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="/privacidad.html" class="privacy-link">Política de Privacidad</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="/terminos.html" class="privacy-link">Términos del Servicio</a>
+          </div>
+        </div>
+    </footer>
 </body>
 </html>

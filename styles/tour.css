@@ -388,6 +388,26 @@
     margin-right: auto;
 }
 
+/* <picture> wrappers (AVIF/WebP) behave like the image block; min-width: 0 keeps the
+   flex item from growing to the image's intrinsic width on small screens */
+.experience-content {
+    min-width: 0;
+}
+
+.experience-image picture,
+.tour-image picture {
+    display: block;
+}
+
+/* Keep the loading shimmer (::before, animated with translateX) inside the image box;
+   otherwise it overflows the page horizontally on phones */
+.experience-image {
+    position: relative;
+    overflow: hidden;
+    overflow: clip;
+    overflow-clip-margin: 10px; /* keep the image shadow visible where supported */
+}
+
 .experience-image img {
     width: 100%;
     height: auto;
@@ -505,7 +525,8 @@
 /* Testimonials Section */
 .tour-testimonials {
     padding: 4rem 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/tour/tour-hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/tour/tour-gorge.webp');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), image-set(url('../assets/images/tour/tour-gorge.avif') type('image/avif'), url('../assets/images/tour/tour-gorge.webp') type('image/webp'));
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

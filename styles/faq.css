@@ -1,0 +1,141 @@
+/* FAQ lists built with <details>/<summary> (work without JavaScript).
+   Used by tour.html and preguntas-frecuentes.html. */
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-list details.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-list details.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-list details.faq-item > summary.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.faq-list details.faq-item > summary.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list details.faq-item > summary.faq-question:hover,
+.faq-list details.faq-item > summary.faq-question:focus-visible {
+    color: #F29F05;
+}
+
+.faq-list details.faq-item .faq-icon {
+    color: #F29F05;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-list details.faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-list details.faq-item .faq-answer {
+    max-height: none;
+    overflow: visible;
+    padding: 0 0 1.25rem 0;
+}
+
+.faq-list details.faq-item .faq-answer p {
+    margin: 0 0 0.75rem;
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.faq-list details.faq-item .faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-list a,
+.faq-more a,
+.tour-booking a:not(.cta-button),
+.experience-blog-recommendation a,
+.faq-page a:not(.cta-button) {
+    color: #b56f00;
+    text-decoration: underline;
+}
+
+.faq-more {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Two CTAs side by side (tour page) */
+.tour-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.cta-button.cta-button-secondary {
+    background-color: #25D366;
+}
+
+.cta-button.cta-button-secondary:hover {
+    background-color: #1da851;
+}
+
+.tour-booking {
+    text-align: center;
+}
+
+.tour-booking p {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-author-location {
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+/* FAQ page */
+.faq-page .faq-group {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.faq-page .faq-group h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.faq-page .faq-intro {
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .faq-list details.faq-item > summary.faq-question {
+        font-size: 0.95rem;
+        padding: 1rem 0;
+    }
+
+    .faq-page .faq-group h2 {
+        font-size: 1.6rem;
+    }
+}

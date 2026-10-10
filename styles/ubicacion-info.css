@@ -1,0 +1,44 @@
+/* Text blocks of ubicacion.html: overview, facts list and nearby places */
+.directions-facts,
+.directions-nearby {
+    margin: 1rem 0 1.5rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.directions-facts li,
+.directions-nearby li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.directions-facts i {
+    color: var(--accent-color, #F29F05);
+    width: 1.5rem;
+    text-align: center;
+}
+
+.directions-nearby li {
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.directions-nearby li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent-color, #F29F05);
+}
+
+.directions-overview a {
+    color: #b56f00;
+    text-decoration: underline;
+}
+
+.directions-overview h3 {
+    margin-top: 1.75rem;
+}
