@@ -47,8 +47,8 @@ body {
 /* Header and Navigation */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-                url('../assets/images/home/header.jpg');
+    /* The hero photo is set per page (inline style); assets/images/home/header.jpg never existed */
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
     background-size: cover;
     background-position: center;
     display: flex;
@@ -112,8 +112,9 @@ body {
     color: var(--accent-color);
 }
 
-/* Tighter spacing so the full menu fits on medium desktop widths */
-@media (min-width: 769px) and (max-width: 1200px) {
+/* Tighter spacing so the full menu fits on medium desktop widths
+   (below 1101px the hamburger menu takes over, see "Collapsed navigation" further down) */
+@media (min-width: 1101px) and (max-width: 1300px) {
     .nav-menu {
         gap: 1rem;
     }
@@ -475,9 +476,10 @@ footer a:hover {
 .footer-links {
     margin-top: 1rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.25rem 0.5rem;
 }
 
 .footer-links .privacy-link {
@@ -624,6 +626,108 @@ footer a:hover {
 
     .testimonials-slider {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Collapsed navigation on tablets and small laptops: the 10 menu items plus the logo
+   do not fit on one line below ~1100px, so reuse the mobile hamburger menu there. */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 1rem 2rem;
+        text-align: center;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-menu li {
+        margin: 0.6rem 0;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 0.4rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu a.active {
+        color: var(--accent-color);
+    }
+
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--light-text);
+        cursor: pointer;
+        z-index: 1001;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        display: block;
+        background-color: var(--light-text);
+        width: 24px;
+        height: 2px;
+    }
+
+    .hamburger {
+        position: relative;
+        transition: background-color 0.3s;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        transition: transform 0.3s;
+    }
+
+    .hamburger::before {
+        top: -8px;
+    }
+
+    .hamburger::after {
+        top: 8px;
+    }
+
+    .nav-toggle[aria-expanded="true"] .hamburger {
+        background-color: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] .hamburger::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .hamburger::after {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
 
