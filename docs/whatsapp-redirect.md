@@ -151,10 +151,7 @@ console.log(encoded); // Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%
 - **Modern support**: Dynamic viewport height for mobile browsers
 
 ### Blog Integration
-- **Markdown sources**: All WhatsApp links in `markdown/blog/*.md` use `../whatsapp.html`
-- **Generated HTML**: Blog generator automatically includes `../` prefix for proper relative paths
-- **Template consistency**: Both `blog/template.html` and `src/ts/utils/markdown-to-blog.ts` use correct paths
-- **Content + Sharing**: Both blog content links and sharing buttons properly reference the redirect page
+- The blog lives in Ghost (https://blog.termopilas.co); its posts link to `https://termopilas.co/whatsapp.html` with absolute URLs.
 
 ## Best Practices
 

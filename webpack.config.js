@@ -9,10 +9,6 @@ module.exports = {
     jobApplicationForm: {
       import: './src/ts/components/JobApplicationForm.ts',
       filename: 'components/[name].js'
-    },
-    'utils/markdown-to-blog': {
-      import: './src/ts/utils/markdown-to-blog.ts',
-      filename: 'utils/[name].js'
     }
   },
   module: {
