@@ -4,6 +4,12 @@
 /* Self-hosted fonts - imported from assets/css/fonts.css */
 @import url('../assets/css/fonts.css');
 
+/* width/height attributes on <img> only reserve the aspect ratio (avoids CLS);
+   zero specificity so any component rule that sets a height still wins. */
+:where(img[width][height]) {
+    height: auto;
+}
+
 :root {
     /* Legacy variables for backward compatibility - will be deprecated */
     --primary-color: var(--brand-primary);
@@ -104,6 +110,17 @@ body {
 
 .nav-menu a:hover {
     color: var(--accent-color);
+}
+
+/* Tighter spacing so the full menu fits on medium desktop widths */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .nav-menu a {
+        font-size: 0.8rem;
+    }
 }
 
 .nav-toggle {

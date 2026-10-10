@@ -85,6 +85,8 @@ function generateFooter(config: FooterConfig = defaultFooterConfig): void {
       <div class="footer-links">
         <a href="https://tienda.termopilas.co" class="privacy-link" target="_blank" rel="noopener">Tienda</a>
         <span class="footer-separator">&middot;</span>
+        <a href="/grupos.html" class="privacy-link">Grupos y empresas</a>
+        <span class="footer-separator">&middot;</span>
         <a href="privacidad.html" class="privacy-link">Política de Privacidad</a>
         <span class="footer-separator">&middot;</span>
         <a href="terminos.html" class="privacy-link">Términos del Servicio</a>

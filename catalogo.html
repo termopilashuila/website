@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Finca Termópilas</title>
+    <title>Catálogo: hospedaje, vino y cacao | Finca Termópilas</title>
     <meta name="description" content="Explora nuestro catálogo de habitaciones, vinos y chocolates artesanales en Finca Termópilas, Rivera, Huila.">
+    <link rel="canonical" href="https://termopilas.co/catalogo.html">
+    <link rel="preload" as="image" href="/assets/images/catalog/header.avif" type="image/avif" fetchpriority="high">
 
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
@@ -12,16 +14,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://termopilas.co/catalogo.html">
-    <meta property="og:title" content="Catálogo - Finca Termópilas">
+    <meta property="og:title" content="Catálogo: hospedaje, vino y cacao | Finca Termópilas">
     <meta property="og:description" content="Explora nuestro catálogo de habitaciones, vinos y chocolates artesanales en Finca Termópilas, Rivera, Huila.">
     <meta property="og:image" content="https://termopilas.co/assets/images/catalog/header.png">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/catalogo.html">
-    <meta property="twitter:title" content="Catálogo - Finca Termópilas">
-    <meta property="twitter:description" content="Explora nuestro catálogo de habitaciones, vinos y chocolates artesanales en Finca Termópilas, Rivera, Huila.">
-    <meta property="twitter:image" content="https://termopilas.co/assets/images/catalog/header.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://termopilas.co/catalogo.html">
+    <meta name="twitter:title" content="Catálogo: hospedaje, vino y cacao | Finca Termópilas">
+    <meta name="twitter:description" content="Explora nuestro catálogo de habitaciones, vinos y chocolates artesanales en Finca Termópilas, Rivera, Huila.">
+    <meta name="twitter:image" content="https://termopilas.co/assets/images/catalog/header.png">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
@@ -37,12 +39,15 @@
 
     <!-- LobbyPMS Booking Widget -->
     <link rel="stylesheet" href="https://app.lobbypms.com/public/css/widget/lobby-date-rage-selector.min.css?v=aAklHOnSDKQEPaCTf4Pml96EG">
-    <script src="https://app.lobbypms.com/public/js/widget/lobby-date-rage-selector.min.js?v=y8R8ZsSmdvOIv6f3z3vfc2UXe"></script>
+    <script src="https://app.lobbypms.com/public/js/widget/lobby-date-rage-selector.min.js?v=y8R8ZsSmdvOIv6f3z3vfc2UXe" defer></script>
     <script>
-        var ldrs = new LobbyDateRangeSelector({
-            apiBaseUrl: 'https://api.lobbypms.com/api/ldrs/',
-            token: 'E1RpQL1ogxQ1PHKAqYAS2x1y5Cz6gZW5R4AW8bJCc4AJdv50VXvOQnAYWm',
-            lang: 'es',
+        // Widget script is deferred; deferred scripts run before DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function () {
+            window.ldrs = new LobbyDateRangeSelector({
+                apiBaseUrl: 'https://api.lobbypms.com/api/ldrs/',
+                token: 'E1RpQL1ogxQ1PHKAqYAS2x1y5Cz6gZW5R4AW8bJCc4AJdv50VXvOQnAYWm',
+                lang: 'es',
+            });
         });
     </script>
     
@@ -84,72 +89,6 @@
             "position": 1,
             "item": {
                 "@type": "Product",
-                "name": "Vino F27",
-                "description": "Vino artesanal F27, elaborado en Finca Termópilas con frutas cultivadas en las tierras de Rivera, Huila. Una expresión única del terroir huilense, con carácter frutal y notas propias de la región.",
-                "image": "https://tienda.termopilas.co/wp-content/uploads/2026/03/1695469973d482c0f9.jpg",
-                "brand": {
-                    "@type": "Organization",
-                    "name": "Finca Termópilas"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "url": "https://tienda.termopilas.co/product/vino-f27/",
-                    "priceCurrency": "COP",
-                    "price": "25000",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
-                }
-            }
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-                "@type": "Product",
-                "name": "Vino Cova",
-                "description": "Vino artesanal Cova, elaborado en Finca Termópilas con frutas cultivadas en las tierras de Rivera, Huila. Un vino con carácter propio que refleja la riqueza del suelo huilense.",
-                "image": "https://tienda.termopilas.co/wp-content/uploads/2026/03/1695469973d48d1394.jpg",
-                "brand": {
-                    "@type": "Organization",
-                    "name": "Finca Termópilas"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "url": "https://tienda.termopilas.co/product/vino-cova/",
-                    "priceCurrency": "COP",
-                    "price": "25000",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
-                }
-            }
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-                "@type": "Product",
-                "name": "Vino Rose",
-                "description": "Vino rosado artesanal, elaborado en Finca Termópilas con frutas cultivadas en las tierras de Rivera, Huila. Un rosé fresco y ligero, ideal para disfrutar en climas cálidos o acompañar momentos especiales.",
-                "image": "https://tienda.termopilas.co/wp-content/uploads/2026/03/1695469973d4894295.jpg",
-                "brand": {
-                    "@type": "Organization",
-                    "name": "Finca Termópilas"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "url": "https://tienda.termopilas.co/product/vino-rose/",
-                    "priceCurrency": "COP",
-                    "price": "30000",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
-                }
-            }
-        },
-        {
-            "@type": "ListItem",
-            "position": 4,
-            "item": {
-                "@type": "Product",
                 "name": "Nibs de cacao 75% - 300gr",
                 "description": "Nibs de cacao tostados y caramelizados con panela, elaborados artesanalmente en Finca Termópilas con 75% cacao del Huila. Presentación de 300 gramos, ideal para compartir o disfrutar por más tiempo. Perfectos como snack, para acompañar con vino o como topping en postres y batidos.",
                 "image": "https://tienda.termopilas.co/wp-content/uploads/2026/03/1695469973d3b72667-1.jpg",
@@ -169,7 +108,7 @@
         },
         {
             "@type": "ListItem",
-            "position": 5,
+            "position": 2,
             "item": {
                 "@type": "Product",
                 "name": "Chocolatinas 100",
@@ -191,7 +130,7 @@
         },
         {
             "@type": "ListItem",
-            "position": 6,
+            "position": 3,
             "item": {
                 "@type": "Product",
                 "name": "Chocolatinas 70",
@@ -213,7 +152,7 @@
         },
         {
             "@type": "ListItem",
-            "position": 7,
+            "position": 4,
             "item": {
                 "@type": "Product",
                 "name": "Nibs de cacao 75% - 100gr",
@@ -251,6 +190,26 @@
     <meta name="msapplication-TileColor" content="#F29F05">
     <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://termopilas.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Catálogo",
+      "item": "https://termopilas.co/catalogo.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Header will be dynamically generated by TypeScript -->
@@ -265,12 +224,12 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña 1 - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/cabana-1/image2.png" alt="Cabaña 1 - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/cabana-1/image3.png" alt="Cabaña 1 - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/cabana-1/image4.png" alt="Cabaña 1 - Vista 4" class="carousel-image">
-                            <img src="assets/images/alojamiento/cabana-1/image5.png" alt="Cabaña 1 - Vista 5" class="carousel-image">
-                            <img src="assets/images/alojamiento/cabana-1/image6.png" alt="Cabaña 1 - Vista 6" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña 1 - Vista 1" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image2.png" alt="Cabaña 1 - Vista 2" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image3.png" alt="Cabaña 1 - Vista 3" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image4.png" alt="Cabaña 1 - Vista 4" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image5.png" alt="Cabaña 1 - Vista 5" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/cabana-1/image6.png" alt="Cabaña 1 - Vista 6" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -293,12 +252,12 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/gemela-1/image1.png" alt="Gemela 1 - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/gemela-1/image2.png" alt="Gemela 1 - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-1/image3.png" alt="Gemela 1 - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-1/image4.png" alt="Gemela 1 - Vista 4" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-1/image5.png" alt="Gemela 1 - Vista 5" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-1/image6.png" alt="Gemela 1 - Vista 6" class="carousel-image">
+                            <img width="600" height="466" src="assets/images/alojamiento/gemela-1/image1.png" alt="Gemela 1 - Vista 1" class="carousel-image active">
+                            <img width="600" height="800" src="assets/images/alojamiento/gemela-1/image2.png" alt="Gemela 1 - Vista 2" class="carousel-image">
+                            <img width="600" height="800" src="assets/images/alojamiento/gemela-1/image3.png" alt="Gemela 1 - Vista 3" class="carousel-image">
+                            <img width="600" height="547" src="assets/images/alojamiento/gemela-1/image4.png" alt="Gemela 1 - Vista 4" class="carousel-image">
+                            <img width="600" height="800" src="assets/images/alojamiento/gemela-1/image5.png" alt="Gemela 1 - Vista 5" class="carousel-image">
+                            <img width="600" height="520" src="assets/images/alojamiento/gemela-1/image6.png" alt="Gemela 1 - Vista 6" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -321,12 +280,12 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/gemela-2/image1.png" alt="Gemela 2 - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/gemela-2/image2.png" alt="Gemela 2 - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-2/image3.png" alt="Gemela 2 - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-2/image4.png" alt="Gemela 2 - Vista 4" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-2/image5.png" alt="Gemela 2 - Vista 5" class="carousel-image">
-                            <img src="assets/images/alojamiento/gemela-2/image6.png" alt="Gemela 2 - Vista 6" class="carousel-image">
+                            <img width="600" height="524" src="assets/images/alojamiento/gemela-2/image1.png" alt="Gemela 2 - Vista 1" class="carousel-image active">
+                            <img width="600" height="564" src="assets/images/alojamiento/gemela-2/image2.png" alt="Gemela 2 - Vista 2" class="carousel-image">
+                            <img width="600" height="473" src="assets/images/alojamiento/gemela-2/image3.png" alt="Gemela 2 - Vista 3" class="carousel-image">
+                            <img width="600" height="557" src="assets/images/alojamiento/gemela-2/image4.png" alt="Gemela 2 - Vista 4" class="carousel-image">
+                            <img width="600" height="424" src="assets/images/alojamiento/gemela-2/image5.png" alt="Gemela 2 - Vista 5" class="carousel-image">
+                            <img width="600" height="363" src="assets/images/alojamiento/gemela-2/image6.png" alt="Gemela 2 - Vista 6" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -349,10 +308,10 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/habitacion-a/image1.png" alt="Habitación A - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/habitacion-a/image2.png" alt="Habitación A - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-a/image3.png" alt="Habitación A - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-a/image4.png" alt="Habitación A - Vista 4" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-a/image1.png" alt="Habitación A - Vista 1" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-a/image2.png" alt="Habitación A - Vista 2" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-a/image3.png" alt="Habitación A - Vista 3" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-a/image4.png" alt="Habitación A - Vista 4" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -373,10 +332,10 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación B - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/habitacion-b/image2.png" alt="Habitación B - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-b/image3.png" alt="Habitación B - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-b/image4.png" alt="Habitación B - Vista 4" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación B - Vista 1" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-b/image2.png" alt="Habitación B - Vista 2" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-b/image3.png" alt="Habitación B - Vista 3" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-b/image4.png" alt="Habitación B - Vista 4" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -397,14 +356,14 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/habitacion-c/image1.jpeg" alt="Habitación C - Cama doble con cabecero de madera e iluminación LED en la base" class="carousel-image active">
-                            <img src="assets/images/alojamiento/habitacion-c/image2.jpeg" alt="Habitación C - Vista general de la habitación con ventilador de techo" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image3.jpeg" alt="Habitación C - Cama doble junto a la ventana con persianas de madera" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image4.jpeg" alt="Habitación C - Cama doble con vista al jardín a través de las persianas" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image5.jpeg" alt="Habitación C - Cama doble con la puerta de acceso al baño privado" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image6.jpeg" alt="Habitación C - Cómoda de madera con vitrina iluminada" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image7.jpeg" alt="Habitación C - Entrada al baño privado y ventana con persianas de madera" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-c/image8.jpeg" alt="Habitación C - Baño privado con ducha, lavamanos y azulejos artesanales" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image1.jpeg" alt="Habitación C - Cama doble con cabecero de madera e iluminación LED en la base" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image2.jpeg" alt="Habitación C - Vista general de la habitación con ventilador de techo" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image3.jpeg" alt="Habitación C - Cama doble junto a la ventana con persianas de madera" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image4.jpeg" alt="Habitación C - Cama doble con vista al jardín a través de las persianas" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image5.jpeg" alt="Habitación C - Cama doble con la puerta de acceso al baño privado" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image6.jpeg" alt="Habitación C - Cómoda de madera con vitrina iluminada" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image7.jpeg" alt="Habitación C - Entrada al baño privado y ventana con persianas de madera" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-c/image8.jpeg" alt="Habitación C - Baño privado con ducha, lavamanos y azulejos artesanales" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -429,10 +388,10 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/habitacion-d/image1.png" alt="Habitación D - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/habitacion-d/image2.png" alt="Habitación D - Vista 2" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-d/image3.png" alt="Habitación D - Vista 3" class="carousel-image">
-                            <img src="assets/images/alojamiento/habitacion-d/image4.png" alt="Habitación D - Vista 4" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-d/image1.png" alt="Habitación D - Vista 1" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-d/image2.png" alt="Habitación D - Vista 2" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-d/image3.png" alt="Habitación D - Vista 3" class="carousel-image">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-d/image4.png" alt="Habitación D - Vista 4" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -453,8 +412,8 @@
                 <article class="catalog-card">
                     <div class="catalog-carousel">
                         <div class="carousel-container">
-                            <img src="assets/images/alojamiento/habitacion-e/image1.png" alt="Habitación E - Vista 1" class="carousel-image active">
-                            <img src="assets/images/alojamiento/habitacion-e/image2.png" alt="Habitación E - Vista 2" class="carousel-image">
+                            <img width="600" height="459" src="assets/images/alojamiento/habitacion-e/image1.png" alt="Habitación E - Vista 1" class="carousel-image active">
+                            <img width="600" height="450" src="assets/images/alojamiento/habitacion-e/image2.png" alt="Habitación E - Vista 2" class="carousel-image">
                             <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                             <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                         </div>
@@ -476,7 +435,7 @@
             <h2>Actividades</h2>
             <div class="catalog-grid">
                 <article class="catalog-card">
-                    <img src="assets/images/tour/header.png" alt="Tour de Vino y Cacao" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/tour/header.png" alt="Tour de Vino y Cacao" loading="lazy">
                     <div class="catalog-card-content">
                         <h3>Tour de Vino y Cacao</h3>
                         <p>Experiencia sensorial única que combina la elaboración de vinos artesanales y el proceso del cacao al chocolate. Aprende sobre fermentación, maridaje y degustación en un entorno natural único.</p>
@@ -497,7 +456,7 @@
                         <p>Vino artesanal de frutas F27. Elaborado en Finca Termópilas, Rivera, Huila.
 Por regulaciones locales, este producto solo está disponible para recoger en Finca Termópilas, Rivera, Huila.</p>
                         <div class="catalog-actions">
-                            <a href="https://tienda.termopilas.co/product/vino-f27/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
+                            <a href="https://tienda.termopilas.co/shop/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
                             <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=catalog&utm_content=product_vino-f27&text=Hola. Encontré el producto Vino F27 en la sección de catálogo en Termópilas. Me gustaría ordenarlo por favor" class="cta-button cta-secondary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Pedir</a>
                         </div>
                     </div>
@@ -510,7 +469,7 @@ Por regulaciones locales, este producto solo está disponible para recoger en Fi
                         <p>Vino artesanal de frutas Cova. Elaborado en Finca Termópilas, Rivera, Huila.
 Por regulaciones locales, este producto solo está disponible para recoger en Finca Termópilas, Rivera, Huila.</p>
                         <div class="catalog-actions">
-                            <a href="https://tienda.termopilas.co/product/vino-cova/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
+                            <a href="https://tienda.termopilas.co/shop/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
                             <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=catalog&utm_content=product_vino-cova&text=Hola. Encontré el producto Vino Cova en la sección de catálogo en Termópilas. Me gustaría ordenarlo por favor" class="cta-button cta-secondary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Pedir</a>
                         </div>
                     </div>
@@ -523,7 +482,7 @@ Por regulaciones locales, este producto solo está disponible para recoger en Fi
                         <p>Vino rosado artesanal. Elaborado en Finca Termópilas, Rivera, Huila.
 Por regulaciones locales, este producto solo está disponible para recoger en Finca Termópilas, Rivera, Huila.</p>
                         <div class="catalog-actions">
-                            <a href="https://tienda.termopilas.co/product/vino-rose/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
+                            <a href="https://tienda.termopilas.co/shop/" class="cta-button" target="_blank" rel="noopener">Comprar en Tienda</a>
                             <a href="whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=catalog&utm_content=product_vino-rose&text=Hola. Encontré el producto Vino Rose en la sección de catálogo en Termópilas. Me gustaría ordenarlo por favor" class="cta-button cta-secondary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Pedir</a>
                         </div>
                     </div>

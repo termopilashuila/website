@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alojamiento</title>
+    <title>Hospedaje en Rivera, Huila | Finca Termópilas</title>
     <meta name="description" content="Descubre nuestro alojamiento de lujo y estándar en Finca Termópilas, Huila. Alojamiento con vistas a las montañas, viñedos y árboles de cacao.">
-    <meta name="description" lang="en" content="Discover our luxury and standard accommodation at Finca Termópilas, Huila. Rooms with mountain views, vineyards, and cacao trees in Rivera, Colombia.">
+    <link rel="canonical" href="https://termopilas.co/alojamiento.html">
+    <link rel="preload" as="image" href="/assets/images/alojamiento/header.avif" type="image/avif" fetchpriority="high">
     <meta name="keywords" content="Finca Termópilas, alojamiento Huila, alojamiento de lujo, Rivera, habitaciones con vista">
     <meta name="author" content="Finca Termópilas">
-
-    <!-- hreflang tags for multilingual SEO -->
-    <link rel="alternate" hreflang="es-CO" href="https://termopilas.co/alojamiento.html">
-    <link rel="alternate" hreflang="x-default" href="https://termopilas.co/alojamiento.html">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
@@ -29,16 +26,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://termopilas.co/alojamiento.html">
-    <meta property="og:title" content="Alojamiento - Finca Termópilas">
+    <meta property="og:title" content="Hospedaje en Rivera, Huila | Finca Termópilas">
     <meta property="og:description" content="Descubre nuestro alojamiento de lujo y estándar en Finca Termópilas, Huila.">
     <meta property="og:image" content="https://termopilas.co/assets/images/alojamiento/cabana-1/image1.png">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/alojamiento.html">
-    <meta property="twitter:title" content="Alojamiento - Finca Termópilas">
-    <meta property="twitter:description" content="Descubre nuestro alojamiento de lujo y estándar en Finca Termópilas, Huila.">
-    <meta property="twitter:image" content="https://termopilas.co/assets/images/alojamiento/cabana-1/image1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://termopilas.co/alojamiento.html">
+    <meta name="twitter:title" content="Hospedaje en Rivera, Huila | Finca Termópilas">
+    <meta name="twitter:description" content="Descubre nuestro alojamiento de lujo y estándar en Finca Termópilas, Huila.">
+    <meta name="twitter:image" content="https://termopilas.co/assets/images/alojamiento/cabana-1/image1.png">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/fonts.css">
@@ -58,12 +55,15 @@
 
     <!-- LobbyPMS Booking Widget -->
     <link rel="stylesheet" href="https://app.lobbypms.com/public/css/widget/lobby-date-rage-selector.min.css?v=aAklHOnSDKQEPaCTf4Pml96EG">
-    <script src="https://app.lobbypms.com/public/js/widget/lobby-date-rage-selector.min.js?v=y8R8ZsSmdvOIv6f3z3vfc2UXe"></script>
+    <script src="https://app.lobbypms.com/public/js/widget/lobby-date-rage-selector.min.js?v=y8R8ZsSmdvOIv6f3z3vfc2UXe" defer></script>
     <script>
-        var ldrs = new LobbyDateRangeSelector({
-            apiBaseUrl: 'https://api.lobbypms.com/api/ldrs/',
-            token: 'E1RpQL1ogxQ1PHKAqYAS2x1y5Cz6gZW5R4AW8bJCc4AJdv50VXvOQnAYWm',
-            lang: 'es',
+        // Widget script is deferred; deferred scripts run before DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function () {
+            window.ldrs = new LobbyDateRangeSelector({
+                apiBaseUrl: 'https://api.lobbypms.com/api/ldrs/',
+                token: 'E1RpQL1ogxQ1PHKAqYAS2x1y5Cz6gZW5R4AW8bJCc4AJdv50VXvOQnAYWm',
+                lang: 'es',
+            });
         });
     </script>
 
@@ -90,9 +90,11 @@
     {
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
-      "name": "Finca Termópilas - Alojamiento",
+      "@id": "https://termopilas.co/#organization",
+      "name": "Finca Termópilas",
       "image": "https://termopilas.co/assets/images/alojamiento/habitacion-a/image1.png",
-      "url": "https://termopilas.co/alojamiento.html",
+      "url": "https://termopilas.co/",
+      "mainEntityOfPage": "https://termopilas.co/alojamiento.html",
       "telephone": "+573170182644",
       "email": "termopilashuila@gmail.com",
       "address": {
@@ -105,8 +107,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "2.7775",
-        "longitude": "-75.2513"
+        "latitude": 2.767188,
+        "longitude": -75.230941
       },
       "priceRange": "$$",
       "checkinTime": "15:00",
@@ -272,6 +274,26 @@
     <meta name="msapplication-TileColor" content="#F29F05">
     <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://termopilas.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Alojamiento",
+      "item": "https://termopilas.co/alojamiento.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -309,12 +331,12 @@
                 <div class="luxury-badge">De Lujo</div>
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña 1 - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image2.png" alt="Cabaña 1 - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image3.png" alt="Cabaña 1 - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image4.png" alt="Cabaña 1 - Vista 4" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image5.png" alt="Cabaña 1 - Vista 5" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/cabana-1/image6.png" alt="Cabaña 1 - Vista 6" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image1.png" alt="Cabaña 1 - Vista 1" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image2.png" alt="Cabaña 1 - Vista 2" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image3.png" alt="Cabaña 1 - Vista 3" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image4.png" alt="Cabaña 1 - Vista 4" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image5.png" alt="Cabaña 1 - Vista 5" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/cabana-1/image6.png" alt="Cabaña 1 - Vista 6" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -350,12 +372,12 @@
                 <div class="luxury-badge">De Lujo</div>
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image1.png" alt="Gemela 1 - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image2.png" alt="Gemela 1 - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image3.png" alt="Gemela 1 - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image4.png" alt="Gemela 1 - Vista 4" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image5.png" alt="Gemela 1 - Vista 5" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-1/image6.png" alt="Gemela 1 - Vista 6" class="carousel-image">
+                        <img width="600" height="466" loading="lazy" src="assets/images/alojamiento/gemela-1/image1.png" alt="Gemela 1 - Vista 1" class="carousel-image active">
+                        <img width="600" height="800" loading="lazy" src="assets/images/alojamiento/gemela-1/image2.png" alt="Gemela 1 - Vista 2" class="carousel-image">
+                        <img width="600" height="800" loading="lazy" src="assets/images/alojamiento/gemela-1/image3.png" alt="Gemela 1 - Vista 3" class="carousel-image">
+                        <img width="600" height="547" loading="lazy" src="assets/images/alojamiento/gemela-1/image4.png" alt="Gemela 1 - Vista 4" class="carousel-image">
+                        <img width="600" height="800" loading="lazy" src="assets/images/alojamiento/gemela-1/image5.png" alt="Gemela 1 - Vista 5" class="carousel-image">
+                        <img width="600" height="520" loading="lazy" src="assets/images/alojamiento/gemela-1/image6.png" alt="Gemela 1 - Vista 6" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -391,12 +413,12 @@
                 <div class="luxury-badge">De Lujo</div>
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image1.png" alt="Gemela 2 - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image2.png" alt="Gemela 2 - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image3.png" alt="Gemela 2 - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image4.png" alt="Gemela 2 - Vista 4" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image5.png" alt="Gemela 2 - Vista 5" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/gemela-2/image6.png" alt="Gemela 2 - Vista 6" class="carousel-image">
+                        <img width="600" height="524" loading="lazy" src="assets/images/alojamiento/gemela-2/image1.png" alt="Gemela 2 - Vista 1" class="carousel-image active">
+                        <img width="600" height="564" loading="lazy" src="assets/images/alojamiento/gemela-2/image2.png" alt="Gemela 2 - Vista 2" class="carousel-image">
+                        <img width="600" height="473" loading="lazy" src="assets/images/alojamiento/gemela-2/image3.png" alt="Gemela 2 - Vista 3" class="carousel-image">
+                        <img width="600" height="557" loading="lazy" src="assets/images/alojamiento/gemela-2/image4.png" alt="Gemela 2 - Vista 4" class="carousel-image">
+                        <img width="600" height="424" loading="lazy" src="assets/images/alojamiento/gemela-2/image5.png" alt="Gemela 2 - Vista 5" class="carousel-image">
+                        <img width="600" height="363" loading="lazy" src="assets/images/alojamiento/gemela-2/image6.png" alt="Gemela 2 - Vista 6" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -431,10 +453,10 @@
             <div class="room-card" id="standard" data-category="standard">
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-a/image1.png" alt="Habitación A - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-a/image2.png" alt="Habitación A - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-a/image3.png" alt="Habitación A - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-a/image4.png" alt="Habitación A - Vista 4" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-a/image1.png" alt="Habitación A - Vista 1" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-a/image2.png" alt="Habitación A - Vista 2" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-a/image3.png" alt="Habitación A - Vista 3" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-a/image4.png" alt="Habitación A - Vista 4" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -464,10 +486,10 @@
             <div class="room-card" data-category="standard">
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación B - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image2.png" alt="Habitación B - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image3.png" alt="Habitación B - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-b/image4.png" alt="Habitación B - Vista 4" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-b/image1.png" alt="Habitación B - Vista 1" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-b/image2.png" alt="Habitación B - Vista 2" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-b/image3.png" alt="Habitación B - Vista 3" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-b/image4.png" alt="Habitación B - Vista 4" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -498,14 +520,14 @@
             <div class="room-card" data-category="standard couples">
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image1.jpeg" alt="Habitación C - Cama doble con cabecero de madera e iluminación LED en la base" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image2.jpeg" alt="Habitación C - Vista general de la habitación con ventilador de techo" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image3.jpeg" alt="Habitación C - Cama doble junto a la ventana con persianas de madera" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image4.jpeg" alt="Habitación C - Cama doble con vista al jardín a través de las persianas" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image5.jpeg" alt="Habitación C - Cama doble con la puerta de acceso al baño privado" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image6.jpeg" alt="Habitación C - Cómoda de madera con vitrina iluminada" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image7.jpeg" alt="Habitación C - Entrada al baño privado y ventana con persianas de madera" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-c/image8.jpeg" alt="Habitación C - Baño privado con ducha, lavamanos y azulejos artesanales" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image1.jpeg" alt="Habitación C - Cama doble con cabecero de madera e iluminación LED en la base" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image2.jpeg" alt="Habitación C - Vista general de la habitación con ventilador de techo" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image3.jpeg" alt="Habitación C - Cama doble junto a la ventana con persianas de madera" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image4.jpeg" alt="Habitación C - Cama doble con vista al jardín a través de las persianas" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image5.jpeg" alt="Habitación C - Cama doble con la puerta de acceso al baño privado" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image6.jpeg" alt="Habitación C - Cómoda de madera con vitrina iluminada" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image7.jpeg" alt="Habitación C - Entrada al baño privado y ventana con persianas de madera" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-c/image8.jpeg" alt="Habitación C - Baño privado con ducha, lavamanos y azulejos artesanales" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -539,10 +561,10 @@
             <div class="room-card" data-category="standard couples">
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-d/image1.png" alt="Habitación D - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-d/image2.png" alt="Habitación D - Vista 2" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-d/image3.png" alt="Habitación D - Vista 3" class="carousel-image">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-d/image4.png" alt="Habitación D - Vista 4" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-d/image1.png" alt="Habitación D - Vista 1" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-d/image2.png" alt="Habitación D - Vista 2" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-d/image3.png" alt="Habitación D - Vista 3" class="carousel-image">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-d/image4.png" alt="Habitación D - Vista 4" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>
@@ -573,8 +595,8 @@
             <div class="room-card" data-category="standard groups">
                 <div class="room-carousel">
                     <div class="carousel-container">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-e/image1.png" alt="Habitación E - Vista 1" class="carousel-image active">
-                        <img loading="lazy" src="assets/images/alojamiento/habitacion-e/image2.png" alt="Habitación E - Vista 2" class="carousel-image">
+                        <img width="600" height="459" loading="lazy" src="assets/images/alojamiento/habitacion-e/image1.png" alt="Habitación E - Vista 1" class="carousel-image active">
+                        <img width="600" height="450" loading="lazy" src="assets/images/alojamiento/habitacion-e/image2.png" alt="Habitación E - Vista 2" class="carousel-image">
                         <button class="carousel-button prev" aria-label="Anterior imagen">❮</button>
                         <button class="carousel-button next" aria-label="Siguiente imagen">❯</button>
                     </div>

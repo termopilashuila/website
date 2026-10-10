@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería - Finca Termópilas</title>
+    <title>Galería de fotos | Finca Termópilas, Rivera, Huila</title>
     <meta name="description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos, árboles de cacao y paisajes naturales que te esperan en Rivera, Huila.">
+    <link rel="canonical" href="https://termopilas.co/galeria.html">
+    <link rel="preload" as="image" href="/assets/images/header.avif" type="image/avif" fetchpriority="high">
     <meta name="keywords" content="Finca Termópilas, galería, fotos, instalaciones, viñedos, cacao, naturaleza, Rivera, Huila">
     <meta name="author" content="Finca Termópilas">
     
@@ -24,16 +26,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://termopilas.co/galeria.html">
-    <meta property="og:title" content="Galería - Finca Termópilas">
+    <meta property="og:title" content="Galería de fotos | Finca Termópilas, Rivera, Huila">
     <meta property="og:description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos y paisajes naturales.">
     <meta property="og:image" content="https://termopilas.co/assets/images/galeria/galeria-01.jpeg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://termopilas.co/galeria.html">
-    <meta property="twitter:title" content="Galería - Finca Termópilas">
-    <meta property="twitter:description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos y paisajes naturales.">
-    <meta property="twitter:image" content="https://termopilas.co/assets/images/galeria/galeria-01.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://termopilas.co/galeria.html">
+    <meta name="twitter:title" content="Galería de fotos | Finca Termópilas, Rivera, Huila">
+    <meta name="twitter:description" content="Explora nuestra galería de fotos de Finca Termópilas. Descubre las instalaciones, viñedos y paisajes naturales.">
+    <meta name="twitter:image" content="https://termopilas.co/assets/images/galeria/galeria-01.jpeg">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/fonts.css">
@@ -61,6 +63,7 @@
     <style>
         .gallery-hero {
             background-image: url('assets/images/header.png');
+            background-image: image-set(url('assets/images/header.avif') type('image/avif'), url('assets/images/header.webp') type('image/webp'), url('assets/images/header.png') type('image/png'));
             background-size: cover;
             background-position: center;
         }
@@ -313,6 +316,26 @@
     <meta name="msapplication-TileColor" content="#F29F05">
     <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144x144.png">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://termopilas.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Galería",
+      "item": "https://termopilas.co/galeria.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -333,7 +356,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-01.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-01.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-01.jpeg" alt="Finca Termópilas - Imagen 1" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-01.jpeg" alt="Finca Termópilas - Imagen 1" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -344,7 +367,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-02.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-02.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-02.jpeg" alt="Finca Termópilas - Imagen 2" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-02.jpeg" alt="Finca Termópilas - Imagen 2" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -355,7 +378,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-03.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-03.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-03.jpeg" alt="Finca Termópilas - Imagen 3" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-03.jpeg" alt="Finca Termópilas - Imagen 3" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -366,7 +389,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-04.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-04.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-04.jpeg" alt="Finca Termópilas - Imagen 4" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-04.jpeg" alt="Finca Termópilas - Imagen 4" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -377,7 +400,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-05.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-05.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-05.jpeg" alt="Finca Termópilas - Imagen 5" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-05.jpeg" alt="Finca Termópilas - Imagen 5" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -388,7 +411,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-06.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-06.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-06.jpeg" alt="Finca Termópilas - Imagen 6" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-06.jpeg" alt="Finca Termópilas - Imagen 6" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -399,7 +422,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-07.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-07.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-07.jpeg" alt="Finca Termópilas - Imagen 7" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-07.jpeg" alt="Finca Termópilas - Imagen 7" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -410,7 +433,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-08.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-08.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-08.jpeg" alt="Finca Termópilas - Imagen 8" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-08.jpeg" alt="Finca Termópilas - Imagen 8" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -421,7 +444,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-09.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-09.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-09.jpeg" alt="Finca Termópilas - Imagen 9" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-09.jpeg" alt="Finca Termópilas - Imagen 9" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -432,7 +455,7 @@
                     <picture>
                         <source srcset="assets/images/galeria/galeria-10.avif" type="image/avif">
                         <source srcset="assets/images/galeria/galeria-10.webp" type="image/webp">
-                        <img src="assets/images/galeria/galeria-10.jpeg" alt="Finca Termópilas - Imagen 10" loading="lazy">
+                        <img width="1200" height="900" src="assets/images/galeria/galeria-10.jpeg" alt="Finca Termópilas - Imagen 10" loading="lazy">
                     </picture>
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
@@ -440,91 +463,91 @@
                 </div>
                 
                 <div class="gallery-item" data-index="10">
-                    <img src="assets/images/galeria/galeria-11.jpeg" alt="Finca Termópilas - Imagen 11" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-11.jpeg" alt="Finca Termópilas - Imagen 11" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="11">
-                    <img src="assets/images/galeria/galeria-12.jpeg" alt="Finca Termópilas - Imagen 12" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-12.jpeg" alt="Finca Termópilas - Imagen 12" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="12">
-                    <img src="assets/images/galeria/galeria-13.jpeg" alt="Finca Termópilas - Imagen 13" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-13.jpeg" alt="Finca Termópilas - Imagen 13" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="13">
-                    <img src="assets/images/galeria/galeria-14.jpeg" alt="Finca Termópilas - Imagen 14" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-14.jpeg" alt="Finca Termópilas - Imagen 14" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="14">
-                    <img src="assets/images/galeria/galeria-15.jpeg" alt="Finca Termópilas - Imagen 15" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-15.jpeg" alt="Finca Termópilas - Imagen 15" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="15">
-                    <img src="assets/images/galeria/galeria-16.jpeg" alt="Finca Termópilas - Imagen 16" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-16.jpeg" alt="Finca Termópilas - Imagen 16" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="16">
-                    <img src="assets/images/galeria/galeria-17.jpeg" alt="Finca Termópilas - Imagen 17" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-17.jpeg" alt="Finca Termópilas - Imagen 17" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="17">
-                    <img src="assets/images/galeria/galeria-18.jpeg" alt="Finca Termópilas - Imagen 18" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-18.jpeg" alt="Finca Termópilas - Imagen 18" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="18">
-                    <img src="assets/images/galeria/galeria-19.jpeg" alt="Finca Termópilas - Imagen 19" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-19.jpeg" alt="Finca Termópilas - Imagen 19" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="19">
-                    <img src="assets/images/galeria/galeria-20.jpeg" alt="Finca Termópilas - Imagen 20" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-20.jpeg" alt="Finca Termópilas - Imagen 20" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="20">
-                    <img src="assets/images/galeria/galeria-21.jpeg" alt="Finca Termópilas - Imagen 21" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-21.jpeg" alt="Finca Termópilas - Imagen 21" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="21">
-                    <img src="assets/images/galeria/galeria-22.jpeg" alt="Finca Termópilas - Imagen 22" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-22.jpeg" alt="Finca Termópilas - Imagen 22" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 
                 <div class="gallery-item" data-index="22">
-                    <img src="assets/images/galeria/galeria-23.jpeg" alt="Finca Termópilas - Imagen 23" loading="lazy">
+                    <img width="1200" height="900" src="assets/images/galeria/galeria-23.jpeg" alt="Finca Termópilas - Imagen 23" loading="lazy">
                     <div class="gallery-item-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
