@@ -328,11 +328,6 @@
                 </ul>
             </div>
             
-            <div class="error-details" id="error-details">
-                <strong>Detalles técnicos:</strong><br>
-                <span id="error-message">Error desconocido</span>
-            </div>
-            
             <div class="solutions-box">
                 <h2>¿Qué puedes hacer?</h2>
                 <ul>
@@ -377,18 +372,8 @@
                 var errorMessage = params.get('error') || params.get('message');
                 var errorType = params.get('type');
                 
-                if (errorMessage) {
-                    var errorDetailsDiv = document.getElementById('error-details');
-                    var errorMessageSpan = document.getElementById('error-message');
-                    
-                    if (errorMessageSpan) {
-                        errorMessageSpan.textContent = decodeURIComponent(errorMessage);
-                    }
-                    
-                    if (errorDetailsDiv) {
-                        errorDetailsDiv.classList.add('show');
-                    }
-                }
+                // The raw ?error= / ?message= text is no longer shown on the page: anyone could craft a
+                // link that displays their own text under the Termópilas name. It is still sent to GA.
                 
                 // Track error page view
                 if (typeof gtag !== 'undefined') {

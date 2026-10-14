@@ -350,10 +350,6 @@
                     <div class="detail-label"><i class="fas fa-users"></i> Número de personas</div>
                     <div class="detail-value" id="people-value">Por confirmar</div>
                 </div>
-                <div class="detail-row" id="message-row" style="display: none;">
-                    <div class="detail-label"><i class="fas fa-comment"></i> Mensaje</div>
-                    <div class="detail-value" id="message-value">—</div>
-                </div>
             </div>
             
             <div class="actions">
@@ -390,7 +386,6 @@
                 var email = get('email');
                 var phone = get('phone');
                 var date = get('date');
-                var message = get('message');
                 var numberOfPeople = get('numberOfPeople') || get('people');
                 
                 // Helper function to set text content
@@ -405,13 +400,6 @@
                 setText('phone-value', phone);
                 setText('date-value', date);
                 setText('people-value', numberOfPeople, 'Por confirmar');
-                
-                // Show message if provided
-                if (message) {
-                    setText('message-value', message);
-                    var messageRow = document.getElementById('message-row');
-                    if (messageRow) messageRow.style.display = 'flex';
-                }
                 
                 // Track successful reservation
                 if (typeof gtag !== 'undefined') {

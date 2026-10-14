@@ -106,6 +106,16 @@
         // Configuration
         const CONFIG = {
             defaultPhone: '573170182644',
+            // Only these numbers can be passed in ?phone=. Any other value falls back to
+            // defaultPhone, so nobody can use this page to send visitors to a third-party chat
+            // under the Termópilas name (open redirect flagged as social engineering).
+            allowedPhones: [
+                '573170182644', // Finca Termópilas
+                '573214307204', // Transporte: Feni (ubicacion.html)
+                '573138597307', // Transporte: Carlos Rubiano (ubicacion.html)
+                '573166681598', // Transporte: David Santiago Camacho Rivera (ubicacion.html)
+                '573507871838'  // Transporte: Sebastián Domicilios Huila (ubicacion.html)
+            ],
             defaultMessage: 'Hola, estoy interesado en conocer más sobre Finca Termópilas.',
             redirectDelay: 1000 // 1 second
         };
@@ -123,7 +133,7 @@
                 
                 // WhatsApp parameters
                 text: urlParams.get('text') || CONFIG.defaultMessage,
-                phone: urlParams.get('phone') || CONFIG.defaultPhone
+                phone: CONFIG.allowedPhones.includes(urlParams.get('phone')) ? urlParams.get('phone') : CONFIG.defaultPhone
             };
         }
         
