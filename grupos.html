@@ -3,6 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2406CNRCX9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2406CNRCX9');
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '760911966545667');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=760911966545667&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <title>Experiencias Corporativas | Finca Termópilas - Rivera, Huila</title>
   <meta name="description" content="Transforma tu equipo en Finca Termópilas, Rivera Huila. Experiencias corporativas únicas rodeadas de naturaleza, vino, cacao y gastronomía. Ideal para empresas, universidades y organizaciones." />
   <link rel="canonical" href="https://termopilas.co/grupos.html">
@@ -1531,10 +1558,32 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
+  // Analytics helpers: GA4 event plus the matching Meta Pixel standard event.
+  // utm_* params are added so B2B campaigns can be attributed in GA4 explorations.
+  function trackGrupos(gaEvent, gaParams, pixelEvent) {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || ''
+    };
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', gaEvent, { page: 'grupos', ...utm, ...gaParams });
+    }
+    if (pixelEvent && typeof window.fbq === 'function') {
+      window.fbq('track', pixelEvent, { content_name: 'grupos', content_category: 'B2B' });
+    }
+  }
+
   // Smooth scroll to form
-  document.querySelectorAll('a[href="#formulario"]').forEach(btn => {
+  document.querySelectorAll('a[href="#formulario"]').forEach((btn, index) => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
+      trackGrupos('grupos_cta_click', {
+        event_category: 'Grupos',
+        event_label: btn.textContent.trim(),
+        cta_position: index + 1
+      });
       document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
     });
   });
@@ -1611,6 +1660,17 @@
         throw new Error(`Webhook returned ${response.status}`);
       }
 
+      // GA4 standard lead event (mark generate_lead as a key event in GA4) + Meta Pixel Lead
+      trackGrupos('generate_lead', {
+        event_category: 'Grupos',
+        event_label: 'Formulario grupos enviado',
+        form_name: 'grupos',
+        group_size: Number(personas),
+        lead_source: 'grupos_form',
+        currency: 'COP',
+        value: 1
+      }, 'Lead');
+
       document.getElementById('form-wrap').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
       document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1620,8 +1680,14 @@
         submitButton.textContent = submitButton.dataset.originalText || 'Quiero reservar mi experiencia';
       }
 
+      trackGrupos('grupos_form_error', { event_category: 'Grupos', event_label: String(error && error.message || error) });
       const continuarPorWhatsApp = confirm('No pudimos enviar la solicitud automáticamente. ¿Quieres continuar por WhatsApp?');
       if (continuarPorWhatsApp) {
+        trackGrupos('grupos_whatsapp_click', {
+          event_category: 'Grupos',
+          event_label: 'WhatsApp fallback',
+          group_size: Number(personas)
+        }, 'Contact');
         window.open(whatsappUrl, '_blank');
       }
     }

@@ -10,6 +10,8 @@
   4. The blog lives in Ghost: blog.html and every page under blog/ must stay a redirect to
      https://blog.termopilas.co with a canonical pointing to the same URL, so the posts are
      never duplicated on termopilas.co.
+  5. Every indexable page loads Google Analytics with the GA4 id from scripts/site-config.json
+     (gtag.js + gtag('config', id)), so no landing page is published untracked.
 
   Exit code 1 on any problem. Usage: node scripts/check-site.js [siteDir]
 */
@@ -31,6 +33,8 @@ const FORBIDDEN = [
 
 const problems = [];
 const problem = (file, msg) => problems.push(`${file}: ${msg}`);
+
+const GA_ID = JSON.parse(fs.readFileSync(path.join(__dirname, 'site-config.json'), 'utf8')).gaId;
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -158,6 +162,9 @@ function main() {
     if (!isRedirectOrNoindex(html) && rel !== '404.html' && /<head/i.test(html)) {
       indexable.push(rel);
       if (canonicals.length !== 1) problem(rel, `indexable page needs exactly one canonical (has ${canonicals.length})`);
+      if (!head.includes(`googletagmanager.com/gtag/js?id=${GA_ID}`) || !html.includes(`gtag('config', '${GA_ID}')`)) {
+        problem(rel, `indexable page does not load Google Analytics ${GA_ID}`);
+      }
     }
   }
 
