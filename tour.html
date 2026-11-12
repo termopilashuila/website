@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour de vino y cacao en Rivera, Huila | Finca Termópilas</title>
-    <meta name="description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <meta name="description" content="Tour guiado de vino y cacao en Rivera, Huila, con degustaciones y fogata. Solo con reserva previa para grupos de mínimo 10 personas. Consulta disponibilidad.">
     <link rel="canonical" href="https://termopilas.co/tour.html">
     <link rel="preload" as="image" href="/assets/images/tour/header.avif" type="image/avif" fetchpriority="high">
     <meta name="author" content="Finca Termópilas">
@@ -42,22 +42,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://termopilas.co/tour.html">
     <meta property="og:title" content="Tour de vino y cacao en Rivera, Huila | Finca Termópilas">
-    <meta property="og:description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <meta property="og:description" content="Tour guiado de vino y cacao en Rivera, Huila, con degustaciones y fogata. Solo con reserva previa para grupos de mínimo 10 personas. Consulta disponibilidad.">
     <meta property="og:image" content="https://termopilas.co/assets/images/tour/header.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://termopilas.co/tour.html">
     <meta name="twitter:title" content="Tour de vino y cacao en Rivera, Huila | Finca Termópilas">
-    <meta name="twitter:description" content="Tour guiado por viñedos, bosque de cacao y fábrica de chocolate en Rivera, Huila, con degustaciones, cata de tres vinos artesanales y fogata. Consulta fechas.">
+    <meta name="twitter:description" content="Tour guiado de vino y cacao en Rivera, Huila, con degustaciones y fogata. Solo con reserva previa para grupos de mínimo 10 personas. Consulta disponibilidad.">
     <meta name="twitter:image" content="https://termopilas.co/assets/images/tour/header.png">
 
     <!-- JavaScript -->
     <script src="/dist/main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // GA4: clicks to the booking page and to WhatsApp
-            document.querySelectorAll('a[href^="https://eventos.termopilas.co/tour"]').forEach(function(link) {
+            // GA4: clicks to group booking details and to WhatsApp
+            document.querySelectorAll('a[href="#reserva"], a[href="/tour.html#reserva"]').forEach(function(link) {
                 link.addEventListener('click', function() {
                     if (typeof gtag === 'function') {
                         gtag('event', 'generate_lead', { 'event_category': 'Reservations', 'reservation_type': 'tour', 'page': 'tour', 'button_location': link.dataset.location || 'content' });
@@ -220,14 +220,6 @@
             }
           }
         ]
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://eventos.termopilas.co/tour",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@id": "https://termopilas.co/#organization"
-        }
       }
     }
     </script>
@@ -261,23 +253,23 @@
           "name": "¿Cuánto dura el tour y a qué hora empieza?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Dura unas 2 horas y media. En las últimas fechas el recorrido empezó a las 4:00 p. m. y terminó hacia las 6:30 p. m. con la fogata. El horario exacto de cada fecha aparece en nuestra <a href=\"https://eventos.termopilas.co/tour\">página de eventos</a>."
+            "text": "Dura unas 2 horas y media. El horario se acuerda al confirmar la reserva del grupo."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cuesta y cuándo es la próxima fecha?",
+          "name": "¿Cuánto cuesta y cómo consulto disponibilidad?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El tour se hace en fechas programadas. Consulta fechas y precios en <a href=\"https://eventos.termopilas.co/tour\">eventos.termopilas.co/tour</a> o escríbenos por <a href=\"/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_precio&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas\">WhatsApp</a>."
+            "text": "El tour requiere reserva previa para grupos de mínimo 10 personas. Indícanos la fecha y el tamaño del grupo por WhatsApp para consultar disponibilidad y precio."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cómo reservo y confirmo mi cupo?",
+          "name": "¿Cómo reservo el tour para mi grupo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Elige la fecha en nuestra página de eventos y completa allí la reserva. Si tienes dudas sobre tu reserva o el pago, escríbenos por <a href=\"/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_reserva&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas\">WhatsApp</a>."
+            "text": "Escríbenos con la fecha deseada y el número de participantes (mínimo 10). Te confirmaremos disponibilidad, precio y pasos para reservar. No se realizan tours sin reserva previa."
           }
         },
         {
@@ -285,7 +277,7 @@
           "name": "¿El tour incluye comida?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Incluye degustaciones: uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después. Consulta nuestra guía de <a href=\"https://blog.termopilas.co/lugares-para-comer-rivera/\">lugares para comer en Rivera</a>."
+            "text": "Incluye degustaciones de uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y una cata de tres vinos; no incluye una comida completa. No ofrecemos servicio de restaurante. Puedes traer tus alimentos y prepararlos en los espacios habilitados, o pedir comida a domicilio."
           }
         },
         {
@@ -309,7 +301,7 @@
           "name": "¿Cuántas personas participan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Los grupos son de máximo 35 personas. Si quieres el tour para tu empresa o un grupo privado, mira nuestras <a href=\"/grupos.html\">experiencias para grupos y empresas</a>."
+            "text": "El tour se reserva para grupos de mínimo 10 y máximo 35 personas. Consúltanos si tu grupo es más grande."
           }
         },
         {
@@ -359,8 +351,8 @@
         </nav>
         <div class="hero-content">
           <h1>Tour de vino y cacao en <strong>Rivera, Huila</strong></h1>
-          <p>Viñedos, bosque de cacao, chocolate artesanal y cata de vinos en Finca Termópilas</p>
-          <a href="https://eventos.termopilas.co/tour" class="cta-button">VER PRÓXIMAS FECHAS</a>
+          <p>Tours con reserva previa para grupos de mínimo 10 personas</p>
+          <a href="/tour.html#reserva" class="cta-button">CONSULTAR DISPONIBILIDAD</a>
         </div>
     </header>
 
@@ -382,16 +374,15 @@
                     <div class="tour-details">
                         <ul class="tour-info">
                             <li><i class="far fa-clock" aria-hidden="true"></i> <strong>Duración:</strong>&nbsp;unas 2 horas y media</li>
-                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> <strong>Fechas:</strong>&nbsp;programadas; consulta fechas y precios</li>
-                            <li><i class="fas fa-users" aria-hidden="true"></i> <strong>Grupos:</strong>&nbsp;máximo 35 personas</li>
+                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> <strong>Reserva:</strong>&nbsp;previa, según disponibilidad</li>
+                            <li><i class="fas fa-users" aria-hidden="true"></i> <strong>Grupos:</strong>&nbsp;de 10 a 35 personas</li>
                             <li><i class="fas fa-shoe-prints" aria-hidden="true"></i> <strong>Dificultad:</strong>&nbsp;baja, a ritmo tranquilo</li>
                             <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Lugar:</strong>&nbsp;Finca Termópilas, km 3,3 vía Las Juntas, Rivera, Huila</li>
                         </ul>
                     </div>
                 </div>
                 <div class="cta-container tour-cta">
-                    <a href="https://eventos.termopilas.co/tour" class="cta-button" data-location="intro"><i class="fas fa-calendar-check" aria-hidden="true"></i> Ver próximas fechas</a>
-                    <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=intro_whatsapp&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas" class="cta-button cta-button-secondary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos por WhatsApp</a>
+                    <a href="#reserva" class="cta-button" data-location="intro"><i class="fas fa-calendar-check" aria-hidden="true"></i> Consultar disponibilidad</a>
                 </div>
             </div>
         </section>
@@ -665,19 +656,19 @@
                 <div class="faq-list">
                     <details class="faq-item">
                         <summary class="faq-question"><span>¿Cuánto dura el tour y a qué hora empieza?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
-                        <div class="faq-answer"><p>Dura unas 2 horas y media. En las últimas fechas el recorrido empezó a las 4:00 p. m. y terminó hacia las 6:30 p. m. con la fogata. El horario exacto de cada fecha aparece en nuestra <a href="https://eventos.termopilas.co/tour">página de eventos</a>.</p></div>
+                        <div class="faq-answer"><p>Dura unas 2 horas y media. El horario se acuerda al confirmar la reserva del grupo.</p></div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-question"><span>¿Cuánto cuesta y cuándo es la próxima fecha?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
-                        <div class="faq-answer"><p>El tour se hace en fechas programadas. Consulta fechas y precios en <a href="https://eventos.termopilas.co/tour">eventos.termopilas.co/tour</a> o escríbenos por <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_precio&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas">WhatsApp</a>.</p></div>
+                        <summary class="faq-question"><span>¿Cuánto cuesta y cómo consulto disponibilidad?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>El tour requiere reserva previa para grupos de mínimo 10 personas. Indícanos la fecha y el tamaño del grupo y <a href="#reserva">consúltanos por WhatsApp</a> para conocer disponibilidad y precio.</p></div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-question"><span>¿Cómo reservo y confirmo mi cupo?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
-                        <div class="faq-answer"><p>Elige la fecha en nuestra página de eventos y completa allí la reserva. Si tienes dudas sobre tu reserva o el pago, escríbenos por <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=faq_reserva&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas">WhatsApp</a>.</p></div>
+                        <summary class="faq-question"><span>¿Cómo reservo el tour para mi grupo?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
+                        <div class="faq-answer"><p>Escríbenos con la fecha deseada y el número de participantes (mínimo 10). Te confirmaremos disponibilidad, precio y pasos para reservar. No se realizan tours sin reserva previa.</p></div>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-question"><span>¿El tour incluye comida?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
-                        <div class="faq-answer"><p>Incluye degustaciones: uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y la cata de tres vinos. No es una comida completa, así que te recomendamos comer antes o después. Consulta nuestra guía de <a href="https://blog.termopilas.co/lugares-para-comer-rivera/">lugares para comer en Rivera</a>.</p></div>
+                        <div class="faq-answer"><p>Incluye degustaciones de uvas, cacao, chocolates artesanales, un parfait de yogur griego con nibs de cacao y una cata de tres vinos; no incluye una comida completa. No ofrecemos servicio de restaurante. Puedes traer tus alimentos y prepararlos en los espacios habilitados, o pedir comida a domicilio.</p></div>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-question"><span>¿Es una experiencia apta para todas las edades?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
@@ -689,7 +680,7 @@
                     </details>
                     <details class="faq-item">
                         <summary class="faq-question"><span>¿Cuántas personas participan?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
-                        <div class="faq-answer"><p>Los grupos son de máximo 35 personas. Si quieres el tour para tu empresa o un grupo privado, mira nuestras <a href="/grupos.html">experiencias para grupos y empresas</a>.</p></div>
+                        <div class="faq-answer"><p>El tour se reserva para grupos de mínimo 10 y máximo 35 personas. Consúltanos si tu grupo es más grande.</p></div>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-question"><span>¿Puedo quedarme a dormir en la finca?</span><i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i></summary>
@@ -708,13 +699,12 @@
             </div>
         </section>
 
-        <section class="tour-booking section">
+        <section class="tour-booking section" id="reserva">
             <div class="container">
-                <h2>Reserva tu cupo</h2>
-                <p>Los cupos son limitados. Consulta las próximas fechas y precios en nuestra página de eventos, o escríbenos y te ayudamos a reservar.</p>
+                <h2>Reserva el tour para tu grupo</h2>
+                <p>Recibimos grupos de 10 a 35 personas, únicamente con reserva previa. Cuéntanos la fecha que deseas y cuántas personas vendrán; te confirmaremos disponibilidad y precio.</p>
                 <div class="cta-container tour-cta">
-                    <a href="https://eventos.termopilas.co/tour" class="cta-button" data-location="footer"><i class="fas fa-calendar-check" aria-hidden="true"></i> Ver próximas fechas</a>
-                    <a href="/whatsapp.html?utm_source=website&utm_medium=page&utm_campaign=tour&utm_content=booking_whatsapp&text=Hola.%20Estaba%20en%20la%20p%C3%A1gina%20del%20Tour%20de%20vino%20y%20cacao%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20las%20pr%C3%B3ximas%20fechas" class="cta-button cta-button-secondary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos por WhatsApp</a>
+                    <a href="/whatsapp.html?utm_source=website&amp;utm_medium=page&amp;utm_campaign=tour&amp;utm_content=group_booking&amp;text=Hola.%20Quiero%20consultar%20disponibilidad%20y%20precio%20del%20tour%20de%20vino%20y%20cacao%20para%20un%20grupo%20de%2010%20o%20m%C3%A1s%20personas." class="cta-button" data-location="footer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp</a>
                 </div>
             </div>
         </section>

@@ -33,9 +33,9 @@ export const pageConfigs: { [key: string]: Partial<HeaderConfig> } = {
     heroImage: '/assets/images/tour/header.png',
     heroContent: {
       title: 'Tour de vino y cacao en <strong>Rivera, Huila</strong>',
-      subtitle: 'Viñedos, bosque de cacao, chocolate artesanal y cata de vinos en Finca Termópilas',
-      ctaText: 'VER PRÓXIMAS FECHAS',
-      ctaHref: 'https://eventos.termopilas.co/tour'
+      subtitle: 'Tours con reserva previa para grupos de mínimo 10 personas',
+      ctaText: 'CONSULTAR DISPONIBILIDAD',
+      ctaHref: '/tour.html#reserva'
     }
   },
   'preguntas-frecuentes': {
